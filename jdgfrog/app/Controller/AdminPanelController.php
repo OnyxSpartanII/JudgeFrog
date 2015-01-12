@@ -11,7 +11,7 @@ class AdminPanelController extends AppController {
 
 	}
 
-	public function view(){
+	public function index(){
 		$this->render();
 	}
 

@@ -3,7 +3,7 @@
  *
  *
  * @link          http://cakephp.org CakePHP(tm) Project
- * @package       app.View.Pages
+ * @package       app.View.AdminPanel
  * @since         CakePHP(tm) v 0.10.0.1076
  */
 
@@ -20,7 +20,7 @@ App::uses('Debugger', 'Utility');
 	<title>Admin Control Panel | Human Trafficking Data</title>
 	<meta http-equiv="Content-Language" content="English" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />
+  <?php echo $this->Html->css(array('in-style', 'style')); ?>
 	<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css' />
 </head>
 
@@ -30,13 +30,11 @@ App::uses('Debugger', 'Utility');
 <div id="wrap">
 	<div id="header">
 		<div id="headerlinks">
-<<<<<<< HEAD:SeniorDesignWebApp/SeniorDesignWebApp/Views/AdminPanel/index.html
 		<a href="index.html" class="case_active" title="Case">Case</a>
 		<a href="court.html" title="Court">Court</a>
 		<a href="defendant.html" title="Defendant">Defendant</a>
 		<a href="upload.html" title="Batch Upload">Batch Upload</a>
 		</div>
-=======
             <ul>
                 <li><a href="~/Views/AdminPanel/index.cshtml" class="case_active" title="Case">Case</a></li>
                 <li><a href="~/Views/AdminPanel/court.cshtml" title="Court">Court</a></li>
@@ -44,7 +42,6 @@ App::uses('Debugger', 'Utility');
                 <li><a href="~/Views/AdminPanel/upload.cshtml" title="Batch Upload">Batch Upload</a></li>
             </ul>
         </div>
->>>>>>> e39770d6310eaf1ef2c1f3c1f3e0deeb08d2696c:SeniorDesignWebApp/SeniorDesignWebApp/Views/AdminPanel/Old/index.cshtml.old
 		<h1><a href="index.html">Admin Control Panel | HTD</a></h1>
 	</div>
 
@@ -93,11 +90,6 @@ App::uses('Debugger', 'Utility');
 
 		<h4 style="color:#F05; margin-top:600px;">*NOTE ~ Required Fields</h4>
 
-	</div>
-
-
-	<div id="footer">
-		Admin Control Panel HTD V 0.1 | <a target="_blank" href="http://humantraffickingdata.org" title="Human Trafficking Data Website">Human Trafficking Data</a>
 	</div>
 
 </div>

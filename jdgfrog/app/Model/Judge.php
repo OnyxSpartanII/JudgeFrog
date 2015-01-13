@@ -7,13 +7,6 @@ App::uses('AppModel', 'Model');
 class Judge extends AppModel {
 
 /**
- * Use table
- *
- * @var mixed False or table name
- */
-	public $useTable = 'judge';
-
-/**
  * Primary key field
  *
  * @var string

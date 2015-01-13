@@ -7,13 +7,6 @@ App::uses('AppModel', 'Model');
 class CaseHasDefendant extends AppModel {
 
 /**
- * Use table
- *
- * @var mixed False or table name
- */
-	public $useTable = 'case_has_defendant';
-
-/**
  * Primary key field
  *
  * @var string

@@ -6,13 +6,6 @@
 class CaseHasDefendantFixture extends CakeTestFixture {
 
 /**
- * Table name
- *
- * @var string
- */
-	public $table = 'case_has_defendant';
-
-/**
  * Fields
  *
  * @var array

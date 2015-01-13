@@ -6,13 +6,6 @@
 class JudgeFixture extends CakeTestFixture {
 
 /**
- * Table name
- *
- * @var string
- */
-	public $table = 'judge';
-
-/**
  * Fields
  *
  * @var array

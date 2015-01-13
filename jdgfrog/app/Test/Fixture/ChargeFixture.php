@@ -6,20 +6,12 @@
 class ChargeFixture extends CakeTestFixture {
 
 /**
- * Table name
- *
- * @var string
- */
-	public $table = 'charge';
-
-/**
  * Fields
  *
  * @var array
  */
 	public $fields = array(
 		'ChargeId' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
-		'ArrestChargeDetails_Id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'index'),
 		'Counts' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false),
 		'CountsNolleProssed' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false),
 		'Statute' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 45, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
@@ -30,10 +22,11 @@ class ChargeFixture extends CakeTestFixture {
 		'Fines' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false),
 		'Sentence' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false),
 		'Probation' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false),
+		'arrest_charge_details_ACDId' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
 		'indexes' => array(
-			'PRIMARY' => array('column' => 'ChargeId', 'unique' => 1),
+			'PRIMARY' => array('column' => array('ChargeId', 'arrest_charge_details_ACDId'), 'unique' => 1),
 			'ChargeId_UNIQUE' => array('column' => 'ChargeId', 'unique' => 1),
-			'fk_Charge_ArrestChargeDetails1_idx' => array('column' => 'ArrestChargeDetails_Id', 'unique' => 0)
+			'fk_charges_arrest_charge_details1_idx' => array('column' => 'arrest_charge_details_ACDId', 'unique' => 0)
 		),
 		'tableParameters' => array('charset' => 'utf8', 'collate' => 'utf8_general_ci', 'engine' => 'InnoDB')
 	);
@@ -46,7 +39,6 @@ class ChargeFixture extends CakeTestFixture {
 	public $records = array(
 		array(
 			'ChargeId' => 1,
-			'ArrestChargeDetails_Id' => 1,
 			'Counts' => 1,
 			'CountsNolleProssed' => 1,
 			'Statute' => 'Lorem ipsum dolor sit amet',
@@ -56,7 +48,8 @@ class ChargeFixture extends CakeTestFixture {
 			'TrialNotGuilty' => 1,
 			'Fines' => 1,
 			'Sentence' => 1,
-			'Probation' => 1
+			'Probation' => 1,
+			'arrest_charge_details_ACDId' => 1
 		),
 	);
 

@@ -1,17 +1,10 @@
 <?php
 App::uses('AppModel', 'Model');
 /**
- * CaseHasOrganizedcrimegroup Model
+ * CaseHasOrganizedCrimeGroup Model
  *
  */
-class CaseHasOrganizedcrimegroup extends AppModel {
-
-/**
- * Use table
- *
- * @var mixed False or table name
- */
-	public $useTable = 'case_has_organizedcrimegroup';
+class CaseHasOrganizedCrimeGroup extends AppModel {
 
 /**
  * Primary key field

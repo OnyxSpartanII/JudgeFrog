@@ -1,10 +1,10 @@
 <?php
 App::uses('AppModel', 'Model');
 /**
- * Arrestchargedetail Model
+ * ArrestChargeDetail Model
  *
  */
-class Arrestchargedetail extends AppModel {
+class ArrestChargeDetail extends AppModel {
 
 /**
  * Primary key field
@@ -110,6 +110,16 @@ class Arrestchargedetail extends AppModel {
 			),
 		),
 		'Fel_S' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'defendants_DefendantId' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',

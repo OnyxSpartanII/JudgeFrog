@@ -1,13 +1,13 @@
 <?php
 App::uses('AppController', 'Controller');
 /**
- * Organizedcrimegroups Controller
+ * OrganizedCrimeGroups Controller
  *
- * @property Organizedcrimegroup $Organizedcrimegroup
+ * @property OrganizedCrimeGroup $OrganizedCrimeGroup
  * @property PaginatorComponent $Paginator
  * @property SessionComponent $Session
  */
-class OrganizedcrimegroupsController extends AppController {
+class OrganizedCrimeGroupsController extends AppController {
 
 /**
  * Components
@@ -22,8 +22,8 @@ class OrganizedcrimegroupsController extends AppController {
  * @return void
  */
 	public function index() {
-		$this->Organizedcrimegroup->recursive = 0;
-		$this->set('organizedcrimegroups', $this->Paginator->paginate());
+		$this->OrganizedCrimeGroup->recursive = 0;
+		$this->set('organizedCrimeGroups', $this->Paginator->paginate());
 	}
 
 /**
@@ -34,11 +34,11 @@ class OrganizedcrimegroupsController extends AppController {
  * @return void
  */
 	public function view($id = null) {
-		if (!$this->Organizedcrimegroup->exists($id)) {
-			throw new NotFoundException(__('Invalid organizedcrimegroup'));
+		if (!$this->OrganizedCrimeGroup->exists($id)) {
+			throw new NotFoundException(__('Invalid organized crime group'));
 		}
-		$options = array('conditions' => array('Organizedcrimegroup.' . $this->Organizedcrimegroup->primaryKey => $id));
-		$this->set('organizedcrimegroup', $this->Organizedcrimegroup->find('first', $options));
+		$options = array('conditions' => array('OrganizedCrimeGroup.' . $this->OrganizedCrimeGroup->primaryKey => $id));
+		$this->set('organizedCrimeGroup', $this->OrganizedCrimeGroup->find('first', $options));
 	}
 
 /**
@@ -48,12 +48,12 @@ class OrganizedcrimegroupsController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
-			$this->Organizedcrimegroup->create();
-			if ($this->Organizedcrimegroup->save($this->request->data)) {
-				$this->Session->setFlash(__('The organizedcrimegroup has been saved.'));
+			$this->OrganizedCrimeGroup->create();
+			if ($this->OrganizedCrimeGroup->save($this->request->data)) {
+				$this->Session->setFlash(__('The organized crime group has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The organizedcrimegroup could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The organized crime group could not be saved. Please, try again.'));
 			}
 		}
 	}
@@ -66,19 +66,19 @@ class OrganizedcrimegroupsController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
-		if (!$this->Organizedcrimegroup->exists($id)) {
-			throw new NotFoundException(__('Invalid organizedcrimegroup'));
+		if (!$this->OrganizedCrimeGroup->exists($id)) {
+			throw new NotFoundException(__('Invalid organized crime group'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
-			if ($this->Organizedcrimegroup->save($this->request->data)) {
-				$this->Session->setFlash(__('The organizedcrimegroup has been saved.'));
+			if ($this->OrganizedCrimeGroup->save($this->request->data)) {
+				$this->Session->setFlash(__('The organized crime group has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The organizedcrimegroup could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The organized crime group could not be saved. Please, try again.'));
 			}
 		} else {
-			$options = array('conditions' => array('Organizedcrimegroup.' . $this->Organizedcrimegroup->primaryKey => $id));
-			$this->request->data = $this->Organizedcrimegroup->find('first', $options);
+			$options = array('conditions' => array('OrganizedCrimeGroup.' . $this->OrganizedCrimeGroup->primaryKey => $id));
+			$this->request->data = $this->OrganizedCrimeGroup->find('first', $options);
 		}
 	}
 
@@ -90,15 +90,15 @@ class OrganizedcrimegroupsController extends AppController {
  * @return void
  */
 	public function delete($id = null) {
-		$this->Organizedcrimegroup->id = $id;
-		if (!$this->Organizedcrimegroup->exists()) {
-			throw new NotFoundException(__('Invalid organizedcrimegroup'));
+		$this->OrganizedCrimeGroup->id = $id;
+		if (!$this->OrganizedCrimeGroup->exists()) {
+			throw new NotFoundException(__('Invalid organized crime group'));
 		}
 		$this->request->allowMethod('post', 'delete');
-		if ($this->Organizedcrimegroup->delete()) {
-			$this->Session->setFlash(__('The organizedcrimegroup has been deleted.'));
+		if ($this->OrganizedCrimeGroup->delete()) {
+			$this->Session->setFlash(__('The organized crime group has been deleted.'));
 		} else {
-			$this->Session->setFlash(__('The organizedcrimegroup could not be deleted. Please, try again.'));
+			$this->Session->setFlash(__('The organized crime group could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}

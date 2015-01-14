@@ -26,6 +26,11 @@
 			<?php echo h($victim['Victim']['Female']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Cases CaseId'); ?></dt>
+		<dd>
+			<?php echo h($victim['Victim']['cases_CaseId']); ?>
+			&nbsp;
+		</dd>
 	</dl>
 </div>
 <div class="actions">

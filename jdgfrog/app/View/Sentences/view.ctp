@@ -46,6 +46,16 @@
 			<?php echo h($sentence['Sentence']['Probation']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Defendants DefendantId'); ?></dt>
+		<dd>
+			<?php echo h($sentence['Sentence']['defendants_DefendantId']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Cases CaseId'); ?></dt>
+		<dd>
+			<?php echo h($sentence['Sentence']['cases_CaseId']); ?>
+			&nbsp;
+		</dd>
 	</dl>
 </div>
 <div class="actions">

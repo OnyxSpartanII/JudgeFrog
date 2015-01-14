@@ -8,6 +8,7 @@
 		echo $this->Form->input('Minor');
 		echo $this->Form->input('Foreigner');
 		echo $this->Form->input('Female');
+		echo $this->Form->input('cases_CaseId');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

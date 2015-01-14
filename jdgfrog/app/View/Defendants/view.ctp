@@ -31,16 +31,6 @@
 			<?php echo h($defendant['Defendant']['Race']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('SentenceId'); ?></dt>
-		<dd>
-			<?php echo h($defendant['Defendant']['SentenceId']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('ACDId'); ?></dt>
-		<dd>
-			<?php echo h($defendant['Defendant']['ACDId']); ?>
-			&nbsp;
-		</dd>
 	</dl>
 </div>
 <div class="actions">

@@ -3,7 +3,6 @@
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('ChargeId'); ?></th>
-			<th><?php echo $this->Paginator->sort('ArrestChargeDetails_Id'); ?></th>
 			<th><?php echo $this->Paginator->sort('Counts'); ?></th>
 			<th><?php echo $this->Paginator->sort('CountsNolleProssed'); ?></th>
 			<th><?php echo $this->Paginator->sort('Statute'); ?></th>
@@ -14,12 +13,12 @@
 			<th><?php echo $this->Paginator->sort('Fines'); ?></th>
 			<th><?php echo $this->Paginator->sort('Sentence'); ?></th>
 			<th><?php echo $this->Paginator->sort('Probation'); ?></th>
+			<th><?php echo $this->Paginator->sort('arrest_charge_details_ACDId'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($charges as $charge): ?>
 	<tr>
 		<td><?php echo h($charge['Charge']['ChargeId']); ?>&nbsp;</td>
-		<td><?php echo h($charge['Charge']['ArrestChargeDetails_Id']); ?>&nbsp;</td>
 		<td><?php echo h($charge['Charge']['Counts']); ?>&nbsp;</td>
 		<td><?php echo h($charge['Charge']['CountsNolleProssed']); ?>&nbsp;</td>
 		<td><?php echo h($charge['Charge']['Statute']); ?>&nbsp;</td>
@@ -30,6 +29,7 @@
 		<td><?php echo h($charge['Charge']['Fines']); ?>&nbsp;</td>
 		<td><?php echo h($charge['Charge']['Sentence']); ?>&nbsp;</td>
 		<td><?php echo h($charge['Charge']['Probation']); ?>&nbsp;</td>
+		<td><?php echo h($charge['Charge']['arrest_charge_details_ACDId']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $charge['Charge']['ChargeId'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $charge['Charge']['ChargeId'])); ?>

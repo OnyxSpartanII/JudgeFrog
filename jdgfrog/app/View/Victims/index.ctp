@@ -7,6 +7,7 @@
 			<th><?php echo $this->Paginator->sort('Minor'); ?></th>
 			<th><?php echo $this->Paginator->sort('Foreigner'); ?></th>
 			<th><?php echo $this->Paginator->sort('Female'); ?></th>
+			<th><?php echo $this->Paginator->sort('cases_CaseId'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($victims as $victim): ?>
@@ -16,6 +17,7 @@
 		<td><?php echo h($victim['Victim']['Minor']); ?>&nbsp;</td>
 		<td><?php echo h($victim['Victim']['Foreigner']); ?>&nbsp;</td>
 		<td><?php echo h($victim['Victim']['Female']); ?>&nbsp;</td>
+		<td><?php echo h($victim['Victim']['cases_CaseId']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $victim['Victim']['VictimsId'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $victim['Victim']['VictimsId'])); ?>

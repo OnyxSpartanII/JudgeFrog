@@ -11,6 +11,8 @@
 			<th><?php echo $this->Paginator->sort('Appeal'); ?></th>
 			<th><?php echo $this->Paginator->sort('SupervisedRelease'); ?></th>
 			<th><?php echo $this->Paginator->sort('Probation'); ?></th>
+			<th><?php echo $this->Paginator->sort('defendants_DefendantId'); ?></th>
+			<th><?php echo $this->Paginator->sort('cases_CaseId'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($sentences as $sentence): ?>
@@ -24,6 +26,8 @@
 		<td><?php echo h($sentence['Sentence']['Appeal']); ?>&nbsp;</td>
 		<td><?php echo h($sentence['Sentence']['SupervisedRelease']); ?>&nbsp;</td>
 		<td><?php echo h($sentence['Sentence']['Probation']); ?>&nbsp;</td>
+		<td><?php echo h($sentence['Sentence']['defendants_DefendantId']); ?>&nbsp;</td>
+		<td><?php echo h($sentence['Sentence']['cases_CaseId']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $sentence['Sentence']['SentenceId'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $sentence['Sentence']['SentenceId'])); ?>

@@ -1,7 +1,7 @@
-<div class="organizedcrimegroups form">
-<?php echo $this->Form->create('Organizedcrimegroup'); ?>
+<div class="organizedCrimeGroups form">
+<?php echo $this->Form->create('OrganizedCrimeGroup'); ?>
 	<fieldset>
-		<legend><?php echo __('Add Organizedcrimegroup'); ?></legend>
+		<legend><?php echo __('Add Organized Crime Group'); ?></legend>
 	<?php
 		echo $this->Form->input('Name');
 		echo $this->Form->input('Size');
@@ -15,6 +15,6 @@
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 
-		<li><?php echo $this->Html->link(__('List Organizedcrimegroups'), array('action' => 'index')); ?></li>
+		<li><?php echo $this->Html->link(__('List Organized Crime Groups'), array('action' => 'index')); ?></li>
 	</ul>
 </div>

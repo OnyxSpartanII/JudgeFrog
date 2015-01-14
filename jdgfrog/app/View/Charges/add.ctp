@@ -3,7 +3,6 @@
 	<fieldset>
 		<legend><?php echo __('Add Charge'); ?></legend>
 	<?php
-		echo $this->Form->input('ArrestChargeDetails_Id');
 		echo $this->Form->input('Counts');
 		echo $this->Form->input('CountsNolleProssed');
 		echo $this->Form->input('Statute');
@@ -14,6 +13,7 @@
 		echo $this->Form->input('Fines');
 		echo $this->Form->input('Sentence');
 		echo $this->Form->input('Probation');
+		echo $this->Form->input('arrest_charge_details_ACDId');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

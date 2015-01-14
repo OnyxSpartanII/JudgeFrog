@@ -12,6 +12,8 @@
 		echo $this->Form->input('Appeal');
 		echo $this->Form->input('SupervisedRelease');
 		echo $this->Form->input('Probation');
+		echo $this->Form->input('defendants_DefendantId');
+		echo $this->Form->input('cases_CaseId');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

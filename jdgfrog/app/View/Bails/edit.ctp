@@ -6,7 +6,6 @@
 		echo $this->Form->input('BailId');
 		echo $this->Form->input('Type');
 		echo $this->Form->input('Amount');
-		echo $this->Form->input('ArrestChargeDetails_ACDId');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

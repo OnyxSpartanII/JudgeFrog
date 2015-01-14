@@ -6,11 +6,6 @@
 			<?php echo h($charge['Charge']['ChargeId']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('ArrestChargeDetails Id'); ?></dt>
-		<dd>
-			<?php echo h($charge['Charge']['ArrestChargeDetails_Id']); ?>
-			&nbsp;
-		</dd>
 		<dt><?php echo __('Counts'); ?></dt>
 		<dd>
 			<?php echo h($charge['Charge']['Counts']); ?>
@@ -59,6 +54,11 @@
 		<dt><?php echo __('Probation'); ?></dt>
 		<dd>
 			<?php echo h($charge['Charge']['Probation']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Arrest Charge Details ACDId'); ?></dt>
+		<dd>
+			<?php echo h($charge['Charge']['arrest_charge_details_ACDId']); ?>
 			&nbsp;
 		</dd>
 	</dl>

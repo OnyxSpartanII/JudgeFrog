@@ -16,11 +16,6 @@
 			<?php echo h($bail['Bail']['Amount']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('ArrestChargeDetails ACDId'); ?></dt>
-		<dd>
-			<?php echo h($bail['Bail']['ArrestChargeDetails_ACDId']); ?>
-			&nbsp;
-		</dd>
 	</dl>
 </div>
 <div class="actions">

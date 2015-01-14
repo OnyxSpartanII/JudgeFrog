@@ -8,8 +8,6 @@
 			<th><?php echo $this->Paginator->sort('Gender'); ?></th>
 			<th><?php echo $this->Paginator->sort('BirthDate'); ?></th>
 			<th><?php echo $this->Paginator->sort('Race'); ?></th>
-			<th><?php echo $this->Paginator->sort('SentenceId'); ?></th>
-			<th><?php echo $this->Paginator->sort('ACDId'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($defendants as $defendant): ?>
@@ -20,8 +18,6 @@
 		<td><?php echo h($defendant['Defendant']['Gender']); ?>&nbsp;</td>
 		<td><?php echo h($defendant['Defendant']['BirthDate']); ?>&nbsp;</td>
 		<td><?php echo h($defendant['Defendant']['Race']); ?>&nbsp;</td>
-		<td><?php echo h($defendant['Defendant']['SentenceId']); ?>&nbsp;</td>
-		<td><?php echo h($defendant['Defendant']['ACDId']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $defendant['Defendant']['DefendantId'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $defendant['Defendant']['DefendantId'])); ?>

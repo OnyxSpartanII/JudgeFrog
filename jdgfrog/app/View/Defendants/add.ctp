@@ -8,8 +8,6 @@
 		echo $this->Form->input('Gender');
 		echo $this->Form->input('BirthDate');
 		echo $this->Form->input('Race');
-		echo $this->Form->input('SentenceId');
-		echo $this->Form->input('ACDId');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

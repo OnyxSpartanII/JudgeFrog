@@ -1,19 +1,20 @@
 <?php
 App::uses('AppController', 'Controller');
 /**
- * ArrestChargeDetails Controller
+ * Arrestchargedetails Controller
  *
- * @property ArrestChargeDetail $ArrestChargeDetail
+ * @property Arrestchargedetail $Arrestchargedetail
  * @property PaginatorComponent $Paginator
+ * @property SessionComponent $Session
  */
-class ArrestChargeDetailsController extends AppController {
+class ArrestchargedetailsController extends AppController {
 
 /**
  * Components
  *
  * @var array
  */
-	public $components = array('Paginator');
+	public $components = array('Paginator', 'Session');
 
 /**
  * index method
@@ -21,8 +22,8 @@ class ArrestChargeDetailsController extends AppController {
  * @return void
  */
 	public function index() {
-		$this->ArrestChargeDetail->recursive = 0;
-		$this->set('arrestChargeDetails', $this->Paginator->paginate());
+		$this->Arrestchargedetail->recursive = 0;
+		$this->set('arrestchargedetails', $this->Paginator->paginate());
 	}
 
 /**
@@ -33,11 +34,11 @@ class ArrestChargeDetailsController extends AppController {
  * @return void
  */
 	public function view($id = null) {
-		if (!$this->ArrestChargeDetail->exists($id)) {
-			throw new NotFoundException(__('Invalid arrest charge detail'));
+		if (!$this->Arrestchargedetail->exists($id)) {
+			throw new NotFoundException(__('Invalid arrestchargedetail'));
 		}
-		$options = array('conditions' => array('ArrestChargeDetail.' . $this->ArrestChargeDetail->primaryKey => $id));
-		$this->set('arrestChargeDetail', $this->ArrestChargeDetail->find('first', $options));
+		$options = array('conditions' => array('Arrestchargedetail.' . $this->Arrestchargedetail->primaryKey => $id));
+		$this->set('arrestchargedetail', $this->Arrestchargedetail->find('first', $options));
 	}
 
 /**
@@ -47,12 +48,12 @@ class ArrestChargeDetailsController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
-			$this->ArrestChargeDetail->create();
-			if ($this->ArrestChargeDetail->save($this->request->data)) {
-				$this->Session->setFlash(__('The arrest charge detail has been saved.'));
+			$this->Arrestchargedetail->create();
+			if ($this->Arrestchargedetail->save($this->request->data)) {
+				$this->Session->setFlash(__('The arrestchargedetail has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The arrest charge detail could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The arrestchargedetail could not be saved. Please, try again.'));
 			}
 		}
 	}
@@ -65,19 +66,19 @@ class ArrestChargeDetailsController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
-		if (!$this->ArrestChargeDetail->exists($id)) {
-			throw new NotFoundException(__('Invalid arrest charge detail'));
+		if (!$this->Arrestchargedetail->exists($id)) {
+			throw new NotFoundException(__('Invalid arrestchargedetail'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
-			if ($this->ArrestChargeDetail->save($this->request->data)) {
-				$this->Session->setFlash(__('The arrest charge detail has been saved.'));
+			if ($this->Arrestchargedetail->save($this->request->data)) {
+				$this->Session->setFlash(__('The arrestchargedetail has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The arrest charge detail could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('The arrestchargedetail could not be saved. Please, try again.'));
 			}
 		} else {
-			$options = array('conditions' => array('ArrestChargeDetail.' . $this->ArrestChargeDetail->primaryKey => $id));
-			$this->request->data = $this->ArrestChargeDetail->find('first', $options);
+			$options = array('conditions' => array('Arrestchargedetail.' . $this->Arrestchargedetail->primaryKey => $id));
+			$this->request->data = $this->Arrestchargedetail->find('first', $options);
 		}
 	}
 
@@ -89,15 +90,15 @@ class ArrestChargeDetailsController extends AppController {
  * @return void
  */
 	public function delete($id = null) {
-		$this->ArrestChargeDetail->id = $id;
-		if (!$this->ArrestChargeDetail->exists()) {
-			throw new NotFoundException(__('Invalid arrest charge detail'));
+		$this->Arrestchargedetail->id = $id;
+		if (!$this->Arrestchargedetail->exists()) {
+			throw new NotFoundException(__('Invalid arrestchargedetail'));
 		}
 		$this->request->allowMethod('post', 'delete');
-		if ($this->ArrestChargeDetail->delete()) {
-			$this->Session->setFlash(__('The arrest charge detail has been deleted.'));
+		if ($this->Arrestchargedetail->delete()) {
+			$this->Session->setFlash(__('The arrestchargedetail has been deleted.'));
 		} else {
-			$this->Session->setFlash(__('The arrest charge detail could not be deleted. Please, try again.'));
+			$this->Session->setFlash(__('The arrestchargedetail could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}

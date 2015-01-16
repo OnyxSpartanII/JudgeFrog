@@ -21,19 +21,35 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 <!DOCTYPE html>
 <html>
 <head>
-	<?php echo $this->Html->charset(); ?>
-	<title>
-	</title>
+
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
 	<?php
 		echo $this->Html->meta('icon');
-
-		echo $this->Html->css('styles');
-
-		echo $this->fetch('meta');
+    	echo $this->Html->css(array('reset', 'styles', 'responsive'));
+    	echo $this->Html->script(array('jquery', 'slider', 'superfish', 'custom'));
+		//echo $this->fetch('meta');
 		// echo $this->fetch('css');
-		echo $this->fetch('script');
+		//echo $this->fetch('script');
 	?>
+
+	<title> 
+		<?php 
+			if (isset($title)) 
+			{
+				$this->assign('title', $title);
+			}
+			echo $this->fetch('title'); 
+		?> 
+	</title>
+
 </head>
+
 <body>
 
 
@@ -45,10 +61,11 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 
 			<?php echo $this->fetch('content'); ?>
 			
-	<?php echo $this->element('sql_dump'); ?>
-</div>
+			<?php echo $this->element('sql_dump'); ?>
+		</div>
 </body>
 
+<<<<<<< HEAD
    <footer>
         <div class="footer-content width">
 
@@ -62,9 +79,19 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
             <label style="color:#999"><span style="font-weight: bold">Disclaimer:</span> Information contained on this website does not represent the views or policies of Texas Christian University, the National Institute of Justice, or the U.S. Department of Justice.</label>
         </div>
 
+=======
+<footer>
+	<div class="footer-content width">
+>>>>>>> FETCH_HEAD
 
+		<label style="padding-top: 20px;">Copyright &copy; 2014-2015 | Human Trafficking Data</label>
         <div class="clear"></div>
+<<<<<<< HEAD
         </div>
     </footer>
+=======
+    </div>
+</footer>
+>>>>>>> FETCH_HEAD
 
 </html>

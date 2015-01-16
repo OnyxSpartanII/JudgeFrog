@@ -36,6 +36,7 @@ class PagesController extends AppController {
  * @var array
  */
 	public $uses = array();
+	public $title = 'asdf';
 
 /**
  * Displays a view
@@ -75,50 +76,48 @@ class PagesController extends AppController {
 		}
 	}
 
+/*
+	The below functions display the view of that corresponding page by default. 
+	Each function specifies the title of the view, which is assigned from the layout.	
+*/
 	public function home() {
-
-	}
-
-	public function home_back() {
-
+		$this->set('title', 'Human Trafficking Data - Home');
 	}
 
 	public function about(){
-
+		$this->home('title', 'Human Trafficking Data - About');
 	}
 
 	public function methodology() {
-
+		$this->set('title', 'Human Trafficking Data - Methodology');
 	}
 
 	public function principalInvestigators() {
-
+		$this->set('title', 'Human Trafficking Data - Principal Investigators');
 	}
 
 	public function acknowledgements() {
-
+		$this->set('title', 'Human Trafficking Data - Acknowledgements');
 	}
 
 	public function searchDatabase() {
-
+		$this->set('title', 'Human Trafficking Data - Search the Database');
 	}
 
 	public function orgAndGovernment() {
-
+		$this->set('title', 'Human Trafficking Data - Organizations');
 	}
 
 	public function publicationsAndReports() {
-
-	}
+		$this->set('title', 'Human Trafficking Data - Publications');
+	}	
 
 	public function federalStatues() {
-
+		$this->set('title', 'Human Trafficking Data - Federal Statutes');
 	}
 
 	public function contact() {
-
+		$this->set('title', 'Human Trafficking Data - Contact Us');
 	}
-
-
 
 }

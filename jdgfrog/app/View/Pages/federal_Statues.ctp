@@ -76,17 +76,6 @@
     
     <div style="text-align:justify; margin-bottom:250px;">
     
-    
-
-
-    <footer>
-        <div class="footer-content width">
-
-            <label style="padding-top: 20px;">Copyright &copy; 2014-2015 | Human Trafficking Data</label>
-
-        <div class="clear"></div>
-        </div>
-    </footer>
 </div>
 </body>
 </html>

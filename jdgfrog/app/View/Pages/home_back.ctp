@@ -12,9 +12,11 @@
 <script type="text/javascript" src="js/custom.js"></script>
 
 <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
-<link rel="stylesheet" href="css/reset.css" type="text/css" />
-<link rel="stylesheet" href="css/styles.css" type="text/css" />
-<link rel="stylesheet" href="css/responsive.css" type="text/css" />
+
+<?php 
+
+    echo $this->Html->css(array('reset', 'styles', 'responsive'));
+?>
 <!--[if lt IE 9]>
 <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
@@ -31,7 +33,7 @@
        <h1><a href="home_back" title="Home"><strong>H</strong>uman <strong>T</strong>rafficking <strong>D</strong>ata</a></h1>
         <nav>
                 <ul class="sf-menu dropdown">   
-                    <li class="selected"><a href="home_back">Home</a></li>
+                    <li class="selected"><a href="home">Home</a></li>
                         <li>
                     <a href="#">About</a>
                     <ul>
@@ -76,17 +78,6 @@
     
     <div style="text-align:justify; margin-bottom:250px;">
     
-   
-
-
-    <footer>
-        <div class="footer-content width">
-
-            <label style="padding-top: 20px;">Copyright &copy; 2014-2015 | Human Trafficking Data</label>
-
-        <div class="clear"></div>
-        </div>
-    </footer>
 </div>
 </body>
 </html>

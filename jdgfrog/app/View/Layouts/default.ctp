@@ -35,7 +35,8 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	?>
 </head>
 <body>
-	<div id="container">
+
+
 		<div id="header">
 		</div>
 		<div id="content">
@@ -45,5 +46,15 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			<?php echo $this->fetch('content'); ?>
 			
 	<?php echo $this->element('sql_dump'); ?>
+</div>
 </body>
+
+    <footer>
+        <div class="footer-content width">
+
+            <label style="padding-top: 20px;">Copyright &copy; 2014-2015 | Human Trafficking Data</label>
+
+        <div class="clear"></div>
+        </div>
+    </footer>
 </html>

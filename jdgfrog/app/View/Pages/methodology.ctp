@@ -12,11 +12,9 @@
 <script type="text/javascript" src="js/custom.js"></script>
 
 <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
-
-<?php 
-
-    echo $this->Html->css(array('reset', 'styles', 'responsive'));
-?>
+<link rel="stylesheet" href="css/reset.css" type="text/css" />
+<link rel="stylesheet" href="css/styles.css" type="text/css" />
+<link rel="stylesheet" href="css/responsive.css" type="text/css" />
 <!--[if lt IE 9]>
 <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
@@ -30,19 +28,19 @@
 
 <header style="margin-top: 50px;"> 
     <div>
-       <h1><a href="home_back" title="Home"><strong>H</strong>uman <strong>T</strong>rafficking <strong>D</strong>ata</a></h1>
+       <h1><a href="home" title="Home"><strong>H</strong>uman <strong>T</strong>rafficking <strong>D</strong>ata</a></h1>
         <nav>
                 <ul class="sf-menu dropdown">   
-                    <li class="selected"><a href="home">Home</a></li>
+                    <li><a href="home">Home</a></li>
                         <li>
-                    <a href="#">About</a>
+                    <a href="#" >About</a>
                     <ul>
-                        <li><a href="metholodgy" title="Methodology">Methodology</a></li>
-                        <li><a href="principleInvestigators">Principal Investigators</a></li>
+                        <li class="selected"><a href="metholodgy" title="Methodology">Methodology</a></li>
+                        <li><a href="principals">Principal Investigators</a></li>
                         <li> <a href="acknowledgements">Acknowledgments</a> </li>
                     </ul>
                         </li>
-                       <li><a href="searchDatabase">Search the Database</a></li>
+                       <li><a href="search">Search the Database</a></li>
                    
                         <li>
                     <a href="#">Additional Resources</a>
@@ -74,7 +72,7 @@
 
     <div id="body" class="width">
 
-    <h2>Welcome</h2>
+    <h2>Methology</h2>
     
     <div style="text-align:justify; margin-bottom:250px;">
     

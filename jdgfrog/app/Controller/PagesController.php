@@ -74,36 +74,51 @@ class PagesController extends AppController {
 			throw new NotFoundException();
 		}
 	}
-	public function metholodgy() {
 
-	}
-	public function principleInvestigators() {
-
-	}
-	public function acknowledgements() {
-
-	}
-	public function searchDatabase() {
-
-	}
-	public function orgAndGovernment() {
-
-	}
-	public function publicationsAndReports() {
-
-	}
-	public function federalStatues() {
-
-	}
-	public function contact() {
-
-	}
 	public function home() {
 
 	}
+
 	public function home_back() {
 
 	}
+
+	public function about(){
+
+	}
+
+	public function methodology() {
+
+	}
+
+	public function principalInvestigators() {
+
+	}
+
+	public function acknowledgements() {
+
+	}
+
+	public function searchDatabase() {
+
+	}
+
+	public function orgAndGovernment() {
+
+	}
+
+	public function publicationsAndReports() {
+
+	}
+
+	public function federalStatues() {
+
+	}
+
+	public function contact() {
+
+	}
+
 
 
 }

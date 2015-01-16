@@ -35,19 +35,19 @@
                         <li>
                     <a href="#">About</a>
                     <ul>
-                        <li><a href="Pages/metholodgy" title="Methodology">Methodology</a></li>
-                        <li><a href="Pages/principleInvestigators">Principal Investigators</a></li>
-                        <li><a href="Pages/acknowledgements">Acknowledgments</a></li>
+                        <li><a href="methodology" title="Methodology">Methodology</a></li>
+                        <li><a href="principals">Principal Investigators</a></li>
+                        <li><a href="acknowledgements">Acknowledgments</a></li>
                     </ul>
                         </li>
-                       <li><a href="Pages/searchDatabase">Search the Database</a></li>
+                       <li><a href="search">Search the Database</a></li>
                    
                         <li>
                     <a href="#">Additional Resources</a>
                     <ul>
-                        <li><a href="Pages/orgAndGovernment">Organization and Government</a></li>
-                        <li><a href="Pages/publicationsAndReports">Publications and Reports</a></li>
-                        <li><a href="Pages/federalStatues">Federal Statutes</a></li>
+                        <li><a href="orgAndGovernment">Organization and Government</a></li>
+                        <li><a href="publicationsAndReports">Publications and Reports</a></li>
+                        <li><a href="federalStatues">Federal Statutes</a></li>
                     </ul>
                         </li>
 

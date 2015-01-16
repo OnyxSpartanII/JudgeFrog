@@ -43,7 +43,7 @@
                        <li><a href="Pages/searchDatabase">Search the Database</a></li>
                    
                         <li>
-                    <a href="#">Additional Ressources</a>
+                    <a href="#">Additional Resources</a>
                     <ul>
                         <li><a href="Pages/orgAndGovernment">Organization and Government</a></li>
                         <li><a href="Pages/publicationsAndReports">Publications and Reports</a></li>

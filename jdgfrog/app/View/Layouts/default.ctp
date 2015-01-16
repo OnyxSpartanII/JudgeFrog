@@ -65,7 +65,6 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		</div>
 </body>
 
-<<<<<<< HEAD
    <footer>
         <div class="footer-content width">
 
@@ -79,19 +78,5 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
             <label style="color:#999"><span style="font-weight: bold">Disclaimer:</span> Information contained on this website does not represent the views or policies of Texas Christian University, the National Institute of Justice, or the U.S. Department of Justice.</label>
         </div>
 
-=======
-<footer>
-	<div class="footer-content width">
->>>>>>> FETCH_HEAD
-
-		<label style="padding-top: 20px;">Copyright &copy; 2014-2015 | Human Trafficking Data</label>
-        <div class="clear"></div>
-<<<<<<< HEAD
-        </div>
-    </footer>
-=======
-    </div>
-</footer>
->>>>>>> FETCH_HEAD
 
 </html>

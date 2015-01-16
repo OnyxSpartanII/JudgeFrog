@@ -31,11 +31,11 @@
        <h1><a href="home_back" title="Home"><strong>H</strong>uman <strong>T</strong>rafficking <strong>D</strong>ata</a></h1>
         <nav>
                 <ul class="sf-menu dropdown">   
-                    <li><a href="home_back">Home</a></li>
+                    <li class="selected"><a href="home_back">Home</a></li>
                         <li>
-                    <a href="#" >About</a>
+                    <a href="#">About</a>
                     <ul>
-                        <li class="selected"><a href="metholodgy" title="Methodology">Methodology</a></li>
+                        <li><a href="metholodgy" title="Methodology">Methodology</a></li>
                         <li><a href="principleInvestigators">Principal Investigators</a></li>
                         <li> <a href="acknowledgements">Acknowledgments</a> </li>
                     </ul>
@@ -72,11 +72,11 @@
 
     <div id="body" class="width">
 
-    <h2>Methology</h2>
+    <h2>Welcome</h2>
     
     <div style="text-align:justify; margin-bottom:250px;">
     
-    
+   
 
 
     <footer>

@@ -33,10 +33,10 @@
                 <ul class="sf-menu dropdown">   
                     <li><a href="home_back">Home</a></li>
                         <li>
-                    <a href="#" >About</a>
+                    <a href="#">About</a>
                     <ul>
-                        <li class="selected"><a href="metholodgy" title="Methodology">Methodology</a></li>
-                        <li><a href="principleInvestigators">Principal Investigators</a></li>
+                        <li><a href="metholodgy" title="Methodology">Methodology</a></li>
+                        <li class="selected"><a href="principleInvestigators">Principal Investigators</a></li>
                         <li> <a href="acknowledgements">Acknowledgments</a> </li>
                     </ul>
                         </li>
@@ -72,7 +72,7 @@
 
     <div id="body" class="width">
 
-    <h2>Methology</h2>
+    <h2>Principle Investigators</h2>
     
     <div style="text-align:justify; margin-bottom:250px;">
     

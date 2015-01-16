@@ -49,12 +49,22 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 </div>
 </body>
 
-    <footer>
+   <footer>
         <div class="footer-content width">
 
-            <label style="padding-top: 20px;">Copyright &copy; 2014-2015 | Human Trafficking Data</label>
+            <label style="padding-top: 20px;">Copyright &copy; 2015 | Human Trafficking Data</label>
+            <br><br>
+            <label><span style="font-weight: bold">HumanTraffickingData.org</span> was created by Texas Christian University with support from the National Institute of Justice.</label>
+
+        <div style="padding-top:50px">
+            <hr style="color:#999; border-bottom: .02em dashed #ccc;">
+            <br>
+            <label style="color:#999"><span style="font-weight: bold">Disclaimer:</span> Information contained on this website does not represent the views or policies of Texas Christian University, the National Institute of Justice, or the U.S. Department of Justice.</label>
+        </div>
+
 
         <div class="clear"></div>
         </div>
     </footer>
+
 </html>

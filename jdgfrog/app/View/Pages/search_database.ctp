@@ -28,19 +28,19 @@
 
 <header style="margin-top: 50px;"> 
     <div>
-       <h1><a href="home_back" title="Home"><strong>H</strong>uman <strong>T</strong>rafficking <strong>D</strong>ata</a></h1>
+       <h1><a href="home" title="Home"><strong>H</strong>uman <strong>T</strong>rafficking <strong>D</strong>ata</a></h1>
         <nav>
                 <ul class="sf-menu dropdown">   
-                    <li><a href="home_back">Home</a></li>
+                    <li><a href="home">Home</a></li>
                         <li>
                     <a href="#">About</a>
                     <ul>
-                        <li><a href="metholodgy" title="Methodology">Methodology</a></li>
-                        <li><a href="principleInvestigators">Principal Investigators</a></li>
+                        <li><a href="methodology" title="Methodology">Methodology</a></li>
+                        <li><a href="principals">Principal Investigators</a></li>
                         <li> <a href="acknowledgements">Acknowledgments</a> </li>
                     </ul>
                         </li>
-                       <li class="selected"><a href="searchDatabase">Search the Database</a></li>
+                       <li class="selected"><a href="search">Search the Database</a></li>
                    
                         <li>
                     <a href="#">Additional Resources</a>

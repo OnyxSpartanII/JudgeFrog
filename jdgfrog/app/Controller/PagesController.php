@@ -79,10 +79,6 @@ class PagesController extends AppController {
 
 	}
 
-	public function home_back() {
-
-	}
-
 	public function about(){
 
 	}

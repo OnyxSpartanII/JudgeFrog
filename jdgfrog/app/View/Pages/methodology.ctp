@@ -72,7 +72,7 @@
 
     <div id="body" class="width">
 
-    <h2>Methology</h2>
+    <h2>Methodology</h2>
     
     <div style="text-align:justify; margin-bottom:250px;">
     

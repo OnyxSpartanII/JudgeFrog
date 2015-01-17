@@ -93,15 +93,24 @@ class UploadsController extends AppController {
 								$judge_id = $this->Judge->find('first', array('conditions' => array('Judge.name' => $data[10])))["Judge"]["JudgeId"];
 							}
 
-							if
-
 							/**
 							 * Victims Section
 							 *
 							 * Create a new Victim object for the database if
 							 * there is victims data.
 							 */
-							if ($data[])
+							if ($data[239] !== "") {
+								$this->Victim->create();
+								$victim_data = array(
+									'Total' => $data[239],
+									'Minor' => $data[240],
+									'Foreign' => $data[241],
+									'Female' => $data[242]
+								);
+								$this->Victim->save($victim_data);
+								$victim_id = $this->Victim->id;
+								$this->Victim->clear();
+							}
 
 							/**
 							 * Case Section
@@ -120,7 +129,7 @@ class UploadsController extends AppController {
 									'State' => $data[8],
 									'FederalDistrict' => $data[9],
 									'JudgeId' => $judge_id,
-									'VictimsId' => 
+									'VictimsId' => $victim_id
 								);
 
 								$this->CaseObject->create();
@@ -129,9 +138,8 @@ class UploadsController extends AppController {
 								$this->CaseObject->clear();
 							}
 							
-							for ($col = 0; $col < $num; $col++) {
-								echo $data[$col] . "<br />\n";
-							}
+							// TODO
+
 						}
 						$row++;
 					}

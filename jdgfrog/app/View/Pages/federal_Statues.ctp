@@ -72,7 +72,7 @@
 
     <div id="body" class="width">
 
-    <h2>Federal Statutes</h2>
+    <h2>Federal Statues</h2>
     
     <div style="text-align:justify; margin-bottom:250px;">
     

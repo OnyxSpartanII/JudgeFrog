@@ -75,48 +75,49 @@ class PagesController extends AppController {
 		}
 	}
 
+/*
+	The below functions display the view of that corresponding page by default. 
+	Each function specifies the title of the view, which is assigned from the layout.	
+*/
+
 	public function home() {
-
-	}
-
-	public function home_back() {
-
+		$this->set('title', 'Home - Human Trafficking Data');
 	}
 
 	public function about(){
-
+		$this->set('title', 'About - Human Trafficking Data');
 	}
 
 	public function methodology() {
-
+		$this->set('title', 'Methodology - Human Trafficking Data');
 	}
 
 	public function principalInvestigators() {
-
+		$this->set('title', 'Principal Investigators - Human Trafficking Data');
 	}
 
 	public function acknowledgements() {
-
+		$this->set('title', 'Acknowledgements | Human Trafficking Data');
 	}
 
 	public function searchDatabase() {
-
+		$this->set('title', 'Database Search - Human Trafficking Data');
 	}
 
 	public function orgAndGovernment() {
-
+		$this->set('title', 'Organizations - Human Trafficking Data');
 	}
 
 	public function publicationsAndReports() {
-
+		$this->set('title', 'Publications - Human Trafficking Data');
 	}
 
-	public function federalStatues() {
-
+	public function federalStatutes() {
+		$this->set('title', 'Federal Statutes - Human Trafficking Data');
 	}
 
 	public function contact() {
-
+		$this->set('title', 'Contact - Human Trafficking Data');
 	}
 
 

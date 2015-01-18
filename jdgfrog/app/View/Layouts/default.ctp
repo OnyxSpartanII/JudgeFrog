@@ -37,7 +37,6 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		// echo $this->fetch('css');
 		//echo $this->fetch('script');
 	?>
-
 	<title> 
 		<?php 
 			if (isset($title)) 
@@ -47,12 +46,9 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			echo $this->fetch('title'); 
 		?> 
 	</title>
-
 </head>
 
 <body>
-
-
 		<div id="header">
 		</div>
 		<div id="content">
@@ -77,6 +73,4 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
             <br>
             <label style="color:#999"><span style="font-weight: bold">Disclaimer:</span> Information contained on this website does not represent the views or policies of Texas Christian University, the National Institute of Justice, or the U.S. Department of Justice.</label>
         </div>
-
-
 </html>

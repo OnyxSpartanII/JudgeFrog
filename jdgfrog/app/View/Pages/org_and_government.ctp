@@ -1,27 +1,3 @@
-<!doctype html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Home | Human Trafficking Data</title>
-
-
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/slider.js"></script>
-<script type="text/javascript" src="js/superfish.js"></script>
-
-<script type="text/javascript" src="js/custom.js"></script>
-
-<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
-<link rel="stylesheet" href="css/reset.css" type="text/css" />
-<link rel="stylesheet" href="css/styles.css" type="text/css" />
-<link rel="stylesheet" href="css/responsive.css" type="text/css" />
-<!--[if lt IE 9]>
-<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-
-<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
-</head>
-
 <body>
 
 <div id="container"  class="width">
@@ -47,7 +23,7 @@
                     <ul>
                         <li class="selected"><a href="orgAndGovernment">Organization and Government</a></li>
                         <li><a href="publicationsAndReports">Publications and Reports</a></li>
-                        <li><a href="federalStatues">Federal Statutes</a></li>
+                        <li><a href="federalStatutes">Federal Statutes</a></li>
                     </ul>
                         </li>
 
@@ -78,4 +54,3 @@
     
 </div>
 </body>
-</html>

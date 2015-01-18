@@ -343,6 +343,14 @@ img {
 	clear: both;
 }
 
+.body_content{
+
+	margin: 100px auto;
+	width: 1200px;
+	text-align:justify; 
+	/*margin-bottom:250px;*/
+}
+
 .fixed-header #body { 
 	margin-top: 0;
 }

@@ -28,7 +28,7 @@
 	Router::connect('/methodology', array('controller' => 'pages', 'action' => 'methodology'));
 	Router::connect('/principals', array('controller' => 'pages', 'action' => 'principalInvestigators'));
 	Router::connect('/search', array('controller' => 'pages', 'action' => 'searchDatabase'));
-	Router::connect('/Uploads', array('controller' => 'Uploads', 'action' => 'add'));
+	Router::connect('/uploads', array('controller' => 'uploads', 'action' => 'add'));
 /**
  * ...and connect the rest of 'Pages' controller's URLs.
  */

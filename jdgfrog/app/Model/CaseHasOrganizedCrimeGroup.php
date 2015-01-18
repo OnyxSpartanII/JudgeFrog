@@ -11,7 +11,6 @@ class CaseHasOrganizedCrimeGroup extends AppModel {
  *
  * @var string
  */
-	public $primaryKey = 'Case_CaseId';
 
 /**
  * Validation rules
@@ -19,7 +18,7 @@ class CaseHasOrganizedCrimeGroup extends AppModel {
  * @var array
  */
 	public $validate = array(
-		'Case_CaseId' => array(
+		'CaseId' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
@@ -29,7 +28,7 @@ class CaseHasOrganizedCrimeGroup extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'OrganizedCrimeGroup_OCGId' => array(
+		'OCGId' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',

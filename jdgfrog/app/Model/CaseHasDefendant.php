@@ -11,7 +11,6 @@ class CaseHasDefendant extends AppModel {
  *
  * @var string
  */
-	public $primaryKey = 'CaseId';
 
 /**
  * Validation rules

@@ -2,7 +2,7 @@
 
 <div id="container"  class="width">
 
-<header style="margin-top: 50px;"> 
+<header> 
     <div>
        <h1><a href="home" title="Home"><strong>H</strong>uman <strong>T</strong>rafficking <strong>D</strong>ata</a></h1>
         <nav>
@@ -18,7 +18,7 @@
                         </li>
                        <li><a href="search">Search the Database</a></li>
                    
-                        <li>
+                        <li class="selected">
                     <a href="#">Additional Resources</a>
                     <ul>
                         <li class="selected"><a href="orgAndGovernment">Organization and Government</a></li>
@@ -29,20 +29,12 @@
 
                 <li><a href="contact"><i class="fa fa-phone"></i>Contact Us</a></li>
                 </ul>
-            <div class="clear"></div>
         </nav>
     </div>
 
     <div class="clear"></div>
     </header>
-    
-    <div id="intro">
-    <div class="width">
-        <div class="intro-content intro-content-short">
-                <p>&nbsp;</p>
-        </div>
-    </div>
-            
+     
 
     </div>
 

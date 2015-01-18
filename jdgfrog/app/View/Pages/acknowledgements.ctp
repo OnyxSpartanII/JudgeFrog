@@ -2,13 +2,13 @@
 
 <div id="container"  class="width">
 
-<header style="margin-top: 50px;"> 
+<header> 
     <div>
        <h1><a href="home" title="Home"><strong>H</strong>uman <strong>T</strong>rafficking <strong>D</strong>ata</a></h1>
         <nav>
                 <ul class="sf-menu dropdown">   
                     <li><a href="home">Home</a></li>
-                        <li>
+                        <li class="selected">
                     <a href="#">About</a>
                     <ul>
                         <li><a href="methodology" title="Methodology">Methodology</a></li>
@@ -35,22 +35,16 @@
 
     <div class="clear"></div>
     </header>
-    
-    <div id="intro">
-    <div class="width">
-        <div class="intro-content intro-content-short">
-                <p>&nbsp;</p>
-        </div>
-    </div>
-            
-
-    </div>
 
     <div id="body" class="width">
 
     <h2>Acknowledgments</h2>
+       
+    <div class="body_content">
+<p>
+       This website was developed under a grant from the National Institute of Justice (NIJ), United States Department of Justice. Special thanks goes out to Global Centurion for assisting with case searches, as well several research assistants at TCU for their very thorough culling and coding of case records.  We are also indebted to Dr. Donnell Payne and her senior design team in TCU’s Department of Computer Science for their technical expertise and guidance in crafting the exceptional functionalities of this database.   
+    </p>
     
-    <div style="text-align:justify; margin-bottom:250px;">
     
 </div>
 </body>

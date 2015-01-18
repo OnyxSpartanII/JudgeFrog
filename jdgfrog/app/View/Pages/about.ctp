@@ -2,7 +2,7 @@
 
 <div id="container"  class="width">
 
-<header style="margin-top: 50px;"> 
+<header> 
     <div>
 	   <h1><a href="index.html" title="Home"><strong>H</strong>uman <strong>T</strong>rafficking <strong>D</strong>ata</a></h1>
 		<nav>

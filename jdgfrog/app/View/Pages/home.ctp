@@ -2,7 +2,7 @@
 
 <div id="container"  class="width">
 
-<header style="margin-top: 50px;"> 
+<header> 
     <div>
        <h1><a href="#" title="Home"><strong>H</strong>uman <strong>T</strong>rafficking <strong>D</strong>ata</a></h1>
         <nav>
@@ -29,29 +29,21 @@
 
                 <li><a href="Pages/contact"><i class="fa fa-phone"></i>Contact Us</a></li>
                 </ul>
-            <div class="clear"></div>
         </nav>
     </div>
 
     <div class="clear"></div>
     </header>
     
-    <div id="intro">
-    <div class="width">
-        <div class="intro-content intro-content-short">
-                <p>&nbsp;</p>
-        </div>
-    </div>
-            
-
-    </div>
 
     <div id="body" class="width">
 
     <h2>Welcome</h2>
     
-    <div style="text-align:justify; margin-bottom:250px;">
+    <div style="text-align:center; margin-bottom:250px;">
     
+    <br><br>
+    <iframe width="1200" height="720" src="//www.youtube.com/embed/J4ztDU-yr74" frameborder="0" allowfullscreen></iframe>
     
 </div>
 </body>

@@ -1,40 +1,6 @@
 <body>
 
 <div id="container"  class="width">
-
-<header> 
-    <div>
-	   <h1><a href="index.html" title="Home"><strong>H</strong>uman <strong>T</strong>rafficking <strong>D</strong>ata</a></h1>
-		<nav>
-    			<ul class="sf-menu dropdown">	
-        			<li><a href="index.html">Home</a></li>
-            			<li class="selected">
-					<a href="about.html">About</a>
-					<ul>
-                		<li><a href="met.html" title="Methodology">Methodology</a></li>
-						<li><a href="inves.html">Principal Investigators</a></li>
-                    	<li><a href="ack.html">Acknowledgments</a></li>
-                	</ul>
-            			</li>
-	     			   <li><a href="#">Search the Database</a></li>
-                   
-                        <li>
-                    <a href="#">Additional Ressources</a>
-                    <ul>
-                        <li><a href="#">Organization and Government</a></li>
-                        <li><a href="#">Publications and Reports</a></li>
-                        <li><a href="#">Federal Statutes</a></li>
-                    </ul>
-                        </li>
-
-				<li><a href="#"><i class="fa fa-phone"></i>Contact Us</a></li>
-       			</ul>
-			<div class="clear"></div>
-        </nav>
-    </div>
-
-	<div class="clear"></div>
-    </header>
     
     <div id="intro">
 	<div class="width">

@@ -337,7 +337,7 @@ img {
 }
 
 #body {
-	background: none;
+	background: #fff;
 	margin: 50px auto;
  	text-align: center;
 	clear: both;
@@ -370,3 +370,6 @@ footer {
 	color: #fff;
 }
 
+#content {
+	background-color: #222;
+}

@@ -44,21 +44,57 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 				$this->assign('title', $title);
 			}
 			echo $this->fetch('title'); 
+
+			if (isset($selected))
+			{
+				$this->assign('selected', $selected);
+			}
+			echo $this->fetch('selected');
 		?> 
 	</title>
 </head>
 
 <body>
-		<div id="header">
+	<div id="container" class="width">
+			<header>
+				<div id="header">
+					<h1><a href="home" title="Home"><strong>H</strong>uman <strong>T</strong>rafficking <strong>D</strong>ata</a></h1>
+			        	<nav>
+			                <ul class="sf-menu dropdown">   
+			                    <li class="<?php echo ($this->fetch('selected') == 'home') ? 'selected' : ''; ?>"><a href="home">Home</a></li>
+			                    <li class="<?php echo ($this->fetch('selected') == 'about') ? 'selected' : ''; ?>">
+			                    	<a href="#" >About</a>
+			                    	<ul>
+			                        	<li><a href="methodology" title="Methodology">Methodology</a></li>
+			                        	<li><a href="principals">Principal Investigators</a></li>
+			                        	<li> <a href="acknowledgements">Acknowledgments</a> </li>
+			                        </ul>
+		                        </li>
+		                        <li class="<?php echo ($this->fetch('selected') == 'search') ? 'selected' : ''; ?>"><a href="search">Search the Database</a></li>
+		                        <li class="<?php echo ($this->fetch('selected') == 'resources') ? 'selected' : ''; ?>">
+		                        	<a href="#">Additional Resources</a>
+		                        	<ul>
+		                        		<li><a href="orgAndGovernment">Organization and Government</a></li>
+		                        		<li><a href="publicationsAndReports">Publications and Reports</a></li>
+		                        		<li><a href="federalStatutes">Federal Statutes</a></li>
+			                    	</ul>
+			                    </li>
+			                    <li class="<?php echo ($this->fetch('selected') == 'contact') ? 'selected' : ''; ?>"><a href="contact"><i class="fa fa-phone"></i>Contact Us</a></li>
+			                </ul>
+			            <div class="clear"></div>
+			        </nav>
+			    </div>
+		    </header>
 		</div>
-		<div id="content">
 
-			<?php echo $this->Session->flash(); ?>
+	<div id="content">
 
-			<?php echo $this->fetch('content'); ?>
-			
-			<?php echo $this->element('sql_dump'); ?>
-		</div>
+		<?php echo $this->Session->flash(); ?>
+
+		<?php echo $this->fetch('content'); ?>
+		
+		<?php echo $this->element('sql_dump'); ?>
+	</div>
 </body>
 
    <footer>
@@ -73,4 +109,5 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
             <br>
             <label style="color:#999"><span style="font-weight: bold">Disclaimer:</span> Information contained on this website does not represent the views or policies of Texas Christian University, the National Institute of Justice, or the U.S. Department of Justice.</label>
         </div>
+    </footer>
 </html>

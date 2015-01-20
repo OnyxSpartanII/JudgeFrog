@@ -1,3 +1,4 @@
+<?php $this->set('selectedlink', 'search'); ?>
 <body>
     <div id="body" class="width">
         <h2>Database Search</h2>

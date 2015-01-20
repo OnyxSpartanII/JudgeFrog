@@ -25,9 +25,15 @@
  * to use (in this case, /app/View/Pages/home.ctp)...
  */
 	Router::connect('/', array('controller' => 'pages', 'action' => 'home'));
+	Router::connect('/home', array('controller' => 'pages', 'action' => 'home'));
 	Router::connect('/methodology', array('controller' => 'pages', 'action' => 'methodology'));
 	Router::connect('/principals', array('controller' => 'pages', 'action' => 'principalInvestigators'));
+	Router::connect('/acknowledgements', array('controller' => 'pages', 'action' => 'acknowledgements'));
 	Router::connect('/search', array('controller' => 'pages', 'action' => 'searchDatabase'));
+	Router::connect('/orgAndGovernment', array('controller' => 'pages', 'action' => 'orgAndGovernment'));
+	Router::connect('/publicationsAndReports', array('controller' => 'pages', 'action' => 'publicationsAndReports'));
+	Router::connect('/federalStatutes', array('controller' => 'pages', 'action' => 'federalStatutes'));
+	Router::connect('/contact', array('controller' => 'pages', 'action' => 'contact'));
 	Router::connect('/uploads', array('controller' => 'uploads', 'action' => 'add'));
 /**
  * ...and connect the rest of 'Pages' controller's URLs.

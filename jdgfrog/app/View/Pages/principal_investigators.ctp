@@ -1,5 +1,4 @@
 <body>
-    <div id="container"  class="width">
         <div id="body" class="width">
             <h2>Principle Investigators</h2>
             
@@ -12,5 +11,4 @@
                 </p>    
             </div>
         </div>
-    </div>
 </body>

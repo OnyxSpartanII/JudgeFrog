@@ -62,6 +62,9 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			        	<nav>
 			                <ul class="sf-menu dropdown">   
 			                    <li class="<?php echo ($this->fetch('selected') == 'home') ? 'selected' : ''; ?>"><a href="home">Home</a></li>
+
+			                    <li class="<?php echo ($this->fetch('selected') == 'search') ? 'selected' : ''; ?>"><a href="search">Search the Database</a></li>
+
 			                    <li class="<?php echo ($this->fetch('selected') == 'about') ? 'selected' : ''; ?>">
 			                    	<a href="#" >About</a>
 			                    	<ul>
@@ -70,7 +73,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			                        	<li> <a href="acknowledgements">Acknowledgments</a> </li>
 			                        </ul>
 		                        </li>
-		                        <li class="<?php echo ($this->fetch('selected') == 'search') ? 'selected' : ''; ?>"><a href="search">Search the Database</a></li>
+		                        
 		                        <li class="<?php echo ($this->fetch('selected') == 'resources') ? 'selected' : ''; ?>">
 		                        	<a href="#">Additional Resources</a>
 		                        	<ul>
@@ -100,7 +103,8 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
    <footer>
         <div class="footer-content width">
 
-            <label style="padding-top: 20px;">Copyright &copy; 2015 | Human Trafficking Data</label>
+            <label style="padding-top: 20px;">Copyright &copy; 
+            <?php $initialYear = 2014; $currentYear = date('Y'); echo $initialYear . (($initialYear != $currentYear) ? '-' . $currentYear : '');?> | Human Trafficking Data</label>
             <br><br>
             <label><span style="font-weight: bold">HumanTraffickingData.org</span> was created by Texas Christian University with support from the National Institute of Justice.</label>
 

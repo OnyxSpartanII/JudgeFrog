@@ -1,16 +1,15 @@
-<?php $this->set('selectedlink', 'search'); ?>
-     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+<!-- <?php $this->set('selectedlink', 'search'); ?> -->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 
-  <link rel="stylesheet" type="text/css" href="/jdgfrog/css/collapsible.css">
+  <link rel="stylesheet" type="text/css" href="/jdgfrog/css/search_page_css.css">
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
   <link rel="stylesheet" type="text/css" href="/jdgfrog/css/nav_bar_style.css">
-<!--
-  <script>
-  $(function() {
-    $( ".nav_bar" ).accordion();
-  });
-  </script> -->
+
+  <!-- Search Imports -->
+  <link rel="stylesheet" type="text/css" href="/jdgfrog/css/default.css" />
+  <link rel="stylesheet" type="text/css" href="/jdgfrog/css/component.css" />
+  <script src="/jdgfrog/js/modernizr.custom.js"></script>
 
 <!-- added by Landon -->
 <script type="text/javascript">
@@ -33,7 +32,30 @@
     <div id="body" class="width">
         <h2>Database Search</h2>
         
-        <div style="text-align:justify; margin-bottom:250px;">
+        <div class="body_content">
+
+
+<!-- TOP STATUS AND SEARCH BAR -->
+<div class="top_bar">
+  <div class="top_bar_left">
+    <h3>Specifc Search</h3>
+  </div>
+
+
+<!-- SEARCH -->
+  <div class="main">
+        <div class="column">
+          <div id="sb-search" class="sb-search">
+            <form>
+              <input class="sb-search-input" placeholder="Enter your search term..." type="text" value="" name="search" id="search">
+              <input class="sb-search-submit" type="submit" value="">
+              <span class="sb-icon-search"></span>
+            </form>
+          </div>
+        </div>
+  </div><!-- SEARCH CONTAINER -->
+
+</div>
 
 
         <!-- Search Interface -->
@@ -42,9 +64,9 @@
      <h2><a href="#">Case</a></h2>
         <div>
             <form action="">
-              Name: <input type="text" name="Name"> <br>
-              Number: <input type="text" name="Number"> <br>
-              Number of Defendants: <input type="text" name="Number_of_Defendants"> <br>
+              Name: <input type="text" name="Name"> <br><br>
+              Number: <input type="text" name="Number"> <br><br>
+              Number of Defendants: <input type="text" name="Number_of_Defendants"> <br><br>
               State: <select>
                         <option value="AL">Alabama</option>
                         <option value="AK">Alaska</option>
@@ -97,7 +119,7 @@
                         <option value="WV">West Virginia</option>
                         <option value="WI">Wisconsin</option>
                         <option value="WY">Wyoming</option>
-                      </select>   <br>
+                      </select>   <br><br>
               Federal District: <input type="text" name="Federal_District">
             </form>
         </div>
@@ -105,12 +127,12 @@
      <h2><a href="#">Defendant</a></h2>
         <div>
             <form action="">
-              First Name: <input type="text" name="fNameDefendant"> <br>
-              Last Name: <input type="text" name="lNameDefendant"> <br>
+              First Name: <input type="text" name="fNameDefendant"> <br><br>
+              Last Name: <input type="text" name="lNameDefendant"> <br><br>
               Gender: <select>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
-                      </select> <br>
+                      </select> <br><br>
               Date Of Birth:
                     <select name="month" onChange="changeDate(this.options[selectedIndex].value);">
                     <option value="na">Month</option>
@@ -174,7 +196,7 @@
                               e.add(s,null);}
                               catch(ex){
                               e.add(s);}}
-                              </script>  <br>       <!-- Date script -->
+                              </script>  <br><br>       <!-- Date script -->
 
               Race: <select>
                         <option value="def_Native_American">Native American</option>
@@ -189,28 +211,28 @@
      <h2><a href="#">Judge</a></h2>
         <div>
             <form action="">
-              Name: <input type="text" name="fNameDefendant"> <br>
+              Name: <input type="text" name="fNameDefendant"> <br><br>
               Race: <select>
                         <option value="judge_Native_American">Native American</option>
                         <option value="judge_white">White</option>
                         <option value="judge_African_American">African American</option>
                         <option value="judge_Mexican">Mexican</option>
-                      </select> <br>
+                      </select> <br><br>
               Gender: <select>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
-                      </select> <br>
-              Tenure: <input type="number" name="fNameJudge"> <br>
-              Appointed By: <input type="text" name="appointedJudge"> <br>
+                      </select> <br><br>
+              Tenure: <input type="number" name="fNameJudge"> <br><br>
+              Appointed By: <input type="text" name="appointedJudge"> <br><br>
             </form>
         </div>
 
       <h2><a href="#">Organized Crime Group</a></h2>
         <div>
             <form action="">
-              Group Name: <input type="text" name="groupName"> <br>
-              Size: <input type="text" name="groupSize"> <br>
-              Scope: <input type="text" name="groupName"> <br>
+              Group Name: <input type="text" name="groupName"> <br><br>
+              Size: <input type="text" name="groupSize"> <br><br>
+              Scope: <input type="text" name="groupName"> <br><br>
                Race: <select>
                         <option value="judge_Native_American">Native American</option>
                         <option value="judge_white">White</option>
@@ -223,10 +245,10 @@
       <h2><a href="#">Victims</a></h2>
         <div>
             <form action="">
-              Total: <input type="number" name="totalVic"> <br>
-              Minor: <input type="number" name="minorVic"> <br>
-              Foreigner: <input type="number" name="ForeignerVic"> <br>
-              Female: <input type="number" name="femaleVic"> <br>
+              Total: <input type="number" name="totalVic"> <br><br>
+              Minor: <input type="number" name="minorVic"> <br><br>
+              Foreigner: <input type="number" name="ForeignerVic"> <br><br>
+              Female: <input type="number" name="femaleVic"> <br><br>
             </form>
         </div>
 
@@ -254,7 +276,7 @@
                     </select>
                     <select name="year" id="year">
                     <option value="na">Year</option>
-                    </select> <br>
+                    </select> <br><br>
               Date of Arrest:
                     <select name="month" onChange="changeDate(this.options[selectedIndex].value);">
                     <option value="na">Month</option>
@@ -276,66 +298,66 @@
                     </select>
                     <select name="year" id="year">
                     <option value="na">Year</option>
-                    </select> <br>
+                    </select> <br><br>
 
               Defendant Detained?: 
                     <select>
                         <option value="yesDetained">--</option>
                         <option value="yesDetained">Yes</option>
                         <option value="noDetained">No</option>
-                      </select> <br>
+                      </select> <br><br>
 
               Defendant's Role: 
                     <select>
                         <option value="yesDetained">--</option>
                         <option value="yesDetained">Yes</option>
                         <option value="noDetained">No</option>
-                      </select> <br>
+                      </select> <br><br>
 
               Labor Trafficking?: 
                     <select>
                         <option value="yesDetained">--</option>
                         <option value="yesDetained">Yes</option>
                         <option value="noDetained">No</option>
-                      </select> <br>
+                      </select> <br><br>
 
               Adult Sex Trafficking?: 
                     <select>
                         <option value="yesDetained">--</option>
                         <option value="yesDetained">Yes</option>
                         <option value="noDetained">No</option>
-                      </select> <br>
+                      </select> <br><br>
 
               Minor Sex Trafficking?: 
                     <select>
                         <option value="yesDetained">--</option>
                         <option value="yesDetained">Yes</option>
                         <option value="noDetained">No</option>
-                      </select> <br>
+                      </select> <br><br>
 
-              Counts of Felonies: <input type="text" name="felonyCounts"> <br>
-              Sentenced Felonies: <input type="text" name="felonySentenced"> <br>
-              Bail Type: <input type="text" name="felonySentenced"> <br>
-              Bail Amount: <input type="text" name="felonySentenced"> <br>
-              Bail Amount: <span class="currencyinput">$<input type="text" name="currency"></span>
+              Counts of Felonies: <input type="text" name="felonyCounts"> <br><br>
+              Sentenced Felonies: <input type="text" name="felonySentenced"> <br><br>
+              Bail Type: <input type="text" name="felonySentenced"> <br><br>
+              Bail Amount: <input type="text" name="felonySentenced"> <br><br>
+              Bail Amount: <span class="currencyinput">$<input type="text" name="currency"></span><br>
 
-                             <br>
+                             <br><br>
             </form>
         </div>
 
       <h2><a href="#">Charge </a></h2>
         <div>
             <form action="">
-              Counts: <input type="number" name="countsCharge"> <br>
-              CountsNolleProssed: <input type="number" name="countsNolleCharge"> <br>
-              Statute: <input type="text" name="statuteCharge"> <br>
-              Plea Dismissed: <input type="number" name="dismissedPleaCharge"> <br>
-              Plea Guilty: <input type="number" name="pleaGuiltyCharge"> <br>
-              Trial Guilty: <input type="number" name="trialGuiltyCharge"> <br>
-              Trial Not Guilty: <input type="number" name="trialNotGuiltyCharge"> <br>
-              Fines: <input type="number" name="finesCharge"> <br>
-              Sentence: <input type="number" name="sentenceCharge"> <br>
-              Probation: <input type="number" name="probationCharge"> <br>
+              Counts: <input type="number" name="countsCharge"> <br><br>
+              CountsNolleProssed: <input type="number" name="countsNolleCharge"> <br><br>
+              Statute: <input type="text" name="statuteCharge"> <br><br>
+              Plea Dismissed: <input type="number" name="dismissedPleaCharge"> <br><br>
+              Plea Guilty: <input type="number" name="pleaGuiltyCharge"> <br><br>
+              Trial Guilty: <input type="number" name="trialGuiltyCharge"> <br><br>
+              Trial Not Guilty: <input type="number" name="trialNotGuiltyCharge"> <br><br>
+              Fines: <input type="number" name="finesCharge"> <br><br>
+              Sentence: <input type="number" name="sentenceCharge"> <br><br>
+              Probation: <input type="number" name="probationCharge"> <br><br>
             </form>
         </div>
 
@@ -362,7 +384,7 @@
                     </select>
                     <select name="year" id="year">
                     <option value="na">Year</option>
-                    </select> <br>
+                    </select> <br><br>
 
                 Date : <select name="month" onChange="changeDate(this.options[selectedIndex].value);">
                     <option value="na">Month</option>
@@ -384,24 +406,24 @@
                     </select>
                     <select name="year" id="year">
                     <option value="na">Year</option>
-                    </select> <br>
-                Total: <input type="number" name="totalSentence"> <br>
-                Restitution: <input type="number" name="restSentence"> <br>
-                Total: <input type="number" name="totalSentence"> <br>
+                    </select> <br><br>
+                Total: <input type="number" name="totalSentence"> <br><br>
+                Restitution: <input type="number" name="restSentence"> <br><br>
+                Total: <input type="number" name="totalSentence"> <br><br>
                 Asset Forfeit: 
                     <select>
                         <option value="yesSentence">--</option>
                         <option value="yesSentence">Yes</option>
                         <option value="noSentence">No</option>
-                      </select> <br>
+                      </select> <br><br>
                 Appeal: 
                     <select>
                         <option value="yesSentence">--</option>
                         <option value="yesSentence">Yes</option>
                         <option value="noSentence">No</option>
-                      </select> <br>
-                Supervised Release: <input type="number" name="supervisedSentence"> <br>
-                Probation: <input type="number" name="probationSentence"> <br>
+                      </select> <br><br>
+                Supervised Release: <input type="number" name="supervisedSentence"> <br><br>
+                Probation: <input type="number" name="probationSentence"> <br><br>
             </form>
         </div>
 
@@ -507,7 +529,23 @@
 </div>
 -->
 
+            <br><br>
+            <hr style="1px dashed #9a9a9a;">
+
+            <br>
+
+            <div class="search_disclaim">
+            <p><strong>Disclaimer: </strong>Not every combination of searched values can be graphed.</p>
+            </div>
  
         </div>
     </div>
+
+    <script src="/jdgfrog/js/classie.js"></script>
+    <script src="/jdgfrog/js/uisearch.js"></script>
+    <script>
+      new UISearch( document.getElementById( 'sb-search' ) );
+    </script>
+
+
 </body>

@@ -11,6 +11,11 @@
   <link rel="stylesheet" type="text/css" href="/jdgfrog/css/component.css" />
   <script src="/jdgfrog/js/modernizr.custom.js"></script>
 
+  <!--NoUISlider Imports -->
+  <link href="/jdgfrog/css/jquery.nouislider.min.css" rel="stylesheet">
+  <script src="/jdgfrog/js/jquery.nouislider.all.min.js"></script>
+ 
+
 <!-- added by Landon -->
 <script type="text/javascript">
   $(document).ready(function(){
@@ -27,6 +32,26 @@
   });
 });
 </script>
+<!-- Slider Script Code: added by LW 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+<script>
+  $(function() {
+    $( "#slider-range" ).slider({
+      range: true,
+      min: 0,
+      max: 500,
+      values: [ 75, 300 ],
+      slide: function( event, ui ) {
+        $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+      }
+    });
+    $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+      " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+  });
+  </script>
+  -->
 <!-- added by Landon (above) -->
 <body>
     <div id="body" class="width">
@@ -64,9 +89,9 @@
      <h2><a href="#">Case</a></h2>
         <div>
             <form action="">
-              Name: <input type="text" name="Name"> <br><br>
-              Number: <input type="text" name="Number"> <br><br>
-              Number of Defendants: <input type="text" name="Number_of_Defendants"> <br><br>
+              <input type="text" name="Name" placeholder="Name (e.g. USA v. Jones)"> <br>
+              <input type="text" name="Number" placeholder="Number (e.g. 00-cu-)"> <br>
+              Number of Defendants: (slider) <input type="text" name="Number_of_Defendants"> <br>
               State: <select>
                         <option value="AL">Alabama</option>
                         <option value="AK">Alaska</option>
@@ -119,90 +144,37 @@
                         <option value="WV">West Virginia</option>
                         <option value="WI">Wisconsin</option>
                         <option value="WY">Wyoming</option>
-                      </select>   <br><br>
-              Federal District: <input type="text" name="Federal_District">
+                      </select>   <br>
+              <input type="text" name="Federal_District" placeholder="Federal District"> <br>
             </form>
         </div>
  
+    <h2><a href="#">Type of Trafficking</a></h2>
+        <div>
+            <form action="">
+            <input type="checkbox" name="adultSex" value="name"> Adult Sex
+            <input type="checkbox" name="minorSex" value="age"> Minor Sex
+            <input type="checkbox" name="laborSex" value="age"> Labor
+            </form>
+        </div>
+
      <h2><a href="#">Defendant</a></h2>
         <div>
             <form action="">
-              First Name: <input type="text" name="fNameDefendant"> <br><br>
-              Last Name: <input type="text" name="lNameDefendant"> <br><br>
-              Gender: <select>
+            <input type="text" name="nameDefendant" placeholder="Name"> <br>
+              <select>
+                        <option value="genderD">--Gender--</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
-                      </select> <br><br>
-              Date Of Birth:
-                    <select name="month" onChange="changeDate(this.options[selectedIndex].value);">
-                    <option value="na">Month</option>
-                    <option value="1">January</option>
-                    <option value="2">February</option>
-                    <option value="3">March</option>
-                    <option value="4">April</option>
-                    <option value="5">May</option>
-                    <option value="6">June</option>
-                    <option value="7">July</option>
-                    <option value="8">August</option>
-                    <option value="9">September</option>
-                    <option value="10">October</option>
-                    <option value="11">November</option>
-                    <option value="12">December</option>
-                    </select>
-                    <select name="day" id="day">
-                    <option value="na">Day</option>
-                    </select>
-                    <select name="year" id="year">
-                    <option value="na">Year</option>
-                    </select>
-                         <script language="JavaScript" type="text/javascript">
-                              function changeDate(i){
-                              var e = document.getElementById('day');
-                              while(e.length>0)
-                              e.remove(e.length-1);
-                              var j=-1;
-                              if(i=="na")
-                              k=0;
-                              else if(i==2)
-                              k=28;
-                              else if(i==4||i==6||i==9||i==11)
-                              k=30;
-                              else
-                              k=31;
-                              while(j++<k){
-                              var s=document.createElement('option');
-                              var e=document.getElementById('day');
-                              if(j==0){
-                              s.text="Day";
-                              s.value="na";
-                              try{
-                              e.add(s,null);}
-                              catch(ex){
-                              e.add(s);}}
-                              else{
-                              s.text=j;
-                              s.value=j;
-                              try{
-                              e.add(s,null);}
-                              catch(ex){
-                              e.add(s);}}}}
-                              y = 1993;
-                              while (y-->1940){
-                              var s = document.createElement('option');
-                              var e = document.getElementById('year');
-                              s.text=y;
-                              s.value=y;
-                              try{
-                              e.add(s,null);}
-                              catch(ex){
-                              e.add(s);}}
-                              </script>  <br><br>       <!-- Date script -->
-
+                      </select> <br>
+              Year Of Birth (Slider): <br>
+                   
               Race: <select>
-                        <option value="def_Native_American">Native American</option>
                         <option value="def_white">White</option>
-                        <option value="def_African_American">African American</option>
-                        <option value="def_Mexican">Mexican</option>
+                        <option value="def_black">Black</option>
+                        <option value="def_hispanic">Hispanic</option>
+                        <option value="def_asian">Asian</option>
+                        <option value="def_other">Other</option>
                       </select>
             </form>
 
@@ -211,33 +183,50 @@
      <h2><a href="#">Judge</a></h2>
         <div>
             <form action="">
-              Name: <input type="text" name="fNameDefendant"> <br><br>
-              Race: <select>
-                        <option value="judge_Native_American">Native American</option>
+            <input type="text" name="nameJudge" placeholder="Name"> <br>
+              <select>
+                        <option value="judge_race">--Race--</option>
                         <option value="judge_white">White</option>
-                        <option value="judge_African_American">African American</option>
-                        <option value="judge_Mexican">Mexican</option>
-                      </select> <br><br>
-              Gender: <select>
+                        <option value="judge_black">Black</option>
+                        <option value="judge_hispanic">Hispanic</option>
+                        <option value="judge_asian">Asian</option>
+                        <option value="judge_other">Other</option>
+                      </select> <br>
+              <select>
+                        <option value="genderJ">--Gender--</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
-                      </select> <br><br>
-              Tenure: <input type="number" name="fNameJudge"> <br><br>
-              Appointed By: <input type="text" name="appointedJudge"> <br><br>
+                      </select> <br>
+              Year Appointed (slider): <br>
+              <input type="text" name="judgeAppointedBy" placeholder="Appointed By"> <br>
             </form>
         </div>
 
       <h2><a href="#">Organized Crime Group</a></h2>
         <div>
             <form action="">
-              Group Name: <input type="text" name="groupName"> <br><br>
-              Size: <input type="text" name="groupSize"> <br><br>
-              Scope: <input type="text" name="groupName"> <br><br>
-               Race: <select>
-                        <option value="judge_Native_American">Native American</option>
-                        <option value="judge_white">White</option>
-                        <option value="judge_African_American">African American</option>
-                        <option value="judge_Mexican">Mexican</option>
+            <input type="text" name="groupName" placeholder="Group Name"> <br>
+              <select>
+                        <option value="ocgType">--Type--</option>
+                        <option value="momAndPopOCG">Mom and Pop</option>
+                        <option value="sgOCG">Street Gang</option>
+                        <option value="cartelOCG">Cartel/Syndicate/Mafia</option>
+                        <option value="prisonGangOCG">Prison Gang</option>
+                        <option value="otherOCG">Other</option>
+                      </select> <br>
+              <select>
+                        <option value="ocgScope">--Scope--</option>
+                        <option value="LocalOCG">Local</option>
+                        <option value="transStateOCG">Trans-State</option>
+                        <option value="transNationalOCG">Trans-National</option>
+                      </select> <br>
+               <select>
+                        <option value="OCG_race">--Race--</option>
+                        <option value="OCG_white">White</option>
+                        <option value="OCG_black">Black</option>
+                        <option value="OCG_hispanic">Hispanic</option>
+                        <option value="OCG_asian">Asian</option>
+                        <option value="OCG_other">Other</option>
                       </select> <br>
             </form>
         </div>
@@ -245,289 +234,87 @@
       <h2><a href="#">Victims</a></h2>
         <div>
             <form action="">
-              Total: <input type="number" name="totalVic"> <br><br>
-              Minor: <input type="number" name="minorVic"> <br><br>
-              Foreigner: <input type="number" name="ForeignerVic"> <br><br>
-              Female: <input type="number" name="femaleVic"> <br><br>
+              Total: (Slider) <br>
+               <div id="range-slider"></div>  <!-- Trying to implement nouiSlider Code -->
+               <Script>
+               $("#nonlinear").noUiSlider({
+                  connect: true,
+                  behaviour: 'tap',
+                  start: [ 500, 4000 ],
+                  range: {
+                    // Starting at 500, step the value by 500,
+                    // until 4000 is reached. From there, step by 1000.
+                    'min': [ 0 ],
+                    '10%': [ 500, 500 ],
+                    '50%': [ 4000, 1000 ],
+                    'max': [ 10000 ]
+                  }
+                });
+               </Script>
+
+              Minor: (Slider)<br>
+              Foreigner: (Slider) <br>
+              Female: (Slider) <br>
             </form>
         </div>
 
-      <h2><a href="#">Arrest &amp Charge Details </a></h2>
+      <h2><a href="#">Arrest Details</a></h2>
         <div>
             <form action="">
-              Charge Date:
-                    <select name="month" onChange="changeDate(this.options[selectedIndex].value);">
-                    <option value="na">Month</option>
-                    <option value="1">January</option>
-                    <option value="2">February</option>
-                    <option value="3">March</option>
-                    <option value="4">April</option>
-                    <option value="5">May</option>
-                    <option value="6">June</option>
-                    <option value="7">July</option>
-                    <option value="8">August</option>
-                    <option value="9">September</option>
-                    <option value="10">October</option>
-                    <option value="11">November</option>
-                    <option value="12">December</option>
-                    </select>
-                    <select name="day" id="day">
-                    <option value="na">Day</option>
-                    </select>
-                    <select name="year" id="year">
-                    <option value="na">Year</option>
-                    </select> <br><br>
-              Date of Arrest:
-                    <select name="month" onChange="changeDate(this.options[selectedIndex].value);">
-                    <option value="na">Month</option>
-                    <option value="1">January</option>
-                    <option value="2">February</option>
-                    <option value="3">March</option>
-                    <option value="4">April</option>
-                    <option value="5">May</option>
-                    <option value="6">June</option>
-                    <option value="7">July</option>
-                    <option value="8">August</option>
-                    <option value="9">September</option>
-                    <option value="10">October</option>
-                    <option value="11">November</option>
-                    <option value="12">December</option>
-                    </select>
-                    <select name="day" id="day">
-                    <option value="na">Day</option>
-                    </select>
-                    <select name="year" id="year">
-                    <option value="na">Year</option>
-                    </select> <br><br>
-
-              Defendant Detained?: 
-                    <select>
-                        <option value="yesDetained">--</option>
-                        <option value="yesDetained">Yes</option>
-                        <option value="noDetained">No</option>
-                      </select> <br><br>
-
-              Defendant's Role: 
-                    <select>
-                        <option value="yesDetained">--</option>
-                        <option value="yesDetained">Yes</option>
-                        <option value="noDetained">No</option>
-                      </select> <br><br>
-
-              Labor Trafficking?: 
-                    <select>
-                        <option value="yesDetained">--</option>
-                        <option value="yesDetained">Yes</option>
-                        <option value="noDetained">No</option>
-                      </select> <br><br>
-
-              Adult Sex Trafficking?: 
-                    <select>
-                        <option value="yesDetained">--</option>
-                        <option value="yesDetained">Yes</option>
-                        <option value="noDetained">No</option>
-                      </select> <br><br>
-
-              Minor Sex Trafficking?: 
-                    <select>
-                        <option value="yesDetained">--</option>
-                        <option value="yesDetained">Yes</option>
-                        <option value="noDetained">No</option>
-                      </select> <br><br>
-
-              Counts of Felonies: <input type="text" name="felonyCounts"> <br><br>
-              Sentenced Felonies: <input type="text" name="felonySentenced"> <br><br>
-              Bail Type: <input type="text" name="felonySentenced"> <br><br>
-              Bail Amount: <input type="text" name="felonySentenced"> <br><br>
-              Bail Amount: <span class="currencyinput">$<input type="text" name="currency"></span><br>
-
-                             <br><br>
+              Total: (Slider) <br>
+              Minor: (Slider)<br>
+              Foreigner: (Slider) <br>
+              Female: (Slider) <br>
             </form>
         </div>
 
-      <h2><a href="#">Charge </a></h2>
+      <h2><a href="#">Charge Details</a></h2>
         <div>
             <form action="">
-              Counts: <input type="number" name="countsCharge"> <br><br>
-              CountsNolleProssed: <input type="number" name="countsNolleCharge"> <br><br>
-              Statute: <input type="text" name="statuteCharge"> <br><br>
-              Plea Dismissed: <input type="number" name="dismissedPleaCharge"> <br><br>
-              Plea Guilty: <input type="number" name="pleaGuiltyCharge"> <br><br>
-              Trial Guilty: <input type="number" name="trialGuiltyCharge"> <br><br>
-              Trial Not Guilty: <input type="number" name="trialNotGuiltyCharge"> <br><br>
-              Fines: <input type="number" name="finesCharge"> <br><br>
-              Sentence: <input type="number" name="sentenceCharge"> <br><br>
-              Probation: <input type="number" name="probationCharge"> <br><br>
+              Charge Date: (year Slider) <br>
+              Total Number of Charges: (Slider)<br>
+              Statute: (Drop down of all statutes) <br>
+              Counts: (Slider) <br>
+              Counts Nolle Prossed: (slider) <br>
+              ***Question on form***  <br>
+              Plea Dismissed: <input type="number" name="dismissedPleaCharge"> <br>
+              Plea Guilty: <input type="number" name="pleaGuiltyCharge"> <br>
+              Trial Guilty: <input type="number" name="trialGuiltyCharge"> <br>
+              Trial Not Guilty: <input type="number" name="trialNotGuiltyCharge"> <br>
+              ***Question on form***  <br>
+              Fines: (slider) <br>
+              Sentence: (slider) <br>
+              Probation: (slider) <br>
             </form>
         </div>
 
-      <h2><a href="#">Sentence </a></h2>
+      <h2><a href="#">Sentencing Details</a></h2>
         <div>
             <form action="">
-             Date Terminated: <select name="month" onChange="changeDate(this.options[selectedIndex].value);">
-                    <option value="na">Month</option>
-                    <option value="1">January</option>
-                    <option value="2">February</option>
-                    <option value="3">March</option>
-                    <option value="4">April</option>
-                    <option value="5">May</option>
-                    <option value="6">June</option>
-                    <option value="7">July</option>
-                    <option value="8">August</option>
-                    <option value="9">September</option>
-                    <option value="10">October</option>
-                    <option value="11">November</option>
-                    <option value="12">December</option>
-                    </select>
-                    <select name="day" id="day">
-                    <option value="na">Day</option>
-                    </select>
-                    <select name="year" id="year">
-                    <option value="na">Year</option>
-                    </select> <br><br>
-
-                Date : <select name="month" onChange="changeDate(this.options[selectedIndex].value);">
-                    <option value="na">Month</option>
-                    <option value="1">January</option>
-                    <option value="2">February</option>
-                    <option value="3">March</option>
-                    <option value="4">April</option>
-                    <option value="5">May</option>
-                    <option value="6">June</option>
-                    <option value="7">July</option>
-                    <option value="8">August</option>
-                    <option value="9">September</option>
-                    <option value="10">October</option>
-                    <option value="11">November</option>
-                    <option value="12">December</option>
-                    </select>
-                    <select name="day" id="day">
-                    <option value="na">Day</option>
-                    </select>
-                    <select name="year" id="year">
-                    <option value="na">Year</option>
-                    </select> <br><br>
-                Total: <input type="number" name="totalSentence"> <br><br>
-                Restitution: <input type="number" name="restSentence"> <br><br>
-                Total: <input type="number" name="totalSentence"> <br><br>
-                Asset Forfeit: 
+             Total Number Felonies Sentenced: (Slider) <br>
+             Date Terminated: (Slider) <br>
+             Total Months Sentenced: (Slider) <br>
+             <input type="text" name="amountResSentence" placeholder="$ Amount Restitution"> <br>
+                Total: <input type="number" name="totalSentence"> <br>
                     <select>
-                        <option value="yesSentence">--</option>
+                        <option value="yesSentence">--Asset Forfeit--</option>
                         <option value="yesSentence">Yes</option>
                         <option value="noSentence">No</option>
-                      </select> <br><br>
-                Appeal: 
+                      </select> <br>
+                
                     <select>
-                        <option value="yesSentence">--</option>
+                        <option value="yesSentence">--Appeal--</option>
                         <option value="yesSentence">Yes</option>
                         <option value="noSentence">No</option>
-                      </select> <br><br>
-                Supervised Release: <input type="number" name="supervisedSentence"> <br><br>
-                Probation: <input type="number" name="probationSentence"> <br><br>
+                      </select> <br>
+                Number of Months Supervised Release: (Slider) <br>
+                Number of Months Probation: (Slider) <br>
             </form>
         </div>
 
          
  </div>
 
-    <!-- <div class="nav_title"> 
-    <p>Search criteria</p>
-   <form>
-        <input type="text" placeholder="Search..." required>
-        <input type="button" value="Search">
-</form>
-    </div>
-
-    <div class="nav_bar">
-    <h3>Case</h3>
-    <div>
-      <ul>
-        <li>
-
-          <form action="">
-            <input type="checkbox" name="vehicle" value="name"> Age<br>
-            <input type="checkbox" name="vehicle" value="age"> Name
-          </form>
-        </li>
-        <li>
-
-        </li>
-        <li>
-          
-        </li>
-
-      </ul>
-    </div>
-    
-
-    <h3>Defendant</h3>
-    <div>
-      <ul>
-        <li>
-
-          <form action="">
-            <input type="checkbox" name="vehicle" value="name"> Age<br>
-            <input type="checkbox" name="vehicle" value="age"> Name
-          </form>
-        </li>
-        <li>
-
-        </li>
-        <li>
-          
-        </li>
-
-      </ul>
-    </div>
-
-
-    
-    <h3>Case</h3>
-    <div>
-      <ul>
-        <li>
-
-          <form action="">
-            <input type="checkbox" name="vehicle" value="name"> Age<br>
-            <input type="checkbox" name="vehicle" value="age"> Name
-          </form>
-        </li>
-        <li>
-
-        </li>
-        <li>
-          
-        </li>
-
-      </ul>
-    </div>
-
-
-    
-    <h3>Case</h3>
-    <div>
-      <ul>
-        <li>
-
-          <form action="">
-            <input type="checkbox" name="vehicle" value="name"> Age<br>
-            <input type="checkbox" name="vehicle" value="age"> Name
-          </form>
-        </li>
-        <li>
-
-        </li>
-        <li>
-          
-        </li>
-
-      </ul>
-    </div>
-
-
-
-</div>
--->
 
             <br><br>
             <hr style="1px dashed #9a9a9a;">

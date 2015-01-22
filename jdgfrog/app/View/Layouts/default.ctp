@@ -63,7 +63,17 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			                <ul class="sf-menu dropdown">   
 			                    <li class="<?php echo ($this->fetch('selected') == 'home') ? 'selected' : ''; ?>"><a href="home">Home</a></li>
 
-			                    <li class="<?php echo ($this->fetch('selected') == 'search') ? 'selected' : ''; ?>"><a href="search">Search the Database</a></li>
+			                    <li class="<?php echo ($this->fetch('selected') == 'search') ? 'selected' : ''; ?>"><a href="search">
+
+    							<?php 
+
+    							echo $this->Html->css(array('search_page_css', 'nav_bar_style', 'default', 'component'));
+    							echo $this->Html->script(array('modernizr.custom', 'classie', 'uisearch')); 
+
+    							?>
+
+
+			                    Search the Database</a></li>
 
 			                    <li class="<?php echo ($this->fetch('selected') == 'about') ? 'selected' : ''; ?>">
 			                    	<a href="#" >About</a>

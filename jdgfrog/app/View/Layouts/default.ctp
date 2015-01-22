@@ -76,8 +76,8 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 
     							<?php 
 
-    							echo $this->Html->css(array('search_page_css', 'nav_bar_style', 'default', 'component'));
-    							echo $this->Html->script(array('modernizr.custom', 'classie', 'uisearch')); 
+    							echo $this->Html->css(array('search_page_css', 'nav_bar_style', 'default', 'component','jquery.nouislider','normalize','ion.rangeSlider.skinFlat'));
+    							echo $this->Html->script(array('modernizr.custom', 'classie', 'uisearch','jquery.nouislider','ion.rangeSlider','ion.rangeSlider.min')); 
 
     							?>
 

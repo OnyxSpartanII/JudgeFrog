@@ -63,6 +63,15 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			                <ul class="sf-menu dropdown">   
 			                    <li class="<?php echo ($this->fetch('selected') == 'home') ? 'selected' : ''; ?>"><a href="home">Home</a></li>
 
+			                    <li class="<?php echo ($this->fetch('selected') == 'about') ? 'selected' : ''; ?>">
+			                    	<a href="#" >About</a>
+			                    	<ul>
+			                        	<li><a href="methodology" title="Methodology">Methodology</a></li>
+			                        	<li><a href="principals">Principal Investigators</a></li>
+			                        	<li> <a href="acknowledgements">Acknowledgments</a> </li>
+			                        </ul>
+		                        </li>
+
 			                    <li class="<?php echo ($this->fetch('selected') == 'search') ? 'selected' : ''; ?>"><a href="search">
 
     							<?php 
@@ -72,17 +81,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 
     							?>
 
-
 			                    Search the Database</a></li>
-
-			                    <li class="<?php echo ($this->fetch('selected') == 'about') ? 'selected' : ''; ?>">
-			                    	<a href="#" >About</a>
-			                    	<ul>
-			                        	<li><a href="methodology" title="Methodology">Methodology</a></li>
-			                        	<li><a href="principals">Principal Investigators</a></li>
-			                        	<li> <a href="acknowledgements">Acknowledgments</a> </li>
-			                        </ul>
-		                        </li>
 		                        
 		                        <li class="<?php echo ($this->fetch('selected') == 'resources') ? 'selected' : ''; ?>">
 		                        	<a href="#">Additional Resources</a>

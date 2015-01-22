@@ -1,16 +1,7 @@
-<!-- <?php // $this->set('selectedlink', 'search'); ?> -->
   <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-
-  <!-- <link rel="stylesheet" type="text/css" href="/jdgfrog/css/search_page_css.css"> -->
-  <!-- <link rel="stylesheet" type="text/css" href="/jdgfrog/css/nav_bar_style.css"> -->
-
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 
-  <!-- Search Imports -->
-  <!-- <link rel="stylesheet" type="text/css" href="/jdgfrog/css/default.css" /> -->
-  <!-- <link rel="stylesheet" type="text/css" href="/jdgfrog/css/component.css" /> -->
-  <!-- <script src="/jdgfrog/js/modernizr.custom.js"></script> -->
 
 <!-- added by Landon -->
 <script type="text/javascript">
@@ -542,8 +533,6 @@
         </div>
     </div>
 
-    <!-- <script src="/jdgfrog/js/classie.js"></script> -->
-    <!-- <script src="/jdgfrog/js/uisearch.js"></script> -->
     <script>
       new UISearch( document.getElementById( 'sb-search' ) );
     </script>

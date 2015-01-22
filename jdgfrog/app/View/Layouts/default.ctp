@@ -74,11 +74,13 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 
 			                    <li class="<?php echo ($this->fetch('selected') == 'search') ? 'selected' : ''; ?>"><a href="search">
 
+						            <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+									 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+									 <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+									 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     							<?php 
-
-    							echo $this->Html->css(array('search_page_css', 'nav_bar_style', 'default', 'component','jquery.nouislider','normalize','ion.rangeSlider.skinFlat'));
-    							echo $this->Html->script(array('modernizr.custom', 'classie', 'uisearch','jquery.nouislider','ion.rangeSlider','ion.rangeSlider.min')); 
-
+    							echo $this->Html->script(array('modernizr.custom', 'classie', 'uisearch','moment','ion.rangeSlider.js','ion.rangeSlider.min','sliderMod.js')); 
+    							echo $this->Html->css(array('search_page_css', 'nav_bar_style', 'default', 'component','normalize','ion.rangeSlider.skinFlat','ion.rangeSlider'));
     							?>
 
 			                    Search the Database</a></li>

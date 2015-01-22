@@ -1,16 +1,3 @@
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-  <script type="text/javascript" src="/JudgeFrog/jdgfrog/js/moment.js"></script>
-  <script type="text/javascript" src="/JudgeFrog/jdgfrog/js/ion.rangeSlider.js"></script>
-  <script type="text/javascript" src="/JudgeFrog/jdgfrog/js/ion.rangeSlider.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="/JudgeFrog/jdgfrog/css/normalize.css" />
-  <link rel="stylesheet" type="text/css" href="/JudgeFrog/jdgfrog/css/ion.rangeSlider.skinFlat" />
-  <link rel="stylesheet" type="text/css" href="/JudgeFrog/jdgfrog/css/ion.rangeSlider.css" />
-  
-
-
 <body>
     <div id="body" class="width">
         <h2>Database Search</h2>
@@ -345,8 +332,8 @@ SCRIPTS
     <script>
       new UISearch( document.getElementById( 'sb-search' ) );
     </script>
-<!-- slider Script -->
- <script type="text/javascript" src="/JudgeFrog/jdgfrog/js/sliderMod.js"></script>
+<!-- slider Script 
+<script type="text/javascript" src="/js/sliderMod.js"></script>-->
 
 
 </body>

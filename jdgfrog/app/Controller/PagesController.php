@@ -81,22 +81,22 @@ class PagesController extends AppController {
 */
 
 	public function home() {
-		$this->set('title', 'Home - Human Trafficking Data');
+		$this->set('title', 'Home | Human Trafficking Data');
 		$this->set('selected', 'home');
 	}
 
 	public function about(){
-		$this->set('title', 'About - Human Trafficking Data');
+		$this->set('title', 'About | Human Trafficking Data');
 		$this->set('selected', 'about');
 	}
 
 	public function methodology() {
-		$this->set('title', 'Methodology - Human Trafficking Data');
+		$this->set('title', 'Methodology | Human Trafficking Data');
 		$this->set('selected', 'about');
 	}
 
 	public function principalInvestigators() {
-		$this->set('title', 'Principal Investigators - Human Trafficking Data');
+		$this->set('title', 'Principal Investigators | Human Trafficking Data');
 		$this->set('selected', 'about');
 	}
 
@@ -106,27 +106,32 @@ class PagesController extends AppController {
 	}
 
 	public function searchDatabase() {
-		$this->set('title', 'Database Search - Human Trafficking Data');
+		$this->set('title', 'Database Search | Human Trafficking Data');
 		$this->set('selected', 'search');
 	}
 
+	public function analyze() {
+		$this->set('title', 'Analyze Data | Human Trafficking Data');
+		$this->set('selected', 'analyze');
+	}
+
 	public function orgAndGovernment() {
-		$this->set('title', 'Organizations - Human Trafficking Data');
+		$this->set('title', 'Organizations | Human Trafficking Data');
 		$this->set('selected', 'resources');
 	}
 
 	public function publicationsAndReports() {
-		$this->set('title', 'Publications - Human Trafficking Data');
+		$this->set('title', 'Publications | Human Trafficking Data');
 		$this->set('selected', 'resources');
 	}
 
 	public function federalStatutes() {
-		$this->set('title', 'Federal Statutes - Human Trafficking Data');
+		$this->set('title', 'Federal Statutes | Human Trafficking Data');
 		$this->set('selected', 'resources');
 	}
 
 	public function contact() {
-		$this->set('title', 'Contact - Human Trafficking Data');
+		$this->set('title', 'Contact | Human Trafficking Data');
 		$this->set('selected', 'contact');
 	}
 

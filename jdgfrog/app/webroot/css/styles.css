@@ -1,3 +1,8 @@
+/*MAIN STYLING SHEET FOR HUMAN TRAFFICKING DATA
+THIS STYLING CONFIG SET UP THE HEADER AND 
+GENERAL BODY AND FOOTER STYLES*/
+
+
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700);
 
 
@@ -69,21 +74,21 @@ li ol, li ul {
 header {
 	padding: 0px 10px 0;
 	margin: 0 auto;
-	/* padding-bottom: 100px; */
 	text-align: left;
 	background-color: #222;
 }
 
-
+/*LOGO*/
 header h1 {
-	margin-top: 3px;
+	margin-top: 25px;
 	float: left;
 	font-size: 35px;
 }
 
 header h1 a, header h1 a:hover {
     color: #fff;
-    padding: 25px 0px 0px;
+    margin: auto auto;
+    /*padding: 25px 0px -25px 0px;*/
     letter-spacing: -2px;
     border-bottom: none;
     display: block;
@@ -101,7 +106,7 @@ header h1 a strong {
 /*Logo Hover*/
 header h1 a:hover {
     color: #f05;
-    padding: 25px 0px 0px;
+    /*padding: 25px 0px 0px;*/
     letter-spacing: -2px;
     border-bottom: none;
     display: block;
@@ -125,7 +130,6 @@ nav ul {
 }
 
 nav ul ul { 
-	margin-right: -100px;
 	padding: 0px 0px;
 }
 
@@ -143,7 +147,7 @@ nav ul li li {
 nav ul li a {
 	display: block;
 	float: left;
-	height: 15px;
+	/*height: 15px;*/
 	padding: 40px 30px;
     color: #fff;
     font-size: 0.75em;
@@ -157,7 +161,7 @@ nav ul li a {
 /*Menu dropdown text*/
 nav ul li li a {
 	float: none;
-	padding: 10px 0px 10px 35px;
+	padding: auto 0px 10px auto;
 }
 
 nav ul li a:hover {
@@ -169,8 +173,13 @@ nav ul li a:hover {
 
 }
 
+nav ul li.selected a{
+	color: #f05;
+	background-color: #555;
+}
+
 /*Hover About Tab*/
-nav ul li.selected a, nav ul li.selected a:hover {
+nav ul li.selected a:hover {
 	color: #f05;
 	background-color: #555;
     -webkit-transition: all 0.3s ease-in;
@@ -180,14 +189,14 @@ nav ul li.selected a, nav ul li.selected a:hover {
 }
 
 nav ul li.selected a:hover {
-	background-color: #999 !important;
+	background-color: #fff !important;
 	background-image: none !important;
 }
 
 /*Additional Tab Hover*/
 nav ul li a:hover, nav ul li.sfHover a {
 	color: #f05;
-	background-color: #555;
+	background-color: #fff;
     -webkit-transition: all 0.3s ease-in;
     -moz-transition: all 0.3s ease-in;
     -o-transition: all 0.3s ease-in;
@@ -210,11 +219,11 @@ nav ul li a.sf-with-ul:hover, nav ul li.sfHover a {
 
 /*DropDown Menu*/
 nav ul li.sf-with-ul.selected ul a, nav ul li.selected ul, nav ul li.selected.sfHover a  {
-	background-color: #555;
+	background-color: #fff;
 	color: #f05;
 }
 
-/*Drop down menu color*/
+/*Drop down MENU ITEM COLOR on HOVER*/
 nav ul li.sf-with-ul.selected ul li a, nav ul li.selected.sfHover li a,  nav ul li.sfHover a a, nav ul li.selected li a  {
 	color: #fff;
 }
@@ -331,13 +340,6 @@ a.button-slider.button-reversed {
 	border-color: #fff;
 }
 
-a.button-slider i { padding-right: 5px; }
-
-img {
-	max-width: 100%;
-	height: auto;
-}
-
 #body {
 	background: #fff;
 	margin: 50px auto;
@@ -347,12 +349,19 @@ img {
 
 .body_content{
 
+	text-align: center;
 	margin: 100px auto;
+	/*padding-top: 100px;*/
 	width: 1200px;
 	text-align:justify; 
 	background-color: #fff;
-	/*margin-bottom:250px;*/
+	/*margin-top:250px;*/
 }
+
+ .page_title{
+ 	text-align: center;
+ 	padding: 100px;
+ }
 
 .fixed-header #body { 
 	margin-top: 0;

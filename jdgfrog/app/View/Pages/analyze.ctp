@@ -3,68 +3,37 @@
         
         <div class="body_content">
 
-          <h2 class="page_title">Database Search</h2>
+          <h2 class="page_title">Analyze Data</h2>
 
 
 <!-- TOP STATUS AND SEARCH BAR -->
 
 <div class="top_bar">
   <div class="top_bar_left">
-    <h3>Search by</h3>
+    <h3>Analyze by</h3>
   </div>
 
 
 <div class="top_bar_center">
-    <h3>Search Result Dashboard</h3>
+    <h3>Data Analysis Dashboard</h3>
 </div>
 
 <!-- SEARCH BUTTON-->
-  <div class="search_button">
+  <div class="ana_button">
     <form id="target" action="">
-      <input type="image" src="/jdgfrog/img/submit1.png" alt="Submit">
+      <input type="image" src="/jdgfrog/img/analyze.png" alt="Submit">
     </form>
   </div>
 
 <hr style="margin-top:35px">
 
-</div>
-
-
-<div class="center_panel">
-
-
-<table class="search_result_table">
-
-<!-- WEEK TWELVE -->
-
-  <tr class="searched_att">
-    <th class="title_table">Case Name</th>
-    <th class="title_table">Case Number</th>
-    <th class="title_table">Year of Judgement</th>
-    <th class="title_table">Interchangeable Item</th>
-  </tr>
-
-  <tr class="details">
-    <td class="att_details">USA vs. Sam Carter</td>
-    <td class="att_details">004</td>
-    <td class="att_details">2007</td>
-    <td class="att_details">-</td>
-  </tr>
-
-  <tr class="search_item">
-    <td class="tg-vn4c">USA vs. King_Kong</td>
-    <td class="tg-vn4c">004903</td>
-    <td class="tg-vn4c">2003</td>
-    <td class="tg-vn4c">-</td>
-  </tr>
-
-
-</table>
 
 </div>
+
+
 
         <!-- Search Interface -->
-<div id="collapsible-panels">
+<div id="collapsible-panels" style="margin-top:0px">
 
     <h2><a href="#">Case</a></h2>
         <div>
@@ -340,12 +309,19 @@
 
 
 
+
+<div class="center_search_result">
+
+
+</div>
+
+
             <br><br>
             <hr style="color: #999">
             <br>
 
             <div class="search_disclaim">
-            <p><strong>Disclaimer: </strong>Not every combination of searched values will be meaningful.</p>
+            <p><strong>Disclaimer: </strong>Not every combination of searched values can be manipulated and/or analyzed.</p>
             </div>
 </div>
 
@@ -379,26 +355,6 @@ SCRIPTS
     </script>
 <!-- slider Script 
 <script type="text/javascript" src="/js/sliderMod.js"></script>-->
-
-
-<!-- SCRIPT FOR THE POPUP FRAME OF SEARCH DETAILS -->
-<script type="text/javascript">
-
-$( "#target" ).submit(function( event ) {
-  
-  cuteLittleWindow = window.open("home", "littleWindow", "location=no,width=320,height=200"); 
-  event.preventDefault();
-});
-
-    // GET DETAILS OF A CASE
-      $(".details").on("click", function() {
-          location.href="http://www.google.com";
-
-      });
-
-</script>
-
-
 
 
 </body>

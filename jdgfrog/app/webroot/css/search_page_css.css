@@ -1,6 +1,5 @@
-/*Collapsible Search feature Styling Sheet*/
+/*SEARCH PAGE STYLING SHEET*/
 
-/*blue color -> 2c3e50*/
 
 .top_bar{
 
@@ -17,44 +16,181 @@
 
 }
 
-.search_disclaim{
-    text-align: center;
-    font-size: 15px;
+.top_bar_center{
+    margin-left: 300px;
+    margin-top: -35px;
+    font-size: 25px;
+    color: #fff;
+    text-align:center;
+}
+
+.search_button{
+    margin-top:-42px;
+    margin-right:30px;
+    padding: 8px;
+    background-color: #fff;
+    float: right;
+
+    opacity: 0.8;
+    filter: alpha(opacity=80); /* For IE8 and earlier */
+}
+
+.search_button:hover{
+    opacity: 0.6;
+    filter: alpha(opacity=60); /* For IE8 and earlier */
+
+
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    -o-transition: all 0.2s ease-in;
+}
+
+
+/************ANALYZE PAGE SUBMIT BUTTON**************/
+.ana_button{
+    margin-top:-42px;
+    margin-right:30px;
+    padding: 4px;
+    background-color: #fff;
+    float: right;
+
+    opacity: 0.8;
+    filter: alpha(opacity=80); /* For IE8 and earlier */
+}
+
+.ana_button:hover{
+    opacity: 0.6;
+    filter: alpha(opacity=60); /* For IE8 and earlier */
+
+
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    -o-transition: all 0.2s ease-in;
+}
+
+
+
+.center_panel{
+    /*background-color: #f05;*/
+    margin-left: 400px;
 
 }
 
+
+#collapsible-panels{
+    /*margin-top: 200px;*/
+    width: 400px;
+    margin-top: -133px;
+}
+
+#collapsible-panels div {
+    width: 400px;
+    padding: 20px 0px 20px 10px;
+    background-color: #999;
+    color: #fff;
+    /*box-shadow: 0px 1px 2px 2px #999;*/
+} 
+
 #collapsible-panels h2 {
     width: 400px;
+    height: -200px;
     margin:0;
-    padding: 15px 0px;
-    font-size: 90% ;
-    background: url('img/open.png') no-repeat left center;
-    border-bottom: 10px solid #F9F9F9;
+    padding: 25px 0px;
+    font-size: 100% ;
+    background: url('/jdgfrog/img/open.png') no-repeat left center;
+    /*border-bottom: 10px solid #F9F9F9;*/
     background-color: #333;
     letter-spacing: .1em;
 }
 
 #collapsible-panels h2.active {
-    background: url('img/close.png') no-repeat left center;
-    color: #999;
-    background-color: #333;
+    background: url('/jdgfrog/img/close.png') no-repeat left center;
+    font-weight: bold;
+    text-decoration: underline;
+    background-color: #555;
+    color: #333;
 }
 
 #collapsible-panels h2 a {
     padding: 0 0 0 35px;
     text-decoration: none;
-    color: #999;
+    color: #FFF;
+}
+       
+#collapsible-panels h2 a:hover {
+    color: #F05;
+}
+       
+
+.search_disclaim{
+    text-align: center;
+    font-size: 15px;
 }
 
-#collapsible-panels div {
-    width: 390px;
-    padding: 20px 0px 20px 10px;
-    background-color: #999;
-    color: #fff;
-    box-shadow: 0px 1px 2px 2px #999;
+.search_result_table{
+    /*padding-top: 10px;*/
+    width: 800px;
+    height: auto;
+    border-spacing: 5;
+    border-color: #aabcfe;
+    border-collapse: collapse;
 } 
-            
-##collapsible-panels form{
 
-    /*padding: 10px;*/
+.title_table{
+    color:white;
+    font-size:20px;
+    overflow:hidden;
+    text-align: center;
+    padding:22px 5px;
+    border-width:0px;
+    word-break:normal;
+    font-weight:normal;
+    border-style:solid;
+    font-weight: bolder;
+    border-color:#aabcfe;
+    font-family:Arial, sans-serif;
+    background-color: #333;
 }
+
+.searched_att td{
+    background-color: #999;
+    font-size: 33px;
+}
+
+.search_result_table td{
+    color:#669;
+    font-size:13px;
+    overflow:hidden;
+    padding:10px 5px;
+    word-break:normal;
+    border-color:#999;
+    border-style:solid;
+    border-width:0.1em;
+    background-color:#fff;
+    font-family:Arial, sans-serif;
+}
+
+.att_details tr:hover{
+    background-color: #999;
+}
+
+.search_result_table td:hover{
+    cursor: pointer;
+    /*background-color: #999;*/
+}
+
+.search_item:hover{
+    background-color: #f05;
+}
+
+
+
+
+
+
+
+
+
+
+
+

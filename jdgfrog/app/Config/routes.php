@@ -26,10 +26,12 @@
  */
 	Router::connect('/', array('controller' => 'pages', 'action' => 'home'));
 	Router::connect('/home', array('controller' => 'pages', 'action' => 'home'));
+	Router::connect('/about', array('controller' => 'pages', 'action' => 'about'));
 	Router::connect('/methodology', array('controller' => 'pages', 'action' => 'methodology'));
 	Router::connect('/principals', array('controller' => 'pages', 'action' => 'principalInvestigators'));
 	Router::connect('/acknowledgements', array('controller' => 'pages', 'action' => 'acknowledgements'));
 	Router::connect('/search', array('controller' => 'pages', 'action' => 'searchDatabase'));
+	Router::connect('/analyze', array('controller' => 'pages', 'action' => 'analyze'));
 	Router::connect('/orgAndGovernment', array('controller' => 'pages', 'action' => 'orgAndGovernment'));
 	Router::connect('/publicationsAndReports', array('controller' => 'pages', 'action' => 'publicationsAndReports'));
 	Router::connect('/federalStatutes', array('controller' => 'pages', 'action' => 'federalStatutes'));

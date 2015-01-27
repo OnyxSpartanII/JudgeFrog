@@ -67,10 +67,10 @@ class DATABASE_CONFIG {
 	public $default = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => false ,
-		'host' => 'sage.arvixe.com',
-		'login' => 'app',
+		'host' => 'oyster.arvixe.com',
+		'login' => 'jdgfrog_app',
 		'password' => 'tcuCOSC1!',
-		'database'=> 'JudgeFrog',
+		'database'=> 'jdgfrog_db',
 		'prefix' => '',
 		//'encoding' => 'utf8',
 	);
@@ -78,10 +78,10 @@ class DATABASE_CONFIG {
 	public $test = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
-		'host' => 'localhost',
-		'login' => 'user',
-		'password' => 'password',
-		'database' => 'test_database_name',
+		'host' => 'oyster.arvixe.com',
+		'login' => 'jdgfrog_testDB',
+		'password' => 'tcuCOSC1!',
+		'database' => 'jdgfrog_testDB',
 		'prefix' => '',
 		//'encoding' => 'utf8',
 	);

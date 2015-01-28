@@ -3,13 +3,14 @@
 App::uses('AppModel', 'Model', 'AuthComponent');
 
 class User extends AppModel {
+
 	public $validate = array(
 	'username' => array(
 				'required' => array(
-							'rule' => array('notEmpty'),
-							'message' => 'A username is required'
-							)
-					),
+					'rule' => array('notEmpty'),
+					'message' => 'A username is required'
+					)
+		),
 	'password' => array (
 				'required' => array(
 					'rule' => array('notEmpty'),
@@ -40,4 +41,18 @@ class User extends AppModel {
 		)
 	);
 
+
+	function isUniqueUsername($check) {
+		$username = $this->find(
+			'first', array(
+				'fields' => array('User.Id', 'User.Username'), 'conditions' => array('User.Username' => $check['Username'])));
+	}
+
+	public function equalToField() {
+		//method stub. checks if a field is equal to another field.
+	}
+
+	public function beforeSave() {
+		//method stub
+	}
 }

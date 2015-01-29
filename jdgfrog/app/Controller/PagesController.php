@@ -37,6 +37,13 @@ class PagesController extends AppController {
  */
 	public $uses = array();
 
+	public function beforeFilter() {
+		parent::beforeFilter();
+		$this->Auth->allow('index', 'home', 'about', 'methodology', 'principalInvestigators',
+							'acknowledgements', 'searchDatabase', 'analyze', 'orgAndGovernment',
+							'publicationsAndReports', 'federalStatutes', 'contact');
+	}
+
 /**
  * Displays a view
  *
@@ -135,6 +142,10 @@ class PagesController extends AppController {
 		$this->set('selected', 'contact');
 	}
 
+	public function login() {
+		$this->set('title', 'Login | Human Trafficking Data');
+		$this->set('selected', 'login');
+	}
 
 
 }

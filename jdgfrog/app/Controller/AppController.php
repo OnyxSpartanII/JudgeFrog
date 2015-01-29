@@ -31,4 +31,26 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+
+	public $components = array(
+			'Session',
+			'Auth' => array(
+				'loginRedirect' => array('controller' => 'pages', 'action' => 'home'),
+				'logoutRedirect' => array('controller' => 'pages', 'action' => 'home'),
+				'authenticate' => array('Form' => array('passwordHasher' => 'Blowfish')),
+				'authError' => 'You must be logged in to view this page.',
+				'loginError' => 'Invalid username or password entered.'
+				)
+		);
+
+	public function beforeFilter() {
+
+		//Maybe move page method names into beforeFilter in PagesController?
+		$this->Auth->allow('login', 'index', 'home', 'view');
+	}
+
+	public function isAuthorized($user) {
+		//TODO: check priv levels here
+		return true;
+	}
 }

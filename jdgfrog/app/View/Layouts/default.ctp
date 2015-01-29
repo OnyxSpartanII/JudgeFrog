@@ -86,6 +86,9 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
     							echo $this->Html->script(array('modernizr.custom', 'classie','moment','ion.rangeSlider.js','ion.rangeSlider.min','sliderMod.js')); 
     							echo $this->Html->css(array('search_page_css', 'nav_bar_style', 'default','ion.rangeSlider.skinFlat','ion.rangeSlider'));
     							?>
+    							<!-- Google charts Script -->
+    							<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    							
 			                    Search the Database</a></li>
 
 

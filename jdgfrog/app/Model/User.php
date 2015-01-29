@@ -5,18 +5,33 @@ App::uses('BlowfishPasswordHasher', 'Controller/Component/Auth');
 
 class User extends AppModel {
 
+/**
+ * Primary key field
+ *
+ * @var string
+ */
+	public $primaryKey = 'Username';
+
+
+/**
+ * Validation rules
+ *
+ * @var array
+ */
+
 	public $validate = array(
 	'username' => array(
 				'required' => array(
 					'rule' => array('notEmpty'),
-					'message' => 'A valid email address is required.'
+					'message' => 'Please enter a username.'
 					),
 				//'unique' => array(
 				//	'rule' => array('isUniqueUsername'),
-				//	'message' => 'Email address already in use.'
-				//	)
+				//	'message' => 'Username already in use.'
+				//	),
+
 		),
-	'password' => array (
+	'password' => array(
 				'required' => array(
 					'rule' => array('notEmpty'),
 					'message' => 'A password is required.'
@@ -31,10 +46,10 @@ class User extends AppModel {
 					'rule' => array('notEmpty'),
 					'message' => 'Please confirm your password.'
 					),
-				//'equalToField' => array(
-					//'rule' => array('equalToField', 'password'),
-				//	'message' => 'Passwords must match.'
-				//	)
+				'equalToField' => array(
+					'rule' => array('equalToField', 'password'),
+					'message' => 'Passwords must match.'
+					)
 
 		),
 
@@ -47,6 +62,17 @@ class User extends AppModel {
 					)
 
 		),
+
+	'email' => array(
+				'required' => array(
+					'rule' => 'notEmpty',
+					'message' => 'Please enter a valid email.'
+					),
+				'email' => array(
+					'rule' => 'email',
+					'message' => 'A valid email address is required.'
+					)
+		)
 	);
 
 
@@ -55,7 +81,7 @@ class User extends AppModel {
 		$username = $this->find(
 			'first', array(
 				'fields' => array('User.UserId', 'User.Username'), 
-				'conditions' => array('User.Username' => $check['Username'])
+				'conditions' => array('User.username' => $check['Username'])
 				)
 			);
 
@@ -74,8 +100,8 @@ class User extends AppModel {
 		{
 			return false;
 		}
-	}
-*/
+	}*/
+
 	public function equalToField($field1, $field2) {
 		//checks if a field is equal to another field.
 

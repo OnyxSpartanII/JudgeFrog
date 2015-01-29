@@ -49,7 +49,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			{
 				$this->assign('selected', $selected);
 			}
-			echo $this->fetch('selected');
+			//echo $this->fetch('selected');
 		?> 
 	</title>
 </head>

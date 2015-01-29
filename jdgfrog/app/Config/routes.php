@@ -28,7 +28,7 @@
 	
 	Router::connect('/login', array('controller' => 'users', 'action' => 'login'));
 	Router::connect('/create', array('controller' => 'users', 'action' => 'create'));
-	//Router::connect('/logout', array('controller' => 'pages', 'action' => 'logout'));
+	Router::connect('/logout', array('controller' => 'users', 'action' => 'logout'));
 
 	Router::connect('/home', array('controller' => 'pages', 'action' => 'home'));
 	Router::connect('/about', array('controller' => 'pages', 'action' => 'about'));

@@ -30,7 +30,8 @@
 	Router::connect('/methodology', array('controller' => 'pages', 'action' => 'methodology'));
 	Router::connect('/principals', array('controller' => 'pages', 'action' => 'principalInvestigators'));
 	Router::connect('/acknowledgements', array('controller' => 'pages', 'action' => 'acknowledgements'));
-	Router::connect('/search', array('controller' => 'pages', 'action' => 'searchDatabase'));
+	Router::connect('/search', array('controller' => 'search', 'action' => 'home'));
+	Router::connect('/search/update', array('controller' => 'search', 'action' => 'update'));
 	Router::connect('/analyze', array('controller' => 'pages', 'action' => 'analyze'));
 	Router::connect('/orgAndGovernment', array('controller' => 'pages', 'action' => 'orgAndGovernment'));
 	Router::connect('/publicationsAndReports', array('controller' => 'pages', 'action' => 'publicationsAndReports'));

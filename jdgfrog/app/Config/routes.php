@@ -25,6 +25,11 @@
  * to use (in this case, /app/View/Pages/home.ctp)...
  */
 	Router::connect('/', array('controller' => 'pages', 'action' => 'home'));
+	
+	Router::connect('/login', array('controller' => 'users', 'action' => 'login'));
+	Router::connect('/create', array('controller' => 'users', 'action' => 'create'));
+	Router::connect('/logout', array('controller' => 'users', 'action' => 'logout'));
+
 	Router::connect('/home', array('controller' => 'pages', 'action' => 'home'));
 	Router::connect('/about', array('controller' => 'pages', 'action' => 'about'));
 	Router::connect('/methodology', array('controller' => 'pages', 'action' => 'methodology'));
@@ -34,7 +39,7 @@
 	Router::connect('/search/update', array('controller' => 'search', 'action' => 'update'));
 	Router::connect('/analyze', array('controller' => 'pages', 'action' => 'analyze'));
 	Router::connect('/orgAndGovernment', array('controller' => 'pages', 'action' => 'orgAndGovernment'));
-	Router::connect('/publicationsAndReports', array('controller' => 'pages', 'action' => 'publicationsAndReports'));
+	Router::connect('/publications', array('controller' => 'pages', 'action' => 'publicationsAndReports'));
 	Router::connect('/federalStatutes', array('controller' => 'pages', 'action' => 'federalStatutes'));
 	Router::connect('/contact', array('controller' => 'pages', 'action' => 'contact'));
 	Router::connect('/uploads', array('controller' => 'uploads', 'action' => 'add'));

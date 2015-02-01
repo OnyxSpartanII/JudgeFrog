@@ -49,7 +49,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			{
 				$this->assign('selected', $selected);
 			}
-			echo $this->fetch('selected');
+			//echo $this->fetch('selected');
 		?> 
 	</title>
 </head>
@@ -69,9 +69,9 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			                    <li class="<?php echo ($this->fetch('selected') == 'about') ? 'selected' : ''; ?>">
 			                    	<a href="about" >About</a>
 			                    	<ul>
-			                        	<li><a href="methodology">Methodology</a></li>
-			                        	<li><a href="principals">Principal Investigators</a></li>
-			                        	<li> <a href="acknowledgements">Acknowledgments</a> </li>
+			                        	<li><?php echo $this->Html->link('Methodology', '/methodology')?></li>
+			                        	<li><?php echo $this->Html->link('Principal Investigators', '/principals')?></li>
+			                        	<li><?php echo $this->Html->link('Acknowledgements', '/acknowledgements')?></li>
 			                        </ul>
 		                        </li>
 
@@ -86,24 +86,27 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
     							echo $this->Html->script(array('modernizr.custom', 'classie','moment','ion.rangeSlider.js','ion.rangeSlider.min','sliderMod.js')); 
     							echo $this->Html->css(array('search_page_css', 'nav_bar_style', 'default','ion.rangeSlider.skinFlat','ion.rangeSlider'));
     							?>
+    							<!-- Google charts Script -->
+    							<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    							
 			                    Search the Database</a></li>
 
 
 			                    <!-- ANALYSE THE DATA MENU ITEM -->
-			                    <li class="<?php echo ($this->fetch('selected') == 'analyze') ? 'selected' : ''; ?>"><a href="analyze">Analyze the Data</a></li>
+			                    <li class="<?php echo ($this->fetch('selected') == 'analyze') ? 'selected' : ''; ?>"><?php echo $this->Html->link('Data Analysis', '/analyze')?></li>
 		                        
 		                        <!-- ADDITIONAL RESOURCES DROPDOWN MENU ITEMS -->
 		                        <li class="<?php echo ($this->fetch('selected') == 'resources') ? 'selected' : ''; ?>">
 		                        	<a>Additional Resources</a>
 		                        	<ul>
-		                        		<li><a href="orgAndGovernment">Organization and Government</a></li>
-		                        		<li><a href="publicationsAndReports">Publications and Reports</a></li>
-		                        		<li><a href="federalStatutes">Federal Statutes</a></li>
+		                        		<li><?php echo $this->Html->link('Organization and Government', '/orgAndGovernment')?></li>
+		                        		<li><?php echo $this->Html->link('Publications and Reports', '/publications')?></li>
+		                        		<li><?php echo $this->Html->link('Federal Statutes', '/federalStatutes')?></li>
 			                    	</ul>
 			                    </li>
 
 			                    <!-- CONTACT US MENU ITEM -->
-			                    <li class="<?php echo ($this->fetch('selected') == 'contact') ? 'selected' : ''; ?>"><a href="contact"><i class="fa fa-phone"></i>Contact Us</a></li>
+			                    <li class="<?php echo ($this->fetch('selected') == 'contact') ? 'selected' : ''; ?>"><<?php echo $this->Html->link('Contact Us', '/contact')?></li>
 
 			                </ul>
 			            <div class="clear"></div>

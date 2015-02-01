@@ -11,6 +11,11 @@ class SearchController extends AppController {
 	 */
 	public $name = 'Search';
 
+	public function beforeFilter() {
+		parent::beforeFilter();
+		$this->Auth->allow('home','update');
+	}
+
 	public function home() {
 		$this->set('title', 'Database Search | Human Trafficking Data');
 		$this->set('selected', 'search');
@@ -142,6 +147,7 @@ class SearchController extends AppController {
 		}
 
 		if ($display['defendant'] && sizeof($defendants) == 0) {
+			$this->render('home');
 			return;
 		}
 
@@ -250,6 +256,7 @@ class SearchController extends AppController {
 		}
 
 		if (sizeof($ocgs) == 0 && $display['ocg']) {
+			$this->render('home');
 			return;
 		}
 
@@ -293,6 +300,7 @@ class SearchController extends AppController {
 		$victims = $this->Victim->find('all', array('conditions' => $conditions));
 
 		if (sizeof($victims) == 0 && $display['victims']) {
+			$this->render('home');
 			return;
 		}
 
@@ -422,6 +430,7 @@ class SearchController extends AppController {
 		$charges = $this->Charge->find('all', array('conditions' => $conditions));
 
 		if (sizeof($charges) == 0 && $display['acd']) {
+			$this->render('home');
 			return;
 		}
 
@@ -479,6 +488,7 @@ class SearchController extends AppController {
 		$ags = $this->AggregateSentence->find('all', array('conditions' => $conditions));
 
 		if (sizeof($ags) == 0 && $display['sentence']) {
+			$this->render('home');
 			return;
 		}
 

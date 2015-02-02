@@ -74,7 +74,7 @@
       ]);
 
     var options = {
-        title: 'My Daily Activities'
+        title: 'Type of Trafficking'
     };
 
     var chart = new google.visualization.PieChart(document.getElementById('chart'));

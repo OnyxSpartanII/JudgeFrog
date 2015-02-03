@@ -1,4 +1,4 @@
-<!-- File: /app/View/Uploads/index.ctp -->
+<!-- File: /app/View/Uploads/add.ctp -->
 
 <h1>Upload a CSV to Database</h1>
 <?php

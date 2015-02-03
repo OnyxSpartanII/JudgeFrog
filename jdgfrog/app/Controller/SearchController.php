@@ -563,24 +563,24 @@ class SearchController extends AppController {
 			}
 		}
 
-		print_r($cases);
-		echo '<br><br>';
-		print_r($defendants);
-		echo '<br><br>';
-		print_r($judges);
-		echo '<br><br>';
-		print_r($acds);
-		echo '<br><br>';
-		print_r($charges);
-		echo '<br><br>';
-		print_r($ags);
-		echo '<br><br>';
-		print_r($ocgs);
-		echo '<br><br>';
-		print_r($victims);
+		// print_r($cases);
+		// echo '<br><br>';
+		// print_r($defendants);
+		// echo '<br><br>';
+		// print_r($judges);
+		// echo '<br><br>';
+		// print_r($acds);
+		// echo '<br><br>';
+		// print_r($charges);
+		// echo '<br><br>';
+		// print_r($ags);
+		// echo '<br><br>';
+		// print_r($ocgs);
+		// echo '<br><br>';
+		// print_r($victims);
 
-		echo 'Setting cases';
 		$this->set('cases', $cases);
+		$this->set('defendants', $defendants);
 		$this->render('home');
 	}
 }

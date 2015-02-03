@@ -14,6 +14,11 @@ class UploadsController extends AppController {
 
 	public $helpers = array('Html', 'Form');
 
+	public function beforeFilter() {
+		parent::beforeFilter();
+		$this->Auth->allow('add','receipt');
+	}
+
 	public function add() {
 
 		// if form is submitted via HTTP/1.1 POST
@@ -34,6 +39,9 @@ class UploadsController extends AppController {
 
 				// initialize $statutes array
 				$statutes = array();
+
+				// initialize $receipt array
+				$receipt = array();
 
 				// open up file into $file if the file exists
 				if (($file = fopen($filename,"r")) !== FALSE) {
@@ -94,11 +102,14 @@ class UploadsController extends AppController {
 								// Clear the model to allow for other Judge
 								// models to be created
 								$this->Judge->clear();
+
+								array_push($receipt, '[INFO] Created new Judge (ID: '.$judge_id.').');
 							} else {
 
 								// Get the JudgeId of the existing Judge
 								// model and save for future use
 								$judge_id = $this->Judge->find('first', array('conditions' => array('Judge.name' => $data[10])))["Judge"]["JudgeId"];
+								array_push($receipt, '[WARN] Detected duplicate Judge at row '.$row.'. Duplicate Judge ID: '.$judge_id.'.');
 							}
 
 							/**
@@ -151,6 +162,9 @@ class UploadsController extends AppController {
 								$this->CaseObject->save($case_data);
 								$case_id = $this->CaseObject->id;
 								$this->CaseObject->clear();
+								array_push($receipt, '[INFO] Created new CaseObject (ID: '.$case_id.').');
+							} else {
+								array_push($receipt, '[WARN] Detected duplicate CaseObject at row '.$row.'. Duplicate CaseObject ID: '.$case_id.'.');
 							}
 
 							/**
@@ -174,8 +188,10 @@ class UploadsController extends AppController {
 								$this->Defendant->save($defendant_data);
 								$defendant_id = $this->Defendant->id;
 								$this->Defendant->clear();
+								array_push($receipt, '[INFO] Created new Defendant (ID: '.$defendant_id.').');
 							} else {
 								$defendant_id = $this->Defendant->find('first', array('conditions' => array('Defendant.Firstname' => $data[3], 'Defendant.Lastname' => $data[2], 'Defendant.BirthDate' => date('Y-m-d', strtotime($data[18])))))["Defendant"]["DefendantId"];
+								array_push($receipt, '[WARN] Detected duplicate Defendant at row '.$row.'. Duplicate Defendant ID: '.$defendant_id.'.');
 							}
 
 							if (!$this->CaseHasDefendant->find('first', array('conditions' => array('CaseHasDefendant.CaseId' => $case_id, 'CaseHasDefendant.DefendantId' => $defendant_id)))) {	
@@ -191,6 +207,9 @@ class UploadsController extends AppController {
 								$this->CaseHasDefendant->create();
 								$this->CaseHasDefendant->save($chd_data);
 								$this->CaseHasDefendant->clear();
+								array_push($receipt, '[INFO] Added Defendant #$defendant_id to CaseObject #'.$case_id.'.');
+							} else {
+								array_push($receipt, '[WARN] Detected duplicate Defendant associated with Case #'.$case_id.' at row '.$row.'. Duplicate Defendant ID: '.$defendant_id.'.');
 							}
 
 							/**
@@ -199,26 +218,31 @@ class UploadsController extends AppController {
 							 * Create a new ArrestChargeDetail object
 							 * for each defendant in each case (each row)
 							 */
-							$acd_data = array(
-								'ChargeDate' => date('Y-m-d', strtotime($data[20])),
-								'ArrestDate' => date('Y-m-d', strtotime($data[21])),
-								'Detained' => ($data[22] == "1"),
-								'BailType' => intval($data[23]),
-								'BailAmount' => intval($data[24]),
-								'LaborTraf' => ($data[25] == "1"),
-								'AdultSexTraf' => ($data[26] == "1"),
-								'MinorSexTraf' => ($data[27] == "1"),
-								'Role' => ($data[28] == "1"),
-								'Fel_C' => intval($data[29]),
-								'Fel_S' => intval($data[30]),
-								'CHD_CaseId' => $case_id,
-								'CHD_DefendantId' => $defendant_id
-							);
+							if ($data[20] !== '') {
+								$acd_data = array(
+									'ChargeDate' => date('Y-m-d', strtotime($data[20])),
+									'ArrestDate' => date('Y-m-d', strtotime($data[21])),
+									'Detained' => ($data[22] == "1"),
+									'BailType' => intval($data[23]),
+									'BailAmount' => intval($data[24]),
+									'LaborTraf' => ($data[25] == "1"),
+									'AdultSexTraf' => ($data[26] == "1"),
+									'MinorSexTraf' => ($data[27] == "1"),
+									'Role' => ($data[28] == "1"),
+									'Fel_C' => intval($data[29]),
+									'Fel_S' => intval($data[30]),
+									'CHD_CaseId' => $case_id,
+									'CHD_DefendantId' => $defendant_id
+								);
 
-							$this->ArrestChargeDetail->create();
-							$this->ArrestChargeDetail->save($acd_data);
-							$acd_id = $this->ArrestChargeDetail->id;
-							$this->ArrestChargeDetail->clear();
+								$this->ArrestChargeDetail->create();
+								$this->ArrestChargeDetail->save($acd_data);
+								$acd_id = $this->ArrestChargeDetail->id;
+								$this->ArrestChargeDetail->clear();
+								array_push($receipt, '[INFO] Created new ArrestChargeDetail (ID: '.$acd_id.').');
+							} else {
+								array_push($receipt, '[ERROR] Missing information for ArrestChargeDetail at row '.$row.'. Did not create ArrestChargeDetail for this row.');
+							}
 							
 							/**
 							 * Charge Section
@@ -230,7 +254,7 @@ class UploadsController extends AppController {
 							$column = 31;
 							$statute_index = 0;
 							for ($column = 31; $column < 230; $column+=10) {
-								if ($data[$column] !== "0") {
+								if ($data[$column] == "1") {
 									$charge_data = array(
 										'Statute' => $statutes["$statute_index"],
 										'Counts' => intval($data[$column+1]),
@@ -251,6 +275,7 @@ class UploadsController extends AppController {
 									$this->Charge->save($charge_data);
 									$charge_id = $this->Charge->id;
 									$this->Charge->clear();
+									array_push($receipt, '[INFO] Created new Charge (ID: '.$charge_id.') and added this Charge to ArrestChargeDetail #'.$acd_id.', CaseObject #'.$case_id.', and Defendant #'.$defendant_id.'.');
 								}
 								$statute_index++;
 							}
@@ -279,6 +304,9 @@ class UploadsController extends AppController {
 								$this->AggregateSentence->save($sentence_data);
 								$sentence_id = $this->AggregateSentence->id;
 								$this->AggregateSentence->clear();
+								array_push($receipt, '[INFO] Created new AggregateSentence (ID: '.$sentence_id.') and added this Sentence to CaseObject #'.$case_id.', and Defendant #'.$defendant_id.'.');
+							} else {
+								array_push($receipt, '[ERROR] Missing data for AggregateSentence at row '.$row.'.');
 							}
 
 							/**
@@ -301,8 +329,10 @@ class UploadsController extends AppController {
 									$this->OrganizedCrimeGroup->save($ocg_data);
 									$ocg_id = $this->OrganizedCrimeGroup->id;
 									$this->OrganizedCrimeGroup->clear();
+									array_push($receipt, '[INFO] Created new OrganizedCrimeGroup (ID '.$ocg_id.').');
 								} else {
 									$ocg_id = $this->OrganizedCrimeGroup->find('first', array('conditions' => array('OrganizedCrimeGroup.Name' => $data[243])))["OrganizedCrimeGroup"]["OCGId"];
+									array_push($receipt, '[WARN] Detected duplicate OrganizedCrimeGroup at row '.$row.'. Duplicate OrganizedCrimeGroup ID: '.$ocg_id.'.');
 								}
 
 								if (!$this->CaseHasOrganizedCrimeGroup->find('first', array('conditions' => array('CaseHasOrganizedCrimeGroup.CaseId' => $case_id, 'CaseHasOrganizedCrimeGroup.OCGId' => $ocg_id)))) {
@@ -316,6 +346,9 @@ class UploadsController extends AppController {
 									$this->CaseHasOrganizedCrimeGroup->create();
 									$this->CaseHasOrganizedCrimeGroup->save($chocg_data);
 									$this->CaseHasOrganizedCrimeGroup->clear();
+									array_push($receipt, '[INFO] Added OrganizedCrimeGroup #'.$ocg_id.' to CaseObject #'.$case_id.'.');
+								} else {
+									array_push($receipt, '[WARN] Detected duplicate OrganizedCrimeGroup #'.$ocg_id.' associated with CaseObject #'.$case_id.' at row '.$row.'.');
 								}
 							}
 
@@ -333,8 +366,10 @@ class UploadsController extends AppController {
 									$this->OrganizedCrimeGroup->save($ocg_data);
 									$ocg_id = $this->OrganizedCrimeGroup->id;
 									$this->OrganizedCrimeGroup->clear();
+									array_push($receipt, '[INFO] Created new OrganizedCrimeGroup (ID '.$ocg_id.').');
 								} else {
 									$ocg_id = $this->OrganizedCrimeGroup->find('first', array('conditions' => array('OrganizedCrimeGroup.Name' => $data[247])))["OrganizedCrimeGroup"]["OCGId"];
+									array_push($receipt, '[WARN] Detected duplicate OrganizedCrimeGroup at row '.$row.'. Duplicate OrganizedCrimeGroup ID: '.$ocg_id.'.');
 								}
 
 								if (!$this->CaseHasOrganizedCrimeGroup->find('first', array('conditions' => array('CaseHasOrganizedCrimeGroup.CaseId' => $case_id, 'CaseHasOrganizedCrimeGroup.OCGId' => $ocg_id)))) {
@@ -348,6 +383,9 @@ class UploadsController extends AppController {
 									$this->CaseHasOrganizedCrimeGroup->create();
 									$this->CaseHasOrganizedCrimeGroup->save($chocg_data);
 									$this->CaseHasOrganizedCrimeGroup->clear();
+									array_push($receipt, '[INFO] Added OrganizedCrimeGroup #$ocg_id to CaseObject #'.$case_id.'.');
+								} else {
+									array_push($receipt, '[WARN] Detected duplicate OrganizedCrimeGroup #'.$ocg_id.' associated with CaseObject #'.$case_id.' at row '.$row.'.');
 								}
 							}
 						}
@@ -355,11 +393,11 @@ class UploadsController extends AppController {
 					}
 				}
 				fclose($file);
-				$this->redirect(array('action' => 'add'));
+				$this->set('receipt',$receipt);
+				$this->render('receipt');
 			} else {
 				$this->Session->setFlash('File upload failed!');
 			}
 		}
-		$this->render('add');
 	}
 }

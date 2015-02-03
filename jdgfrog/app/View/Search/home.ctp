@@ -21,7 +21,7 @@
 <!-- SEARCH BUTTON-->
 <div class="search_button">
 	<label for="submit_form">
-  		<img src="/jdgfrog/img/submit1.png" alt="Submit">
+  		<img src="img/submit1.png" alt="Submit">
   	</label>
 </div>
 
@@ -29,35 +29,100 @@
 
 </div>
 
-
 <div class="center_panel">
 
-  <?php
-    if (isset($cases)) {
-      echo '<table class="search_result_table">';
-      echo '<tr>';
-      echo '<th class="title_table">Case Name</th>';
-      echo '<th class="title_table">Case Number</th>';
-      echo '<th class="title_table">Year of Judgement</th>';
-      echo '</tr>';
+<script type="text/javascript">
+      google.load("visualization", "1", {packages:["table"]});
+      google.setOnLoadCallback(drawTable);
 
-      foreach ($cases as $case) {
-        echo '<tr>';
-        echo '<td>' . $case['CaseObject']['Name'] . '</td>';
-        echo '<td>' . $case['CaseObject']['Number'] . '</td>';
-        echo '<td>' . $case['CaseObject']['Year'] . '</td>';
-        echo '</tr>';
-      }
+      function drawTable() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Case Name');
+        data.addColumn('string', 'Case Number');
+        data.addColumn('number', 'Year');
+        <?php
+          if (isset($cases)) {
+            foreach ($cases as $case) {
+              echo 'data.addRow(["' . $case['CaseObject']['Name'] . '", "' . $case['CaseObject']['Number'] . '", {v: ' . explode('-',$case['CaseObject']['Year'])[0] . '}]);'; 
+            }
+          }
+        ?>
 
-      echo '</table>';
+        var table = new google.visualization.Table(document.getElementById('table_div'));
+
+        table.draw(data, {showRowNumber: false});
+
+        google.visualization.events.addListener(table, 'select', function () {
+          var row = table.getSelection()[0].row;
+          var caseName = data.getValue(row,0);
+          <?php
+            if (isset($cases)) {
+              $jsarr = json_encode($cases);
+              echo 'var cases = ' . $jsarr . ';';
+            } else {
+              echo 'var cases = [];';
+            }
+
+            if (isset($defendants)) {
+              $jsarr = json_encode($defendants);
+              echo 'var defs = ' . $jsarr . ';';
+            } else {
+              echo 'var defs = [];';
+            }
+          ?>
+          if (cases.length > 0) {
+            for (var i = 0; i < cases.length; i++) {
+              if (cases[i].CaseObject.Name == caseName) {
+                console.log(cases[i]);
+                var content = '<div><h3>Case Details</h3><br><hr>' +
+                              '<p style="text-align:left;">' +
+                              'Name:&nbsp;' + cases[i].CaseObject.Name + '<br>' +
+                              'Number:&nbsp;' + cases[i].CaseObject.Number + '<br>' +
+                              'Number of Defendants:&nbsp;' + cases[i].CaseObject.Num_Defendants + '<br>' +
+                              'State:&nbsp;' + cases[i].CaseObject.State + '<br>' +
+                              'Date:&nbsp;' + cases[i].CaseObject.Year + '<br></p><hr>';
+                for (var j = 0; j < defs.length; j++) {
+                  if (defs[j].Defendant.CaseId == cases[i].CaseObject.CaseId) {
+                    var race = 'Other';
+                    switch (defs[j].Defendant.Race) {
+                      case '0':
+                        race = 'White';
+                        break;
+                      case '1':
+                        race = 'Black';
+                        break;
+                      case '2':
+                        race = 'Hispanic';
+                        break;
+                      case '3':
+                        race = 'Asian';
+                        break;
+                    }
+                    content = content +
+                              '<p style="text-align:left;padding-left:50px;">' +
+                              'Name:&nbsp;' + defs[j].Defendant.Lastname + ', ' + defs[j].Defendant.Firstname + '<br>' +
+                              'Birthdate:&nbsp;' + defs[j].Defendant.BirthDate + '<br>' +
+                              'Gender:&nbsp;' + (defs[j].Defendant.Gender == false ? 'Male' : 'Female') + '<br>' +
+                              'Race:&nbsp;' + race + '</p>';
+                  }
+                }
+                content = content + '</div>';
+              }
+            }
+          }
+          $.modal(content);
+        });
+
     }
-  ?>
+</script>
 
+
+  <div id="table_div"></div>
 </div>
 
-        <!-- Search Interface -->
+
+<!-- Search Interface -->
 <div id="collapsible-panels">
-    <form method="post" action="search/update">
 
     <?php
       $base_url = array('controller' => 'search', 'action' => 'update');

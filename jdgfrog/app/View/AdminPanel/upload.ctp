@@ -13,15 +13,14 @@ endif;
 
 App::uses('Debugger', 'Utility');
 ?>
-
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>Batch  | Admin Control Panel HTD</title>
+	<title>Upload Batch  | Admin Control Panel HTD</title>
 	<meta http-equiv="Content-Language" content="English" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />
-	<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css' />
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'/>
 </head>
 
 
@@ -30,48 +29,39 @@ App::uses('Debugger', 'Utility');
 <div id="wrap">
 	<div id="header">
 		<div id="headerlinks">
-		<a href="index.html" title="Case">Case</a>
-		<a href="court.html" title="Court">Court</a>
-		<a href="defendant.html" title="Defendant">Defendant</a>
-		<a href="upload.html" class="upload_active" title="Batch Upload">Batch Upload</a>
+		<a href="./index.html" title="Home">Home</a>
+		<a href="./create.html" title="Create">Create</a>
+		<a href="./edit.html" title="Edit">Edit</a>
+		<a href="./delete.html" title="Delete">Delete</a>
+		<a href="upload.html" class="upload_active" title="Batch Upload">Upload</a>
+		<label style="color:#fff">|</label>
+		<a href="off.html" title="Log Off">LogOff</a>
 		</div>
 		<h1><a href="index.html">Admin Control Panel | HTD</a></h1>
 	</div>
 
 
-	<div id="content">
+	<div class="content">
 
+	<div class="body-content" style="text-align:center">
 
-<table class="tg">
+		<form style="margin: 0 auto">
+				<h2>Batch Upload...</h2>
+	  				<br><br>
+				<input type="file" style="font-size:13px; margin:0px auto; width:175px; height:30px; background-color:#000; border:none; color:#fff;" value="Choose File" name="upload_btn" />
+				
+			<br><br><br>
+			<input type="submit" style="font-size:20px; width:200px; height:50px; background-color:#db1a03; border:none; color:#fff;" value="Upload New Batch" name="case_submit">
 
-	<form>
-
-  		<tr>
-    		<th class="tg-4kyz" colspan="3">Batch Upload...</th>
-  		</tr>
-
-  		<tr>
-    		<td class="tg-right"><input type="text" style="font-size:20px; width:400px; margin-left:170px; " name="case_name"></td>
-			<td><input type="file" style="font-size:13px; margin-right:110px; width:175px; height:30px; background-color:#000; border:none; color:#fff;" value="Choose File" name="upload_btn"></td>
-  		</tr>
-
-
-
-
-</table>
-		<br><br><br><br><br><br><br>
-		<input type="submit" style="font-size:20px; margin-left:0px; width:200px; height:50px; background-color:#f05; border:none; color:#fff;" value="Upload New Batch" name="case_submit">
-
-	</form>
-
-
-		<h4 style="color:#F05; margin-top:600px;">*Uploading...</h4>
-
+		</form>
+	</div>
 	</div>
 
-	<div id="footer">
-		Admin Control Panel HTD V 0.1 | <a target="_blank" href="http://humantraffickingdata.org" title="Human Trafficking Data Website">Human Trafficking Data</a>
-	</div>
+
+  <div id="footer">
+    <p>Admin Control Panel HTD V 0.1 | <a target="_blank" href="http://humantraffickingdata.org" title="Human Trafficking Data Website">Human Trafficking Data</a>
+    </p>
+  </div>
 
 </div>
 

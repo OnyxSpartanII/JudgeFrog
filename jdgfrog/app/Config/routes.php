@@ -29,6 +29,7 @@
 	Router::connect('/login', array('controller' => 'users', 'action' => 'login'));
 	Router::connect('/create', array('controller' => 'users', 'action' => 'create'));
 	Router::connect('/logout', array('controller' => 'users', 'action' => 'logout'));
+	Router::connect('/dashboard', array('controller' => 'adminpanel', 'action' => 'index'));
 
 	Router::connect('/home', array('controller' => 'pages', 'action' => 'home'));
 	Router::connect('/about', array('controller' => 'pages', 'action' => 'about'));
@@ -42,7 +43,9 @@
 	Router::connect('/publications', array('controller' => 'pages', 'action' => 'publicationsAndReports'));
 	Router::connect('/federalStatutes', array('controller' => 'pages', 'action' => 'federalStatutes'));
 	Router::connect('/contact', array('controller' => 'pages', 'action' => 'contact'));
+	
 	Router::connect('/uploads', array('controller' => 'uploads', 'action' => 'add'));
+
 /**
  * ...and connect the rest of 'Pages' controller's URLs.
  */

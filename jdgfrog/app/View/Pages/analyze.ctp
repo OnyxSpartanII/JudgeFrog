@@ -206,11 +206,19 @@ google.load("visualization", "1", {packages:["corechart"]});
         <style>
           #chart {
            position: absolute;
-            left: 560px;
+            left: 800px;
             top: 470px;
           }
         </style>
  
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br><br><br>
+<br><br>
 
             <br><br>
             <hr style="color: #999">

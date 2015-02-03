@@ -31,12 +31,16 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
 	<?php
 		echo $this->Html->meta('icon');
-    	echo $this->Html->css(array('reset', 'styles', 'responsive'));
-    	echo $this->Html->script(array('jquery', 'slider', 'superfish', 'custom'));
+    	echo $this->Html->css(array('reset', 'styles', 'responsive', 'search_page_css', 'nav_bar_style', 'default','ion.rangeSlider.skinFlat','ion.rangeSlider', 'jquery-ui', 'modal_window_style', 'animation'));
+    	echo $this->Html->script(array('jquery', 'slider', 'superfish', 'custom', 'jquery-1.10.2', 'jquery-ui', 'modernizr.custom', 'classie','moment','ion.rangeSlider','ion.rangeSlider.min','sliderMod', 'jquery.simplemodal'));
 		//echo $this->fetch('meta');
 		// echo $this->fetch('css');
 		//echo $this->fetch('script');
 	?>
+<!-- Google charts Script -->
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+	
 	<title> 
 		<?php 
 			if (isset($title)) 
@@ -77,17 +81,6 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 
 		                        <!-- SEARCH THE DATABASE MENU ITEM -->
 			                    <li class="<?php echo ($this->fetch('selected') == 'search') ? 'selected' : ''; ?>"><a href="search">
-
-						            <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-									 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-									 <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-									 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-    							<?php 
-    							echo $this->Html->script(array('modernizr.custom', 'classie','moment','ion.rangeSlider.js','ion.rangeSlider.min','sliderMod.js')); 
-    							echo $this->Html->css(array('search_page_css', 'nav_bar_style', 'default','ion.rangeSlider.skinFlat','ion.rangeSlider'));
-    							?>
-    							<!-- Google charts Script -->
-    							<script type="text/javascript" src="https://www.google.com/jsapi"></script>
     							
 			                    Search the Database</a></li>
 
@@ -106,7 +99,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			                    </li>
 
 			                    <!-- CONTACT US MENU ITEM -->
-			                    <li class="<?php echo ($this->fetch('selected') == 'contact') ? 'selected' : ''; ?>"><<?php echo $this->Html->link('Contact Us', '/contact')?></li>
+			                    <li class="<?php echo ($this->fetch('selected') == 'contact') ? 'selected' : ''; ?>"><?php echo $this->Html->link('Contact Us', '/contact')?></li>
 
 			                </ul>
 			            <div class="clear"></div>

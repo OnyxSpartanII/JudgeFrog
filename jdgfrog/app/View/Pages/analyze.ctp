@@ -157,15 +157,21 @@
       }
   function geoChart() {
         var data = google.visualization.arrayToDataTable([
-          ['Country',   'Latitude'],
-          ['USA', 100],
+          ['State',   '# of Cases'],
+          ['Texas', 14],
+          ['Tennessee', 12],
+          ['Florida', 8],
+          ['California', 7],
+          ['New York', 21],
+          ['Illinois', 9],
+          ['Alabama', 2],
+          ['Arizona', 11],
         ]);
   
         var options = {
-          region: 'US-TX', // Africa
-          colorAxis: {colors: ['#00853f', 'black', '#e31b23']},
-          backgroundColor: '#81d4fa',
-          datalessRegionColor: '#f8bbd0',
+          region: 'US',
+          displayMode: 'markers',
+          colorAxis: {colors: ['green', 'blue']},
           resolution: 'provinces'
         };
 

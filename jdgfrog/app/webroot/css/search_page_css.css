@@ -72,7 +72,10 @@
 
 .center_panel{
     /*background-color: #f05;*/
-    margin-left: 400px;
+    /* margin-left: 400px; */
+    display:inline-block;
+    float:right;
+    width: 800px;
 
 }
 
@@ -80,7 +83,8 @@
 #collapsible-panels{
     /*margin-top: 200px;*/
     width: 400px;
-    margin-top: -133px;
+    /* margin-top: -133px; */
+    display:inline-block;
 }
 
 #collapsible-panels div {

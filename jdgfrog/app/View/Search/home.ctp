@@ -161,11 +161,11 @@
               <?php
                 echo $this->Form->input('defendant_Name', array('placeholder' =>'Name'));
                 echo '<br><br>';
-                echo $this->Form->input('defendant_Gender', array('options' => array('Male', 'Female'), 'empty' => '--Gender--'));
+                echo $this->Form->input('defendant_Gender', array('options' => array('Male', 'Female'), 'empty' => 'Gender'));
                 echo '<br><br>';
                 echo $this->Form->input('defendant_YOB', array('label' => 'Year of Birth', 'id' => 'yearBirthDefendant'));
                 echo '<br><br>';
-                echo $this->Form->input('defendant_Race', array('empty' => '--Race--', 'options' => array('White', 'Black', 'Hispanic', 'Asian', 'Other')));
+                echo $this->Form->input('defendant_Race', array('empty' => 'Race', 'options' => array('White', 'Black', 'Hispanic', 'Asian', 'Other')));
                 echo '<br>';
               ?>
    			</div>
@@ -177,13 +177,13 @@
 	        	<?php
               echo $this->Form->input('judge_Name', array('placeholder' => 'Name'));
               echo '<br><br>';
-              echo $this->Form->input('judge_Race', array('empty' => '--Race--', 'options' => array('White','Black','Hispanic','Asian','Other')));
+              echo $this->Form->input('judge_Race', array('empty' => 'Race', 'options' => array('White','Black','Hispanic','Asian','Other')));
               echo '<br><br>';
-              echo $this->Form->input('judge_Gender', array('empty' => '--Gender--', 'options' => array('Male','Female')));
+              echo $this->Form->input('judge_Gender', array('empty' => 'Gender', 'options' => array('Male','Female')));
               echo '<br><br>';
               echo $this->Form->input('judge_YearApp', array('id' => 'yearAppointJudge'));
               echo '<br><br>';
-              echo $this->Form->input('judge_ApptBy', array('empty' => '--Appointed By--', 'options' => array('Democrat', 'Republican')));
+              echo $this->Form->input('judge_ApptBy', array('empty' => 'Appointed By', 'options' => array('Democrat', 'Republican')));
               echo '<br>';
             ?>
 	        </div>
@@ -195,11 +195,11 @@
           <?php
             echo $this->Form->input('ocg_Name', array('placeholder' => 'Name'));
             echo '<br><br>';
-            echo $this->Form->input('ocg_Type', array('empty' => '--Type--', 'options' => array('Mom and Pop', 'Street Gang', 'Cartel/Syndicate/Mafia', 'Prison Gang', 'Other')));
+            echo $this->Form->input('ocg_Type', array('empty' => 'Type', 'options' => array('Mom and Pop', 'Street Gang', 'Cartel/Syndicate/Mafia', 'Prison Gang', 'Other')));
             echo '<br><br>';
-            echo $this->Form->input('ocg_Scope', array('empty' => '--Scope--', 'options' => array('Local', 'Trans-State', 'Trans-National')));
+            echo $this->Form->input('ocg_Scope', array('empty' => 'Scope', 'options' => array('Local', 'Trans-State', 'Trans-National')));
             echo '<br><br>';
-            echo $this->Form->input('ocg_Race', array('empty' => '--Race--', 'options' => array('White','Black','Hispanic','Asian','Other')));
+            echo $this->Form->input('ocg_Race', array('empty' => 'Race', 'options' => array('White','Black','Hispanic','Asian','Other')));
             echo '<br>';
           ?>
         </div>
@@ -223,9 +223,9 @@
           <?php
             echo $this->Form->input('ad_DateArrest', array('id' => 'dateArrestAD', 'label' => 'Date of Arrest'));
             echo '<br><br>';
-            echo $this->Form->input('ad_Role', array('empty' => '--Role--', 'options' => array('Yes','No')));
+            echo $this->Form->input('ad_Role', array('empty' => 'Role', 'options' => array('Yes','No')));
             echo '<br><br>';
-            echo $this->Form->input('ad_BailType', array('empty' => '--Bail Type--', 'options' => array('None','Surety','Non-Surety')));
+            echo $this->Form->input('ad_BailType', array('empty' => 'Bail Type', 'options' => array('None','Surety','Non-Surety')));
             echo '<br><br>';
             echo $this->Form->input('ad_BailAmount', array('id' => 'bailAmountArrest', 'label' => 'Bail Amount'));
             echo '<br>';
@@ -241,7 +241,7 @@
             echo '<br><br>';
             echo $this->Form->input('cd_TtlCharges', array('id' => 'totalCharges', 'label' => 'Total Charges'));
             echo '<br><br>';
-            echo $this->Form->input('cd_Statute', array('placeholder' => 'Statute'));
+            echo $this->Form->input('cd_Statute', array('empty' => 'Statute', 'options' => array('Mickey','Mouse')));
             echo '<br><br>';
             echo $this->Form->input('cd_Counts', array('id' => 'countsCharge', 'label' => 'Counts'));
             echo '<br><br>';
@@ -267,21 +267,19 @@
 		<h2><a href="#">Sentencing Details</a></h2>
 		<div>
       <?php
-        echo $this->Form->input('sd_TtlFelonies', array('id' => 'totalNumFelonySentence'));
+        echo $this->Form->input('sd_TtlFelonies', array('id' => 'totalNumFelonySentence', 'label' => 'Total # Felonies Sentenced'));
         echo '<br><br>';
-        echo $this->Form->input('sd_DateTerminated', array('id' => 'dateTermSentenced'));
+        echo $this->Form->input('sd_DateTerminated', array('id' => 'dateTermSentenced', 'label' => 'Year Terminated'));
         echo '<br><br>';
-        echo $this->Form->input('sd_TtlMonths', array('id' =>'totalMonthsSentenced'));
+        echo $this->Form->input('sd_TtlMonths', array('id' =>'totalMonthsSentenced', 'label' => 'Total Months Sentenced'));
         echo '<br><br>';
-        echo $this->Form->input('sd_Restitution', array('id' => 'amountRestitutionSent'));
+        echo $this->Form->input('sd_Restitution', array('id' => 'amountRestitutionSent', 'label' => 'Amount Restitution'));
         echo '<br><br>';
-        echo $this->Form->input('sd_AssetForfeit', array('empty' => '--Asset Forfeit--', 'options' => array('Yes','No')));
+        echo $this->Form->input('sd_AssetForfeit', array('empty' => 'Asset Forfeit', 'options' => array('Yes','No')));
         echo '<br><br>';
-        echo $this->Form->input('sd_Appeal', array('empty' => '--Appeal--', 'options' => array('Yes','No')));
+        echo $this->Form->input('sd_Appeal', array('empty' => 'Appeal', 'options' => array('Yes','No')));
         echo '<br><br>';
-        echo $this->Form->input('sd_MonthsSupRel', array('id' => 'monthsSuperReleaseSentence'));
-        echo '<br><br>';
-        echo $this->Form->input('sd_MonthsProb', array('id' => 'monthsProbationSentence'));
+        echo $this->Form->input('sd_MonthsProb', array('id' => 'monthsProbationSentence', 'label' => '# of Months Probation'));
         echo '<br>';
       ?>
     </div>

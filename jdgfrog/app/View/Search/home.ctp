@@ -149,8 +149,11 @@
         	<div>
               <?php
                 echo $this->Form->input('case_Adult', array('type' => 'checkbox', 'label' => ' Adult Sex ', 'checked' => 'true'));
+                echo '<br><br>';
                 echo $this->Form->input('case_Minor', array('type' => 'checkbox', 'label' => ' Minor Sex ', 'checked' => 'true'));
+                echo '<br><br>';
                 echo $this->Form->input('case_Labor', array('type' => 'checkbox', 'label' => ' Labor', 'checked' => 'true'));
+                echo '<br>';
               ?>
         	</div>
 

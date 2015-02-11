@@ -36,7 +36,7 @@
         <!-- Search Interface -->
 <div id="collapsible-panels" style="margin-top:0px">
 
-<h2><a href="#">Choose A Graph</a></h2>
+<h2><a href="#">1. Choose A Graph</a></h2>
         <div>
         <form action="">
             <input type="radio" name="graphRadio" id="barGraphRadio"  > Bar Graph<br>
@@ -49,6 +49,32 @@
         </div>
       
         <hr style="width:400px;">
+
+<h2><a href="#">2. Customize</a></h2>
+        <div>
+    <select id='xAxisBox'>
+      <option value="x">X Axis</option>
+      <option value="judge">judge</option>
+      <option value="race">race</option>
+      <option value="nationality">nationality</option>
+      <option value="age">age</option>
+    </select> <br><br>
+    <select id='yAxisBox'>
+      <option value="y">Y Axis</option>
+      <option value="judge">judge</option>
+      <option value="race">race</option>
+      <option value="nationality">nationality</option>
+      <option value="age">age</option>
+    </select>
+    <select id='singleBox'>
+      <option value="y">Single</option>
+      <option value="judge">judge</option>
+      <option value="race">race</option>
+      <option value="nationality">nationality</option>
+      <option value="age">age</option>
+    </select>
+
+          </div>
 
 
  </div> <!-- END OF COLLAPSIBLE PANEL -->

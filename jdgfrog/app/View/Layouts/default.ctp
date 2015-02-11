@@ -21,25 +21,32 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 <!DOCTYPE html>
 <html>
 <head>
-
 <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
-
 <!--[if lt IE 9]>
 <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 
-<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+<!--web-fonts-->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 	<?php
 		echo $this->Html->meta('icon');
-		echo $this->Html->css(array('reset', 'styles', 'responsive', 'search_page_css', 'nav_bar_style', 'default','ion.rangeSlider.skinFlat','ion.rangeSlider', 'jquery-ui', 'modal_window_style', 'animation'));
-		echo $this->Html->script(array('jquery', 'slider', 'superfish', 'custom', 'jquery-1.10.2', 'jquery-ui', 'modernizr.custom', 'classie','moment','ion.rangeSlider','ion.rangeSlider.min','sliderMod', 'jquery.simplemodal'));
+		echo $this->Html->css(array('htd-main', 'bootstrap', 'nav_bar_style', 'default','ion.rangeSlider.skinFlat','ion.rangeSlider', 'jquery-ui', 'modal_window_style', 'animation'));
+		echo $this->Html->script(array('jquery', 'slider', 'superfish', 'custom', 'jquery-1.10.2', 'jquery-ui', 'modernizr.custom', 'classie','moment','ion.rangeSlider','ion.rangeSlider.min','sliderMod', 'jquery.simplemodal', 'hover-effect', 'move-top.js', 'easing.js', 'easyResponsiveTabs'));
 		//echo $this->fetch('meta');
 		// echo $this->fetch('css');
 		//echo $this->fetch('script');
 	?>
 <!-- Google charts Script -->
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#horizontalTab').easyResponsiveTabs({
+            type: 'default', //Types: default, vertical, accordion           
+            width: 'auto', //auto or any width like 600px
+            fit: true   // 100% fit in a container
+        });
+    });
+</script>
 	
 	<title> 
 		<?php 
@@ -59,54 +66,40 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 </head>
 
 <body>
-	<div id="container" class="width">
-			<header>
-				<div id="header">
-					<h1><a href="home" title="Home"><strong>H</strong>uman <strong>T</strong>rafficking <strong>D</strong>ata</a></h1>
-						<nav>
-							<ul class="sf-menu dropdown">   
-
-								<!-- HOME PAGE MENU ITEM -->
-								<li class="<?php echo ($this->fetch('selected') == 'home') ? 'selected' : ''; ?>"><a href="home">Home</a></li>
-
-								<!-- ABOUT & ABOUT DROPDOWN MENU ITEMS -->
-								<li class="<?php echo ($this->fetch('selected') == 'about') ? 'selected' : ''; ?>">
-									<a href="about" >About</a>
-									<ul>
-										<li><?php echo $this->Html->link('Methodology', '/methodology')?></li>
-										<li><?php echo $this->Html->link('Principal Investigators', '/principals')?></li>
-										<li><?php echo $this->Html->link('Acknowledgements', '/acknowledgements')?></li>
-									</ul>
-								</li>
-
-								<!-- SEARCH THE DATABASE MENU ITEM -->
-								<li class="<?php echo ($this->fetch('selected') == 'search') ? 'selected' : ''; ?>"><a href="search">
-								
-								Search the Database</a></li>
 
 
-								<!-- ANALYSE THE DATA MENU ITEM -->
-								<li class="<?php echo ($this->fetch('selected') == 'analyze') ? 'selected' : ''; ?>"><?php echo $this->Html->link('Data Analysis', '/analyze')?></li>
-								
-								<!-- ADDITIONAL RESOURCES DROPDOWN MENU ITEMS -->
-								<li class="<?php echo ($this->fetch('selected') == 'resources') ? 'selected' : ''; ?>">
-									<a>Additional Resources</a>
-									<ul>
-										<li><?php echo $this->Html->link('Organization and Government', '/orgAndGovernment')?></li>
-										<li><?php echo $this->Html->link('Publications and Reports', '/publications')?></li>
-										<li><?php echo $this->Html->link('Federal Statutes', '/federalStatutes')?></li>
-									</ul>
-								</li>
-
-								<!-- CONTACT US MENU ITEM -->
-								<li class="<?php echo ($this->fetch('selected') == 'contact') ? 'selected' : ''; ?>"><?php echo $this->Html->link('Contact Us', '/contact')?></li>
-
-							</ul>
-						<div class="clear"></div>
-					</nav>
-				</div>
-			</header>
-		</div>
+<!--header start here-->
+ <div class="header-b">
+	 	  <div class="container">
+	 	       <div class="header-main">
+	 	        	<div class="logo">
+	 	        		<a href="index.html">
+	 	        			<h2 onmouseover="bringTheFunc(this)">HTD</h2>
+	 	        			<!-- <img src="./images/logo.png" alt=""> -->
+	 	        		</a>
+	 	        	</div> 
+	 	        	<span class="menu"> <?php echo $this->Html->image('icon.png', array('alt' => 'Menu List')); ?></span>
+	 	        	<div class="header-navg">
+	 	        		<ul class="res">
+	 	        			<li><a class="active" href="index.html">HOME</a></li>
+	 	        			<li><a href="about.html">ABOUT</a></li>
+	 	        			<li><a href="search.html">SEARCH DATABASE</a></li>
+	 	        			<li><a href="additional.html">ADDITIONAL RESOURCES</a></li>
+	 	        			<li><a href="contact.html">CONTACT US</a></li>
+	 	        		</ul>
+	 	        		 <script>
+	                          $( "span.menu").click(function() {
+		                        $(  "ul.res" ).slideToggle("slow", function() {
+		                         // Animation complete.
+		                         });
+		                         });
+	                     </script>
+	 	        	</div>
+	 	        	<div class="clearfix"> </div>
+	 	       </div>
+	 	 </div>
+	</div>
+<!-- </div> -->
 
 	<div id="content">
 
@@ -120,18 +113,42 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 
 
 <!-- FOOTER SECTION -->
-   <footer>
-		<div class="footer-content width">
-
-			<label style="padding-top: 20px;">Copyright &copy; 
-			<?php $initialYear = 2014; $currentYear = date('Y'); echo $initialYear . (($initialYear != $currentYear) ? '-' . $currentYear : '');?> | Human Trafficking Data</label>
-			<br><br>
-			<label><span style="font-weight: bold">HumanTraffickingData.org</span> was created by Texas Christian University with support from the National Institute of Justice.</label>
-
-		<div style="padding-top:50px">
-			<hr style="color:#999; border-bottom: .02em dashed #ccc;">
-			<br>
-			<label style="color:#999"><span style="font-weight: bold">Disclaimer:</span> Information contained on this website does not represent the views or policies of Texas Christian University, the National Institute of Justice, or the U.S. Department of Justice.</label>
-		</div>
-	</footer>
+<div class="footer-h">
+	  <div class="container">
+	  	    <div class="footer-main">
+	  	    	<div class="col-md-5 footer-left">
+            		<label>
+            			<h4>Disclaimer:</h4>
+            		Information contained on this website does not represent the views or policies of Texas Christian University, the National Institute of Justice, or the U.S. Department of Justice.
+            		</label>
+	  	    	</div>
+	  	    	<div class="col-md-4 footer-right">
+            		<label>
+            			<h4>Sponsors:</h4>
+            			This website was created by Texas Christian University with support from the National Institute of Justice.
+            		</label>
+	  	    	</div>
+	  	    	<div class="col-md-3 footer-right">
+            		<label>
+            			<h4>Authorized Users:</h4>
+            		Authorized users can access the academic/advanced user portal by clicking <a href="#">here.</a>
+            		</label>
+	  	    	</div>
+	  	    <div class="clearfix"> </div>
+	  	    </div>
+	  </div>
+            	<div class="footer-center">
+            		<label>Copyright &copy; 
+            			<?php $initialYear = 2014; $currentYear = date('Y'); echo $initialYear . (($initialYear != $currentYear) ? '-' . $currentYear : '');?> | Human Trafficking Data
+            		</label>
+            	</div>
+</div>
+</body>
 </html>
+
+
+<!--
+Original Author: W3layouts - http://w3layouts.com
+Modification Done by: Brice Boula & the Judge Frog Team
+License: Modified Under The Creative Commons Attribution 3.0 license.
+-->

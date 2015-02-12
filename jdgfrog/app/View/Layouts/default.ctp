@@ -73,7 +73,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	 	  <div class="container">
 	 	       <div class="header-main">
 	 	        	<div class="logo">
-	 	        		<a href="index.html">
+	 	        		<a href="home">
 	 	        			<h2 onmouseover="bringTheFunc(this)">HTD</h2>
 	 	        			<!-- <img src="./images/logo.png" alt=""> -->
 	 	        		</a>
@@ -133,7 +133,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	  	    	<div class="col-md-3 footer-right">
             		<label>
             			<h4>Authorized Users:</h4>
-            		Authorized users can access the academic/advanced user portal by clicking <a href="#">here.</a>
+            		Authorized users can access the academic/advanced user portal by clicking <a href="login">here.</a>
             		</label>
 	  	    	</div>
 	  	    <div class="clearfix"> </div>

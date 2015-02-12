@@ -43,6 +43,7 @@
 	Router::connect('/publications', array('controller' => 'pages', 'action' => 'publicationsAndReports'));
 	Router::connect('/federalStatutes', array('controller' => 'pages', 'action' => 'federalStatutes'));
 	Router::connect('/contact', array('controller' => 'pages', 'action' => 'contact'));
+	Router::connect('/additionalResources', array('controller' => 'pages', 'action' => 'additionalResources'));
 
 	Router::connect('/uploads', array('controller' => 'uploads', 'action' => 'add'));
 

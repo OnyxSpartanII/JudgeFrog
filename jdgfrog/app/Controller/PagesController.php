@@ -41,7 +41,7 @@ class PagesController extends AppController {
 		parent::beforeFilter();
 		$this->Auth->allow('index', 'home', 'about', 'methodology', 'principalInvestigators',
 							'acknowledgements', 'searchDatabase', 'analyze', 'orgAndGovernment',
-							'publicationsAndReports', 'federalStatutes');
+							'publicationsAndReports', 'federalStatutes','contact','additionalResources');
 	}
 
 /**
@@ -140,6 +140,11 @@ class PagesController extends AppController {
 	public function contact() {
 		$this->set('title', 'Contact | Human Trafficking Data');
 		$this->set('selected', 'contact');
+	}
+	
+	public function additionalResources() {
+		$this->set('title', 'Additional Resources | Human Trafficking Data');
+		$this->set('selected', 'additionalResources');
 	}
 
 }

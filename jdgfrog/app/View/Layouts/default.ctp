@@ -30,7 +30,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 	<?php
 		echo $this->Html->meta('icon');
-		echo $this->Html->css(array('htd-main', 'bootstrap', 'nav_bar_style', 'default','ion.rangeSlider.skinFlat','ion.rangeSlider', 'jquery-ui', 'modal_window_style', 'animation', 'responsive','reset','login_page_style','styles'));
+		echo $this->Html->css(array('htd-main', 'bootstrap', 'nav_bar_style', 'default','ion.rangeSlider.skinFlat','ion.rangeSlider', 'jquery-ui', 'modal_window_style', 'animation'));
 		echo $this->Html->script(array('jquery', 'slider', 'superfish', 'custom', 'jquery-1.10.2', 'jquery-ui', 'modernizr.custom', 'classie','moment','ion.rangeSlider','ion.rangeSlider.min','sliderMod', 'jquery.simplemodal', 'hover-effect', 'move-top.js', 'easing.js', 'easyResponsiveTabs','chartMod'));
 		//echo $this->fetch('meta');
 		// echo $this->fetch('css');

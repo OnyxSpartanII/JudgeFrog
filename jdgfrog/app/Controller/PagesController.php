@@ -39,9 +39,7 @@ class PagesController extends AppController {
 
 	public function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow('index', 'home', 'about', 'methodology', 'principalInvestigators',
-							'acknowledgements', 'searchDatabase', 'analyze', 'orgAndGovernment',
-							'publicationsAndReports', 'federalStatutes','contact','additionalResources');
+		$this->Auth->allow('index', 'home', 'about', 'searchDatabase', 'additionalResources', 'contact');
 	}
 
 /**
@@ -89,62 +87,28 @@ class PagesController extends AppController {
 
 	public function home() {
 		$this->set('title', 'Home | Human Trafficking Data');
-		$this->set('selected', 'home');
+		$this->set('active', 'home');
 	}
 
 	public function about(){
 		$this->set('title', 'About | Human Trafficking Data');
-		$this->set('selected', 'about');
-	}
-
-	public function methodology() {
-		$this->set('title', 'Methodology | Human Trafficking Data');
-		$this->set('selected', 'about');
-	}
-
-	public function principalInvestigators() {
-		$this->set('title', 'Principal Investigators | Human Trafficking Data');
-		$this->set('selected', 'about');
-	}
-
-	public function acknowledgements() {
-		$this->set('title', 'Acknowledgements | Human Trafficking Data');
-		$this->set('selected', 'about');
+		$this->set('active', 'about');
 	}
 
 	public function searchDatabase() {
 		$this->set('title', 'Database Search | Human Trafficking Data');
-		$this->set('selected', 'search');
+		$this->set('active', 'searchDatabase');
 	}
 
-	public function analyze() {
-		$this->set('title', 'Analyze Data | Human Trafficking Data');
-		$this->set('selected', 'analyze');
-	}
-
-	public function orgAndGovernment() {
-		$this->set('title', 'Organizations | Human Trafficking Data');
-		$this->set('selected', 'resources');
-	}
-
-	public function publicationsAndReports() {
-		$this->set('title', 'Publications | Human Trafficking Data');
-		$this->set('selected', 'resources');
-	}
-
-	public function federalStatutes() {
-		$this->set('title', 'Federal Statutes | Human Trafficking Data');
-		$this->set('selected', 'resources');
+	public function additionalResources() {
+		$this->set('title', 'Additional Resources | Human Trafficking Data');
+		$this->set('active', 'additionalResources');
 	}
 
 	public function contact() {
 		$this->set('title', 'Contact | Human Trafficking Data');
-		$this->set('selected', 'contact');
+		$this->set('active', 'contact');
 	}
 	
-	public function additionalResources() {
-		$this->set('title', 'Additional Resources | Human Trafficking Data');
-		$this->set('selected', 'additionalResources');
-	}
 
 }

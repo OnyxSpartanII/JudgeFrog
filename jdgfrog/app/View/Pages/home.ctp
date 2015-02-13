@@ -11,7 +11,7 @@
 		}
 		}, 15);
 	</script>	
-<!--job start here-->
+<!--Welcome starts here-->
 <div class="jobs">
 	<div class="container">
 	  	<div class="jobs-main">

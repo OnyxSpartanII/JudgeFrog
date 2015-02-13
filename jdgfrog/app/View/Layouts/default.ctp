@@ -31,7 +31,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	<?php
 		echo $this->Html->meta('icon');
 		echo $this->Html->css(array('htd-main', 'bootstrap', 'nav_bar_style', 'default','ion.rangeSlider.skinFlat','ion.rangeSlider', 'jquery-ui', 'modal_window_style', 'animation'));
-		echo $this->Html->script(array('jquery', 'slider', 'superfish', 'custom', 'jquery-1.10.2', 'jquery-ui', 'modernizr.custom', 'classie','moment','ion.rangeSlider','ion.rangeSlider.min','sliderMod', 'jquery.simplemodal', 'hover-effect', 'move-top.js', 'easing.js', 'easyResponsiveTabs','chartMod'));
+		echo $this->Html->script(array('jquery', 'slider', 'superfish', 'custom', 'jquery-1.10.2', 'jquery-ui', 'modernizr.custom', 'classie','moment','ion.rangeSlider','ion.rangeSlider.min','sliderMod', 'jquery.simplemodal', 'hover-effect', 'jquery.min', 'move-top.js', 'easing.js', 'easyResponsiveTabs','chartMod'));
 		//echo $this->fetch('meta');
 		// echo $this->fetch('css');
 		//echo $this->fetch('script');
@@ -56,11 +56,11 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			}
 			echo $this->fetch('title'); 
 
-			if (isset($selected))
+			if (isset($active))
 			{
-				$this->assign('selected', $selected);
+				$this->assign('active', $active);
 			}
-			//echo $this->fetch('selected');
+			//echo $this->fetch('active');
 		?> 
 	</title>
 </head>
@@ -83,11 +83,11 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	 	        	
 	 	        	<div class="header-navg">
 	 	        		<ul class="res">
-	 	        			<li><a class="active" href="home">HOME</a></li>
-	 	        			<li><a href="about">ABOUT</a></li>
-	 	        			<li><a href="search">SEARCH DATABASE</a></li>
-	 	        			<li><a href="additionalResources">ADDITIONAL RESOURCES</a></li>
-	 	        			<li><a href="contact">CONTACT US</a></li>
+	 	        			<li><a class="<?php echo ($this->fetch('active') == 'home') ? 'active' : ''; ?>" href="home">HOME</a></li>
+	 	        			<li><a class="<?php echo ($this->fetch('active') == 'about') ? 'active' : ''; ?>" href="about">ABOUT</a></li>
+	 	        			<li><a class="<?php echo ($this->fetch('active') == 'searchDatabase') ? 'active' : ''; ?>" href="search">SEARCH DATABASE</a></li>
+	 	        			<li><a class="<?php echo ($this->fetch('active') == 'additionalResources') ? 'active' : ''; ?>" href="additionalResources">ADDITIONAL RESOURCES</a></li>
+	 	        			<li><a class="<?php echo ($this->fetch('active') == 'contact') ? 'active' : ''; ?>" href="contact">CONTACT US</a></li>
 	 	        		</ul>
 	 	        		 <script>
 	                          $( "span.menu").click(function() {
@@ -127,7 +127,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	  	    	<div class="col-md-4 footer-right">
             		<label>
             			<h4>Sponsors:</h4>
-            			This website was created by Texas Christian University with support from the National Institute of Justice.
+            			HumanTraffickingData.org was created by Texas Christian University with support from the National Institute of Justice.
             		</label>
 	  	    	</div>
 	  	    	<div class="col-md-3 footer-right">
@@ -151,6 +151,6 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 
 <!--
 Original Author: W3layouts - http://w3layouts.com
-Modification Done by: Brice Boula & the Judge Frog Team
+Modifications Done by: Brice Boula & the Judge Frog Team
 License: Modified Under The Creative Commons Attribution 3.0 license.
 -->

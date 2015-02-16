@@ -30,11 +30,8 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 	<?php
 		echo $this->Html->meta('icon');
-		echo $this->Html->css(array('htd-main', 'bootstrap', 'nav_bar_style', 'default','ion.rangeSlider.skinFlat','ion.rangeSlider', 'jquery-ui', 'modal_window_style', 'animation'));
-		echo $this->Html->script(array('jquery', 'slider', 'superfish', 'custom', 'jquery-1.10.2', 'jquery-ui', 'modernizr.custom', 'classie','moment','ion.rangeSlider','ion.rangeSlider.min','sliderMod', 'jquery.simplemodal', 'hover-effect', 'jquery.min', 'move-top.js', 'easing.js', 'easyResponsiveTabs','chartMod'));
-		//echo $this->fetch('meta');
-		// echo $this->fetch('css');
-		//echo $this->fetch('script');
+		echo $this->Html->css(array('htd-main', 'bootstrap',  'search_page_css', 'default','ion.rangeSlider.skinFlat','ion.rangeSlider', 'jquery-ui', 'modal_window_style', 'animation'));
+		echo $this->Html->script(array('jquery', 'slider', 'superfish', 'custom', 'jquery-ui', 'modernizr.custom', 'classie','moment','ion.rangeSlider','ion.rangeSlider.min','sliderMod', 'jquery.simplemodal', 'hover-effect', 'jquery.min', 'move-top.js', 'easing.js', 'easyResponsiveTabs','chartMod', 'uisearch', 'jquery-ui-new'));
 	?>
 <!-- Google charts Script -->
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -47,11 +44,9 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
         });
     });
 </script>
-	
 <!-- Scripts for collaspable panels. -->
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>	
+  <?php echo $this->Html->script(array('jquery-1.10.2'));?>
   
 	<title> 
 		<?php 
@@ -65,14 +60,10 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			{
 				$this->assign('active', $active);
 			}
-			//echo $this->fetch('active');
 		?> 
 	</title>
 </head>
-
 <body>
-
-
 <!--header start here-->
  <div class="header-b">
 	 	  <div class="container">
@@ -80,17 +71,14 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	 	        	<div class="logo">
 	 	        		<a href="home">
 	 	        			<h2 onmouseover="bringTheFunc(this)">HTD</h2>
-	 	        			<!-- <img src="./images/logo.png" alt=""> -->
 	 	        		</a>
 	 	        	</div> 
-
 	 	        	<span class="menu"> <?php echo $this->Html->image('icon.png', array('alt' => 'Menu List')); ?></span>
-	 	        	
 	 	        	<div class="header-navg">
 	 	        		<ul class="res">
 	 	        			<li><a class="<?php echo ($this->fetch('active') == 'home') ? 'active' : ''; ?>" href="home">HOME</a></li>
 	 	        			<li><a class="<?php echo ($this->fetch('active') == 'about') ? 'active' : ''; ?>" href="about">ABOUT</a></li>
-	 	        			<li><a class="<?php echo ($this->fetch('active') == 'searchDatabase') ? 'active' : ''; ?>" href="search">SEARCH DATABASE</a></li>
+	 	        			<li><a class="<?php echo ($this->fetch('active') == 'search') ? 'active' : ''; ?>" href="search">SEARCH DATABASE</a></li>
 	 	        			<li><a class="<?php echo ($this->fetch('active') == 'additionalResources') ? 'active' : ''; ?>" href="additionalResources">ADDITIONAL RESOURCES</a></li>
 	 	        			<li><a class="<?php echo ($this->fetch('active') == 'contact') ? 'active' : ''; ?>" href="contact">CONTACT US</a></li>
 	 	        		</ul>
@@ -107,7 +95,6 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	 	 </div>
 	</div>
 <!-- </div> -->
-
 	<div id="content">
 
 		<?php echo $this->Session->flash(); ?>
@@ -117,8 +104,6 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		<?php echo $this->element('sql_dump'); ?>
 	</div>
 </body>
-
-
 <!-- FOOTER SECTION -->
 <div class="footer-h">
 	  <div class="container">
@@ -138,7 +123,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	  	    	<div class="col-md-3 footer-right">
             		<label>
             			<h4>Authorized Users:</h4>
-            		Authorized users can access the academic/advanced user portal by clicking <a href="panel">here.</a>
+            		Authorized users can access the academic/advanced user panel by clicking <a href="panel">here.</a>
             		</label>
 	  	    	</div>
 	  	    <div class="clearfix"> </div>
@@ -154,8 +139,6 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 </html>
 
 
-<!--
-Original Author: W3layouts - http://w3layouts.com
+<!-- Original Author: W3layouts - http://w3layouts.com
 Modifications Done by: Brice Boula & the Judge Frog Team
-License: Modified Under The Creative Commons Attribution 3.0 license.
--->
+License: Modified Under The Creative Commons Attribution 3.0 license. -->

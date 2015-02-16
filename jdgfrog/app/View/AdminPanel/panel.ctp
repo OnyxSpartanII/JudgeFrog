@@ -74,7 +74,7 @@
       <textarea rows="4" cols="20" placeholder="Case Summary">
       </textarea>
       <input type="button" name="save" value="save" class="# action-button"/> <br>
-      <input type="reset" name="previous" class="backSelection action-button" value="Previous" />
+      <input type="button" name="previous" class="backSelection action-button" value="Back" />
       <input type="reset" name="next" class="toTraffInfo action-button" value="Next" />
   </fieldset>
   <fieldset id="newJudgeFS">
@@ -110,7 +110,7 @@
 
     ?>
       <input type="button" name="save" value="save" class="# action-button"/> <br>
-      <input type="reset" name="previous" class="backCaseInfo action-button" value="Back" />
+      <input type="button" name="previous" class="backCaseInfo action-button" value="Back" />
       <input type="reset" name="next" class="toDefendant action-button" value="Next" />
   </fieldset>
   <fieldset id="defendant">
@@ -127,7 +127,7 @@
 
     ?>
       <input type="button" name="save" value="save" class="# action-button"/> <br>
-      <input type="reset" name="previous" class="backTraffInfo action-button" value="Back" />
+      <input type="button" name="previous" class="backTraffInfo action-button" value="Back" />
       <input type="reset" name="next" class="toAcd action-button" value="Next" />
   </fieldset>
   <fieldset id="acd">
@@ -145,7 +145,7 @@
       echo $this->Form->input('', array('name'=> 'felSentenced','placeholder' => 'Felony Sentenced', 'type' => 'text'));
     ?>
       <input type="button" name="save" value="save" class="# action-button"/> <br>
-      <input type="reset" name="previous" class="backDefendant action-button" value="Back" />
+      <input type="button" name="previous" class="backDefendant action-button" value="Back" />
       <input type="reset" name="next" class="toChargeScreen action-button" value="Next" />
   </fieldset>
   <fieldset id="chargeScreen">
@@ -183,7 +183,7 @@
     </div>
 
       <input type="button" name="save" value="save" class="# action-button"/> <br>
-      <input type="reset" name="previous" class="backACD action-button" value="Back" />
+      <input type="button" name="previous" class="backACD action-button" value="Back" />
       <input type="reset" name="next" class="toAggSentence action-button" value="Next" />
   </fieldset>
   <fieldset id="aggSentence">
@@ -200,7 +200,7 @@
     echo $this->Form->input('', array('name'=> 'probation','placeholder' => 'Probation', 'type' => 'text'));
     ?>
     <input type="button" name="save" value="save" class="# action-button"/> <br>
-    <input type="reset" name="previous" class="backChargeScreen action-button" value="Back" />
+    <input type="button" name="previous" class="backChargeScreen action-button" value="Back" />
     <input type="reset" name="next" class="toOCG action-button" value="Next" />
   </fieldset>
   <fieldset id="ocgScreen">
@@ -213,8 +213,9 @@
             echo $this->Form->input( '',array('name'=>'ocg_Race','empty' => 'Race', 'options' => array('White','Black','Hispanic','Asian','Other')));
     ?>
     <input type="button" name="save" value="save" class="# action-button"/> <br>
-    <input type="reset" name="previous" class="backAggSentence action-button" value="Back" />
+    <input type="button" name="previous" class="backAggSentence action-button" value="Back" />
     <input type="reset" name="nextDef " class="toNextDefendant action-button" value="Next Defendant" />
+    <input type="reset" name="nextOCG " class="# action-button" value="Next OCG" />
     <input type="reset" name="next" class="toReview action-button" value="Review" />
   </fieldset>
 

@@ -48,6 +48,11 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
     });
 </script>
 	
+<!-- Scripts for collaspable panels. -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>	
+  
 	<title> 
 		<?php 
 			if (isset($title)) 
@@ -133,7 +138,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	  	    	<div class="col-md-3 footer-right">
             		<label>
             			<h4>Authorized Users:</h4>
-            		Authorized users can access the academic/advanced user portal by clicking <a href="login">here.</a>
+            		Authorized users can access the academic/advanced user portal by clicking <a href="panel">here.</a>
             		</label>
 	  	    	</div>
 	  	    <div class="clearfix"> </div>

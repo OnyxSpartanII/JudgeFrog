@@ -44,6 +44,7 @@
 	Router::connect('/federalStatutes', array('controller' => 'pages', 'action' => 'federalStatutes'));
 	Router::connect('/contact', array('controller' => 'pages', 'action' => 'contact'));
 	Router::connect('/additionalResources', array('controller' => 'pages', 'action' => 'additionalResources'));
+	Router::connect('/panel', array('controller' => 'AdminPanel', 'action' => 'panel'));
 
 	Router::connect('/uploads', array('controller' => 'uploads', 'action' => 'add'));
 

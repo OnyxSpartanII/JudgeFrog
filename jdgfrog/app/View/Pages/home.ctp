@@ -1,4 +1,3 @@
-
 <!-- FUNCTION TO ANIMATE LOGO -->
 	<script type="text/javascript">		
 		var radius = 5;

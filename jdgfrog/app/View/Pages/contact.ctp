@@ -2,17 +2,17 @@
 <div class="contact">
 	  <div class="container">
 	  	   <div class="contact-main">
-	  	   	 <h3>Contact Us </h3>
+	  	   	 <h3>CONTACT US </h3>
 	  	   	    <div class="col-md-8 contact-right">
-		  	   	   <form>
+		  	   	   <form action="#">
 		  	   	   	<div class="text"> 
-		  	   	   	    <input type="text" value="Name" onfocus="this.value = '';" onblur="if (this.value = 'Enter Your Email Address') {this.value = 'Name';}">
+		  	   	   	    <input type="text" placeholder ="Enter your name - e.g 'Joe Garcia'" autofocus>
 		  	   	   	 </div>   
 		  	   	   	 <div class="text">
-		  	   	   	    <input type="text" value="Email" onfocus="this.value = '';" onblur="if (this.value = 'Enter Your Email Address') {this.value = 'Email';}">
+		  	   	   	    <input type="text" placeholder ="Enter your email - e.g 'joegarcia@email.com'">
 		  	   	   	</div>
 		  	   	   	<div class="text">
-		  	   	   	    <textarea onfocus="this.value = '';" onblur="if (this.value = 'Enter Your Email Address') {this.value = 'Message';}">Message</textarea>
+		  	   	   	    <textarea placeholder="Your message goes here..."></textarea>
 		  	   	   	</div>
 		  	   	   	<div class="text">
 		  	   	   	    <input type="submit"  value="Submit">

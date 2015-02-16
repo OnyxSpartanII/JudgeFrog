@@ -1,7 +1,7 @@
 /*! jQuery UI - v1.11.3 - 2015-02-12
 * http://jqueryui.com
 * Includes: core.js, widget.js, mouse.js, position.js, accordion.js, autocomplete.js, button.js, datepicker.js, dialog.js, draggable.js, droppable.js, effect.js, effect-blind.js, effect-bounce.js, effect-clip.js, effect-drop.js, effect-explode.js, effect-fade.js, effect-fold.js, effect-highlight.js, effect-puff.js, effect-pulsate.js, effect-scale.js, effect-shake.js, effect-size.js, effect-slide.js, effect-transfer.js, menu.js, progressbar.js, resizable.js, selectable.js, selectmenu.js, slider.js, sortable.js, spinner.js, tabs.js, tooltip.js
-* Copyright 2015 jQuery Foundation and other contributors; Licensed MIT */
+* Copyright jQuery Foundation and other contributors; Licensed MIT */
 
 (function( factory ) {
 	if ( typeof define === "function" && define.amd ) {
@@ -1845,7 +1845,7 @@ var accordion = $.widget( "ui.accordion", {
 			.attr({
 				"aria-selected": "false",
 				"aria-expanded": "false",
-				tabIndex: -1
+				// tabindex: -1
 			})
 			.next()
 				.attr({
@@ -1860,7 +1860,7 @@ var accordion = $.widget( "ui.accordion", {
 			this.active.attr({
 				"aria-selected": "true",
 				"aria-expanded": "true",
-				tabIndex: 0
+				// tabindex: 0
 			})
 			.next()
 				.attr({
@@ -2045,7 +2045,7 @@ var accordion = $.widget( "ui.accordion", {
 				.attr({
 					"aria-selected": "true",
 					"aria-expanded": "true",
-					tabIndex: 0
+					// tabindex: 0
 				});
 	},
 
@@ -2168,7 +2168,7 @@ var menu = $.widget( "ui.menu", {
 			.toggleClass( "ui-menu-icons", !!this.element.find( ".ui-icon" ).length )
 			.attr({
 				role: this.options.role,
-				tabIndex: 0
+				// tabindex: 0
 			});
 
 		if ( this.options.disabled ) {
@@ -2430,7 +2430,7 @@ var menu = $.widget( "ui.menu", {
 			.addClass( "ui-menu-item" )
 			.uniqueId()
 			.attr({
-				tabIndex: -1,
+				// tabindex: -1,
 				role: this._itemRole()
 			});
 
@@ -8425,7 +8425,7 @@ var dialog = $.widget( "ui.dialog", {
 			.hide()
 			.attr({
 				// Setting tabIndex makes the div focusable
-				tabIndex: -1,
+				// tabindex: -1,
 				role: "dialog"
 			})
 			.appendTo( this._appendTo() );
@@ -15624,7 +15624,7 @@ var tabs = $.widget( "ui.tabs", {
 		this.tabs.not( this.active ).attr({
 			"aria-selected": "false",
 			"aria-expanded": "false",
-			tabIndex: -1
+			// tabindex: -1
 		});
 		this.panels.not( this._getPanelForTab( this.active ) )
 			.hide()
@@ -15641,7 +15641,7 @@ var tabs = $.widget( "ui.tabs", {
 				.attr({
 					"aria-selected": "true",
 					"aria-expanded": "true",
-					tabIndex: 0
+					// tabindex: 0
 				});
 			this._getPanelForTab( this.active )
 				.show()
@@ -15684,7 +15684,7 @@ var tabs = $.widget( "ui.tabs", {
 			.addClass( "ui-state-default ui-corner-top" )
 			.attr({
 				role: "tab",
-				tabIndex: -1
+				// tabindex: -1
 			});
 
 		this.anchors = this.tabs.map(function() {
@@ -15693,7 +15693,7 @@ var tabs = $.widget( "ui.tabs", {
 			.addClass( "ui-tabs-anchor" )
 			.attr({
 				role: "presentation",
-				tabIndex: -1
+				// tabindex: -1
 			});
 
 		this.panels = $();
@@ -15947,7 +15947,7 @@ var tabs = $.widget( "ui.tabs", {
 		eventData.newTab.attr({
 			"aria-selected": "true",
 			"aria-expanded": "true",
-			tabIndex: 0
+			// tabindex: 0
 		});
 	},
 

@@ -18,12 +18,12 @@ class SearchController extends AppController {
 
 	public function home() {
 		$this->set('title', 'Database Search | Human Trafficking Data');
-		$this->set('selected', 'search');
+		$this->set('active', 'search');
 	}
 
 	public function update() {
 		$this->set('title', 'Database Search | Human Trafficking Data');
-		$this->set('selected', 'search');
+		$this->set('active', 'search');
 
 		$display = array('judge' => false, 'defendant' => false, 'acd' => false, 'sentence' => false, 'ocg' => false, 'victims' => false);
 

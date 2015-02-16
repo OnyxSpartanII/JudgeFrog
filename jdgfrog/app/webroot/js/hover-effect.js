@@ -27,14 +27,3 @@ div.style.webkitMaskImage = "";
 
 webkitRequestAnimationFrame(callback);
 }
-
-
-	// var radius = 5;
-	// var interval = window.setInterval(function animLogo() {
-	// $(".logo").css("-webkit-mask", "-webkit-gradient(radial, 27 27, " + radius + ", 5 5, " + 
-	// (radius + 5) + ", from(rgb(0, 0, 0)), color-stop(0.5, rgba(0, 0, 0, 0.2)), to(rgb(0, 0, 0)))");
-	// radius++;
-	// if (radius === 150) {
-	// window.clearInterval(interval);
-	// }
-	// }, 5);

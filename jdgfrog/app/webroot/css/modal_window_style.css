@@ -42,7 +42,7 @@
 }
 
 #simplemodal-container a.modalCloseImg {
-	background:url('/jdgfrog/img/x.png') no-repeat; 
+	background:url(''/jdgfrog/img/x.png'') no-repeat; 
 	width:30px; 
 	height:30px; 
 	display:inline; z-index:3200; 

@@ -29,7 +29,9 @@
 	Router::connect('/login', array('controller' => 'users', 'action' => 'login'));
 	Router::connect('/create', array('controller' => 'users', 'action' => 'create'));
 	Router::connect('/logout', array('controller' => 'users', 'action' => 'logout'));
+
 	Router::connect('/dashboard', array('controller' => 'AdminPanel', 'action' => 'index'));
+	Router::connect('/dashboard/create_case/**', array('controller' => 'AdminPanel', 'action' => 'createCase'));
 
 	Router::connect('/home', array('controller' => 'pages', 'action' => 'home'));
 	Router::connect('/about', array('controller' => 'pages', 'action' => 'about'));
@@ -44,7 +46,7 @@
 	Router::connect('/federalStatutes', array('controller' => 'pages', 'action' => 'federalStatutes'));
 	Router::connect('/contact', array('controller' => 'pages', 'action' => 'contact'));
 	Router::connect('/additionalResources', array('controller' => 'pages', 'action' => 'additionalResources'));
-	Router::connect('/panel', array('controller' => 'AdminPanel', 'action' => 'panel'));
+
 
 	Router::connect('/uploads', array('controller' => 'uploads', 'action' => 'add'));
 

@@ -76,11 +76,11 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	 	        	<span class="menu"> <?php echo $this->Html->image('icon.png', array('alt' => 'Menu List')); ?></span>
 	 	        	<div class="header-navg">
 	 	        		<ul class="res">
-	 	        			<li><a class="<?php echo ($this->fetch('active') == 'home') ? 'active' : ''; ?>" href="home">HOME</a></li>
-	 	        			<li><a class="<?php echo ($this->fetch('active') == 'about') ? 'active' : ''; ?>" href="about">ABOUT</a></li>
-	 	        			<li><a class="<?php echo ($this->fetch('active') == 'search') ? 'active' : ''; ?>" href="search">SEARCH DATABASE</a></li>
-	 	        			<li><a class="<?php echo ($this->fetch('active') == 'additionalResources') ? 'active' : ''; ?>" href="additionalResources">ADDITIONAL RESOURCES</a></li>
-	 	        			<li><a class="<?php echo ($this->fetch('active') == 'contact') ? 'active' : ''; ?>" href="contact">CONTACT US</a></li>
+								<li><a class="<?php echo ($this->fetch('active') == 'home') ? 'active' : ''; ?>" <?php echo $this->Html->link('HOME', '/home'); ?></li>
+								<li><a class="<?php echo ($this->fetch('active') == 'about') ? 'active' : ''; ?>" <?php echo $this->Html->link('ABOUT', '/about'); ?></li>
+								<li><a class="<?php echo ($this->fetch('active') == 'search') ? 'active' : ''; ?>" <?php echo $this->Html->link('SEARCH', '/search'); ?></li>
+								<li><a class="<?php echo ($this->fetch('active') == 'additionalResources') ? 'active' : ''; ?>" <?php echo $this->Html->link('ADDITIONAL RESOURCES', '/additionalResources'); ?></li>
+								<li><a class="<?php echo ($this->fetch('active') == 'contact') ? 'active' : ''; ?>" <?php echo $this->Html->link('CONTACT US', '/contact'); ?></li>
 	 	        		</ul>
 	 	        		 <script>
 	                          $( "span.menu").click(function() {

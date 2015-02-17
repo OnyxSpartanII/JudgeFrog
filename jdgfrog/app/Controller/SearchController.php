@@ -2,7 +2,7 @@
 
 class SearchController extends AppController {
 	
-	public $uses = array('Datum','DataInProgress');
+	public $uses = array('DataInProgress');
 
 	public $helpers = array('Html', 'Form');
 
@@ -33,63 +33,63 @@ class SearchController extends AppController {
 		
 		$conditions = array();
 
-		if (!$this->request->data['Datum']['case_Adult'] || !$this->request->data['Datum']['case_Minor'] || !$this->request->data['Datum']['case_Labor']) {
+		if (!$this->request->data['DataInProgress']['case_Adult'] || !$this->request->data['DataInProgress']['case_Minor'] || !$this->request->data['DataInProgress']['case_Labor']) {
 			
-			$conditions['Datum.LaborTraf'] = $this->request->data['Datum']['case_Labor'];
-			$conditions['Datum.AdultSexTraf'] = $this->request->data['Datum']['case_Adult'];
-			$conditions['Datum.MinorSexTraf'] = $this->request->data['Datum']['case_Minor'];
+			$conditions['DataInProgress.LaborTraf'] = $this->request->data['DataInProgress']['case_Labor'];
+			$conditions['DataInProgress.AdultSexTraf'] = $this->request->data['DataInProgress']['case_Adult'];
+			$conditions['DataInProgress.MinorSexTraf'] = $this->request->data['DataInProgress']['case_Minor'];
 		}		
 
 		/**
 		 * Case filter section
 		 */
 
-		if ($this->request->data['Datum']['case_Name'] != '') {
-			$conditions['Datum.CaseNam'] = $this->request->data['Datum']['case_Name'];
+		if ($this->request->data['DataInProgress']['case_Name'] != '') {
+			$conditions['DataInProgress.CaseNam'] = $this->request->data['DataInProgress']['case_Name'];
 		}
 
-		if ($this->request->data['Datum']['case_Number'] != '') {
-			$conditions['Datum.CaseNum'] = $this->request->data['Datum']['case_Number'];
+		if ($this->request->data['DataInProgress']['case_Number'] != '') {
+			$conditions['DataInProgress.CaseNum'] = $this->request->data['DataInProgress']['case_Number'];
 		}
 
-		if ($this->request->data['Datum']['case_NumDef'] != '0;100') {
-			$min = explode(';', $this->request->data['Datum']['case_NumDef'])[0];
-			$max = explode(';', $this->request->data['Datum']['case_NumDef'])[1];
-			$conditions['Datum.NumDef >='] = $min;
-			$conditions['Datum.NumDef <='] = $max;
+		if ($this->request->data['DataInProgress']['case_NumDef'] != '0;100') {
+			$min = explode(';', $this->request->data['DataInProgress']['case_NumDef'])[0];
+			$max = explode(';', $this->request->data['DataInProgress']['case_NumDef'])[1];
+			$conditions['DataInProgress.NumDef >='] = $min;
+			$conditions['DataInProgress.NumDef <='] = $max;
 		}
 
-		if ($this->request->data['Datum']['case_State'] != '') {
-			$conditions['Datum.State'] = $this->request->data['Datum']['case_State'];
+		if ($this->request->data['DataInProgress']['case_State'] != '') {
+			$conditions['DataInProgress.State'] = $this->request->data['DataInProgress']['case_State'];
 		}
 
-		if ($this->request->data['Datum']['case_FedDist'] != 0) {
-			$conditions['Datum.FedDistrictNum'] = $this->request->data['Datum']['case_FedDist'];
+		if ($this->request->data['DataInProgress']['case_FedDist'] != 0) {
+			$conditions['DataInProgress.FedDistrictNum'] = $this->request->data['DataInProgress']['case_FedDist'];
 		}
 
 		/**
 		 * Defendant filter section
 		 */
 
-		if ($this->request->data['Datum']['defendant_Name'] != '') {
-			$conditions['Datum.DefLast'] = $this->request->data['Datum']['defendant_Name'];
+		if ($this->request->data['DataInProgress']['defendant_Name'] != '') {
+			$conditions['DataInProgress.DefLast'] = $this->request->data['DataInProgress']['defendant_Name'];
 			$display['defendant'] = true;
 		}
 
-		if ($this->request->data['Datum']['defendant_Gender'] != '') {
-			$conditions['Datum.DefGender'] = $this->request->data['Datum']['defendant_Gender'];
+		if ($this->request->data['DataInProgress']['defendant_Gender'] != '') {
+			$conditions['DataInProgress.DefGender'] = $this->request->data['DataInProgress']['defendant_Gender'];
 			$display['defendant'] = true;
 		}
 
-		if ($this->request->data['Datum']['defendant_Race'] != '') {
-			$conditions['Datum.DefRace'] = $this->request->data['Datum']['defendant_Race'];
+		if ($this->request->data['DataInProgress']['defendant_Race'] != '') {
+			$conditions['DataInProgress.DefRace'] = $this->request->data['DataInProgress']['defendant_Race'];
 			$display['defendant'] = true;
 		}
 		
 
-		if ($this->request->data['Datum']['defendant_YOB'] != '1930;2014') {
-			$conditions['Datum.DefBirthdate >='] = explode(';',$this->request->data['Datum']['defendant_YOB'])[0];
-			$conditions['Datum.DefBirthdate <='] = explode(';',$this->request->data['Datum']['defendant_YOB'])[1];
+		if ($this->request->data['DataInProgress']['defendant_YOB'] != '1930;2014') {
+			$conditions['DataInProgress.DefBirthdate >='] = explode(';',$this->request->data['DataInProgress']['defendant_YOB'])[0];
+			$conditions['DataInProgress.DefBirthdate <='] = explode(';',$this->request->data['DataInProgress']['defendant_YOB'])[1];
 			$display['defendant'] = true;
 		}
 
@@ -97,29 +97,29 @@ class SearchController extends AppController {
 		 * Judge filter section
 		 */
 
-		if ($this->request->data['Datum']['judge_Name'] != '') {
-			$conditions['Datum.JudgeName'] = $this->request->data['Datum']['judge_Name'];
+		if ($this->request->data['DataInProgress']['judge_Name'] != '') {
+			$conditions['DataInProgress.JudgeName'] = $this->request->data['DataInProgress']['judge_Name'];
 			$display['judge'] = true;
 		}
 
-		if ($this->request->data['Datum']['judge_Race'] != '') {
-			$conditions['Datum.JudgeRace'] = $this->request->data['Datum']['judge_Race'];
+		if ($this->request->data['DataInProgress']['judge_Race'] != '') {
+			$conditions['DataInProgress.JudgeRace'] = $this->request->data['DataInProgress']['judge_Race'];
 			$display['judge'] = true;
 		}
 
-		if ($this->request->data['Datum']['judge_Gender'] != '') {
-			$conditions['Datum.JudgeGen'] = $this->request->data['Datum']['judge_Gender'];
+		if ($this->request->data['DataInProgress']['judge_Gender'] != '') {
+			$conditions['DataInProgress.JudgeGen'] = $this->request->data['DataInProgress']['judge_Gender'];
 			$display['judge'] = true;
 		}
 
-		if ($this->request->data['Datum']['judge_ApptBy'] != '') {
-			$conditions['Datum.JudgeApptBy'] = $this->request->data['Datum']['judge_ApptBy'];
+		if ($this->request->data['DataInProgress']['judge_ApptBy'] != '') {
+			$conditions['DataInProgress.JudgeApptBy'] = $this->request->data['DataInProgress']['judge_ApptBy'];
 			$display['judge'] = true;
 		}
 
-		if ($this->request->data['Datum']['judge_YearApp'] != '1960;2020') {
-			$conditions['Datum.JudgeTenure >='] = explode(';',$this->request->data['Datum']['judge_YearApp'])[0];
-			$conditions['Datum.JudgeTenure <='] = explode(';',$this->request->data['Datum']['judge_YearApp'])[1];
+		if ($this->request->data['DataInProgress']['judge_YearApp'] != '1960;2020') {
+			$conditions['DataInProgress.JudgeTenure >='] = explode(';',$this->request->data['DataInProgress']['judge_YearApp'])[0];
+			$conditions['DataInProgress.JudgeTenure <='] = explode(';',$this->request->data['DataInProgress']['judge_YearApp'])[1];
 			$display['judge'] = true;
 		}
 
@@ -127,27 +127,27 @@ class SearchController extends AppController {
 		 * Victims filter section
 		 */
 
-		if ($this->request->data['Datum']['victims_Total'] != '0;100') {
-			$conditions['Datum.NumVic >='] = explode(';',$this->request->data['Datum']['victims_Total'])[0];
-			$conditions['Datum.NumVic <='] = explode(';',$this->request->data['Datum']['victims_Total'])[1];
+		if ($this->request->data['DataInProgress']['victims_Total'] != '0;100') {
+			$conditions['DataInProgress.NumVic >='] = explode(';',$this->request->data['DataInProgress']['victims_Total'])[0];
+			$conditions['DataInProgress.NumVic <='] = explode(';',$this->request->data['DataInProgress']['victims_Total'])[1];
 			$display['victims'] = true;
 		}
 
-		if ($this->request->data['Datum']['victims_Minor'] != '0;100') {
-			$conditions['Datum.NumVicMinor >='] = explode(';',$this->request->data['Datum']['victims_Minor'])[0];
-			$conditions['Datum.NumVicMinor <='] = explode(';',$this->request->data['Datum']['victims_Minor'])[1];
+		if ($this->request->data['DataInProgress']['victims_Minor'] != '0;100') {
+			$conditions['DataInProgress.NumVicMinor >='] = explode(';',$this->request->data['DataInProgress']['victims_Minor'])[0];
+			$conditions['DataInProgress.NumVicMinor <='] = explode(';',$this->request->data['DataInProgress']['victims_Minor'])[1];
 			$display['victims'] = true;
 		}
 
-		if ($this->request->data['Datum']['victims_Foreign'] != '0;100') {
-			$conditions['Datum.NumVicForeign >='] = explode(';',$this->request->data['Datum']['victims_Foreign'])[0];
-			$conditions['Datum.NumVicForeign <='] = explode(';',$this->request->data['Datum']['victims_Foreign'])[1];
+		if ($this->request->data['DataInProgress']['victims_Foreign'] != '0;100') {
+			$conditions['DataInProgress.NumVicForeign >='] = explode(';',$this->request->data['DataInProgress']['victims_Foreign'])[0];
+			$conditions['DataInProgress.NumVicForeign <='] = explode(';',$this->request->data['DataInProgress']['victims_Foreign'])[1];
 			$display['victims'] = true;
 		}
 
-		if ($this->request->data['Datum']['victims_Female'] != '0;100') {
-			$conditions['Datum.NumVicFemale >='] = explode(';',$this->request->data['Datum']['victims_Female'])[0];
-			$conditions['Datum.NumVicFemale <='] = explode(';',$this->request->data['Datum']['victims_Female'])[1];
+		if ($this->request->data['DataInProgress']['victims_Female'] != '0;100') {
+			$conditions['DataInProgress.NumVicFemale >='] = explode(';',$this->request->data['DataInProgress']['victims_Female'])[0];
+			$conditions['DataInProgress.NumVicFemale <='] = explode(';',$this->request->data['DataInProgress']['victims_Female'])[1];
 			$display['victims'] = true;
 		}
 
@@ -155,38 +155,38 @@ class SearchController extends AppController {
 		 * ArrestChargeDetails filter section
 		 */
 
-		if ($this->request->data['Datum']['ad_DateArrest'] != '2000;2020') {
-			$conditions['Datum.ArrestDate >='] = explode(';',$this->request->data['Datum']['ad_DateArrest'])[0];
-			$conditions['Datum.ArrestDate <='] = explode(';',$this->request->data['Datum']['ad_DateArrest'])[1];
+		if ($this->request->data['DataInProgress']['ad_DateArrest'] != '2000;2020') {
+			$conditions['DataInProgress.ArrestDate >='] = explode(';',$this->request->data['DataInProgress']['ad_DateArrest'])[0];
+			$conditions['DataInProgress.ArrestDate <='] = explode(';',$this->request->data['DataInProgress']['ad_DateArrest'])[1];
 			$display['acd'] = true;
 		}
 
-		if ($this->request->data['Datum']['ad_Role'] != '') {
-			$conditions['Datum.Role'] = $this->request->data['Datum']['ad_Role'];
+		if ($this->request->data['DataInProgress']['ad_Role'] != '') {
+			$conditions['DataInProgress.Role'] = $this->request->data['DataInProgress']['ad_Role'];
 			$display['acd'] = true;
 		}
 
-		if ($this->request->data['Datum']['ad_BailType'] != '') {
-			$conditions['Datum.BailType'] = $this->request->data['Datum']['ad_BailType'];
+		if ($this->request->data['DataInProgress']['ad_BailType'] != '') {
+			$conditions['DataInProgress.BailType'] = $this->request->data['DataInProgress']['ad_BailType'];
 			$display['acd'] = true;
 		}
 
-		if ($this->request->data['Datum']['ad_BailAmount'] != '1000;100000') {	
-			$conditions['Datum.BailAmount >='] = explode(';',$this->request->data['Datum']['ad_BailAmount'])[0];
-			$conditions['Datum.BailAmount <='] = explode(';',$this->request->data['Datum']['ad_BailAmount'])[1];
+		if ($this->request->data['DataInProgress']['ad_BailAmount'] != '1000;100000') {	
+			$conditions['DataInProgress.BailAmount >='] = explode(';',$this->request->data['DataInProgress']['ad_BailAmount'])[0];
+			$conditions['DataInProgress.BailAmount <='] = explode(';',$this->request->data['DataInProgress']['ad_BailAmount'])[1];
 			$display['acd'] = true;
 		}
 
 		/* CD */
-		if ($this->request->data['Datum']['cd_Date'] != '2000;2020') {	
-			$conditions['Datum.ChargeDate >='] = explode(';',$this->request->data['Datum']['cd_Date'])[0];
-			$conditions['Datum.ChargeDate <='] = explode(';',$this->request->data['Datum']['cd_Date'])[1];
+		if ($this->request->data['DataInProgress']['cd_Date'] != '2000;2020') {	
+			$conditions['DataInProgress.ChargeDate >='] = explode(';',$this->request->data['DataInProgress']['cd_Date'])[0];
+			$conditions['DataInProgress.ChargeDate <='] = explode(';',$this->request->data['DataInProgress']['cd_Date'])[1];
 			$display['acd'] = true;
 		}
 
-		if ($this->request->data['Datum']['cd_TtlCharges'] != '0;20') {	
-			$conditions['Datum.FelCharged >='] = explode(';',$this->request->data['Datum']['cd_TtlCharges'])[0];
-			$conditions['Datum.FelCharged <='] = explode(';',$this->request->data['Datum']['cd_TtlCharges'])[1];
+		if ($this->request->data['DataInProgress']['cd_TtlCharges'] != '0;20') {	
+			$conditions['DataInProgress.FelCharged >='] = explode(';',$this->request->data['DataInProgress']['cd_TtlCharges'])[0];
+			$conditions['DataInProgress.FelCharged <='] = explode(';',$this->request->data['DataInProgress']['cd_TtlCharges'])[1];
 			$display['acd'] = true;
 		}
 
@@ -194,51 +194,51 @@ class SearchController extends AppController {
 		 * Sentence filter section
 		 */
 
-		if ($this->request->data['Datum']['sd_TtlFelonies'] != '0;10') {
-			$conditions['Datum.FelSentenced >='] = explode(';',$this->request->data['Datum']['sd_TtlFelonies'])[0];
-			$conditions['Datum.FelSentenced <='] = explode(';',$this->request->data['Datum']['sd_TtlFelonies'])[1];
+		if ($this->request->data['DataInProgress']['sd_TtlFelonies'] != '0;10') {
+			$conditions['DataInProgress.FelSentenced >='] = explode(';',$this->request->data['DataInProgress']['sd_TtlFelonies'])[0];
+			$conditions['DataInProgress.FelSentenced <='] = explode(';',$this->request->data['DataInProgress']['sd_TtlFelonies'])[1];
 			$display['sentence'] = true;
 		}
 
-		if ($this->request->data['Datum']['sd_DateTerminated'] != '2000;2020') {
-			$conditions['Datum.DateTerm >='] = explode(';',$this->request->data['Datum']['sd_TtlFelonies'])[0];
-			$conditions['Datum.DateTerm <='] = explode(';',$this->request->data['Datum']['sd_TtlFelonies'])[1];
+		if ($this->request->data['DataInProgress']['sd_DateTerminated'] != '2000;2020') {
+			$conditions['DataInProgress.DateTerm >='] = explode(';',$this->request->data['DataInProgress']['sd_TtlFelonies'])[0];
+			$conditions['DataInProgress.DateTerm <='] = explode(';',$this->request->data['DataInProgress']['sd_TtlFelonies'])[1];
 			$display['sentence'] = true;
 		}
 
-		if ($this->request->data['Datum']['sd_TtlMonths'] != '0;300') {
-			$conditions['Datum.TotalSentence >='] = explode(';',$this->request->data['Datum']['sd_TtlMonths'])[0];
-			$conditions['Datum.TotalSentence <='] = explode(';',$this->request->data['Datum']['sd_TtlMonths'])[1];
+		if ($this->request->data['DataInProgress']['sd_TtlMonths'] != '0;300') {
+			$conditions['DataInProgress.TotalSentence >='] = explode(';',$this->request->data['DataInProgress']['sd_TtlMonths'])[0];
+			$conditions['DataInProgress.TotalSentence <='] = explode(';',$this->request->data['DataInProgress']['sd_TtlMonths'])[1];
 			$display['sentence'] = true;
 		}
 
-		if ($this->request->data['Datum']['sd_Restitution'] != '0;10000000') {
-			$conditions['Datum.Restitution >='] = explode(';',$this->request->data['Datum']['sd_Restitution'])[0];
-			$conditions['Datum.Restitution <='] = explode(';',$this->request->data['Datum']['sd_Restitution'])[1];
+		if ($this->request->data['DataInProgress']['sd_Restitution'] != '0;10000000') {
+			$conditions['DataInProgress.Restitution >='] = explode(';',$this->request->data['DataInProgress']['sd_Restitution'])[0];
+			$conditions['DataInProgress.Restitution <='] = explode(';',$this->request->data['DataInProgress']['sd_Restitution'])[1];
 			$display['sentence'] = true;
 		}
 
-		if ($this->request->data['Datum']['sd_AssetForfeit'] != '') {
-			$conditions['Datum.AssetForfeit'] = $this->request->data['Datum']['sd_AssetForfeit'];
+		if ($this->request->data['DataInProgress']['sd_AssetForfeit'] != '') {
+			$conditions['DataInProgress.AssetForfeit'] = $this->request->data['DataInProgress']['sd_AssetForfeit'];
 			$display['sentence'] = true;
 		}
 
-		if ($this->request->data['Datum']['sd_Appeal'] != '') {
-			$conditions['Datum.Appeal'] = $this->request->data['Datum']['sd_Appeal'];
+		if ($this->request->data['DataInProgress']['sd_Appeal'] != '') {
+			$conditions['DataInProgress.Appeal'] = $this->request->data['DataInProgress']['sd_Appeal'];
 			$display['sentence'] = true;
 		}
 
-		if ($this->request->data['Datum']['sd_MonthsProb'] != '0;50') {
-			$conditions['Datum.Probation >='] = explode(';',$this->request->data['Datum']['sd_MonthsProb'])[0];
-			$conditions['Datum.Probation <='] = explode(';',$this->request->data['Datum']['sd_MonthsProb'])[1];
+		if ($this->request->data['DataInProgress']['sd_MonthsProb'] != '0;50') {
+			$conditions['DataInProgress.Probation >='] = explode(';',$this->request->data['DataInProgress']['sd_MonthsProb'])[0];
+			$conditions['DataInProgress.Probation <='] = explode(';',$this->request->data['DataInProgress']['sd_MonthsProb'])[1];
 			$display['sentence'] = true;
 		}
 
 		$conditions = array();
 
-		$datum = $this->Datum->find('all', array('conditions' => $conditions));
+		$datum = $this->DataInProgress->find('all', array('conditions' => $conditions));
 
-		print_r($datum);
+		// print_r($datum);
 
 		$conditions = array();
 
@@ -246,72 +246,72 @@ class SearchController extends AppController {
 		 * OrganizedCrimeGroup filter section
 		 */
 
-		if ($this->request->data['Datum']['ocg_Name'] != '') {
-			$conditions['OCGName'] = $this->request->data['Datum']['ocg_Name'];
+		if ($this->request->data['DataInProgress']['ocg_Name'] != '') {
+			$conditions['OCGName'] = $this->request->data['DataInProgress']['ocg_Name'];
 			$display['ocg'] = true;
 		}
 
-		if ($this->request->data['Datum']['ocg_Type'] != '') {
-			$conditions['OCGType'] = $this->request->data['Datum']['ocg_Type'];
+		if ($this->request->data['DataInProgress']['ocg_Type'] != '') {
+			$conditions['OCGType'] = $this->request->data['DataInProgress']['ocg_Type'];
 			$display['ocg'] = true;
 		}
 
-		if ($this->request->data['Datum']['ocg_Scope'] != '') {
-			$conditions['OCGScope'] = $this->request->data['Datum']['ocg_Scope'];
+		if ($this->request->data['DataInProgress']['ocg_Scope'] != '') {
+			$conditions['OCGScope'] = $this->request->data['DataInProgress']['ocg_Scope'];
 			$display['ocg'] = true;
 		}
 
-		if ($this->request->data['Datum']['ocg_Race'] != '') {
-			$conditions['OCGRace'] = $this->request->data['Datum']['ocg_Race'];
+		if ($this->request->data['DataInProgress']['ocg_Race'] != '') {
+			$conditions['OCGRace'] = $this->request->data['DataInProgress']['ocg_Race'];
 			$display['ocg'] = true;
 		}
 
 		// charge
-		if ($this->request->data['Datum']['cd_Counts'] != '0;10') {	
-			$conditions['Counts'] = $this->request->data['Datum']['cd_Counts'];
+		if ($this->request->data['DataInProgress']['cd_Counts'] != '0;10') {	
+			$conditions['Counts'] = $this->request->data['DataInProgress']['cd_Counts'];
 			echo isset($conditions['Counts']);
 			$display['cd'] = true;
 		}
 
 		// charge
-		if ($this->request->data['Datum']['cd_CountsNP'] != '0;10') {	
-			$conditions['CountsNP'] = $this->request->data['Datum']['cd_CountsNP'];
+		if ($this->request->data['DataInProgress']['cd_CountsNP'] != '0;10') {	
+			$conditions['CountsNP'] = $this->request->data['DataInProgress']['cd_CountsNP'];
 			$display['cd'] = true;
 		}
 
 		// charge
-		if ($this->request->data['Datum']['cd_PleaDismiss'] != '0;10') {
-			$conditions['PleaDismissed'] = $this->request->data['Datum']['cd_PleaDismiss'];
+		if ($this->request->data['DataInProgress']['cd_PleaDismiss'] != '0;10') {
+			$conditions['PleaDismissed'] = $this->request->data['DataInProgress']['cd_PleaDismiss'];
 			$display['cd'] = true;
 		}
 
 		// charge
-		if ($this->request->data['Datum']['cd_PleaGuilty'] != '0;10') {	
-			$conditions['PleaGuilty'] = $this->request->data['Datum']['cd_PleaGuilty'];
+		if ($this->request->data['DataInProgress']['cd_PleaGuilty'] != '0;10') {	
+			$conditions['PleaGuilty'] = $this->request->data['DataInProgress']['cd_PleaGuilty'];
 			$display['cd'] = true;
 		}
 
 		// charge
-		if ($this->request->data['Datum']['cd_TrialGuilty'] != '0;10') {	
-			$conditions['TrialGuilty'] = $this->request->data['Datum']['cd_TrialGuilty'];
+		if ($this->request->data['DataInProgress']['cd_TrialGuilty'] != '0;10') {	
+			$conditions['TrialGuilty'] = $this->request->data['DataInProgress']['cd_TrialGuilty'];
 			$display['cd'] = true;
 		}
 
 		// charge
-		if ($this->request->data['Datum']['cd_TrialNotGuilty'] != '0;10') {	
-			$conditions['TrialNG'] = $this->request->data['Datum']['cd_TrialNotGuilty'];
+		if ($this->request->data['DataInProgress']['cd_TrialNotGuilty'] != '0;10') {	
+			$conditions['TrialNG'] = $this->request->data['DataInProgress']['cd_TrialNotGuilty'];
 			$display['cd'] = true;
 		}
 
 		// charge
-		if ($this->request->data['Datum']['cd_Sentence'] != '0;300') {	
-			$conditions['Sentence'] = $this->request->data['Datum']['cd_Sentence'];
+		if ($this->request->data['DataInProgress']['cd_Sentence'] != '0;300') {	
+			$conditions['Sentence'] = $this->request->data['DataInProgress']['cd_Sentence'];
 			$display['cd'] = true;
 		}
 
 		// charge
-		if ($this->request->data['Datum']['cd_Probation'] != '0;300') {	
-			$conditions['Prob'] = $this->request->data['Datum']['cd_Probation'];
+		if ($this->request->data['DataInProgress']['cd_Probation'] != '0;300') {	
+			$conditions['Prob'] = $this->request->data['DataInProgress']['cd_Probation'];
 			$display['cd'] = true;
 		}
 
@@ -320,19 +320,19 @@ class SearchController extends AppController {
 
 		foreach ($datum as &$data) {
 			if ($display['ocg']) {
-				if (isset($conditions['OCGName']) && ($data['Datum']['OCGName1'] != $conditions['OCGName'] && $data['Datum']['OCGName2'] != $conditions['OCGName'])) {
+				if (isset($conditions['OCGName']) && ($data['DataInProgress']['OCGName1'] != $conditions['OCGName'] && $data['DataInProgress']['OCGName2'] != $conditions['OCGName'])) {
 					unset($data);
 					continue;
 				}
-				if (isset($conditions['OCGType']) && ($data['Datum']['OCGType1'] != $conditions['OCGType'] && $data['Datum']['OCGType2'] != $conditions['OCGType'])) {
+				if (isset($conditions['OCGType']) && ($data['DataInProgress']['OCGType1'] != $conditions['OCGType'] && $data['DataInProgress']['OCGType2'] != $conditions['OCGType'])) {
 					unset($data);
 					continue;
 				}
-				if (isset($conditions['OCGScope']) && ($data['Datum']['OCGScope1'] != $conditions['OCGScope'] && $data['Datum']['OCGScope2'] != $conditions['OCGScope'])) {
+				if (isset($conditions['OCGScope']) && ($data['DataInProgress']['OCGScope1'] != $conditions['OCGScope'] && $data['DataInProgress']['OCGScope2'] != $conditions['OCGScope'])) {
 					unset($data);
 					continue;
 				}
-				if (isset($conditions['OCGRace']) && ($data['Datum']['OCGRace1'] != $conditions['OCGRace'] && $data['Datum']['OCGRace2'] != $conditions['OCGRace'])) {
+				if (isset($conditions['OCGRace']) && ($data['DataInProgress']['OCGRace1'] != $conditions['OCGRace'] && $data['DataInProgress']['OCGRace2'] != $conditions['OCGRace'])) {
 					unset($data);
 					continue;
 				}
@@ -402,95 +402,95 @@ class SearchController extends AppController {
 			}
 		}
 
-		$statutes = preg_grep("/^\d{4}(to\d{4})?$/", array_keys($datum[0]['Datum']));
+		$statutes = preg_grep("/^\d{4}(to\d{4})?$/", array_keys($datum[0]['DataInProgress']));
 		$cases = array();
 		$case_name = '';
 
 		foreach ($datum as $d) {
-			if (strcmp($d['Datum']['CaseNam'], $case_name) != 0) {
+			if (strcmp($d['DataInProgress']['CaseNam'], $case_name) != 0) {
 				$charges = array();
 				foreach ($statutes as $statute) {
-					if ($d['Datum'][$statute] != 0) {
+					if ($d['DataInProgress'][$statute] != 0) {
 						array_push(
 							$charges,
 							array(
 								$statute,
-								$d['Datum']["Counts$statute"],
-								$d['Datum']["CountsNP$statute"],
-								$d['Datum']["PleaDismissed$statute"],
-								$d['Datum']["PleaGuilty$statute"],
-								$d['Datum']["TrialGuilty$statute"],
-								$d['Datum']["TrialNG$statute"],
-								$d['Datum']["Fines$statute"],
-								$d['Datum']["Sent$statute"],
-								$d['Datum']["Prob$statute"]
+								$d['DataInProgress']["Counts$statute"],
+								$d['DataInProgress']["CountsNP$statute"],
+								$d['DataInProgress']["PleaDismissed$statute"],
+								$d['DataInProgress']["PleaGuilty$statute"],
+								$d['DataInProgress']["TrialGuilty$statute"],
+								$d['DataInProgress']["TrialNG$statute"],
+								$d['DataInProgress']["Fines$statute"],
+								$d['DataInProgress']["Sent$statute"],
+								$d['DataInProgress']["Prob$statute"]
 							)
 						);
 					}
 				}
-				$case_name = $d['Datum']['CaseNam'];
+				$case_name = $d['DataInProgress']['CaseNam'];
 				array_push(
 					$cases,
 					array(
-						$d['Datum']['CaseNam'],
-						$d['Datum']['CaseNum'],
-						$d['Datum']['ChargeDate'],
-						$d['Datum']['LaborTraf'],
-						$d['Datum']['AdultSexTraf'],
-						$d['Datum']['MinorSexTraf'],
-						$d['Datum']['NumDef'],
-						$d['Datum']['State'],
-						$d['Datum']['FedDistricLoc'],
-						$d['Datum']['FedDistrictNum'],
-						$d['Datum']['CaseSummary'],
-						$d['Datum']['JudgeName'],
-						$d['Datum']['JudgeRace'],
-						$d['Datum']['JudgeGen'],
-						$d['Datum']['JudgeTenure'],
-						$d['Datum']['JudgeApptBy'],
+						$d['DataInProgress']['CaseNam'],
+						$d['DataInProgress']['CaseNum'],
+						$d['DataInProgress']['ChargeDate'],
+						$d['DataInProgress']['LaborTraf'],
+						$d['DataInProgress']['AdultSexTraf'],
+						$d['DataInProgress']['MinorSexTraf'],
+						$d['DataInProgress']['NumDef'],
+						$d['DataInProgress']['State'],
+						$d['DataInProgress']['FedDistricLoc'],
+						$d['DataInProgress']['FedDistrictNum'],
+						$d['DataInProgress']['CaseSummary'],
+						$d['DataInProgress']['JudgeName'],
+						$d['DataInProgress']['JudgeRace'],
+						$d['DataInProgress']['JudgeGen'],
+						$d['DataInProgress']['JudgeTenure'],
+						$d['DataInProgress']['JudgeApptBy'],
 						array(
 							array(
-								$d['Datum']['DefLast'],
-								$d['Datum']['DefFirst'],
-								$d['Datum']['Alias'],
-								$d['Datum']['DefGender'],
-								$d['Datum']['DefRace'],
-								$d['Datum']['DefBirthdate'],
-								$d['Datum']['DefArrestAge'],
+								$d['DataInProgress']['DefLast'],
+								$d['DataInProgress']['DefFirst'],
+								$d['DataInProgress']['Alias'],
+								$d['DataInProgress']['DefGender'],
+								$d['DataInProgress']['DefRace'],
+								$d['DataInProgress']['DefBirthdate'],
+								$d['DataInProgress']['DefArrestAge'],
 								array(
-									$d['Datum']['ChargeDate'],
-									$d['Datum']['ArrestDate'],
-									$d['Datum']['Detained'],
-									$d['Datum']['BailType'],
-									$d['Datum']['BailAmount'],
-									$d['Datum']['Role'],
-									$d['Datum']['FelCharged'],
-									$d['Datum']['FelSentenced'],
-									$d['Datum']['DateTerm'],
-									$d['Datum']['SentDate'],
-									$d['Datum']['TotalSentence'],
-									$d['Datum']['Restitution'],
-									$d['Datum']['AssetForfeit'],
-									$d['Datum']['Appeal'],
-									$d['Datum']['SupRelease'],
-									$d['Datum']['Probation'],
+									$d['DataInProgress']['ChargeDate'],
+									$d['DataInProgress']['ArrestDate'],
+									$d['DataInProgress']['Detained'],
+									$d['DataInProgress']['BailType'],
+									$d['DataInProgress']['BailAmount'],
+									$d['DataInProgress']['Role'],
+									$d['DataInProgress']['FelCharged'],
+									$d['DataInProgress']['FelSentenced'],
+									$d['DataInProgress']['DateTerm'],
+									$d['DataInProgress']['SentDate'],
+									$d['DataInProgress']['TotalSentence'],
+									$d['DataInProgress']['Restitution'],
+									$d['DataInProgress']['AssetForfeit'],
+									$d['DataInProgress']['Appeal'],
+									$d['DataInProgress']['SupRelease'],
+									$d['DataInProgress']['Probation'],
 									$charges
 								),
 								array(
-									$d['Datum']['NumVic'],
-									$d['Datum']['NumVicMinor'],
-									$d['Datum']['NumVicForeign'],
-									$d['Datum']['NumVicFemale']
+									$d['DataInProgress']['NumVic'],
+									$d['DataInProgress']['NumVicMinor'],
+									$d['DataInProgress']['NumVicForeign'],
+									$d['DataInProgress']['NumVicFemale']
 								),
 								array(
-									$d['Datum']['OCGName1'],
-									$d['Datum']['OCGType1'],
-									$d['Datum']['OCGRace1'],
-									$d['Datum']['OCGScope1'],
-									$d['Datum']['OCGName2'],
-									$d['Datum']['OCGType2'],
-									$d['Datum']['OCGRace2'],
-									$d['Datum']['OCGScope2']
+									$d['DataInProgress']['OCGName1'],
+									$d['DataInProgress']['OCGType1'],
+									$d['DataInProgress']['OCGRace1'],
+									$d['DataInProgress']['OCGScope1'],
+									$d['DataInProgress']['OCGName2'],
+									$d['DataInProgress']['OCGType2'],
+									$d['DataInProgress']['OCGRace2'],
+									$d['DataInProgress']['OCGScope2']
 								)
 							)
 						)
@@ -500,50 +500,50 @@ class SearchController extends AppController {
 				array_push(
 					$cases[count($cases) - 1][16],
 					array(
-						$d['Datum']['DefLast'],
-						$d['Datum']['DefFirst'],
-						$d['Datum']['Alias'],
-						$d['Datum']['DefGender'],
-						$d['Datum']['DefRace'],
-						$d['Datum']['DefBirthdate'],
-						$d['Datum']['DefArrestAge'],
+						$d['DataInProgress']['DefLast'],
+						$d['DataInProgress']['DefFirst'],
+						$d['DataInProgress']['Alias'],
+						$d['DataInProgress']['DefGender'],
+						$d['DataInProgress']['DefRace'],
+						$d['DataInProgress']['DefBirthdate'],
+						$d['DataInProgress']['DefArrestAge'],
 						array(
-							$d['Datum']['ChargeDate'],
-							$d['Datum']['ArrestDate'],
-							$d['Datum']['Detained'],
-							$d['Datum']['BailType'],
-							$d['Datum']['BailAmount'],
-							$d['Datum']['Role'],
-							$d['Datum']['FelCharged'],
-							$d['Datum']['FelSentenced'],
-							$d['Datum']['DateTerm'],
-							$d['Datum']['SentDate'],
-							$d['Datum']['TotalSentence'],
-							$d['Datum']['Restitution'],
-							$d['Datum']['AssetForfeit'],
-							$d['Datum']['Appeal'],
-							$d['Datum']['SupRelease'],
-							$d['Datum']['Probation'],
+							$d['DataInProgress']['ChargeDate'],
+							$d['DataInProgress']['ArrestDate'],
+							$d['DataInProgress']['Detained'],
+							$d['DataInProgress']['BailType'],
+							$d['DataInProgress']['BailAmount'],
+							$d['DataInProgress']['Role'],
+							$d['DataInProgress']['FelCharged'],
+							$d['DataInProgress']['FelSentenced'],
+							$d['DataInProgress']['DateTerm'],
+							$d['DataInProgress']['SentDate'],
+							$d['DataInProgress']['TotalSentence'],
+							$d['DataInProgress']['Restitution'],
+							$d['DataInProgress']['AssetForfeit'],
+							$d['DataInProgress']['Appeal'],
+							$d['DataInProgress']['SupRelease'],
+							$d['DataInProgress']['Probation'],
 							$charges
 						),
 						array(
-							$d['Datum']['NumVic'],
-							$d['Datum']['NumVicMinor'],
-							$d['Datum']['NumVicForeign'],
-							$d['Datum']['NumVicFemale']
+							$d['DataInProgress']['NumVic'],
+							$d['DataInProgress']['NumVicMinor'],
+							$d['DataInProgress']['NumVicForeign'],
+							$d['DataInProgress']['NumVicFemale']
 						),
 						array(
 							array(
-								$d['Datum']['OCName1'],
-								$d['Datum']['OCType1'],
-								$d['Datum']['OCRace1'],
-								$d['Datum']['OCScope1']
+								$d['DataInProgress']['OCName1'],
+								$d['DataInProgress']['OCType1'],
+								$d['DataInProgress']['OCRace1'],
+								$d['DataInProgress']['OCScope1']
 							),
 							array(
-								$d['Datum']['OCName2'],
-								$d['Datum']['OCType2'],
-								$d['Datum']['OCRace2'],
-								$d['Datum']['OCScope2']
+								$d['DataInProgress']['OCName2'],
+								$d['DataInProgress']['OCType2'],
+								$d['DataInProgress']['OCRace2'],
+								$d['DataInProgress']['OCScope2']
 							)
 						)
 					)
@@ -551,10 +551,6 @@ class SearchController extends AppController {
 			}
 		}
 
-		print_r($display);
-		echo "\n<br/>Cases:<br/>";
-		print_r($cases);
-		echo "\n<br/>";
 		$this->set('display', $display);
 		$this->set('cases', $cases);
 		$this->set('datum', $datum);

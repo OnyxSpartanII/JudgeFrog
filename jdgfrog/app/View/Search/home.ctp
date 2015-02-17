@@ -263,6 +263,27 @@ this.d.container.hide().remove();this.d.overlay.hide();this.d.iframe&&this.d.ifr
 
 </script>
 
+<!-- CSS for table -->
+<style>
+.search_table {
+  width: 100%;
+}
+
+.st_header {
+  display: flex;
+  font-weight: bold;
+  text-align: center;
+}
+
+.st_row {
+  display: flex;
+}
+
+.st_cell {
+  flex: 1 0 auto;
+}
+</style>
+
 <!-- Table Script to display searched values -->
 <script type="text/javascript">
             google.load("visualization", "1", {packages:["table"]});
@@ -308,32 +329,66 @@ this.d.container.hide().remove();this.d.overlay.hide();this.d.iframe&&this.d.ifr
               echo 'var cases = [];';
             }
           ?>
-          console.log(cases);
           if (cases.length > 0) {
-            console.log(cases[i]);
             var content = '<div><h3>Case Details</h3><br>' +
-                          '<table style="width=100%;">' +
-                          '<tr><th>Case Name</th><th>Case Number</th><th># of Defendants</th><th>State</th><th>Year</th></tr>' +
-                          '<tr><td>' + cases[i][0] + '</td>' +
-                          '<td>' + cases[i][1] + '</td>' +
-                          '<td>' + cases[i][6] + '</td>' +
-                          '<td>' + cases[i][7] + '</td>' +
-                          '<td>' + cases[i][2] + '</td>' +
-                          '</tr></table></div><br/>';
+                          '<div class="search_table">' +
+                          '<div class="st_header"><div class="st_cell">Case Name</div><div class="st_cell">Case Number</div><div class="st_cell"># of Defendants</div><div class="st_cell">State</div><div class="st_cell">Year</div></div>' +
+                          '<div class="st_row"><div class="st_cell">' + cases[i][0] + '</div>' +
+                          '<div class="st_cell">' + cases[i][1] + '</div>' +
+                          '<div class="st_cell">' + cases[i][6] + '</div>' +
+                          '<div class="st_cell">' + cases[i][7] + '</div>' +
+                          '<div class="st_cell">' + cases[i][2] + '</div>' +
+                          '</div></div></div><br/>';
 
-            content = content + '<div><h5>Defendant Details</h5><br/>';
+            content = content + '<div><h3>Defendant Details</h3><br/>';
             content = content + 
-                        '<table style="width=100%">' +
-                        '<tr><th>Name</th><th>Alias</th><th>Gender</th><th>Race</th><th>Birthdate</th></tr>';
+                        '<div class="search_table">' +
+                        '<div class="st_header"><div class="st_cell">Name</div><div class="st_cell">Alias</div><div class="st_cell">Gender</div><div class="st_cell">Race</div><div class="st_cell">Birthdate</div></div>';
             for (var j = 0; j < cases[i][16].length; j++) {
               content = content + 
-                        '<tr><td>' + cases[i][16][j][0] + ', ' + cases[i][16][j][1] + '</td>' +
-                        '<td>' + cases[i][16][j][2] + '</td>' +
-                        '<td>' + cases[i][16][j][3] + '</td>' +
-                        '<td>' + cases[i][16][j][4] + '</td>' +
-                        '<td>' + cases[i][16][j][5] + '</td>';
+                        '<div class="st_row"><div class="st_cell">' + cases[i][16][j][0] + ', ' + cases[i][16][j][1] + '</div>' +
+                        '<div class="st_cell">' + cases[i][16][j][2] + '</div>' +
+                        '<div class="st_cell">' + cases[i][16][j][3] + '</div>' +
+                        '<div class="st_cell">' + cases[i][16][j][4] + '</div>' +
+                        '<div class="st_cell">' + cases[i][16][j][5] + '</div>';
+              if (cases[i][16][j][7].length > 0) {
+                content = content + 
+                          '<br/><div class="search_table"><div class="st_header">' +
+                          '<div class="st_cell">Charge Date</div>' +
+                          '<div class="st_cell">Arrest Date</div>' +
+                          '<div class="st_cell">Detained</div>' +
+                          '<div class="st_cell">Bail Type</div>' +
+                          '<div class="st_cell">Bail Amount</div>' +
+                          '<div class="st_cell">Role</div>' +
+                          '<div class="st_cell">Felonies Charged</div>' +
+                          '<div class="st_cell">Felonies Sentenced</div>' +
+                          '<div class="st_cell">Date Terminated</div>' +
+                          '<div class="st_cell">Sentence Date</div>' +
+                          '<div class="st_cell"># Months Sentenced</div>' +
+                          '<div class="st_cell">Restitution</div>' +
+                          '<div class="st_cell">Asset Forfeiture?</div>' +
+                          '<div class="st_cell">Appeal?</div>' +
+                          '<div class="st_cell">Supervized Release?</div>' +
+                          '<div class="st_cell"># Months Probation</div></div>' +
+                          '<div class="st_row"><div class="st_cell">' + cases[i][16][j][7][0] + '</div>' +
+                          '<div class="st_cell">' + cases[i][16][j][7][1] + '</div>' +
+                          '<div class="st_cell">' + cases[i][16][j][7][2] + '</div>' +
+                          '<div class="st_cell">' + cases[i][16][j][7][3] + '</div>' +
+                          '<div class="st_cell">' + cases[i][16][j][7][4] + '</div>' +
+                          '<div class="st_cell">' + cases[i][16][j][7][5] + '</div>' +
+                          '<div class="st_cell">' + cases[i][16][j][7][6] + '</div>' +
+                          '<div class="st_cell">' + cases[i][16][j][7][7] + '</div>' +
+                          '<div class="st_cell">' + cases[i][16][j][7][8] + '</div>' +
+                          '<div class="st_cell">' + cases[i][16][j][7][9] + '</div>' +
+                          '<div class="st_cell">' + cases[i][16][j][7][10] + '</div>' +
+                          '<div class="st_cell">' + cases[i][16][j][7][11] + '</div>' +
+                          '<div class="st_cell">' + cases[i][16][j][7][12] + '</div>' +
+                          '<div class="st_cell">' + cases[i][16][j][7][13] + '</div>' +
+                          '<div class="st_cell">' + cases[i][16][j][7][14] + '</div>' +
+                          '<div class="st_cell">' + cases[i][16][j][7][15] + '</div></div></div>';
+              }
             }
-            content = content + '</table></div>';
+            content = content + '</div></div>';
           }
           $.modal(content);
         });

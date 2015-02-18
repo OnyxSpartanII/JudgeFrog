@@ -31,22 +31,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		<?php
 			echo $this->Html->meta('icon');
 			echo $this->Html->css(array('htd-main', 'bootstrap',  'search_page_css', 'default','ion.rangeSlider.    skinFlat','ion.rangeSlider', 'jquery-ui', 'modal_window_style', 'animation'));
-			echo $this->Html->script(array('jquery', 'slider', 'superfish', 'custom', 'jquery-ui', 'modernizr.  custom', 'classie','moment','sliderMod', 'hover-effect', 'jquery.min', 'move-top.js', 'easing.js', 'easyResponsiveTabs', 'uisearch', 'jquery-ui-new'));
 		?>
-	<!-- Google charts Script -->
-	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-	<script type="text/javascript">
-		$(document).ready(function () {
-			$('#horizontalTab').easyResponsiveTabs({
-				type: 'default', //Types: default, vertical, accordion           
-				width: 'auto', //auto or any width like 600px
-				fit: true   // 100% fit in a container
-			});
-		});
-	</script>
-	<!-- Scripts for collaspable panels. -->
-		<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-		<?php echo $this->Html->script(array('jquery-1.10.2'));?>
 
 		<title> 
 			<?php /* 
@@ -71,40 +56,36 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		<div class="header-b">
 			<div class="container">
 				<div class="header-main">
-						<div class="logo">
-							<a href="home">
-								<h2 onmouseover="bringTheFunc(this)">HTD</h2>
-							</a>
-						</div> 
-						<span class="menu"> <?php echo $this->Html->image('icon.png', array('alt' => 'Menu List')); ?></span>
-						<div class="header-navg">
-							<ul class="res">
-								<li><a class="<?php echo ($this->fetch('active') == 'home') ? 'active' : ''; ?>" <?php echo $this->Html->link('HOME', '/home'); ?></li>
-								<li><a class="<?php echo ($this->fetch('active') == 'about') ? 'active' : ''; ?>" <?php echo $this->Html->link('ABOUT', '/about'); ?></li>
-								<li><a class="<?php echo ($this->fetch('active') == 'search') ? 'active' : ''; ?>" <?php echo $this->Html->link('SEARCH', '/search'); ?></li>
-								<li><a class="<?php echo ($this->fetch('active') == 'additionalResources') ? 'active' : ''; ?>" <?php echo $this->Html->link('ADDITIONAL RESOURCES', '/additionalResources'); ?></li>
-								<li><a class="<?php echo ($this->fetch('active') == 'contact') ? 'active' : ''; ?>" <?php echo $this->Html->link('CONTACT US', '/contact'); ?></li>
-							</ul>
-								<script>
-								$( "span.menu").click(function() {
-									$(  "ul.res" ).slideToggle("slow", function() {
-									// Animation complete.
-									});
-								});
-						 		</script>
-						</div>
-					<div class="clearfix"> </div>
+
+					<div class="logo">
+						<a href="home">
+							<h2 onmouseover="bringTheFunc(this)">HTD</h2>
+						</a>
+					</div> 
+
+					<div class="header-navg">
+						<ul class="res">
+							<li><a class="<?php echo ($this->fetch('active') == 'home') ? 'active' : ''; ?>" <?php echo $this->Html->link('HOME', '/home'); ?></li>
+							<li><a class="<?php echo ($this->fetch('active') == 'about') ? 'active' : ''; ?>" <?php echo $this->Html->link('ABOUT', '/about'); ?></li>
+							<li><a class="<?php echo ($this->fetch('active') == 'search') ? 'active' : ''; ?>" <?php echo $this->Html->link('SEARCH', '/search'); ?></li>
+							<li><a class="<?php echo ($this->fetch('active') == 'additionalResources') ? 'active' : ''; ?>" <?php echo $this->Html->link('ADDITIONAL RESOURCES', '/additionalResources'); ?></li>
+							<li><a class="<?php echo ($this->fetch('active') == 'contact') ? 'active' : ''; ?>" <?php echo $this->Html->link('CONTACT US', '/contact'); ?></li>
+							<?php if (AuthComponent::user('id')): ?>
+						 		Logged in as <?= AuthComponent::user('username') ?>
+						 	<?php endif; ?>
+						</ul>
+					</div>
+
 				</div>
 			</div>
 		</div>
-<!-- </div> -->
+
 		<div id="content">
 
 			<?php echo $this->Session->flash(); ?>
 
 			<?php echo $this->fetch('content'); ?>
 		
-			<?php echo $this->element('sql_dump'); ?>
 		</div>
 	</body>
 

@@ -8,7 +8,7 @@ class UsersController extends AppController {
 	}
 
 	public function login() {
-		$this->layout = false;
+		//$this->layout = false;
 		$this->set('title', 'Login | Human Trafficking Data');
 
 		/*if ($this->Session->check('Auth.User')) 

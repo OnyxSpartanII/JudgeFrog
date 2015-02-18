@@ -50,16 +50,20 @@ class AdminPanelController extends AppController {
 			throw new NotFoundException();
 		}
 
-		$maxAllowed = $this->Session->read('form.params.maxProgress') + 1;
+		/*$maxAllowed = $this->Session->read('form.params.maxProgress') + 1;
 		if ($currentStep > $maxAllowed) {
 			$this->redirect('/AdminPanel/create_case_'.$maxAllowed);
 		}
 		else {
 			$this->Session->write('form.params.currentStep', $currentStep);
-		}
+		}*/
 
 		$this->render('create_case_'.$currentStep);
 
+	}
+
+	public function saveStep() {
+		$this->Session->flash('saved!');
 	}
 
 	public function saveSession() {

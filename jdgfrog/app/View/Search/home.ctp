@@ -1,3 +1,9 @@
+<!-- Calling Slider Imports -->
+  <?php 
+  echo $this->Html->script(array('modernizr.custom', 'classie','moment','ion.rangeSlider.js','ion.rangeSlider.min','sliderMod', 'modal_window_style', 'jquery.simplemodal',)); 
+  echo $this->Html->css(array('search_page_css', 'nav_bar_style', 'default','ion.rangeSlider.skinFlat','ion.rangeSlider'));
+  ?>
+
 <!--search start here-->
 <div class="contact">
     <div class="container">
@@ -12,11 +18,10 @@
                       <!-- SEARCH BUTTON-->
                       <div class="search_button">
                         <label for="submit_form">
-                          <?php echo $this->Html->image('submit1.png', array('alt' => 'Michael Bachmann', 'style' => 'float:left; padding-right:10px; padding-top:10px;' )); ?>
+                          <?php echo $this->Html->image('submit1.png', array('alt' => 'Submit', 'style' => 'float:left; padding-right:10px; padding-top:10px;' )); ?>
                         </label>
                       </div>
                   </div>
-
                 <!-- Search Interface -->
                   <div class="col-md-5" id="collapsible-panels">
                       <?php

@@ -10,14 +10,14 @@
 }
 
 .top_bar_left h4{
-    font-size: 25px;
+    font-size: 18px;
     color: #fff;
     float: left;
 
 }
 .top_bar_dash h4{
     color: #fff;
-    font-size: 25px;
+    font-size: 18px;
     text-align: center;
     margin: 0 auto;
 }
@@ -70,7 +70,7 @@
 
 
 .center_panel{
-    /*background-color: #f05;*/
+    /*background-color: #fe2232;*/
     /* margin-left: 400px; */
     display:inline-block;
     float:right;
@@ -112,12 +112,12 @@
 
 #collapsible-panels h2 a {
     text-decoration: none;
-    font-size: 22px;
+    font-size: 17px;
     color: #444;
 }
        
 #collapsible-panels h2 a:hover {
-    color: #F05;
+    color: #fe2232;
 }
 
 #collapsible-panels input, select{
@@ -129,24 +129,22 @@
     /*margin-left: 60px;*/
 }
 #collapsible-panels input:hover {
-    border:1px solid #f05;
+    border:1px solid #fe2232;
     -webkit-transition: all 0.1.5s ease-in;
     -moz-transition: all 0.1.5s ease-in;
     -o-transition: all 0.1.5s ease-in;
 }  
 #collapsible-panels input [type=checkbox], #collapsible-panels label{
     /*margin-left: 60px;*/
-    font-size: 18px;
+    font-size: 15px;
 }
-.search_form input[type=text],
+#collapsible-panels input[type=text],
     select {
     padding:10px 7px;
     background:#fff;
     font-size: 15px;
     border:1px solid #222;
 }
-  
-
 .search_disclaim{
     margin: 10px 30px;;
     text-align: center;
@@ -204,7 +202,7 @@
 }
 
 .search_item:hover{
-    background-color: #f05;
+    background-color: #fe2232;
 }
 
 

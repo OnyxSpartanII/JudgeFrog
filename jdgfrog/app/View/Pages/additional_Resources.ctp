@@ -8,7 +8,7 @@
 </div>
 <?php
     echo $this->Html->css(array('jquery-ui-new'));
-    echo $this->Html->script(array('jquery-1.10.2', 'jquery-ui-new'));
+    echo $this->Html->script(array('jquery-ui-new'));
 ?>
   <script>
   $(function() {

@@ -10,7 +10,7 @@ class UploadsController extends AppController {
 	/**
 	 * This controller does not use a model
 	 */
-	public $uses = array('AggregateSentence', 'ArrestChargeDetail', 'CaseHasDefendant', 'CaseHasOrganizedCrimeGroup', 'CaseObject', 'Charge', 'Defendant', 'Judge', 'OrganizedCrimeGroup', 'Victim');
+	public $uses = array('DataInProgress');
 
 	public $helpers = array('Html', 'Form');
 
@@ -64,330 +64,287 @@ class UploadsController extends AppController {
 						} else if ($row >= 4) {
 							// Every row after row #4 contains data which needs to be input to database
 
-							// get the case number [Formt: CASE_ID <DOT> DEF_ID]
-							$case_id = explode(".",$data[0])[0];
+							$index = 2;
 
-							/** 
-							 * Judge Section
-							 * 
-							 * Check to see if a new judge needs to be
-							 * created based on the name of the judge.
-							 * 
-							 * *NOTE*: Possibly need
-							 * to change to add conditions for other
-							 * properties if there are multiple judges with
-							 * similar names
-							 */
-							if (!$this->Judge->find('first', array('conditions' => array('Judge.name' => $data[10])))) {
+							$info = array(
+								'DefLast' => $data[$index++],
+								'DefFirst' => $data[$index++],
+								'Alias' => $data[$index++],
+								'CaseNam' => $data[$index++],
+								'CaseNum' => $data[$index++],
+								'NumDef' => intval($data[$index++]),
+								'State' => $data[$index++],
+								'FedDistrictLoc' => $data[$index++],
+								'FedDistrictNum' => intval($data[$index++]),
+								'JudgeName' => $data[$index++],
+								'JudgeRace' => intval($data[$index++]),
+								'JudgeGen' => ($data[$index++] == '1'),
+								'JudgeTenure' => date('Y-m-d',strtotime($data[$index++])),
+								'JudgeApptBy' => ($data[$index++] == '1'),
+								'CaseSummary' => $data[$index++],
+								'DefGender' => ($data[$index++] == '1'),
+								'DefRace' => intval($data[$index++]),
+								'DefBirthdate' => date('Y-m-d',strtotime($data[$index++])),
+								'DefArrestAge' => intval($data[$index++]),
+								'ChargeDate' => date('Y-m-d',strtotime($data[$index++])),
+								'ArrestDate' => date('Y-m-d',strtotime($data[$index++])),
+								'Detained' => ($data[$index++] == '1'),
+								'BailType' => intval($data[$index++]),
+								'BailAmount' => intval($data[$index++]),
+								'LaborTraf' => ($data[$index++] == '1'),
+								'AdultSexTraf' => ($data[$index++] == '1'),
+								'MinorSexTraf' => ($data[$index++] == '1'),
+								'Role' => ($data[$index++] == '1'),
+								'FelCharged' => intval($data[$index++]),
+								'FelSentenced' => intval($data[$index++]),
 
-								// If there needs to be a new judge,
-								// get the data according to document
-								$judge_data = array(
-									'Name' => $data[10],
-									'Race' => intval($data[11]),
-									'Gender' => intval($data[12]),
-									'Tenure' => $data[13],
-									'AppointedBy' => intval($data[14])
-								);
+								'1961to1968' => ($data[$index++] == '1'),
+								'Counts1916to1968' => intval($data[$index++]),
+								'CountsNP1916to1968' => intval($data[$index++]),
+								'PleaDismissed1916to1968' => intval($data[$index++]),
+								'PleaGuilty1916to1968' => intval($data[$index++]),
+								'TrialGuilty1916to1968' => intval($data[$index++]),
+								'TrialNG1916to1968' => intval($data[$index++]),
+								'Fines1916to1968' => intval($data[$index++]),
+								'Sent1916to1968' => intval($data[$index++]),
+								'Prob1916to1968' => intval($data[$index++]),
 
-								// Create a new Judge model
-								$this->Judge->create();
+								'1028' => ($data[$index++] == '1'),
+								'Counts1028' => intval($data[$index++]),
+								'CountsNP1028' => intval($data[$index++]),
+								'PleaDismissed1028' => intval($data[$index++]),
+								'PleaGuilty1028' => intval($data[$index++]),
+								'TrialGuilty1028' => intval($data[$index++]),
+								'TrialNG1028' => intval($data[$index++]),
+								'Fines1028' => intval($data[$index++]),
+								'Sent1028' => intval($data[$index++]),
+								'Prob1028' => intval($data[$index++]),
 
-								// Save the data to this Judge model
-								$this->Judge->save($judge_data);
+								'1351' => ($data[$index++] == '1'),
+								'Counts1351' => intval($data[$index++]),
+								'CountsNP1351' => intval($data[$index++]),
+								'PleaDismissed1351' => intval($data[$index++]),
+								'PleaGuilty1351' => intval($data[$index++]),
+								'TrialGuilty1351' => intval($data[$index++]),
+								'TrialNG1351' => intval($data[$index++]),
+								'Fines1351' => intval($data[$index++]),
+								'Sent1351' => intval($data[$index++]),
+								'Prob1351' => intval($data[$index++]),
 
-								// Store the JudgeId for later use
-								$judge_id = $this->Judge->id;
+								'1425' => ($data[$index++] == '1'),
+								'Counts1425' => intval($data[$index++]),
+								'CountsNP1425' => intval($data[$index++]),
+								'PleaDismissed1425' => intval($data[$index++]),
+								'PleaGuilty1425' => intval($data[$index++]),
+								'TrialGuilty1425' => intval($data[$index++]),
+								'TrialNG1425' => intval($data[$index++]),
+								'Fines1425' => intval($data[$index++]),
+								'Sent1425' => intval($data[$index++]),
+								'Prob1425' => intval($data[$index++]),
 
-								// Clear the model to allow for other Judge
-								// models to be created
-								$this->Judge->clear();
+								'1426' => ($data[$index++] == '1'),
+								'Counts1426' => intval($data[$index++]),
+								'CountsNP1426' => intval($data[$index++]),
+								'PleaDismissed1426' => intval($data[$index++]),
+								'PleaGuilty1426' => intval($data[$index++]),
+								'TrialGuilty1426' => intval($data[$index++]),
+								'TrialNG1426' => intval($data[$index++]),
+								'Fines1426' => intval($data[$index++]),
+								'Sent1426' => intval($data[$index++]),
+								'Prob1426' => intval($data[$index++]),
 
-								array_push($receipt, '[INFO] Created new Judge (ID: '.$judge_id.').');
-							} else {
+								'1461to1465' => ($data[$index++] == '1'),
+								'Counts1461to1465' => intval($data[$index++]),
+								'CountsNP1461to1465' => intval($data[$index++]),
+								'PleaDismissed1461to1465' => intval($data[$index++]),
+								'PleaGuilty1461to1465' => intval($data[$index++]),
+								'TrialGuilty1461to1465' => intval($data[$index++]),
+								'TrialNG1461to1465' => intval($data[$index++]),
+								'Fines1461to1465' => intval($data[$index++]),
+								'Sent1461to1465' => intval($data[$index++]),
+								'Prob1461to1465' => intval($data[$index++]),
 
-								// Get the JudgeId of the existing Judge
-								// model and save for future use
-								$judge_id = $this->Judge->find('first', array('conditions' => array('Judge.name' => $data[10])))["Judge"]["JudgeId"];
-								array_push($receipt, '[WARN] Detected duplicate Judge at row '.$row.'. Duplicate Judge ID: '.$judge_id.'.');
-							}
+								'1512' => ($data[$index++] == '1'),
+								'Counts1512' => intval($data[$index++]),
+								'CountsNP1512' => intval($data[$index++]),
+								'PleaDismissed1512' => intval($data[$index++]),
+								'PleaGuilty1512' => intval($data[$index++]),
+								'TrialGuilty1512' => intval($data[$index++]),
+								'TrialNG1512' => intval($data[$index++]),
+								'Fines1512' => intval($data[$index++]),
+								'Sent1512' => intval($data[$index++]),
+								'Prob1512' => intval($data[$index++]),
 
-							/**
-							 * Case Section
-							 *
-							 * Check to see if a new CaseObject needs to
-							 * be added to the database based on CaseId
-							 */
-							if (!$this->CaseObject->exists($case_id)) {
+								'1542to1543' => ($data[$index++] == '1'),
+								'Counts1542to1543' => intval($data[$index++]),
+								'CountsNP1542to1543' => intval($data[$index++]),
+								'PleaDismissed1542to1543' => intval($data[$index++]),
+								'PleaGuilty1542to1543' => intval($data[$index++]),
+								'TrialGuilty1542to1543' => intval($data[$index++]),
+								'TrialNG1542to1543' => intval($data[$index++]),
+								'Fines1542to1543' => intval($data[$index++]),
+								'Sent1542to1543' => intval($data[$index++]),
+								'Prob1542to1543' => intval($data[$index++]),
 
-								/**
-							 	 * Victims Section
-							 	 *
-							 	 * Create a new Victim object for the
-							 	 * database if there is victims data.
-							 	 *
-							 	 * *NOTE*:
-							 	 * This is inside of CaseObject because
-							 	 * we only need to create a new Victims
-							 	 * object if we have a new CaseObject
-							 	 */
-								if ($data[239] !== "") {
-
-									$victim_data = array(
-										'Total' => intval($data[239]),
-										'Minor' => intval($data[240]),
-										'Foreign' => intval($data[241]),
-										'Female' => intval($data[242])
-									);
-
-									$this->Victim->create();
-									$this->Victim->save($victim_data);
-									$victim_id = $this->Victim->id;
-									$this->Victim->clear();
-								}
-
-								$case_data = array(
-									'CaseId' => $case_id,
-									'Name' => $data[5],
-									'Number' => $data[6],
-									'Summary' => $data[15],
-									'Num_Defendants' => intval($data[7]),
-									'State' => $data[8],
-									'FederalDistrict' => intval($data[9]),
-									'JudgeId' => $judge_id,
-									'VictimsId' => $victim_id
-								);
-
-								$this->CaseObject->create();
-								$this->CaseObject->save($case_data);
-								$case_id = $this->CaseObject->id;
-								$this->CaseObject->clear();
-								array_push($receipt, '[INFO] Created new CaseObject (ID: '.$case_id.').');
-							} else {
-								array_push($receipt, '[WARN] Detected duplicate CaseObject at row '.$row.'. Duplicate CaseObject ID: '.$case_id.'.');
-							}
-
-							/**
-							 * Defendant Section
-							 *
-							 * Check to see if new Defendant needs to
-							 * be added to the database based on defendant
-							 * name
-							 */
-							if (!$this->Defendant->find('first', array('conditions' => array('Defendant.firstname' => $data[3], 'Defendant.lastname' => $data[2], 'Defendant.birthdate' => date('Y-m-d', strtotime($data[18])))))) {
-
-								$defendant_data = array(
-									'Firstname' => $data[3],
-									'Lastname' => $data[2],
-									'Gender' => ($data[16] == "1"),
-									'Race' => intval($data[17]),
-									'BirthDate' => date("Y-m-d", strtotime($data[18]))
-								);
-
-								$this->Defendant->create();
-								$this->Defendant->save($defendant_data);
-								$defendant_id = $this->Defendant->id;
-								$this->Defendant->clear();
-								array_push($receipt, '[INFO] Created new Defendant (ID: '.$defendant_id.').');
-							} else {
-								$defendant_id = $this->Defendant->find('first', array('conditions' => array('Defendant.Firstname' => $data[3], 'Defendant.Lastname' => $data[2], 'Defendant.BirthDate' => date('Y-m-d', strtotime($data[18])))))["Defendant"]["DefendantId"];
-								array_push($receipt, '[WARN] Detected duplicate Defendant at row '.$row.'. Duplicate Defendant ID: '.$defendant_id.'.');
-							}
-
-							if (!$this->CaseHasDefendant->find('first', array('conditions' => array('CaseHasDefendant.CaseId' => $case_id, 'CaseHasDefendant.DefendantId' => $defendant_id)))) {	
+								'1546' => ($data[$index++] == '1'),
+								'Counts1546' => intval($data[$index++]),
+								'CountsNP1546' => intval($data[$index++]),
+								'PleaDismissed1546' => intval($data[$index++]),
+								'PleaGuilty1546' => intval($data[$index++]),
+								'TrialGuilty1546' => intval($data[$index++]),
+								'TrialNG1546' => intval($data[$index++]),
+								'Fines1546' => intval($data[$index++]),
+								'Sent1546' => intval($data[$index++]),
+								'Prob1546' => intval($data[$index++]),
 								
-								/**
-								 * Adds this defendant to this case
-								 */
-								$chd_data = array(
-									'CaseId' => $case_id,
-									'DefendantId' => $defendant_id
-								);
-
-								$this->CaseHasDefendant->create();
-								$this->CaseHasDefendant->save($chd_data);
-								$this->CaseHasDefendant->clear();
-								array_push($receipt, '[INFO] Added Defendant #$defendant_id to CaseObject #'.$case_id.'.');
-							} else {
-								array_push($receipt, '[WARN] Detected duplicate Defendant associated with Case #'.$case_id.' at row '.$row.'. Duplicate Defendant ID: '.$defendant_id.'.');
-							}
-
-							/**
-							 * ArrestChargeDetail Section
-							 *
-							 * Create a new ArrestChargeDetail object
-							 * for each defendant in each case (each row)
-							 */
-							if ($data[20] !== '') {
-								$acd_data = array(
-									'ChargeDate' => date('Y-m-d', strtotime($data[20])),
-									'ArrestDate' => date('Y-m-d', strtotime($data[21])),
-									'Detained' => ($data[22] == "1"),
-									'BailType' => intval($data[23]),
-									'BailAmount' => intval($data[24]),
-									'LaborTraf' => ($data[25] == "1"),
-									'AdultSexTraf' => ($data[26] == "1"),
-									'MinorSexTraf' => ($data[27] == "1"),
-									'Role' => ($data[28] == "1"),
-									'Fel_C' => intval($data[29]),
-									'Fel_S' => intval($data[30]),
-									'CHD_CaseId' => $case_id,
-									'CHD_DefendantId' => $defendant_id
-								);
-
-								$this->ArrestChargeDetail->create();
-								$this->ArrestChargeDetail->save($acd_data);
-								$acd_id = $this->ArrestChargeDetail->id;
-								$this->ArrestChargeDetail->clear();
-								array_push($receipt, '[INFO] Created new ArrestChargeDetail (ID: '.$acd_id.').');
-							} else {
-								array_push($receipt, '[ERROR] Missing information for ArrestChargeDetail at row '.$row.'. Did not create ArrestChargeDetail for this row.');
-							}
+								'1581to1588' => ($data[$index++] == '1'),
+								'Counts1581to1588' => intval($data[$index++]),
+								'CountsNP1581to1588' => intval($data[$index++]),
+								'PleaDismissed1581to1588' => intval($data[$index++]),
+								'PleaGuilty1581to1588' => intval($data[$index++]),
+								'TrialGuilty1581to1588' => intval($data[$index++]),
+								'TrialNG1581to1588' => intval($data[$index++]),
+								'Fines1581to1588' => intval($data[$index++]),
+								'Sent1581to1588' => intval($data[$index++]),
+								'Prob1581to1588' => intval($data[$index++]),
+								
+								'1589' => ($data[$index++] == '1'),
+								'Counts1589' => intval($data[$index++]),
+								'CountsNP1589' => intval($data[$index++]),
+								'PleaDismissed1589' => intval($data[$index++]),
+								'PleaGuilty1589' => intval($data[$index++]),
+								'TrialGuilty1589' => intval($data[$index++]),
+								'TrialNG1589' => intval($data[$index++]),
+								'Fines1589' => intval($data[$index++]),
+								'Sent1589' => intval($data[$index++]),
+								'Prob1589' => intval($data[$index++]),
+								
+								'1590' => ($data[$index++] == '1'),
+								'Counts1590' => intval($data[$index++]),
+								'CountsNP1590' => intval($data[$index++]),
+								'PleaDismissed1590' => intval($data[$index++]),
+								'PleaGuilty1590' => intval($data[$index++]),
+								'TrialGuilty1590' => intval($data[$index++]),
+								'TrialNG1590' => intval($data[$index++]),
+								'Fines1590' => intval($data[$index++]),
+								'Sent1590' => intval($data[$index++]),
+								'Prob1590' => intval($data[$index++]),
+								
+								'1591' => ($data[$index++] == '1'),
+								'Counts1591' => intval($data[$index++]),
+								'CountsNP1591' => intval($data[$index++]),
+								'PleaDismissed1591' => intval($data[$index++]),
+								'PleaGuilty1591' => intval($data[$index++]),
+								'TrialGuilty1591' => intval($data[$index++]),
+								'TrialNG1591' => intval($data[$index++]),
+								'Fines1591' => intval($data[$index++]),
+								'Sent1591' => intval($data[$index++]),
+								'Prob1591' => intval($data[$index++]),
+								
+								'1592' => ($data[$index++] == '1'),
+								'Counts1592' => intval($data[$index++]),
+								'CountsNP1592' => intval($data[$index++]),
+								'PleaDismissed1592' => intval($data[$index++]),
+								'PleaGuilty1592' => intval($data[$index++]),
+								'TrialGuilty1592' => intval($data[$index++]),
+								'TrialNG1592' => intval($data[$index++]),
+								'Fines1592' => intval($data[$index++]),
+								'Sent1592' => intval($data[$index++]),
+								'Prob1592' => intval($data[$index++]),
+								
+								'2251' => ($data[$index++] == '1'),
+								'Counts2251' => intval($data[$index++]),
+								'CountsNP2251' => intval($data[$index++]),
+								'PleaDismissed2251' => intval($data[$index++]),
+								'PleaGuilty2251' => intval($data[$index++]),
+								'TrialGuilty2251' => intval($data[$index++]),
+								'TrialNG2251' => intval($data[$index++]),
+								'Fines2251' => intval($data[$index++]),
+								'Sent2251' => intval($data[$index++]),
+								'Prob2251' => intval($data[$index++]),
 							
-							/**
-							 * Charge Section
-							 *
-							 * Loops through each of the charges and
-							 * determines whether a Charge object
-							 * should be added to the database
-							 */
-							$column = 31;
-							$statute_index = 0;
-							for ($column = 31; $column < 230; $column+=10) {
-								if ($data[$column] == "1") {
-									$charge_data = array(
-										'Statute' => $statutes["$statute_index"],
-										'Counts' => intval($data[$column+1]),
-										'CountsNolleProssed' => intval($data[$column+2]),
-										'PleaDismissed' => intval($data[$column+3]),
-										'PleaGuilty' => intval($data[$column+4]),
-										'TrialGuilty' => intval($data[$column+5]),
-										'TrialNotGuilty' => intval($data[$column+6]),
-										'Fines' => intval($data[$column+7]),
-										'Sentence' => intval($data[$column+8]),
-										'Probation' => intval($data[$column+9]),
-										'ACDId' => $acd_id,
-										'ACD_CHD_CaseId' => $case_id,
-										'ACD_CHD_DefendantId' => $defendant_id
-									);
+								'2252' => ($data[$index++] == '1'),
+								'Counts2252' => intval($data[$index++]),
+								'CountsNP2252' => intval($data[$index++]),
+								'PleaDismissed2252' => intval($data[$index++]),
+								'PleaGuilty2252' => intval($data[$index++]),
+								'TrialGuilty2252' => intval($data[$index++]),
+								'TrialNG2252' => intval($data[$index++]),
+								'Fines2252' => intval($data[$index++]),
+								'Sent2252' => intval($data[$index++]),
+								'Prob2252' => intval($data[$index++]),
+								
+								'2260' => ($data[$index++] == '1'),
+								'Counts2260' => intval($data[$index++]),
+								'CountsNP2260' => intval($data[$index++]),
+								'PleaDismissed2260' => intval($data[$index++]),
+								'PleaGuilty2260' => intval($data[$index++]),
+								'TrialGuilty2260' => intval($data[$index++]),
+								'TrialNG2260' => intval($data[$index++]),
+								'Fines2260' => intval($data[$index++]),
+								'Sent2260' => intval($data[$index++]),
+								'Prob2260' => intval($data[$index++]),
+								
+								'2421to2424' => ($data[$index++] == '1'),
+								'Counts2421to2424' => intval($data[$index++]),
+								'CountsNP2421to2424' => intval($data[$index++]),
+								'PleaDismissed2421to2424' => intval($data[$index++]),
+								'PleaGuilty2421to2424' => intval($data[$index++]),
+								'TrialGuilty2421to2424' => intval($data[$index++]),
+								'TrialNG2421to2424' => intval($data[$index++]),
+								'Fines2421to2424' => intval($data[$index++]),
+								'Sent2421to2424' => intval($data[$index++]),
+								'Prob2421to2424' => intval($data[$index++]),
+								
+								'1324' => ($data[$index++] == '1'),
+								'Counts1324' => intval($data[$index++]),
+								'CountsNP1324' => intval($data[$index++]),
+								'PleaDismissed1324' => intval($data[$index++]),
+								'PleaGuilty1324' => intval($data[$index++]),
+								'TrialGuilty1324' => intval($data[$index++]),
+								'TrialNG1324' => intval($data[$index++]),
+								'Fines1324' => intval($data[$index++]),
+								'Sent1324' => intval($data[$index++]),
+								'Prob1324' => intval($data[$index++]),
+								
+								'1328' => ($data[$index++] == '1'),
+								'Counts1328' => intval($data[$index++]),
+								'CountsNP1328' => intval($data[$index++]),
+								'PleaDismissed1328' => intval($data[$index++]),
+								'PleaGuilty1328' => intval($data[$index++]),
+								'TrialGuilty1328' => intval($data[$index++]),
+								'TrialNG1328' => intval($data[$index++]),
+								'Fines1328' => intval($data[$index++]),
+								'Sent1328' => intval($data[$index++]),
+								'Prob1328' => intval($data[$index++]),
 
-									$this->Charge->create();
-									$this->Charge->save($charge_data);
-									$charge_id = $this->Charge->id;
-									$this->Charge->clear();
-									array_push($receipt, '[INFO] Created new Charge (ID: '.$charge_id.') and added this Charge to ArrestChargeDetail #'.$acd_id.', CaseObject #'.$case_id.', and Defendant #'.$defendant_id.'.');
-								}
-								$statute_index++;
-							}
-
-							/**
-							 * AggregateSentence Section
-							 *
-							 * Adds an AggregateSentence object to the
-							 * database
-							 */
-							if ($data[231] !== '') {
-								$sentence_data = array(
-									'DateTerminated' => date('Y-m-d', strtotime($data[231])),
-									'Date' => date('Y-m-d', strtotime($data[232])),
-									'Total' => intval($data[233]),
-									'Restitution' => intval($data[234]),
-									'AssetForfeit' => ($data[235] == "1"),
-									'Appeal' => ($data[236] == "1"),
-									'SupervisedRelease' => intval($data[237]),
-									'Probation' => intval($data[238]),
-									'CHD_CaseId' => $case_id,
-									'CHD_DefendantId' => $defendant_id,
-								);
-
-								$this->AggregateSentence->create();
-								$this->AggregateSentence->save($sentence_data);
-								$sentence_id = $this->AggregateSentence->id;
-								$this->AggregateSentence->clear();
-								array_push($receipt, '[INFO] Created new AggregateSentence (ID: '.$sentence_id.') and added this Sentence to CaseObject #'.$case_id.', and Defendant #'.$defendant_id.'.');
-							} else {
-								array_push($receipt, '[ERROR] Missing data for AggregateSentence at row '.$row.'.');
-							}
-
-							/**
-							 * OrganizedCrimeGroup Section
-							 *
-							 * Checks to see if the first
-							 * OrganizedCrimeGroup exists and adds
-							 * it to the db if not.
-							 */
-							if ($data[243] !== '') {
-								if (!$this->OrganizedCrimeGroup->find('first', array('conditions' => array('OrganizedCrimeGroup.Name' => $data[243])))) {
-									$ocg_data = array(
-										'Name' => $data[243],
-										'Size' => intval($data[244]),
-										'Race' => intval($data[245]),
-										'Scope' => intval($data[246])
-									);
-
-									$this->OrganizedCrimeGroup->create();
-									$this->OrganizedCrimeGroup->save($ocg_data);
-									$ocg_id = $this->OrganizedCrimeGroup->id;
-									$this->OrganizedCrimeGroup->clear();
-									array_push($receipt, '[INFO] Created new OrganizedCrimeGroup (ID '.$ocg_id.').');
-								} else {
-									$ocg_id = $this->OrganizedCrimeGroup->find('first', array('conditions' => array('OrganizedCrimeGroup.Name' => $data[243])))["OrganizedCrimeGroup"]["OCGId"];
-									array_push($receipt, '[WARN] Detected duplicate OrganizedCrimeGroup at row '.$row.'. Duplicate OrganizedCrimeGroup ID: '.$ocg_id.'.');
-								}
-
-								if (!$this->CaseHasOrganizedCrimeGroup->find('first', array('conditions' => array('CaseHasOrganizedCrimeGroup.CaseId' => $case_id, 'CaseHasOrganizedCrimeGroup.OCGId' => $ocg_id)))) {
-									
-									// Adds this OCG to this case
-									$chocg_data = array(
-										'CaseId' => $case_id,
-										'OCGId' => $ocg_id,
-									);
-
-									$this->CaseHasOrganizedCrimeGroup->create();
-									$this->CaseHasOrganizedCrimeGroup->save($chocg_data);
-									$this->CaseHasOrganizedCrimeGroup->clear();
-									array_push($receipt, '[INFO] Added OrganizedCrimeGroup #'.$ocg_id.' to CaseObject #'.$case_id.'.');
-								} else {
-									array_push($receipt, '[WARN] Detected duplicate OrganizedCrimeGroup #'.$ocg_id.' associated with CaseObject #'.$case_id.' at row '.$row.'.');
-								}
-							}
-
-							// second OrganizedCrimeGroup
-							if ($data[247] !== '') {
-								if (!$this->OrganizedCrimeGroup->find('first', array('conditions' => array('OrganizedCrimeGroup.Name' => $data[247])))) {
-									$ocg_data = array(
-										'Name' => $data[247],
-										'Size' => intval($data[248]),
-										'Race' => intval($data[249]),
-										'Scope' => intval($data[250])
-									);
-
-									$this->OrganizedCrimeGroup->create();
-									$this->OrganizedCrimeGroup->save($ocg_data);
-									$ocg_id = $this->OrganizedCrimeGroup->id;
-									$this->OrganizedCrimeGroup->clear();
-									array_push($receipt, '[INFO] Created new OrganizedCrimeGroup (ID '.$ocg_id.').');
-								} else {
-									$ocg_id = $this->OrganizedCrimeGroup->find('first', array('conditions' => array('OrganizedCrimeGroup.Name' => $data[247])))["OrganizedCrimeGroup"]["OCGId"];
-									array_push($receipt, '[WARN] Detected duplicate OrganizedCrimeGroup at row '.$row.'. Duplicate OrganizedCrimeGroup ID: '.$ocg_id.'.');
-								}
-
-								if (!$this->CaseHasOrganizedCrimeGroup->find('first', array('conditions' => array('CaseHasOrganizedCrimeGroup.CaseId' => $case_id, 'CaseHasOrganizedCrimeGroup.OCGId' => $ocg_id)))) {
-									
-									// Adds this OCG to this case
-									$chocg_data = array(
-										'CaseId' => $case_id,
-										'OCGId' => $ocg_id,
-									);
-
-									$this->CaseHasOrganizedCrimeGroup->create();
-									$this->CaseHasOrganizedCrimeGroup->save($chocg_data);
-									$this->CaseHasOrganizedCrimeGroup->clear();
-									array_push($receipt, '[INFO] Added OrganizedCrimeGroup #$ocg_id to CaseObject #'.$case_id.'.');
-								} else {
-									array_push($receipt, '[WARN] Detected duplicate OrganizedCrimeGroup #'.$ocg_id.' associated with CaseObject #'.$case_id.' at row '.$row.'.');
-								}
-							}
+								'DateTerm' => date('Y-m-d',strtotime($data[$index++])),
+								'SentDate' => date('Y-m-d',strtotime($data[$index++])),
+								'TotalSentence' => intval($data[$index++]),
+								'Restitution' => intval($data[$index++]),
+								'AssetForfeit' => ($data[$index++] == '1'),
+								'Appeal' => ($data[$index++] == '1'),
+								'SupRelease' => intval($data[$index++]),
+								'Probation' => intval($data[$index++]),
+								'NumVic' => intval($data[$index++]),
+								'NumVicMinor' => intval($data[$index++]),
+								'NumVicForeign' => intval($data[$index++]),
+								'NumVicFemale' => intval($data[$index++]),
+								'OCName1' => $data[$index++],
+								'OCType1' => intval($data[$index++]),
+								'OCRace1' => intval($data[$index++]),
+								'OCScope1' => intval($data[$index++]),
+								'OCName2' => $data[$index++],
+								'OCType2' => intval($data[$index++]),
+								'OCRace2' => intval($data[$index++]),
+								'OCScope2' => intval($data[$index++]),
+								'SubmittedForReview' => true
+							);
+							print_r($info);
+							$this->Session->setFlash('test');
+							$this->DataInProgress->create();
+							$this->DataInProgress->save($info);
+							$this->DataInProgress->clear();
 						}
 						$row++;
 					}

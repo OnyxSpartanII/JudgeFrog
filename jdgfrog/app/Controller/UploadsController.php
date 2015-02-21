@@ -37,8 +37,8 @@ class UploadsController extends AppController {
 				// initialize $row to 0
 				$row = 0;
 
-				// initialize $statutes array
-				$statutes = array();
+				// initialize total array
+				$total = array();
 
 				// initialize $receipt array
 				$receipt = array();
@@ -340,15 +340,18 @@ class UploadsController extends AppController {
 								'OCScope2' => intval($data[$index++]),
 								'SubmittedForReview' => true
 							);
-							print_r($info);
-							$this->Session->setFlash('test');
-							$this->DataInProgress->create();
-							$this->DataInProgress->save($info);
-							$this->DataInProgress->clear();
+							array_push($total, $info);
 						}
 						$row++;
 					}
 				}
+				print_r($total);
+				if ($this->DataInProgress->saveAll($total, array('validate' => 'first'))) {
+					echo 'Winrar';
+				} else {
+					echo 'Failrar';
+				}
+				print_r($this->DataInProgress->invalidFields());
 				fclose($file);
 				$this->set('receipt',$receipt);
 				$this->render('receipt');

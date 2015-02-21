@@ -234,8 +234,6 @@ class SearchController extends AppController {
 			$display['sentence'] = true;
 		}
 
-		$conditions = array();
-
 		$datum = $this->DataInProgress->find('all', array('conditions' => $conditions));
 
 		// print_r($datum);
@@ -247,22 +245,22 @@ class SearchController extends AppController {
 		 */
 
 		if ($this->request->data['DataInProgress']['ocg_Name'] != '') {
-			$conditions['OCGName'] = $this->request->data['DataInProgress']['ocg_Name'];
+			$conditions['OCName'] = $this->request->data['DataInProgress']['ocg_Name'];
 			$display['ocg'] = true;
 		}
 
 		if ($this->request->data['DataInProgress']['ocg_Type'] != '') {
-			$conditions['OCGType'] = $this->request->data['DataInProgress']['ocg_Type'];
+			$conditions['OCType'] = $this->request->data['DataInProgress']['ocg_Type'];
 			$display['ocg'] = true;
 		}
 
 		if ($this->request->data['DataInProgress']['ocg_Scope'] != '') {
-			$conditions['OCGScope'] = $this->request->data['DataInProgress']['ocg_Scope'];
+			$conditions['OCScope'] = $this->request->data['DataInProgress']['ocg_Scope'];
 			$display['ocg'] = true;
 		}
 
 		if ($this->request->data['DataInProgress']['ocg_Race'] != '') {
-			$conditions['OCGRace'] = $this->request->data['DataInProgress']['ocg_Race'];
+			$conditions['OCRace'] = $this->request->data['DataInProgress']['ocg_Race'];
 			$display['ocg'] = true;
 		}
 
@@ -320,19 +318,19 @@ class SearchController extends AppController {
 
 		foreach ($datum as &$data) {
 			if ($display['ocg']) {
-				if (isset($conditions['OCGName']) && ($data['DataInProgress']['OCGName1'] != $conditions['OCGName'] && $data['DataInProgress']['OCGName2'] != $conditions['OCGName'])) {
+				if (isset($conditions['OCName']) && ($data['DataInProgress']['OCName1'] != $conditions['OCGName'] && $data['DataInProgress']['OCName2'] != $conditions['OCName'])) {
 					unset($data);
 					continue;
 				}
-				if (isset($conditions['OCGType']) && ($data['DataInProgress']['OCGType1'] != $conditions['OCGType'] && $data['DataInProgress']['OCGType2'] != $conditions['OCGType'])) {
+				if (isset($conditions['OCType']) && ($data['DataInProgress']['OCType1'] != $conditions['OCGType'] && $data['DataInProgress']['OCType2'] != $conditions['OCType'])) {
 					unset($data);
 					continue;
 				}
-				if (isset($conditions['OCGScope']) && ($data['DataInProgress']['OCGScope1'] != $conditions['OCGScope'] && $data['DataInProgress']['OCGScope2'] != $conditions['OCGScope'])) {
+				if (isset($conditions['OCScope']) && ($data['DataInProgress']['OCScope1'] != $conditions['OCGScope'] && $data['DataInProgress']['OCScope2'] != $conditions['OCScope'])) {
 					unset($data);
 					continue;
 				}
-				if (isset($conditions['OCGRace']) && ($data['DataInProgress']['OCGRace1'] != $conditions['OCGRace'] && $data['DataInProgress']['OCGRace2'] != $conditions['OCGRace'])) {
+				if (isset($conditions['OCRace']) && ($data['DataInProgress']['OCRace1'] != $conditions['OCGRace'] && $data['DataInProgress']['OCRace2'] != $conditions['OCRace'])) {
 					unset($data);
 					continue;
 				}
@@ -402,6 +400,7 @@ class SearchController extends AppController {
 			}
 		}
 
+		print_r($datum);
 		$statutes = preg_grep("/^\d{4}(to\d{4})?$/", array_keys($datum[0]['DataInProgress']));
 		$cases = array();
 		$case_name = '';
@@ -440,7 +439,7 @@ class SearchController extends AppController {
 						$d['DataInProgress']['MinorSexTraf'],
 						$d['DataInProgress']['NumDef'],
 						$d['DataInProgress']['State'],
-						$d['DataInProgress']['FedDistricLoc'],
+						$d['DataInProgress']['FedDistrictLoc'],
 						$d['DataInProgress']['FedDistrictNum'],
 						$d['DataInProgress']['CaseSummary'],
 						$d['DataInProgress']['JudgeName'],

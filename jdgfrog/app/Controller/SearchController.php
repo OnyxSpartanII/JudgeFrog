@@ -482,14 +482,14 @@ class SearchController extends AppController {
 									$d['DataInProgress']['NumVicFemale']
 								),
 								array(
-									$d['DataInProgress']['OCGName1'],
-									$d['DataInProgress']['OCGType1'],
-									$d['DataInProgress']['OCGRace1'],
-									$d['DataInProgress']['OCGScope1'],
-									$d['DataInProgress']['OCGName2'],
-									$d['DataInProgress']['OCGType2'],
-									$d['DataInProgress']['OCGRace2'],
-									$d['DataInProgress']['OCGScope2']
+									$d['DataInProgress']['OCName1'],
+									$d['DataInProgress']['OCType1'],
+									$d['DataInProgress']['OCRace1'],
+									$d['DataInProgress']['OCScope1'],
+									$d['DataInProgress']['OCName2'],
+									$d['DataInProgress']['OCType2'],
+									$d['DataInProgress']['OCRace2'],
+									$d['DataInProgress']['OCScope2']
 								)
 							)
 						)

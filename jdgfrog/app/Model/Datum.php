@@ -11,7 +11,7 @@ class Datum extends AppModel {
  *
  * @var mixed False or table name
  */
-	public $useTable = 'Data';
+	public $useTable = 'Datum';
 
 /**
  * Primary key field

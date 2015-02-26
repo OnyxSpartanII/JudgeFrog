@@ -20,6 +20,32 @@ class DataInProgress extends AppModel {
  */
 	public $primaryKey = 'CaseDefId';
 
+
+public function beforeValidate($options = []) {
+	$statutes = ['1961to1968', '1028', '1351', '1425', '1426',
+				'1461to1465', '1512', '1542to1543', '1546',
+				'1581to1588', '1589', '1590', '1591', '1592',
+				'2251', '2252', '2260', '2421to2424', '1324',
+				'1328'];
+	$fields = ['Counts', 'CountsNP', 'PleaDismissed', 'PleaGuilty',
+				'TrialGuilty', 'TrialNG', 'Fines', 'Sent', 'Prob'];
+
+	foreach ($statutes as $statute) {
+		$this->validate[$statute]['number'] = array(
+			'rule' => array('inList', array(0,1)),
+			'allowEmpty' => true,
+			'message' => $statute . ' field must be either 0 or 1.'
+		);
+		foreach ($fields as $field) {
+			$this->validate[$field . $statute]['number'] = array(
+				'rule' => array('numeric'),
+				'message' => $field . $statute . ' must be numeric.',
+				'allowEmpty' => true
+			);
+		}	
+	}
+}
+
 /**
  * Validation fields
  *
@@ -27,92 +53,115 @@ class DataInProgress extends AppModel {
  */
 	public $validate = array(
 		'NumDef' => array(
-			'rule' => '/[0-9]+/',
+			'rule' => 'numeric',
 			'message' => 'Incorrect value for Number of Defendants'
 		),
 		'State' => array(
 			'rule' => '/[A-Z]{2}/i',
-			'message' => 'Incorrect value for State'
+			'message' => 'Incorrect value for State',
+			'allowEmpty' => true
 		),
 		'FedDistrictNum' => array(
-			'rule' => array('range',1,13),
-			'message' => 'Incorrect value for Federal District Number'
+			'rule' => array('numeric'),
+			'message' => 'Incorrect value for Federal District Number',
+			'allowEmpty' => true
 		),
 		'JudgeRace' => array(
-			'rule' => array("inList", array(1,2,3,4,5)),
-			'message' => 'Incorrect value for Judge Race'
+			'inRange' => array(
+				'rule' => array("inList", array(0,1,2,3,4,5)),
+				'message' => 'Incorrect number for Judge Race',
+				'allowEmpty' => true
+			)
 		),
 		'JudgeGen' => array(
-			'rule' => '/[01]{1}/',
-			'message' => 'Incorrect value for Judge Gender'
+			'rule' => array('inList', array(0,1)),
+			'message' => 'Incorrect value for Judge Gender',
+			'allowEmpty' => true
 		),
 		'JudgeTenure' => array(
-			'rule' => '/[0-9]{4}/',
-			'message' => 'Incorrect value for Judge Tenure'
+			'rule' => 'numeric',
+			'message' => 'Incorrect value for Judge Tenure',
+			'allowEmpty' => true
 		),
 		'JudgeApptBy' => array(
-			'rule' => '/[01]{1}/',
-			'message' => 'Incorrect value for Judge Appointed By'
+			'rule' => array('inList', array(0,1)),
+			'message' => 'Incorrect value for Judge Appointed By',
+			'allowEmpty' => true
 		),
 		'DefGen' => array(
-			'rule' => '/[01]{1}/',
-			'message' => 'Incorrect value for Defendant Gender'
+			'rule' => array('inList', array(0,1)),
+			'message' => 'Incorrect value for Defendant Gender',
+			'allowEmpty' => true
 		),
 		'DefRace' => array(
-			'rule' => '/[1-5]{2}/',
-			'message' => 'Incorrect value for Defendant Race'
+			'rule' => array('inList', array(0,1,2,3,4,5)),
+			'message' => 'Incorrect value for Defendant Race',
+			'allowEmpty' => true
 		),
 		'DefBirthdate' => array(
-			'rule' => '/[0-9]{4}/',
-			'message' => 'Incorrect value for Defendant Birthdate'
+			'rule' => '/(\d{1,2}\/\d{1,2}\/\d{4}|\d{4})/',
+			'message' => 'Incorrect value for Defendant Birthdate',
+			'allowEmpty' => true
 		),
 		'DefArrestAge' => array(
-			'rule' => '/[0-9]{2}/',
-			'message' => 'Incorrect value for Defendant Arrest Age'
+			'rule' => array('numeric'),
+			'message' => 'Incorrect value for Defendant Arrest Age',
+			'allowEmpty' => true
 		),
 		'ChargeDate' => array(
-			'rule' => '/[0-9]{4}\-[0-9]{2}\-[0-9]{2}/',
+			'rule' => '/(\d{1,2}\/\d{1,2}\/\d{4}|\d{4})/',
 			'message' => 'Incorrect value for Charge Date',
+			'allowEmpty' => true,
 		),
 		'ArrestDate' => array(
-			'rule' => '/[0-9]{4}\-[0-9]{2}\-[0-9]{2}/',
-			'message' => 'Incorrect value for Arrest Date'
+			'rule' => '/(\d{1,2}\/\d{1,2}\/\d{4}|\d{4})/',
+			'message' => 'Incorrect value for Arrest Date',
+			'allowEmpty' => true
 		),
 		'Detained' => array(
-			'rule' => '/[01]{1}/',
-			'message' => 'Incorrect value for Detained'
+			'rule' => array('inList', array(0,1)),
+			'message' => 'Incorrect value for Detained',
+			'allowEmpty' => true
 		),
 		'BailType' => array(
-			'rule' => '/[012]{1}/',
-			'message' => 'Incorrect value for Bail Type'
+			'rule' => array('inList', array(0,1,2)),
+			'message' => 'Incorrect value for Bail Type',
+			'allowEmpty' => true
 		),
 		'BailAmount' => array(
-			'rule' => '/[0-9]+/',
-			'message' => 'Incorrect value for Bail Amount'
+			'rule' => array('numeric'),
+			'message' => 'Incorrect value for Bail Amount',
+			'allowEmpty' => true
 		),
 		'LaborTraf' => array(
-			'rule' => '/[01]{1}/',
-			'message' => 'Incorrect value for Labor Trafficking'
+			'rule' => array('inList', array(0,1)),
+			'message' => 'Incorrect value for Labor Trafficking',
+			'allowEmpty' => true
 		),
 		'AdultSexTraf' => array(
-			'rule' => '/[01]{1}/',
-			'message' => 'Incorrect value for Adult Sex Trafficking'
+			'rule' => array('inList', array(0,1)),
+			'message' => 'Incorrect value for Adult Sex Trafficking',
+			'allowEmpty' => true
 		),
 		'MinorSexTraf' => array(
-			'rule' => '/[01]{1}/',
-			'message' => 'Incorrect value for Minor Sex Trafficking'
+			'rule' => array('inList', array(0,1)),
+			'message' => 'Incorrect value for Minor Sex Trafficking',
+			'allowEmpty' => true
 		),
 		'Role' => array(
-			'rule' => '/[01]{1}/',
-			'message' => 'Incorrect value for Role'
+			'rule' => array('inList', array(0,1)),
+			'message' => 'Incorrect value for Role',
+			'allowEmpty' => true
 		),
 		'FelCharged' => array(
-			'rule' => '/[0-9]+/',
-			'message' => 'Incorrect value for Felonies Charged'
+			'rule' => array('numeric'),
+			'message' => 'Incorrect value for Felonies Charged',
+			'allowEmpty' => true
 		),
 		'FelSentenced' => array(
-			'rule' => '/[0-9]+/',
-			'message' => 'Incorrect value for Felonies Sentenced'
+			'rule' => array('numeric'),
+			'message' => 'Incorrect value for Felonies Sentenced',
+			'allowEmpty' => true
 		)
 	);
 

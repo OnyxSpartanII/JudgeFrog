@@ -47,7 +47,7 @@ class CaseSessionsController extends AppController {
 	public function createCase($currentStep) {
 
 		//If the step specified does not have a view, throw a 404 exception.
-		if (!file_exists(APP.'View'.DS.'AdminPanel'.DS.'create_case_'.$currentStep.'.ctp')) {
+		if (!file_exists(APP.'View'.DS.'CaseSessions'.DS.'create_case_'.$currentStep.'.ctp')) {
 			throw new NotFoundException();
 		}
 
@@ -69,25 +69,29 @@ class CaseSessionsController extends AppController {
 
 		if ($this->request->is('post')) {
 
-//			$this->CaseSession->set($this->request->data);
+			$this->CaseSession->set($this->request->data);
 			debug($this->request->data, true, true);
 //			debug($currentStep, true, true);
 //			$this->redirect(array('action' => 'createCase', $currentStep+1));
+//			$this->CaseSession->save();
 			if ($this->CaseSession->validates()) {
 				$prevSessionData = $this->Session->read('form.data');
 				$currentSessionData = Hash::merge( (array) $prevSessionData, $this->request->data);
 
-/*					if ($currentStep < $this->Session->read('form.params.steps')) {
-					$this->Session->write('form.data', $currentSessionData);
+				if ($currentStep < $this->Session->read('form.params.steps')) {
+					$this->CaseSession->save();
+//					$this->Session->write('form.data', $currentSessionData);
 					$this->Session->write('form.params.maxProgress', $currentStep);
 					$this->redirect(array('action' => 'createCase', $currentStep+1));
 
 
 				} 
 				else 	{
-					//$this->CaseSession->save();
+					$this->CaseSession->set('CaseDefId', 3);
+					$this->CaseSession->set('complete', true);
+					$this->CaseSession->save();
 				}
-*/
+
 			}
 		}
 		else {

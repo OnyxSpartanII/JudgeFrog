@@ -1,4 +1,9 @@
 <?php
+/********************
+PHP script that connects to the database and runs query
+for AutoComplete. 
+Is called by a jquery script function in the search view. 
+*********************/
 $DB_SERVER = 'oyster.arvixe.com';
 $DB_USER = 'jdgfrog_testDB';
 $DB_PASSWORD = 'tcuCOSC1!';

@@ -6,42 +6,35 @@ is presented the form again when that specific chart is selected again.
 $(document).ready(function(){
 	$("#xAxisBox").hide();
 	$("#yAxisBox").hide();
-	$("#singleBox").hide();
-	$("select#xAxisBox")[0].selectedIndex = 0; 
+	$("select#xAxisBox")[0].selectedIndex = 0; //Selects the index back to zero
 	$("select#yAxisBox")[0].selectedIndex = 0;  
 
     $("#barGraphRadio").click(function(){
 		$("#xAxisBox").show();
 		$("#yAxisBox").show();   
-		$("#singleBox").hide(); 
 		$("select#xAxisBox")[0].selectedIndex = 0; 
 		$("select#yAxisBox")[0].selectedIndex = 0;  
 	});
     $("#lineGraphRadio").click(function(){
 		$("#xAxisBox").show();
 		$("#yAxisBox").show();      
-		$("#singleBox").hide();
 		$("select#xAxisBox")[0].selectedIndex = 0; 
 		$("select#yAxisBox")[0].selectedIndex = 0;  
 	});
 	$("#histogramRadio").click(function(){
 		$("#xAxisBox").show();
 		$("#yAxisBox").show();
-		$("#singleBox").hide();    
 		$("select#xAxisBox")[0].selectedIndex = 0; 
 		$("select#yAxisBox")[0].selectedIndex = 0;   
 	});
 	$("#pieChartRadio").click(function(){
-		$("#singleBox").show();     
-		$("#xAxisBox").hide();
+		$("#xAxisBox").show();
 		$("#yAxisBox").hide();
-		$("select#singleBox")[0].selectedIndex = 0; //sets the index back
+		$("select#yAxisBox")[0].selectedIndex = 0;  
 	});
 	$("#geoChartRadio").click(function(){
-		$("#singleBox").show();
 		$("#xAxisBox").hide();
 		$("#yAxisBox").hide();
-		$("select#singleBox")[0].selectedIndex = 0; 
 		   
 	});
 });

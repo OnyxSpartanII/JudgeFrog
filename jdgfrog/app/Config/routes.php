@@ -33,6 +33,7 @@
 	Router::connect('/users/msf_step/**', array('controller' => 'users', 'action' => 'msf_step'));
 	Router::connect('/dashboard/create_case/**', array('controller' => 'AdminPanel', 'action' => 'createCase'));
 	Router::connect('/CaseSessions/create_case/:step', array('controller' => 'CaseSessions', 'action' => 'createCase'), array('pass' => array('step')) );
+	Router::connect('/cases/create_case/:step', array('controller' => 'CaseSessions', 'action' => 'createCase'), array('pass' => array('step')) );
 
 
 	Router::connect('/home', array('controller' => 'pages', 'action' => 'home'));

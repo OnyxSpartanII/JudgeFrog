@@ -95,7 +95,7 @@ class CaseSessionsController extends AppController {
 				$this->Session->write('form.data', $currentSessionData);
 
 			} elseif ($currentStep == 3) {
-				//Store more session variables needed.
+				//Defendant Personal Information
 				$prevSessionData = $this->Session->read('form.data');
 				$currentSessionData = Hash::merge( (array) $prevSessionData, $this->request->data);
 				$this->Session->write('form.data', $currentSessionData);
@@ -103,6 +103,7 @@ class CaseSessionsController extends AppController {
 				$this->Session->write('form.params.currentDefendantFirst', $this->request->data['CaseSession']['DefFirst']);
 
 			} elseif ($currentStep == 4) {
+
 				$prevSessionData = $this->Session->read('form.data');
 				$currentSessionData = Hash::merge( (array) $prevSessionData, $this->request->data);
 				$this->Session->write('form.data', $currentSessionData);
@@ -118,9 +119,12 @@ class CaseSessionsController extends AppController {
 				$this->Session->write('form.data', $currentSessionData);
 
 			} elseif ($currentStep == 7) {
-				$prevSessionData = $this->Session->read('form.data');
-				$currentSessionData = Hash::merge( (array) $prevSessionData, $this->request->data);
-				$this->Session->write('form.data', $currentSessionData);
+				//Organized Crime Group page
+				if ($this->validateFormData($this->request->data, $currentStep)) {
+					$prevSessionData = $this->Session->read('form.data');
+					$currentSessionData = Hash::merge( (array) $prevSessionData, $this->request->data);
+					$this->Session->write('form.data', $currentSessionData);
+				}
 
 			} elseif ($currentStep == 8) {
 				$this->CaseSession->set($this->Session->read('form.data'));
@@ -130,9 +134,8 @@ class CaseSessionsController extends AppController {
 			$this->CaseSession->set($this->request->data);
 			print_r($this->request->data);
 //			debug($currentStep, true, true);
-//			$this->redirect(array('action' => 'createCase', $currentStep+1));
 //			$this->CaseSession->save();
-			if ($this->CaseSession->validates()) {
+/*			if ($this->CaseSession->validates()) {
 //				$prevSessionData = $this->Session->read('form.data');
 //				$currentSessionData = Hash::merge( (array) $prevSessionData, $this->request->data);
 
@@ -147,13 +150,15 @@ class CaseSessionsController extends AppController {
 					//$this->CaseSession->save();
 				}
 
-			}
+			} */
+
+			$this->redirect(array('action' => 'create_case', $currentStep+1));
 
 			//$this->redirect(array('action' => ''));
 		} else {
 			//$this->request->data = $this->Session->read('form.data');
 		}
-		//print_r($currentStep);
+				//print_r($currentStep);
 		$this->render('create_case_'.$currentStep);
 
 		//print_r($this->params);

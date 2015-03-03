@@ -35,6 +35,7 @@
 
         <!-- Search Interface -->
 <div id="collapsible-panels" style="margin-top:0px">
+<br><br>
 
 <h2><a href="#">1. Choose A Graph</a></h2>
         <div>
@@ -52,27 +53,18 @@
 
 <h2><a href="#">2. Customize</a></h2>
         <div>
-    <select id='xAxisBox'>
-      <option value="x">X Axis</option>
-      <option value="judge">judge</option>
-      <option value="race">race</option>
-      <option value="nationality">nationality</option>
-      <option value="age">age</option>
-    </select> <br><br>
-    <select id='yAxisBox'>
-      <option value="y">Y Axis</option>
-      <option value="judge">judge</option>
-      <option value="race">race</option>
-      <option value="nationality">nationality</option>
-      <option value="age">age</option>
-    </select>
-    <select id='singleBox'>
-      <option value="y">Single</option>
-      <option value="judge">judge</option>
-      <option value="race">race</option>
-      <option value="nationality">nationality</option>
-      <option value="age">age</option>
-    </select>
+    <?php
+    echo $this->Form->create(array('inputDefaults' => array('label' => false, 'div' => false)));
+  ?>
+    <?php
+    echo $this->Form->input('yAxisBox', array('empty' => 'Y Axis', 'options' => array('Total Cases', 'Total Defendants', 'Avg Defendants Per Case', 'Total Months Sentenced', 'Avg Months Sentenced', 'Victims', 'Total Charge', 'Total Sentenced')));
+    ?>
+    <?php
+    echo $this->Form->input('xAxisBox', array('empty' => 'X Axis', 'options' => array('Year', 'Defendant Gender', 'Defendant Race', 'Judge Gender', 'Judge Race', 'Judge Appointed By', 'Crime Type', 'Statute', 'Federal District', 'Crime Groups','State', 'Statute Charged','Statute Sentenced','Organized Crime Groups')));
+    ?>
+  <?php
+     echo $this->Form->end(array('id' => 'submit_form'));
+    ?>
 
           </div>
 
@@ -228,7 +220,7 @@
 google.setOnLoadCallback(initialize);
 google.load("visualization", "1", {packages:["corechart"]});
 </script>
-          <!-- Positions the graphs temp -->
+          <!-- Temporary: Positions the graphs  -->
         <style>
           #chart {
            position: absolute;

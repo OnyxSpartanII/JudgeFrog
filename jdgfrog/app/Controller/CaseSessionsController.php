@@ -33,7 +33,8 @@ class CaseSessionsController extends AppController {
 	public function createCaseSetup() {
 		App::uses('Folder', 'Utility');
 		$createViewFolder = new Folder(APP.'View'.DS.'CaseSessions');
-		$steps = count($createViewFolder->find('create_case_.*\.ctp'));
+		//Subtract 1 for the index page.
+		$steps = count($createViewFolder->find('create_case_.*\.ctp')) - 1;
 		$this->Session->write('form.params.steps', $steps);
 		$this->Session->write('form.params.maxProgress', 0);
 		$this->redirect(array('action' => 'create_case', 1));
@@ -61,46 +62,105 @@ class CaseSessionsController extends AppController {
 		}*/
 
 		$this->Session->write('form.params.currentStep', $currentStep);
-		$this->Session->write('form.params.steps', 10);
+		$this->Session->write('form.params.steps', 8);
+		print_r('Form data ');
 		print_r($this->Session->read('form.params'));
+		print_r('\n');
+		print_r($this->Session->read('form.data'));
+		//debug($this->request->data, true, true);
 		
 		//$this->redirect(array('action' => 'createCase', $currentStep+1));
 		//print_r($currentStep+1);
 
 		if ($this->request->is('post')) {
 
+			//Refactor this code into validateFormData() later.
+
+			if ($currentStep == 1) {
+
+				//Store case information. Extract case name, number of defendants.
+
+				$this->Session->write('form.params.caseName', $this->request->data['CaseSession']['CaseNam']);
+				$this->Session->write('form.params.numDefs', $this->request->data['CaseSession']['NumDef']);
+
+				$prevSessionData = $this->Session->read('form.data');
+				$currentSessionData = Hash::merge( (array) $prevSessionData, $this->request->data);
+				$this->Session->write('form.data', $currentSessionData);
+				//set session ID. Maybe place in setup method?
+				//set author.
+			} elseif ($currentStep == 2) {
+				//Extract victim and type of trafficking information.
+				$prevSessionData = $this->Session->read('form.data');
+				$currentSessionData = Hash::merge( (array) $prevSessionData, $this->request->data);
+				$this->Session->write('form.data', $currentSessionData);
+
+			} elseif ($currentStep == 3) {
+				//Store more session variables needed.
+				$prevSessionData = $this->Session->read('form.data');
+				$currentSessionData = Hash::merge( (array) $prevSessionData, $this->request->data);
+				$this->Session->write('form.data', $currentSessionData);
+				$this->Session->write('form.params.currentDefendantLast', $this->request->data['CaseSession']['DefLast']);
+				$this->Session->write('form.params.currentDefendantFirst', $this->request->data['CaseSession']['DefFirst']);
+
+			} elseif ($currentStep == 4) {
+				$prevSessionData = $this->Session->read('form.data');
+				$currentSessionData = Hash::merge( (array) $prevSessionData, $this->request->data);
+				$this->Session->write('form.data', $currentSessionData);
+
+			} elseif ($currentStep == 5) {
+				$prevSessionData = $this->Session->read('form.data');
+				$currentSessionData = Hash::merge( (array) $prevSessionData, $this->request->data);
+				$this->Session->write('form.data', $currentSessionData);
+
+			} elseif ($currentStep == 6) {
+				$prevSessionData = $this->Session->read('form.data');
+				$currentSessionData = Hash::merge( (array) $prevSessionData, $this->request->data);
+				$this->Session->write('form.data', $currentSessionData);
+
+			} elseif ($currentStep == 7) {
+				$prevSessionData = $this->Session->read('form.data');
+				$currentSessionData = Hash::merge( (array) $prevSessionData, $this->request->data);
+				$this->Session->write('form.data', $currentSessionData);
+
+			} elseif ($currentStep == 8) {
+				$this->CaseSession->set($this->Session->read('form.data'));
+				$this->CaseSession->save();
+			}
+
 			$this->CaseSession->set($this->request->data);
-			debug($this->request->data, true, true);
+			print_r($this->request->data);
 //			debug($currentStep, true, true);
 //			$this->redirect(array('action' => 'createCase', $currentStep+1));
 //			$this->CaseSession->save();
 			if ($this->CaseSession->validates()) {
-				$prevSessionData = $this->Session->read('form.data');
-				$currentSessionData = Hash::merge( (array) $prevSessionData, $this->request->data);
+//				$prevSessionData = $this->Session->read('form.data');
+//				$currentSessionData = Hash::merge( (array) $prevSessionData, $this->request->data);
 
 				if ($currentStep < $this->Session->read('form.params.steps')) {
-					$this->CaseSession->save();
+					//$this->CaseSession->save();
 //					$this->Session->write('form.data', $currentSessionData);
 					$this->Session->write('form.params.maxProgress', $currentStep);
-					$this->redirect(array('action' => 'createCase', $currentStep+1));
-
-
-				} 
-				else 	{
+					$this->redirect(array('action' => 'create_case', $currentStep+1));
+				} else 	{
 					$this->CaseSession->set('CaseDefId', 3);
 					$this->CaseSession->set('complete', true);
-					$this->CaseSession->save();
+					//$this->CaseSession->save();
 				}
 
 			}
-		}
-		else {
-			$this->request->data = $this->Session->read('form.data');
+
+			//$this->redirect(array('action' => ''));
+		} else {
+			//$this->request->data = $this->Session->read('form.data');
 		}
 		//print_r($currentStep);
 		$this->render('create_case_'.$currentStep);
 
 		//print_r($this->params);
+	}
+
+	public function validateFormData() {
+
 	}
 
 }

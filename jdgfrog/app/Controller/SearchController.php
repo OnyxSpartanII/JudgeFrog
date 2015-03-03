@@ -234,9 +234,11 @@ class SearchController extends AppController {
 			$display['sentence'] = true;
 		}
 
+
+		$conditions = array();
 		$datum = $this->DataInProgress->find('all', array('conditions' => $conditions));
 
-		// print_r($datum);
+		print_r($datum);
 
 		$conditions = array();
 
@@ -267,7 +269,6 @@ class SearchController extends AppController {
 		// charge
 		if ($this->request->data['DataInProgress']['cd_Counts'] != '0;10') {	
 			$conditions['Counts'] = $this->request->data['DataInProgress']['cd_Counts'];
-			echo isset($conditions['Counts']);
 			$display['cd'] = true;
 		}
 
@@ -400,12 +401,15 @@ class SearchController extends AppController {
 			}
 		}
 
-		print_r($datum);
 		$statutes = preg_grep("/^\d{4}(to\d{4})?$/", array_keys($datum[0]['DataInProgress']));
 		$cases = array();
 		$case_name = '';
 
 		foreach ($datum as $d) {
+
+			print_r($d['DataInProgress']);
+			echo "<br/>\n";
+
 			if (strcmp($d['DataInProgress']['CaseNam'], $case_name) != 0) {
 				$charges = array();
 				foreach ($statutes as $statute) {
@@ -431,73 +435,67 @@ class SearchController extends AppController {
 				array_push(
 					$cases,
 					array(
-						$d['DataInProgress']['CaseNam'],
+						$d['DataInProgress']['CaseNam'],			// 0
 						$d['DataInProgress']['CaseNum'],
 						$d['DataInProgress']['ChargeDate'],
 						$d['DataInProgress']['LaborTraf'],
 						$d['DataInProgress']['AdultSexTraf'],
-						$d['DataInProgress']['MinorSexTraf'],
+						$d['DataInProgress']['MinorSexTraf'],		// 5
 						$d['DataInProgress']['NumDef'],
 						$d['DataInProgress']['State'],
 						$d['DataInProgress']['FedDistrictLoc'],
 						$d['DataInProgress']['FedDistrictNum'],
-						$d['DataInProgress']['CaseSummary'],
+						$d['DataInProgress']['CaseSummary'],		// 10
 						$d['DataInProgress']['JudgeName'],
 						$d['DataInProgress']['JudgeRace'],
 						$d['DataInProgress']['JudgeGen'],
 						$d['DataInProgress']['JudgeTenure'],
-						$d['DataInProgress']['JudgeApptBy'],
-						array(
+						$d['DataInProgress']['JudgeApptBy'],		// 15
+						$d['DataInProgress']['NumVic'],
+						$d['DataInProgress']['NumVicMinor'],
+						$d['DataInProgress']['NumVicForeign'],
+						$d['DataInProgress']['NumVicFemale'],
+						array(										// 20
 							array(
-								$d['DataInProgress']['DefLast'],
+								$d['DataInProgress']['DefLast'],		// 0
 								$d['DataInProgress']['DefFirst'],
 								$d['DataInProgress']['Alias'],
 								$d['DataInProgress']['DefGender'],
 								$d['DataInProgress']['DefRace'],
-								$d['DataInProgress']['DefBirthdate'],
+								$d['DataInProgress']['DefBirthdate'],	// 5
 								$d['DataInProgress']['DefArrestAge'],
-								array(
-									$d['DataInProgress']['ChargeDate'],
-									$d['DataInProgress']['ArrestDate'],
-									$d['DataInProgress']['Detained'],
-									$d['DataInProgress']['BailType'],
-									$d['DataInProgress']['BailAmount'],
-									$d['DataInProgress']['Role'],
-									$d['DataInProgress']['FelCharged'],
-									$d['DataInProgress']['FelSentenced'],
-									$d['DataInProgress']['DateTerm'],
-									$d['DataInProgress']['SentDate'],
-									$d['DataInProgress']['TotalSentence'],
-									$d['DataInProgress']['Restitution'],
-									$d['DataInProgress']['AssetForfeit'],
-									$d['DataInProgress']['Appeal'],
-									$d['DataInProgress']['SupRelease'],
-									$d['DataInProgress']['Probation'],
-									$charges
-								),
-								array(
-									$d['DataInProgress']['NumVic'],
-									$d['DataInProgress']['NumVicMinor'],
-									$d['DataInProgress']['NumVicForeign'],
-									$d['DataInProgress']['NumVicFemale']
-								),
-								array(
-									$d['DataInProgress']['OCName1'],
-									$d['DataInProgress']['OCType1'],
-									$d['DataInProgress']['OCRace1'],
-									$d['DataInProgress']['OCScope1'],
-									$d['DataInProgress']['OCName2'],
-									$d['DataInProgress']['OCType2'],
-									$d['DataInProgress']['OCRace2'],
-									$d['DataInProgress']['OCScope2']
-								)
+								$d['DataInProgress']['ChargeDate'],
+								$d['DataInProgress']['ArrestDate'],
+								$d['DataInProgress']['Detained'],
+								$d['DataInProgress']['BailType'],		// 10
+								$d['DataInProgress']['BailAmount'],
+								$d['DataInProgress']['Role'],
+								$d['DataInProgress']['FelCharged'],
+								$d['DataInProgress']['FelSentenced'],
+								$d['DataInProgress']['DateTerm'],		// 15
+								$d['DataInProgress']['SentDate'],
+								$d['DataInProgress']['TotalSentence'],
+								$d['DataInProgress']['Restitution'],
+								$d['DataInProgress']['AssetForfeit'],
+								$d['DataInProgress']['Appeal'],			// 20
+								$d['DataInProgress']['SupRelease'],
+								$d['DataInProgress']['Probation'],
+								$charges,
+								$d['DataInProgress']['OCName1'],
+								$d['DataInProgress']['OCType1'],		// 25
+								$d['DataInProgress']['OCRace1'],
+								$d['DataInProgress']['OCScope1'],
+								$d['DataInProgress']['OCName2'],
+								$d['DataInProgress']['OCType2'],
+								$d['DataInProgress']['OCRace2'],		// 30
+								$d['DataInProgress']['OCScope2']
 							)
 						)
 					)
 				);
 			} else {
 				array_push(
-					$cases[count($cases) - 1][16],
+					$cases[count($cases) - 1][20],
 					array(
 						$d['DataInProgress']['DefLast'],
 						$d['DataInProgress']['DefFirst'],
@@ -506,49 +504,37 @@ class SearchController extends AppController {
 						$d['DataInProgress']['DefRace'],
 						$d['DataInProgress']['DefBirthdate'],
 						$d['DataInProgress']['DefArrestAge'],
-						array(
-							$d['DataInProgress']['ChargeDate'],
-							$d['DataInProgress']['ArrestDate'],
-							$d['DataInProgress']['Detained'],
-							$d['DataInProgress']['BailType'],
-							$d['DataInProgress']['BailAmount'],
-							$d['DataInProgress']['Role'],
-							$d['DataInProgress']['FelCharged'],
-							$d['DataInProgress']['FelSentenced'],
-							$d['DataInProgress']['DateTerm'],
-							$d['DataInProgress']['SentDate'],
-							$d['DataInProgress']['TotalSentence'],
-							$d['DataInProgress']['Restitution'],
-							$d['DataInProgress']['AssetForfeit'],
-							$d['DataInProgress']['Appeal'],
-							$d['DataInProgress']['SupRelease'],
-							$d['DataInProgress']['Probation'],
-							$charges
-						),
-						array(
-							$d['DataInProgress']['NumVic'],
-							$d['DataInProgress']['NumVicMinor'],
-							$d['DataInProgress']['NumVicForeign'],
-							$d['DataInProgress']['NumVicFemale']
-						),
-						array(
-							array(
-								$d['DataInProgress']['OCName1'],
-								$d['DataInProgress']['OCType1'],
-								$d['DataInProgress']['OCRace1'],
-								$d['DataInProgress']['OCScope1']
-							),
-							array(
-								$d['DataInProgress']['OCName2'],
-								$d['DataInProgress']['OCType2'],
-								$d['DataInProgress']['OCRace2'],
-								$d['DataInProgress']['OCScope2']
-							)
-						)
+						$d['DataInProgress']['ChargeDate'],
+						$d['DataInProgress']['ArrestDate'],
+						$d['DataInProgress']['Detained'],
+						$d['DataInProgress']['BailType'],
+						$d['DataInProgress']['BailAmount'],
+						$d['DataInProgress']['Role'],
+						$d['DataInProgress']['FelCharged'],
+						$d['DataInProgress']['FelSentenced'],
+						$d['DataInProgress']['DateTerm'],
+						$d['DataInProgress']['SentDate'],
+						$d['DataInProgress']['TotalSentence'],
+						$d['DataInProgress']['Restitution'],
+						$d['DataInProgress']['AssetForfeit'],
+						$d['DataInProgress']['Appeal'],
+						$d['DataInProgress']['SupRelease'],
+						$d['DataInProgress']['Probation'],
+						$charges,
+						$d['DataInProgress']['OCName1'],
+						$d['DataInProgress']['OCType1'],
+						$d['DataInProgress']['OCRace1'],
+						$d['DataInProgress']['OCScope1'],
+						$d['DataInProgress']['OCName2'],
+						$d['DataInProgress']['OCType2'],
+						$d['DataInProgress']['OCRace2'],
+						$d['DataInProgress']['OCScope2']
 					)
 				);
 			}
 		}
+
+		// print_r($cases);
 
 		$this->set('display', $display);
 		$this->set('cases', $cases);

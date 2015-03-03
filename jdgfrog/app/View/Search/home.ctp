@@ -1,3 +1,6 @@
+<!-- Imports for Auto Complete -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/ui/1.10.1/jquery-ui.min.js"></script> 
 <!-- Calling Slider Imports -->
   <?php 
   echo $this->Html->script(array('modernizr.custom', 'classie','moment','ion.rangeSlider.js','ion.rangeSlider.min','sliderMod', 'modal_window_style', 'jquery.simplemodal',)); 
@@ -39,7 +42,7 @@
                                   echo "<br><br>";
                                   echo $this->Form->input('case_State', array('options' => array('Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','Florida','Georgia','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virginia','Washington','West Virginia','Wisconsin','Wyoming'), 'empty' => 'State'));
                                   echo "<br><br>";
-                                  echo $this->Form->input('case_FedDist', array('placeholder' => 'Federal District', 'options' => array('','Mickey','Mouse')));
+                                  echo $this->Form->input('case_FedDist', array('empty' => 'Federal District', 'options' => array('Mickey','Mouse')));
                                   echo "<br>";
                                 ?>
                             </div>
@@ -400,3 +403,40 @@ this.d.container.hide().remove();this.d.overlay.hide();this.d.iframe&&this.d.ifr
     }
 
 </script>
+
+<!-- Auto Complete Script -->
+<script>
+  $(function() {
+    function split( val ) {
+      return val.split( /,\s*/ );
+    }
+    function extractLast( term ) {
+      return split( term ).pop();
+    }
+    $( "#DataInProgressCaseName" ) //Case Name Field
+      .autocomplete({
+        source: "/JudgeFrog/jdgfrog/search.php?column=CaseNam" ,
+        minLength: 1
+      });
+    $( "#DataInProgressCaseNumber" ) //Case Number Field
+      .autocomplete({
+        source: "/JudgeFrog/jdgfrog/search.php?column=CaseNum" ,
+        minLength: 1
+      });
+    $( "#DataInProgressDefendantName" ) //Def Name Field
+      .autocomplete({
+        source: "/JudgeFrog/jdgfrog/search.php?column=DefFirst,DefLast" ,
+        minLength: 1
+      });
+    $( "#DataInProgressJudgeName" ) //Judge Name Field
+      .autocomplete({
+        source: "/JudgeFrog/jdgfrog/search.php?column=JudgeName" ,
+        minLength: 1
+      });
+    $( "#DataInProgressOcgName" ) //Ocg Name Field
+      .autocomplete({
+        source: "/JudgeFrog/jdgfrog/search.php?column=OCName1" ,
+        minLength: 1
+      });
+  });
+  </script>

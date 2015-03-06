@@ -84,7 +84,7 @@
                                 echo '<br><br>';
                                 echo $this->Form->input('judge_YearApp', array('id' => 'yearAppointJudge'));
                                 echo '<br><br>';
-                                echo $this->Form->input('judge_ApptBy', array('empty' => 'Appointed By', 'options' => array('Democrat', 'Republican')));
+                                echo $this->Form->input('judge_ApptBy', array('empty' => 'Appointed By', 'options' => array('Republican', 'Democrat')));
                                 echo '<br>';
                               ?>
                             </div>
@@ -166,9 +166,9 @@
                           echo '<br><br>';
                           echo $this->Form->input('sd_Restitution', array('id' => 'amountRestitutionSent', 'label' => 'Amount Restitution'));
                           echo '<br><br>';
-                          echo $this->Form->input('sd_AssetForfeit', array('empty' => 'Asset Forfeit', 'options' => array('Yes','No')));
+                          echo $this->Form->input('sd_AssetForfeit', array('empty' => 'Asset Forfeit', 'options' => array('No','Yes')));
                           echo '<br><br>';
-                          echo $this->Form->input('sd_Appeal', array('empty' => 'Appeal', 'options' => array('Yes','No')));
+                          echo $this->Form->input('sd_Appeal', array('empty' => 'Appeal', 'options' => array('No','Yes')));
                           echo '<br><br>';
                           echo $this->Form->input('sd_MonthsProb', array('id' => 'monthsProbationSentence', 'label' => '# of Months Probation'));
                           echo '<br>';
@@ -278,11 +278,18 @@ SCRIPTS
 
       <?php
         if (isset($cases)) {
-            $jsarr = json_encode($cases);
-            echo 'var cases = ' . $jsarr . ';';
-          } else {
-            echo 'var cases = [];';
-          }
+          $jsarr = json_encode($cases);
+          echo 'var cases = ' . $jsarr . ';';
+        } else {
+          echo 'var cases = [];';
+        }
+
+        if (isset($display)) {
+          $jsrarr = json_encode($display);
+          echo 'var display = ' . $jsrarr . ';';
+        } else {
+          echo 'var display = [];';
+        }
           echo "\n";
       ?>
 
@@ -310,6 +317,9 @@ SCRIPTS
             }
           }
         ?>
+
+        var races = ['White','Black','Hispanic','Asian','ERR','Other'];
+        var bail_types = ['None','Surety','Non-Surety'];
 
         var table = new google.visualization.Table(document.getElementById('table_div'));
 
@@ -359,7 +369,7 @@ SCRIPTS
                       '<h4>Case Summary</h4>' +
                       '<p class="case_summary">' + cases[i][10] + '</p>' +
                     '</div>' +
-                    '<table class="table_col">' +
+                    (display['defendant'] ? '<table class="table_col">' : '<table class="table_col all_results">') +
                       '<caption>Defendant Information</caption>' +
                       '<thead>' +
                         '<tr>' +
@@ -372,15 +382,15 @@ SCRIPTS
                       '<tbody>';
 
             for (var j = 0; j < cases[i][20].length; j++) {
-              content += '<tr class="toggle_def">' +
-                          '<td>' + cases[i][20][j][1] + ', ' + cases[i][20][j][0] + '</td>' +
-                          '<td>' + cases[i][20][j][3] + '</td>' +
+              content += '<tr class="toggle_def' + (!cases[i][20][j][32] ? ' all_results' : '') + '">' +
+                          '<td>' + cases[i][20][j][1] + ' ' + cases[i][20][j][0] + '</td>' +
+                          '<td>' + (cases[i][20][j][3] ? 'Female' : 'Male') + '</td>' +
                           '<td>' + cases[i][20][j][5] + '</td>' +
-                          '<td>' + cases[i][20][j][4] + '</td>' +
+                          '<td>' + races[cases[i][20][j][4]] + '</td>' +
                         '</tr>' +
                         '<tr class="this_def_info">' +
                           '<td colspan="4">' +
-                            '<table class="modal_table table_col">' +
+                            (display['acd'] ? '<table class="modal_table table_col">' : '<table class="modal_table table_col all_results">') +
                               '<caption>Arrest Information</caption>' +
                               '<thead>' +
                                 '<tr>' +
@@ -395,132 +405,157 @@ SCRIPTS
                                 '<tr>' +
                                   '<td>' + cases[i][20][j][8] + '</td>' +
                                   '<td>' + cases[i][20][j][7] + '</td>' +
-                                  '<td>' + cases[i][20][j][10] + '</td>' +
+                                  '<td>' + bail_types[cases[i][20][j][10]] + '</td>' +
                                   '<td>' + cases[i][20][j][11] + '</td>' +
-                                  '<td>' + cases[i][20][j][12] + '</td>' +
-                                '</td>' +
+                                  '<td>' + (cases[i][20][j][12] ? 'Primary' : 'Secondary') + '</td>' +
+                                '</tr>' +
                               '</tbody>' +
                             '</table>' +
                           '</td>' +
                         '</tr>' +
                         '<tr class="this_def_info">' +
-                                '<td colspan="4">' +
-                                  '<table class="modal_table table_col">' +
-                                    '<caption>Charge Information</caption>' +
-                                    '<thead>' +
-                                      '<tr>' +
-                                        '<th>Statute</th>' +
-                                        '<th>Counts</th>' +
-                                        '<th>Counts Nolle Prossed</th>' +
-                                        '<th>Plea Guilty</th>' +
-                                        '<th>Plea Dismissed</th>' +
-                                        '<th>Trial Guilty</th>' +
-                                        '<th>Trial Not Guilty</th>' +
-                                        '<th>Fines</th>' +
-                                        '<th>Months Sentenced</th>' +
-                                        '<th>Months Probation</th>' +
-                                      '</tr>' +
-                                    '</thead>' +
-                                    '<tbody>';
+                          '<td colspan="4">' +
+                            (display['sd'] ? '<table class="modal_table table_col">' : '<table class="modal_table table_col all_results">') +
+                              '<caption>Sentence Information</caption>' +
+                              '<thead>' +
+                                '<tr>' +
+                                  '<th>Total Charges</th>' +
+                                  '<th>Total Sentences</th>' +
+                                  '<th>Year Terminated</th>' +
+                                  '<th>Months Sentenced</th>' +
+                                  '<th>Months Probation</th>' +
+                                  '<th>Restitution</th>' +
+                                  '<th>Asset Forfeit?</th>' +
+                                  '<th>Appeal?</th>' +
+                                '</tr>' +
+                              '</thead>' +
+                              '<tbody>' +
+                                '<tr>' +
+                                  '<td>' + cases[i][20][j][13] + '</td>' +
+                                  '<td>' + cases[i][20][j][14] + '</td>' +
+                                  '<td>' + cases[i][20][j][15] + '</td>' +
+                                  '<td>' + cases[i][20][j][17] + '</td>' +
+                                  '<td>' + cases[i][20][j][22] + '</td>' +
+                                  '<td>' + cases[i][20][j][18] + '</td>' +
+                                  '<td>' + cases[i][20][j][19] + '</td>' +
+                                  '<td>' + cases[i][20][j][20] + '</td>' +
+                                '</tr>' +
+                              '</tbody>' +
+                            '</table>' +
+                          '</td>' +
+                        '</tr>' +
+                        '<tr class="this_def_info">' +
+                          '<td colspan="4">' +
+                            (display['cd'] ? '<table class="modal_table table_col">' : '<table class="modal_table table_col all_results">') +
+                              '<caption>Charge Information</caption>' +
+                              '<thead>' +
+                                '<tr>' +
+                                  '<th>Statute</th>' +
+                                  '<th>Counts</th>' +
+                                  '<th>Counts Nolle Prossed</th>' +
+                                  '<th>Plea Guilty</th>' +
+                                  '<th>Plea Dismissed</th>' +
+                                  '<th>Trial Guilty</th>' +
+                                  '<th>Trial Not Guilty</th>' +
+                                  '<th>Fines</th>' +
+                                  '<th>Months Sentenced</th>' +
+                                  '<th>Months Probation</th>' +
+                                '</tr>' +
+                              '</thead>' +
+                              '<tbody>';
 
-                for (var k = 0; k < cases[i][20][j][23].length; k++) {
-                  content +=  '<tr>' +
-                                '<td>' + cases[i][20][j][23][k][0] + '</td>' +
-                                '<td>' + cases[i][20][j][23][k][1] + '</td>' +
-                                '<td>' + cases[i][20][j][23][k][2] + '</td>' +
-                                '<td>' + cases[i][20][j][23][k][4] + '</td>' +
-                                '<td>' + cases[i][20][j][23][k][3] + '</td>' +
-                                '<td>' + cases[i][20][j][23][k][5] + '</td>' +
-                                '<td>' + cases[i][20][j][23][k][6] + '</td>' +
-                                '<td>' + cases[i][20][j][23][k][7] + '</td>' +
-                                '<td>' + cases[i][20][j][23][k][8] + '</td>' +
-                                '<td>' + cases[i][20][j][23][k][9] + '</td>' +
-                              '</tr>';
-                }
-
-                content += '</tbody>' +
-                          '</table>' +
-                        '</td>' +
-                      '</tr>';
-
-                if (!(cases[i][20][j][24] == '')) {
-                          content += '<tr class="this_def_info">' +
-                            '<td colspan="4">' + 
-                              '<table class="modal_table table_col">' +
-                                '<caption>Organized Crime Group Information</caption>' +
-                                '<thead>' +
-                                  '<tr>' +
-                                    '<th>Name</th>' +
-                                    '<th>Size</th>' +
-                                    '<th>Race</th>' +
-                                    '<th>Scope</th>' +
-                                  '</tr>' +
-                                '</thead>' +
-                                '<tbody>' +
-                                  '<tr>' +
-                                    '<td>' + cases[i][20][j][24] + '</td>' + 
-                                    '<td>' + cases[i][20][j][25] + '</td>' + 
-                                    '<td>' + cases[i][20][j][26] + '</td>' + 
-                                    '<td>' + cases[i][20][j][27] + '</td>' +
-                                  '</tr>';
-
-                          if (!(cases[i][20][j][28] == '')) {
-                            content += '<tr>' +
-                                    '<td>' + cases[i][20][j][24] + '</td>' + 
-                                    '<td>' + cases[i][20][j][25] + '</td>' + 
-                                    '<td>' + cases[i][20][j][26] + '</td>' + 
-                                    '<td>' + cases[i][20][j][27] + '</td>' +
-                                  '</tr>';
-                          }
-
-                          content += '</tbody>' +
-                                    '</table>' +
-                                  '</tr>';
-                        }
+              for (var k = 0; k < cases[i][20][j][23].length; k++) {
+                content +=  '<tr' + (!cases[i][20][j][23][k][10] ? ' class="all_results"' : '') + '>' +
+                              '<td>' + cases[i][20][j][23][k][0] + '</td>' +
+                              '<td>' + cases[i][20][j][23][k][1] + '</td>' +
+                              '<td>' + cases[i][20][j][23][k][2] + '</td>' +
+                              '<td>' + cases[i][20][j][23][k][4] + '</td>' +
+                              '<td>' + cases[i][20][j][23][k][3] + '</td>' +
+                              '<td>' + cases[i][20][j][23][k][5] + '</td>' +
+                              '<td>' + cases[i][20][j][23][k][6] + '</td>' +
+                              '<td>' + cases[i][20][j][23][k][7] + '</td>' +
+                              '<td>' + cases[i][20][j][23][k][8] + '</td>' +
+                              '<td>' + cases[i][20][j][23][k][9] + '</td>' +
+                            '</tr>';
               }
-              content += '</table>' +
-                          '<table class="modal_table">' +
-                            '<caption>Victim Information</caption>' +
-                            '<thead>' +
-                              '<tr>' +
-                                '<th>Total Victims</th>' +
-                                '<th>Total Minors</th>' +
-                                '<th>Total Foreigners</th>' +
-                                '<th>Total Females</th>' +
-                              '</tr>' +
-                            '</thead>' +
-                            '<tbody>' +
-                              '<tr>' +
-                                '<td>' + cases[i][16] + '</td>' +
-                                '<td>' + cases[i][17] + '</td>' +
-                                '<td>' + cases[i][18] + '</td>' +
-                                '<td>' + cases[i][19] + '</td>' +
-                              '</tr>' +
-                            '</tbody>' +
-                          '</table>' +
-                          '<table class="modal_table">' +
-                            '<caption>Judge Information</caption>' +
-                            '<thead>' +
-                              '<tr>' +
-                                '<th>Name</th>' +
-                                '<th>Race</th>' +
-                                '<th>Gender</th>' +
-                                '<th>Tenure</th>' +
-                                '<th>Appointed By</th>' +
-                              '</tr>' +
-                            '</thead>' +
-                            '<tbody>' +
-                              '<tr>' +
-                                '<td>' + cases[i][11] + '</td>' +
-                                '<td>' + cases[i][12] + '</td>' +
-                                '<td>' + cases[i][13] + '</td>' +
-                                '<td>' + cases[i][14] + '</td>' +
-                                '<td>' + cases[i][15] + '</td>' +
-                              '</tr>' +
-                            '</tbody>' +
-                          '</table>' +
-                          '</div>';
-            }
+
+              content += '</tbody>' +
+                        '</table>' +
+                      '</td>' +
+                    '</tr>' +
+                    '<tr class="this_def_info">' +
+                      '<td colspan="4">' + 
+                        (display['ocg'] ? '<table class="modal_table table_col">' : '<table class="modal_table table_col all_results">') +
+                          '<caption>Organized Crime Group Information</caption>' +
+                          '<thead>' +
+                            '<tr>' +
+                              '<th>Name</th>' +
+                              '<th>Size</th>' +
+                              '<th>Race</th>' +
+                              '<th>Scope</th>' +
+                            '</tr>' +
+                          '</thead>' +
+                          '<tbody>' +
+                            '<tr>' +
+                              '<td>' + cases[i][20][j][24] + '</td>' + 
+                              '<td>' + cases[i][20][j][25] + '</td>' + 
+                              '<td>' + cases[i][20][j][26] + '</td>' + 
+                              '<td>' + cases[i][20][j][27] + '</td>' +
+                            '</tr>' +
+                            '<tr>' +
+                              '<td>' + cases[i][20][j][28] + '</td>' + 
+                              '<td>' + cases[i][20][j][29] + '</td>' + 
+                              '<td>' + cases[i][20][j][30] + '</td>' + 
+                              '<td>' + cases[i][20][j][31] + '</td>' +
+                            '</tr>' +
+                          '</tbody>' +
+                        '</table>' +
+                      '</td>' +
+                    '</tr>';
+                }
+                content += '</table>';
+                  (display['victims'] ? '<table class="modal_table">' : '<table class="modal_table all_results">') +
+                    '<caption>Victim Information</caption>' +
+                    '<thead>' +
+                      '<tr>' +
+                        '<th>Total Victims</th>' +
+                        '<th>Total Minors</th>' +
+                        '<th>Total Foreigners</th>' +
+                        '<th>Total Females</th>' +
+                      '</tr>' +
+                    '</thead>' +
+                    '<tbody>' +
+                      '<tr>' +
+                        '<td>' + cases[i][16] + '</td>' +
+                        '<td>' + cases[i][17] + '</td>' +
+                        '<td>' + cases[i][18] + '</td>' +
+                        '<td>' + cases[i][19] + '</td>' +
+                      '</tr>' +
+                    '</tbody>' +
+                  '</table>' +
+                  (display['judge'] ? '<table class="modal_table">' : '<table class="modal_table all_results">') +
+                    '<caption>Judge Information</caption>' +
+                    '<thead>' +
+                      '<tr>' +
+                        '<th>Name</th>' +
+                        '<th>Race</th>' +
+                        '<th>Gender</th>' +
+                        '<th>Tenure</th>' +
+                        '<th>Appointed By</th>' +
+                      '</tr>' +
+                    '</thead>' +
+                    '<tbody>' +
+                      '<tr>' +
+                        '<td>' + cases[i][11] + '</td>' +
+                        '<td>' + races[cases[i][12]] + '</td>' +
+                        '<td>' + (cases[i][13] ? 'Female' : 'Male') + '</td>' +
+                        '<td>' + cases[i][14] + '</td>' +
+                        '<td>' + (cases[i][15] ? 'Democrat' : 'Republican') + '</td>' +
+                      '</tr>' +
+                    '</tbody>' +
+                  '</table>' +
+                '</div>';
+          
             $('#basic-modal-content').html(content);
             $('#basic-modal-content').modal();
 
@@ -541,7 +576,7 @@ SCRIPTS
             $('.toggle_def').click(function(){
               $(this).nextUntil('.toggle_def').toggle('slow');
             });
-
+          }
 
         });
       }

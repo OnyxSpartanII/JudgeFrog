@@ -25,9 +25,9 @@ $a_json_row = array();
 
 $columns = split(",", $column);
 if (sizeof($columns) == 1) {
-  $data = $mysqli->query("SELECT $columns[0] FROM DataInProgress WHERE $columns[0] LIKE '%$term%' LIMIT 10");
+  $data = $mysqli->query("SELECT DISTINCT $columns[0] FROM DataInProgress WHERE $columns[0] LIKE '%$term%' LIMIT 10");
 } else if (sizeof($columns) == 2) {
- $data = $mysqli->query("SELECT $columns[0], $columns[1] FROM DataInProgress WHERE $columns[0] LIKE '%$term%' OR $columns[1] LIKE '%$term%' LIMIT 10");
+ $data = $mysqli->query("SELECT DISTINCT $columns[0], $columns[1] FROM DataInProgress WHERE $columns[0] LIKE '%$term%' OR $columns[1] LIKE '%$term%' LIMIT 10");
 } else {
   exit;
 }
@@ -36,7 +36,7 @@ for ($row_no = 0; $row_no < $data->num_rows; $row_no++) {
   $data->data_seek($row_no);
   $row = $data->fetch_assoc();
   if (sizeof($columns) > 1) {
-    $a_json_row = $row[$columns[0]] . " " . $row[$columns[1]];
+    $a_json_row = $row[$columns[1]] . ", " . $row[$columns[0]];
   } else {
     $a_json_row = $row[$columns[0]]; 
   }

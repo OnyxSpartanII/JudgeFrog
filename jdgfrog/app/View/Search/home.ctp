@@ -82,7 +82,7 @@
                                 echo '<br><br>';
                                 echo $this->Form->input('judge_Gender', array('empty' => 'Gender', 'options' => array('Male','Female')));
                                 echo '<br><br>';
-                                echo $this->Form->input('judge_YearApp', array('id' => 'yearAppointJudge'));
+                                echo $this->Form->input('judge_YearApp', array('label' => 'Year Appointed', 'id' => 'yearAppointJudge'));
                                 echo '<br><br>';
                                 echo $this->Form->input('judge_ApptBy', array('empty' => 'Appointed By', 'options' => array('Republican', 'Democrat')));
                                 echo '<br>';
@@ -117,8 +117,6 @@
                           <div>
                             <?php
                               echo $this->Form->input('ad_DateArrest', array('id' => 'dateArrestAD', 'label' => 'Date of Arrest'));
-                              echo '<br><br>';
-                              echo $this->Form->input('ad_Role', array('empty' => 'Role', 'options' => array('Yes','No')));
                               echo '<br><br>';
                               echo $this->Form->input('ad_BailType', array('empty' => 'Bail Type', 'options' => array('None','Surety','Non-Surety')));
                               echo '<br><br>';

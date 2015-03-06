@@ -369,6 +369,46 @@ SCRIPTS
                       '<h4>Case Summary</h4>' +
                       '<p class="case_summary">' + cases[i][10] + '</p>' +
                     '</div>' +
+                    (display['victims'] ? '<table class="modal_table">' : '<table class="modal_table all_results">') +
+                      '<caption>Victim Information</caption>' +
+                      '<thead>' +
+                        '<tr>' +
+                          '<th>Total Victims</th>' +
+                          '<th>Total Minors</th>' +
+                          '<th>Total Foreigners</th>' +
+                          '<th>Total Females</th>' +
+                        '</tr>' +
+                      '</thead>' +
+                      '<tbody>' +
+                        '<tr>' +
+                          '<td>' + cases[i][16] + '</td>' +
+                          '<td>' + cases[i][17] + '</td>' +
+                          '<td>' + cases[i][18] + '</td>' +
+                          '<td>' + cases[i][19] + '</td>' +
+                        '</tr>' +
+                      '</tbody>' +
+                    '</table>' +
+                    (display['judge'] ? '<table class="modal_table">' : '<table class="modal_table all_results">') +
+                      '<caption>Judge Information</caption>' +
+                      '<thead>' +
+                        '<tr>' +
+                          '<th>Name</th>' +
+                          '<th>Race</th>' +
+                          '<th>Gender</th>' +
+                          '<th>Tenure</th>' +
+                          '<th>Appointed By</th>' +
+                        '</tr>' +
+                      '</thead>' +
+                      '<tbody>' +
+                        '<tr>' +
+                          '<td>' + cases[i][11] + '</td>' +
+                          '<td>' + races[cases[i][12]] + '</td>' +
+                          '<td>' + (cases[i][13] ? 'Female' : 'Male') + '</td>' +
+                          '<td>' + cases[i][14] + '</td>' +
+                          '<td>' + (cases[i][15] ? 'Democrat' : 'Republican') + '</td>' +
+                        '</tr>' +
+                      '</tbody>' +
+                    '</table>' +
                     (display['defendant'] ? '<table class="table_col">' : '<table class="table_col all_results">') +
                       '<caption>Defendant Information</caption>' +
                       '<thead>' +
@@ -512,49 +552,9 @@ SCRIPTS
                         '</table>' +
                       '</td>' +
                     '</tr>';
-                }
-                content += '</table>';
-                  (display['victims'] ? '<table class="modal_table">' : '<table class="modal_table all_results">') +
-                    '<caption>Victim Information</caption>' +
-                    '<thead>' +
-                      '<tr>' +
-                        '<th>Total Victims</th>' +
-                        '<th>Total Minors</th>' +
-                        '<th>Total Foreigners</th>' +
-                        '<th>Total Females</th>' +
-                      '</tr>' +
-                    '</thead>' +
-                    '<tbody>' +
-                      '<tr>' +
-                        '<td>' + cases[i][16] + '</td>' +
-                        '<td>' + cases[i][17] + '</td>' +
-                        '<td>' + cases[i][18] + '</td>' +
-                        '<td>' + cases[i][19] + '</td>' +
-                      '</tr>' +
-                    '</tbody>' +
-                  '</table>' +
-                  (display['judge'] ? '<table class="modal_table">' : '<table class="modal_table all_results">') +
-                    '<caption>Judge Information</caption>' +
-                    '<thead>' +
-                      '<tr>' +
-                        '<th>Name</th>' +
-                        '<th>Race</th>' +
-                        '<th>Gender</th>' +
-                        '<th>Tenure</th>' +
-                        '<th>Appointed By</th>' +
-                      '</tr>' +
-                    '</thead>' +
-                    '<tbody>' +
-                      '<tr>' +
-                        '<td>' + cases[i][11] + '</td>' +
-                        '<td>' + races[cases[i][12]] + '</td>' +
-                        '<td>' + (cases[i][13] ? 'Female' : 'Male') + '</td>' +
-                        '<td>' + cases[i][14] + '</td>' +
-                        '<td>' + (cases[i][15] ? 'Democrat' : 'Republican') + '</td>' +
-                      '</tr>' +
-                    '</tbody>' +
-                  '</table>' +
-                '</div>';
+            }
+
+            content += '</table></div>';
           
             $('#basic-modal-content').html(content);
             $('#basic-modal-content').modal();

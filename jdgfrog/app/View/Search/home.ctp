@@ -597,27 +597,27 @@ SCRIPTS
     }
     $( "#DataInProgressCaseName" ) //Case Name Field
       .autocomplete({
-        source: "/JudgeFrog/jdgfrog/search.php?column=CaseNam" ,
+        source: "/JudgeFrog/jdgfrog/searchFn.php?column=CaseNam" ,
         minLength: 1
       });
     $( "#DataInProgressCaseNumber" ) //Case Number Field
       .autocomplete({
-        source: "/JudgeFrog/jdgfrog/search.php?column=CaseNum" ,
+        source: "/JudgeFrog/jdgfrog/searchFn.php?column=CaseNum" ,
         minLength: 1
       });
     $( "#DataInProgressDefendantName" ) //Def Name Field
       .autocomplete({
-        source: "/JudgeFrog/jdgfrog/search.php?column=DefFirst,DefLast" ,
+        source: "/JudgeFrog/jdgfrog/searchFn.php?column=DefFirst,DefLast" ,
         minLength: 1
       });
     $( "#DataInProgressJudgeName" ) //Judge Name Field
       .autocomplete({
-        source: "/JudgeFrog/jdgfrog/search.php?column=JudgeName" ,
+        source: "/JudgeFrog/jdgfrog/searchFn.php?column=JudgeName" ,
         minLength: 1
       });
     $( "#DataInProgressOcgName" ) //Ocg Name Field
       .autocomplete({
-        source: "/JudgeFrog/jdgfrog/search.php?column=OCName1" ,
+        source: "/JudgeFrog/jdgfrog/searchFn.php?column=OCName1" ,
         minLength: 1
       });
   });

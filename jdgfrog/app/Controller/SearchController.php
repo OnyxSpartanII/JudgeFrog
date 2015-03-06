@@ -429,8 +429,6 @@ class SearchController extends AppController {
 
 		if ($display['cd']) array_push($conditions, $charge_conds);
 
-
-		print_r($conditions);
 		$case_nums = $this->DataInProgress->find('all', array('conditions' => $conditions, 'fields' => array('DataInProgress.CaseNum')));
 		//print_r($case_names);
 		$cn = array();

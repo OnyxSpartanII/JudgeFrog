@@ -53,7 +53,6 @@ class UploadsController extends AppController {
 
 						if ($row >= 4) {
 							// Every row after row #4 contains data which needs to be input to database
-
 							$index = 2;
 
 							$info = array(
@@ -74,10 +73,10 @@ class UploadsController extends AppController {
 								'CaseSummary' => $data[$index++],
 								'DefGender' => $data[$index++],
 								'DefRace' => $data[$index++],
-								'DefBirthdate' => $data[$index++],
+								'DefBirthdate' => (strrpos($data[$index], "/") ? explode("/",$data[$index++])[2] : $data[$index++]),
 								'DefArrestAge' => $data[$index++],
-								'ChargeDate' => $data[$index++],
-								'ArrestDate' => $data[$index++],
+								'ChargeDate' => date('Y-m-d h:i:s', strtotime($data[$index++])),
+								'ArrestDate' => date('Y-m-d h:i:s', strtotime($data[$index++])),
 								'Detained' => $data[$index++],
 								'BailType' => $data[$index++],
 								'BailAmount' => $data[$index++],
@@ -308,8 +307,8 @@ class UploadsController extends AppController {
 								'Sent1328' => $data[$index++],
 								'Prob1328' => $data[$index++],
 
-								'DateTerm' => $data[$index++],
-								'SentDate' => $data[$index++],
+								'DateTerm' => date('Y-m-d h:i:s', strtotime($data[$index++])),
+								'SentDate' => date('Y-m-d h:i:s', strtotime($data[$index++])),
 								'TotalSentence' => $data[$index++],
 								'Restitution' => $data[$index++],
 								'AssetForfeit' => $data[$index++],

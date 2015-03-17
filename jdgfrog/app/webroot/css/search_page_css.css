@@ -6,7 +6,7 @@
     height: 80px;
     padding-top: 15px;
     /*margin-bottom: -10px;*/
-    background-color: #666;
+    background-color: #4D1979;
 }
 
 .top_bar_left h4{
@@ -22,55 +22,74 @@
     margin: 0 auto;
 }
 .search_button{
-    /*margin-top:-42px;*/
-    /*margin-right:30px;*/
-    /*padding: 8px;*/
-    margin-top: -8px;
+    margin-top: -9px;
     padding-left: 10px;
     background-color: #fff;
     float: right;
 
-    opacity: 0.8;
-    filter: alpha(opacity=80); /* For IE8 and earlier */
+    opacity: 1;
+    filter: alpha(opacity=70); /* For IE8 and earlier */
 }
 
 .search_button:hover{
-    opacity: 0.6;
-    filter: alpha(opacity=60); /* For IE8 and earlier */
+    opacity: .8;
+    filter: alpha(opacity=80); /* For IE8 and earlier */
 
 
-    -webkit-transition: all 0.2s ease-in;
-    -moz-transition: all 0.2s ease-in;
-    -o-transition: all 0.2s ease-in;
+    -webkit-transition: all 0.3s ease-in;
+    -moz-transition: all 0.3s ease-in;
+    -o-transition: all 0.3s ease-in;
 }
-
-
-/************ANALYZE PAGE SUBMIT BUTTON**************/
-.ana_button{
-    margin-top:-42px;
-    margin-right:30px;
-    padding: 4px;
+.analyze_button{
+    margin-top: -9px;
+    padding-left: 10px;
     background-color: #fff;
     float: right;
 
-    opacity: 0.8;
+    opacity: 1;
+    filter: alpha(opacity=70); /* For IE8 and earlier */
+}
+
+.analyze_button:hover{
+    opacity: .8;
     filter: alpha(opacity=80); /* For IE8 and earlier */
+
+
+    -webkit-transition: all 0.3s ease-in;
+    -moz-transition: all 0.3s ease-in;
+    -o-transition: all 0.3s ease-in;
+}
+
+.google-visualization-table-table{
+    /*visibility: hidden;*/
+    max-height: 500px;
+    width: 100%;
+}
+
+/************ANALYZE PAGE SUBMIT BUTTON**************/
+.ana_button{
+    margin-top: -29px;
+    padding: 14px 17px 14px 17px;
+    background-color: #fff;
+    float: right;
+    opacity: 1;
+    filter: alpha(opacity=100); /* For IE8 and earlier */
 }
 
 .ana_button:hover{
-    opacity: 0.6;
-    filter: alpha(opacity=60); /* For IE8 and earlier */
+    opacity: .8;
+    filter: alpha(opacity=80); /* For IE8 and earlier */
 
 
-    -webkit-transition: all 0.2s ease-in;
-    -moz-transition: all 0.2s ease-in;
-    -o-transition: all 0.2s ease-in;
+    -webkit-transition: all 0.3s ease-in;
+    -moz-transition: all 0.3s ease-in;
+    -o-transition: all 0.3s ease-in;
 }
 
 
 
 .center_panel{
-    /*background-color: #fe2232;*/
+    /*background-color: #4D1979;*/
     /* margin-left: 400px; */
     display:inline-block;
     float:right;
@@ -81,68 +100,78 @@
 
 #collapsible-panels{
     /*margin-top: 200px;*/
-    width: 400px;
+    width: 100%;
     /* margin-top: -133px; */
     display:inline-block;
 }
 
 #collapsible-panels div {
-    width: 400px;
-    padding: 20px 0px 20px 10px;
+    padding: 20px 0px 20px 0px;
     /*background-color: #999;*/
     color: #444;
     /*box-shadow: 0px 1px 2px 2px #999;*/
 } 
 
 #collapsible-panels h2 {
+    text-align: left;
     color: #444;
     padding: 15px 0px;
     margin:0;
     font-size: 100% ;
-    background: url('/jdgfrog/img/open.png') no-repeat left center;
+    background: url('/jdgfrog/img/open.png') no-repeat right center;
     letter-spacing: .1em;
     border-bottom: 1px solid rgba(75,75,75, 0.4);
 }
 
 #collapsible-panels h2.active {
-    background: url('/jdgfrog/img/close.png') no-repeat left center;
+    background: url('/jdgfrog/img/close.png') no-repeat right center;
     text-decoration: underline;
-    color: #fe2232;
+    color: #4D1979;
 }
 
 #collapsible-panels h2 a {
     text-decoration: none;
-    font-size: 17px;
+    font-size: 16px;
     color: #444;
 }
        
-#collapsible-panels h2 a:hover {
-    color: #fe2232;
+#collapsible-panels h2 a:hover{
+    color: #4D1979;
+}
+       
+#collapsible-panels h2.active a{
+    color: #4D1979;
 }
 
 #collapsible-panels input, select{
     width:60%;
     /*margin-left: 15%;*/
 }  
-#collapsible-panels [type=checkbox] {
-    width:5%;
-    /*margin-left: 60px;*/
-}
 #collapsible-panels input:hover {
-    border:1px solid #fe2232;
+    border:1px solid #4D1979;
     -webkit-transition: all 0.1.5s ease-in;
     -moz-transition: all 0.1.5s ease-in;
     -o-transition: all 0.1.5s ease-in;
 }  
-#collapsible-panels input [type=checkbox], #collapsible-panels label{
-    /*margin-left: 60px;*/
+#collapsible-panels [type=checkbox] {
+    width:10%;
+    float: left;
+    margin-left: 20px;
+}
+#collapsible-panels input [type=checkbox]{
+    /*margin-left: 1.5em;*/
     font-size: 15px;
+}
+#collapsible-panels label{
+    /*margin-left: 1.5em;*/
+    font-size: 14px;
 }
 #collapsible-panels input[type=text],
     select {
+    width: 95%;
     padding:10px 7px;
     background:#fff;
-    font-size: 15px;
+    font-size: 13px;
     border:1px solid #222;
 }
 .search_disclaim{
@@ -159,7 +188,18 @@
     border-color: #aabcfe;
     border-collapse: collapse;
 } 
-
+.google-table{
+    min-height: 425px;
+    border-bottom: 1px solid rgba(75,75,75,0.4);
+    /*box-shadow: 3px 5px 40px 5px #444;*/
+    /*width: 80%;*/
+}
+.google-visualization-table-tr-head{
+    color: #666;
+    font-size: 1.3em;
+    padding: 20em;
+    background-color: #444;
+}
 .title_table{
     color:white;
     font-size:20px;
@@ -202,14 +242,14 @@
 }
 
 .search_item:hover{
-    background-color: #fe2232;
+    background-color: #4D1979;
 }
 
 
 
 /*ANALYZE PAGE STYLE*/
 .graph_selection{
-    margin-left: 600px;
+    /*margin-left: 600px;*/
 }
 .graph_selection li{
     margin-left: 50px;
@@ -217,8 +257,7 @@
 }
 
 .graph_selection input[type=radio]{
-    width: 4em;
-    height: 4em;
+    float: left;
 }
 
 

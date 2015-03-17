@@ -3,8 +3,8 @@
 <script type="text/javascript" src="http://code.jquery.com/ui/1.10.1/jquery-ui.min.js"></script> 
 <!-- Calling Slider Imports -->
   <?php 
-  echo $this->Html->script(array('modernizr.custom', 'classie','moment','ion.rangeSlider.js','ion.rangeSlider.min','sliderMod', 'modal_window_style', 'jquery.simplemodal',)); 
-  echo $this->Html->css(array('search_page_css', 'nav_bar_style', 'default','ion.rangeSlider.skinFlat','ion.rangeSlider'));
+  echo $this->Html->script(array('modernizr.custom', 'classie','moment','ion.rangeSlider.js','ion.rangeSlider.min','sliderMod', 'jquery.simplemodal',)); 
+  echo $this->Html->css(array('search_page_css', 'nav_bar_style', 'default','ion.rangeSlider.skinFlat','ion.rangeSlider', 'modal_window_style'));
   ?>
 
 <!--search start here-->
@@ -42,7 +42,7 @@
                                   echo "<br><br>";
                                   echo $this->Form->input('case_State', array('options' => array('Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','Florida','Georgia','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virginia','Washington','West Virginia','Wisconsin','Wyoming'), 'empty' => 'State'));
                                   echo "<br><br>";
-                                  echo $this->Form->input('case_FedDist', array('empty' => 'Federal District', 'options' => array('Mickey','Mouse')));
+                                  echo $this->Form->input('case_FedDist', array('empty' => 'Federal District', 'options' => array('1','2','3','4','5','6','7','8','9','10','11','12','13','14')));
                                   echo "<br>";
                                 ?>
                             </div>
@@ -50,12 +50,14 @@
                           <h2><a href="#">Type of Trafficking</a></h2>
                             <div >
                                 <?php
-                                  echo $this->Form->input('case_Adult', array('type' => 'checkbox', 'label' => ' Adult Sex ', 'checked' => 'true'));
+                                  echo $this->Form->input('case_Adult', array('type' => 'checkbox', 'label' => ' Adult Sex '));
                                   echo '<br><br>';
-                                  echo $this->Form->input('case_Minor', array('type' => 'checkbox', 'label' => ' Minor Sex ', 'checked' => 'true'));
+                                  echo $this->Form->input('case_Minor', array('type' => 'checkbox', 'label' => ' Minor Sex '));
                                   echo '<br><br>';
-                                  echo $this->Form->input('case_Labor', array('type' => 'checkbox', 'label' => ' Labor', 'checked' => 'true'));
-                                  echo '<br>';
+                                  echo $this->Form->input('case_Labor', array('type' => 'checkbox', 'label' => ' Labor'));
+                                  echo '<br><br>';
+                                  echo $this->Form->input('case_TypeOperator', array('options' => array('AND','OR'), 'empty' => 'Operator'));
+                                  echo '<br><br>';
                                 ?>
                             </div>
 
@@ -82,9 +84,9 @@
                                 echo '<br><br>';
                                 echo $this->Form->input('judge_Gender', array('empty' => 'Gender', 'options' => array('Male','Female')));
                                 echo '<br><br>';
-                                echo $this->Form->input('judge_YearApp', array('id' => 'yearAppointJudge'));
+                                echo $this->Form->input('judge_YearApp', array('label' => 'Year Appointed', 'id' => 'yearAppointJudge'));
                                 echo '<br><br>';
-                                echo $this->Form->input('judge_ApptBy', array('empty' => 'Appointed By', 'options' => array('Democrat', 'Republican')));
+                                echo $this->Form->input('judge_ApptBy', array('empty' => 'Appointed By', 'options' => array('Republican', 'Democrat')));
                                 echo '<br>';
                               ?>
                             </div>
@@ -117,8 +119,6 @@
                           <div>
                             <?php
                               echo $this->Form->input('ad_DateArrest', array('id' => 'dateArrestAD', 'label' => 'Date of Arrest'));
-                              echo '<br><br>';
-                              echo $this->Form->input('ad_Role', array('empty' => 'Role', 'options' => array('Yes','No')));
                               echo '<br><br>';
                               echo $this->Form->input('ad_BailType', array('empty' => 'Bail Type', 'options' => array('None','Surety','Non-Surety')));
                               echo '<br><br>';
@@ -166,9 +166,9 @@
                           echo '<br><br>';
                           echo $this->Form->input('sd_Restitution', array('id' => 'amountRestitutionSent', 'label' => 'Amount Restitution'));
                           echo '<br><br>';
-                          echo $this->Form->input('sd_AssetForfeit', array('empty' => 'Asset Forfeit', 'options' => array('Yes','No')));
+                          echo $this->Form->input('sd_AssetForfeit', array('empty' => 'Asset Forfeit', 'options' => array('No','Yes')));
                           echo '<br><br>';
-                          echo $this->Form->input('sd_Appeal', array('empty' => 'Appeal', 'options' => array('Yes','No')));
+                          echo $this->Form->input('sd_Appeal', array('empty' => 'Appeal', 'options' => array('No','Yes')));
                           echo '<br><br>';
                           echo $this->Form->input('sd_MonthsProb', array('id' => 'monthsProbationSentence', 'label' => '# of Months Probation'));
                           echo '<br>';
@@ -205,6 +205,9 @@
         </div>
     </div>
 
+<div id="basic-modal-content" class="col-md-15">
+</div>
+
 
 <!--*************
 SCRIPTS
@@ -227,81 +230,74 @@ SCRIPTS
 </script>
 <!-- added by Landon (above) -->
 
-
-<!-- SCRIPT FOR THE POPUP FRAME OF SEARCH DETAILS -->
 <script type="text/javascript">
-
-$("#target").submit(function(event) {
-  
-  cuteLittleWindow = window.open("home", "littleWindow", "location=no,width=320,height=200"); 
-  event.preventDefault();
-});
-    // GET DETAILS OF A CASE
-      $(".details").on("click", function() {
-          // location.href="http://www.google.com";
-
+      jQuery(document).ready(function($) {
+        $(".scroll").click(function(event){   
+          event.preventDefault();
+          $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+        });
       });
+      
+      var radius = 5;
 
-/*
- * SimpleModal 1.4.4 - jQuery Plugin
- * http://simplemodal.com/
- * Copyright (c) 2013 Eric Martin
- * Licensed under MIT and GPL
- * Date: Sun, Jan 20 2013 15:58:56 -0800
- */
-(function(b){"function"===typeof define&&define.amd?define(["jquery"],b):b(jQuery)})(function(b){var j=[],n=b(document),k=navigator.userAgent.toLowerCase(),l=b(window),g=[],o=null,p=/msie/.test(k)&&!/opera/.test(k),q=/opera/.test(k),m,r;m=p&&/msie 6./.test(k)&&"object"!==typeof window.XMLHttpRequest;r=p&&/msie 7.0/.test(k);b.modal=function(a,h){return b.modal.impl.init(a,h)};b.modal.close=function(){b.modal.impl.close()};b.modal.focus=function(a){b.modal.impl.focus(a)};b.modal.setContainerDimensions=
-function(){b.modal.impl.setContainerDimensions()};b.modal.setPosition=function(){b.modal.impl.setPosition()};b.modal.update=function(a,h){b.modal.impl.update(a,h)};b.fn.modal=function(a){return b.modal.impl.init(this,a)};b.modal.defaults={appendTo:"body",focus:!0,opacity:50,overlayId:"simplemodal-overlay",overlayCss:{},containerId:"simplemodal-container",containerCss:{},dataId:"simplemodal-data",dataCss:{},minHeight:null,minWidth:null,maxHeight:null,maxWidth:null,autoResize:!1,autoPosition:!0,zIndex:1E3,
-close:!0,closeHTML:'<a class="modalCloseImg" title="Close"></a>',closeClass:"simplemodal-close",escClose:!0,overlayClose:1,fixed:!0,position:null,persist:!1,modal:!0,onOpen:null,onShow:null,onClose:null};b.modal.impl={d:{},init:function(a,h){if(this.d.data)return!1;o=p&&!b.support.boxModel;this.o=b.extend({},b.modal.defaults,h);this.zIndex=this.o.zIndex;this.occb=!1;if("object"===typeof a){if(a=a instanceof b?a:b(a),this.d.placeholder=!1,0<a.parent().parent().size()&&(a.before(b("<span></span>").attr("id",
-"simplemodal-placeholder").css({display:"none"})),this.d.placeholder=!0,this.display=a.css("display"),!this.o.persist))this.d.orig=a.clone(!0)}else if("string"===typeof a||"number"===typeof a)a=b("<div></div>").html(a);else return alert("SimpleModal Error: Unsupported data type: "+typeof a),this;this.create(a);this.open();b.isFunction(this.o.onShow)&&this.o.onShow.apply(this,[this.d]);return this},create:function(a){this.getDimensions();if(this.o.modal&&m)this.d.iframe=b('<iframe src="javascript:false;"></iframe>').css(b.extend(this.o.iframeCss,
-{display:"none",opacity:0,position:"fixed",height:g[0],width:g[1],zIndex:this.o.zIndex,top:0,left:0})).appendTo(this.o.appendTo);this.d.overlay=b("<div></div>").attr("id",this.o.overlayId).addClass("simplemodal-overlay").css(b.extend(this.o.overlayCss,{display:"none",opacity:this.o.opacity/100,height:this.o.modal?j[0]:0,width:this.o.modal?j[1]:0,position:"fixed",left:0,top:0,zIndex:this.o.zIndex+1})).appendTo(this.o.appendTo);this.d.container=b("<div></div>").attr("id",this.o.containerId).addClass("simplemodal-container").css(b.extend({position:this.o.fixed?
-"fixed":"absolute"},this.o.containerCss,{display:"none",zIndex:this.o.zIndex+2})).append(this.o.close&&this.o.closeHTML?b(this.o.closeHTML).addClass(this.o.closeClass):"").appendTo(this.o.appendTo);this.d.wrap=b("<div></div>").attr("tabIndex",-1).addClass("simplemodal-wrap").css({height:"100%",outline:0,width:"100%"}).appendTo(this.d.container);this.d.data=a.attr("id",a.attr("id")||this.o.dataId).addClass("simplemodal-data").css(b.extend(this.o.dataCss,{display:"none"})).appendTo("body");this.setContainerDimensions();
-this.d.data.appendTo(this.d.wrap);(m||o)&&this.fixIE()},bindEvents:function(){var a=this;b("."+a.o.closeClass).bind("click.simplemodal",function(b){b.preventDefault();a.close()});a.o.modal&&a.o.close&&a.o.overlayClose&&a.d.overlay.bind("click.simplemodal",function(b){b.preventDefault();a.close()});n.bind("keydown.simplemodal",function(b){a.o.modal&&9===b.keyCode?a.watchTab(b):a.o.close&&a.o.escClose&&27===b.keyCode&&(b.preventDefault(),a.close())});l.bind("resize.simplemodal orientationchange.simplemodal",
-function(){a.getDimensions();a.o.autoResize?a.setContainerDimensions():a.o.autoPosition&&a.setPosition();m||o?a.fixIE():a.o.modal&&(a.d.iframe&&a.d.iframe.css({height:g[0],width:g[1]}),a.d.overlay.css({height:j[0],width:j[1]}))})},unbindEvents:function(){b("."+this.o.closeClass).unbind("click.simplemodal");n.unbind("keydown.simplemodal");l.unbind(".simplemodal");this.d.overlay.unbind("click.simplemodal")},fixIE:function(){var a=this.o.position;b.each([this.d.iframe||null,!this.o.modal?null:this.d.overlay,
-"fixed"===this.d.container.css("position")?this.d.container:null],function(b,e){if(e){var f=e[0].style;f.position="absolute";if(2>b)f.removeExpression("height"),f.removeExpression("width"),f.setExpression("height",'document.body.scrollHeight > document.body.clientHeight ? document.body.scrollHeight : document.body.clientHeight + "px"'),f.setExpression("width",'document.body.scrollWidth > document.body.clientWidth ? document.body.scrollWidth : document.body.clientWidth + "px"');else{var c,d;a&&a.constructor===
-Array?(c=a[0]?"number"===typeof a[0]?a[0].toString():a[0].replace(/px/,""):e.css("top").replace(/px/,""),c=-1===c.indexOf("%")?c+' + (t = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop) + "px"':parseInt(c.replace(/%/,""))+' * ((document.documentElement.clientHeight || document.body.clientHeight) / 100) + (t = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop) + "px"',a[1]&&(d="number"===typeof a[1]?
-a[1].toString():a[1].replace(/px/,""),d=-1===d.indexOf("%")?d+' + (t = document.documentElement.scrollLeft ? document.documentElement.scrollLeft : document.body.scrollLeft) + "px"':parseInt(d.replace(/%/,""))+' * ((document.documentElement.clientWidth || document.body.clientWidth) / 100) + (t = document.documentElement.scrollLeft ? document.documentElement.scrollLeft : document.body.scrollLeft) + "px"')):(c='(document.documentElement.clientHeight || document.body.clientHeight) / 2 - (this.offsetHeight / 2) + (t = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop) + "px"',
-d='(document.documentElement.clientWidth || document.body.clientWidth) / 2 - (this.offsetWidth / 2) + (t = document.documentElement.scrollLeft ? document.documentElement.scrollLeft : document.body.scrollLeft) + "px"');f.removeExpression("top");f.removeExpression("left");f.setExpression("top",c);f.setExpression("left",d)}}})},focus:function(a){var h=this,a=a&&-1!==b.inArray(a,["first","last"])?a:"first",e=b(":input:enabled:visible:"+a,h.d.wrap);setTimeout(function(){0<e.length?e.focus():h.d.wrap.focus()},
-10)},getDimensions:function(){var a="undefined"===typeof window.innerHeight?l.height():window.innerHeight;j=[n.height(),n.width()];g=[a,l.width()]},getVal:function(a,b){return a?"number"===typeof a?a:"auto"===a?0:0<a.indexOf("%")?parseInt(a.replace(/%/,""))/100*("h"===b?g[0]:g[1]):parseInt(a.replace(/px/,"")):null},update:function(a,b){if(!this.d.data)return!1;this.d.origHeight=this.getVal(a,"h");this.d.origWidth=this.getVal(b,"w");this.d.data.hide();a&&this.d.container.css("height",a);b&&this.d.container.css("width",
-b);this.setContainerDimensions();this.d.data.show();this.o.focus&&this.focus();this.unbindEvents();this.bindEvents()},setContainerDimensions:function(){var a=m||r,b=this.d.origHeight?this.d.origHeight:q?this.d.container.height():this.getVal(a?this.d.container[0].currentStyle.height:this.d.container.css("height"),"h"),a=this.d.origWidth?this.d.origWidth:q?this.d.container.width():this.getVal(a?this.d.container[0].currentStyle.width:this.d.container.css("width"),"w"),e=this.d.data.outerHeight(!0),f=
-this.d.data.outerWidth(!0);this.d.origHeight=this.d.origHeight||b;this.d.origWidth=this.d.origWidth||a;var c=this.o.maxHeight?this.getVal(this.o.maxHeight,"h"):null,d=this.o.maxWidth?this.getVal(this.o.maxWidth,"w"):null,c=c&&c<g[0]?c:g[0],d=d&&d<g[1]?d:g[1],i=this.o.minHeight?this.getVal(this.o.minHeight,"h"):"auto",b=b?this.o.autoResize&&b>c?c:b<i?i:b:e?e>c?c:this.o.minHeight&&"auto"!==i&&e<i?i:e:i,c=this.o.minWidth?this.getVal(this.o.minWidth,"w"):"auto",a=a?this.o.autoResize&&a>d?d:a<c?c:a:f?
-f>d?d:this.o.minWidth&&"auto"!==c&&f<c?c:f:c;this.d.container.css({height:b,width:a});this.d.wrap.css({overflow:e>b||f>a?"auto":"visible"});this.o.autoPosition&&this.setPosition()},setPosition:function(){var a,b;a=g[0]/2-this.d.container.outerHeight(!0)/2;b=g[1]/2-this.d.container.outerWidth(!0)/2;var e="fixed"!==this.d.container.css("position")?l.scrollTop():0;this.o.position&&"[object Array]"===Object.prototype.toString.call(this.o.position)?(a=e+(this.o.position[0]||a),b=this.o.position[1]||b):
-a=e+a;this.d.container.css({left:b,top:a})},watchTab:function(a){if(0<b(a.target).parents(".simplemodal-container").length){if(this.inputs=b(":input:enabled:visible:first, :input:enabled:visible:last",this.d.data[0]),!a.shiftKey&&a.target===this.inputs[this.inputs.length-1]||a.shiftKey&&a.target===this.inputs[0]||0===this.inputs.length)a.preventDefault(),this.focus(a.shiftKey?"last":"first")}else a.preventDefault(),this.focus()},open:function(){this.d.iframe&&this.d.iframe.show();b.isFunction(this.o.onOpen)?
-this.o.onOpen.apply(this,[this.d]):(this.d.overlay.show(),this.d.container.show(),this.d.data.show());this.o.focus&&this.focus();this.bindEvents()},close:function(){if(!this.d.data)return!1;this.unbindEvents();if(b.isFunction(this.o.onClose)&&!this.occb)this.occb=!0,this.o.onClose.apply(this,[this.d]);else{if(this.d.placeholder){var a=b("#simplemodal-placeholder");this.o.persist?a.replaceWith(this.d.data.removeClass("simplemodal-data").css("display",this.display)):(this.d.data.hide().remove(),a.replaceWith(this.d.orig))}else this.d.data.hide().remove();
-this.d.container.hide().remove();this.d.overlay.hide();this.d.iframe&&this.d.iframe.hide().remove();this.d.overlay.remove();this.d={}}}}});
+      var interval = window.setInterval(function() {
+      $(".logo").css("-webkit-mask", "-webkit-gradient(radial, 27 27, " + radius + ", 5 5, " + (radius + 5) + ", from(rgb(0, 0, 0)), color-stop(0.5, rgba(0, 0, 0, 0.2)), to(rgb(0, 0, 0)))");
+      radius++;
+      if (radius === 100) {
+      window.clearInterval(interval);
+      }
+      }, 15);
+  </script>
 
+  <!-- SCRIPT FOR THE POPUP FRAME OF SEARCH DETAILS -->
+<script type="text/javascript">
+  //PDF Download Function 
+    $(function(){ 
+        var specialElementHandlers = {
+            '#editor': function (element,renderer) {
+                return true;
+            }
+        };
+     $('.modal_download').click(function () {
+        var doc = new jsPDF();
+            doc.fromHTML($('.modal_content').html(), 15, 15, {
+                'width': 170,
+                'pagesplit': true,
+                'margin':2,
+                'elementHandlers': specialElementHandlers
+            });
+            doc.save('Search_results.pdf');
+      // alert("Download Successful!");
+        });  
+    });
+  //End of PDF Download Fucntion
 </script>
-
-<!-- CSS for table -->
-<style>
-.search_table {
-  width: 100%;
-}
-
-.st_header {
-  display: flex;
-  font-weight: bold;
-  text-align: center;
-}
-
-.st_row {
-  display: flex;
-}
-
-.st_cell {
-  flex: 1 0 auto;
-}
-</style>
 
 <!-- Table Script to display searched values -->
 <script type="text/javascript">
-            google.load("visualization", "1", {packages:["table"]});
-      google.setOnLoadCallback(drawTable);
+
+      <?php
+        if (isset($cases)) {
+          $jsarr = json_encode($cases);
+          echo 'var cases = ' . $jsarr . ';';
+        } else {
+          echo 'var cases = [];';
+        }
+
+        if (isset($display)) {
+          $jsrarr = json_encode($display);
+          echo 'var display = ' . $jsrarr . ';';
+        } else {
+          echo 'var display = [];';
+        }
+          echo "\n";
+      ?>
 
       function drawTable() {
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Case Name');
         data.addColumn('string', 'Case Number');
-        data.addColumn('number', 'Year');
+        data.addColumn('string', 'Year');
         data.addColumn('string', 'Type of Case');
         data.addColumn('number', '# of Defendants');
         <?php
@@ -317,90 +313,274 @@ this.d.container.hide().remove();this.d.overlay.hide();this.d.iframe&&this.d.ifr
               if ($case[5] == '1') {
                 $type .= 'M';
               }
-              echo 'data.addRow(["' . $case[0] . '", "' . $case[1] . '", {v: ' . $case[2] . '}, "' . $type . '", {v: '. $case[6] .'}]);'; 
+              echo 'data.addRow(["' . $case[0] . '", "' . $case[1] . '", "' . explode('-', $case[2])[0] . '", "' . $type . '", {v: '. $case[6] .'}]);'; 
             }
           }
         ?>
+
+        var races = ['White','Black','Hispanic','Asian','ERR','Other'];
+        var bail_types = ['None','Surety','Non-Surety'];
 
         var table = new google.visualization.Table(document.getElementById('table_div'));
 
         table.draw(data, {showRowNumber: false});
 
         google.visualization.events.addListener(table, 'select', function () {
-          console.log(table.getSelection());
           var i = table.getSelection()[0].row;
-          <?php
-            if (isset($cases)) {
-              $jsarr = json_encode($cases);
-              echo 'var cases = ' . $jsarr . ';';
-            } else {
-              echo 'var cases = [];';
-            }
-          ?>
+          console.log('Row: ' + i);
+          console.log(cases[i]);
+          
+          var content = '';
           if (cases.length > 0) {
-            var content = '<div><h3>Case Details</h3><br>' +
-                          '<div class="search_table">' +
-                          '<div class="st_header"><div class="st_cell">Case Name</div><div class="st_cell">Case Number</div><div class="st_cell"># of Defendants</div><div class="st_cell">State</div><div class="st_cell">Year</div></div>' +
-                          '<div class="st_row"><div class="st_cell">' + cases[i][0] + '</div>' +
-                          '<div class="st_cell">' + cases[i][1] + '</div>' +
-                          '<div class="st_cell">' + cases[i][6] + '</div>' +
-                          '<div class="st_cell">' + cases[i][7] + '</div>' +
-                          '<div class="st_cell">' + cases[i][2] + '</div>' +
-                          '</div></div></div><br/>';
+            content += '<div class="modal_header">' +
+                  '<h2>Case Details</h2>' +
+                  '<a href="#" id="cmd" class="modal_download">Download</a>' + 
+                    '<div class="onoffswitch">' +
+                      '<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>' +
+                      '<label class="onoffswitch-label" for="myonoffswitch">' +
+                        '<span class="onoffswitch-inner"></span>' +
+                        '<span class="onoffswitch-switch"></span>' +
+                      '</label>' +
+                    '</div>' +
+                  '</div>' +
+                  '<div class="modal_content">' +
+                    '<div class="case_info">' +
+                      '<table class="modal_table">' +
+                        '<caption>Case Basic Information</caption>' +
+                        '<thead>' +
+                          '<tr>' +
+                            '<th>Case Name</th>' +
+                            '<th>Case Number</th>' +
+                            '<th># Defendants</th>' +
+                            '<th>State</th>' +
+                            '<th>Year</th>' +
+                          '</tr>' +
+                        '</thead>' +
+                        '<tbody>' +
+                          '<tr>' +
+                            '<td>' + cases[i][0] + '</td>' +
+                            '<td>' + cases[i][1] + '</td>' +
+                            '<td>' + cases[i][6] + '</td>' +
+                            '<td>' + cases[i][7] + '</td>' +
+                            '<td>' + cases[i][2].split('-')[0] + '</td>' +
+                          '</tr>' +
+                        '</tbody>' +
+                      '</table>' +
+                      '<h4>Case Summary</h4>' +
+                      '<p class="case_summary">' + cases[i][10] + '</p>' +
+                    '</div>' +
+                    (display['victims'] ? '<table class="modal_table">' : '<table class="modal_table all_results">') +
+                      '<caption>Victim Information</caption>' +
+                      '<thead>' +
+                        '<tr>' +
+                          '<th>Total Victims</th>' +
+                          '<th>Total Minors</th>' +
+                          '<th>Total Foreigners</th>' +
+                          '<th>Total Females</th>' +
+                        '</tr>' +
+                      '</thead>' +
+                      '<tbody>' +
+                        '<tr>' +
+                          '<td>' + cases[i][16] + '</td>' +
+                          '<td>' + cases[i][17] + '</td>' +
+                          '<td>' + cases[i][18] + '</td>' +
+                          '<td>' + cases[i][19] + '</td>' +
+                        '</tr>' +
+                      '</tbody>' +
+                    '</table>' +
+                    (display['judge'] ? '<table class="modal_table">' : '<table class="modal_table all_results">') +
+                      '<caption>Judge Information</caption>' +
+                      '<thead>' +
+                        '<tr>' +
+                          '<th>Name</th>' +
+                          '<th>Race</th>' +
+                          '<th>Gender</th>' +
+                          '<th>Tenure</th>' +
+                          '<th>Appointed By</th>' +
+                        '</tr>' +
+                      '</thead>' +
+                      '<tbody>' +
+                        '<tr>' +
+                          '<td>' + cases[i][11] + '</td>' +
+                          '<td>' + races[cases[i][12]] + '</td>' +
+                          '<td>' + (cases[i][13] ? 'Female' : 'Male') + '</td>' +
+                          '<td>' + cases[i][14] + '</td>' +
+                          '<td>' + (cases[i][15] ? 'Democrat' : 'Republican') + '</td>' +
+                        '</tr>' +
+                      '</tbody>' +
+                    '</table>' +
+                    (display['defendant'] ? '<table class="table_col">' : '<table class="table_col all_results">') +
+                      '<caption>Defendant Information</caption>' +
+                      '<thead>' +
+                        '<tr>' +
+                          '<th>Name</th>' +
+                          '<th>Gender</th>' +
+                          '<th>Year of Birth</th>' +
+                          '<th>Race</th>' +
+                        '</tr>' +
+                      '</thead>' +
+                      '<tbody>';
 
-            content = content + '<div><h3>Defendant Details</h3><br/>';
-            content = content + 
-                        '<div class="search_table">' +
-                        '<div class="st_header"><div class="st_cell">Name</div><div class="st_cell">Alias</div><div class="st_cell">Gender</div><div class="st_cell">Race</div><div class="st_cell">Birthdate</div></div>';
-            for (var j = 0; j < cases[i][16].length; j++) {
-              content = content + 
-                        '<div class="st_row"><div class="st_cell">' + cases[i][16][j][0] + ', ' + cases[i][16][j][1] + '</div>' +
-                        '<div class="st_cell">' + cases[i][16][j][2] + '</div>' +
-                        '<div class="st_cell">' + cases[i][16][j][3] + '</div>' +
-                        '<div class="st_cell">' + cases[i][16][j][4] + '</div>' +
-                        '<div class="st_cell">' + cases[i][16][j][5] + '</div>';
-              if (cases[i][16][j][7].length > 0) {
-                content = content + 
-                          '<br/><div class="search_table"><div class="st_header">' +
-                          '<div class="st_cell">Charge Date</div>' +
-                          '<div class="st_cell">Arrest Date</div>' +
-                          '<div class="st_cell">Detained</div>' +
-                          '<div class="st_cell">Bail Type</div>' +
-                          '<div class="st_cell">Bail Amount</div>' +
-                          '<div class="st_cell">Role</div>' +
-                          '<div class="st_cell">Felonies Charged</div>' +
-                          '<div class="st_cell">Felonies Sentenced</div>' +
-                          '<div class="st_cell">Date Terminated</div>' +
-                          '<div class="st_cell">Sentence Date</div>' +
-                          '<div class="st_cell"># Months Sentenced</div>' +
-                          '<div class="st_cell">Restitution</div>' +
-                          '<div class="st_cell">Asset Forfeiture?</div>' +
-                          '<div class="st_cell">Appeal?</div>' +
-                          '<div class="st_cell">Supervized Release?</div>' +
-                          '<div class="st_cell"># Months Probation</div></div>' +
-                          '<div class="st_row"><div class="st_cell">' + cases[i][16][j][7][0] + '</div>' +
-                          '<div class="st_cell">' + cases[i][16][j][7][1] + '</div>' +
-                          '<div class="st_cell">' + cases[i][16][j][7][2] + '</div>' +
-                          '<div class="st_cell">' + cases[i][16][j][7][3] + '</div>' +
-                          '<div class="st_cell">' + cases[i][16][j][7][4] + '</div>' +
-                          '<div class="st_cell">' + cases[i][16][j][7][5] + '</div>' +
-                          '<div class="st_cell">' + cases[i][16][j][7][6] + '</div>' +
-                          '<div class="st_cell">' + cases[i][16][j][7][7] + '</div>' +
-                          '<div class="st_cell">' + cases[i][16][j][7][8] + '</div>' +
-                          '<div class="st_cell">' + cases[i][16][j][7][9] + '</div>' +
-                          '<div class="st_cell">' + cases[i][16][j][7][10] + '</div>' +
-                          '<div class="st_cell">' + cases[i][16][j][7][11] + '</div>' +
-                          '<div class="st_cell">' + cases[i][16][j][7][12] + '</div>' +
-                          '<div class="st_cell">' + cases[i][16][j][7][13] + '</div>' +
-                          '<div class="st_cell">' + cases[i][16][j][7][14] + '</div>' +
-                          '<div class="st_cell">' + cases[i][16][j][7][15] + '</div></div></div>';
+            for (var j = 0; j < cases[i][20].length; j++) {
+              content += '<tr class="toggle_def' + (!cases[i][20][j][32] ? ' all_results' : '') + '">' +
+                          '<td>' + cases[i][20][j][1] + ' ' + cases[i][20][j][0] + '</td>' +
+                          '<td>' + (cases[i][20][j][3] ? 'Female' : 'Male') + '</td>' +
+                          '<td>' + cases[i][20][j][5] + '</td>' +
+                          '<td>' + races[cases[i][20][j][4]] + '</td>' +
+                        '</tr>' +
+                        '<tr class="this_def_info">' +
+                          '<td colspan="4">' +
+                            '<table class="modal_table table_col' + (!cases[i][20][j][12] ? 'all_results' : '') + '">' +
+                              '<caption>Arrest Information</caption>' +
+                              '<thead>' +
+                                '<tr>' +
+                                  '<th>Arrest Date</th>' +
+                                  '<th>Charge Date</th>' +
+                                  '<th>Bail Type</th>' +
+                                  '<th>Bail Amount</th>' +
+                                '</tr>' +
+                              '</thead>' +
+                              '<tbody>' +
+                                '<tr>' +
+                                  '<td>' + cases[i][20][j][8] + '</td>' +
+                                  '<td>' + cases[i][20][j][7] + '</td>' +
+                                  '<td>' + bail_types[cases[i][20][j][10]] + '</td>' +
+                                  '<td>' + cases[i][20][j][11] + '</td>' +
+                                '</tr>' +
+                              '</tbody>' +
+                            '</table>' +
+                          '</td>' +
+                        '</tr>' +
+                        '<tr class="this_def_info">' +
+                          '<td colspan="4">' +
+                            '<table class="modal_table table_col' + (!cases[i][20][j][34] ? 'all_results' : '') + '">'  +
+                              '<caption>Sentence Information</caption>' +
+                              '<thead>' +
+                                '<tr>' +
+                                  '<th>Total Charges</th>' +
+                                  '<th>Total Sentences</th>' +
+                                  '<th>Year Terminated</th>' +
+                                  '<th>Months Sentenced</th>' +
+                                  '<th>Months Probation</th>' +
+                                  '<th>Restitution</th>' +
+                                  '<th>Asset Forfeit?</th>' +
+                                  '<th>Appeal?</th>' +
+                                '</tr>' +
+                              '</thead>' +
+                              '<tbody>' +
+                                '<tr>' +
+                                  '<td>' + cases[i][20][j][13] + '</td>' +
+                                  '<td>' + cases[i][20][j][14] + '</td>' +
+                                  '<td>' + cases[i][20][j][15] + '</td>' +
+                                  '<td>' + cases[i][20][j][17] + '</td>' +
+                                  '<td>' + cases[i][20][j][22] + '</td>' +
+                                  '<td>' + cases[i][20][j][18] + '</td>' +
+                                  '<td>' + cases[i][20][j][19] + '</td>' +
+                                  '<td>' + cases[i][20][j][20] + '</td>' +
+                                '</tr>' +
+                              '</tbody>' +
+                            '</table>' +
+                          '</td>' +
+                        '</tr>' +
+                        '<tr class="this_def_info">' +
+                          '<td colspan="4">' +
+                            (display['cd'] ? '<table class="modal_table table_col">' : '<table class="modal_table table_col all_results">') +
+                              '<caption>Charge Information</caption>' +
+                              '<thead>' +
+                                '<tr>' +
+                                  '<th>Statute</th>' +
+                                  '<th>Counts</th>' +
+                                  '<th>Counts Nolle Prossed</th>' +
+                                  '<th>Plea Guilty</th>' +
+                                  '<th>Plea Dismissed</th>' +
+                                  '<th>Trial Guilty</th>' +
+                                  '<th>Trial Not Guilty</th>' +
+                                  '<th>Fines</th>' +
+                                  '<th>Months Sentenced</th>' +
+                                  '<th>Months Probation</th>' +
+                                '</tr>' +
+                              '</thead>' +
+                              '<tbody>';
+
+              for (var k = 0; k < cases[i][20][j][23].length; k++) {
+                content +=  '<tr' + (!cases[i][20][j][23][k][10] ? ' class="all_results"' : '') + '>' +
+                              '<td>' + cases[i][20][j][23][k][0] + '</td>' +
+                              '<td>' + cases[i][20][j][23][k][1] + '</td>' +
+                              '<td>' + cases[i][20][j][23][k][2] + '</td>' +
+                              '<td>' + cases[i][20][j][23][k][4] + '</td>' +
+                              '<td>' + cases[i][20][j][23][k][3] + '</td>' +
+                              '<td>' + cases[i][20][j][23][k][5] + '</td>' +
+                              '<td>' + cases[i][20][j][23][k][6] + '</td>' +
+                              '<td>' + cases[i][20][j][23][k][7] + '</td>' +
+                              '<td>' + cases[i][20][j][23][k][8] + '</td>' +
+                              '<td>' + cases[i][20][j][23][k][9] + '</td>' +
+                            '</tr>';
               }
+
+              content += '</tbody>' +
+                        '</table>' +
+                      '</td>' +
+                    '</tr>' +
+                    '<tr class="this_def_info">' +
+                      '<td colspan="4">' + 
+                        (display['ocg'] ? '<table class="modal_table table_col">' : '<table class="modal_table table_col all_results">') +
+                          '<caption>Organized Crime Group Information</caption>' +
+                          '<thead>' +
+                            '<tr>' +
+                              '<th>Name</th>' +
+                              '<th>Size</th>' +
+                              '<th>Race</th>' +
+                              '<th>Scope</th>' +
+                            '</tr>' +
+                          '</thead>' +
+                          '<tbody>' +
+                            '<tr>' +
+                              '<td>' + cases[i][20][j][24] + '</td>' + 
+                              '<td>' + cases[i][20][j][25] + '</td>' + 
+                              '<td>' + cases[i][20][j][26] + '</td>' + 
+                              '<td>' + cases[i][20][j][27] + '</td>' +
+                            '</tr>' +
+                            '<tr>' +
+                              '<td>' + cases[i][20][j][28] + '</td>' + 
+                              '<td>' + cases[i][20][j][29] + '</td>' + 
+                              '<td>' + cases[i][20][j][30] + '</td>' + 
+                              '<td>' + cases[i][20][j][31] + '</td>' +
+                            '</tr>' +
+                          '</tbody>' +
+                        '</table>' +
+                      '</td>' +
+                    '</tr>';
             }
-            content = content + '</div></div>';
+
+            content += '</table></div>';
+          
+            $('#basic-modal-content').html(content);
+            $('#basic-modal-content').modal();
+
+            $('.all_results').hide(); //Hide unfiltered "all" search results on page load.
+            
+            //Funtion to filter the results
+            $('#myonoffswitch').click(function(){
+              if (this.checked === false ) {
+                $( ".all_results" ).show("slow");
+              } else if ( this.checked === true ) {
+                $( ".all_results" ).hide("slow");
+              }
+            });
+            //End of Function to Filter Results
+
+            //Funtion to toggle Defendant Informatio
+            $('.this_def_info').hide();
+            $('.toggle_def').click(function(){
+              $(this).nextUntil('.toggle_def').toggle('slow');
+            });
           }
-          $.modal(content);
+
         });
-    }
+      }
+
+      google.load("visualization", "1", {packages:["table"]});
+      google.setOnLoadCallback(drawTable);
 
 </script>
 
@@ -415,27 +595,27 @@ this.d.container.hide().remove();this.d.overlay.hide();this.d.iframe&&this.d.ifr
     }
     $( "#DataInProgressCaseName" ) //Case Name Field
       .autocomplete({
-        source: "/JudgeFrog/jdgfrog/search.php?column=CaseNam" ,
+        source: "/JudgeFrog/jdgfrog/autoComplete.php?column=CaseNam" ,
         minLength: 1
       });
     $( "#DataInProgressCaseNumber" ) //Case Number Field
       .autocomplete({
-        source: "/JudgeFrog/jdgfrog/search.php?column=CaseNum" ,
+        source: "/JudgeFrog/jdgfrog/autoComplete.php?column=CaseNum" ,
         minLength: 1
       });
     $( "#DataInProgressDefendantName" ) //Def Name Field
       .autocomplete({
-        source: "/JudgeFrog/jdgfrog/search.php?column=DefFirst,DefLast" ,
+        source: "/JudgeFrog/jdgfrog/autoComplete.php?column=DefFirst,DefLast" ,
         minLength: 1
       });
     $( "#DataInProgressJudgeName" ) //Judge Name Field
       .autocomplete({
-        source: "/JudgeFrog/jdgfrog/search.php?column=JudgeName" ,
+        source: "/JudgeFrog/jdgfrog/autoComplete.php?column=JudgeName" ,
         minLength: 1
       });
     $( "#DataInProgressOcgName" ) //Ocg Name Field
       .autocomplete({
-        source: "/JudgeFrog/jdgfrog/search.php?column=OCName1" ,
+        source: "/JudgeFrog/jdgfrog/autoComplete.php?column=OCName1" ,
         minLength: 1
       });
   });

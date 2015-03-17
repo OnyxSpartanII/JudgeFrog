@@ -99,7 +99,7 @@ public function beforeValidate($options = []) {
 			'allowEmpty' => true
 		),
 		'DefBirthdate' => array(
-			'rule' => '/(\d{1,2}\/\d{1,2}\/\d{4}|\d{4})/',
+			'rule' => '/\d{4}/',
 			'message' => 'Incorrect value for Defendant Birthdate',
 			'allowEmpty' => true
 		),
@@ -109,12 +109,12 @@ public function beforeValidate($options = []) {
 			'allowEmpty' => true
 		),
 		'ChargeDate' => array(
-			'rule' => '/(\d{1,2}\/\d{1,2}\/\d{4}|\d{4})/',
+			'rule' => array('minLength', 1),
 			'message' => 'Incorrect value for Charge Date',
 			'allowEmpty' => true,
 		),
 		'ArrestDate' => array(
-			'rule' => '/(\d{1,2}\/\d{1,2}\/\d{4}|\d{4})/',
+			'rule' => array('minLength', 1),
 			'message' => 'Incorrect value for Arrest Date',
 			'allowEmpty' => true
 		),
@@ -161,6 +161,96 @@ public function beforeValidate($options = []) {
 		'FelSentenced' => array(
 			'rule' => array('numeric'),
 			'message' => 'Incorrect value for Felonies Sentenced',
+			'allowEmpty' => true
+		),
+		'DateTerm' => array(
+			'rule' => array('minLength', 1),
+			'message' => 'Incorrect value for Date Terminated',
+			'allowEmpty' => true,
+		),
+		'SentDate' => array(
+			'rule' => array('minLength', 1),
+			'message' => 'Incorrect value for Sentence Date',
+			'allowEmpty' => true,
+		),
+		'TotalSentence' => array(
+			'rule' => array('numeric'),
+			'message' => 'Incorrect value for Total Sentence',
+			'allowEmpty' => true
+		),
+		'Restitution' => array(
+			'rule' => array('numeric'),
+			'message' => 'Incorrect value for Restitution',
+			'allowEmpty' => true
+		),
+		'AssetForfeit' => array(
+			'rule' => array('inList', array(0,1)),
+			'message' => 'Incorrect value for Asset Forfeit',
+			'allowEmpty' => true
+		),
+		'Appeal' => array(
+			'rule' => array('inList', array(0,1)),
+			'message' => 'Incorrect value for Appeal',
+			'allowEmpty' => true
+		),
+		'SupRelease' => array(
+			'rule' => array('numeric'),
+			'message' => 'Incorrect value for Supervised Release',
+			'allowEmpty' => true
+		),
+		'Probation' => array(
+			'rule' => array('numeric'),
+			'message' => 'Incorrect value for Probation',
+			'allowEmpty' => true
+		),
+		'NumVic' => array(
+			'rule' => array('numeric'),
+			'message' => 'Incorrect value for Number of Victims',
+			'allowEmpty' => true
+		),
+		'NumVicMinor' => array(
+			'rule' => array('numeric'),
+			'message' => 'Incorrect value for Number of Victims (Minor)',
+			'allowEmpty' => true
+		),
+		'NumVicForeign' => array(
+			'rule' => array('numeric'),
+			'message' => 'Incorrect value for Number of Victims (Foreign)',
+			'allowEmpty' => true
+		),
+		'NumVicFemale' => array(
+			'rule' => array('numeric'),
+			'message' => 'Incorrect value for Number of Victims (Female)',
+			'allowEmpty' => true
+		),
+		'OCType1' => array(
+			'rule' => array('inList', array(1,2,3,4,5,6)),
+			'message' => 'Incorrect value for OCGType1',
+			'allowEmpty' => true
+		),
+		'OCRace1' => array(
+			'rule' => array('inList', array(0,1,2,3,4,5)),
+			'message' => 'Incorrect value for OCGRace1',
+			'allowEmpty' => true
+		),
+		'OCScope1' => array(
+			'rule' => array('inList', array(1,2,3)),
+			'message' => 'Incorrect value for OCGScope1',
+			'allowEmpty' => true
+		),
+		'OCType2' => array(
+			'rule' => array('inList', array(1,2,3,4,5,6)),
+			'message' => 'Incorrect value for OCGType2',
+			'allowEmpty' => true
+		),
+		'OCRace2' => array(
+			'rule' => array('inList', array(0,1,2,3,4,5)),
+			'message' => 'Incorrect value for OCGRace2',
+			'allowEmpty' => true
+		),
+		'OCScope2' => array(
+			'rule' => array('inList', array(0,1,2)),
+			'message' => 'Incorrect value for OCGScope2',
 			'allowEmpty' => true
 		)
 	);

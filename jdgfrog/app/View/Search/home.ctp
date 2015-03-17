@@ -3,7 +3,7 @@
 <script type="text/javascript" src="http://code.jquery.com/ui/1.10.1/jquery-ui.min.js"></script> 
 <!-- Calling Slider Imports -->
   <?php 
-  echo $this->Html->script(array('modernizr.custom', 'classie','moment','ion.rangeSlider.js','ion.rangeSlider.min','sliderMod', 'jquery.simplemodal', 'jquery-ui')); 
+  echo $this->Html->script(array('modernizr.custom', 'classie','moment','ion.rangeSlider.js','ion.rangeSlider.min','sliderMod', 'jquery.simplemodal',)); 
   echo $this->Html->css(array('search_page_css', 'nav_bar_style', 'default','ion.rangeSlider.skinFlat','ion.rangeSlider', 'modal_window_style'));
   ?>
 
@@ -11,22 +11,22 @@
 <div class="contact">
     <div class="container">
          <div class="contact-main">
-          <h3 class="page_title">Search The Database</h3>
-              <div class="col-md-3 contact-right">
+          <h3 class="page_title">SEARCH THE DATABASE</h3>
+              <div class="col-md-5 contact-right">
                 <!-- TOP STATUS AND SEARCH BAR -->
-                  <div class="top_bar col-md-3">
+                  <div class="top_bar col-md-5">
                     <div class="top_bar_left">
                       <h4>SEARCH BY</h4>
                     </div>
                       <!-- SEARCH BUTTON-->
-                      <div class="search_button" title="Click here to perform a search using selected criteria.">
+                      <div class="search_button">
                         <label for="submit_form">
-                          <?php echo $this->Html->image('submit.png', array('alt' => 'Submit', 'style' => 'float:left; padding-right:10px; padding-top:10px;' )); ?>
+                          <?php echo $this->Html->image('submit1.png', array('alt' => 'Submit', 'style' => 'float:left; padding-right:10px; padding-top:10px;' )); ?>
                         </label>
                       </div>
                   </div>
                 <!-- Search Interface -->
-                  <div class="col-md-3" id="collapsible-panels">
+                  <div class="col-md-5" id="collapsible-panels">
                       <?php
                         $base_url = array('controller' => 'search', 'action' => 'update');
                         echo $this->Form->create(array('url' => $base_url, 'inputDefaults' => array('label' => false, 'div' => false)));
@@ -42,20 +42,22 @@
                                   echo "<br><br>";
                                   echo $this->Form->input('case_State', array('options' => array('Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','Florida','Georgia','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virginia','Washington','West Virginia','Wisconsin','Wyoming'), 'empty' => 'State'));
                                   echo "<br><br>";
-                                  echo $this->Form->input('case_FedDist', array('placeholder' => 'Federal District', 'options' => array('','Mickey','Mouse')));
+                                  echo $this->Form->input('case_FedDist', array('empty' => 'Federal District', 'options' => array('1','2','3','4','5','6','7','8','9','10','11','12','13','14')));
                                   echo "<br>";
                                 ?>
                             </div>
                    
                           <h2><a href="#">Type of Trafficking</a></h2>
-                            <div>
+                            <div >
                                 <?php
-                                  echo $this->Form->input('case_Adult', array('type' => 'checkbox', 'label' => 'Adult Sex ', 'checked' => 'true'));
+                                  echo $this->Form->input('case_Adult', array('type' => 'checkbox', 'label' => ' Adult Sex '));
                                   echo '<br><br>';
-                                  echo $this->Form->input('case_Minor', array('type' => 'checkbox', 'label' => 'Minor Sex ', 'checked' => 'true'));
+                                  echo $this->Form->input('case_Minor', array('type' => 'checkbox', 'label' => ' Minor Sex '));
                                   echo '<br><br>';
-                                  echo $this->Form->input('case_Labor', array('type' => 'checkbox', 'label' => 'Labor', 'checked' => 'true'));
-                                  echo '<br>';
+                                  echo $this->Form->input('case_Labor', array('type' => 'checkbox', 'label' => ' Labor'));
+                                  echo '<br><br>';
+                                  echo $this->Form->input('case_TypeOperator', array('options' => array('AND','OR'), 'empty' => 'Operator'));
+                                  echo '<br><br>';
                                 ?>
                             </div>
 
@@ -82,9 +84,9 @@
                                 echo '<br><br>';
                                 echo $this->Form->input('judge_Gender', array('empty' => 'Gender', 'options' => array('Male','Female')));
                                 echo '<br><br>';
-                                echo $this->Form->input('judge_YearApp', array('id' => 'yearAppointJudge'));
+                                echo $this->Form->input('judge_YearApp', array('label' => 'Year Appointed', 'id' => 'yearAppointJudge'));
                                 echo '<br><br>';
-                                echo $this->Form->input('judge_ApptBy', array('empty' => 'Appointed By', 'options' => array('Democrat', 'Republican')));
+                                echo $this->Form->input('judge_ApptBy', array('empty' => 'Appointed By', 'options' => array('Republican', 'Democrat')));
                                 echo '<br>';
                               ?>
                             </div>
@@ -117,8 +119,6 @@
                           <div>
                             <?php
                               echo $this->Form->input('ad_DateArrest', array('id' => 'dateArrestAD', 'label' => 'Date of Arrest'));
-                              echo '<br><br>';
-                              echo $this->Form->input('ad_Role', array('empty' => 'Role', 'options' => array('Yes','No')));
                               echo '<br><br>';
                               echo $this->Form->input('ad_BailType', array('empty' => 'Bail Type', 'options' => array('None','Surety','Non-Surety')));
                               echo '<br><br>';
@@ -178,23 +178,17 @@
                         echo $this->Form->end(array('id' => 'submit_form'));
                       ?>
                    </div> <!-- END OF COLLAPSIBLE PANEL -->
+
                </form>
           </div>
-          <div class="col-md-9 contact-left">
+          <div class="col-md-7 contact-left">
                 <!-- TOP STATUS AND SEARCH BAR -->
-                  <div class="top_bar col-md-9">
+                  <div class="top_bar col-md-7">
                     <div class="top_bar_dash">
                       <h4>SEARCH DASHBOARD</h4>
-                      <div class="ana_button" title="Click here to go to the analysis page and perform analysis.">
-                          <label for="analyze_form">
-                          <a href="analyze">
-                            <?php echo $this->Html->image('analyze.png', array('alt' => 'Anaylze')); ?>
-                          </a>
-                        </label>
-                      </div>
                     </div>
                   </div>
-                  <div id="table_div" class="col-md-9" colspan="5" style="width:100%"></div>
+                  <div id="table_div" class="col-md-7" style="width:100%"></div>
 
             </div>
          </div>
@@ -203,7 +197,7 @@
 
 </div>
             <div class="search_disclaim" >
-            <p><strong>Note: </strong>Not every combination of searcheable objects will return meaningful results.</p>
+            <p><strong>Disclaimer: </strong>Not every combination of searcheable objects will return meaningful results.</p>
             </div>
 </div>
 
@@ -211,41 +205,13 @@
         </div>
     </div>
 
+<div id="basic-modal-content" class="col-md-15">
+</div>
+
+
 <!--*************
 SCRIPTS
-**************-->   
-<script type="text/javascript">
-$(function() {
-    $( document ).tooltip();
-  });
-</script> 
-
-
-<!-- CSS for table -->
-<style>
-.search_table {
-  width: 100%;
-}
-
-.st_header {
-  color: #fff;
-  height: 30px;
-  display: flex;
-  font-size: 18px;
-  font-weight: bold;
-  text-align: center;
-  background-color: #444;
-}
-
-.st_row {
-  display: flex;
-}
-
-.st_cell {
-  flex: 1 0 auto;
-}
-</style>
-  
+**************-->    
 <!-- Script to allow search bars collapsible - added by Landon -->
 <script type="text/javascript">
   $(document).ready(function(){
@@ -331,7 +297,7 @@ $(function() {
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Case Name');
         data.addColumn('string', 'Case Number');
-        data.addColumn('number', 'Year');
+        data.addColumn('string', 'Year');
         data.addColumn('string', 'Type of Case');
         data.addColumn('number', '# of Defendants');
         <?php
@@ -347,7 +313,7 @@ $(function() {
               if ($case[5] == '1') {
                 $type .= 'M';
               }
-              echo 'data.addRow(["' . $case[0] . '", "' . $case[1] . '", {v: ' . $case[2] . '}, "' . $type . '", {v: '. $case[6] .'}]);'; 
+              echo 'data.addRow(["' . $case[0] . '", "' . $case[1] . '", "' . explode('-', $case[2])[0] . '", "' . $type . '", {v: '. $case[6] .'}]);'; 
             }
           }
         ?>
@@ -396,7 +362,7 @@ $(function() {
                             '<td>' + cases[i][1] + '</td>' +
                             '<td>' + cases[i][6] + '</td>' +
                             '<td>' + cases[i][7] + '</td>' +
-                            '<td>' + cases[i][3] + '</td>' +
+                            '<td>' + cases[i][2].split('-')[0] + '</td>' +
                           '</tr>' +
                         '</tbody>' +
                       '</table>' +
@@ -464,7 +430,7 @@ $(function() {
                         '</tr>' +
                         '<tr class="this_def_info">' +
                           '<td colspan="4">' +
-                            (display['acd'] ? '<table class="modal_table table_col">' : '<table class="modal_table table_col all_results">') +
+                            '<table class="modal_table table_col' + (!cases[i][20][j][12] ? 'all_results' : '') + '">' +
                               '<caption>Arrest Information</caption>' +
                               '<thead>' +
                                 '<tr>' +
@@ -472,7 +438,6 @@ $(function() {
                                   '<th>Charge Date</th>' +
                                   '<th>Bail Type</th>' +
                                   '<th>Bail Amount</th>' +
-                                  '<th>Role</th>' +
                                 '</tr>' +
                               '</thead>' +
                               '<tbody>' +
@@ -481,7 +446,6 @@ $(function() {
                                   '<td>' + cases[i][20][j][7] + '</td>' +
                                   '<td>' + bail_types[cases[i][20][j][10]] + '</td>' +
                                   '<td>' + cases[i][20][j][11] + '</td>' +
-                                  '<td>' + (cases[i][20][j][12] ? 'Primary' : 'Secondary') + '</td>' +
                                 '</tr>' +
                               '</tbody>' +
                             '</table>' +
@@ -489,7 +453,7 @@ $(function() {
                         '</tr>' +
                         '<tr class="this_def_info">' +
                           '<td colspan="4">' +
-                            (display['sd'] ? '<table class="modal_table table_col">' : '<table class="modal_table table_col all_results">') +
+                            '<table class="modal_table table_col' + (!cases[i][20][j][34] ? 'all_results' : '') + '">'  +
                               '<caption>Sentence Information</caption>' +
                               '<thead>' +
                                 '<tr>' +

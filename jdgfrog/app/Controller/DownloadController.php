@@ -2,11 +2,6 @@
 
 class DownloadController extends AppController {
 
-	/**
-	 * Controller name
-	 */
-	// public $test = 0;
-	// public $line = "";
 	public $name = 'Download';
 
 	public $uses = array('DataInProgress');
@@ -50,10 +45,10 @@ class DownloadController extends AppController {
 			    header("Content-Disposition: attachment; filename=$file");
 			    header("Content-Type: application/zip");
 			    header("Content-Transfer-Encoding: binary");
-
 			    // read the file from disk
 			    readfile($file);
 			}
+			exit(); //kills (die) the execution and will not add html
 		}
 				
 	}

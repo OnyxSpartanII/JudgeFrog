@@ -41,6 +41,7 @@
 	Router::connect('/panel', array('controller' => 'AdminPanel', 'action' => 'panel'));
 
 	Router::connect('/uploads', array('controller' => 'uploads', 'action' => 'add'));
+	Router::connect('/download', array('controller' => 'download', 'action' => 'download'));
 
 /**
  * ...and connect the rest of 'Pages' controller's URLs.

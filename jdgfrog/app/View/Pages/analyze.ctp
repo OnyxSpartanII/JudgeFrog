@@ -23,8 +23,9 @@
     <form id="target" action="">
       <!-- <input type="image" id="applyButton" src="img/analyze.png" > -->
     </form>
-    <input type="image" id="applyButton" src="img/analyze.png" >
-  </div>
+    <!-- <input type="image" id="applyButton" src="img/analyze.png" > -->
+    <button id="applyButton" type="button">button</button>  
+    </div>
 
 <hr style="margin-top:35px">
 

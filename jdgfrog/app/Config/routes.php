@@ -33,15 +33,9 @@
 
 	Router::connect('/home', array('controller' => 'pages', 'action' => 'home'));
 	Router::connect('/about', array('controller' => 'pages', 'action' => 'about'));
-	Router::connect('/methodology', array('controller' => 'pages', 'action' => 'methodology'));
-	Router::connect('/principals', array('controller' => 'pages', 'action' => 'principalInvestigators'));
-	Router::connect('/acknowledgements', array('controller' => 'pages', 'action' => 'acknowledgements'));
 	Router::connect('/search', array('controller' => 'search', 'action' => 'home'));
 	Router::connect('/search/update', array('controller' => 'search', 'action' => 'update'));
 	Router::connect('/analyze', array('controller' => 'pages', 'action' => 'analyze'));
-	Router::connect('/orgAndGovernment', array('controller' => 'pages', 'action' => 'orgAndGovernment'));
-	Router::connect('/publications', array('controller' => 'pages', 'action' => 'publicationsAndReports'));
-	Router::connect('/federalStatutes', array('controller' => 'pages', 'action' => 'federalStatutes'));
 	Router::connect('/contact', array('controller' => 'pages', 'action' => 'contact'));
 	Router::connect('/additionalResources', array('controller' => 'pages', 'action' => 'additionalResources'));
 	Router::connect('/panel', array('controller' => 'AdminPanel', 'action' => 'panel'));

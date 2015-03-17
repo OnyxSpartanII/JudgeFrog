@@ -43,6 +43,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
             fit: true   // 100% fit in a container
         });
     });
+
 </script>
 <!-- Scripts for collaspable panels. -->
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
@@ -70,17 +71,17 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	 	       <div class="header-main">
 	 	        	<div class="logo">
 	 	        		<a href="home">
-	 	        			<h2 onmouseover="bringTheFunc(this)">HTD</h2>
+	 	        			<h2 class="full" onmouseover="bringTheFunc(this)">HTD</h2>
 	 	        		</a>
 	 	        	</div> 
 	 	        	<span class="menu"> <?php echo $this->Html->image('icon.png', array('alt' => 'Menu List')); ?></span>
 	 	        	<div class="header-navg">
 	 	        		<ul class="res">
-	 	        			<li><a class="<?php echo ($this->fetch('active') == 'home') ? 'active' : ''; ?>" href="home">HOME</a></li>
-	 	        			<li><a class="<?php echo ($this->fetch('active') == 'about') ? 'active' : ''; ?>" href="about">ABOUT</a></li>
-	 	        			<li><a class="<?php echo ($this->fetch('active') == 'search') ? 'active' : ''; ?>" href="search">SEARCH DATABASE</a></li>
-	 	        			<li><a class="<?php echo ($this->fetch('active') == 'additionalResources') ? 'active' : ''; ?>" href="additionalResources">ADDITIONAL RESOURCES</a></li>
-	 	        			<li><a class="<?php echo ($this->fetch('active') == 'contact') ? 'active' : ''; ?>" href="contact">CONTACT US</a></li>
+	 	        			<li><a class="<?php echo ($this->fetch('active') == 'home') ? 'active' : ''; ?>" <?php echo $this->Html->link('Home', '/home'); ?></a></li>
+	 	        			<li><a class="<?php echo ($this->fetch('active') == 'about') ? 'active' : ''; ?>" <?php echo $this->Html->link('About', '/about'); ?></a></li>
+	 	        			<li><a class="<?php echo ($this->fetch('active') == 'search') ? 'active' : ''; ?>" <?php echo $this->Html->link('Search The Database', '/search'); ?></a></li>
+	 	        			<li><a class="<?php echo ($this->fetch('active') == 'additionalResources') ? 'active' : ''; ?>" <?php echo $this->Html->link('Additional Resources', '/additionalResources'); ?></a></li>
+	 	        			<li><a class="<?php echo ($this->fetch('active') == 'contact') ? 'active' : ''; ?>" <?php echo $this->Html->link('Contact Us', '/contact'); ?></a></li>
 	 	        		</ul>
 	 	        		 <script>
 	                          $( "span.menu").click(function() {
@@ -135,10 +136,25 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
             		</label>
             	</div>
 </div>
+
+<script type="text/javascript">
+	
+    //Change Text on Hover
+    $('.full').hover(function(){
+    	// $(this).animate(1000);
+
+    	$(this).text("Human Trafficking Data");
+	}, function() {
+    	$(this).text("HTD");
+});
+
+
+</script>
+
 </body>
 </html>
 
 
 <!-- Original Author: W3layouts - http://w3layouts.com
-Modifications Done by: Brice Boula & the Judge Frog Team
-License: Modified Under The Creative Commons Attribution 3.0 license. -->
+License: Modified Under The Creative Commons Attribution 3.0 license. 
+Modifications Done by: The Judge Frog Team - http://brazos.cs.tcu.edu/1415cj -->

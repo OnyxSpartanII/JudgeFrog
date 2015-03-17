@@ -107,7 +107,7 @@ class PagesController extends AppController {
 	
 	public function analyze() {
 		$this->set('title', 'analyze | Human Trafficking Data');
-		$this->set('active', 'analyze');
+		$this->set('active', 'search');
 	}
 
 }

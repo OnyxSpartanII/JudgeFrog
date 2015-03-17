@@ -2,14 +2,14 @@
 <div class="contact">
 	  <div class="container">
 	  	   <div class="contact-main">
-	  	   	 <h3>CONTACT US </h3>
-	  	   	    <div class="col-md-8 contact-right">
+	  	   	 <h3>Contact Us</h3>
+	  	   	    <div class="col-md-7 contact-right">
 		  	   	   <form action="#">
 		  	   	   	<div class="text"> 
-		  	   	   	    <input type="text" placeholder ="Enter your name - e.g 'Joe Garcia'" autofocus>
+		  	   	   	    <input type="text" placeholder ="Enter your name">
 		  	   	   	 </div>   
 		  	   	   	 <div class="text">
-		  	   	   	    <input type="text" placeholder ="Enter your email - e.g 'joegarcia@email.com'">
+		  	   	   	    <input type="text" placeholder ="Enter your email">
 		  	   	   	</div>
 		  	   	   	<div class="text">
 		  	   	   	    <textarea placeholder="Your message goes here..."></textarea>
@@ -19,9 +19,18 @@
 	 	  	   	   </div>
 	 	  	   	   </form>
 	  	    </div>
-	  	    <div class="col-md-4 contact-left">
-	  	    	   <h4>Human Trafficking Data Office</h4>
-    	         	<p>1234 Avenue Montreuil, Paris FRANCE<br><br>Franck Underwood<br>+1 (534)-432-123<br><a href="mailto:example@mail.com">f.underwood@humantraffickingdata.org</a></p>
+	  	    <div class="col-md-5 contact-left">
+	  	    	   <h4 style="border-bottom:1px dotted #4D1979; padding-top:30px; padding-bottom:5px; color:#4D1979">Have An Inquiry Regarding HumanTraffickingData.org?</h4>
+	  	    	   <h4 style="text-decoration:underline">Contact</h4>
+		  	    	   	<div class="col-md-6">
+		    	         	<p style="padding-top:5px;"><strong>Michael Bachmann, Ph.D.</strong><br>Texas Christian University<br>Department of Criminal Justice<br>Scharbauer Hall, 4208<br>Fort Worth, TX 76129<br><strong><a href="mailto: m.bachmann@tcu.edu">e-mail Michael</a></strong></p>
+		    	        </div>
+		  	    	   	<div class="col-md-6">
+		    	         	<p style="padding-top:5px"><strong>Vanessa Bouché, Ph.D.</strong><br>Texas Christian University<br>Department of Political Science<br>Scharbauer Hall, 2012<br>Fort Worth, TX 76129<br><strong><a href="mailto: vanessa.bouche@tcu.edu">e-mail Vanessa</a></strong></p>
+	    	         	</div>
+    	         	<h4 style="color:#4D1979">
+    	         		Or send us a message using the form above.
+    	         	</h4>
             </div>
 	       </div>
      </div>

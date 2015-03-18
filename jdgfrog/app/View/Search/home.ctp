@@ -1,12 +1,3 @@
-<!-- Imports for Auto Complete -->
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/ui/1.10.1/jquery-ui.min.js"></script> 
-<!-- Calling Slider Imports -->
-  <?php 
-  echo $this->Html->script(array('modernizr.custom', 'classie','moment','ion.rangeSlider.js','ion.rangeSlider.min','sliderMod', 'jquery.simplemodal', 'jquery-ui')); 
-  echo $this->Html->css(array('search_page_css', 'nav_bar_style', 'default','ion.rangeSlider.skinFlat','ion.rangeSlider', 'modal_window_style'));
-  ?>
-
 <!--search start here-->
 <div class="contact">
     <div class="container">
@@ -225,35 +216,8 @@ $(function() {
   });
 </script> 
 
-
-<!-- CSS for table -->
-<style>
-.search_table {
-  width: 100%;
-}
-
-.st_header {
-  color: #fff;
-  height: 30px;
-  display: flex;
-  font-size: 18px;
-  font-weight: bold;
-  text-align: center;
-  background-color: #444;
-}
-
-.st_row {
-  display: flex;
-}
-
-.st_cell {
-  flex: 1 0 auto;
-}
-</style>
-
-<!-- Script to allow search bars collapsible - added by Landon -->
+<!-- Script to allow search bars collapsible - fixed -->
 <script type="text/javascript">
-  $(document).ready(function(){
 
   // hide all div containers
   $('#collapsible-panels div').hide();
@@ -265,7 +229,6 @@ $(function() {
     $(this).parent().toggleClass('active');
     e.preventDefault();
   });
-});
 </script>
 <!-- added by Landon (above) -->
 
@@ -338,8 +301,12 @@ $(function() {
           }
         ?>
 
-        var races = ['White','Black','Hispanic','Asian','ERR','Other'];
+        var judge_races = ['White', 'Black', 'Hispanic', 'Asian', 'Indian'];
+        var races = ['White','Black','Hispanic','Asian','Other','Other'];
         var bail_types = ['None','Surety','Non-Surety'];
+        var ocg_types = ['Other','Mom & Pop','Street Gang','Cartel/Syndicate/Mafia','','Prison Gang'];
+        var ocg_races = ['None','Black','White','Hispanic','Asian','Other'];
+        var ocg_scopes = ['Other','Local Only','Trans-State','Trans-National'];
 
         var table = new google.visualization.Table(document.getElementById('table_div'));
 
@@ -401,10 +368,10 @@ $(function() {
                       '</thead>' +
                       '<tbody>' +
                         '<tr>' +
-                          '<td>' + cases[i][16] + '</td>' +
-                          '<td>' + cases[i][17] + '</td>' +
-                          '<td>' + cases[i][18] + '</td>' +
-                          '<td>' + cases[i][19] + '</td>' +
+                          '<td>' + (cases[i][16] == null ? 'Unknown' : cases[i][16]) + '</td>' +
+                          '<td>' + (cases[i][17] == null ? 'Unknown' : cases[i][17]) + '</td>' +
+                          '<td>' + (cases[i][18] == null ? 'Unknown' : cases[i][18]) + '</td>' +
+                          '<td>' + (cases[i][19] == null ? 'Unknown' : cases[i][19]) + '</td>' +
                         '</tr>' +
                       '</tbody>' +
                     '</table>' +
@@ -445,8 +412,8 @@ $(function() {
               content += '<tr class="toggle_def' + (!cases[i][20][j][32] ? ' all_results' : '') + '">' +
                           '<td>' + cases[i][20][j][1] + ' ' + cases[i][20][j][0] + '</td>' +
                           '<td>' + (cases[i][20][j][3] ? 'Female' : 'Male') + '</td>' +
-                          '<td>' + cases[i][20][j][5] + '</td>' +
-                          '<td>' + races[cases[i][20][j][4]] + '</td>' +
+                          '<td>' + (cases[i][20][j][5] == '0000' ? 'Unknown' : cases[i][20][j][5]) + '</td>' +
+                          '<td>' + (races[cases[i][20][j][4]] == undefined ? 'Unknown' : races[cases[i][20][j][4]])  + '</td>' +
                         '</tr>' +
                         '<tr class="this_def_info">' +
                           '<td colspan="4">' +
@@ -462,41 +429,10 @@ $(function() {
                               '</thead>' +
                               '<tbody>' +
                                 '<tr>' +
-                                  '<td>' + cases[i][20][j][8] + '</td>' +
-                                  '<td>' + cases[i][20][j][7] + '</td>' +
+                                  '<td>' + (cases[i][20][j][8] == '0000-00-00' ? 'N/A' : cases[i][20][j][8]) + '</td>' +
+                                  '<td>' + (cases[i][20][j][7] == '0000-00-00' ? 'N/A' : cases[i][20][j][7]) + '</td>' +
                                   '<td>' + bail_types[cases[i][20][j][10]] + '</td>' +
-                                  '<td>' + cases[i][20][j][11] + '</td>' +
-                                '</tr>' +
-                              '</tbody>' +
-                            '</table>' +
-                          '</td>' +
-                        '</tr>' +
-                        '<tr class="this_def_info">' +
-                          '<td colspan="4">' +
-                            '<table class="modal_table table_col' + (!cases[i][20][j][34] ? 'all_results' : '') + '">'  +
-                              '<caption>Sentence Information</caption>' +
-                              '<thead>' +
-                                '<tr>' +
-                                  '<th>Total Charges</th>' +
-                                  '<th>Total Sentences</th>' +
-                                  '<th>Year Terminated</th>' +
-                                  '<th>Months Sentenced</th>' +
-                                  '<th>Months Probation</th>' +
-                                  '<th>Restitution</th>' +
-                                  '<th>Asset Forfeit?</th>' +
-                                  '<th>Appeal?</th>' +
-                                '</tr>' +
-                              '</thead>' +
-                              '<tbody>' +
-                                '<tr>' +
-                                  '<td>' + cases[i][20][j][13] + '</td>' +
-                                  '<td>' + cases[i][20][j][14] + '</td>' +
-                                  '<td>' + cases[i][20][j][15] + '</td>' +
-                                  '<td>' + cases[i][20][j][17] + '</td>' +
-                                  '<td>' + cases[i][20][j][22] + '</td>' +
-                                  '<td>' + cases[i][20][j][18] + '</td>' +
-                                  '<td>' + cases[i][20][j][19] + '</td>' +
-                                  '<td>' + cases[i][20][j][20] + '</td>' +
+                                  '<td>' + (cases[i][20][j][11] == null ? 'N/A' : cases[i][20][j][11]) + '</td>' +
                                 '</tr>' +
                               '</tbody>' +
                             '</table>' +
@@ -525,51 +461,82 @@ $(function() {
               for (var k = 0; k < cases[i][20][j][23].length; k++) {
                 content +=  '<tr' + (!cases[i][20][j][23][k][10] ? ' class="all_results"' : '') + '>' +
                               '<td>' + cases[i][20][j][23][k][0] + '</td>' +
-                              '<td>' + cases[i][20][j][23][k][1] + '</td>' +
-                              '<td>' + cases[i][20][j][23][k][2] + '</td>' +
-                              '<td>' + cases[i][20][j][23][k][4] + '</td>' +
-                              '<td>' + cases[i][20][j][23][k][3] + '</td>' +
-                              '<td>' + cases[i][20][j][23][k][5] + '</td>' +
-                              '<td>' + cases[i][20][j][23][k][6] + '</td>' +
-                              '<td>' + cases[i][20][j][23][k][7] + '</td>' +
-                              '<td>' + cases[i][20][j][23][k][8] + '</td>' +
-                              '<td>' + cases[i][20][j][23][k][9] + '</td>' +
+                              '<td>' + (cases[i][20][j][23][k][1] == null ? 'N/A' : cases[i][20][j][23][k][1]) + '</td>' +
+                              '<td>' + (cases[i][20][j][23][k][2] == null ? 'N/A' : cases[i][20][j][23][k][2]) + '</td>' +
+                              '<td>' + (cases[i][20][j][23][k][4] == null ? 'N/A' : cases[i][20][j][23][k][4]) + '</td>' +
+                              '<td>' + (cases[i][20][j][23][k][3] == null ? 'N/A' : cases[i][20][j][23][k][3]) + '</td>' +
+                              '<td>' + (cases[i][20][j][23][k][5] == null ? 'N/A' : cases[i][20][j][23][k][5]) + '</td>' +
+                              '<td>' + (cases[i][20][j][23][k][6] == null ? 'N/A' : cases[i][20][j][23][k][6]) + '</td>' +
+                              '<td>' + (cases[i][20][j][23][k][7] == null ? 'N/A' : cases[i][20][j][23][k][7]) + '</td>' +
+                              '<td>' + (cases[i][20][j][23][k][8] == null ? 'N/A' : cases[i][20][j][23][k][8]) + '</td>' +
+                              '<td>' + (cases[i][20][j][23][k][9] == null ? 'N/A' : cases[i][20][j][23][k][9]) + '</td>' +
                             '</tr>';
               }
 
-              content += '</tbody>' +
-                        '</table>' +
-                      '</td>' +
-                    '</tr>' +
-                    '<tr class="this_def_info">' +
-                      '<td colspan="4">' + 
-                        (display['ocg'] ? '<table class="modal_table table_col">' : '<table class="modal_table table_col all_results">') +
-                          '<caption>Organized Crime Group Information</caption>' +
-                          '<thead>' +
-                            '<tr>' +
-                              '<th>Name</th>' +
-                              '<th>Size</th>' +
-                              '<th>Race</th>' +
-                              '<th>Scope</th>' +
-                            '</tr>' +
-                          '</thead>' +
-                          '<tbody>' +
-                            '<tr>' +
-                              '<td>' + cases[i][20][j][24] + '</td>' + 
-                              '<td>' + cases[i][20][j][25] + '</td>' + 
-                              '<td>' + cases[i][20][j][26] + '</td>' + 
-                              '<td>' + cases[i][20][j][27] + '</td>' +
-                            '</tr>' +
-                            '<tr>' +
-                              '<td>' + cases[i][20][j][28] + '</td>' + 
-                              '<td>' + cases[i][20][j][29] + '</td>' + 
-                              '<td>' + cases[i][20][j][30] + '</td>' + 
-                              '<td>' + cases[i][20][j][31] + '</td>' +
-                            '</tr>' +
-                          '</tbody>' +
-                        '</table>' +
-                      '</td>' +
-                    '</tr>';
+              content += '<tr class="this_def_info">' +
+                          '<td colspan="4">' +
+                            '<table class="modal_table table_col' + (!cases[i][20][j][34] ? 'all_results' : '') + '">'  +
+                              '<caption>Sentence Information</caption>' +
+                              '<thead>' +
+                                '<tr>' +
+                                  '<th>Total Charges</th>' +
+                                  '<th>Total Sentences</th>' +
+                                  '<th>Year Terminated</th>' +
+                                  '<th>Months Sentenced</th>' +
+                                  '<th>Months Probation</th>' +
+                                  '<th>Restitution</th>' +
+                                  '<th>Asset Forfeiture?</th>' +
+                                  '<th>Appeal?</th>' +
+                                '</tr>' +
+                              '</thead>' +
+                              '<tbody>' +
+                                '<tr>' +
+                                  '<td>' + (cases[i][20][j][13] == null ? 'N/A' : cases[i][20][j][13]) + '</td>' +
+                                  '<td>' + (cases[i][20][j][14] == null ? 'N/A' : cases[i][20][j][14]) + '</td>' +
+                                  '<td>' + (cases[i][20][j][15] == '0000' ? 'N/A' : cases[i][20][j][15]) + '</td>' +
+                                  '<td>' + (cases[i][20][j][17] == null ? 'N/A' : cases[i][20][j][17]) + '</td>' +
+                                  '<td>' + (cases[i][20][j][22] == null ? 'N/A' : cases[i][20][j][22]) + '</td>' +
+                                  '<td>' + (cases[i][20][j][18] == null ? 'N/A' : '$' + cases[i][20][j][18]) + '</td>' +
+                                  '<td>' + (cases[i][20][j][19] ? 'Yes' : 'No') + '</td>' +
+                                  '<td>' + (cases[i][20][j][20] ? 'Yes' : 'No') + '</td>' +
+                                '</tr>' +
+                              '</tbody>' +
+                            '</table>' +
+                          '</td>' +
+                        '</tr>' +
+                      '</tbody>' +
+                    '</table>' +
+                  '</td>' +
+                '</tr>' +
+                '<tr class="this_def_info">' +
+                  '<td colspan="4">' + 
+                    (display['ocg'] ? '<table class="modal_table table_col">' : '<table class="modal_table table_col all_results">') +
+                      '<caption>Organized Crime Group Information</caption>' +
+                      '<thead>' +
+                        '<tr>' +
+                          '<th>Name</th>' +
+                          '<th>Size</th>' +
+                          '<th>Race</th>' +
+                          '<th>Scope</th>' +
+                        '</tr>' +
+                      '</thead>' +
+                      '<tbody>' +
+                        '<tr>' +
+                          '<td>' + (cases[i][20][j][24] == '' ? 'None' : cases[i][20][j][24]) + '</td>' + 
+                          '<td>' + ocg_types[cases[i][20][j][25]] + '</td>' + 
+                          '<td>' + ocg_races[cases[i][20][j][26]] + '</td>' + 
+                          '<td>' + ocg_scopes[cases[i][20][j][27]] + '</td>' +
+                        '</tr>' +
+                        '<tr>' +
+                          '<td>' + (cases[i][20][j][28] == '' ? 'None' : cases[i][20][j][28]) + '</td>' + 
+                          '<td>' + ocg_types[cases[i][20][j][29]] + '</td>' + 
+                          '<td>' + ocg_races[cases[i][20][j][30]] + '</td>' + 
+                          '<td>' + ocg_scopes[cases[i][20][j][31]] + '</td>' +
+                        '</tr>' +
+                      '</tbody>' +
+                    '</table>' +
+                  '</td>' +
+                '</tr>';
             }
 
             content += '</table></div>';
@@ -609,7 +576,6 @@ $(function() {
 
 <!-- Auto Complete Script -->
 <script>
-  $(function() {
     function split( val ) {
       return val.split( /,\s*/ );
     }
@@ -641,5 +607,4 @@ $(function() {
         source: "/JudgeFrog/jdgfrog/autoComplete.php?column=OCName1" ,
         minLength: 1
       });
-  });
   </script>

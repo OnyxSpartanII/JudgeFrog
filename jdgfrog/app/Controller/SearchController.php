@@ -97,7 +97,7 @@ class SearchController extends AppController {
 			$conditions['DataInProgress.CaseNum'] = $this->request->data['DataInProgress']['case_Number'];
 		}
 
-		if ($this->request->data['DataInProgress']['case_NumDef'] != '0;100') {
+		if ($this->request->data['DataInProgress']['case_NumDef'] != '') {
 			$min = explode(';', $this->request->data['DataInProgress']['case_NumDef'])[0];
 			$max = explode(';', $this->request->data['DataInProgress']['case_NumDef'])[1];
 
@@ -147,7 +147,7 @@ class SearchController extends AppController {
 		}
 		
 
-		if ($this->request->data['DataInProgress']['defendant_YOB'] != '1930;2014') {
+		if ($this->request->data['DataInProgress']['defendant_YOB'] != '') {
 			$display['defendant'] = true;
 
 			$min = explode(';', $this->request->data['DataInProgress']['defendant_YOB'])[0];
@@ -186,7 +186,7 @@ class SearchController extends AppController {
 			$display['judge'] = true;
 		}
 
-		if ($this->request->data['DataInProgress']['judge_YearApp'] != '1960;2020') {
+		if ($this->request->data['DataInProgress']['judge_YearApp'] != '') {
 			$display['judge'] = true;
 
 			$min = explode(';', $this->request->data['DataInProgress']['judge_YearApp'])[0];
@@ -205,7 +205,7 @@ class SearchController extends AppController {
 		 * Victims filter section
 		 */
 
-		if ($this->request->data['DataInProgress']['victims_Total'] != '0;100') {
+		if ($this->request->data['DataInProgress']['victims_Total'] != '') {
 			$display['victims'] = true;
 
 			$min = explode(';', $this->request->data['DataInProgress']['victims_Total'])[0];
@@ -220,7 +220,7 @@ class SearchController extends AppController {
 			}
 		}
 
-		if ($this->request->data['DataInProgress']['victims_Minor'] != '0;100') {
+		if ($this->request->data['DataInProgress']['victims_Minor'] != '') {
 			$display['victims'] = true;
 
 			$min = explode(';', $this->request->data['DataInProgress']['victims_Minor'])[0];
@@ -235,7 +235,7 @@ class SearchController extends AppController {
 			}
 		}
 
-		if ($this->request->data['DataInProgress']['victims_Foreign'] != '0;100') {
+		if ($this->request->data['DataInProgress']['victims_Foreign'] != '') {
 			$display['victims'] = true;
 
 			$min = explode(';', $this->request->data['DataInProgress']['victims_Foreign'])[0];
@@ -250,7 +250,7 @@ class SearchController extends AppController {
 			}
 		}
 
-		if ($this->request->data['DataInProgress']['victims_Female'] != '0;100') {
+		if ($this->request->data['DataInProgress']['victims_Female'] != '') {
 			$display['victims'] = true;
 
 			$min = explode(';', $this->request->data['DataInProgress']['victims_Female'])[0];
@@ -269,7 +269,7 @@ class SearchController extends AppController {
 		 * ArrestChargeDetails filter section
 		 */
 
-		if ($this->request->data['DataInProgress']['ad_DateArrest'] != '2000;2020') {
+		if ($this->request->data['DataInProgress']['ad_DateArrest'] != '') {
 			$display['acd'] = true;
 
 			$min = explode(';', $this->request->data['DataInProgress']['ad_DateArrest'])[0];
@@ -289,7 +289,7 @@ class SearchController extends AppController {
 			$display['acd'] = true;
 		}
 
-		if ($this->request->data['DataInProgress']['ad_BailAmount'] != '1000;100000') {	
+		if ($this->request->data['DataInProgress']['ad_BailAmount'] != '') {	
 			$display['acd'] = true;
 
 			$min = explode(';', $this->request->data['DataInProgress']['ad_BailAmount'])[0];
@@ -306,7 +306,7 @@ class SearchController extends AppController {
 		}
 
 		/* CD */
-		if ($this->request->data['DataInProgress']['cd_Date'] != '2000;2020') {	
+		if ($this->request->data['DataInProgress']['cd_Date'] != '') {	
 			$display['acd'] = true;
 
 			$min = explode(';', $this->request->data['DataInProgress']['cd_Date'])[0];
@@ -321,7 +321,7 @@ class SearchController extends AppController {
 			}			
 		}
 
-		if ($this->request->data['DataInProgress']['cd_TtlCharges'] != '0;20') {
+		if ($this->request->data['DataInProgress']['cd_TtlCharges'] != '') {
 			$display['acd'] = true;
 
 			$min = explode(';', $this->request->data['DataInProgress']['cd_TtlCharges'])[0];
@@ -340,7 +340,7 @@ class SearchController extends AppController {
 		 * Sentence filter section
 		 */
 
-		if ($this->request->data['DataInProgress']['sd_TtlFelonies'] != '0;10') {
+		if ($this->request->data['DataInProgress']['sd_TtlFelonies'] != '') {
 			$display['sentence'] = true;
 
 			$min = explode(';', $this->request->data['DataInProgress']['sd_TtlFelonies'])[0];
@@ -355,7 +355,7 @@ class SearchController extends AppController {
 			}
 		}
 
-		if ($this->request->data['DataInProgress']['sd_DateTerminated'] != '2000;2020') {
+		if ($this->request->data['DataInProgress']['sd_DateTerminated'] != '') {
 
 			$min = explode(';',$this->request->data['DataInProgress']['sd_DateTerminated'])[0];
 			$max = explode(';',$this->request->data['DataInProgress']['sd_DateTerminated'])[1];
@@ -371,7 +371,7 @@ class SearchController extends AppController {
 			$display['sentence'] = true;
 		}
 
-		if ($this->request->data['DataInProgress']['sd_TtlMonths'] != '0;300') {
+		if ($this->request->data['DataInProgress']['sd_TtlMonths'] != '') {
 
 			$display['sentence'] = true;
 
@@ -387,7 +387,7 @@ class SearchController extends AppController {
 			}
 		}
 
-		if ($this->request->data['DataInProgress']['sd_Restitution'] != '0;10000000') {
+		if ($this->request->data['DataInProgress']['sd_Restitution'] != '') {
 
 			$display['sentence'] = true;
 
@@ -413,7 +413,7 @@ class SearchController extends AppController {
 			$display['sentence'] = true;
 		}
 
-		if ($this->request->data['DataInProgress']['sd_MonthsProb'] != '0;50') {
+		if ($this->request->data['DataInProgress']['sd_MonthsProb'] != '') {
 			$display['sentence'] = true;
 
 			$min = explode(';', $this->request->data['DataInProgress']['sd_MonthsProb'])[0];
@@ -487,7 +487,7 @@ class SearchController extends AppController {
 		$charge_conds = array();
 
 		// charge
-		if ($this->request->data['DataInProgress']['cd_Counts'] != '0;10') {
+		if ($this->request->data['DataInProgress']['cd_Counts'] != '') {
 			$min = explode(';', $this->request->data['DataInProgress']['cd_Counts'])[0];
 			$max = explode(';', $this->request->data['DataInProgress']['cd_Counts'])[1];
 
@@ -512,7 +512,7 @@ class SearchController extends AppController {
 		}
 
 		// charge
-		if ($this->request->data['DataInProgress']['cd_CountsNP'] != '0;10') {
+		if ($this->request->data['DataInProgress']['cd_CountsNP'] != '') {
 			$min = explode(';', $this->request->data['DataInProgress']['cd_CountsNP'])[0];
 			$max = explode(';', $this->request->data['DataInProgress']['cd_CountsNP'])[1];
 
@@ -537,7 +537,7 @@ class SearchController extends AppController {
 		}
 
 		// charge
-		if ($this->request->data['DataInProgress']['cd_PleaDismiss'] != '0;10') {
+		if ($this->request->data['DataInProgress']['cd_PleaDismiss'] != '') {
 			$min = explode(';', $this->request->data['DataInProgress']['cd_PleaDismiss'])[0];
 			$max = explode(';', $this->request->data['DataInProgress']['cd_PleaDismiss'])[1];
 
@@ -562,7 +562,7 @@ class SearchController extends AppController {
 		}
 
 		// charge
-		if ($this->request->data['DataInProgress']['cd_PleaGuilty'] != '0;10') {	
+		if ($this->request->data['DataInProgress']['cd_PleaGuilty'] != '') {	
 			$min = explode(';', $this->request->data['DataInProgress']['cd_PleaGuilty'])[0];
 			$max = explode(';', $this->request->data['DataInProgress']['cd_PleaGuilty'])[1];
 
@@ -587,7 +587,7 @@ class SearchController extends AppController {
 		}
 
 		// charge
-		if ($this->request->data['DataInProgress']['cd_TrialGuilty'] != '0;10') {	
+		if ($this->request->data['DataInProgress']['cd_TrialGuilty'] != '') {	
 
 			$min = explode(';', $this->request->data['DataInProgress']['cd_TrialGuilty'])[0];
 			$max = explode(';', $this->request->data['DataInProgress']['cd_TrialGuilty'])[1];
@@ -613,7 +613,7 @@ class SearchController extends AppController {
 		}
 
 		// charge
-		if ($this->request->data['DataInProgress']['cd_TrialNotGuilty'] != '0;10') {	
+		if ($this->request->data['DataInProgress']['cd_TrialNotGuilty'] != '') {	
 
 			$min = explode(';', $this->request->data['DataInProgress']['cd_TrialNotGuilty'])[0];
 			$max = explode(';', $this->request->data['DataInProgress']['cd_TrialNotGuilty'])[1];
@@ -639,7 +639,7 @@ class SearchController extends AppController {
 		}
 
 		// charge
-		if ($this->request->data['DataInProgress']['cd_Sentence'] != '0;300') {	
+		if ($this->request->data['DataInProgress']['cd_Sentence'] != '') {	
 			$conds = array(
 				'OR' => array()
 			);
@@ -655,7 +655,7 @@ class SearchController extends AppController {
 		}
 
 		// charge
-		if ($this->request->data['DataInProgress']['cd_Probation'] != '0;300') {	
+		if ($this->request->data['DataInProgress']['cd_Probation'] != '') {	
 			$conds = array(
 				'OR' => array()
 			);

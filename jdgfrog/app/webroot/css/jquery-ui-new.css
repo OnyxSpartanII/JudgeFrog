@@ -51,6 +51,12 @@
 	filter:Alpha(Opacity=0); /* support: IE8 */
 }
 
+/* Temp fix by collin */
+ul.ui-autocomplete {
+	z-index: 1000 !important;
+	border: 1px solid black;
+}
+
 .ui-front {
 	z-index: 100;
 }

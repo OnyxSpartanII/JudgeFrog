@@ -21,7 +21,7 @@
                       <!-- SEARCH BUTTON-->
                       <div class="search_button" title="Click here to perform a search using selected criteria.">
                         <label for="submit_form">
-                          <?php echo $this->Html->image('submit.png', array('alt' => 'Submit', 'style' => 'float:left; padding-right:10px; padding-top:10px;' )); ?>
+                          <?php echo $this->Html->image('submit.png', array('alt' => 'Submit', 'class' => 'submit_btn_img', 'style' => '' )); ?>
                         </label>
                       </div>
                   </div>
@@ -589,12 +589,14 @@ $(function() {
             });
             //End of Function to Filter Results
 
-            //Funtion to toggle Defendant Informatio
+            //Funtion to toggle Defendant Information
             $('.this_def_info').hide();
             $('.toggle_def').click(function(){
             $(this).nextUntil('.toggle_def').toggle('slow');
-            $(this).last().addClass("clicked");
+            $(this).toggleClass('clicked', 'slow');
             });
+            //End of funtion to toggle Defendant Information
+
           }
 
         });

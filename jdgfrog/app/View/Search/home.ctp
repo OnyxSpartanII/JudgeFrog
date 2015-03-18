@@ -611,7 +611,8 @@ $(function() {
             //Funtion to toggle Defendant Informatio
             $('.this_def_info').hide();
             $('.toggle_def').click(function(){
-              $(this).nextUntil('.toggle_def').toggle('slow');
+            $(this).nextUntil('.toggle_def').toggle('slow');
+            $(this).last().addClass("clicked");
             });
           }
 

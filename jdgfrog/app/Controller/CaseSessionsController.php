@@ -97,7 +97,7 @@ class CaseSessionsController extends AppController {
 				$newSessionId = $this->getSessionId();
 				
 				$this->Session->write('form.params.sessionId', $newSessionId);
-				//$this->Session->write('form.data.session_id', $maxSessionId+1);
+				$this->Session->write('form.data.CaseSession.session_id', $newSessionId);
 
 				$prevSessionData = $this->Session->read('form.data');
 				$currentSessionData = Hash::merge( (array) $prevSessionData, $this->request->data);

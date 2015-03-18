@@ -269,25 +269,6 @@ $(function() {
 </script>
 <!-- added by Landon (above) -->
 
-<script type="text/javascript">
-      jQuery(document).ready(function($) {
-        $(".scroll").click(function(event){   
-          event.preventDefault();
-          $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-        });
-      });
-      
-      var radius = 5;
-
-      var interval = window.setInterval(function() {
-      $(".logo").css("-webkit-mask", "-webkit-gradient(radial, 27 27, " + radius + ", 5 5, " + (radius + 5) + ", from(rgb(0, 0, 0)), color-stop(0.5, rgba(0, 0, 0, 0.2)), to(rgb(0, 0, 0)))");
-      radius++;
-      if (radius === 100) {
-      window.clearInterval(interval);
-      }
-      }, 15);
-  </script>
-
   <!-- SCRIPT FOR THE POPUP FRAME OF SEARCH DETAILS -->
 <script type="text/javascript">
   //PDF Download Function 

@@ -11,7 +11,7 @@ class CaseSession extends AppModel {
  *
  * @var string
  */
-	public $primaryKey = 'CaseDefId';
+	public $primaryKey = 'id';
 
 /**
  * Validation rules
@@ -59,7 +59,17 @@ class CaseSession extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		
-		
 	);
+
+
+	/** 
+	*	This method retrieves the current largest session ID from currently stored sessions.
+	*	
+	*
+	*
+	*
+	*/
+	public function getMaxSessionId() {
+		
+	}
 }

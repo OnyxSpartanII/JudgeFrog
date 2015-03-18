@@ -18,4 +18,4 @@
 <?php echo $this->Form->input('OCType2', array('label' => 'Organized Crime Group 2 Type')); ?>
 <?php echo $this->Form->input('OCRace2', array('label' => 'Organized Crime Group 2 Predominant Race')); ?>
 <?php echo $this->Form->input('OCScope2', array('label' => 'Organized Crime Group 2 Scope')); ?>
-<?php 	echo $this->Form->end('Next'); ?>
+<?php echo $this->Form->end('Next'); ?>

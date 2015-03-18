@@ -46,8 +46,8 @@
 /*MODAL WINDOW FIXED HEADER*/
 .modal_header{
 	width: 900px;
-	position: fixed;
-	z-index: -1000;
+	/*position: fixed;*/
+	position: absolute;
 	padding-top: 50px;
 	padding: 10px;
 	background-color: #444;
@@ -94,13 +94,20 @@
 	padding: 0px 0px 20px 0px;
 	border-bottom: 1px solid rgba(75,75,75,0.4);
 }
-.toggle_def{cursor:pointer; background-color: #D4D4D4;}
-.toggle_def:hover{background-color: #FFF; color: #444}
+.toggle_def{cursor:pointer; background-color: #DCDCDC;}
+.toggle_def:hover{background-color: #4D1979; color: #FFF; }
+.toggle_def.clicked{
+	background-color: #4D1979; 
+	color: #FFF;
+	border-left: 5px solid #4D1979;
+}
+.toggle_def:hover td, .toggle_def.clicked td{
+	color: #FFF;
+}
 .this_def_info{
 	margin-bottom: 30px;
 	-webkit-animation: fadeInDown 1s; /* Chrome, Safari, Opera */
 	animation: fadeInDown 1s;
-	border-bottom: 1px dotted rgba(254,34,50,0.4);
 	border-left: 5px solid #4D1979;
 	margin-left: 30px;
 	}
@@ -146,7 +153,7 @@
 	.modal_table td {
 		padding:5px;
 		text-align:center;
-		background-color: #D4D4D4;
+		background-color: #DCDCDC;
 		border:none;
 		color: #000;
 	}
@@ -158,7 +165,7 @@
 	}
 	.all_results td{
 	padding:5px;
-	/*background-color: #D4D4D4;*/
+	/*background-color: #DCDCDC;*/
 	border-top:1px solid rgba(122,122,122,0.3);
 	color: #000;
 	}
@@ -187,7 +194,7 @@
 	}
 	.table_col td{
 	padding:5px;
-	/*background-color: #D4D4D4;*/
+	/*background-color: #DCDCDC;*/
 	border-top:1px solid rgba(122,122,122,0.3);
 	color: #000;
 	}

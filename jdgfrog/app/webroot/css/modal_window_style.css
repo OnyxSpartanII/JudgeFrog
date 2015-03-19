@@ -47,8 +47,7 @@
 .modal_header{
 	width: 900px;
 	height:150px;
-	/*position: fixed;*/
-	position: relative;
+	position: fixed;
 	padding-top: 50px;
 	padding: 10px;
 	background-color: #444;
@@ -120,7 +119,7 @@
 }
 .modal_content{
 	padding: 0 10px;
-	padding-top: 50px;
+	padding-top: 170px;
 	margin: 0px auto;
 	width: 100%;
 	margin-bottom: 50px;

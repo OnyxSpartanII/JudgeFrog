@@ -17,8 +17,6 @@
 	
 	<!-- Accordian Slider -->
   <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-  <!-- // <script src="//code.jquery.com/jquery-1.10.2.js"></script> -->
-  <!-- // <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> -->
 	<script>
 		$(function() {
 			$( "#accordion" ).accordion();
@@ -34,10 +32,6 @@
 				<div class="responisve-container">
 					<div class="slider">
 						<div class="fs_loader"></div>
-						<!-- <div class="slide"> 
-							<p 		class="claim light-green"			
-									data-position="150,400" data-in="top" data-step="1" data-out="bottom" data-ease-in="easeOutBounce">Welcome to</p>
-						</div> -->
 
 						<!-- Slider Number 1 -->
 						<div class="slide"> 
@@ -60,8 +54,6 @@
 
 						<!-- Slider Number 3 -->
 						<div class="slide"> 
-							<!-- <p 		class="claim"			
-									 data-in="fade" data-position="20,430" data-step="1" data-out="fade" style="font-size:2em; color:#fe2232">9,000</p> -->
 							<p 		class="claim"			
 									 data-in="fade" data-position="140, 100" data-step="2" data-out="fade" style="font-size:1.2em;">HumanTraffickingData.org is a user-friendly experience designed for researchers in </p>
 							<p 		class="claim"			

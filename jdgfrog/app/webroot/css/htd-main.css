@@ -871,7 +871,7 @@ p.m_6 {
 	padding: 1em 0em;
 	outline: none;
 	background-color: #4D1979;
-	border: none;
+	border: 1px solid #4D1979;
 	color: #fff;
 }
 .text input[type="submit"]:hover {

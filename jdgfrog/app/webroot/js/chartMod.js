@@ -6,42 +6,48 @@ is presented the form again when that specific chart is selected again.
 $(document).ready(function(){
 	$("#xAxisBox").hide();
 	$("#yAxisBox").hide();
-	$("#singleBox").hide();
+	$("#geoChartCombo").hide();
+	$("#pieChartCombo").hide(); 
 	$("select#xAxisBox")[0].selectedIndex = 0; 
 	$("select#yAxisBox")[0].selectedIndex = 0;  
 
     $("#barGraphRadio").click(function(){
 		$("#xAxisBox").show();
 		$("#yAxisBox").show();   
-		$("#singleBox").hide(); 
+		$("#geoChartCombo").hide();
+		$("#pieChartCombo").hide(); 
 		$("select#xAxisBox")[0].selectedIndex = 0; 
 		$("select#yAxisBox")[0].selectedIndex = 0;  
 	});
     $("#lineGraphRadio").click(function(){
 		$("#xAxisBox").show();
 		$("#yAxisBox").show();      
-		$("#singleBox").hide();
+		$("#geoChartCombo").hide();
+		$("#pieChartCombo").hide(); 
 		$("select#xAxisBox")[0].selectedIndex = 0; 
 		$("select#yAxisBox")[0].selectedIndex = 0;  
 	});
 	$("#histogramRadio").click(function(){
 		$("#xAxisBox").show();
 		$("#yAxisBox").show();
-		$("#singleBox").hide();    
+		$("#geoChartCombo").hide(); 
+		$("#pieChartCombo").hide();    
 		$("select#xAxisBox")[0].selectedIndex = 0; 
 		$("select#yAxisBox")[0].selectedIndex = 0;   
 	});
 	$("#pieChartRadio").click(function(){
-		$("#singleBox").show();     
+		$("#pieChartCombo").show();     
 		$("#xAxisBox").hide();
 		$("#yAxisBox").hide();
-		$("select#singleBox")[0].selectedIndex = 0; //sets the index back
+		$("#geoChartCombo").hide();
+		$("select#pieChartCombo")[0].selectedIndex = 0; //sets the index back
 	});
 	$("#geoChartRadio").click(function(){
-		$("#singleBox").show();
+		$("#geoChartCombo").show();
 		$("#xAxisBox").hide();
 		$("#yAxisBox").hide();
-		$("select#singleBox")[0].selectedIndex = 0; 
+		$("#pieChartCombo").hide();  
+		$("select#geoChartCombo")[0].selectedIndex = 0; 
 		   
 	});
 });

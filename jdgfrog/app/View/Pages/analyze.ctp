@@ -43,6 +43,10 @@
                         echo $this->Form->input('yAxisBox', array('empty' => 'Y Axis', 'options' => array('Total Cases', 'Total Defendants', 'Avg Defendants Per Case', 'Total Months Sentenced', 'Avg Months Sentenced', 'Victims', 'Total Charge', 'Total Sentenced')));?>
                         <?php
                         echo $this->Form->input('xAxisBox', array('empty' => 'X Axis', 'options' => array('Year', 'Defendant Gender', 'Defendant Race', 'Judge Gender', 'Judge Race', 'Judge Appointed By', 'Crime Type', 'Statute', 'Federal District', 'Crime Groups','State', 'Statute Charged','Statute Sentenced','Organized Crime Groups')));?>
+                         <?php
+                        echo $this->Form->input('pieChartCombo', array('empty' => 'pie', 'options' => array('Mickey Mouse','Pluto','Goofy')));?>
+                        <?php
+                        echo $this->Form->input('geoChartCombo', array('empty' => 'geo', 'options' => array('Mickey Mouse','Pluto','Goofy')));?>
                       <?php
                          echo $this->Form->end(array('id' => 'submit_form'));?>
                       </div>

@@ -1,5 +1,4 @@
-
-	<?php
+<?php
 /**
  *
  *
@@ -79,7 +78,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 							<li><a class="<?php echo ($this->fetch('active') == 'create') ? 'active' : ''; ?>" <?php echo $this->Html->link('Create', '/AdminPanel/create_case'); ?></li>
 							<li><a class="<?php echo ($this->fetch('active') == 'edit') ? 'active' : ''; ?>" <?php echo $this->Html->link('Edit', '/AdminPanel/edit'); ?></li>
 							<li><a class="<?php echo ($this->fetch('active') == 'review') ? 'active' : ''; ?>" <?php echo $this->Html->link('Review', '/AdminPanel/review'); ?></li>
-							<li><a class="<?php echo ($this->fetch('active') == 'grantaccess') ? 'active' : ''; ?>" <?php echo $this->Html->link('Grant Access', '/AdminPanel/grantaccess'); ?></li>
+							<li><a class="<?php echo ($this->fetch('active') == 'manageusers') ? 'active' : ''; ?>" <?php echo $this->Html->link('Manage Users', '/AdminPanel/manageusers'); ?></li>
 							<li style="font-size:18px; font-weight:400; opacity:0.8; color:#444;">|</li>
 							<li>
 								<a href="#"> 

@@ -136,7 +136,6 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
             		</label>
             	</div>
 </div>
-
 <script type="text/javascript">
 	
     //Change Text on Hover

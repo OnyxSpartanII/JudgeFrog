@@ -13,6 +13,7 @@ endif;
 
 App::uses('Debugger', 'Utility');
 ?>
+<?php $this->layout = 'admin_panel_layout';?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>

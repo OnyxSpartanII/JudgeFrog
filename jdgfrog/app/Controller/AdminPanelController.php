@@ -21,11 +21,33 @@ class AdminPanelController extends AppController {
 
 	public function index(){
 		$this->render();
+    	$this->layout = 'admin_panel_layout';
 	}
 
+	public function create_case(){
+		$this->render();
+    	$this->layout = 'admin_panel_layout';
+	}
+
+	public function edit(){
+		$this->render();
+    	$this->layout = 'admin_panel_layout';
+	}
+
+	public function review(){
+		$this->render();
+    	$this->layout = 'admin_panel_layout';
+	}
+
+	public function grantaccess(){
+		$this->render();
+    	$this->layout = 'admin_panel_layout';
+	}
+	
 	public function panel() {
 		$this->set('title', 'Admin Panel | Human Trafficking Data');
 		$this->set('selected', 'panel');
+    	$this->layout = 'admin_panel_layout';
 	}
 
 }

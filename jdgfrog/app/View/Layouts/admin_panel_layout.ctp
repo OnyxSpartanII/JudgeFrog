@@ -121,7 +121,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	  </div>
             	<div class="footer-center">
             		<label>Copyright &copy; 
-            			<?php $initialYear = 2014; $currentYear = date('Y'); echo $initialYear . (($initialYear != $currentYear) ? '-' . $currentYear : '');?> | Human Trafficking Data
+            			<?php $initialYear = 2014; $currentYear = date('Y'); echo $initialYear . (($initialYear != $currentYear) ? '-' . $currentYear : '');?> | Human Trafficking Data ~ Admin Panel
             		</label>
             	</div>
 </div>

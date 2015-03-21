@@ -2,7 +2,7 @@
 //Adds CSS file to view
     echo $this->Html->css(array('adminPanelWindow'));
     ?>
-
+<?php $this->layout = 'admin_panel_layout';?>
 
 <body>
 

@@ -1,104 +1,123 @@
- <?php
-/**
- *
- *
- * @link          http://cakephp.org CakePHP(tm) Project
- * @package       app.View.AdminPanel
- * @since         CakePHP(tm) v 0.10.0.1076
- */
+<?php $this->layout = 'admin_panel_layout';?>
+<!-- FUNCTION TO ANIMATE LOGO -->
+  <script type="text/javascript">   
+    var radius = 5;
 
-if (!Configure::read('debug')):
-  throw new NotFoundException();
-endif;
-
-App::uses('Debugger', 'Utility');
-?>
-
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-	<title>Admin Control Panel | Human Trafficking Data</title>
-	<meta http-equiv="Content-Language" content="English" />
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <?php echo $this->Html->css(array('in-style', 'style')); ?>
-	<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css' />
-</head>
+    var interval = window.setInterval(function() {
+    $(".logo").css("-webkit-mask", "-webkit-gradient(radial, 30 30, " + radius + ", 5 59, " + (radius + 5) + ", from(rgb(0, 0, 0)), color-stop(0.5, rgba(0, 0, 0, 0.2)), to(rgb(0, 0, 0)))");
+    radius++;
+    if (radius === 400) {
+    window.clearInterval(interval);
+    }
+    }, 15);
+  </script> 
 
 
-<body>
+      <?php echo $this->Html->css(array('home_slider_main', 'home_slider_misc', 'hover'));?>
+      <?php echo $this->Html->script(array('jquery-1.9.0.min', 'jquery.fractionslider', 'home_slider_config', 'jquery-ui'));?>
+  
+    <!--Slider Starts Here-->
+      <div class="jobs-main top-slider">
+        <h3>What's New</h3>
+          <div class="slider-wrapper">
+            <div class="responisve-container">
+              <div class="slider">
+                  <div class="fs_loader"></div>
 
-<div id="wrap">
-	<div id="header">
-		<div id="headerlinks">
-		<a href="index.html" class="case_active" title="Case">Case</a>
-		<a href="court.html" title="Court">Court</a>
-		<a href="defendant.html" title="Defendant">Defendant</a>
-		<a href="upload.html" title="Batch Upload">Batch Upload</a>
-		</div>
-            <ul>
-                <li><a href="~/Views/AdminPanel/index.cshtml" class="case_active" title="Case">Case</a></li>
-                <li><a href="~/Views/AdminPanel/court.cshtml" title="Court">Court</a></li>
-                <li><a href="~/Views/AdminPanel/defendant.cshtml" title="Defendant">Defendant</a></li>
-                <li><a href="~/Views/AdminPanel/upload.cshtml" title="Batch Upload">Batch Upload</a></li>
-            </ul>
-        </div>
-		<h1><a href="index.html">Admin Control Panel | HTD</a></h1>
-	</div>
+                  <!-- Slider Number 1 -->
+                  <div class="slide"> 
+                    <p    class="claim"     
+                         data-in="top" data-position="20,450" data-step="1" data-out="fade" style="font-size:2em;">on</p>
+                    <p    class="claim"     
+                        data-in="fade" 
+                                    data-position="70,0" data-step="2" data-out="fade" style="font-size:3.2em;">HUMAN TRAFFICKING DATA | Admin Panel?</p>
+                    <p    class="claim"     
+                         data-in="fade" data-out="fade" data-position="150,160" data-step="3" data-out="left" style="font-size:1.2em; color:4D1979">an open source platform for human trafficking cases in the U.S.</p>
+                  </div>
 
+                  <!-- Slider Number 2 -->
+                  <div class="slide"> 
+                    <p    class="claim"     
+                         data-in="fade" data-position="20,350" data-step="1" data-out="fade" style="font-size:2em; color:#fe2232">600,000 to 800,000</p>
+                    <p    class="claim"     
+                         data-in="fade" data-position="130,170" data-step="2" data-out="fade" style="font-size:1em;">is the approximate amount of trafficked people around the world<span><p style="font-size:1.5em; color:red; font-weight:bold;" data-step="3" data-position="120,700" data-in="fade" data-out="fade" data-delay="1500">Every year</p></span></p>
+                  </div>
 
-	<div id="content">
+                  <!-- Slider Number 3 -->
+                  <div class="slide"> 
+                    <!-- <p     class="claim"     
+                         data-in="fade" data-position="20,430" data-step="1" data-out="fade" style="font-size:2em; color:#fe2232">9,000</p> -->
+                    <p    class="claim"     
+                         data-in="fade" data-position="140, 100" data-step="2" data-out="fade" style="font-size:1.2em;">HumanTraffickingData.org is a user-friendly experience designed for researchers in </p>
+                    <p    class="claim"     
+                         data-in="fade" data-position="160, 130" data-step="2" data-out="fade" data-delay="3000" style="font-size:1.2em;">understanding the complexity of human trafficking cases in the United States.
+                    </p>
+                  </div>
+              </div>
+            </div>
+          </div>
+       </div>
+    <!--Slider Ends Here-->
 
-	<div class="title">
-	</div>
-
-
-<table class="tg">
-
-	<form>
-
-  		<tr>
-    		<th class="tg-4kyz" colspan="3">Add a Case...</th>
-  		</tr>
-  		<tr>
-    		<td class="tg-left"><span style="color:#F05">*</span>Name: </td>
-    		<td class="tg-right"><input type="text" style="font-size:20px; width:500px; margin-right:-220px; " name="case_name"></td>
-  		</tr>
-
-  		<tr>
-    		<td class="tg-left"><span style="color:#F05">*</span>Date: </td>
-    		<td class="tg-right"><input type="text" style="font-size:20px; width:500px; margin-right:-220px; " name="case_date"></td>
-  		</tr>
-  		
-  		<tr>
-    		<td class="tg-left"><span style="color:#F05">*</span>Details: </td>
-    		<td class="tg-right"><input type="text" style="font-size:20px; width:500px; margin-right:-220px; " name="case_details"></td>
-  		</tr>
-  		
-  		<tr>
-    		<td class="tg-left"><span style="color:#F05">*</span>Defendant: </td>
-    		<td class="tg-right"><input type="text" style="font-size:20px; width:500px; margin-right:-220px; " name="case_defendant"></td>
-			<td><input type="submit" style="font-size:13px; margin-right:-30px; width:115px; height:30px; background-color:#000; border:none; color:#fff;" value="New Defendant(s)" name="case_defendant"></td>
-  		</tr>
-
-
-</table>
-		<br><br><br><br><br><br><br>
-		<input type="submit" style="font-size:20px; margin-left:0px; width:200px; height:50px; background-color:#f05; border:none; color:#fff;" value="Store New Case" name="case_submit">
-
-	</form>
-
-
-		<h4 style="color:#F05; margin-top:600px;">*NOTE ~ Required Fields</h4>
-
-	</div>
-
+<div class="jobs">
+      <div class="jobs-main">
+         <div class="job-top">
+            <div class="col-md-15 job-left">
+              <h3>How to Create a Case?</h3>
+            </div>
+            <div class="container">
+                  <div class="col-md-13 job-left">
+                        <div id="accordion">
+                          <h3>Section 1</h3>
+                          <div>
+                            <p>
+                            Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
+                            ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
+                            amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
+                            odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
+                            </p>
+                          </div>
+                          <h3>Section 2</h3>
+                          <div>
+                            <p>
+                            Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet
+                            purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor
+                            velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In
+                            suscipit faucibus urna.
+                            </p>
+                          </div>
+                          <h3>Section 3</h3>
+                          <div>
+                            <p>
+                            Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis.
+                            Phasellus pellentesque purus in massa. Aenean in pede. Phasellus ac libero
+                            ac tellus pellentesque semper. Sed ac felis. Sed commodo, magna quis
+                            lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui.
+                            </p>
+                            <ul>
+                              <li>List item one</li>
+                              <li>List item two</li>
+                              <li>List item three</li>
+                            </ul>
+                          </div>
+                          <h3>Watch The Tutorial Video</h3>
+                          <div>
+                            <p>
+                            Cras dictum. Pellentesque habitant morbi tristique senectus et netus
+                            et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in
+                            faucibus orci luctus et ultrices posuere cubilia Curae; Aenean lacinia
+                            mauris vel est.
+                            </p>
+                            <p>
+                            Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus.
+                            Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
+                            inceptos himenaeos.
+                            </p>
+                          </div>
+                        </div>
+                   </div>
+              </div>
+          </div>
+      </div>
 </div>
 
-
-</body>
-
-
-
-
-
-</html>

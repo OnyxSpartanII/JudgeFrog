@@ -13,3 +13,4 @@ endif;
 
 App::uses('Debugger', 'Utility');
 ?>
+<?php $this->layout = 'admin_panel_layout';?>

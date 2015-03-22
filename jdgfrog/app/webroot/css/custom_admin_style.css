@@ -33,6 +33,7 @@ width: 50px;
 font-size: 50px;
 word-wrap: break-word;
 line-height: 1.3em;
+}
 .login_details:hover, 
 .login_details input[type="text"]:hover, 
 .login_details input[type="password"]:hover {
@@ -50,7 +51,6 @@ line-height: 1.3em;
     -o-transition: all .4s ease-in-out;
     transition: all .4s ease-in-out;
 }
-
 
 .personal_details:hover, 
 .personal_details input[type="text"]:hover{

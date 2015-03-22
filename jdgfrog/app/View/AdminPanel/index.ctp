@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+<?php $this->layout = 'admin_panel_layout';?>
+=======
+>>>>>>> master
 <!-- FUNCTION TO ANIMATE LOGO -->
   <script type="text/javascript">   
     var radius = 5;
@@ -10,17 +14,28 @@
     }
     }, 15);
   </script> 
+<<<<<<< HEAD
+  <!-- Accordian Slider -->
+=======
 
   <?php echo $this->Html->css(array('home_slider_main', 'home_slider_misc', 'hover', 'jquery-ui'));?>
   <?php echo $this->Html->script(array('jquery-1.9.0.min', 'jquery.fractionslider', 'home_slider_config', 'jquery-ui'));?>
 
   <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+>>>>>>> master
   <script>
     $(function() {
       $( "#accordion" ).accordion();
     });
   </script>
+<<<<<<< HEAD
+  <?php echo $this->Html->css(array('home_slider_main', 'home_slider_misc', 'hover'));?>
+  <?php echo $this->Html->script(array('jquery-1.9.0.min', 'jquery.fractionslider', 'home_slider_config', 'jquery-ui'));?>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+=======
   
+>>>>>>> master
     <!--Slider Starts Here-->
       <div class="jobs-main top-slider">
         <h3>What's New</h3>
@@ -65,9 +80,15 @@
     <!--Slider Ends Here-->
 
 <div class="jobs">
+<<<<<<< HEAD
+      <div class="jobs-main">
+         <div class="job-top">
+            <div class="col-md-15 job-left">
+=======
       <div class="jobs-main" style="padding-bottom:100px">
          <div class="job-top">
             <div class="col-md-13 job-left">
+>>>>>>> master
               <h3>How to Create a Case?</h3>
             </div>
             <div class="container">

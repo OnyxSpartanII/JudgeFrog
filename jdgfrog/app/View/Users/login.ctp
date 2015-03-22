@@ -18,7 +18,6 @@ App::uses('Debugger', 'Utility');
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<title>Login | Admin Control Panel - HTD</title>
-		<link rel="stylesheet" type="text/css" href="css/admin_panel_style.css" media="screen" />
 		<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'/>
 		<?php echo $this->Html->css(array('login')); ?>
 	</head>
@@ -31,12 +30,12 @@ App::uses('Debugger', 'Utility');
 
 
 			<div id="content">
-				<form name="form1" method="post" action="index.html">
+				<?php echo $this->Form->create('User'); ?>
 					<h1>User Login</h1>
 
 					<div class="inset">
 						<?php echo $this->Session->flash('auth'); ?>
-						<?php echo $this->Form->create('User'); ?>
+						
 						<p>
 							<?php echo $this->Form->input('username');?>
 						</p>

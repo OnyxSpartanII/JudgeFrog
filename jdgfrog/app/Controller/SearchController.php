@@ -775,7 +775,7 @@ class SearchController extends AppController {
 			}
 
 			$charges = array();
-			foreach ($statutes as $statute) {
+			foreach ($statutes as $statute){
 				if ($display['cd']) {
 					$def_filter = true;
 					$cd_filter = true;

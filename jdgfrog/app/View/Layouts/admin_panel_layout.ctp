@@ -30,8 +30,8 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 	<?php
 		echo $this->Html->meta('icon');
-		echo $this->Html->css(array('htd-main-panel', 'bootstrap', 'jquery-ui', 'search_page_css', 'default','ion.rangeSlider.skinFlat','ion.rangeSlider', 'modal_window_style', 'animation'));
-		echo $this->Html->script(array('jquery-1.10.2', 'slider', 'superfish', 'jquery-ui', 'modernizr.custom', 'classie','moment','ion.rangeSlider','ion.rangeSlider.min','sliderMod', 'jquery.simplemodal', 'hover-effect', 'move-top.js', 'easing.js', 'easyResponsiveTabs','chartMod', 'uisearch'));
+		echo $this->Html->css(array('htd-main-panel', 'bootstrap', 'animation', 'search_page_css', 'custom_admin_style'));
+		echo $this->Html->script(array('jquery-1.10.2', 'hover-effect', 'easing.js'));
 	?>
 <!-- Google charts Script -->
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -67,20 +67,21 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
  <div class="header-b">
 	 	  <div class="container">
 	 	       <div class="header-main">
-	 	        	<div class="logo" style="margin-top:5px">
+	 	        	<div class="logo">
 	 	        			<?php 
 	 	        				echo $this->Html->link('HTD | Admin Panel', '/AdminPanel',
 	 	        				array('class' => 'full', 'onmouseover' => 'bringTheFunc(this)'));
 	 	        			?>
 	 	        	</div> 
+	 	        	<span class="menu"> <?php echo $this->Html->image('icon.png', array('alt' => 'Menu List')); ?></span>
 					<div class="header-navg">
 						<ul class="res">
 							<li><a class="<?php echo ($this->fetch('active') == 'index') ? 'active' : ''; ?>" <?php echo $this->Html->link('Home', '/AdminPanel/index'); ?></li>
-							<li><a class="<?php echo ($this->fetch('active') == 'create') ? 'active' : ''; ?>" <?php echo $this->Html->link('Create', '/AdminPanel/create_case'); ?></li>
+							<li><a class="<?php echo ($this->fetch('active') == 'create_case') ? 'active' : ''; ?>" <?php echo $this->Html->link('Create', '/AdminPanel/create_case'); ?></li>
 							<li><a class="<?php echo ($this->fetch('active') == 'edit') ? 'active' : ''; ?>" <?php echo $this->Html->link('Edit', '/AdminPanel/edit'); ?></li>
 							<li><a class="<?php echo ($this->fetch('active') == 'review') ? 'active' : ''; ?>" <?php echo $this->Html->link('Review', '/AdminPanel/review'); ?></li>
 							<li><a class="<?php echo ($this->fetch('active') == 'manageusers') ? 'active' : ''; ?>" <?php echo $this->Html->link('Manage Users', '/AdminPanel/manageusers'); ?></li>
-							<li style="font-size:18px; font-weight:400; opacity:0.8; color:#444;">|</li>
+							<div class="menu_separator"><li style="font-size:18px; font-weight:400; opacity:0.8; color:#444;">|</li></div>
 							<li>
 								<a href="#"> 
 									<?php if (AuthComponent::user('id')): ?>
@@ -89,6 +90,13 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 							 	</a>
 						 	</li>
 						</ul>
+						<script>
+	                          $( "span.menu").click(function() {
+		                        $(  "ul.res" ).slideToggle("slow", function() {
+		                         // Animation complete.
+		                         });
+		                         });
+	                     </script>
 					</div>
 
 				</div>

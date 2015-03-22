@@ -1,4 +1,3 @@
-<?php $this->layout = 'admin_panel_layout';?>
 <!-- FUNCTION TO ANIMATE LOGO -->
   <script type="text/javascript">   
     var radius = 5;
@@ -12,9 +11,15 @@
     }, 15);
   </script> 
 
+  <?php echo $this->Html->css(array('home_slider_main', 'home_slider_misc', 'hover', 'jquery-ui'));?>
+  <?php echo $this->Html->script(array('jquery-1.9.0.min', 'jquery.fractionslider', 'home_slider_config', 'jquery-ui'));?>
 
-      <?php echo $this->Html->css(array('home_slider_main', 'home_slider_misc', 'hover'));?>
-      <?php echo $this->Html->script(array('jquery-1.9.0.min', 'jquery.fractionslider', 'home_slider_config', 'jquery-ui'));?>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script>
+    $(function() {
+      $( "#accordion" ).accordion();
+    });
+  </script>
   
     <!--Slider Starts Here-->
       <div class="jobs-main top-slider">
@@ -60,9 +65,9 @@
     <!--Slider Ends Here-->
 
 <div class="jobs">
-      <div class="jobs-main">
+      <div class="jobs-main" style="padding-bottom:100px">
          <div class="job-top">
-            <div class="col-md-15 job-left">
+            <div class="col-md-13 job-left">
               <h3>How to Create a Case?</h3>
             </div>
             <div class="container">

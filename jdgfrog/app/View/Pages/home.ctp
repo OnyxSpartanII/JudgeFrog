@@ -12,7 +12,7 @@
 	</script>	
 
 
-  		<?php echo $this->Html->css(array('home_slider_main', 'home_slider_misc', 'hover'));?>
+  		<?php echo $this->Html->css(array('home_slider_main', 'home_slider_misc', 'hover', 'jquery-ui'));?>
   		<?php echo $this->Html->script(array('jquery-1.9.0.min', 'jquery.fractionslider', 'home_slider_config', 'jquery-ui'));?>
 	
 	<!-- Accordian Slider -->

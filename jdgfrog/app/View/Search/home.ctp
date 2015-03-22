@@ -12,7 +12,7 @@
                       <!-- SEARCH BUTTON-->
                       <div class="search_button" title="Click here to perform a search using selected criteria.">
                         <label for="submit_form">
-                          <?php echo $this->Html->image('submit.png', array('alt' => 'Submit', 'class' => 'submit_btn_img', 'style' => '' )); ?>
+                          <?php echo $this->Html->image('search.png', array('alt' => 'Submit', 'class' => 'submit_btn_img', 'style' => '' )); ?>
                         </label>
                       </div>
                   </div>
@@ -179,10 +179,13 @@
                       <h4>SEARCH DASHBOARD</h4>
                       <div class="ana_button" title="Click here to go to the analysis page and perform analysis.">
                       <label for="analyze_form">
-                      <a href="analyze">
-                        <?php echo $this->Html->image('analyze.png', array('alt' => 'Anaylze')); ?>
-                </a>
-              </label>
+                        <?php
+                          echo $this->Html->link(
+                              $this->Html->image("analyze.png", array("alt" => "Anaylze")),
+                              "/analyze",
+                              array('escape' => false));
+                        ?>
+                      </label>
             </div>
                     </div>
                   </div>

@@ -14,20 +14,21 @@ class AdminPanelController extends AppController {
 	public function beforeFilter() {
 		//inspect user permissions here.
 		parent::beforeFilter();
-		$this->Auth->allow('createCase', 'createCaseSetup', 'saveSession', 'saveStep', 'index');
+		$this->Auth->allow('createCase', 'createCaseSetup', 'saveSession', 'saveStep', 'index', 'create_case');
+		$this->Auth->allow('index', 'create_case', 'edit', 'review', 'manageusers');
 
 	}
 
 
 	public function index(){
-		$this->set('title', 'Home - Admin Panel | Human Trafficking Data');
     	$this->layout = 'admin_panel_layout';
+		$this->set('title', 'Home - Admin Panel | Human Trafficking Data');
 		$this->set('active', 'index');
 	}
 
 	public function create_case(){
-		$this->set('title', 'Create - Admin Panel | Human Trafficking Data');
     	$this->layout = 'admin_panel_layout';
+		$this->set('title', 'Create - Admin Panel | Human Trafficking Data');
 		$this->set('active', 'create_case');
 	}
 
@@ -38,21 +39,21 @@ class AdminPanelController extends AppController {
 	}
 
 	public function review(){
-		$this->set('title', 'Review - Admin Panel | Human Trafficking Data');
     	$this->layout = 'admin_panel_layout';
+		$this->set('title', 'Review - Admin Panel | Human Trafficking Data');
 		$this->set('active', 'review');
 	}
 
 	public function manageusers(){
-		$this->set('title', 'Manage Users - Admin Panel | Human Trafficking Data');
     	$this->layout = 'admin_panel_layout';
+		$this->set('title', 'Manage Users - Admin Panel | Human Trafficking Data');
 		$this->set('active', 'manageusers');
 	}
 	
 	public function panel() {
+    	$this->layout = 'admin_panel_layout';
 		$this->set('title', 'Admin Panel | Human Trafficking Data');
 		$this->set('active', 'panel');
-    	$this->layout = 'admin_panel_layout';
 	}
 
 }

@@ -1,0 +1,96 @@
+/*-------------*/
+/*CUSTOM STYLES*/
+/*-------------*/
+.user_button{
+    margin-top: -9px;
+    padding-left: 10px;
+    background-color: #fff;
+    float: right;
+    opacity: 1;
+    filter: alpha(opacity=70); /* For IE8 and earlier */
+}
+.user_button:hover{
+    opacity: .8;
+    cursor: pointer;
+    filter: alpha(opacity=80); /* For IE8 and earlier */
+    -webkit-transition: all 0.3s ease-in;
+    -moz-transition: all 0.3s ease-in;
+    -o-transition: all 0.3s ease-in;
+}
+.user_button:active {
+    margin-top: 10px;
+}
+.login_details h1 {
+background-color: #4D1979; color: #FFF;
+width: 50px;
+font-size: 50px;
+word-wrap: break-word;
+line-height: 1.3em;
+}
+.personal_details h1 {
+background-color: #999; color: #FFF;
+width: 50px;
+font-size: 50px;
+word-wrap: break-word;
+line-height: 1.3em;
+.login_details:hover, 
+.login_details input[type="text"]:hover, 
+.login_details input[type="password"]:hover {
+    border-left: 7px solid #999;
+    -webkit-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+.login_details input[type="text"]:focus,
+.login_details input[type="password"]:focus{
+    border-left: 7px solid #999;
+    -webkit-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+
+.personal_details:hover, 
+.personal_details input[type="text"]:hover{
+    border-left: 7px solid #4D1979;
+    -webkit-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+.personal_details input[type="text"]:focus{
+    border-left: 7px solid #4D1979;
+    -webkit-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+
+/*REVIEW PAGE STYLE STARTS HERE*/
+.publish_button{
+    margin-top: -9px;
+    padding-left: 10px;
+    background-color: #fff;
+    float: right;
+    opacity: 1;
+    padding: 12px 13px 13px 13px; margin-top: -29px;
+    filter: alpha(opacity=70); /* For IE8 and earlier */
+}
+.publish_button:hover{
+    opacity: .8;
+    cursor: pointer;
+    filter: alpha(opacity=80); /* For IE8 and earlier */
+    -webkit-transition: all 0.3s ease-in;
+    -moz-transition: all 0.3s ease-in;
+    -o-transition: all 0.3s ease-in;
+}
+.publish_button:active{
+    margin-bottom: 10px;
+}
+
+
+
+

@@ -1,6 +1,4 @@
-  <?php 
-  echo $this->Html->script(array('GoogleChartFunctions'));
-  ?>
+  <?php echo $this->Html->script(array('GoogleChartFunctions'));?>
 <!--search start here-->
 <div class="contact">
     <div class="container">

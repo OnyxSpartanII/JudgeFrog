@@ -473,7 +473,8 @@ $(function() {
                             '</tr>';
               }
 
-              content += '<tr class="this_def_info">' +
+              content += '</tbody></table></td></tr>' +
+                         '<tr class="this_def_info">' +
                           '<td colspan="4">' +
                             '<table class="modal_table table_col' + (!cases[i][20][j][34] ? 'all_results' : '') + '">'  +
                               '<caption>Sentence Information</caption>' +
@@ -504,9 +505,6 @@ $(function() {
                             '</table>' +
                           '</td>' +
                         '</tr>' +
-                      '</tbody>' +
-                    '</table>' +
-                  '</td>' +
                 '</tr>' +
                 '<tr class="this_def_info">' +
                   '<td colspan="4">' + 
@@ -523,15 +521,15 @@ $(function() {
                       '<tbody>' +
                         '<tr>' +
                           '<td>' + (cases[i][20][j][24] == '' ? 'None' : cases[i][20][j][24]) + '</td>' + 
-                          '<td>' + ocg_types[cases[i][20][j][25]] + '</td>' + 
-                          '<td>' + ocg_races[cases[i][20][j][26]] + '</td>' + 
-                          '<td>' + ocg_scopes[cases[i][20][j][27]] + '</td>' +
+                          '<td>' + (ocg_types[cases[i][20][j][25]] == undefined ? '' : ocg_types[cases[i][20][j][25]]) + '</td>' + 
+                          '<td>' + (ocg_types[cases[i][20][j][26]] == undefined ? '' : ocg_types[cases[i][20][j][26]]) + '</td>' + 
+                          '<td>' + (ocg_types[cases[i][20][j][27]] == undefined ? '' : ocg_types[cases[i][20][j][27]]) + '</td>' +
                         '</tr>' +
                         '<tr>' +
                           '<td>' + (cases[i][20][j][28] == '' ? 'None' : cases[i][20][j][28]) + '</td>' + 
-                          '<td>' + ocg_types[cases[i][20][j][29]] + '</td>' + 
-                          '<td>' + ocg_races[cases[i][20][j][30]] + '</td>' + 
-                          '<td>' + ocg_scopes[cases[i][20][j][31]] + '</td>' +
+                          '<td>' + (ocg_types[cases[i][20][j][29]] == undefined ? '' : ocg_types[cases[i][20][j][29]]) + '</td>' + 
+                          '<td>' + (ocg_types[cases[i][20][j][30]] == undefined ? '' : ocg_types[cases[i][20][j][30]]) + '</td>' + 
+                          '<td>' + (ocg_types[cases[i][20][j][31]] == undefined ? '' : ocg_types[cases[i][20][j][31]]) + '</td>' +
                         '</tr>' +
                       '</tbody>' +
                     '</table>' +

@@ -68,9 +68,10 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	 	  <div class="container">
 	 	       <div class="header-main">
 	 	        	<div class="logo">
-	 	        		<a href="home">
-	 	        			<h2 class="full" onmouseover="bringTheFunc(this)">HTD</h2>
-	 	        		</a>
+	        			<?php 
+	        				echo $this->Html->link('HTD', '/home',
+	        				array('class' => 'full', 'onmouseover' => 'bringTheFunc(this)'));
+	        			?>
 	 	        	</div> 
 	 	        	<span class="menu"> <?php echo $this->Html->image('icon.png', array('alt' => 'Menu List')); ?></span>
 	 	        	<div class="header-navg">
@@ -122,7 +123,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	  	    	<div class="col-md-3 footer-right">
             		<label>
             			<h4>Authorized Users:</h4>
-            		Authorized users can access the academic/advanced user panel by clicking <a href="panel">here.</a>
+            		Authorized users can access the academic/advanced user panel by clicking <?php echo $this->Html->link('here', '/AdminPanel'); ?>
             		</label>
 	  	    	</div>
 	  	    <div class="clearfix"> </div>

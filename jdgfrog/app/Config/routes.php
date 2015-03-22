@@ -34,7 +34,7 @@
 	Router::connect('/create_case', array('controller' => 'AdminPanel', 'action' => 'create_case'));
 	Router::connect('/edit', array('controller' => 'AdminPanel', 'action' => 'edit'));
 	Router::connect('/review', array('controller' => 'AdminPanel', 'action' => 'review'));
-	Router::connect('/grantaccess', array('controller' => 'AdminPanel', 'action' => 'grantaccess'));
+	Router::connect('/grantaccess', array('controller' => 'AdminPanel', 'action' => 'manageusers'));
 
 	Router::connect('/home', array('controller' => 'pages', 'action' => 'home'));
 	Router::connect('/about', array('controller' => 'pages', 'action' => 'about'));
@@ -51,7 +51,7 @@
 /**
  * ...and connect the rest of 'Pages' controller's URLs.
  */
-	Router::connect('/*', array('controller' => 'pages', 'action' => 'display'));
+	// Router::connect('/*', array('controller' => 'pages', 'action' => 'display'));
 
 /**
  * Load all plugin routes. See the CakePlugin documentation on

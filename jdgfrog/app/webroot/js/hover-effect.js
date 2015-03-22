@@ -1,5 +1,5 @@
 
-var duration = 600;
+var duration = 1500;
 var centerX = 8, centerY = 5;
 
 function bringTheFunc(div) {

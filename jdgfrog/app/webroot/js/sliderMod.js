@@ -1,5 +1,7 @@
 $( function () {
 
+	console.log('Running sliderMod.js');
+
 	//Case Sliders
 	$( "#numbDefSlide" ).ionRangeSlider( {
 		hide_min_max: true,

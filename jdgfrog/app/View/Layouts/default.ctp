@@ -30,8 +30,8 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 	<?php
 		echo $this->Html->meta('icon');
-		echo $this->Html->css(array('htd-main', 'bootstrap',  'search_page_css', 'default','ion.rangeSlider.skinFlat','ion.rangeSlider', 'jquery-ui', 'modal_window_style', 'animation'));
-		echo $this->Html->script(array('jquery', 'slider', 'superfish', 'custom', 'jquery-ui', 'modernizr.custom', 'classie','moment','ion.rangeSlider','ion.rangeSlider.min','sliderMod', 'jquery.simplemodal', 'hover-effect', 'jquery.min', 'move-top.js', 'easing.js', 'easyResponsiveTabs','chartMod', 'uisearch', 'jquery-ui-new'));
+		echo $this->Html->css(array('htd-main', 'bootstrap', 'jquery-ui', 'search_page_css', 'default','ion.rangeSlider.skinFlat','ion.rangeSlider', 'modal_window_style', 'animation'));
+		echo $this->Html->script(array('jquery-1.10.2', 'slider', 'superfish', 'jquery-ui', 'modernizr.custom', 'classie','moment','ion.rangeSlider','ion.rangeSlider.min','sliderMod', 'jquery.simplemodal', 'hover-effect', 'move-top.js', 'easing.js', 'easyResponsiveTabs','chartMod', 'uisearch'));
 	?>
 <!-- Google charts Script -->
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -46,8 +46,6 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 
 </script>
 <!-- Scripts for collaspable panels. -->
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <?php echo $this->Html->script(array('jquery-1.10.2'));?>
   
 	<title> 
 		<?php 
@@ -70,9 +68,10 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	 	  <div class="container">
 	 	       <div class="header-main">
 	 	        	<div class="logo">
-	 	        		<a href="home">
-	 	        			<h2 class="full" onmouseover="bringTheFunc(this)">HTD</h2>
-	 	        		</a>
+	        			<?php 
+	        				echo $this->Html->link('HTD', '/home',
+	        				array('class' => 'full', 'onmouseover' => 'bringTheFunc(this)'));
+	        			?>
 	 	        	</div> 
 	 	        	<span class="menu"> <?php echo $this->Html->image('icon.png', array('alt' => 'Menu List')); ?></span>
 	 	        	<div class="header-navg">
@@ -124,7 +123,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	  	    	<div class="col-md-3 footer-right">
             		<label>
             			<h4>Authorized Users:</h4>
-            		Authorized users can access the academic/advanced user panel by clicking <?php echo $this->Html->link('here', '/panel'); ?>
+            		Authorized users can access the academic/advanced user panel by clicking <?php echo $this->Html->link('here', '/AdminPanel'); ?>
             		</label>
 	  	    	</div>
 	  	    <div class="clearfix"> </div>

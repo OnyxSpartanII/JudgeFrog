@@ -8,15 +8,14 @@
  *   http://www.opensource.org/licenses/mit-license.php
  */
 
+
 #basic-modal-content {
 	display:none;
 }
-
 /*MODAL WINDOW OUTSIDE BACKGROUND COLOR/OVERLAY*/
 #simplemodal-overlay {
 	background-color:#F5F5F5;
 }
-
 /*MODAL WINDOW CONTAINER*/
 #simplemodal-container {
 	height:auto; 
@@ -29,8 +28,9 @@
 	border: 1px solid #444;
 	box-shadow: 3px 10px 50px 5px #444;
 	/*Anitmation at opening*/
-	-webkit-animation: fadeInDown .8s; /* Chrome, Safari, Opera */
-	animation: fadeInDown .8s;
+	-webkit-animation: fadeIn 0.8s ease-in-out;  /*Chrome, Safari, Opera*/
+	-moz-transition: fadeIn 0.8s ease-in-out;
+	animation: fadeIn 0.8s ease-in-out;
 }
 /*MODAL CLOSE BUTTON*/
 #simplemodal-container a.modalCloseImg {
@@ -46,8 +46,8 @@
 /*MODAL WINDOW FIXED HEADER*/
 .modal_header{
 	width: 900px;
+	height:150px;
 	position: fixed;
-	z-index: -1000;
 	padding-top: 50px;
 	padding: 10px;
 	background-color: #444;
@@ -68,15 +68,19 @@
 	}
 	.modal_header a{
 		text-decoration: none;
+		color: #fff;
 	}
 	.modal_header a:hover{
 		color: #000;
 		border: 1px solid #fff;
 		background-color: #fff;
 
-	    -webkit-transition: all 0.2s ease-in;
-	    -moz-transition: all 0.2s ease-in;
-	    -o-transition: all 0.2s ease-in;
+	    -webkit-transition: all 0.3s ease-in-out;
+	    -moz-transition: all 0.3s ease-in-out;
+	    -o-transition: all 0.3s ease-in-out;
+	}
+	.modal_download:active {
+		margin-top: 10px;
 	}
 .case_info h4{
 	color: #777;
@@ -94,13 +98,25 @@
 	padding: 0px 0px 20px 0px;
 	border-bottom: 1px solid rgba(75,75,75,0.4);
 }
-.toggle_def{cursor:pointer; background-color: #D4D4D4;}
-.toggle_def:hover{background-color: #FFF; color: #444}
+.toggle_def{cursor:pointer; background-color: #DCDCDC;}
+.toggle_def:hover{background-color: #4D1979; color: #FFF; 
+	 transition: all 0.3s ease-in-out;
+	 -webkit-transition: all 0.3s ease-in-out;
+	 -moz-transition: all 0.3s ease-in-out;
+	 -o-transition: all 0.3s ease-in-out;}
+.toggle_def.clicked{
+	background-color: #4D1979; 
+	color: #FFF;
+	border-left: 5px solid #4D1979;
+}
+.toggle_def:hover td, .toggle_def.clicked td{
+	color: #FFF;
+}
 .this_def_info{
 	margin-bottom: 30px;
-	-webkit-animation: fadeInDown 1s; /* Chrome, Safari, Opera */
-	animation: fadeInDown 1s;
-	border-bottom: 1px dotted rgba(254,34,50,0.4);
+	-webkit-animation: fadeInDown 0.6s; /* Chrome, Safari, Opera */
+	-moz-transition: fadeInDown 0.6s;
+	animation: fadeInDown 0.6s;
 	border-left: 5px solid #4D1979;
 	margin-left: 30px;
 	}
@@ -146,7 +162,7 @@
 	.modal_table td {
 		padding:5px;
 		text-align:center;
-		background-color: #D4D4D4;
+		background-color: #DCDCDC;
 		border:none;
 		color: #000;
 	}
@@ -158,7 +174,7 @@
 	}
 	.all_results td{
 	padding:5px;
-	/*background-color: #D4D4D4;*/
+	/*background-color: #DCDCDC;*/
 	border-top:1px solid rgba(122,122,122,0.3);
 	color: #000;
 	}
@@ -187,7 +203,7 @@
 	}
 	.table_col td{
 	padding:5px;
-	/*background-color: #D4D4D4;*/
+	/*background-color: #DCDCDC;*/
 	border-top:1px solid rgba(122,122,122,0.3);
 	color: #000;
 	}

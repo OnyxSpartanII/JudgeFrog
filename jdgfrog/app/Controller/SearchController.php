@@ -97,7 +97,7 @@ class SearchController extends AppController {
 			$conditions['DataInProgress.CaseNum'] = $this->request->data['DataInProgress']['case_Number'];
 		}
 
-		if ($this->request->data['DataInProgress']['case_NumDef'] != '0;100') {
+		if ($this->request->data['DataInProgress']['case_NumDef'] != '') {
 			$min = explode(';', $this->request->data['DataInProgress']['case_NumDef'])[0];
 			$max = explode(';', $this->request->data['DataInProgress']['case_NumDef'])[1];
 
@@ -122,8 +122,8 @@ class SearchController extends AppController {
 			$conditions['DataInProgress.State'] = $state[$this->request->data['DataInProgress']['case_State']];
 		}
 
-		if ($this->request->data['DataInProgress']['case_FedDist'] != 0) {
-			$conditions['DataInProgress.FedDistrictNum'] = $this->request->data['DataInProgress']['case_FedDist'];
+		if ($this->request->data['DataInProgress']['case_FedDist'] != '') {
+			$conditions['DataInProgress.FedDistrictNum'] = $this->request->data['DataInProgress']['case_FedDist']+1;
 		}
 
 		/**
@@ -147,7 +147,7 @@ class SearchController extends AppController {
 		}
 		
 
-		if ($this->request->data['DataInProgress']['defendant_YOB'] != '1930;2014') {
+		if ($this->request->data['DataInProgress']['defendant_YOB'] != '') {
 			$display['defendant'] = true;
 
 			$min = explode(';', $this->request->data['DataInProgress']['defendant_YOB'])[0];
@@ -186,7 +186,7 @@ class SearchController extends AppController {
 			$display['judge'] = true;
 		}
 
-		if ($this->request->data['DataInProgress']['judge_YearApp'] != '1960;2020') {
+		if ($this->request->data['DataInProgress']['judge_YearApp'] != '') {
 			$display['judge'] = true;
 
 			$min = explode(';', $this->request->data['DataInProgress']['judge_YearApp'])[0];
@@ -205,7 +205,7 @@ class SearchController extends AppController {
 		 * Victims filter section
 		 */
 
-		if ($this->request->data['DataInProgress']['victims_Total'] != '0;100') {
+		if ($this->request->data['DataInProgress']['victims_Total'] != '') {
 			$display['victims'] = true;
 
 			$min = explode(';', $this->request->data['DataInProgress']['victims_Total'])[0];
@@ -220,7 +220,7 @@ class SearchController extends AppController {
 			}
 		}
 
-		if ($this->request->data['DataInProgress']['victims_Minor'] != '0;100') {
+		if ($this->request->data['DataInProgress']['victims_Minor'] != '') {
 			$display['victims'] = true;
 
 			$min = explode(';', $this->request->data['DataInProgress']['victims_Minor'])[0];
@@ -235,7 +235,7 @@ class SearchController extends AppController {
 			}
 		}
 
-		if ($this->request->data['DataInProgress']['victims_Foreign'] != '0;100') {
+		if ($this->request->data['DataInProgress']['victims_Foreign'] != '') {
 			$display['victims'] = true;
 
 			$min = explode(';', $this->request->data['DataInProgress']['victims_Foreign'])[0];
@@ -250,7 +250,7 @@ class SearchController extends AppController {
 			}
 		}
 
-		if ($this->request->data['DataInProgress']['victims_Female'] != '0;100') {
+		if ($this->request->data['DataInProgress']['victims_Female'] != '') {
 			$display['victims'] = true;
 
 			$min = explode(';', $this->request->data['DataInProgress']['victims_Female'])[0];
@@ -269,7 +269,7 @@ class SearchController extends AppController {
 		 * ArrestChargeDetails filter section
 		 */
 
-		if ($this->request->data['DataInProgress']['ad_DateArrest'] != '2000;2020') {
+		if ($this->request->data['DataInProgress']['ad_DateArrest'] != '') {
 			$display['acd'] = true;
 
 			$min = explode(';', $this->request->data['DataInProgress']['ad_DateArrest'])[0];
@@ -289,7 +289,7 @@ class SearchController extends AppController {
 			$display['acd'] = true;
 		}
 
-		if ($this->request->data['DataInProgress']['ad_BailAmount'] != '1000;100000') {	
+		if ($this->request->data['DataInProgress']['ad_BailAmount'] != '') {	
 			$display['acd'] = true;
 
 			$min = explode(';', $this->request->data['DataInProgress']['ad_BailAmount'])[0];
@@ -306,8 +306,9 @@ class SearchController extends AppController {
 		}
 
 		/* CD */
-		if ($this->request->data['DataInProgress']['cd_Date'] != '2000;2020') {	
+		if ($this->request->data['DataInProgress']['cd_Date'] != '') {	
 			$display['acd'] = true;
+			$display['cd'] = true;
 
 			$min = explode(';', $this->request->data['DataInProgress']['cd_Date'])[0];
 			$max = explode(';', $this->request->data['DataInProgress']['cd_Date'])[1];
@@ -321,8 +322,9 @@ class SearchController extends AppController {
 			}			
 		}
 
-		if ($this->request->data['DataInProgress']['cd_TtlCharges'] != '0;20') {
+		if ($this->request->data['DataInProgress']['cd_TtlCharges'] != '') {
 			$display['acd'] = true;
+			$display['cd'] = true;
 
 			$min = explode(';', $this->request->data['DataInProgress']['cd_TtlCharges'])[0];
 			$max = explode(';', $this->request->data['DataInProgress']['cd_TtlCharges'])[1];
@@ -340,7 +342,7 @@ class SearchController extends AppController {
 		 * Sentence filter section
 		 */
 
-		if ($this->request->data['DataInProgress']['sd_TtlFelonies'] != '0;10') {
+		if ($this->request->data['DataInProgress']['sd_TtlFelonies'] != '') {
 			$display['sentence'] = true;
 
 			$min = explode(';', $this->request->data['DataInProgress']['sd_TtlFelonies'])[0];
@@ -355,7 +357,7 @@ class SearchController extends AppController {
 			}
 		}
 
-		if ($this->request->data['DataInProgress']['sd_DateTerminated'] != '2000;2020') {
+		if ($this->request->data['DataInProgress']['sd_DateTerminated'] != '') {
 
 			$min = explode(';',$this->request->data['DataInProgress']['sd_DateTerminated'])[0];
 			$max = explode(';',$this->request->data['DataInProgress']['sd_DateTerminated'])[1];
@@ -371,7 +373,7 @@ class SearchController extends AppController {
 			$display['sentence'] = true;
 		}
 
-		if ($this->request->data['DataInProgress']['sd_TtlMonths'] != '0;300') {
+		if ($this->request->data['DataInProgress']['sd_TtlMonths'] != '') {
 
 			$display['sentence'] = true;
 
@@ -387,7 +389,7 @@ class SearchController extends AppController {
 			}
 		}
 
-		if ($this->request->data['DataInProgress']['sd_Restitution'] != '0;10000000') {
+		if ($this->request->data['DataInProgress']['sd_Restitution'] != '') {
 
 			$display['sentence'] = true;
 
@@ -413,7 +415,7 @@ class SearchController extends AppController {
 			$display['sentence'] = true;
 		}
 
-		if ($this->request->data['DataInProgress']['sd_MonthsProb'] != '0;50') {
+		if ($this->request->data['DataInProgress']['sd_MonthsProb'] != '') {
 			$display['sentence'] = true;
 
 			$min = explode(';', $this->request->data['DataInProgress']['sd_MonthsProb'])[0];
@@ -485,9 +487,10 @@ class SearchController extends AppController {
 		 */
 
 		$charge_conds = array();
+		$cc = array();
 
 		// charge
-		if ($this->request->data['DataInProgress']['cd_Counts'] != '0;10') {
+		if ($this->request->data['DataInProgress']['cd_Counts'] != '') {
 			$min = explode(';', $this->request->data['DataInProgress']['cd_Counts'])[0];
 			$max = explode(';', $this->request->data['DataInProgress']['cd_Counts'])[1];
 
@@ -499,10 +502,12 @@ class SearchController extends AppController {
 
 				if (intval($min) != 0) {
 					array_push($t_conds, array("Counts$stat >=" => $min));
+					$cc["Counts$stat >="] = $min;
 				}
 
 				if (intval($max) != 10) {
 					array_push($t_conds, array("Counts$stat <=" => $max));
+					$cc["Counts$stat <="] = $max;
 				}
 
 				array_push($conds['OR'], $t_conds);
@@ -512,7 +517,7 @@ class SearchController extends AppController {
 		}
 
 		// charge
-		if ($this->request->data['DataInProgress']['cd_CountsNP'] != '0;10') {
+		if ($this->request->data['DataInProgress']['cd_CountsNP'] != '') {
 			$min = explode(';', $this->request->data['DataInProgress']['cd_CountsNP'])[0];
 			$max = explode(';', $this->request->data['DataInProgress']['cd_CountsNP'])[1];
 
@@ -524,10 +529,12 @@ class SearchController extends AppController {
 
 				if (intval($min) != 0) {
 					array_push($t_conds, array("CountsNP$stat >=" => $min));
+					$cc["CountsNP$stat >="] = $min;
 				}
 
 				if (intval($max) != 10) {
 					array_push($t_conds, array("CountsNP$stat <=" => $max));
+					$cc["CountsNP$stat <="] = $max;
 				}
 
 				array_push($conds['OR'], $t_conds);
@@ -537,7 +544,7 @@ class SearchController extends AppController {
 		}
 
 		// charge
-		if ($this->request->data['DataInProgress']['cd_PleaDismiss'] != '0;10') {
+		if ($this->request->data['DataInProgress']['cd_PleaDismiss'] != '') {
 			$min = explode(';', $this->request->data['DataInProgress']['cd_PleaDismiss'])[0];
 			$max = explode(';', $this->request->data['DataInProgress']['cd_PleaDismiss'])[1];
 
@@ -549,10 +556,12 @@ class SearchController extends AppController {
 
 				if (intval($min) != 0) {
 					array_push($t_conds, array("PleaDismissed$stat >=" => $min));
+					$cc["PleaDismissed$stat >="] = $min;
 				}
 
 				if (intval($max) != 10) {
 					array_push($t_conds, array("PleaDismissed$stat <=" => $max));
+					$cc["PleaDismissed$stat <="] = $max;
 				}
 
 				array_push($conds['OR'], $t_conds);
@@ -562,7 +571,7 @@ class SearchController extends AppController {
 		}
 
 		// charge
-		if ($this->request->data['DataInProgress']['cd_PleaGuilty'] != '0;10') {	
+		if ($this->request->data['DataInProgress']['cd_PleaGuilty'] != '') {	
 			$min = explode(';', $this->request->data['DataInProgress']['cd_PleaGuilty'])[0];
 			$max = explode(';', $this->request->data['DataInProgress']['cd_PleaGuilty'])[1];
 
@@ -574,10 +583,12 @@ class SearchController extends AppController {
 
 				if (intval($min) != 0) {
 					array_push($t_conds, array("PleaGuilty$stat >=" => $min));
+					$cc["PleaGuilty$stat >="] = $min;
 				}
 
 				if (intval($max) != 10) {
 					array_push($t_conds, array("PleaGuilty$stat <=" => $max));
+					$cc["PleaGuilty$stat <="] = $max;
 				}
 
 				array_push($conds['OR'], $t_conds);
@@ -587,7 +598,7 @@ class SearchController extends AppController {
 		}
 
 		// charge
-		if ($this->request->data['DataInProgress']['cd_TrialGuilty'] != '0;10') {	
+		if ($this->request->data['DataInProgress']['cd_TrialGuilty'] != '') {	
 
 			$min = explode(';', $this->request->data['DataInProgress']['cd_TrialGuilty'])[0];
 			$max = explode(';', $this->request->data['DataInProgress']['cd_TrialGuilty'])[1];
@@ -600,10 +611,12 @@ class SearchController extends AppController {
 
 				if (intval($min) != 0) {
 					array_push($t_conds, array("TrialGuilty$stat >=" => $min));
+					$cc["TrialGuilty$stat >="] = $min;
 				}
 
 				if (intval($max) != 10) {
 					array_push($t_conds, array("TrialGuilty$stat <=" => $max));
+					$cc["TrialGuilty$stat <="] = $max;
 				}
 
 				array_push($conds['OR'], $t_conds);
@@ -613,7 +626,7 @@ class SearchController extends AppController {
 		}
 
 		// charge
-		if ($this->request->data['DataInProgress']['cd_TrialNotGuilty'] != '0;10') {	
+		if ($this->request->data['DataInProgress']['cd_TrialNotGuilty'] != '') {	
 
 			$min = explode(';', $this->request->data['DataInProgress']['cd_TrialNotGuilty'])[0];
 			$max = explode(';', $this->request->data['DataInProgress']['cd_TrialNotGuilty'])[1];
@@ -626,45 +639,73 @@ class SearchController extends AppController {
 
 				if (intval($min) != 0) {
 					array_push($t_conds, array("TrialNG$stat >=" => $min));
+					$cc["TrialNG$stat >="] = $min;
 				}
 
 				if (intval($max) != 10) {
 					array_push($t_conds, array("TrialNG$stat <=" => $max));
+					$cc["TrialNG$stat <="] = $max;
 				}
 
 				array_push($conds['OR'], $t_conds);
+				array_push($cc, $t_conds);
 			}
 			array_push($charge_conds, $conds);
 			$display['cd'] = true;
 		}
 
 		// charge
-		if ($this->request->data['DataInProgress']['cd_Sentence'] != '0;300') {	
+		if ($this->request->data['DataInProgress']['cd_Sentence'] != '') {
+			
+			$min = explode(';', $this->request->data['DataInProgress']['cd_Sentence'])[0];
+			$max = explode(';', $this->request->data['DataInProgress']['cd_Sentence'])[1];
+
 			$conds = array(
 				'OR' => array()
 			);
 			foreach ($statutes as $stat) {
-				array_push($conds['OR'], array(
-					"Sent$stat >=" => explode(';', $this->request->data['DataInProgress']['cd_Sentence'])[0],
-					"Sent$stat <=" => explode(';', $this->request->data['DataInProgress']['cd_Sentence'])[1],
-					)
-				);
+				$t_conds = array();
+
+				if (intval($min) != 0) {
+					array_push($t_conds, array("Sent$stat >=" => $min));
+					$cc["Sent$stat >="] = $min;
+				}
+
+				if (intval($max) != 10) {
+					array_push($t_conds, array("Sent$stat <=" => $max));
+					$cc["Sent$stat <="] = $max;
+				}
+
+				array_push($conds['OR'], $t_conds);
+				array_push($cc, $t_conds);
 			}
 			array_push($charge_conds, $conds);
 			$display['cd'] = true;
 		}
 
 		// charge
-		if ($this->request->data['DataInProgress']['cd_Probation'] != '0;300') {	
+		if ($this->request->data['DataInProgress']['cd_Probation'] != '') {	
+			
+			$min = explode(';', $this->request->data['DataInProgress']['cd_Probation'])[0];
+			$max = explode(';', $this->request->data['DataInProgress']['cd_Probation'])[1];
+
 			$conds = array(
 				'OR' => array()
 			);
 			foreach ($statutes as $stat) {
-				array_push($conds['OR'], array(
-					"Prob$stat >=" => explode(';', $this->request->data['DataInProgress']['cd_Probation'])[0],
-					"Prob$stat <=" => explode(';', $this->request->data['DataInProgress']['cd_Probation'])[1],
-					)
-				);
+				$t_conds = array();
+
+				if (intval($min) != 0) {
+					array_push($t_conds, array("Prob$stat >=" => $min));
+					$cc["Prob$stat >="] = $min;
+				}
+
+				if (intval($max) != 10) {
+					array_push($t_conds, array("Prob$stat <=" => $max));
+					$cc["Prob$stat <="] = $max;
+				}
+
+				array_push($conds['OR'], $t_conds);
 			}
 			array_push($charge_conds, $conds);
 			$display['cd'] = true;
@@ -701,7 +742,10 @@ class SearchController extends AppController {
 				if (isset($conditions['DataInProgress.DefRace']) && ($d['DataInProgress']['DefRace'] != $conditions['DataInProgress.DefRace'])) {
 					$def_filter = false;
 				}
-				if (isset($conditions['DataInProgress.DefBirthdate >=']) && ($d['DataInProgress']['DefBirthdate'] >= $conditions['DataInProgress.DefBirthdate >=']) && ($d['DataInProgress']['DefBirthdate'] <= $conditions['DataInProgress.DefBirthdate <='])) {
+				if (isset($conditions['DataInProgress.DefBirthdate >=']) && ($d['DataInProgress']['DefBirthdate'] <= $conditions['DataInProgress.DefBirthdate >='])) {
+					$def_filter = false;
+				}
+				if (isset($conditions['DataInProgress.DefBirthdate <=']) && ($d['DataInProgress']['DefBirthdate'] >= $conditions['DataInProgress.DefBirthdate <='])) {
 					$def_filter = false;
 				}
 				if (isset($conditions['DataInProgress.DefGender']) && ($d['DataInProgress']['DefGender'] != $conditions['DataInProgress.DefGender'])) {
@@ -729,7 +773,11 @@ class SearchController extends AppController {
 			if ($display['acd']) {
 				$def_filter = true;
 				$ad_filter = true;
-				if (isset($conditions['DataInProgress.ArrestDate >=']) && ($d['DataInProgress']['ArrestDate'] >= $conditions['DataInProgress.ArrestDate >=']) && ($d['DataInProgress']['ArrestDate'] <= $conditions['DataInProgress.ArrestDate <='])) {
+				if (isset($conditions['DataInProgress.ArrestDate >=']) && ($d['DataInProgress']['ArrestDate'] >= $conditions['DataInProgress.ArrestDate >='])) {
+					$ad_filter = false;
+				}
+
+				if (isset($conditions['DataInProgress.ArrestDate <=']) && ($d['DataInProgress']['ArrestDate'] <= $conditions['DataInProgress.ArrestDate <='])) {
 					$ad_filter = false;
 				}
 
@@ -737,7 +785,11 @@ class SearchController extends AppController {
 					$ad_filter = false;
 				}
 				
-				if (isset($conditions['DataInProgress.BailAmount >=']) && ($d['DataInProgress']['BailAmount'] >= $conditions['DataInProgress.BailAmount >=']) && ($d['DataInProgress']['BailAmount'] <= $conditions['DataInProgress.BailAmount <='])) {
+				if (isset($conditions['DataInProgress.BailAmount >=']) && ($d['DataInProgress']['BailAmount'] <= $conditions['DataInProgress.BailAmount >='])) {
+					$ad_filter = false;
+				}
+				
+				if (isset($conditions['DataInProgress.BailAmount <=']) && ($d['DataInProgress']['BailAmount'] >= $conditions['DataInProgress.BailAmount <='])) {
 					$ad_filter = false;
 				}
 			}
@@ -745,31 +797,59 @@ class SearchController extends AppController {
 			if ($display['sentence']) {
 				$def_filter = true;
 				$sd_filter = true;
-				if (isset($conditions['DataInProgress.FelSentenced >=']) && ($d['DataInProgress']['FelSent'] >= $conditions['DataInProgress.FelSentenced >=']) && ($d['DataInProgress']['FelSent'] <= $conditions['DataInProgress.FelSentenced <='])) {
+				if (isset($conditions['DataInProgress.FelSentenced >=']) && ($d['DataInProgress']['FelSent'] <= $conditions['DataInProgress.FelSentenced >='])) {
 					$sd_filter = false;
 				}
 
-				if (isset($conditions['DataInProgress.DateTerm >=']) && ($d['DataInProgress']['DateTerm'] >= $conditions['DataInProgress.DateTerm >=']) && ($d['DataInProgress']['DateTerm'] <= $conditions['DataInProgress.DateTerm <='])) {
+				if (isset($conditions['DataInProgress.FelSentenced <=']) && ($d['DataInProgress']['FelSent'] >= $conditions['DataInProgress.FelSentenced <='])) {
 					$sd_filter = false;
 				}
 
-				if (isset($conditions['DataInProgress.TotalSentence >=']) && ($d['DataInProgress']['TotalSentence'] >= $conditions['DataInProgress.TotalSentence >=']) && ($d['DataInProgress']['TotalSentence'] <= $conditions['DataInProgress.TotalSentence <='])) {
+				if (isset($conditions['DataInProgress.DateTerm >=']) && ($d['DataInProgress']['DateTerm'] <= $conditions['DataInProgress.DateTerm >='])) {
 					$sd_filter = false;
 				}
 
-				if (isset($conditions['DataInProgress.Restitution >=']) && ($d['DataInProgress']['Restitution'] >= $conditions['DataInProgress.Restitution >=']) && ($d['DataInProgress']['Restitution'] <= $conditions['DataInProgress.Restitution <='])) {
+				if (isset($conditions['DataInProgress.DateTerm <=']) && ($d['DataInProgress']['DateTerm'] >= $conditions['DataInProgress.DateTerm <='])) {
 					$sd_filter = false;
 				}
 
-				if (isset($conditions['DataInProgress.AssetForfeit >=']) && ($d['DataInProgress']['AssetForfeit'] >= $conditions['DataInProgress.AssetForfeit >=']) && ($d['DataInProgress']['AssetForfeit'] <= $conditions['DataInProgress.AssetForfeit <='])) {
+				if (isset($conditions['DataInProgress.TotalSentence >=']) && ($d['DataInProgress']['TotalSentence'] <= $conditions['DataInProgress.TotalSentence >='])) {
 					$sd_filter = false;
 				}
 
-				if (isset($conditions['DataInProgress.Appeal >=']) && ($d['DataInProgress']['Appeal'] >= $conditions['DataInProgress.Appeal >=']) && ($d['DataInProgress']['Appeal'] <= $conditions['DataInProgress.Appeal <='])) {
+				if (isset($conditions['DataInProgress.TotalSentence <=']) && ($d['DataInProgress']['TotalSentence'] >= $conditions['DataInProgress.TotalSentence <='])) {
 					$sd_filter = false;
 				}
 
-				if (isset($conditions['DataInProgress.Probation >=']) && ($d['DataInProgress']['Probation'] >= $conditions['DataInProgress.Probation >=']) && ($d['DataInProgress']['Probation'] <= $conditions['DataInProgress.Probation <='])) {
+				if (isset($conditions['DataInProgress.Restitution >=']) && ($d['DataInProgress']['Restitution'] <= $conditions['DataInProgress.Restitution >='])) {
+					$sd_filter = false;
+				}
+
+				if (isset($conditions['DataInProgress.Restitution <=']) && ($d['DataInProgress']['Restitution'] >= $conditions['DataInProgress.Restitution <='])) {
+					$sd_filter = false;
+				}
+
+				if (isset($conditions['DataInProgress.AssetForfeit >=']) && ($d['DataInProgress']['AssetForfeit'] <= $conditions['DataInProgress.AssetForfeit >='])) {
+					$sd_filter = false;
+				}
+
+				if (isset($conditions['DataInProgress.AssetForfeit <=']) && ($d['DataInProgress']['AssetForfeit'] >= $conditions['DataInProgress.AssetForfeit <='])) {
+					$sd_filter = false;
+				}
+
+				if (isset($conditions['DataInProgress.Appeal >=']) && ($d['DataInProgress']['Appeal'] <= $conditions['DataInProgress.Appeal >='])) {
+					$sd_filter = false;
+				}
+
+				if (isset($conditions['DataInProgress.Appeal <=']) && ($d['DataInProgress']['Appeal'] >= $conditions['DataInProgress.Appeal <='])) {
+					$sd_filter = false;
+				}
+
+				if (isset($conditions['DataInProgress.Probation >=']) && ($d['DataInProgress']['Probation'] <= $conditions['DataInProgress.Probation >='])) {
+					$sd_filter = false;
+				}
+
+				if (isset($conditions['DataInProgress.Probation <=']) && ($d['DataInProgress']['Probation'] >= $conditions['DataInProgress.Probation <='])) {
 					$sd_filter = false;
 				}				
 			}
@@ -780,68 +860,68 @@ class SearchController extends AppController {
 					$def_filter = true;
 					$cd_filter = true;
 					if ($d['DataInProgress'][$statute] != 0) {
-						if (isset($conditions['Counts']) && isset($d['DataInProgress']["Counts$statute"])) {
-							$min = explode(';', $conditions['Counts'])[0];
-							$max = explode(';', $conditions['Counts'])[1];
-							if (!(intval($d['DataInProgress']["Counts$statute"]) >= $min || intval($d['DataInProgress']["Counts$statute"]) >= $max)) {
-								$cd_filter = false;
-							}
+						if (isset($cc["Counts$statute >="]) && intval($d['DataInProgress']["Counts$statute"]) <= $cc["Counts$statute >="]) {
+							$cd_filter = false;
 						}
 
-						if (isset($conditions['CountsNP']) && isset($d['DataInProgress']["CountsNP$statute"])) {
-							$min = explode(';', $conditions['CountsNP'])[0];
-							$max = explode(";", $conditions["CountsNP"])[1];
-							if (!(intval($d['DataInProgress']["CountsNP$statute"]) >= $max || intval($d['DataInProgress']["CountsNP$statute"]) <= $min)) {	
-								$cd_filter = false;
-							}
+						if (isset($conditions["Counts$statute <="]) && intval($d['DataInProgress']["Counts$statute"]) >= $cc["Counts$statute <="]) {
+							$cd_filter = false;
 						}
 
-						if (isset($conditions["PleaDismissed"]) && isset($d['DataInProgress']["PleaDismissed$statute"])) {
-							$min = explode(";", $conditions["PleaDismissed"])[0];
-							$max = explode(";", $conditions["PleaDismissed"])[1];
-							if (!(intval($d['DataInProgress']["PleaDismissed$statute"]) >= $max || intval($d['DataInProgress']["PleaDismissed$statute"]) <= $min)) {
-								$cd_filter = false;
-							}
+						if (isset($conditions["CountsNP$statute >="]) && intval($d['DataInProgress']["CountsNP$statute"]) <= $cc["Counts$statute >="]) {
+							$cd_filter = false;
 						}
-
-						if (isset($conditions["PleaGuilty"]) && isset($d['DataInProgress']["PleaGuilty$statute"])) {
-							$min = explode(";", $conditions["PleaGuilty"])[0];
-							$max = explode(";", $conditions["PleaGuilty"])[1];
-							if (!(intval($d['DataInProgress']["PleaGuilty$statute"]) >= $max || intval($d['DataInProgress']["PleaGuilty$statute"]) <= $min)) {
-								$cd_filter = false;
-							}
+						
+						if (isset($conditions["CountsNP$statute <="]) && intval($d['DataInProgress']["CountsNP$statute"]) >= $cc["Counts$statute <="]) {
+							$cd_filter = false;
 						}
-
-						if (isset($conditions["TrialGuilty"]) && isset($d['DataInProgress']["TrialGuilty$statute"])) {
-							$min = explode(";", $conditions["TrialGuilty"])[0];
-							$max = explode(";", $conditions["TrialGuilty"])[1];
-							if (!(intval($d['DataInProgress']["TrialGuilty$statute"]) >= $max || intval($d['DataInProgress']["TrialGuilty$statute"]) <= $min)) {
-								$cd_filter = false;
-							}
+						
+						if (isset($conditions["PleaDismissed$statute <="]) && intval($d['DataInProgress']["PleaDismissed$statute"]) >= $cc["PleaDismissed$statute <="]) {
+							$cd_filter = false;
 						}
-
-						if (isset($conditions["TrialNG"]) && isset($d['DataInProgress']["TrialNG$statute"])) {
-							$min = explode(";", $conditions["TrialNG"])[0];
-							$max = explode(";", $conditions["TrialNG"])[1];
-							if (!(intval($d['DataInProgress']["TrialNG$statute"]) >= $max || intval($d['DataInProgress']["TrialNG$statute"]) <= $min)) {
-								$cd_filter = false;
-							}
+						
+						if (isset($conditions["PleaDismissed$statute >="]) && intval($d['DataInProgress']["PleaDismissed$statute"]) <= $cc["PleaDismissed$statute >="]) {
+							$cd_filter = false;
 						}
-
-						if (isset($conditions["Sentence"]) && isset($d['DataInProgress']["Sent$statute"])) {
-							$min = explode(";", $conditions["Sentence"])[0];
-							$max = explode(";", $conditions["Sentence"])[1];
-							if (!(intval($d['DataInProgress']["Sent$statute"]) >= $max || intval($d['DataInProgress']["Sent$statute"]) <= $min)) {
-								$cd_filter = false;
-							}
+						
+						if (isset($conditions["PleaGuilty$statute <="]) && intval($d['DataInProgress']["PleaGuilty$statute"]) >= $cc["PleaGuilty$statute <="]) {
+							$cd_filter = false;
 						}
-
-						if (isset($conditions['Prob']) && isset($d['DataInProgress']["Prob$statute"])) {
-							$min = explode(';', $conditions['Prob'])[0];
-							$max = explode(';', $conditions['Prob'])[1];
-							if (!(intval($d['DataInProgress']["Prob$statute"]) >= $max || intval($d['DataInProgress']["Prob$statute"]) <= $min)) {
-								$cd_filter = false;
-							}
+						
+						if (isset($conditions["PleaGuilty$statute >="]) && intval($d['DataInProgress']["PleaGuilty$statute"]) <= $cc["PleaGuilty$statute >="]) {
+							$cd_filter = false;
+						}
+						
+						if (isset($conditions["TrialGuilty$statute <="]) && intval($d['DataInProgress']["TrialGuilty$statute"]) >= $cc["TrialGuilty$statute <="]) {
+							$cd_filter = false;
+						}
+						
+						if (isset($conditions["TrialGuilty$statute >="]) && intval($d['DataInProgress']["TrialGuilty$statute"]) <= $cc["TrialGuilty$statute >="]) {
+							$cd_filter = false;
+						}
+						
+						if (isset($conditions["TrialNG$statute <="]) && intval($d['DataInProgress']["TrialNG$statute"]) >= $cc["TrialNG$statute <="]) {
+							$cd_filter = false;
+						}
+						
+						if (isset($conditions["TrialNG$statute >="]) && intval($d['DataInProgress']["TrialNG$statute"]) <= $cc["TrialNG$statute >="]) {
+							$cd_filter = false;
+						}
+						
+						if (isset($conditions["Sent$statute <="]) && intval($d['DataInProgress']["Sent$statute"]) >= $cc["Sent$statute <="]) {
+							$cd_filter = false;
+						}
+						
+						if (isset($conditions["Sent$statute >="]) && intval($d['DataInProgress']["Sent$statute"]) <= $cc["Sent$statute >="]) {
+							$cd_filter = false;
+						}
+						
+						if (isset($conditions["Prob$statute <="]) && intval($d['DataInProgress']["Prob$statute"]) >= $cc["Prob$statute <="]) {
+							$cd_filter = false;
+						}
+						
+						if (isset($conditions["Prob$statute >="]) && intval($d['DataInProgress']["Prob$statute"]) <= $cc["Prob$statute >="]) {
+							$cd_filter = false;
 						}
 					}
 				}

@@ -3,6 +3,8 @@
 /*--------------------------------------*/
 
 html, body{
+	/*font-family: 'Open Sans', sans-serif;*/
+	/*font-family: "HelveticaNeue-Light","Helvetica Neue Light", "Helvetica Neue","Lucida Grande",sans-serif;*/
 	font-family:"Myriad Set Pro","Lucida Grande","Helvetica Neue",Helvetica,Arial,Verdana,sans-serif;
 	background:#fff; 
 	margin:0px;
@@ -24,6 +26,9 @@ html, body{
 	-webkit-box-shadow: 0 2px #d7d7d7;
 	-moz-box-shadow: 0 2px #d7d7d7;
 	box-shadow: 0 2px 20px 1px #d7d7d7;
+	/*border-bottom: 3px solid #666;*/
+
+	/*background-color: #dcdcdc;*/
 }
 .logo{
 	float:left;
@@ -62,6 +67,7 @@ html, body{
 span.menu{
 	display:none;
 }
+.menu_separator{display: inline-block;}
 .header-navg  ul{
 	list-style:none;
 	margin: 0px;
@@ -824,10 +830,10 @@ p.m_6 {
 .text {
 	margin-bottom: 1em;
 }
-.text input[type="text"] {
+.text input[type="text"], input[type="password"] {
 	width: 98%;
 	padding: 10px;
-	font-size: 15px;
+	font-size: 16px;
 	font-weight: 400;
 	outline: none;
 	border: 1px solid #444;
@@ -1013,6 +1019,7 @@ iframe {
 	}
 }
 @media(max-width:768px){
+.menu_separator{display: none;}
 span.menu{
      display:block;
      cursor:pointer;
@@ -1130,7 +1137,7 @@ iframe{
 }
 @media(max-width:700px){
 .footer-h {
-   position: relative; 
+   /*position: relative; */
 }
 }
 @media(max-width:640px){
@@ -1395,3 +1402,4 @@ iframe{
 	position: relative;
 }
 }
+

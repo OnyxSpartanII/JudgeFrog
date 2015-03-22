@@ -1,32 +1,23 @@
-<!-- Imports for Auto Complete -->
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/ui/1.10.1/jquery-ui.min.js"></script> 
-<!-- Calling Slider Imports -->
-  <?php 
-  echo $this->Html->script(array('modernizr.custom', 'classie','moment','ion.rangeSlider.js','ion.rangeSlider.min','sliderMod', 'jquery.simplemodal',)); 
-  echo $this->Html->css(array('search_page_css', 'nav_bar_style', 'default','ion.rangeSlider.skinFlat','ion.rangeSlider', 'modal_window_style'));
-  ?>
-
 <!--search start here-->
 <div class="contact">
     <div class="container">
          <div class="contact-main">
-          <h3 class="page_title">SEARCH THE DATABASE</h3>
-              <div class="col-md-5 contact-right">
+            <h3 class="page_title">Search The Database</h3>
+              <div class="col-md-3 contact-right">
                 <!-- TOP STATUS AND SEARCH BAR -->
-                  <div class="top_bar col-md-5">
+                  <div class="top_bar col-md-3">
                     <div class="top_bar_left">
                       <h4>SEARCH BY</h4>
                     </div>
                       <!-- SEARCH BUTTON-->
-                      <div class="search_button">
+                      <div class="search_button" title="Click here to perform a search using selected criteria.">
                         <label for="submit_form">
-                          <?php echo $this->Html->image('submit1.png', array('alt' => 'Submit', 'style' => 'float:left; padding-right:10px; padding-top:10px;' )); ?>
+                          <?php echo $this->Html->image('search.png', array('alt' => 'Submit', 'class' => 'submit_btn_img', 'style' => '' )); ?>
                         </label>
                       </div>
                   </div>
                 <!-- Search Interface -->
-                  <div class="col-md-5" id="collapsible-panels">
+                  <div class="col-md-3" id="collapsible-panels">
                       <?php
                         $base_url = array('controller' => 'search', 'action' => 'update');
                         echo $this->Form->create(array('url' => $base_url, 'inputDefaults' => array('label' => false, 'div' => false)));
@@ -48,7 +39,7 @@
                             </div>
                    
                           <h2><a href="#">Type of Trafficking</a></h2>
-                            <div >
+                            <div>
                                 <?php
                                   echo $this->Form->input('case_Adult', array('type' => 'checkbox', 'label' => ' Adult Sex '));
                                   echo '<br><br>';
@@ -181,14 +172,24 @@
 
                </form>
           </div>
-          <div class="col-md-7 contact-left">
+          <div class="col-md-9 contact-left">
                 <!-- TOP STATUS AND SEARCH BAR -->
-                  <div class="top_bar col-md-7">
+                  <div class="top_bar col-md-9">
                     <div class="top_bar_dash">
                       <h4>SEARCH DASHBOARD</h4>
+                      <div class="ana_button" title="Click here to go to the analysis page and perform analysis.">
+                      <label for="analyze_form">
+                        <?php
+                          echo $this->Html->link(
+                              $this->Html->image("analyze.png", array("alt" => "Anaylze")),
+                              "/analyze",
+                              array('escape' => false));
+                        ?>
+                      </label>
+            </div>
                     </div>
                   </div>
-                  <div id="table_div" class="col-md-7" style="width:100%"></div>
+                  <div id="table_div" class="col-md-9" colspan="5" style="width:100%"></div>
 
             </div>
          </div>
@@ -197,7 +198,7 @@
 
 </div>
             <div class="search_disclaim" >
-            <p><strong>Disclaimer: </strong>Not every combination of searcheable objects will return meaningful results.</p>
+            <p><strong>Note: </strong>Not every combination of searcheable objects will return meaningful results.</p>
             </div>
 </div>
 
@@ -211,10 +212,15 @@
 
 <!--*************
 SCRIPTS
-**************-->    
-<!-- Script to allow search bars collapsible - added by Landon -->
+**************-->   
 <script type="text/javascript">
-  $(document).ready(function(){
+$(function() {
+    $( document ).tooltip();
+  });
+</script> 
+
+<!-- Script to allow search bars collapsible - fixed -->
+<script type="text/javascript">
 
   // hide all div containers
   $('#collapsible-panels div').hide();
@@ -226,28 +232,8 @@ SCRIPTS
     $(this).parent().toggleClass('active');
     e.preventDefault();
   });
-});
 </script>
 <!-- added by Landon (above) -->
-
-<script type="text/javascript">
-      jQuery(document).ready(function($) {
-        $(".scroll").click(function(event){   
-          event.preventDefault();
-          $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-        });
-      });
-      
-      var radius = 5;
-
-      var interval = window.setInterval(function() {
-      $(".logo").css("-webkit-mask", "-webkit-gradient(radial, 27 27, " + radius + ", 5 5, " + (radius + 5) + ", from(rgb(0, 0, 0)), color-stop(0.5, rgba(0, 0, 0, 0.2)), to(rgb(0, 0, 0)))");
-      radius++;
-      if (radius === 100) {
-      window.clearInterval(interval);
-      }
-      }, 15);
-  </script>
 
   <!-- SCRIPT FOR THE POPUP FRAME OF SEARCH DETAILS -->
 <script type="text/javascript">
@@ -318,8 +304,12 @@ SCRIPTS
           }
         ?>
 
-        var races = ['White','Black','Hispanic','Asian','ERR','Other'];
+        var judge_races = ['White', 'Black', 'Hispanic', 'Asian', 'Indian'];
+        var races = ['White','Black','Hispanic','Asian','Other','Other'];
         var bail_types = ['None','Surety','Non-Surety'];
+        var ocg_types = ['Other','Mom & Pop','Street Gang','Cartel/Syndicate/Mafia','','Prison Gang'];
+        var ocg_races = ['None','Black','White','Hispanic','Asian','Other'];
+        var ocg_scopes = ['Other','Local Only','Trans-State','Trans-National'];
 
         var table = new google.visualization.Table(document.getElementById('table_div'));
 
@@ -381,10 +371,10 @@ SCRIPTS
                       '</thead>' +
                       '<tbody>' +
                         '<tr>' +
-                          '<td>' + cases[i][16] + '</td>' +
-                          '<td>' + cases[i][17] + '</td>' +
-                          '<td>' + cases[i][18] + '</td>' +
-                          '<td>' + cases[i][19] + '</td>' +
+                          '<td>' + (cases[i][16] == null ? 'Unknown' : cases[i][16]) + '</td>' +
+                          '<td>' + (cases[i][17] == null ? 'Unknown' : cases[i][17]) + '</td>' +
+                          '<td>' + (cases[i][18] == null ? 'Unknown' : cases[i][18]) + '</td>' +
+                          '<td>' + (cases[i][19] == null ? 'Unknown' : cases[i][19]) + '</td>' +
                         '</tr>' +
                       '</tbody>' +
                     '</table>' +
@@ -425,8 +415,8 @@ SCRIPTS
               content += '<tr class="toggle_def' + (!cases[i][20][j][32] ? ' all_results' : '') + '">' +
                           '<td>' + cases[i][20][j][1] + ' ' + cases[i][20][j][0] + '</td>' +
                           '<td>' + (cases[i][20][j][3] ? 'Female' : 'Male') + '</td>' +
-                          '<td>' + cases[i][20][j][5] + '</td>' +
-                          '<td>' + races[cases[i][20][j][4]] + '</td>' +
+                          '<td>' + (cases[i][20][j][5] == '0000' ? 'Unknown' : cases[i][20][j][5]) + '</td>' +
+                          '<td>' + (races[cases[i][20][j][4]] == undefined ? 'Unknown' : races[cases[i][20][j][4]])  + '</td>' +
                         '</tr>' +
                         '<tr class="this_def_info">' +
                           '<td colspan="4">' +
@@ -442,41 +432,10 @@ SCRIPTS
                               '</thead>' +
                               '<tbody>' +
                                 '<tr>' +
-                                  '<td>' + cases[i][20][j][8] + '</td>' +
-                                  '<td>' + cases[i][20][j][7] + '</td>' +
+                                  '<td>' + (cases[i][20][j][8] == '0000-00-00' ? 'N/A' : cases[i][20][j][8]) + '</td>' +
+                                  '<td>' + (cases[i][20][j][7] == '0000-00-00' ? 'N/A' : cases[i][20][j][7]) + '</td>' +
                                   '<td>' + bail_types[cases[i][20][j][10]] + '</td>' +
-                                  '<td>' + cases[i][20][j][11] + '</td>' +
-                                '</tr>' +
-                              '</tbody>' +
-                            '</table>' +
-                          '</td>' +
-                        '</tr>' +
-                        '<tr class="this_def_info">' +
-                          '<td colspan="4">' +
-                            '<table class="modal_table table_col' + (!cases[i][20][j][34] ? 'all_results' : '') + '">'  +
-                              '<caption>Sentence Information</caption>' +
-                              '<thead>' +
-                                '<tr>' +
-                                  '<th>Total Charges</th>' +
-                                  '<th>Total Sentences</th>' +
-                                  '<th>Year Terminated</th>' +
-                                  '<th>Months Sentenced</th>' +
-                                  '<th>Months Probation</th>' +
-                                  '<th>Restitution</th>' +
-                                  '<th>Asset Forfeit?</th>' +
-                                  '<th>Appeal?</th>' +
-                                '</tr>' +
-                              '</thead>' +
-                              '<tbody>' +
-                                '<tr>' +
-                                  '<td>' + cases[i][20][j][13] + '</td>' +
-                                  '<td>' + cases[i][20][j][14] + '</td>' +
-                                  '<td>' + cases[i][20][j][15] + '</td>' +
-                                  '<td>' + cases[i][20][j][17] + '</td>' +
-                                  '<td>' + cases[i][20][j][22] + '</td>' +
-                                  '<td>' + cases[i][20][j][18] + '</td>' +
-                                  '<td>' + cases[i][20][j][19] + '</td>' +
-                                  '<td>' + cases[i][20][j][20] + '</td>' +
+                                  '<td>' + (cases[i][20][j][11] == null ? 'N/A' : cases[i][20][j][11]) + '</td>' +
                                 '</tr>' +
                               '</tbody>' +
                             '</table>' +
@@ -505,51 +464,80 @@ SCRIPTS
               for (var k = 0; k < cases[i][20][j][23].length; k++) {
                 content +=  '<tr' + (!cases[i][20][j][23][k][10] ? ' class="all_results"' : '') + '>' +
                               '<td>' + cases[i][20][j][23][k][0] + '</td>' +
-                              '<td>' + cases[i][20][j][23][k][1] + '</td>' +
-                              '<td>' + cases[i][20][j][23][k][2] + '</td>' +
-                              '<td>' + cases[i][20][j][23][k][4] + '</td>' +
-                              '<td>' + cases[i][20][j][23][k][3] + '</td>' +
-                              '<td>' + cases[i][20][j][23][k][5] + '</td>' +
-                              '<td>' + cases[i][20][j][23][k][6] + '</td>' +
-                              '<td>' + cases[i][20][j][23][k][7] + '</td>' +
-                              '<td>' + cases[i][20][j][23][k][8] + '</td>' +
-                              '<td>' + cases[i][20][j][23][k][9] + '</td>' +
+                              '<td>' + (cases[i][20][j][23][k][1] == null ? 'N/A' : cases[i][20][j][23][k][1]) + '</td>' +
+                              '<td>' + (cases[i][20][j][23][k][2] == null ? 'N/A' : cases[i][20][j][23][k][2]) + '</td>' +
+                              '<td>' + (cases[i][20][j][23][k][4] == null ? 'N/A' : cases[i][20][j][23][k][4]) + '</td>' +
+                              '<td>' + (cases[i][20][j][23][k][3] == null ? 'N/A' : cases[i][20][j][23][k][3]) + '</td>' +
+                              '<td>' + (cases[i][20][j][23][k][5] == null ? 'N/A' : cases[i][20][j][23][k][5]) + '</td>' +
+                              '<td>' + (cases[i][20][j][23][k][6] == null ? 'N/A' : cases[i][20][j][23][k][6]) + '</td>' +
+                              '<td>' + (cases[i][20][j][23][k][7] == null ? 'N/A' : cases[i][20][j][23][k][7]) + '</td>' +
+                              '<td>' + (cases[i][20][j][23][k][8] == null ? 'N/A' : cases[i][20][j][23][k][8]) + '</td>' +
+                              '<td>' + (cases[i][20][j][23][k][9] == null ? 'N/A' : cases[i][20][j][23][k][9]) + '</td>' +
                             '</tr>';
               }
 
-              content += '</tbody>' +
-                        '</table>' +
-                      '</td>' +
-                    '</tr>' +
-                    '<tr class="this_def_info">' +
-                      '<td colspan="4">' + 
-                        (display['ocg'] ? '<table class="modal_table table_col">' : '<table class="modal_table table_col all_results">') +
-                          '<caption>Organized Crime Group Information</caption>' +
-                          '<thead>' +
-                            '<tr>' +
-                              '<th>Name</th>' +
-                              '<th>Size</th>' +
-                              '<th>Race</th>' +
-                              '<th>Scope</th>' +
-                            '</tr>' +
-                          '</thead>' +
-                          '<tbody>' +
-                            '<tr>' +
-                              '<td>' + cases[i][20][j][24] + '</td>' + 
-                              '<td>' + cases[i][20][j][25] + '</td>' + 
-                              '<td>' + cases[i][20][j][26] + '</td>' + 
-                              '<td>' + cases[i][20][j][27] + '</td>' +
-                            '</tr>' +
-                            '<tr>' +
-                              '<td>' + cases[i][20][j][28] + '</td>' + 
-                              '<td>' + cases[i][20][j][29] + '</td>' + 
-                              '<td>' + cases[i][20][j][30] + '</td>' + 
-                              '<td>' + cases[i][20][j][31] + '</td>' +
-                            '</tr>' +
-                          '</tbody>' +
-                        '</table>' +
-                      '</td>' +
-                    '</tr>';
+              content += '</tbody></table></td></tr>' +
+                         '<tr class="this_def_info">' +
+                          '<td colspan="4">' +
+                            '<table class="modal_table table_col' + (!cases[i][20][j][34] ? 'all_results' : '') + '">'  +
+                              '<caption>Sentence Information</caption>' +
+                              '<thead>' +
+                                '<tr>' +
+                                  '<th>Total Charges</th>' +
+                                  '<th>Total Sentences</th>' +
+                                  '<th>Year Terminated</th>' +
+                                  '<th>Months Sentenced</th>' +
+                                  '<th>Months Probation</th>' +
+                                  '<th>Restitution</th>' +
+                                  '<th>Asset Forfeiture?</th>' +
+                                  '<th>Appeal?</th>' +
+                                '</tr>' +
+                              '</thead>' +
+                              '<tbody>' +
+                                '<tr>' +
+                                  '<td>' + (cases[i][20][j][13] == null ? 'N/A' : cases[i][20][j][13]) + '</td>' +
+                                  '<td>' + (cases[i][20][j][14] == null ? 'N/A' : cases[i][20][j][14]) + '</td>' +
+                                  '<td>' + (cases[i][20][j][15] == '0000' ? 'N/A' : cases[i][20][j][15]) + '</td>' +
+                                  '<td>' + (cases[i][20][j][17] == null ? 'N/A' : cases[i][20][j][17]) + '</td>' +
+                                  '<td>' + (cases[i][20][j][22] == null ? 'N/A' : cases[i][20][j][22]) + '</td>' +
+                                  '<td>' + (cases[i][20][j][18] == null ? 'N/A' : '$' + cases[i][20][j][18]) + '</td>' +
+                                  '<td>' + (cases[i][20][j][19] ? 'Yes' : 'No') + '</td>' +
+                                  '<td>' + (cases[i][20][j][20] ? 'Yes' : 'No') + '</td>' +
+                                '</tr>' +
+                              '</tbody>' +
+                            '</table>' +
+                          '</td>' +
+                        '</tr>' +
+                '</tr>' +
+                '<tr class="this_def_info">' +
+                  '<td colspan="4">' + 
+                    (display['ocg'] ? '<table class="modal_table table_col">' : '<table class="modal_table table_col all_results">') +
+                      '<caption>Organized Crime Group Information</caption>' +
+                      '<thead>' +
+                        '<tr>' +
+                          '<th>Name</th>' +
+                          '<th>Size</th>' +
+                          '<th>Race</th>' +
+                          '<th>Scope</th>' +
+                        '</tr>' +
+                      '</thead>' +
+                      '<tbody>' +
+                        '<tr>' +
+                          '<td>' + (cases[i][20][j][24] == '' ? 'None' : cases[i][20][j][24]) + '</td>' + 
+                          '<td>' + (ocg_types[cases[i][20][j][25]] == undefined ? '' : ocg_types[cases[i][20][j][25]]) + '</td>' + 
+                          '<td>' + (ocg_types[cases[i][20][j][26]] == undefined ? '' : ocg_types[cases[i][20][j][26]]) + '</td>' + 
+                          '<td>' + (ocg_types[cases[i][20][j][27]] == undefined ? '' : ocg_types[cases[i][20][j][27]]) + '</td>' +
+                        '</tr>' +
+                        '<tr>' +
+                          '<td>' + (cases[i][20][j][28] == '' ? 'None' : cases[i][20][j][28]) + '</td>' + 
+                          '<td>' + (ocg_types[cases[i][20][j][29]] == undefined ? '' : ocg_types[cases[i][20][j][29]]) + '</td>' + 
+                          '<td>' + (ocg_types[cases[i][20][j][30]] == undefined ? '' : ocg_types[cases[i][20][j][30]]) + '</td>' + 
+                          '<td>' + (ocg_types[cases[i][20][j][31]] == undefined ? '' : ocg_types[cases[i][20][j][31]]) + '</td>' +
+                        '</tr>' +
+                      '</tbody>' +
+                    '</table>' +
+                  '</td>' +
+                '</tr>';
             }
 
             content += '</table></div>';
@@ -569,11 +557,14 @@ SCRIPTS
             });
             //End of Function to Filter Results
 
-            //Funtion to toggle Defendant Informatio
+            //Funtion to toggle Defendant Information
             $('.this_def_info').hide();
             $('.toggle_def').click(function(){
-              $(this).nextUntil('.toggle_def').toggle('slow');
+            $(this).nextUntil('.toggle_def').toggle('slow');
+            $(this).toggleClass('clicked', 'slow');
             });
+            //End of funtion to toggle Defendant Information
+
           }
 
         });
@@ -586,7 +577,6 @@ SCRIPTS
 
 <!-- Auto Complete Script -->
 <script>
-  $(function() {
     function split( val ) {
       return val.split( /,\s*/ );
     }
@@ -595,28 +585,27 @@ SCRIPTS
     }
     $( "#DataInProgressCaseName" ) //Case Name Field
       .autocomplete({
-        source: "/JudgeFrog/jdgfrog/autoComplete.php?column=CaseNam" ,
+        source: "autoComplete.php?column=CaseNam" ,
         minLength: 1
       });
     $( "#DataInProgressCaseNumber" ) //Case Number Field
       .autocomplete({
-        source: "/JudgeFrog/jdgfrog/autoComplete.php?column=CaseNum" ,
+        source: "autoComplete.php?column=CaseNum" ,
         minLength: 1
       });
     $( "#DataInProgressDefendantName" ) //Def Name Field
       .autocomplete({
-        source: "/JudgeFrog/jdgfrog/autoComplete.php?column=DefFirst,DefLast" ,
+        source: "autoComplete.php?column=DefFirst,DefLast" ,
         minLength: 1
       });
     $( "#DataInProgressJudgeName" ) //Judge Name Field
       .autocomplete({
-        source: "/JudgeFrog/jdgfrog/autoComplete.php?column=JudgeName" ,
+        source: "autoComplete.php?column=JudgeName" ,
         minLength: 1
       });
     $( "#DataInProgressOcgName" ) //Ocg Name Field
       .autocomplete({
-        source: "/JudgeFrog/jdgfrog/autoComplete.php?column=OCName1" ,
+        source: "autoComplete.php?column=OCName1" ,
         minLength: 1
       });
-  });
   </script>

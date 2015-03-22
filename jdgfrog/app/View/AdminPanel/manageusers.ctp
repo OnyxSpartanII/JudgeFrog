@@ -58,11 +58,11 @@
 			            <div style="padding-bottom:74px; margin-top:-450px; margin-left:50px; text-align:center;">  	
 			              	<?php
 			                  echo "<br><br>";
-			                  echo $this->Form->input('First Name', array('placeholder' => 'John', 'id' => 'personal_field', 'onfocus' => 'check()'));
+			                  echo $this->Form->input('First Name', array('placeholder' => 'John', 'id' => 'personal_field'));
 			                  echo "<br>";
-			                  echo $this->Form->input('Last Name', array('placeholder' => 'Doe', 'id' => 'personal_field', 'onfocus' => 'check()'));
+			                  echo $this->Form->input('Last Name', array('placeholder' => 'Doe', 'id' => 'personal_field'));
 			                  echo "<br>";
-			                  echo $this->Form->input('Phone Number', array('placeholder' => '###-###-####', 'type' => 'text', 'id' => 'personal_field', 'onfocus' => 'check()'));
+			                  echo $this->Form->input('Phone Number', array('placeholder' => '###-###-####', 'type' => 'text', 'id' => 'personal_field'));
 			                  echo "<br><br>";
 			                ?>
 		                </div>
@@ -96,6 +96,7 @@
 
 
 <script>
+
 	if ($("#login_field").focus(function() {
 	   		$(".login_details").css({"border-left": "7px solid #999"});
 	   		$(".personal_details").css({"border-left": "none"});
@@ -104,7 +105,6 @@
 	   		$(".personal_details").css({"border-left": "7px solid #4D1979"});
 	   		$(".login_details").css({"border-left": "none"});
 		}));
-
 </script>
 
 

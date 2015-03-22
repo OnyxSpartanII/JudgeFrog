@@ -3,22 +3,37 @@
 /*--------------------------------------*/
 
 html, body{
+	/*font-family: 'Open Sans', sans-serif;*/
+	/*font-family: "HelveticaNeue-Light","Helvetica Neue Light", "Helvetica Neue","Lucida Grande",sans-serif;*/
 	font-family:"Myriad Set Pro","Lucida Grande","Helvetica Neue",Helvetica,Arial,Verdana,sans-serif;
 	background:#fff; 
 	margin:0px;
 	padding:0px;
 }
+/*--header style start here--*/
+/*.header{
+		background-color: #444;
+	   background:url(../images/banner.jpg)no-repeat;
+	   background-size:cover;
+	   min-height:580px;
+}*/
 .header-b{
+	/*background-color: #6495ED;*/
+	/*opacity: 0.8;*/
+	/* background: url(../images/banner.jpg)no-repeat; */
 	background-size: cover;
 	min-height: 90px;
 	-webkit-box-shadow: 0 2px #d7d7d7;
 	-moz-box-shadow: 0 2px #d7d7d7;
 	box-shadow: 0 2px 20px 1px #d7d7d7;
+	/*border-bottom: 3px solid #666;*/
+
+	/*background-color: #dcdcdc;*/
 }
 .logo{
 	float:left;
 	text-align:center;
-	margin-top: -1em; 
+	margin-top: 5px; 
 }
 .logo a{
 	color: #666;

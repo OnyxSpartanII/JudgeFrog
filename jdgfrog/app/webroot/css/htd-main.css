@@ -28,7 +28,7 @@ html, body{
 .logo{
 	float:left;
 	text-align:center;
-	margin-top: -1em; 
+	margin-top: 5px; 
 }
 .logo a{
 	color: #666;

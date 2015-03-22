@@ -29,7 +29,9 @@
 	Router::connect('/login', array('controller' => 'users', 'action' => 'login'));
 	Router::connect('/create', array('controller' => 'users', 'action' => 'create'));
 	Router::connect('/logout', array('controller' => 'users', 'action' => 'logout'));
-
+	
+	Router::connect('/CaseSessions/create_case/:step', array('controller' => 'CaseSessions', 'action' => 'createCase'), array('pass' => array('step')) );
+	Router::connect('/cases/create_case/:step', array('controller' => 'CaseSessions', 'action' => 'createCase'), array('pass' => array('step')) );
 	Router::connect('/index', array('controller' => 'AdminPanel', 'action' => 'index'));
 	Router::connect('/create_case', array('controller' => 'AdminPanel', 'action' => 'create_case'));
 	Router::connect('/edit', array('controller' => 'AdminPanel', 'action' => 'edit'));
@@ -43,7 +45,7 @@
 	Router::connect('/analyze', array('controller' => 'pages', 'action' => 'analyze'));
 	Router::connect('/contact', array('controller' => 'pages', 'action' => 'contact'));
 	Router::connect('/additionalResources', array('controller' => 'pages', 'action' => 'additionalResources'));
-	Router::connect('/panel', array('controller' => 'AdminPanel', 'action' => 'panel'));
+
 
 	Router::connect('/uploads', array('controller' => 'uploads', 'action' => 'add'));
 	Router::connect('/download', array('controller' => 'download', 'action' => 'download'));
@@ -51,6 +53,7 @@
 /**
  * ...and connect the rest of 'Pages' controller's URLs.
  */
+	//Router::connect('/*', array('controller' => 'pages', 'action' => 'display'));
 	// Router::connect('/*', array('controller' => 'pages', 'action' => 'display'));
 
 /**

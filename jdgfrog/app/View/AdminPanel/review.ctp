@@ -1,3 +1,4 @@
+<?php $this->layout = 'admin_panel_layout';?>
 <!--search start here-->
 <div class="contact">
     <div class="container">
@@ -46,10 +47,3 @@
               <p><strong>Note: </strong>Not every combination of analyzable objects will return meaningful results.</p>
             </div>
 </div>
-
-
-
-
-
-
-

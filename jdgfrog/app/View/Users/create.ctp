@@ -1,6 +1,6 @@
 <?php
     $this->layout = 'admin_panel_layout';
-    $this->set('title', 'Create - Admin Panel | Human Trafficking Data');
+    $this->set('title', 'Manage Users - Admin Panel | Human Trafficking Data');
     $this->set('active', 'create');
 ?>
 <!--search start here-->

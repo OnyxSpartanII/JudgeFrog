@@ -2,12 +2,12 @@
 <div class="contact">
     <div class="container">
         <div class="contact-main">
-          <h3 class="page_title">Create Case | By Insertion</h3>
-              <div class="col-md-4 contact-right">
+          <h3 class="page_title">Single Case Creation</h3>
+              <div class="col-md-3 contact-right">
                 <!-- TOP CREATE A NEW USER BAR -->
-                  <div class="top_bar col-md-4">
+                  <div class="top_bar col-md-3">
                     <div class="top_bar_left">
-                      <h4>INFORMATION PROGRESS</h4>
+                      <h4>PROGRESS</h4>
                     </div>
                       <!-- CREATE BUTTON-->
                       <div title="Click here to add this user." style="margin-top: 19px;">
@@ -23,9 +23,9 @@
                   </div>
                 </div>
               </div> 
-                <div class="col-md-8 contact-right">
+                <div class="col-md-9 contact-right">
                   <!-- TOP DELETE SELECTED USER BAR -->
-                    <div class="top_bar col-md-8">
+                    <div class="top_bar col-md-9">
                       <div class="top_bar_left">
                         <h4>CASE CREATION DASHBOARD</h4>
                       </div>
@@ -46,20 +46,11 @@
 
 
           <div class="contact helpful_section" style="margin:100px auto"></div>
-            <div class="col-md-12">
+            <div class="contact-main col-md-12">
               <h3 class="page_title">Batch Upload | Dataset Download</h3>
-                <div class="more_info" >
-                    <div class="col-md-5 job-left help hvr-float-shadow" style="font-weight:normal; background-color:#4D1979; color:#fff; margin-right:10px; margin-bottom:10px;">
-                      <h4 >Need Help? | Want to Report a Case?</h4>
-                        <strong>The National Institute:</strong>
-                    </div>
-                    <div class="col-md-5 job-left more hvr-float-shadow" style="font-weight:normal; background-color:#999; color:#fff;">
-                        <h4>More Facts About Human Trafficking</h4>
-                    <!-- <iframe class="myIframe" width="100%" src="//www.youtube.com/embed/J4ztDU-yr74?showinfo=0&autohide=1&loop=1&playlist=J4ztDU-yr74" frameborder="0" allowfullscreen></iframe> -->
-                    </div>
-                 </div>
+               
              </div>
             <div class="search_disclaim" style="margin-top:200px">
-              <p><strong>Note: </strong>Not every combination of analyzable objects will return meaningful results.</p>
+              <p><strong>Note: </strong>Only upload files in the exel format. | Download format is CSV</p>
             </div>
 </div>

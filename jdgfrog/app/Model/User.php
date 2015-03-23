@@ -63,6 +63,21 @@ class User extends AppModel {
 
 		),
 
+	'firstname' => array(
+				'required' => array(
+					'rule' => array('notEmpty'),
+					'message' => 'Please enter a first name'
+					)
+
+		),
+	'lastname' => array(
+				'required' => array(
+					'rule' => array('notEmpty'),
+					'message' => 'Please enter a last name'
+					)
+
+		),
+
 	'email' => array(
 				'required' => array(
 					'rule' => 'notEmpty',

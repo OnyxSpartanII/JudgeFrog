@@ -2,7 +2,7 @@
 /*CUSTOM STYLES*/
 /*-------------*/
 .user_button{
-    margin-top: -9px;
+    margin-top: -28px;
     padding-left: 10px;
     background-color: #fff;
     float: right;
@@ -90,7 +90,31 @@ line-height: 1.3em;
 .publish_button:active{
     margin-bottom: 10px;
 }
+.error-message{
+/*    padding: 20px;
+    border-top: 1px dotted #999;
+    font-size: 15px;*/
+    color: #fe2232;
+}
 
-
+/*--media styles--*/
+@media(max-width:992px){
+    .user_info {
+       margin-top: 50px; 
+    }
+}
+@media(max-width:550px){
+    .top_bar_dash h4, .top_bar_left h4 {
+        text-align: left;
+        font-size: 15px;
+        margin-top: 3px;
+    }
+}
+@media(max-width:400px){
+    .top_bar_dash h4, .top_bar_left h4 {
+        font-size: 11px;
+        margin-top: 8px;
+    }
+}
 
 

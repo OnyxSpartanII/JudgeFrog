@@ -11,7 +11,7 @@
                       <h4>INFORMATION PROGRESS</h4>
                     </div>
                       <!-- CREATE BUTTON-->
-                      <div title="Click here to add this user.">
+                      <div title="Click here to add this user." style="margin-top: 19px;">
                         <label for="" class="user_button">
                           <?php echo $this->Html->image('create_user.png', array('alt' => 'Create', 'style' => 'float:left; padding: 10px 7px 10px 7px;' )); ?>
                         </label>
@@ -31,7 +31,7 @@
                         <h4>CASE CREATION DASHBOARD</h4>
                       </div>
                         <!-- DELETE BUTTON-->
-                        <div title="Click here to delete the selected user.">
+                        <div title="Click here to delete the selected user." style="margin-top: 19px;">
                           <label for="" class="user_button" >
                             <?php echo $this->Html->image('delete_user.png', array('alt' => 'Create', 'style' => 'float:left; padding: 10px 7px 10px 7px;' )); ?>
                           </label>

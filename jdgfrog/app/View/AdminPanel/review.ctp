@@ -10,8 +10,8 @@
                     <div class="top_bar_left">
                       <h4>PENDING CASE(S)</h4>
                     </div>
-                      <!-- CREATE BUTTON-->
-                      <div title="Click here to add this user.">
+                      <!-- PENDING BUTTON-->
+                      <div title="Click here to add review the selected case." style="margin-top: 19px;">
                         <label for="" class="user_button">
                           <?php echo $this->Html->image('review.png', array('alt' => 'Create', 'style' => 'float:left; padding: 10px 7px 10px 2px;' )); ?>
                         </label>
@@ -30,9 +30,9 @@
                         <h4>CASE REVIEW DASHBOARD</h4>
                       </div>
                         <!-- DELETE BUTTON-->
-                        <div title="Click here to delete the selected user.">
-                          <label for="" class="user_button" style="padding: 12px 13px 13px 13px; margin-top: -29px;">
-                            <?php echo $this->Html->image('send.png', array('alt' => 'Publish', 'style' => '' )); ?>
+                        <div title="Click here to delete the selected user." style="padding: 0px 0px 0px 0px;">
+                          <label for="" class="user_button">
+                            <?php echo $this->Html->image('send.png', array('alt' => 'Publish', 'style' => 'padding: 10px 13px 10px 3px;' )); ?>
                           </label>
                         </div>
                     </div>

@@ -77,7 +77,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 					<div class="header-navg">
 						<ul class="res">
 							<li><a class="<?php echo ($this->fetch('active') == 'index') ? 'active' : ''; ?>" <?php echo $this->Html->link('Home', '/AdminPanel/index'); ?></li>
-							<li><a class="<?php echo ($this->fetch('active') == 'create_case') ? 'active' : ''; ?>" <?php echo $this->Html->link('Create', '/AdminPanel/create_case'); ?></li>
+							<li><a class="<?php echo ($this->fetch('active') == 'create') ? 'active' : ''; ?>" <?php echo $this->Html->link('Create', '/Users/create'); ?></li>
 							<li><a class="<?php echo ($this->fetch('active') == 'edit') ? 'active' : ''; ?>" <?php echo $this->Html->link('Edit', '/AdminPanel/edit'); ?></li>
 							<li><a class="<?php echo ($this->fetch('active') == 'review') ? 'active' : ''; ?>" <?php echo $this->Html->link('Review', '/AdminPanel/review'); ?></li>
 							<li><a class="<?php echo ($this->fetch('active') == 'manageusers') ? 'active' : ''; ?>" <?php echo $this->Html->link('Manage Users', '/AdminPanel/manageusers'); ?></li>

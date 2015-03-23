@@ -11,9 +11,9 @@
                       <h4>ANALYZE BY</h4>
                     </div>
                       <!-- ANALYZE BUTTON-->
-                      <div class="analyze_button" title="Click here to display data using the selected chart/graph.">
+                      <div class="analyze_button" title="Click here to display data using the selected chart/graph." style="float:right; padding: 10px 14px 10px 14px;">
                         <label for="" id="applyButton">
-                          <?php echo $this->Html->image('analyze.png', array('alt' => 'Submit', 'style' => 'float:left; padding: 10px 17px 10px 7px;' )); ?>
+                          <?php echo $this->Html->image('analyze.png', array('alt' => 'Submit', 'style' => '' )); ?>
                         </label>
                       </div>
                   </div>
@@ -58,7 +58,7 @@
                           <h4>ANALYSIS DASHBOARD</h4>
                         </div>
                       </div>
-                      <div id="chart" class="col-md-9" style="width:100%">
+                      <div id="chart" class="col-md-9" style="width:100%;">
                       </div>
               </div>
           </div>

@@ -1,41 +1,15 @@
- <?php
-/**
- *
- *
- * @link					http://cakephp.org CakePHP(tm) Project
- * @package			 app.View.Pages
- * @since				 CakePHP(tm) v 0.10.0.1076
- */
-
-if (!Configure::read('debug')):
-	throw new NotFoundException();
-endif;
-
-App::uses('Debugger', 'Utility');
+<?php
+    $this->layout = 'default';
+    $this->set('title', 'Create - Admin Panel | Human Trafficking Data');
+    $this->set('active', 'create');
+	echo $this->Html->css(array('login'));
 ?>
-
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-	<head>
-		<title>Login | Admin Control Panel - HTD</title>
-		<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'/>
-		<?php echo $this->Html->css(array('login')); ?>
-	</head>
-
-	<body>
-		<div id="wrap">
-			<div id="header">
-				<h1><?php echo $this->Html->link('Human Trafficking Data', '/home')?></h1>
-			</div>
-
-
-			<div id="content">
+		<div class="container">
+			<div class="col-md-4 wrap">
 				<?php echo $this->Form->create('User'); ?>
-					<h1>User Login</h1>
-
+					<h1>Admin Panel Login</h1>
 					<div class="inset">
 						<?php echo $this->Session->flash('auth'); ?>
-						
 						<p>
 							<?php echo $this->Form->input('username');?>
 						</p>
@@ -43,17 +17,41 @@ App::uses('Debugger', 'Utility');
 							<?php echo $this->Form->input('password');?>
 						</p>
 					</div>
-
-					<?php echo $this->Form->end(__('Login')); ?>
-				</form>
+					<div class="submit_btn">
+						<?php echo $this->Form->end(__('Login')); ?>
+					</div>
 			</div>
-
-			<div id="footer">
-				<p>Admin Control Panel HTD V 0.1 | <a target="_blank" href="http://humantraffickingdata.org" title="Human Trafficking Data Website">Human Trafficking Data</a>
-				</p>
-			</div>
-
 		</div>
 
-	</body>
-</html>
+<!-- ERROR BANNER AND ANIMATION-->
+<style type="text/css">
+  #flashMessage, #authMessage{
+  padding: 10px;
+  font-size: 30px;
+  color: #FFF;
+  -webkit-animation: fadeIn 1.5s ease-in-out;
+  -moz-transition: fadeIn 1.5s ease-in-out;
+  animation: fadeIn 1.5s ease-in-out;
+  border-bottom: 1px solid #999;
+  background-color: #FE2232;
+  }
+</style>
+<script type="text/javascript">
+    var $welcom = $("#flashMessage");
+    var $notAutho = $("#authMessage");
+    if ($welcom.is(':visible') == true) {
+		$('form').css('-webkit-animation','shake 0.8s ease-in-out');
+		$('form label').css('color','#FE2232');
+	};
+    setTimeout(function() {
+        $welcom.slideUp(800).delay(200).fadeOut(400);
+    }, 5000);
+
+    if ($notAutho.is(':visible') == true) {
+		$('form').css('-webkit-animation','shake 0.8s ease-in-out');
+	};
+    setTimeout(function() {
+        $notAutho.slideUp(800).delay(200).fadeOut(400);
+    }, 5000);
+</script>
+

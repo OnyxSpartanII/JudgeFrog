@@ -1,4 +1,3 @@
-<?php $this->layout = 'admin_panel_layout';?>
 <!--search start here-->
 <div class="contact">
     <div class="container">

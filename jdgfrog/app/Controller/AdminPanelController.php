@@ -14,8 +14,7 @@ class AdminPanelController extends AppController {
 	public function beforeFilter() {
 		//inspect user permissions here.
 		parent::beforeFilter();
-		$this->Auth->allow('createCase', 'createCaseSetup', 'saveSession', 'saveStep', 'index', 'create_case');
-		$this->Auth->allow('index', 'create_case', 'edit', 'review', 'manageusers');
+		$this->Auth->allow('createCase', 'createCaseSetup', 'saveSession', 'saveStep');
 
 	}
 

@@ -19,7 +19,7 @@
 /*MODAL WINDOW CONTAINER*/
 #simplemodal-container {
 	height:auto; 
-	min-height:600px; 
+	height:600px; 
 	width:900px; 
 	color:#444; 
 	background-color:#fff; 
@@ -80,7 +80,7 @@
 	    -o-transition: all 0.3s ease-in-out;
 	}
 	.modal_download:active {
-		margin-top: 10px;
+		margin-top: 8px;
 	}
 .case_info h4{
 	color: #777;
@@ -278,4 +278,46 @@
 }
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
     right: 0px; 
+}
+
+
+@media only screen and (max-width:950px) {
+#basic-modal-content {
+	display:none;
+}
+/*MODAL WINDOW CONTAINER*/
+#simplemodal-container {
+	margin: 0 200px; 
+    min-height:200px; 
+    width:90%; 
+    color:#444; 
+    background-color:#fff; 
+    padding:0px 0px 15px 0px;
+    text-align: center;
+    border: 1px solid #444;
+    box-shadow: 3px 10px 50px 5px #444;
+    /*Anitmation at opening*/
+    -webkit-animation: fadeIn 0.8s ease-in-out;  /*Chrome, Safari, Opera*/
+    -moz-transition: fadeIn 0.8s ease-in-out;
+    animation: fadeIn 0.8s ease-in-out;
+}
+/*MODAL WINDOW FIXED HEADER*/
+.modal_header{
+	width: 90%;
+	height: 10%;
+	position: fixed;
+	padding-top: 50px;
+	padding: 10px;
+	background-color: #444;
+	opacity: 0.85;
+	border-bottom: 1px solid rgba(75,75,75,0.4);
+	box-shadow: 0px 5px 50px 1px #444;
+}
+.onoffswitch {
+	margin-top: -50px;
+}
+.modal_download {
+	margin-top: -50px;
+}
+	
 }

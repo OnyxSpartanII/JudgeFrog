@@ -45,7 +45,7 @@
                               echo "<br>";
                               echo $this->Form->input('lastname', array('label' => 'Last Name*', 'placeholder' => 'Doe', 'id' => 'personal_field'));
                               echo "<br>";
-                              echo $this->Form->input('role', array('label' => 'Credential Level*', 'options' => array('admin' => 'Administrator (RA)', 'author' => 'Author (Scholar)')));
+                              echo $this->Form->input('role', array('label' => 'Credential Level*', 'id' => 'personal_field', 'options' => array('admin' => 'Administrator (RA)', 'author' => 'Author (Scholar)')));
                               echo "<br>";
 
                             ?>

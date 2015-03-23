@@ -18,7 +18,7 @@
     -o-transition: all 0.3s ease-in;
 }
 .user_button:active {
-    margin-top: 10px;
+    margin-top: 8px;
 }
 .login_details h1 {
 background-color: #4D1979; color: #FFF;
@@ -88,13 +88,13 @@ line-height: 1.3em;
     -o-transition: all 0.3s ease-in;
 }
 .publish_button:active{
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 .error-message{
-/*    padding: 20px;
     border-top: 1px dotted #999;
-    font-size: 15px;*/
-    color: #fe2232;
+    font-size: 15px;
+    background-color: #FE2232;
+    color: #FFF;
 }
 
 /*--media styles--*/

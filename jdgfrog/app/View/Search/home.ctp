@@ -177,16 +177,24 @@
                   <div class="top_bar col-md-9">
                     <div class="top_bar_dash">
                       <h4>SEARCH DASHBOARD</h4>
+                      <!-- CLEAR FIELDS BUTTON -->
+                      <div class="ana_button" title="Click here clear all the fields." style="float:left">
+                        <label for="">
+                          <?php echo $this->Html->link(
+                              $this->Html->image("clear.png", array("alt" => "Clear Fields")),
+                              "/search", array('escape' => false)); ?>
+                        </label>
+                      </div>
+                      <!-- ANALYZE BUTTON -->
                       <div class="ana_button" title="Click here to go to the analysis page and perform analysis.">
-                      <label for="analyze_form">
-                        <?php
-                          echo $this->Html->link(
+                        <label for="" id="applyButton">
+                          <?php echo $this->Html->link(
                               $this->Html->image("analyze.png", array("alt" => "Anaylze")),
-                              "/analyze",
-                              array('escape' => false));
-                        ?>
-                      </label>
-            </div>
+                              "/analyze", array('escape' => false)); ?>
+                        </label>
+                      </div>
+
+
                     </div>
                   </div>
                   <div id="table_div" class="col-md-9" colspan="5" style="width:100%"></div>

@@ -77,17 +77,18 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 					<div class="header-navg">
 						<ul class="res">
 							<li><a class="<?php echo ($this->fetch('active') == 'index') ? 'active' : ''; ?>" <?php echo $this->Html->link('Home', '/AdminPanel/index'); ?></li>
-							<li><a class="<?php echo ($this->fetch('active') == 'create') ? 'active' : ''; ?>" <?php echo $this->Html->link('Create', '/Users/create'); ?></li>
+							<li><a class="<?php echo ($this->fetch('active') == 'create_case') ? 'active' : ''; ?>" <?php echo $this->Html->link('Create', '/AdminPanel/create_case'); ?></li>
 							<li><a class="<?php echo ($this->fetch('active') == 'edit') ? 'active' : ''; ?>" <?php echo $this->Html->link('Edit', '/AdminPanel/edit'); ?></li>
 							<li><a class="<?php echo ($this->fetch('active') == 'review') ? 'active' : ''; ?>" <?php echo $this->Html->link('Review', '/AdminPanel/review'); ?></li>
-							<li><a class="<?php echo ($this->fetch('active') == 'manageusers') ? 'active' : ''; ?>" <?php echo $this->Html->link('Manage Users', '/AdminPanel/manageusers'); ?></li>
+							<li><a class="<?php echo ($this->fetch('active') == 'create') ? 'active' : ''; ?>" <?php echo $this->Html->link('Manage Users', '/Users/create'); ?></li>
 							<div class="menu_separator"><li style="font-size:18px; font-weight:400; opacity:0.8; color:#444;">|</li></div>
 							<li>
-								<a href="#"> 
-									<?php if (AuthComponent::user('id')): ?>
-								 		Logged in as <?= AuthComponent::user('username') ?>
-								 	<?php endif; ?> 
-							 	</a>
+								<?php if (AuthComponent::user('id')): ?>
+								<?
+									$out = "Logout ";
+									echo $this->Html->link($out . AuthComponent::user('username'), '/logout'
+								); ?>
+								<?php endif; ?> 
 						 	</li>
 						</ul>
 						<script>

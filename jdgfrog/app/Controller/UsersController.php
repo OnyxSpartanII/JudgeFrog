@@ -129,7 +129,9 @@ class UsersController extends AppController {
 			if ($this->Auth->login())
 			{
 				$this->Session->setFlash(__('Welcome, ' . $this->Auth->user('username')));
-				$this->redirect($this->Auth->redirectUrl());
+				// $this->redirect($this->Auth->redirectUrl());
+				$this->redirect(array('controller' => 'AdminPanel', 'action' => 'index'));
+
 			}
 			else 
 			{
@@ -153,13 +155,13 @@ class UsersController extends AppController {
 			//Save only the listed fields in the model to the database.
 			if ($this->User->save($this->request->data, array('username', 'role', 'created', 'modified', 'password_hash'))) 
 			{
-				$this->Session->setFlash(__('User created.'));
-				echo '<script language="javascript">';
-				echo 'alert("User Created Successfully!")';
-				echo '</script>';
-				// return $this->redirect(array('controller' => 'pages', 'action' => 'home'));
+				$this->Session->setFlash(__('User Created Successfully!'));
+				// echo '<script language="javascript">';
+				// echo 'alert("User Created Successfully!")';
+				// echo '</script>';
+				return $this->redirect(array('controller' => 'users', 'action' => 'create'));
 			}
-			$this->Session->setFlash(__('User could not be created.'));
+			$this->Session->setFlash(__('Sorry the user could not be created!'));
 			$this->Session->setFlash(__(print_r($this->request->data)));
 		}
 	}

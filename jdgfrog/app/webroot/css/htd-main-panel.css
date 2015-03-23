@@ -126,6 +126,17 @@ span.menu{
 	margin: 0em 0em 1em 0em;
 }
 
+form [type="text"]:hover,
+form [type="password"]:hover,
+form [type="text"]:focus,
+form [type="password"]:focus,
+form input:hover,form input:focus{
+    border-left: 7px solid #4D1979;
+    -webkit-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+} 
 input[type="checkbox"] {
     cursor: pointer;
 }
@@ -884,7 +895,7 @@ p.m_6 {
 	 -o-transition: all 0.3s ease-in-out;
 }
 .text input[type="submit"]:active {
-    margin-top: 10px;
+    margin-top: 8px;
 }
  ul.imagesprit li a span{
 	    background:url(../images/ftr-icons.png)no-repeat;

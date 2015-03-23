@@ -50,7 +50,7 @@
                               echo "<br>";
                               echo $this->Form->input('lastname', array('label' => 'Last Name*', 'placeholder' => 'Doe', 'id' => 'personal_field'));
                               echo "<br>";
-                              echo $this->Form->input('role', array('label' => 'Credential Level*', 'options' => array('admin' => 'Administrator (RA)', 'author' => 'Author (Scholar)')));
+                              echo $this->Form->input('role', array('label' => 'Privilege Level*', 'id' => 'personal_field', 'options' => array('admin' => 'Administrator (RA)', 'author' => 'Author (Scholar)')));
                               echo "<br>";
 
                             ?>
@@ -111,12 +111,12 @@
           </div>
         </div>
             <div class="search_disclaim" style="margin-top:50px">
-              <p><strong>Note: </strong>Once a user is created, this user's info cannot be modified | <strong>*Required Fields</strong></p>
+              <p><strong>Note: </strong>Once a user is created, this user's info cannot be modified <strong>| *Required Fields</strong></p>
             </div>
 </div>
 
-
-<STYLE>
+<!-- TABLE AND TABLE SELECTION SCRIPT -->
+<style type="text/css">
 table{width:100%;border:1px solid #999;border-collapse:collapse;}
 #selectall, .case{padding: 0px 10px 0px 0px;}
 th{background-color:#999;color:#fff;
@@ -125,7 +125,7 @@ th{background-color:#999;color:#fff;
     text-align: center;}
 td{text-align: center;
     min-width: 20px;}
-</STYLE>
+</style>
 <script language="javascript">
 $(function(){$("#selectall").click(function(){
     $('.case').attr('checked',this.checked);});
@@ -148,6 +148,33 @@ $(function(){$("#selectall").click(function(){
         }));
 </script>
 
+
+<!-- WELCOME BANNER -->
+<style type="text/css">
+  #flashMessage{
+  padding: 40px;
+  font-size: 30px;
+  color: #FFF;
+  -webkit-animation: fadeInDown 1.3s ease-in-out;
+  -moz-transition: fadeInDown 1.3s ease-in-out;
+  animation: fadeInDown 1.3s ease-in-out;
+  border-bottom: 1px solid #999;
+  background-color: #00BFFF;
+  }
+</style>
+<script type="text/javascript">
+    var $welcom = $("#flashMessage");
+    setTimeout(function() {
+        // $welcom.hide('slow', slideUp);
+        $welcom.slideUp(800).delay(900).fadeOut(900);
+    }, 4000);
+
+    var $error_msg = $(".error-message");
+    setTimeout(function() {
+        // $welcom.hide('slow', slideUp);
+        $error_msg.slideUp(800).delay(900).fadeOut(900);
+    }, 5000);
+</script>
 
 
 

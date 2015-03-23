@@ -127,3 +127,25 @@
       </div>
 </div>
 
+<!-- WELCOME BANNER -->
+<style type="text/css">
+  #flashMessage{
+  padding: 40px;
+  font-size: 30px;
+  color: #4D1979;
+  -webkit-animation: fadeInDown 1.3s ease-in-out;
+  -moz-transition: fadeInDown 1.3s ease-in-out;
+  animation: fadeInDown 1.3s ease-in-out;
+  border-bottom: 1px solid #999;
+  background-color: #DCDCDC;
+  }
+</style>
+<script type="text/javascript">
+    var $welcom = $("#flashMessage");
+    setTimeout(function() {
+        // $welcom.hide('slow', slideUp);
+        $welcom.slideUp(800).delay(900).fadeOut(900);
+    }, 4000);
+</script>
+
+

@@ -46,7 +46,7 @@ class AppController extends Controller {
 	public function beforeFilter() {
 
 		//Maybe move page method names into beforeFilter in PagesController?
-		$this->Auth->allow('login', 'index', 'home', 'view');
+		$this->Auth->allow('login', 'home', 'view');
 	}
 
 	public function isAuthorized($user) {

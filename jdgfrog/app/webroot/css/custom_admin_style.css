@@ -91,7 +91,6 @@ line-height: 1.3em;
     margin-bottom: 5px;
 }
 .error-message{
-    border-top: 1px dotted #999;
     font-size: 15px;
     background-color: #FE2232;
     color: #FFF;

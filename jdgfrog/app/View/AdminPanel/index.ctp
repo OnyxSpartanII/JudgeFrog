@@ -143,7 +143,6 @@
 <script type="text/javascript">
     var $welcom = $("#flashMessage");
     setTimeout(function() {
-        // $welcom.hide('slow', slideUp);
         $welcom.slideUp(800).delay(900).fadeOut(900);
     }, 4000);
 </script>

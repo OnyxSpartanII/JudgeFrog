@@ -180,7 +180,8 @@
                       <!-- CLEAR FIELDS BUTTON -->
                       <div class="ana_button" title="Click here clear all the fields." style="float:left">
                         <label for="">
-                          <?php echo $this->Html->link(
+                          <?php 
+                          echo $this->Html->link(
                               $this->Html->image("clear.png", array("alt" => "Clear Fields")),
                               "/search", array('escape' => false)); ?>
                         </label>

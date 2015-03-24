@@ -92,10 +92,51 @@ line-height: 1.3em;
 }
 .error-message{
     font-size: 15px;
-    background-color: #FE2232;
-    color: #FFF;
+    color: #FE2232;
 }
 
+table.pending_case {width:100%;border:1px solid #999;}
+.pending_case th{background-color:#999;color:#fff;
+    padding:15px 0px 15px 0px;
+    border-right:1px solid #666;
+    text-align: center;
+    font-size: 15px;
+}
+.pending_case td{
+    font-size: 14px;
+    border-top: 1px solid #999;
+    text-align: left;
+    padding: 5px;
+}
+
+.pending_case .toggle_case:hover{background-color: #4D1979; color: #FFF; 
+  cursor: pointer;
+   transition: all 0.3s ease-in-out;
+   -webkit-transition: all 0.3s ease-in-out;
+   -moz-transition: all 0.3s ease-in-out;
+   -o-transition: all 0.3s ease-in-out;}
+.pending_case .toggle_case.clicked{
+  background-color: #4D1979; 
+  color: #FFF;
+  border-left: 5px solid #4D1979;
+}
+.pending_case .toggle_case:hover td, 
+.pending_case .toggle_case.clicked td{
+  color: #FFF;
+}
+.selected_case{
+  -webkit-animation: fadeIn 0.5s; 
+  -moz-transition: fadeIn 0.5s;
+  animation: fadeIn 0.5s;
+
+/*  -webkit-animation: fadeOutLeft 0.8s; 
+  -moz-transition: fadeOutLeft 0.8s;
+  animation: fadeOutLeft 0.8s;*/
+}
+input[type="file"]{
+    background-color: #FE2232;
+    padding: 20px;
+}
 /*--media styles--*/
 @media(max-width:992px){
     .user_info {

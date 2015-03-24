@@ -25,7 +25,7 @@ class SearchController extends AppController {
 		$this->set('title', 'Database Search | Human Trafficking Data');
 		$this->set('active', 'search');
 
-		$display = array('judge' => false, 'defendant' => false, 'acd' => false, 'sentence' => false, 'ocg' => false, 'victims' => false, 'cd' => false);
+		$display = array('case' => false, 'type' => false, 'judge' => false, 'defendant' => false, 'acd' => false, 'sentence' => false, 'ocg' => false, 'victims' => false, 'cd' => false);
 		$statutes = ['1916to1968', '1028', '1351', '1425', '1426',
 					'1461to1465', '1512', '1542to1543', '1546',
 					'1581to1588', '1589', '1590', '1591', '1592',
@@ -41,6 +41,8 @@ class SearchController extends AppController {
 
 		if ($this->request->data['DataInProgress']['case_Adult'] || $this->request->data['DataInProgress']['case_Minor'] || $this->request->data['DataInProgress']['case_Labor']) {
 			
+			$display['type'] = true;
+
 			$adult = $this->request->data['DataInProgress']['case_Adult'];
 			$minor = $this->request->data['DataInProgress']['case_Minor'];
 			$labor = $this->request->data['DataInProgress']['case_Labor'];
@@ -90,10 +92,12 @@ class SearchController extends AppController {
 		 */
 
 		if ($this->request->data['DataInProgress']['case_Name'] != '') {
+			$display['case'] = true;
 			$conditions['DataInProgress.CaseNam'] = $this->request->data['DataInProgress']['case_Name'];
 		}
 
 		if ($this->request->data['DataInProgress']['case_Number'] != '') {
+			$display['case'] = true;
 			$conditions['DataInProgress.CaseNum'] = $this->request->data['DataInProgress']['case_Number'];
 		}
 
@@ -102,16 +106,19 @@ class SearchController extends AppController {
 			$max = explode(';', $this->request->data['DataInProgress']['case_NumDef'])[1];
 
 			if (intval($min) != 0) {
+				$display['case'] = true;
 				$conditions['DataInProgress.NumDef >='] = $min;
 			}
 			
 			if (intval($max) != 100) {
+				$display['case'] = true;
 				$conditions['DataInProgress.NumDef <='] = $max;
 			}
 		}
 
 		if ($this->request->data['DataInProgress']['case_State'] != '') {
 
+			$display['case'] = true;
 			$state = array('AL','AK','AZ','AR','CA','CO','CT','DE',
 						'FL','GA','HI','ID','IL','IN','IA','KS','KY',
 						'LA','ME','MD','MA','MI','MN','MS','MO','MT',
@@ -123,6 +130,7 @@ class SearchController extends AppController {
 		}
 
 		if ($this->request->data['DataInProgress']['case_FedDist'] != '') {
+			$display['case'] = true;
 			$conditions['DataInProgress.FedDistrictNum'] = $this->request->data['DataInProgress']['case_FedDist']+1;
 		}
 
@@ -336,6 +344,11 @@ class SearchController extends AppController {
 			if (intval($max) != 20) {
 				$conditions['DataInProgress.FelCharged <='] = $max;
 			}
+		}
+
+		if ($this->request->data['DataInProgress']['cd_Statute'] != '') {
+			$s_name = $statutes[$this->request->data['DataInProgress']['cd_Statute']];
+			$conditions["DataInProgress.$s_name"] = true;
 		}
 
 		/**
@@ -1016,60 +1029,6 @@ class SearchController extends AppController {
 						)
 					)
 				);
-		
-				// if ($display['defendant']) {
-				// 	$conds = array('DataInProgress.CaseNam' => $case_name);
-				// 	$defs = $this->DataInProgress->find('all', array('conditions' => $conds));
-				// 	foreach($defs as $def) {
-				// 		foreach($cases[count($cases) - 1][20] as $old_def) {
-				// 			if (strcmp($old_def[0], $def['DataInProgress']['DefLast']) != 0 ||
-				// 				strcmp($old_def[1], $def['DataInProgress']['DefFirst']) != 0 ||
-				// 				$old_def[5] != $def['DataInProgress']['DefBirthdate']) {
-
-				// 				array_push(
-				// 					$cases[count($cases) - 1][20],
-				// 					array(
-				// 						$def['DataInProgress']['DefLast'],
-				// 						$def['DataInProgress']['DefFirst'],
-				// 						$def['DataInProgress']['Alias'],
-				// 						$def['DataInProgress']['DefGender'],
-				// 						$def['DataInProgress']['DefRace'],
-				// 						$def['DataInProgress']['DefBirthdate'],
-				// 						$def['DataInProgress']['DefArrestAge'],
-				// 						$def['DataInProgress']['ChargeDate'],
-				// 						$def['DataInProgress']['ArrestDate'],
-				// 						$def['DataInProgress']['Detained'],
-				// 						$def['DataInProgress']['BailType'],
-				// 						$def['DataInProgress']['BailAmount'],
-				// 						0,
-				// 						$def['DataInProgress']['FelCharged'],
-				// 						$def['DataInProgress']['FelSentenced'],
-				// 						$def['DataInProgress']['DateTerm'],
-				// 						$def['DataInProgress']['SentDate'],
-				// 						$def['DataInProgress']['TotalSentence'],
-				// 						$def['DataInProgress']['Restitution'],
-				// 						$def['DataInProgress']['AssetForfeit'],
-				// 						$def['DataInProgress']['Appeal'],
-				// 						$def['DataInProgress']['SupRelease'],
-				// 						$def['DataInProgress']['Probation'],
-				// 						$charges,
-				// 						$def['DataInProgress']['OCName1'],
-				// 						$def['DataInProgress']['OCType1'],
-				// 						$def['DataInProgress']['OCRace1'],
-				// 						$def['DataInProgress']['OCScope1'],
-				// 						$def['DataInProgress']['OCName2'],
-				// 						$def['DataInProgress']['OCType2'],
-				// 						$def['DataInProgress']['OCRace2'],
-				// 						$def['DataInProgress']['OCScope2'],
-				// 						false
-				// 					)
-				// 				);
-
-				// 			}
-				// 		}
-				// 	}
-				// }
-
 			} else {
 				array_push(
 					$cases[count($cases) - 1][20],
@@ -1107,17 +1066,16 @@ class SearchController extends AppController {
 						$d['DataInProgress']['OCRace2'],
 						$d['DataInProgress']['OCScope2'],
 						$def_filter,
-						$ocg_filter
+						$ocg_filter,
+						$sd_filter
 					)
 				);
 			}
 		}
 
-		// print_r($cases);
-
 		$this->set('display', $display);
 		$this->set('cases', $cases);
-		$this->set('datum', $datum);
+		$this->set('query', $this->request->data);
 		$this->render('home');
 	}
 }

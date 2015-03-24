@@ -168,6 +168,12 @@ $(function(){$("#selectall").click(function(){
         // $welcom.hide('slow', slideUp);
         $welcom.slideUp(800).delay(900).fadeOut(900);
     }, 4000);
+
+    var $error_msg = $(".error-message");
+    setTimeout(function() {
+        // $welcom.hide('slow', slideUp);
+        $error_msg.slideUp(800).delay(900).fadeOut(900);
+    }, 5000);
 </script>
 
 

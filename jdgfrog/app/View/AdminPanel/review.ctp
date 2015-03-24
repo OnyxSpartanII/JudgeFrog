@@ -28,11 +28,11 @@
                               <th>Case Name</th>
                               <th>Editor's Name</th>
                           </tr>
-                          <tr class="toggle_case">
+                          <tr class="toggle_case clicked">
                               <td>USA v. Afolabi et al</td>
                               <td>Vanessa</td>
                           </tr>
-                          <tr class="toggle_case clicked">
+                          <tr class="toggle_case">
                               <td>USA v. Balderas-Orosco et al</td>
                               <td>John</td>
                           </tr>
@@ -242,7 +242,41 @@
             </div>
 </div>
 
-<!-- TABLE SELECTION SCRIPT -->
+<!-- TABLE AND TABLE SELECTION SCRIPT -->
+<style type="text/css">
+.pending_case table{width:100%;border:1px solid #999;}
+.pending_case th{background-color:#999;color:#fff;
+    padding:15px 0px 15px 0px;
+    border-right:1px solid #666;
+    text-align: center;}
+.pending_case td{text-align: left;
+    padding-left: 10px;}
+
+.pending_case .toggle_case:hover{background-color: #4D1979; color: #FFF; 
+  cursor: pointer;
+   transition: all 0.3s ease-in-out;
+   -webkit-transition: all 0.3s ease-in-out;
+   -moz-transition: all 0.3s ease-in-out;
+   -o-transition: all 0.3s ease-in-out;}
+.pending_case .toggle_case.clicked{
+  background-color: #4D1979; 
+  color: #FFF;
+  border-left: 5px solid #4D1979;
+}
+.pending_case .toggle_case:hover td, 
+.pending_case .toggle_case.clicked td{
+  color: #FFF;
+}
+.selected_case{
+  -webkit-animation: fadeInLeft 0.8s; 
+  -moz-transition: fadeInLeft 0.8s;
+  animation: fadeInLeft 0.8s;
+
+/*  -webkit-animation: fadeOutLeft 0.8s; 
+  -moz-transition: fadeOutLeft 0.8s;
+  animation: fadeOutLeft 0.8s;*/
+}
+</style>
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
 <script type="text/javascript">

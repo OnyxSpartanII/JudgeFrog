@@ -128,7 +128,7 @@ class UsersController extends AppController {
 		{
 			if ($this->Auth->login())
 			{
-				$this->Session->setFlash(__('Welcome, ' . $this->Auth->user('username')));
+				$this->Session->setFlash(__('Welcome back ' . $this->Auth->user('username') . '!'));
 				// $this->redirect($this->Auth->redirectUrl());
 				$this->redirect(array('controller' => 'AdminPanel', 'action' => 'index'));
 

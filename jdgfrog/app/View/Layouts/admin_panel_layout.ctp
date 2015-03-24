@@ -84,9 +84,9 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 							<div class="menu_separator"><li style="font-size:18px; font-weight:400; opacity:0.8; color:#444;">|</li></div>
 							<li>
 								<?php if (AuthComponent::user('id')): ?>
-								<?
+								<?php
 									$out = "Logout ";
-									echo $this->Html->link($out . AuthComponent::user('username'), '/logout'
+									echo $this->Html->link($out.AuthComponent::user('username'), '/logout'
 								); ?>
 								<?php endif; ?> 
 						 	</li>

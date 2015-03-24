@@ -3,7 +3,7 @@
 	/*
 	*	Page: Defendant Information
 	*/
-	$this->layout = 'admin_panel_create_msf_layout';
+	$this->layout = 'admin_panel_layout';
 
 ?>
 

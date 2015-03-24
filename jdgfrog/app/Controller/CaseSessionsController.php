@@ -5,7 +5,8 @@ App::uses('AppController', 'Controller');
 class CaseSessionsController extends AppController {	
 
 	public $helpers = array('Html', 'Form', 'Session');
-	public $components = array('Session');
+	public $components = array('Session', 'Paginator');
+	public $name = 'CaseSessions';
 
 	public function beforeFilter() {
 		//inspect user permissions here.
@@ -36,7 +37,7 @@ class CaseSessionsController extends AppController {
 		//Subtract 1 for the index page.
 		$steps = count($createViewFolder->find('create_case_.*\.ctp')) - 1;
 		$this->Session->write('form.params.steps', $steps);
-		$this->Session->write('form.params.maxProgress', 0);
+		$this->Session->write('form.params.stepProgress', 0);
 		$this->redirect(array('action' => 'create_case', 1));
 	}
 
@@ -53,7 +54,7 @@ class CaseSessionsController extends AppController {
 			throw new NotFoundException();
 		}
 
-		$maxAllowed = $this->Session->read('form.params.maxProgress') + 1;
+		$maxAllowed = $this->Session->read('form.params.stepProgress') + 1;
 
 		/*if ($currentStep > $maxAllowed) {
 			$this->redirect('/dashboard/create_case/'.$maxAllowed);
@@ -84,26 +85,26 @@ class CaseSessionsController extends AppController {
 			* 	information, even if left blank. The new defendant is then saved
 			*	as a new row in the case_sessions table, linked by the session_id.
 			*/
+
 			if ($currentStep == 1) {
 
 				//Store case information. Extract case name, number of defendants.
-
 				$this->Session->write('form.params.caseName', $this->request->data['CaseSession']['CaseNam']);
 				$this->Session->write('form.params.numDefs', $this->request->data['CaseSession']['NumDef']);
 				$this->Session->write('form.params.curDefNum', 1);
 
-				//$sessionId = $this->getSessionId();
-
+				//Get the current session's ID based on what's currently in the database.
 				$newSessionId = $this->getSessionId();
+				$newRowId = $this->getRowId();
+				$currentUser = $this->Auth->user('id');
 				
+				$this->Session->write('forms.data.CaseSession.author', $currentUser);
 				$this->Session->write('form.params.sessionId', $newSessionId);
 				$this->Session->write('form.data.CaseSession.session_id', $newSessionId);
 
 				$prevSessionData = $this->Session->read('form.data');
 				$currentSessionData = Hash::merge( (array) $prevSessionData, $this->request->data);
 				$this->Session->write('form.data', $currentSessionData);
-				//set session ID. Maybe place in setup method?
-				//set author.
 				$this->redirect(array('action' => 'create_case', $currentStep+1));	
 
 			} elseif ($currentStep == 2) {
@@ -168,21 +169,21 @@ class CaseSessionsController extends AppController {
 
 			//$this->CaseSession->set($this->request->data);
 			//print_r($this->request->data);
-//			debug($currentStep, true, true);
-//			$this->CaseSession->save();
-/*			if ($this->CaseSession->validates()) {
-//				$prevSessionData = $this->Session->read('form.data');
-//				$currentSessionData = Hash::merge( (array) $prevSessionData, $this->request->data);
+			//debug($currentStep, true, true);
+			//$this->CaseSession->save();
+			/*if ($this->CaseSession->validates()) {
+				$prevSessionData = $this->Session->read('form.data');
+				$currentSessionData = Hash::merge( (array) $prevSessionData, $this->request->data);
 
 				if ($currentStep < $this->Session->read('form.params.steps')) {
-					//$this->CaseSession->save();
-//					$this->Session->write('form.data', $currentSessionData);
+					$this->CaseSession->save();
+					$this->Session->write('form.data', $currentSessionData);
 					$this->Session->write('form.params.maxProgress', $currentStep);
 					$this->redirect(array('action' => 'create_case', $currentStep+1));
 				} else 	{
 					$this->CaseSession->set('CaseDefId', 3);
 					$this->CaseSession->set('complete', true);
-					//$this->CaseSession->save();
+					$this->CaseSession->save();
 				}
 
 			} */
@@ -199,10 +200,56 @@ class CaseSessionsController extends AppController {
 		//print_r($this->params);
 	}
 
+	/*
+	*	Method: displayCasesInProgress
+	*	-------------------
+	*	This method retrives all cases currently in progress in the CaseSessions table and displays
+		them on the associated view (resume.ctp).
+	*/
+
+	public function displayCasesInProgress() {
+		$paginate = array('limit' => 25, 
+						'order' => array('CaseSession.id' => 'asc'), 
+						'fields' => array(
+										'CaseSession.id', 'CaseSession.author', 
+										'CaseSession.modified', 'CaseSession.created', 
+										'CaseSession.caseNam', 'CaseSession.caseNum', 
+										'CaseSession.current_step')
+						);
+		$this->Paginator->settings = $this->paginate;
+
+		$data = $this->Paginator->paginate('CaseSession');
+		$this->set('data', $data);
+		$this->render('resume');
+	}
+
+	public function resumeCase() {
+		$this->Session->write('form.params.resume', true);
+	}
+
+	/*
+	*	Method: getSessionId
+	*	-------------------
+	*	This method retrieves the max 'session_id' in the CaseSessions table and adds 1.
+	*/
+
 	public function getSessionId() {
 		$maxSessionId = $this->CaseSession->find('first', array('fields' => array('MAX(CaseSession.session_id) as session_id')));
 		$newSessionId = $maxSessionId[0]['session_id'] + 1;
 		return $newSessionId;
+	}
+
+	/*
+	*	Method: getRowId
+	*	-------------------
+	*	This method retrieves the max 'id' in the CaseSessions table and adds 1. This new ID is 
+	*	to be the ID of a new row in the CaseSessions table.
+	*/
+
+	public function getRowId() {
+		$newRowId = $this->CaseSession->find('first', array('fields' => array('MAX(CaseSession.id) as id')));
+		$newRowId = $newRowId[0]['id'] + 1;
+		return $newRowId;
 	}
 
 	public function saveRecord() {

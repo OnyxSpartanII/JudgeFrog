@@ -5,19 +5,17 @@ App::uses('AppController', 'Controller');
 class AdminPanelController extends AppController {
 
 	public $helpers = array('Html', 'Form', 'Session');
-	public $components = array('Session');
+	public $components = array('Session', 'Paginator');
 	public $name = 'AdminPanel';
-
-	//var $maxAllowed = 0;
-	//var $currentStep;
+	public $uses = array('DataInProgress', 'CaseSession');
 
 	public function beforeFilter() {
 		//inspect user permissions here.
 		parent::beforeFilter();
-		$this->Auth->allow('createCase', 'createCaseSetup', 'saveSession', 'saveStep');
+		$this->Auth->allow('createCase', 'createCaseSetup', 'saveSession', 'saveStep', 'index', 'create_case');
+		$this->Auth->allow('index', 'create_case', 'edit', 'review', 'manageusers');
 
 	}
-
 
 	public function index(){
     	$this->layout = 'admin_panel_layout';
@@ -35,6 +33,20 @@ class AdminPanelController extends AppController {
 		$this->set('title', 'Edit - Admin Panel | Human Trafficking Data');
     	$this->layout = 'admin_panel_layout';
 		$this->set('active', 'edit');
+
+		$paginate = array('limit' => 25, 
+								'order' => array('CaseSession.id' => 'asc'), 
+								'fields' => array(
+										'CaseSession.id', 'CaseSession.author', 
+										'CaseSession.modified', 'CaseSession.created', 
+										'CaseSession.caseNam', 'CaseSession.caseNum', 
+										'CaseSession.current_step')
+								);	
+		$this->Paginator->settings = $this->paginate;
+		$data = $this->Paginator->paginate('CaseSession');
+		//debug($data);
+		$this->set('data', $data);
+		$this->render('edit');	
 	}
 
 	public function review(){

@@ -16,11 +16,13 @@
 <?php echo $this->Form->input('NumDef', array('label'=> 'Number of Defendants', 'placeholder' => 'Number of Defendants')); ?>
 
 <?php echo $this->Form->input('JudgeName', array('label'=> 'Judge Name', 'placeholder' => 'Judge')); ?>
-
+<?php echo $this->Form->input('JudgeRace', array('label' => 'Judge Race')); ?>
+<?php echo $this->Form->input('JudgeGen', array('label' => 'JudgeGen')); ?>
+<?php echo $this->Form->input('JudgeTenure', array('label' => 'JudgeTenure')); ?>
+<?php echo $this->Form->input('JudgeApptBy', array('label' => 'JudgeApptBy')); ?>
 <?php echo $this->Form->input('FedDistrictNum', array('label'=> 'FedDistrictNum', 'placeholder' => 'Federal District #', 'type' => 'text')); ?>
-
+<?php echo $this->Form->input('FedDistrictLoc', array('label' => 'FedDistrictLoc', 'placeholder' => 'Federal District Location')); ?>
 <?php echo $this->Form->input('State', array('placeholder' => 'e.g, TX')); ?>
-
 <?php echo $this->Form->input('CaseSummary'); ?>
 
 <?php 	/*echo $this->Form->button('Next step', 
@@ -30,6 +32,3 @@
 <?php //echo $this->Html->link('Next step', array('action' => 'createCase', $params['currentStep'] +1), array('class' => 'button')); ?>
 
 <?php echo $this->Form->end('Next step'); ?>
-
-<?php echo print_r($this->params); 
-		echo $this->Html->url(null, true);?>

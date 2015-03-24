@@ -98,7 +98,7 @@ class CaseSessionsController extends AppController {
 				$newRowId = $this->getRowId();
 				$currentUser = $this->Auth->user('id');
 				
-				$this->Session->write('forms.data.CaseSession.author', $currentUser);
+				$this->Session->write('form.data.CaseSession.author', $currentUser);
 				$this->Session->write('form.params.sessionId', $newSessionId);
 				$this->Session->write('form.data.CaseSession.session_id', $newSessionId);
 

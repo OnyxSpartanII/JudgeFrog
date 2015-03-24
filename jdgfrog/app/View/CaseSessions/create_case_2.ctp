@@ -16,5 +16,3 @@
 <?php echo $this->Form->input('NumVicForeign', array('label' => 'Number of Foreign Victims')); ?>
 <?php echo $this->Form->input('NumVicFemale', array('label' => 'Number of Female Victims')); ?>
 <?php echo $this->Form->end('Next'); ?>
-
-<?php echo print_r($this->params); ?>

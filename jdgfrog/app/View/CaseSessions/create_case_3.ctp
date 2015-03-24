@@ -12,8 +12,6 @@
 <?php echo $this->Form->input('DefFirst', array('label' => 'Defendant Firstname')); ?>
 <?php echo $this->Form->input('DefGender', array('label' => 'Defendant Gender')); ?>
 <?php echo $this->Form->input('DefRace', array('label' => 'Defendant Race')); ?>
-<?php echo $this->Form->input('DefBirthdate', array('label' => 'Defendant Birthdate')); ?>
+<?php echo $this->Form->input('DefBirthdate', array('label' => 'Defendant Birthdate', 'type' => 'text')); ?>
 <?php echo $this->Form->input('Alias', array('label' => 'Aliases', 'placeholder' => 'Enter defendant aliases separated by commas.')); ?>
 <?php echo $this->Form->end('Next'); ?>
-
-<?php echo print_r($this->params); ?>

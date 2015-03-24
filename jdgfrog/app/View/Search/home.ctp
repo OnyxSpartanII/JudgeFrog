@@ -22,7 +22,9 @@
                         $base_url = array('controller' => 'search', 'action' => 'update');
                         echo $this->Form->create(array('url' => $base_url, 'inputDefaults' => array('label' => false, 'div' => false)));
                       ?>
-                        <h2><a href="#">Case</a></h2>
+                        <h2><a href="#">Case
+                          <?php if (isset($display) && $display['case']) echo '*'; ?>
+                        </a></h2>
                             <div>
                                 <?php
                                   echo $this->Form->input('case_Name', array('placeholder' => 'Name (e.g. USA v. Jones)', 'type' => 'text'));
@@ -38,7 +40,9 @@
                                 ?>
                             </div>
                    
-                          <h2><a href="#">Type of Trafficking</a></h2>
+                          <h2><a href="#">Type of Trafficking
+                            <?php if (isset($display) && $display['type']) echo '*'; ?>
+                          </a></h2>
                             <div>
                                 <?php
                                   echo $this->Form->input('case_Adult', array('type' => 'checkbox', 'label' => ' Adult Sex '));
@@ -52,7 +56,9 @@
                                 ?>
                             </div>
 
-                          <h2><a href="#">Defendant</a></h2>
+                          <h2><a href="#">Defendant
+                            <?php if (isset($display) && $display['defendant']) echo '*'; ?>
+                          </a></h2>
                             <div>
                                 <?php
                                   echo $this->Form->input('defendant_Name', array('placeholder' =>'Name'));
@@ -66,7 +72,9 @@
                                 ?>
                           </div>
 
-                          <h2><a href="#">Judge</a></h2>
+                          <h2><a href="#">Judge
+                            <?php if (isset($display) && $display['judge']) echo '*'; ?>
+                          </a></h2>
                             <div>
                               <?php
                                 echo $this->Form->input('judge_Name', array('placeholder' => 'Name'));
@@ -82,7 +90,9 @@
                               ?>
                             </div>
 
-                          <h2><a href="#">Organized Crime Group</a></h2>
+                          <h2><a href="#">Organized Crime Group
+                            <?php if (isset($display) && $display['ocg']) echo '*'; ?>
+                          </a></h2>
                           <div>
                             <?php
                               echo $this->Form->input('ocg_Name', array('placeholder' => 'Name'));
@@ -96,7 +106,9 @@
                             ?>
                           </div>
                           
-                          <h2><a href="#">Victims</a></h2>
+                          <h2><a href="#">Victims
+                            <?php if (isset($display) && $display['victims']) echo '*'; ?>
+                          </a></h2>
                           <div>
                             <?php
                               echo $this->Form->input('victims_Total', array('id' => 'totalSlide', 'label' => 'Total'));
@@ -106,7 +118,9 @@
                             ?>
                           </div>
 
-                          <h2><a href="#">Arrest Details</a></h2>
+                          <h2><a href="#">Arrest Details
+                            <?php if (isset($display) && $display['acd']) echo '*'; ?>
+                          </a></h2>
                           <div>
                             <?php
                               echo $this->Form->input('ad_DateArrest', array('id' => 'dateArrestAD', 'label' => 'Date of Arrest'));
@@ -118,14 +132,20 @@
                             ?>
                           </div>
 
-                        <h2><a href="#">Charge Details</a></h2>
+                        <h2><a href="#">Charge Details
+                          <?php if (isset($display) && $display['cd']) echo '*'; ?>
+                        </a></h2>
                           <div>
                             <?php
                               echo $this->Form->input('cd_Date', array('id' => 'chargeDate', 'label' => 'Date of Charge'));
                               echo '<br><br>';
                               echo $this->Form->input('cd_TtlCharges', array('id' => 'totalCharges', 'label' => 'Total Charges'));
                               echo '<br><br>';
-                              echo $this->Form->input('cd_Statute', array('empty' => 'Statute', 'options' => array('Mickey','Mouse')));
+                              echo $this->Form->input('cd_Statute', array('empty' => 'Statute', 'options' => array('1916to1968', '1028', '1351', '1425', '1426',
+                                                                                                                    '1461to1465', '1512', '1542to1543', '1546',
+                                                                                                                    '1581to1588', '1589', '1590', '1591', '1592',
+                                                                                                                    '2251', '2252', '2260', '2421to2424', '1324',
+                                                                                                                    '1328')));
                               echo '<br><br>';
                               echo $this->Form->input('cd_Counts', array('id' => 'countsCharge', 'label' => 'Counts'));
                               echo '<br><br>';
@@ -146,7 +166,9 @@
                             ?>
                           </div>
 
-                      <h2><a href="#">Sentencing Details</a></h2>
+                      <h2><a href="#">Sentencing Details
+                        <?php if (isset($display) && $display['sentence']) echo '*'; ?>
+                      </a></h2>
                       <div>
                         <?php
                           echo $this->Form->input('sd_TtlFelonies', array('id' => 'totalNumFelonySentence', 'label' => 'Total # Felonies Sentenced'));
@@ -322,7 +344,16 @@ $(function() {
 
         var table = new google.visualization.Table(document.getElementById('table_div'));
 
-        table.draw(data, {showRowNumber: false});
+        table.draw(data, {
+          showRowNumber: false,
+          page: 'enable',
+          pageSize: 17,
+          pagingSymbols: {
+            prev: 'prev',
+            next: 'next'
+        },
+        pagingButtonsConfiguration: 'auto'
+        });
 
         google.visualization.events.addListener(table, 'select', function () {
           var i = table.getSelection()[0].row;
@@ -617,4 +648,501 @@ $(function() {
         source: "autoComplete.php?column=OCName1" ,
         minLength: 1
       });
+  </script>
+
+  <!-- Slider Script -->
+  <script>
+    <?php
+      echo 'var numdef_min = 0;';
+      echo 'var numdef_max = 100;';
+      echo 'var defyob_min = 1930;';
+      echo 'var defyob_max = 2014;';
+      echo 'var jyapp_min = 1960;';
+      echo 'var jyapp_max = 2020;';
+      echo 'var victtl_min = 0;';
+      echo 'var victtl_max = 100;';
+      echo 'var vicmin_min = 0;';
+      echo 'var vicmin_max = 100;';
+      echo 'var vicfgn_min = 0;';
+      echo 'var vicfgn_max = 100;';
+      echo 'var vicfem_min = 0;';
+      echo 'var vicfem_max = 100;';
+      echo 'var arrdate_min = 2000;';
+      echo 'var arrdate_max = 2020;';
+      echo 'var bailamt_min = 1000;';
+      echo 'var bailamt_max = 100000;';
+      echo 'var cddate_min = 2000;';
+      echo 'var cddate_max = 2020;';
+      echo 'var ttlchrg_min = 0;';
+      echo 'var ttlchrg_max = 20;';
+      echo 'var counts_min = 0;';
+      echo 'var counts_max = 10;';
+      echo 'var countsnp_min = 0;';
+      echo 'var countsnp_max = 10;';
+      echo 'var pleadis_min = 0;';
+      echo 'var pleadis_max = 10;';
+      echo 'var pleag_min = 0;';
+      echo 'var pleag_max = 10;';
+      echo 'var trialg_min = 0;';
+      echo 'var trialg_max = 10;';
+      echo 'var trialng_min = 0;';
+      echo 'var trialng_max = 10;';
+      echo 'var sent_min = 0;';
+      echo 'var sent_max = 300;';
+      echo 'var prob_min = 0;';
+      echo 'var prob_max = 300;';
+      echo 'var ttlfel_min = 0;';
+      echo 'var ttlfel_max = 10;';
+      echo 'var dateterm_min = 2000;';
+      echo 'var dateterm_max = 2020;';
+      echo 'var ttlm_min = 0;';
+      echo 'var ttlm_max = 300;';
+      echo 'var rest_min = 0;';
+      echo 'var rest_max = 10000000;';
+      echo 'var prob_min = 0;';
+      echo 'var prob_max = 50;';
+
+      if (isset($query)) {
+        if ($query['DataInProgress']['case_NumDef']) {
+          echo 'var numdef_min = ' . explode(';',$query['DataInProgress']['case_NumDef'])[0] . ';';
+          echo 'var numdef_max = ' . explode(';',$query['DataInProgress']['case_NumDef'])[1] . ';';
+        }
+
+        if ($query['DataInProgress']['defendant_YOB']) {
+          echo 'var defyob_min = ' . explode(';',$query['DataInProgress']['defendant_YOB'])[0] . ';';
+          echo 'var defyob_max = ' . explode(';',$query['DataInProgress']['defendant_YOB'])[1] . ';';
+        }
+
+        if ($query['DataInProgress']['judge_YearApp']) {
+          echo 'var jyapp_min = ' . explode(';',$query['DataInProgress']['judge_YearApp'])[0] . ';';
+          echo 'var jyapp_max = ' . explode(';',$query['DataInProgress']['judge_YearApp'])[1] . ';';
+        }
+
+        if ($query['DataInProgress']['victims_Total']) {
+          echo 'var victtl_min = ' . explode(';',$query['DataInProgress']['victims_Total'])[0] . ';';
+          echo 'var victtl_max = ' . explode(';',$query['DataInProgress']['victims_Total'])[1] . ';';
+        }
+
+        if ($query['DataInProgress']['victims_Minor']) {
+          echo 'var vicmin_min = ' . explode(';',$query['DataInProgress']['victims_Minor'])[0] . ';';
+          echo 'var vicmin_max = ' . explode(';',$query['DataInProgress']['victims_Minor'])[1] . ';';
+        }
+
+        if ($query['DataInProgress']['victims_Foreign']) {
+          echo 'var vicfgn_min = ' . explode(';',$query['DataInProgress']['victims_Foreign'])[0] . ';';
+          echo 'var vicfgn_max = ' . explode(';',$query['DataInProgress']['victims_Foreign'])[1] . ';';
+        }
+
+        if ($query['DataInProgress']['victims_Female']) {
+          echo 'var vicfem_min = ' . explode(';',$query['DataInProgress']['victims_Female'])[0] . ';';
+          echo 'var vicfem_max = ' . explode(';',$query['DataInProgress']['victims_Female'])[1] . ';';
+        }
+
+        if ($query['DataInProgress']['ad_DateArrest']) {
+          echo 'var arrdate_min = ' . explode(';',$query['DataInProgress']['ad_DateArrest'])[0] . ';';
+          echo 'var arrdate_max = ' . explode(';',$query['DataInProgress']['ad_DateArrest'])[1] . ';';
+        }
+
+        if ($query['DataInProgress']['ad_BailAmount']) {
+          echo 'var bailamt_min = ' . explode(';',$query['DataInProgress']['ad_BailAmount'])[0] . ';';
+          echo 'var bailamt_max = ' . explode(';',$query['DataInProgress']['ad_BailAmount'])[1] . ';';
+        }
+
+        if ($query['DataInProgress']['cd_Date']) {
+          echo 'var cddate_min = ' . explode(';',$query['DataInProgress']['cd_Date'])[0] . ';';
+          echo 'var cddate_max = ' . explode(';',$query['DataInProgress']['cd_Date'])[1] . ';';
+        }
+
+        if ($query['DataInProgress']['cd_TtlCharges']) {
+          echo 'var ttlchrg_min = ' . explode(';',$query['DataInProgress']['cd_TtlCharges'])[0] . ';';
+          echo 'var ttlchrg_max = ' . explode(';',$query['DataInProgress']['cd_TtlCharges'])[1] . ';';
+        }
+
+        if ($query['DataInProgress']['cd_Counts']) {
+          echo 'var counts_min = ' . explode(';',$query['DataInProgress']['cd_Counts'])[0] . ';';
+          echo 'var counts_max = ' . explode(';',$query['DataInProgress']['cd_Counts'])[1] . ';';
+        }
+
+        if ($query['DataInProgress']['cd_CountsNP']) {
+          echo 'var countsnp_min = ' . explode(';',$query['DataInProgress']['cd_CountsNP'])[0] . ';';
+          echo 'var countsnp_max = ' . explode(';',$query['DataInProgress']['cd_CountsNP'])[1] . ';';
+        }
+
+        if ($query['DataInProgress']['cd_PleaDismiss']) {
+          echo 'var pleadis_min = ' . explode(';',$query['DataInProgress']['cd_PleaDismiss'])[0] . ';';
+          echo 'var pleadis_max = ' . explode(';',$query['DataInProgress']['cd_PleaDismiss'])[1] . ';';
+        }
+
+        if ($query['DataInProgress']['cd_PleaGuilty']) {
+          echo 'var pleag_min = ' . explode(';',$query['DataInProgress']['cd_PleaGuilty'])[0] . ';';
+          echo 'var pleag_max = ' . explode(';',$query['DataInProgress']['cd_PleaGuilty'])[1] . ';';
+        }
+
+        if ($query['DataInProgress']['cd_TrialGuilty']) {
+          echo 'var trialg_min = ' . explode(';',$query['DataInProgress']['cd_TrialGuilty'])[0] . ';';
+          echo 'var trialg_max = ' . explode(';',$query['DataInProgress']['cd_TrialGuilty'])[1] . ';';
+        }
+
+        if ($query['DataInProgress']['cd_TrialNotGuilty']) {
+          echo 'var trialng_min = ' . explode(';',$query['DataInProgress']['cd_TrialNotGuilty'])[0] . ';';
+          echo 'var trialng_max = ' . explode(';',$query['DataInProgress']['cd_TrialNotGuilty'])[1] . ';';
+        } else {
+        }
+
+        if ($query['DataInProgress']['cd_Sentence']) {
+          echo 'var sent_min = ' . explode(';',$query['DataInProgress']['cd_Sentence'])[0] . ';';
+          echo 'var sent_max = ' . explode(';',$query['DataInProgress']['cd_Sentence'])[1] . ';';
+        }
+
+        if ($query['DataInProgress']['cd_Probation']) {
+          echo 'var prob_min = ' . explode(';',$query['DataInProgress']['cd_Probation'])[0] . ';';
+          echo 'var prob_max = ' . explode(';',$query['DataInProgress']['cd_Probation'])[1] . ';';
+        }
+
+        if ($query['DataInProgress']['sd_TtlFelonies']) {
+          echo 'var ttlfel_min = ' . explode(';',$query['DataInProgress']['sd_TtlFelonies'])[0] . ';';
+          echo 'var ttlfel_max = ' . explode(';',$query['DataInProgress']['sd_TtlFelonies'])[1] . ';';
+        }
+
+        if ($query['DataInProgress']['sd_DateTerminated']) {
+          echo 'var dateterm_min = ' . explode(';',$query['DataInProgress']['sd_DateTerminated'])[0] . ';';
+          echo 'var dateterm_max = ' . explode(';',$query['DataInProgress']['sd_DateTerminated'])[1] . ';';
+        }
+
+        if ($query['DataInProgress']['sd_TtlMonths']) {
+          echo 'var ttlm_min = ' . explode(';',$query['DataInProgress']['sd_TtlMonths'])[0] . ';';
+          echo 'var ttlm_max = ' . explode(';',$query['DataInProgress']['sd_TtlMonths'])[1] . ';';
+        }
+
+        if ($query['DataInProgress']['sd_Restitution']) {
+          echo 'var rest_min = ' . explode(';',$query['DataInProgress']['sd_Restitution'])[0] . ';';
+          echo 'var rest_max = ' . explode(';',$query['DataInProgress']['sd_Restitution'])[1] . ';';
+        }
+
+        if ($query['DataInProgress']['sd_MonthsProb']) {
+          echo 'var prob_min = ' . explode(';',$query['DataInProgress']['sd_MonthsProb'])[0] . ';';
+          echo 'var prob_max = ' . explode(';',$query['DataInProgress']['sd_MonthsProb'])[1] . ';';
+        }
+      }
+    ?>
+    //Case Sliders
+    $( "#numbDefSlide" ).ionRangeSlider( {
+      hide_min_max: true,
+      keyboard: true,
+      min: 0,
+      max: 100,
+      from: numdef_min,
+      to: numdef_max,
+      type: 'integer',
+      step: 1,
+      prefix: "",
+      max_postfix: '+',
+      grid: true
+    } );
+    //Denfendant Sliders
+    $( "#yearBirthDefendant" ).ionRangeSlider( {
+      hide_min_max: true,
+      keyboard: true,
+      min: 1930,
+      max: 2014,
+      from: defyob_min,
+      to: defyob_max,
+      type: 'integer',
+      step: 1,
+      prefix: "",
+      max_postfix: '+',
+      grid: true
+    } );
+    //Judge Sliders
+    $( "#yearAppointJudge" ).ionRangeSlider( {
+      hide_min_max: true,
+      keyboard: true,
+      min: 1960,
+      max: 2020,
+      from: jyapp_min,
+      to: jyapp_max,
+      type: 'integer',
+      step: 1,
+      prefix: "",
+      max_postfix: '+',
+      grid: true
+    } );
+    //Victim Sliders
+    $( "#totalSlide" ).ionRangeSlider( {
+      hide_min_max: true,
+      keyboard: true,
+      min: 0,
+      max: 100,
+      from: victtl_min,
+      to: victtl_max,
+      type: 'integer',
+      step: 1,
+      prefix: "",
+      max_postfix: '+',
+      grid: true
+    } );
+    $( "#minorSlide" ).ionRangeSlider( {
+      hide_min_max: true,
+      keyboard: true,
+      min: 0,
+      max: 100,
+      from: vicmin_min,
+      to: vicmin_max,
+      type: 'integer',
+      step: 1,
+      prefix: "",
+      max_postfix: '+',
+      grid: true
+    } );
+    $( "#foreignerSlide" ).ionRangeSlider( {
+      hide_min_max: true,
+      keyboard: true,
+      min: 0,
+      max: 100,
+      from: vicfgn_min,
+      to: vicfgn_max,
+      type: 'integer',
+      step: 1,
+      prefix: "",
+      max_postfix: '+',
+      grid: true
+    } );
+    $( "#femaleSlide" ).ionRangeSlider( {
+      hide_min_max: true,
+      keyboard: true,
+      min: 0,
+      max: 100,
+      from: vicfem_min,
+      to: vicfem_max,
+      type: 'integer',
+      step: 1,
+      prefix: "",
+      max_postfix: '+',
+      grid: true
+    } );
+    //Arrest Details Sliders
+    $( "#dateArrestAD" ).ionRangeSlider( {
+      hide_min_max: true,
+      keyboard: true,
+      min: 2000,
+      max: 2020,
+      from: arrdate_min,
+      to: arrdate_max,
+      type: 'integer',
+      step: 1,
+      prefix: "",
+      max_postfix: '+',
+      grid: true
+    } );
+    $( "#bailAmountArrest" ).ionRangeSlider( {
+      hide_min_max: true,
+      keyboard: true,
+      min: 1000,
+      max: 100000,
+      from: bailamt_min,
+      to: bailamt_max,
+      type: 'integer',
+      step: 1,
+      prefix: "$",
+      max_postfix: '+',
+      grid: true
+    } );
+    //Charge Details Sliders
+    $( "#chargeDate" ).ionRangeSlider( {
+      hide_min_max: true,
+      keyboard: true,
+      min: 2000,
+      max: 2020,
+      from: cddate_min,
+      to: cddate_max,
+      type: 'integer',
+      step: 1,
+      prefix: "",
+      max_postfix: '+',
+      grid: true
+    } );
+    $( "#totalCharges" ).ionRangeSlider( {
+      hide_min_max: true,
+      keyboard: true,
+      min: 0,
+      max: 20,
+      from: ttlchrg_min,
+      to: ttlchrg_max,
+      type: 'integer',
+      step: 1,
+      prefix: "",
+      max_postfix: '+',
+      grid: true
+    } );
+    $( "#countsCharge" ).ionRangeSlider( {
+      hide_min_max: true,
+      keyboard: true,
+      min: 0,
+      max: 10,
+      from: counts_min,
+      to: counts_max,
+      type: 'integer',
+      step: 1,
+      prefix: "",
+      max_postfix: '+',
+      grid: true
+    } );
+    $( "#countsNolleProssed" ).ionRangeSlider( {
+      hide_min_max: true,
+      keyboard: true,
+      min: 0,
+      max: 10,
+      from: countsnp_min,
+      to: countsnp_max,
+      type: 'integer',
+      step: 1,
+      prefix: "",
+      max_postfix: '+',
+      grid: true
+    } );
+    $( "#pleaDismiss" ).ionRangeSlider( {
+      hide_min_max: true,
+      keyboard: true,
+      min: 0,
+      max: 10,
+      from: pleadis_min,
+      to: pleadis_max,
+      type: 'integer',
+      step: 1,
+      prefix: "",
+      max_postfix: '+',
+      grid: true
+    } );
+    $( "#pleaGuilty" ).ionRangeSlider( {
+      hide_min_max: true,
+      keyboard: true,
+      min: 0,
+      max: 10,
+      from: pleag_min,
+      to: pleag_max,
+      type: 'integer',
+      step: 1,
+      prefix: "",
+      max_postfix: '+',
+      grid: true
+    } );
+    $( "#trialGuilty" ).ionRangeSlider( {
+      hide_min_max: true,
+      keyboard: true,
+      min: 0,
+      max: 10,
+      from: trialg_min,
+      to: trialg_max,
+      type: 'integer',
+      step: 1,
+      prefix: "",
+      max_postfix: '+',
+      grid: true
+    } );
+    $( "#trialNotGuilty" ).ionRangeSlider( {
+      hide_min_max: true,
+      keyboard: true,
+      min: 0,
+      max: 10,
+      from: trialng_min,
+      to: trialng_max,
+      type: 'integer',
+      step: 1,
+      prefix: "",
+      max_postfix: '+',
+      grid: true
+    } );
+    $( "#sentenceCharge" ).ionRangeSlider( {
+      hide_min_max: true,
+      keyboard: true,
+      min: 0,
+      max: 300,
+      from: sent_min,
+      to: sent_max,
+      type: 'integer',
+      step: 1,
+      prefix: "",
+      max_postfix: '+',
+      grid: true
+    } );
+    $( "#probationCharge" ).ionRangeSlider( {
+      hide_min_max: true,
+      keyboard: true,
+      min: 0,
+      max: 300,
+      from: prob_min,
+      to: prob_max,
+      type: 'integer',
+      step: 1,
+      prefix: "",
+      max_postfix: '+',
+      grid: true
+    } );
+
+    //Sentencing Details Sliders
+    $( "#totalNumFelonySentence" ).ionRangeSlider( {
+      hide_min_max: true,
+      keyboard: true,
+      min: 0,
+      max: 10,
+      from: ttlfel_min,
+      to: ttlfel_max,
+      type: 'integer',
+      step: 1,
+      prefix: "",
+      max_postfix: '+',
+      grid: true
+    } );
+    $( "#dateTermSentenced" ).ionRangeSlider( {
+      hide_min_max: true,
+      keyboard: true,
+      min: 2000,
+      max: 2020,
+      from: dateterm_min,
+      to: dateterm_max,
+      type: 'integer',
+      step: 1,
+      prefix: "",
+      max_postfix: '+',
+      grid: true
+    } );
+    $( "#totalMonthsSentenced" ).ionRangeSlider( {
+      hide_min_max: true,
+      keyboard: true,
+      min: 0,
+      max: 300,
+      from: ttlm_min,
+      to: ttlm_max,
+      type: 'integer',
+      step: 1,
+      prefix: "",
+      max_postfix: '+',
+      grid: true
+    } );
+    $( "#amountRestitutionSent" ).ionRangeSlider( {
+      hide_min_max: true,
+      keyboard: true,
+      min: 0,
+      max: 10000000,
+      from: rest_min,
+      to: rest_max,
+      type: 'integer',
+      step: 1,
+      prefix: "$",
+      max_postfix: '+',
+      grid: true
+    } );
+    $( "#monthsProbationSentence" ).ionRangeSlider( {
+      hide_min_max: true,
+      keyboard: true,
+      min: 0,
+      max: 50,
+      from: prob_min,
+      to: prob_max,
+      type: 'integer',
+      step: 1,
+      prefix: "",
+      max_postfix: '+',
+      grid: true
+    } );
   </script>

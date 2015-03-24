@@ -2,16 +2,15 @@
     $this->layout = 'admin_panel_layout';
     $this->set('title', 'Create Case- Admin Panel | Human Trafficking Data');
     $this->set('active', 'create_case');
-
 ?>
 <!--search start here-->
 <div class="contact">
     <div class="container">
         <div class="contact-main">
           <h3 class="page_title">Case Creation</h3>
-              <div class="col-md-4 contact-right">
+              <div class="col-md-5 contact-right">
                 <!-- TOP CREATE A NEW USER BAR -->
-                  <div class="top_bar col-md-4">
+                  <div class="top_bar col-md-5">
                     <div class="top_bar_left">
                       <h4>SINGLE CASE</h4>
                     </div>
@@ -25,25 +24,52 @@
                         </label>
                       </div>
                   </div>
+                  	<label style="font-size:18px; padding:10px;">Click on a case bellow to continue editing.</label>
+                      <table class="pending_case">
+                        <tbody>
+                          <tr>
+                              <th>Case Name</th>
+                              <th>Created Date</th>
+                          </tr>
+                          <tr class="toggle_case">
+                              <td>USA v. Afolabi et al</td>
+                              <td>03/03/2015</td>
+                          </tr>
+                          <tr class="toggle_case">
+                              <td>USA v. Balderas-Orosco et al</td>
+                              <td>23/02/2015</td>
+                          </tr>
+                          <tr class="toggle_case">
+                              <td>USA v. Baltazar et al</td>
+                              <td>01/8/2015</td>
+                          </tr>
+                        </tbody>
+                    </table>
                 <!-- Create Interface -->
-                <div class="user_creation" style="padding-bottom:50px; margin-top:50px;">
-                  <div style="padding-top:0px;background-color:#FFF; border-bottom:1px solid rgba(75,75,75,.3);"></div>
-                  <div class="personal_details" style="background-color:#DCDCDC">
-                  </div>
-                </div>
+              
               </div> 
-                <div class="col-md-8 contact-right">
+                <div class="col-md-7 contact-right">
                   <!-- TOP DELETE SELECTED USER BAR -->
-                    <div class="top_bar col-md-8">
-                      <div class="top_bar_left">
-                        <h4>BATCH UPLOAD</h4>
+                    <div class="top_bar col-md-7">
+                      <div class="top_bar_left"  style="float:none; text-align:center">
+                        <h4>BATCH UPLOAD | DOWNLOAD</h4>
                       </div>
-                        <!-- DELETE BUTTON-->
-                        <div title="Click here to delete the selected user." style="margin-top: 19px;">
-                          <label for="" class="user_button" >
-                            <?php echo $this->Html->image('delete_user.png', array('alt' => 'Create', 'style' => 'float:left; padding: 10px 7px 10px 7px;' )); ?>
-                          </label>
-                        </div>
+	                        <div class="upload_section" style="margin-top:80px; margin-left:0px;">
+	                        	<h2>Upload</h2>
+								<?php
+								echo $this->Form->create('Uploads', array('type' => 'file'));
+								echo $this->Form->input('file', array('type' => 'file'));
+								echo $this->Form->end('Submit');
+								?>
+							</div>
+	                        <div class="download_section" style=" background-color:#444;">
+	                        	<h2>Download</h2>
+	                        	<?php
+								//Creates the download button
+								echo $this->Form->create('Download');
+								echo $this->Form->end('Download');
+								?>
+							</div>
                     </div>
                   <!-- Delete Interface -->
                   <script type="text/javascript">

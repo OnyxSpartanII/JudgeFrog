@@ -130,7 +130,7 @@ form [type="text"]:hover,
 form [type="password"]:hover,
 form [type="text"]:focus,
 form [type="password"]:focus,
-form input:hover,form input:focus{
+{
     border-left: 7px solid #4D1979;
     -webkit-transition: all .4s ease-in-out;
     -moz-transition: all .4s ease-in-out;
@@ -841,7 +841,7 @@ p.m_6 {
 .text {
 	margin-bottom: 1em;
 }
-.text input[type="text"], input[type="password"] {
+.text input[type="text"], input[type="password"], input[type="number"] {
 	width: 98%;
 	padding: 10px;
 	font-size: 16px;
@@ -849,21 +849,21 @@ p.m_6 {
 	outline: none;
 	border: 1px solid #444;
 }
-.text input[type="text"]:hover, textarea:hover {
-	border: 1px solid #4D1979;
-	transition: all 0.3s ease-in-out;
-	-webkit-transition: all 0.3s ease-in-out;
-	-moz-transition: all 0.3s ease-in-out;
-	-o-transition: all 0.3s ease-in-out;
+.text input[type="text"]:hover, textarea:hover, input[type="number"]:hover {    
+	border-left: 7px solid #4D1979;
+	-webkit-transition: all 0.4s ease-in-out;
+	-moz-transition: all 0.4s ease-in-out;
+	-o-transition: all 0.4s ease-in-out;
+	transition: all 0.4s ease-in-out;
 }
-.text input[type="text"]:focus, textarea:focus { 
-    border: 1px solid #4D1979;
-	transition: all 0.6s ease-in-out;
-	-webkit-transition: all 0.6s ease-in-out;
-	-moz-transition: all 0.6s ease-in-out;
-	-o-transition: all 0.6s ease-in-out;
+.text input[type="text"]:focus, textarea:focus, input[type="number"]:focus { 
+    border-left: 7px solid #4D1979;
+	-webkit-transition: all 0.4s ease-in-out;
+	-moz-transition: all 0.4s ease-in-out;
+	-o-transition: all 0.4s ease-in-out;
+	transition: all 0.4s ease-in-out;
 }
-.text textarea {
+textarea {
 	width: 98%;
 	height: 15em;
 	outline: none;

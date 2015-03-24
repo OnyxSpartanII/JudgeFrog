@@ -322,7 +322,16 @@ $(function() {
 
         var table = new google.visualization.Table(document.getElementById('table_div'));
 
-        table.draw(data, {showRowNumber: false});
+        table.draw(data, {
+          showRowNumber: false,
+          page: 'enable',
+          pageSize: 17,
+          pagingSymbols: {
+            prev: 'prev',
+            next: 'next'
+        },
+        pagingButtonsConfiguration: 'auto'
+        });
 
         google.visualization.events.addListener(table, 'select', function () {
           var i = table.getSelection()[0].row;

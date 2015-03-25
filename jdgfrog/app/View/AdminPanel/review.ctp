@@ -17,7 +17,7 @@
                         <label for="" class="user_button">
                           <?php
                           echo $this->Html->link(
-                              $this->Html->image("review.png", array("alt" => "Edit Case", 'style' => 'float:left; padding: 10px 7px 10px 2px;')),
+                              $this->Html->image("review.png", array("alt" => "Edit Case", 'style' => 'float:left; padding: 10px 6px 8px 0px;')),
                               "/AdminPanel/edit", array('escape' => false)); ?> 
                         </label>
                       </div>  
@@ -57,7 +57,7 @@
                         <!-- PUBLISH BUTTON-->
                         <div title="Click here to publish this case." style="padding: 0px 0px 0px 0px;" id="publish_button">
                           <label for="" class="user_button">
-                            <?php echo $this->Html->image('send.png', array('alt' => 'Publish', 'style' => 'padding: 10px 13px 10px 3px;' )); ?>
+                            <?php echo $this->Html->image('send.png', array('alt' => 'Publish', 'style' => 'padding: 10px 8px 8px 0px;' )); ?>
                           </label>
                         </div>
                     </div>

@@ -71,7 +71,8 @@
 /************ANALYZE PAGE SUBMIT BUTTON**************/
 .ana_button{
     margin-top: -29px;
-    padding: 13px 17px 13px 17px;
+    padding: 18px 15px 7px 15px;
+    /*padding: 10px 7px 8px 0px;*/
     background-color: #fff;
     float: right;
     opacity: 1;

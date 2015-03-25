@@ -22,11 +22,11 @@
 	  	    <div class="col-md-5 contact-left">
 	  	    	   <h4 style="border-bottom:1px dotted #4D1979; padding-top:30px; padding-bottom:5px; color:#4D1979">Have An Inquiry Regarding HumanTraffickingData.org?</h4>
 	  	    	   <h4 style="text-decoration:underline">Contact</h4>
-		  	    	   	<div class="col-md-6">
+		  	    	   	<!-- <div class="col-md-6">
 		    	         	<p style="padding-top:5px;"><strong>Michael Bachmann, Ph.D.</strong><br>Texas Christian University<br>Department of Criminal Justice<br>Scharbauer Hall, 4208<br>Fort Worth, TX 76129<br><strong><a href="mailto: m.bachmann@tcu.edu">e-mail Michael</a></strong></p>
-		    	        </div>
-		  	    	   	<div class="col-md-6">
-		    	         	<p style="padding-top:5px"><strong>Vanessa Bouché, Ph.D.</strong><br>Texas Christian University<br>Department of Political Science<br>Scharbauer Hall, 2012<br>Fort Worth, TX 76129<br><strong><a href="mailto: vanessa.bouche@tcu.edu">e-mail Vanessa</a></strong></p>
+		    	        </div> -->
+		  	    	   	<div>
+		    	         	<p style="padding-top:5px;"><strong>Vanessa Bouché, Ph.D.</strong><br>Texas Christian University<br>Department of Political Science<br>Scharbauer Hall, 2012<br>Fort Worth, TX 76129<br><strong><a href="mailto: vanessa.bouche@tcu.edu">e-mail Vanessa</a></strong></p>
 	    	         	</div>
     	         	<h4 style="color:#4D1979">
     	         		Or send us a message using the form above.

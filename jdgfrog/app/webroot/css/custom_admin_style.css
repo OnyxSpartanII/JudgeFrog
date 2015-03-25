@@ -114,7 +114,8 @@ table.pending_case {width:100%;border:1px solid #999;}
    transition: all 0.3s ease-in-out;
    -webkit-transition: all 0.3s ease-in-out;
    -moz-transition: all 0.3s ease-in-out;
-   -o-transition: all 0.3s ease-in-out;}
+   -o-transition: all 0.3s ease-in-out;
+}
 .pending_case .toggle_case.clicked{
   background-color: #4D1979; 
   color: #FFF;
@@ -133,9 +134,45 @@ table.pending_case {width:100%;border:1px solid #999;}
   -moz-transition: fadeOutLeft 0.8s;
   animation: fadeOutLeft 0.8s;*/
 }
-input[type="file"]{
-    background-color: #FE2232;
-    padding: 20px;
+.upload_section{
+    margin-left: -80px;
+    width: 400px;
+    border-right: 1px solid #DCDCDC;
+}
+.upload_section .btn-default {
+    padding: 10px;
+    min-width: 200px;
+    border-radius: none;
+    background-color:#DCDCDC; color: #777;
+    border: 1px solid #777;
+}
+.upload_section .btn-default:hover {
+    color: #FFF;
+    background-color: #4D1979;
+    border-color: #4D1979;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+}
+.upload_section input[type="submit"]{
+    width: 100px;
+    padding: 1em 0em;
+    outline: none;
+    background-color: #4D1979;
+    border: 1px solid #4D1979;
+    color: #fff;
+}
+.upload_section input[type="submit"]:hover{
+    background-color:#dcdcdc; color: #777;
+    border: 1px solid #777;
+     transition: all 0.3s ease-in-out;
+     -webkit-transition: all 0.3s ease-in-out;
+     -moz-transition: all 0.3s ease-in-out;
+     -o-transition: all 0.3s ease-in-out;
+}
+.upload_section input[type="submit"]:active{
+    margin-top: 8px;
 }
 /*--media styles--*/
 @media(max-width:992px){

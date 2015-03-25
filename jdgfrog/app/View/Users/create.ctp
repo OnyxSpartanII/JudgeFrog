@@ -18,7 +18,7 @@
                       <!-- CREATE BUTTON-->
                       <div title="Click here to add this user." style="margin-top: 19px;">
                         <label for="submitForm" class="user_button">
-                          <?php echo $this->Html->image('create_user.png', array('alt' => 'Create', 'style' => 'float:left; padding: 10px 7px 10px 7px;' )); ?>
+                          <?php echo $this->Html->image('create_user.png', array('alt' => 'Create', 'style' => 'float:left; padding: 10px 8px 8px 0px;' )); ?>
                         </label>
                       </div>
                   </div>
@@ -68,7 +68,7 @@
                           <!-- DELETE BUTTON-->
                           <div title="Click here to delete the selected user.">
                             <label for="" class="user_button" >
-                              <?php echo $this->Html->image('delete_user.png', array('alt' => 'Create', 'style' => 'float:left; padding: 10px 7px 10px 7px;' )); ?>
+                              <?php echo $this->Html->image('delete_user.png', array('alt' => 'Create', 'style' => 'float:left; padding: 10px 8px 8px 0px;' )); ?>
                             </label>
                           </div>
                       </div>

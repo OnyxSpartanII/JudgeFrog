@@ -1,4 +1,3 @@
-<!--search start here-->
 <div class="contact">
     <div class="container">
         <div class="contact-main">

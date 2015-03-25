@@ -12,7 +12,7 @@
                       <!-- PENDING BUTTON-->
                       <div title="Click here to add review the selected case." style="margin-top: 19px;">
                         <label for="" class="user_button">
-                          <?php echo $this->Html->image('search.png', array('alt' => 'Create', 'style' => 'float:left; padding: 10px 7px 10px 2px;' )); ?>
+                          <?php echo $this->Html->image('search.png', array('alt' => 'Create', 'style' => 'float:left; padding: 10px 7px 8px 0px;' )); ?>
                         </label>
                       </div>
                       <div style="margin-bottom:20px; margin-top:100px; text-align:center;">   
@@ -36,7 +36,7 @@
                         <!-- DELETE BUTTON-->
                         <div title="Click here to delete the selected user." style="padding: 0px 0px 0px 0px;">
                           <label for="" class="user_button">
-                            <?php echo $this->Html->image('send.png', array('alt' => 'Publish', 'style' => 'padding: 10px 13px 10px 3px;' )); ?>
+                            <?php echo $this->Html->image('send.png', array('alt' => 'Publish', 'style' => 'padding: 10px 7px 8px 0px;' )); ?>
                           </label>
                         </div>
                     </div>

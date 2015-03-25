@@ -16,14 +16,11 @@
               <div class="col-md-4 contact-right">
                 <!-- TOP CREATE A NEW USER BAR -->
                   <div class="top_bar col-md-4">
-                    <div class="top_bar_left">
+                    <div class="top_bar_dash">
                       <h4>PROGRESS</h4>
                     </div>
-                      <!-- CREATE BUTTON-->
+                      <!-- PROGRESS-->
                       <div title="Click here to add this user." style="margin-top: 19px;">
-                        <label for="" class="user_button">
-                          <?php echo $this->Html->image('create_user.png', array('alt' => 'Create', 'style' => 'float:left; padding: 10px 7px 10px 7px;' )); ?>
-                        </label>
                       </div>
                   </div>
                 <!-- Create Interface -->

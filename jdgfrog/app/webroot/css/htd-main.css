@@ -9,21 +9,12 @@ html, body{
 	padding:0px;
 }
 /*--header style start here--*/
-/*.header{
-		background-color: #444;
-	   background:url(../images/banner.jpg)no-repeat;
-	   background-size:cover;
-	   min-height:580px;
-}*/
 .header-b{
-	/*background-color: #6495ED;*/
-	/*opacity: 0.8;*/
-	/* background: url(../images/banner.jpg)no-repeat; */
 	background-size: cover;
 	min-height: 90px;
 	-webkit-box-shadow: 0 2px #d7d7d7;
 	-moz-box-shadow: 0 2px #d7d7d7;
-	box-shadow: 0 2px 20px 1px #d7d7d7;
+	box-shadow: 0 2px 30px 1px #d7d7d7;
 }
 .logo{
 	float:left;
@@ -76,13 +67,11 @@ span.menu{
 	 font-size:18px;
 	 font-weight:400;
 	 opacity: 0.6;
-	 /*border-right: 1px solid #999;*/
 }
 .header-navg ul li a:hover{
 	 color:#4D1979;
 	 border-bottom: 4px solid #4D1979;
 	 text-decoration:none;
-    /*-webkit-font-smoothing: antialiased;*/
 	 opacity: 1;
 	  -webkit-transition: all 0.4s ease-in-out;
 	  -moz-transition: all 0.4s ease-in-out;
@@ -94,7 +83,6 @@ span.menu{
 	 font-weight: bold;
 	 border-bottom: 4px solid #4D1979;
 	 text-decoration:none;
-    /*-webkit-font-smoothing: antialiased;*/
 	 opacity: 1;
 	  -webkit-transition: all 0.4s ease-in-out;
 	  -moz-transition: all 0.4s ease-in-out;
@@ -212,7 +200,6 @@ span.b {
 	position:relative;
 	margin-bottom: 200px;
 	position: relative;
-	z-index: 1000;
 }
 .contant-main {
 	padding: 6em 0em;
@@ -250,7 +237,6 @@ span.search {
 	border:none;
 }
 .footer-h {
-	position: fixed;
 	bottom: 0;
 	width: 100%;
 	background-color: #dcdcdc; color: #7A7A7A;	

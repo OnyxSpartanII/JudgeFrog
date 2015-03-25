@@ -3,6 +3,8 @@
     $this->set('title', 'Create Case- Admin Panel | Human Trafficking Data');
     $this->set('active', 'create_case');
 ?>
+<?php echo $this->Html->script(array('bootstrap.file-input'));?>
+
 <!--search start here-->
 <div class="contact">
     <div class="container">
@@ -19,7 +21,7 @@
                         <label for="" class="user_button">
                           <?php
                           echo $this->Html->link(
-                              $this->Html->image("create_case.png", array("alt" => "Create Case", 'style' => 'float:left; padding: 10px 10px 10px 5px;')),
+                              $this->Html->image("create_case.png", array("alt" => "Create Case", 'style' => 'float:left; padding: 10px 7px 8px 0px;')),
                               "/CaseSessions/createcaseSetup", array('escape' => false)); ?> 
                         </label>
                       </div>
@@ -51,31 +53,35 @@
                 <div class="col-md-7 contact-right">
                   <!-- TOP DELETE SELECTED USER BAR -->
                     <div class="top_bar col-md-7">
-                      <div class="top_bar_left"  style="float:none; text-align:center">
+                      <div class="top_bar_dash"  style="float:none; text-align:center">
                         <h4>BATCH UPLOAD | DOWNLOAD</h4>
                       </div>
-	                        <div class="upload_section" style="margin-top:80px; margin-left:0px;">
-	                        	<h2>Upload</h2>
-								<?php
-								echo $this->Form->create('Uploads', array('type' => 'file'));
-								echo $this->Form->input('file', array('type' => 'file'));
-								echo $this->Form->end('Submit');
-								?>
-							</div>
-	                        <div class="download_section" style=" background-color:#444;">
-	                        	<h2>Download</h2>
-	                        	<?php
-								//Creates the download button
-								echo $this->Form->create('Download');
-								echo $this->Form->end('Download');
-								?>
-							</div>
+                        <!-- DOWNLOAD BUTTON-->
+                        <div title="Click here to delete the selected user.">
+                          <label for="" class="user_button" >
+                            <?php echo $this->Html->image('download.png', array('alt' => 'Create', 'style' => 'float:left; padding: 10px 7px 8px 0px;' )); ?>
+                          </label>
+                        </div>
+                        <div class="upload_section" style="margin-top:80px;">
+                          <h2 style="color:#444">Upload</h2>
+                            <?php
+                            echo $this->Form->create('Uploads', array('type' => 'file'));
+                            echo $this->Form->input('', array('type' => 'file', 'title' => 'Choose a .CSV file'));
+                            echo "<br><br>";
+                            echo $this->Form->end('Submit');
+                            ?>
+                         </div>
+                        <div class="upload_section_receipt" style="float:right; margin-top:-190px">
+                          <h2 style="color:#444">Upload Receipt</h2>
+                            <!-- <p>File Uploaded!</p> -->
+                         </div>
                     </div>
-                  <!-- Delete Interface -->
-                  <script type="text/javascript">
-                  
-                  </script>
                 </div> 
             </div>
             </div>
 </div>
+
+<script type="text/javascript">
+  $('input[type=file]').bootstrapFileInput();
+  $('.file-inputs').bootstrapFileInput();
+</script>

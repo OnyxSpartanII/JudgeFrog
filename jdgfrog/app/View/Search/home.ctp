@@ -229,7 +229,7 @@
 
 </div>
             <div class="search_disclaim" >
-            <p><strong>Note: </strong>Not every combination of searcheable objects will return meaningful results.</p>
+            <p><strong>Note: </strong>Not every combination of searchable objects will return meaningful results.</p>
             </div>
 </div>
 

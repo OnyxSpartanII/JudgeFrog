@@ -19,11 +19,11 @@
                 <!-- Search Interface -->
                   <div class="col-md-3" id="collapsible-panels">
                       <?php
-                        $base_url = array('controller' => 'search', 'action' => 'update');
+                        $base_url = array('controller' => 'search', 'action' => 'home');
                         echo $this->Form->create(array('url' => $base_url, 'inputDefaults' => array('label' => false, 'div' => false)));
                       ?>
                         <h2><a href="#">Case
-                          <?php if (isset($display) && $display['case']) echo '*'; ?>
+                          <?php if (isset($prev_search) && $prev_search['case']) echo '*'; ?>
                         </a></h2>
                             <div>
                                 <?php
@@ -41,7 +41,7 @@
                             </div>
                    
                           <h2><a href="#">Type of Trafficking
-                            <?php if (isset($display) && $display['type']) echo '*'; ?>
+                            <?php if (isset($prev_search) && $prev_search['type']) echo '*'; ?>
                           </a></h2>
                             <div>
                                 <?php
@@ -57,7 +57,7 @@
                             </div>
 
                           <h2><a href="#">Defendant
-                            <?php if (isset($display) && $display['defendant']) echo '*'; ?>
+                            <?php if (isset($prev_search) && $prev_search['defendant']) echo '*'; ?>
                           </a></h2>
                             <div>
                                 <?php
@@ -73,7 +73,7 @@
                           </div>
 
                           <h2><a href="#">Judge
-                            <?php if (isset($display) && $display['judge']) echo '*'; ?>
+                            <?php if (isset($prev_search) && $prev_search['judge']) echo '*'; ?>
                           </a></h2>
                             <div>
                               <?php
@@ -91,7 +91,7 @@
                             </div>
 
                           <h2><a href="#">Organized Crime Group
-                            <?php if (isset($display) && $display['ocg']) echo '*'; ?>
+                            <?php if (isset($prev_search) && $prev_search['ocg']) echo '*'; ?>
                           </a></h2>
                           <div>
                             <?php
@@ -107,7 +107,7 @@
                           </div>
                           
                           <h2><a href="#">Victims
-                            <?php if (isset($display) && $display['victims']) echo '*'; ?>
+                            <?php if (isset($prev_search) && $prev_search['victims']) echo '*'; ?>
                           </a></h2>
                           <div>
                             <?php
@@ -119,7 +119,7 @@
                           </div>
 
                           <h2><a href="#">Arrest Details
-                            <?php if (isset($display) && $display['acd']) echo '*'; ?>
+                            <?php if (isset($prev_search) && $prev_search['acd']) echo '*'; ?>
                           </a></h2>
                           <div>
                             <?php
@@ -133,7 +133,7 @@
                           </div>
 
                         <h2><a href="#">Charge Details
-                          <?php if (isset($display) && $display['cd']) echo '*'; ?>
+                          <?php if (isset($prev_search) && $prev_search['cd']) echo '*'; ?>
                         </a></h2>
                           <div>
                             <?php
@@ -167,7 +167,7 @@
                           </div>
 
                       <h2><a href="#">Sentencing Details
-                        <?php if (isset($display) && $display['sentence']) echo '*'; ?>
+                        <?php if (isset($prev_search) && $prev_search['sentence']) echo '*'; ?>
                       </a></h2>
                       <div>
                         <?php
@@ -229,7 +229,7 @@
 
 </div>
             <div class="search_disclaim" >
-            <p><strong>Note: </strong>Not every combination of searchable objects will return meaningful results.</p>
+            <p><strong>Note: </strong>Not every combination of searcheable objects will return meaningful results.</p>
             </div>
 </div>
 
@@ -439,7 +439,7 @@ $(function() {
                         '</tr>' +
                       '</tbody>' +
                     '</table>' +
-                    (display['defendant'] ? '<table class="table_col">' : '<table class="table_col all_results">') +
+                    (display['defendant'] ? '<table class="table_col filtered">' : '<table class="table_col all_results">') +
                       '<caption>Defendant Information</caption>' +
                       '<thead>' +
                         '<tr>' +
@@ -460,7 +460,7 @@ $(function() {
                         '</tr>' +
                         '<tr class="this_def_info">' +
                           '<td colspan="4">' +
-                            '<table class="modal_table table_col' + (!cases[i][20][j][12] ? 'all_results' : '') + '">' +
+                            '<table class="modal_table table_col' + (!cases[i][20][j][12] ? ' all_results' : ' filtered') + '">' +
                               '<caption>Arrest Information</caption>' +
                               '<thead>' +
                                 '<tr>' +
@@ -483,7 +483,7 @@ $(function() {
                         '</tr>' +
                         '<tr class="this_def_info">' +
                           '<td colspan="4">' +
-                            (display['cd'] ? '<table class="modal_table table_col">' : '<table class="modal_table table_col all_results">') +
+                            (display['cd'] ? '<table class="modal_table table_col filtered">' : '<table class="modal_table table_col all_results">') +
                               '<caption>Charge Information</caption>' +
                               '<thead>' +
                                 '<tr>' +
@@ -519,7 +519,7 @@ $(function() {
               content += '</tbody></table></td></tr>' +
                          '<tr class="this_def_info">' +
                           '<td colspan="4">' +
-                            '<table class="modal_table table_col' + (!cases[i][20][j][34] ? 'all_results' : '') + '">'  +
+                            '<table class="modal_table table_col' + (!cases[i][20][j][34] ? ' all_results' : ' filtered') + '">'  +
                               '<caption>Sentence Information</caption>' +
                               '<thead>' +
                                 '<tr>' +
@@ -551,7 +551,7 @@ $(function() {
                 '</tr>' +
                 '<tr class="this_def_info">' +
                   '<td colspan="4">' + 
-                    (display['ocg'] ? '<table class="modal_table table_col">' : '<table class="modal_table table_col all_results">') +
+                    (display['ocg'] ? '<table class="modal_table table_col filtered">' : '<table class="modal_table table_col all_results">') +
                       '<caption>Organized Crime Group Information</caption>' +
                       '<thead>' +
                         '<tr>' +
@@ -625,27 +625,27 @@ $(function() {
     }
     $( "#DataInProgressCaseName" ) //Case Name Field
       .autocomplete({
-        source: "autoComplete.php?column=CaseNam" ,
+        source: "search/autoComplete?column=CaseNam" ,
         minLength: 1
       });
     $( "#DataInProgressCaseNumber" ) //Case Number Field
       .autocomplete({
-        source: "autoComplete.php?column=CaseNum" ,
+        source: "search/autoComplete?column=CaseNum" ,
         minLength: 1
       });
     $( "#DataInProgressDefendantName" ) //Def Name Field
       .autocomplete({
-        source: "autoComplete.php?column=DefFirst,DefLast" ,
+        source: "search/autoComplete?column=DefFirst,DefLast" ,
         minLength: 1
       });
     $( "#DataInProgressJudgeName" ) //Judge Name Field
       .autocomplete({
-        source: "autoComplete.php?column=JudgeName" ,
+        source: "search/autoComplete?column=JudgeName" ,
         minLength: 1
       });
     $( "#DataInProgressOcgName" ) //Ocg Name Field
       .autocomplete({
-        source: "autoComplete.php?column=OCName1" ,
+        source: "search/autoComplete?column=OCName1" ,
         minLength: 1
       });
   </script>

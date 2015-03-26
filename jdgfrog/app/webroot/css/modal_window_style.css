@@ -166,6 +166,10 @@
 		border:none;
 		color: #000;
 	}
+
+.filtered th {
+	background: #4D1979 !important;
+}
 /*ALL RESULTS TABLE*/
 .all_results{
 	width: 100%;
@@ -183,7 +187,7 @@
 	color: #F5F5F5;
 	font-size: 1.2em;
 	text-align:center;
-	background:#999;
+	background:#999 !important;
 	border-bottom:1px solid #999;
 	}
 	.all_results caption {

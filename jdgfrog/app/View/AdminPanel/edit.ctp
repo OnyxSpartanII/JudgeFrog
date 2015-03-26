@@ -17,7 +17,7 @@
                       </div>
                       <div style="margin-bottom:20px; margin-top:100px; text-align:center;">   
                             <?php
-                              echo $this->Form->input('username', array('label' => 'Enter Case Name','placeholder' => 'USA v. John Doe', 'type' => 'text', 'id' => 'case_name'));
+                              echo $this->Form->input('username', array('label' => 'Enter Case Name','placeholder' => 'USA v. John Doe', 'type' => 'text', 'id' => 'case_name', 'style' => 'background-color: #fff;'));
                             ?>
                         </div>
                   </div>
@@ -51,3 +51,18 @@
               <p><strong>Note: </strong>Not every combination of analyzable objects will return meaningful results.</p>
             </div>
 </div>
+
+<!-- Auto Complete Script -->
+<script>
+    function split( val ) {
+      return val.split( /,\s*/ );
+    }
+    function extractLast( term ) {
+      return split( term ).pop();
+    }
+    $( "#case_name" ) //Case Name Field
+      .autocomplete({
+        source: "autoComplete" ,
+        minLength: 1
+      });
+  </script>

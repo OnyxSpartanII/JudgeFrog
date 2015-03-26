@@ -30,8 +30,8 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 	<?php
 		echo $this->Html->meta('icon');
-		echo $this->Html->css(array('htd-main-panel', 'bootstrap', 'animation', 'search_page_css', 'custom_admin_style'));
-		echo $this->Html->script(array('jquery-1.10.2', 'hover-effect', 'easing.js'));
+		echo $this->Html->css(array('htd-main-panel', 'bootstrap', 'animation', 'search_page_css', 'custom_admin_style', 'jquery-ui'));
+		echo $this->Html->script(array('jquery-1.10.2', 'hover-effect', 'easing.js', 'jquery-ui'));
 	?>
 <!-- Google charts Script -->
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>

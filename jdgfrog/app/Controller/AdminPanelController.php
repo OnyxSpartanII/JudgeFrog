@@ -67,4 +67,36 @@ class AdminPanelController extends AppController {
 		$this->set('active', 'panel');
 	}
 
+	public function autoComplete() {
+		$this->autoRender = false;
+
+		$term = trim(strip_tags($_GET['term']));
+
+		$data = $this->DataInProgress->find('all', array(
+			'fields' => array(
+					'DISTINCT CaseNum',
+					'CaseNam'
+				),
+			'conditions' => array(
+				'OR' => array(
+					'DataInProgress.CaseNum LIKE' => '%' . $term . '%',
+					'DataInProgress.CaseNam LIKE' => '%' . $term .'%'
+				)
+			)
+		));
+
+		$vals = array();
+		$index = 0;
+		foreach ($data as $d) {
+			if ($index++ > 9) break;
+			array_push($vals, array(
+					'label'=> $d['DataInProgress']['CaseNum'] . ' / ' . $d['DataInProgress']['CaseNam'],
+					'value'=> $d['DataInProgress']['CaseNum']
+				)
+			);
+		}
+
+		echo json_encode($vals);
+	}
+
 }

@@ -347,10 +347,10 @@ $(function() {
         table.draw(data, {
           showRowNumber: false,
           page: 'enable',
-          pageSize: 17,
+          pageSize: 20,
           pagingSymbols: {
-            prev: 'prev',
-            next: 'next'
+            prev: 'Prev',
+            next: 'Next'
         },
         pagingButtonsConfiguration: 'auto'
         });

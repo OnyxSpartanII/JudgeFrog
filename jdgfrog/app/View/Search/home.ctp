@@ -689,8 +689,8 @@ $(function() {
       echo 'var trialng_max = 10;';
       echo 'var sent_min = 0;';
       echo 'var sent_max = 300;';
-      echo 'var prob_min = 0;';
-      echo 'var prob_max = 300;';
+      echo 'var cdprob_min = 0;';
+      echo 'var cdprob_max = 300;';
       echo 'var ttlfel_min = 0;';
       echo 'var ttlfel_max = 10;';
       echo 'var dateterm_min = 2000;';
@@ -699,8 +699,8 @@ $(function() {
       echo 'var ttlm_max = 300;';
       echo 'var rest_min = 0;';
       echo 'var rest_max = 10000000;';
-      echo 'var prob_min = 0;';
-      echo 'var prob_max = 50;';
+      echo 'var ttlprob_min = 0;';
+      echo 'var ttlprob_max = 300;';
 
       if (isset($query)) {
         if ($query['DataInProgress']['case_NumDef']) {
@@ -795,8 +795,8 @@ $(function() {
         }
 
         if ($query['DataInProgress']['cd_Probation']) {
-          echo 'var prob_min = ' . explode(';',$query['DataInProgress']['cd_Probation'])[0] . ';';
-          echo 'var prob_max = ' . explode(';',$query['DataInProgress']['cd_Probation'])[1] . ';';
+          echo 'var cdprob_min = ' . explode(';',$query['DataInProgress']['cd_Probation'])[0] . ';';
+          echo 'var cdprob_max = ' . explode(';',$query['DataInProgress']['cd_Probation'])[1] . ';';
         }
 
         if ($query['DataInProgress']['sd_TtlFelonies']) {
@@ -820,8 +820,8 @@ $(function() {
         }
 
         if ($query['DataInProgress']['sd_MonthsProb']) {
-          echo 'var prob_min = ' . explode(';',$query['DataInProgress']['sd_MonthsProb'])[0] . ';';
-          echo 'var prob_max = ' . explode(';',$query['DataInProgress']['sd_MonthsProb'])[1] . ';';
+          echo 'var ttlprob_min = ' . explode(';',$query['DataInProgress']['sd_MonthsProb'])[0] . ';';
+          echo 'var ttlprob_max = ' . explode(';',$query['DataInProgress']['sd_MonthsProb'])[1] . ';';
         }
       }
     ?>
@@ -1070,8 +1070,8 @@ $(function() {
       keyboard: true,
       min: 0,
       max: 300,
-      from: prob_min,
-      to: prob_max,
+      from: cdprob_min,
+      to: cdprob_max,
       type: 'integer',
       step: 1,
       prefix: "",
@@ -1136,9 +1136,9 @@ $(function() {
       hide_min_max: true,
       keyboard: true,
       min: 0,
-      max: 50,
-      from: prob_min,
-      to: prob_max,
+      max: 300,
+      from: ttlprob_min,
+      to: ttlprob_max,
       type: 'integer',
       step: 1,
       prefix: "",

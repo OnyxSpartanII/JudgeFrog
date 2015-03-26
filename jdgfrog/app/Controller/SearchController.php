@@ -449,7 +449,7 @@ class SearchController extends AppController {
 				$display['sentence'] = true;
 			}
 
-			if (intval($max) != 50) {
+			if (intval($max) != 300) {
 				$conditions['DataInProgress.Probation <='] = $max;
 				$display['sentence'] = true;
 			}

@@ -42,8 +42,6 @@
                 </div> 
             </div>
             </div>
-
-
           <div class="contact helpful_section" style="margin:100px auto"></div>
             <div class="contact-main col-md-12">
               <h3 class="page_title">Batch Upload | Dataset Download</h3>

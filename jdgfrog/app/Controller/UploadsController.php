@@ -336,17 +336,17 @@ class UploadsController extends AppController {
 				}
 
 				if ($this->DataInProgress->saveAll($total, array('validate' => 'first'))) {
-					array_push($receipt, '<div class="receipt">Successfully inserted new information into database.');
+					array_push($receipt, '<div class="receipt success">Successfully inserted new information into database.');
 					array_push($receipt, 'Added ' + sizeof($total) + ' new rows.');
 				} else {
-					array_push($receipt, '<div class="receipt">Failed to insert new information into database.');
+					array_push($receipt, '<div class="receipt not_success">Failed to insert new information into database.');
 					$invalid = $this->DataInProgress->invalidFields();
 					$err_rows = array_keys($invalid);
 					foreach ($err_rows as $row) {
-						array_push($receipt, '<div class="receipt-row">Error in row ' . ($row+5));
+						array_push($receipt, '<div class="receipt-row not_success">Error in row ' . ($row+5));
 
 						foreach($invalid[$row] as $err) {
-							array_push($receipt, '<div class="receipt-row-error">' . $err[0] . '</div>');
+							array_push($receipt, '<div class="receipt-row-error not_success">' . $err[0] . '</div>');
 						}
 
 						array_push($receipt, '</div>');
@@ -355,8 +355,15 @@ class UploadsController extends AppController {
 				}
 				array_push($receipt, '</div>');
 				fclose($file);
-				$this->set('receipt',$receipt);
-				$this->render('receipt');
+				// $this->set('receipt',$receipt);
+				// $this->render('receipt');
+				foreach ($receipt as $r) {
+										
+										// echo $r;
+					echo '<div id="echmsg">', $r, '</div>';
+										// $this->Session->setFlash(''.$r);
+										$this->redirect('/CaseSessions/create_case_index');
+									}
 			} else {
 				// shouldnt be here.
 			}

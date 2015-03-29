@@ -117,6 +117,7 @@ class User extends AppModel {
 		}
 	}*/
 
+
 	public function equalToField($field1, $field2) {
 		//checks if a field is equal to another field.
 

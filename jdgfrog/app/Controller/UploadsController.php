@@ -93,7 +93,7 @@ class UploadsController extends AppController {
 
 							);
 
-							for ($statutes as $s) {
+							foreach ($statutes as $s) {
 								$info["S$s"] = $data[$index++];
 								$info["Counts$s"] = $data[$index++];
 								$info["CountsNP$s"] = $data[$index++];

@@ -181,8 +181,6 @@
                           echo '<br><br>';
                           echo $this->Form->input('sd_AssetForfeit', array('empty' => 'Asset Forfeit', 'options' => array('No','Yes')));
                           echo '<br><br>';
-                          echo $this->Form->input('sd_Appeal', array('empty' => 'Appeal', 'options' => array('No','Yes')));
-                          echo '<br><br>';
                           echo $this->Form->input('sd_MonthsProb', array('id' => 'monthsProbationSentence', 'label' => '# of Months Probation'));
                           echo '<br>';
                         ?>
@@ -530,7 +528,6 @@ $(function() {
                                   '<th>Months Probation</th>' +
                                   '<th>Restitution</th>' +
                                   '<th>Asset Forfeiture?</th>' +
-                                  '<th>Appeal?</th>' +
                                 '</tr>' +
                               '</thead>' +
                               '<tbody>' +
@@ -542,7 +539,6 @@ $(function() {
                                   '<td>' + (cases[i][20][j][22] == null ? 'N/A' : cases[i][20][j][22]) + '</td>' +
                                   '<td>' + (cases[i][20][j][18] == null ? 'N/A' : '$' + cases[i][20][j][18]) + '</td>' +
                                   '<td>' + (cases[i][20][j][19] ? 'Yes' : 'No') + '</td>' +
-                                  '<td>' + (cases[i][20][j][20] ? 'Yes' : 'No') + '</td>' +
                                 '</tr>' +
                               '</tbody>' +
                             '</table>' +

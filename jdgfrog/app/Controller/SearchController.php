@@ -22,11 +22,10 @@ class SearchController extends AppController {
 
 		$display = array('case' => false, 'type' => false, 'judge' => false, 'defendant' => false, 'acd' => false, 'sentence' => false, 'ocg' => false, 'victims' => false, 'cd' => false);
 
-		$statutes = ['1916to1968', '1028', '1351', '1425', '1426',
-					'1461to1465', '1512', '1542to1543', '1546',
-					'1581to1588', '1589', '1590', '1591', '1592',
-					'2251', '2252', '2260', '2421to2424', '1324',
-					'1328'];
+		$statutes = ['1961to1968', '1028', '1351',
+						'1425', '1512', '1546', '1581to1588', '1589',
+						'1590', '1591', '1592', '2252', '2260', '2421to2424',
+						'1324', '1328'];
 
 
 		/**
@@ -431,11 +430,6 @@ class SearchController extends AppController {
 
 		if ($this->request->data['DataInProgress']['sd_AssetForfeit'] != '') {
 			$conditions['DataInProgress.AssetForfeit'] = $this->request->data['DataInProgress']['sd_AssetForfeit'];
-			$display['sentence'] = true;
-		}
-
-		if ($this->request->data['DataInProgress']['sd_Appeal'] != '') {
-			$conditions['DataInProgress.Appeal'] = $this->request->data['DataInProgress']['sd_Appeal'];
 			$display['sentence'] = true;
 		}
 
@@ -1000,7 +994,7 @@ class SearchController extends AppController {
 					}
 				}
 
-				if ($d['DataInProgress'][$statute] != 0) {
+				if ($d['DataInProgress']["S$statute"] != 0) {
 					array_push(
 						$charges,
 						array(
@@ -1071,7 +1065,7 @@ class SearchController extends AppController {
 								$d['DataInProgress']['TotalSentence'],
 								$d['DataInProgress']['Restitution'],
 								$d['DataInProgress']['AssetForfeit'],
-								$d['DataInProgress']['Appeal'],			// 20
+								'',			// 20
 								$d['DataInProgress']['SupRelease'],
 								$d['DataInProgress']['Probation'],
 								$charges,
@@ -1114,7 +1108,7 @@ class SearchController extends AppController {
 						$d['DataInProgress']['TotalSentence'],
 						$d['DataInProgress']['Restitution'],
 						$d['DataInProgress']['AssetForfeit'],
-						$d['DataInProgress']['Appeal'],
+						'',
 						$d['DataInProgress']['SupRelease'],
 						$d['DataInProgress']['Probation'],
 						$charges,

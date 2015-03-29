@@ -290,7 +290,7 @@ class DownloadController extends AppController {
 
 			if (count($allData) > 0) {
 		    // prepare the file and name it docket.csv
-		    $fp = fopen('docket.csv', 'w');
+		    $fp = fopen('docket.csv', 'w+');
 
 		    fputcsv($fp, $ara); //adds the column labels 
 			    // Save data

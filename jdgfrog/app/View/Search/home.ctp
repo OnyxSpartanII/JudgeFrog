@@ -475,7 +475,7 @@ $(function() {
                                   '<td>' + (cases[i][20][j][8] == '0000-00-00' ? 'N/A' : cases[i][20][j][8]) + '</td>' +
                                   '<td>' + (cases[i][20][j][7] == '0000-00-00' ? 'N/A' : cases[i][20][j][7]) + '</td>' +
                                   '<td>' + bail_types[cases[i][20][j][10]] + '</td>' +
-                                  '<td>' + (cases[i][20][j][11] == null ? 'N/A' : cases[i][20][j][11]) + '</td>' +
+                                  '<td>' + (cases[i][20][j][11] == null ? 'N/A' : '$' + cases[i][20][j][11]) + '</td>' +
                                 '</tr>' +
                               '</tbody>' +
                             '</table>' +
@@ -510,7 +510,7 @@ $(function() {
                               '<td>' + (cases[i][20][j][23][k][3] == null ? 'N/A' : cases[i][20][j][23][k][3]) + '</td>' +
                               '<td>' + (cases[i][20][j][23][k][5] == null ? 'N/A' : cases[i][20][j][23][k][5]) + '</td>' +
                               '<td>' + (cases[i][20][j][23][k][6] == null ? 'N/A' : cases[i][20][j][23][k][6]) + '</td>' +
-                              '<td>' + (cases[i][20][j][23][k][7] == null ? 'N/A' : cases[i][20][j][23][k][7]) + '</td>' +
+                              '<td>' + (cases[i][20][j][23][k][7] == null ? 'N/A' : '$' + cases[i][20][j][23][k][7]) + '</td>' +
                               '<td>' + (cases[i][20][j][23][k][8] == null ? 'N/A' : cases[i][20][j][23][k][8]) + '</td>' +
                               '<td>' + (cases[i][20][j][23][k][9] == null ? 'N/A' : cases[i][20][j][23][k][9]) + '</td>' +
                             '</tr>';
@@ -565,14 +565,14 @@ $(function() {
                         '<tr>' +
                           '<td>' + (cases[i][20][j][24] == '' ? 'None' : cases[i][20][j][24]) + '</td>' + 
                           '<td>' + (ocg_types[cases[i][20][j][25]] == undefined ? '' : ocg_types[cases[i][20][j][25]]) + '</td>' + 
-                          '<td>' + (ocg_types[cases[i][20][j][26]] == undefined ? '' : ocg_types[cases[i][20][j][26]]) + '</td>' + 
-                          '<td>' + (ocg_types[cases[i][20][j][27]] == undefined ? '' : ocg_types[cases[i][20][j][27]]) + '</td>' +
+                          '<td>' + (ocg_races[cases[i][20][j][26]] == undefined ? '' : ocg_races[cases[i][20][j][26]]) + '</td>' + 
+                          '<td>' + (ocg_scopes[cases[i][20][j][27]] == undefined ? '' : ocg_scopes[cases[i][20][j][27]]) + '</td>' +
                         '</tr>' +
                         '<tr>' +
                           '<td>' + (cases[i][20][j][28] == '' ? 'None' : cases[i][20][j][28]) + '</td>' + 
                           '<td>' + (ocg_types[cases[i][20][j][29]] == undefined ? '' : ocg_types[cases[i][20][j][29]]) + '</td>' + 
-                          '<td>' + (ocg_types[cases[i][20][j][30]] == undefined ? '' : ocg_types[cases[i][20][j][30]]) + '</td>' + 
-                          '<td>' + (ocg_types[cases[i][20][j][31]] == undefined ? '' : ocg_types[cases[i][20][j][31]]) + '</td>' +
+                          '<td>' + (ocg_races[cases[i][20][j][30]] == undefined ? '' : ocg_races[cases[i][20][j][30]]) + '</td>' + 
+                          '<td>' + (ocg_scopes[cases[i][20][j][31]] == undefined ? '' : ocg_scopes[cases[i][20][j][31]]) + '</td>' +
                         '</tr>' +
                       '</tbody>' +
                     '</table>' +

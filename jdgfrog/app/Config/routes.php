@@ -29,9 +29,11 @@
 	Router::connect('/login', array('controller' => 'users', 'action' => 'login'));
 	Router::connect('/create', array('controller' => 'users', 'action' => 'create'));
 	Router::connect('/logout', array('controller' => 'users', 'action' => 'logout'));
-	
-	Router::connect('/CaseSessions/create_case/:step', array('controller' => 'CaseSessions', 'action' => 'createCase'), array('pass' => array('step')) );
-	Router::connect('/cases/create_case/:step', array('controller' => 'CaseSessions', 'action' => 'createCase'), array('pass' => array('step')) );
+
+	Router::connect('/admin/cases/edit/:caseNum', array('controller' => 'CaseEdits', 'action' => 'edit'), array('pass' => array('caseNum')));
+	Router::connect('/admin/cases/edit/defendant/:defName', array('controller' => 'CaseEdits', 'action' => 'editDefendant'), array('pass' => array('defName')));
+	Router::connect('/admin/cases/create_case/:step', array('controller' => 'CaseSessions', 'action' => 'createCase'), array('pass' => array('step')) );
+
 	Router::connect('/index', array('controller' => 'AdminPanel', 'action' => 'index'));
 	Router::connect('/create_case', array('controller' => 'AdminPanel', 'action' => 'create_case'));
 	Router::connect('/edit', array('controller' => 'AdminPanel', 'action' => 'edit'));

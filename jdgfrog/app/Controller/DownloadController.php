@@ -1,22 +1,15 @@
 <?php
-
 class DownloadController extends AppController {
-
 	public $name = 'Download';
-
 	public $uses = array('DataInProgress');
-
 	public $helpers = array('Html', 'Form');
-
 	public function beforeFilter() {
 		parent::beforeFilter();
 		$this->Auth->allow('download');
 	}
-
 	public function download() {
-
 		if ($this->request->is('post')) {
-
+				// echo 'Account created!';
 		    $allData = $this->DataInProgress->find('all'); //Grab all data from DB
     		
     		$ara = array(

@@ -80,8 +80,8 @@ class UploadsController extends AppController {
 								'DefRace' => $data[$index++],
 								'DefBirthdate' => (strrpos($data[$index], "/") ? explode("/",$data[$index++])[2] : $data[$index++]),
 								'DefArrestAge' => $data[$index++],
-								'ChargeDate' => ($data[$index] != 0 ? date('Y-m-d h:i:s', strtotime($data[$index++])) : 0),
-								'ArrestDate' => ($data[$index] != 0 ? date('Y-m-d h:i:s', strtotime($data[$index++])) : 0),
+								'ChargeDate' => ($data[$index++] != 0 ? date('Y-m-d h:i:s', strtotime($data[$index-1])) : 0),
+								'ArrestDate' => ($data[$index++] != 0 ? date('Y-m-d h:i:s', strtotime($data[$index-1])) : 0),
 								'Detained' => $data[$index++],
 								'BailType' => $data[$index++],
 								'BailAmount' => $data[$index++],
@@ -106,8 +106,8 @@ class UploadsController extends AppController {
 								$info["Prob$s"] = $data[$index++];
 							}
 
-							$info['DateTerm'] => ($data[$index] != 0 ? date('Y-m-d h:i:s', strtotime($data[$index++])) : 0);
-							$info['SentDate'] = ($data[$index] != 0 ? date('Y-m-d h:i:s', strtotime($data[$index++])) : 0);
+							$info['DateTerm'] = ($data[$index++] != 0 ? date('Y-m-d h:i:s', strtotime($data[$index-1])) : 0);
+							$info['SentDate'] = ($data[$index++] != 0 ? date('Y-m-d h:i:s', strtotime($data[$index-1])) : 0);
 							$info['TotalSentence'] = $data[$index++];
 							$info['Restitution'] = $data[$index++];
 							$info['AssetForfeit'] = $data[$index++];
@@ -125,8 +125,6 @@ class UploadsController extends AppController {
 							$info['OCType2'] = $data[$index++];
 							$info['OCRace2'] = $data[$index++];
 							$info['OCScope2'] = $data[$index++];
-							$info['SubmittedForReview'] = true;
-
 
 							array_push($total, $info);
 						}
@@ -160,8 +158,8 @@ class UploadsController extends AppController {
 										
 										// echo $r;
 					echo '<div id="echmsg">', $r, '</div>';
-										// $this->Session->setFlash(''.$r);
-										$this->redirect('/CaseSessions/create_case_index');
+										$this->Session->setFlash(''.$r);
+										// $this->redirect('/CaseSessions/create_case_index');
 									}
 			} else {
 				// shouldnt be here.

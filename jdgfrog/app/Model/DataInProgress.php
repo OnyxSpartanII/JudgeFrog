@@ -18,15 +18,14 @@ class DataInProgress extends AppModel {
  *
  * @var string
  */
-	public $primaryKey = 'CaseDefId';
+	public $primaryKey = 'id';
 
 
 public function beforeValidate($options = []) {
-	$statutes = ['1961to1968', '1028', '1351', '1425', '1426',
-				'1461to1465', '1512', '1542to1543', '1546',
-				'1581to1588', '1589', '1590', '1591', '1592',
-				'2251', '2252', '2260', '2421to2424', '1324',
-				'1328'];
+	$statutes = ['1961to1968', '1028', '1351',
+								'1425', '1512', '1546', '1581to1588', '1589',
+								'1590', '1591', '1592', '2252', '2260', '2421to2424',
+								'1324', '1328'];
 	$fields = ['Counts', 'CountsNP', 'PleaDismissed', 'PleaGuilty',
 				'TrialGuilty', 'TrialNG', 'Fines', 'Sent', 'Prob'];
 
@@ -148,11 +147,6 @@ public function beforeValidate($options = []) {
 			'message' => 'Incorrect value for Minor Sex Trafficking',
 			'allowEmpty' => true
 		),
-		'Role' => array(
-			'rule' => array('inList', array(0,1)),
-			'message' => 'Incorrect value for Role',
-			'allowEmpty' => true
-		),
 		'FelCharged' => array(
 			'rule' => array('numeric'),
 			'message' => 'Incorrect value for Felonies Charged',
@@ -186,11 +180,6 @@ public function beforeValidate($options = []) {
 		'AssetForfeit' => array(
 			'rule' => array('inList', array(0,1)),
 			'message' => 'Incorrect value for Asset Forfeit',
-			'allowEmpty' => true
-		),
-		'Appeal' => array(
-			'rule' => array('inList', array(0,1)),
-			'message' => 'Incorrect value for Appeal',
 			'allowEmpty' => true
 		),
 		'SupRelease' => array(

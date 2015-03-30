@@ -13,11 +13,21 @@
 									<div class="top_bar col-md-4">
 										<div class="top_bar_dash">
 											<h4>PROGRESS</h4>
+											<h5>Case &amp; Judge Information</h5>
 										</div>
-											<!-- PROGRESS-->
-											<div title="Click here to add this user." style="margin-top: 19px;">
-											</div>
 									</div>
+										<div class="progress_bar">
+											<label style="margin-top:80px">Case & Judge Information</label>
+											<label>Victim Information</label>
+											<label>Defendant Information</label>
+											<div class = "defendant_sub">
+												<label>Charge Information</label>
+												<label>Statute(s) Information</label>
+												<label>Sentencing Information</label>
+												<label>Organized Crime Group Information</label>
+											</div>
+											<label>Submit For Review</label>
+										</div>
 								<!-- Create Interface -->
 								<div class="user_creation" style="padding-bottom:50px; margin-top:50px;">
 									<div style="padding-top:0px;background-color:#FFF; border-bottom:1px solid rgba(75,75,75,.3);"></div>
@@ -39,63 +49,49 @@
 												</div>
 										</div>
 										<div class="col-md-11 case_creation_form" style="margin:100px auto; float:none;">
-						<?php echo $this->Form->create('CaseSession'); ?>
+										
+										<fieldset><legend>Case Information</legend>
+											<?php echo $this->Form->create('CaseSession'); ?>
 
-						<?php echo $this->Form->input('CaseNam', array('label' => 'Case Name', 'placeholder' => 'Case Name')); ?>
+											<?php echo $this->Form->input('CaseNam', array('label' => '', 'placeholder' => 'Case Name')); ?>
 
-						<?php echo $this->Form->input('CaseNum', array( 'label' => 'Case Number', 'placeholder' => 'Case Number')); ?>
+											<?php echo $this->Form->input('CaseNum', array( 'label' => '', 'placeholder' => 'Case Number')); ?>
 
-						<?php echo $this->Form->input('NumDef', array('label'=> 'Number of Defendants', 'placeholder' => 'Number of Defendants')); ?>
-						<?php echo "<br><br><br><br><br>"; ?>
-						<?php echo $this->Form->input('JudgeName', array('label'=> 'Judge Name', 'placeholder' => 'Judge')); ?>
-						<?php echo $this->Form->input('JudgeRace', array('label' => 'Judge Race')); ?>
-						<?php echo $this->Form->input('JudgeGen', array('label' => 'JudgeGen')); ?>
-						<?php echo $this->Form->input('JudgeTenure', array('label' => 'JudgeTenure')); ?>
-						<?php echo $this->Form->input('JudgeApptBy', array('label' => 'JudgeApptBy')); ?>
-						<?php echo $this->Form->input('FedDistrictNum', array('label'=> 'FedDistrictNum', 'placeholder' => 'Federal District #', 'type' => 'text')); ?>
-						<?php echo $this->Form->input('FedDistrictLoc', array('label' => 'FedDistrictLoc', 'placeholder' => 'Federal District Location')); ?>
+											<?php echo $this->Form->input('NumDef', array('label'=> '', 'type' => 'text', 'placeholder' => 'Number of Defendants')); ?>
+										</fieldset>
 
-						<?php echo $this->Form->input('FedDistrictNum', array('label'=> 'FedDistrictNum', 'placeholder' => 'Federal District #', 'type' => 'text')); ?>
+										<fieldset><legend>Judge Information</legend>
+											<?php
+											echo $this->Form->input('JudgeName', array('label' => '', 'name'=> 'judgeName','placeholder' => 'Judge Name', 'type' => 'text'));
+											echo $this->Form->input('JudgeRace', array('label' => '', 'empty' => 'Race', 'options' => array('White', 'Black', 'Hispanic', 'Asian', 'Other'))); 
+											echo $this->Form->input('JudgeGen', array('label' => '', 'options' => array('Male', 'Female'), 'empty' => 'Gender'));
+											echo $this->Form->input('JudgeTenure', array('label' => '', 'name'=> 'tenure','placeholder' => 'Tenure', 'type' => 'text'));
+											echo $this->Form->input('JudgeApptBy', array('label' => '', 'options' => array('Republican', 'Democrat'), 'empty' => 'Appointed By'));
+											?>
+										</fieldset>
 
-						<?php echo $this->Form->input('State', array('placeholder' => 'e.g, TX')); ?>
-						<?php echo $this->Form->input('CaseSummary'); ?>
-						<?php echo "<br><br>"; ?>
+										<fieldset><legend>District &amp; Summary Information</legend>
+											<?php echo $this->Form->input('FedDistrictNum', array('label'=> '', 'placeholder' => 'Federal District #', 'type' => 'text')); ?>
+											<?php echo $this->Form->input('FedDistrictLoc', array('label' => '', 'placeholder' => 'Federal District Location')); ?>
 
-						<?php echo $this->Form->end('Next step'); ?>
-						<!-- <?php //echo print_r($this->params); echo $this->Html->url(null, true);?> -->
-					</div>
+											<?php //echo $this->Form->input('FedDistrictNum', array('label'=> '', 'placeholder' => 'Federal District #', 'type' => 'text')); ?>
+
+											<?php echo $this->Form->input('State', array('label'=> '','options' => array('Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','Florida','Georgia','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virginia','Washington','West Virginia','Wisconsin','Wyoming'), 'empty' => 'State'));
+											?>
+											<?php echo $this->Form->input('CaseSummary', array('placeholder' => 'Case Summary', 'label' => '')); ?>
+										</fieldset>
+
+											<?php echo $this->Form->end('Next step'); ?>
+											<!-- <?php //echo print_r($this->params); echo $this->Html->url(null, true);?> -->
+										</div>
 								</div> 
-						</div>
-						</div>
-						<div class="search_disclaim" style="margin-top:0px; padding-top:10px; border-top:1px solid #DCDCDC">
-							<p><strong>*Note: </strong>All fields are required</p>
-						</div>
+				</div>
+		</div>
+				<div class="search_disclaim" style="margin-top:0px; padding-top:10px; border-top:1px solid #DCDCDC">
+					<p><strong>*Note: </strong>All fields are required</p>
+				</div>
 </div>
 
 <style type="text/css">
-	.case_creation_form label{
-		font-size: 18px;
-		font-weight: bold;
-		padding-top: 15px;
-	}
-.case_creation_form input[type="submit"] {
-	width: 20%;
-	padding: 1em 0em;
-	outline: none;
-	background-color: #4D1979;
-	border: 1px solid #4D1979;
-	color: #fff;
-}
-.case_creation_form input[type="submit"]:hover {
-	background-color:#dcdcdc; color: #777;
-	border: 1px solid #777;
-	 transition: all 0.3s ease-in-out;
-	 -webkit-transition: all 0.3s ease-in-out;
-	 -moz-transition: all 0.3s ease-in-out;
-	 -o-transition: all 0.3s ease-in-out;
-}
-.case_creation_form input[type="submit"]:active {
-		margin-left: 10px;
-}
 
 </style>

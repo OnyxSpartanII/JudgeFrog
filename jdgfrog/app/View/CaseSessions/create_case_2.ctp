@@ -39,20 +39,20 @@
                         </div>
                     </div>
                     <div class="col-md-11 case_creation_form" style="margin:100px auto; float:none;">
-                    
-<?php echo $this->Form->create('CaseSession'); ?>
-<?php echo $this->Form->input('LaborTraf', array('type' => 'checkbox', 'label' => 'Labor Trafficking')); ?>
-<?php echo $this->Form->input('AdultSexTraf', array('type' => 'checkbox', 'label' => 'Adult Sex Trafficking')); ?>
-<?php echo $this->Form->input('MinorSexTraf', array('type' => 'checkbox', 'label' => 'Minor Sex Trafficking')); ?>
-<?php echo $this->Form->input('NumVic', array('label' => 'Number of Victims')); ?>
-<?php echo $this->Form->input('NumVicMinor', array('label' => 'Number of Minor Victims')); ?>
-<?php echo $this->Form->input('NumVicForeign', array('label' => 'Number of Foreign Victims')); ?>
-<?php echo $this->Form->input('NumVicFemale', array('label' => 'Number of Female Victims')); ?>
-<?php echo $this->Form->end('Next'); ?>
-
-<!-- <?php // echo print_r($this->params); ?> -->
-
-</div>
+                      
+                      <fieldset><legend>Victim Information</legend>
+                        <?php echo $this->Form->create('CaseSession'); ?>
+                        <?php echo $this->Form->input('LaborTraf', array('type' => 'checkbox', 'label' => 'Labor Trafficking')); ?>
+                        <?php echo $this->Form->input('AdultSexTraf', array('type' => 'checkbox', 'label' => 'Adult Sex Trafficking')); ?>
+                        <?php echo $this->Form->input('MinorSexTraf', array('type' => 'checkbox', 'label' => 'Minor Sex Trafficking')); ?>
+                        <?php echo $this->Form->input('NumVic', array('type' => 'text', 'placeholder' => 'Number of Victims', 'label' => '')); ?>
+                        <?php echo $this->Form->input('NumVicMinor', array('type' => 'text', 'placeholder' => 'Number of Minor Victims', 'label' => '')); ?>
+                        <?php echo $this->Form->input('NumVicForeign', array('type' => 'text', 'placeholder' => 'Number of Foreign Victims', 'label' => '')); ?>
+                        <?php echo $this->Form->input('NumVicFemale', array('type' => 'text', 'placeholder' => 'Number of Female Victims', 'label' => '')); ?>
+                      </fieldset>
+                        <?php echo $this->Form->end('Next'); ?>
+                        <!-- <?php // echo print_r($this->params); ?> -->
+                    </div>
                 </div> 
             </div>
             </div>

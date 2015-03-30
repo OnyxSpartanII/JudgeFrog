@@ -29,7 +29,7 @@
                   <!-- TOP DELETE SELECTED USER BAR -->
                     <div class="top_bar col-md-8">
                       <div class="top_bar_left">
-                        <h4>VICTIM INFORMATION</h4>
+                        <h4>SENTENCING INFORMATION</h4>
                       </div>
                         <!-- DELETE BUTTON-->
                         <div title="Click here to save and quit." style="margin-top: 19px;">
@@ -40,19 +40,21 @@
                     </div>
                     <div class="col-md-11 case_creation_form" style="margin:100px auto; float:none;">
                     
-<?php echo $this->Form->create('CaseSession'); ?>
 
-<?php //add defendant name, number, case name ?>
-<?php echo $this->Form->input('DateTerm', array('label' => 'Termination Date of Case')); ?>
-<?php echo $this->Form->input('SentDate', array('label' => 'Date of Sentencing')); ?>
-<?php echo $this->Form->input('TotalSentence', array('label' => 'Total Number of Months Sentenced')); ?>
-<?php echo $this->Form->input('Restitution', array('label' => 'Amount Required to Pay For Restitution')); ?>
-<?php echo $this->Form->input('AssetForfeit', array('label' => 'Assets Forfeited?', 'type' => 'checkbox')); ?>
-<?php echo $this->Form->input('Appeal', array('label' => 'Appeal Pending?', 'type' => 'checkbox')); ?>
-<?php echo $this->Form->input('SupRelease', array('label' => 'Number of Months Under Supervised Release')); ?>
-<?php echo $this->Form->input('Probation', array('label' => 'Total Number of Months Under Probation')); ?>
+                    <fieldset><legend>Defendant Information</legend>
+                      <?php echo $this->Form->create('CaseSession'); ?>
 
-<?php echo $this->Form->end('Next'); ?>
+                      <?php //add defendant name, number, case name ?>
+                      <?php echo $this->Form->input('DateTerm', array('label' => 'Termination Date of Case')); ?>
+                      <?php echo $this->Form->input('SentDate', array('label' => 'Date of Sentencing')); ?>
+                      <?php echo $this->Form->input('TotalSentence', array('label' => 'Total Number of Months Sentenced')); ?>
+                      <?php echo $this->Form->input('Restitution', array('label' => 'Amount Required to Pay For Restitution')); ?>
+                      <?php echo $this->Form->input('AssetForfeit', array('label' => 'Assets Forfeited?', 'type' => 'checkbox')); ?>
+                      <?php echo $this->Form->input('Appeal', array('label' => 'Appeal Pending?', 'type' => 'checkbox')); ?>
+                      <?php echo $this->Form->input('SupRelease', array('label' => 'Number of Months Under Supervised Release')); ?>
+                      <?php echo $this->Form->input('Probation', array('label' => 'Total Number of Months Under Probation')); ?>
+                    </fieldset>
+                      <?php echo $this->Form->end('Next'); ?>
 
 <!-- <?php // echo print_r($this->params); ?> -->
 

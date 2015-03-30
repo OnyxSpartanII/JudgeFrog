@@ -931,9 +931,6 @@ ul.imagesprit li a span.be{
 
 /*--media quiries--*/
 @media(max-width:1440px){
-.footer-h {
-   position: fixed; 
-}
 iframe{
 	 /*width:100%;*/
 	 height:400px;
@@ -943,9 +940,6 @@ iframe{
 }
 }
 @media(max-width:1200px){	
-.footer-h {
-   position: fixed; 
-}
 iframe{
 	 /*width:100%;*/
 	 min-height:350px;
@@ -1107,11 +1101,7 @@ iframe{
 }
  
 }
-@media(max-width:700px){
-.footer-h {
-   position: relative; 
-}
-}
+
 @media(max-width:640px){
 .header-bottom h1 {
 	font-size: 2.5em;
@@ -1175,10 +1165,7 @@ iframe{
 }
 @media(max-width:532px){
 #content{
-	margin-bottom: 340px;
-}
-.footer-h{
-	position: relative;
+	margin-bottom: 140px;
 }
 }
 
@@ -1372,8 +1359,5 @@ iframe{
 }
 #content{
 	margin-bottom: 400px;
-}
-.footer-h{
-	position: relative;
 }
 }

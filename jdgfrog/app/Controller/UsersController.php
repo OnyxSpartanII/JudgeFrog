@@ -148,24 +148,47 @@ class UsersController extends AppController {
 
 	public function create() {
 
-		$this->User->delete($username = 'gaga', true);
+		if ($this->request->is('post')) {
+				{
+					$this->User->create();
 
-		if ($this->request->is('post')) 
-		{
-			$this->User->create();
+					//Save only the listed fields in the model to the database.
+					if ($this->User->save($this->request->data, array('username', 'first_name', 'last_name', 'role', 'created', 'modified', 'password_hash'))) 
+					{
+						$this->Session->setFlash(__('User Successfully Created!'));
 
-			//Save only the listed fields in the model to the database.
-			if ($this->User->save($this->request->data, array('username', 'first_name', 'last_name', 'role', 'created', 'modified', 'password_hash'))) 
-			{
-				$this->Session->setFlash(__('User Created Successfully!'));
-				// echo '<script language="javascript">';
-				// echo 'alert("User Created Successfully!")';
-				// echo '</script>';
-				return $this->redirect(array('controller' => 'users', 'action' => 'create'));
-			}
-			$this->Session->setFlash(__('Sorry the user could not be created!'));
-			$this->Session->setFlash(__(print_r($this->request->data)));
+						return $this->redirect(array('controller' => 'users', 'action' => 'create'));
+					}
+					
+						$this->Session->setFlash(__('Sorry the user could not be created!'));
+						// $this->Session->setFlash(__(print_r($this->request->data)));
+					
+				}
 		}
+
+
+		// -----------------------------------------------------------------------------------------------
+		if ($this->request->is('post')) {
+					$this->User->create();
+		    if ($this->request->data['delete_user_form']['deleteform']) {
+
+					$foo = $this->request->data('case');
+
+					$this->Session->setFlash(__($foo));
+
+		                $this->User->delete($username = $foo, true);
+
+					// $this->Session->setFlash(__('User Successfully Deleted!'));
+		        }
+
+			// $this->User->delete($id = $row['id'], true);
+				// $this->redirect(array('controller' => 'User', 'action' => 'create'));
+				// $this->Session->setFlash(__('User Successfully Deleted!')); 
+		    else {
+				$this->Session->setFlash(__('Oops something went wrong :( User not deleted!'));
+		    }
+		}
+		// -----------------------------------------------------------------------------------------------
 	}
 
 	public function edit() {

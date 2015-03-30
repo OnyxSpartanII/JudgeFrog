@@ -29,7 +29,7 @@
                   <!-- TOP DELETE SELECTED USER BAR -->
                     <div class="top_bar col-md-8">
                       <div class="top_bar_left">
-                        <h4>VICTIM INFORMATION</h4>
+                        <h4>DEFENDANT INFORMATION</h4>
                       </div>
                         <!-- DELETE BUTTON-->
                         <div title="Click here to save and quit." style="margin-top: 19px;">
@@ -39,13 +39,16 @@
                         </div>
                     </div>
                     <div class="col-md-11 case_creation_form" style="margin:100px auto; float:none;">
-						<?php echo $this->Form->create('CaseSession'); ?>
-						<?php echo $this->Form->input('DefLast', array('label' => 'Defendant Lastname')); ?>
-						<?php echo $this->Form->input('DefFirst', array('label' => 'Defendant Firstname')); ?>
-						<?php echo $this->Form->input('DefGender', array('label' => 'Defendant Gender')); ?>
-						<?php echo $this->Form->input('DefRace', array('label' => 'Defendant Race')); ?>
-						<?php echo $this->Form->input('DefBirthdate', array('label' => 'Defendant Birthdate', 'type' => 'text')); ?>
-						<?php echo $this->Form->input('Alias', array('label' => 'Aliases', 'placeholder' => 'Enter defendant aliases separated by commas.')); ?>
+                      
+                      <fieldset><legend>Defendant Information</legend>
+              						<?php echo $this->Form->create('CaseSession'); ?>
+              						<?php echo $this->Form->input('DefLast', array('type' => 'text', 'placeholder' => 'Defendant Lastname', 'label' => '')); ?>
+              						<?php echo $this->Form->input('DefFirst', array('type' => 'text', 'placeholder' => 'Defendant Firstname', 'label' => '')); ?>
+                          <?php echo $this->Form->input('DefRace', array('label' => '', 'empty' => 'Race', 'options' => array('White', 'Black', 'Hispanic', 'Asian', 'Other'))); ?>
+                          <?php echo $this->Form->input('DefGender', array('label' => '', 'options' => array('Male', 'Female'), 'empty' => 'Gender')); ?>
+              						<?php echo $this->Form->input('DefBirthdate', array('type' => 'text', 'placeholder' => 'Defendant Birthdate', 'label' => '')); ?>
+              						<?php echo $this->Form->input('Alias', array('label' => '', 'placeholder' => 'Enter defendant aliases separated by commas.')); ?>
+                      </fieldset>
 						<?php echo $this->Form->end('Next'); ?>
 
 						

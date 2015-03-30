@@ -34,7 +34,7 @@
                   <!-- TOP DELETE SELECTED USER BAR -->
                     <div class="top_bar col-md-8">
                       <div class="top_bar_left">
-                        <h4>VICTIM INFORMATION</h4>
+                        <h4>CHARGED DATE INFORMATION</h4>
                       </div>
                         <!-- DELETE BUTTON-->
                         <div title="Click here to save and quit." style="margin-top: 19px;">
@@ -45,17 +45,18 @@
                     </div>
                     <div class="col-md-11 case_creation_form" style="margin:100px auto; float:none;">
                     
-<?php echo $this->Form->create('CaseSession'); ?>
-<?php //add defendant name, number, case name ?>
-<?php echo $this->Form->input('ChargeDate', array('label' => 'Date Charged')); ?>
-<?php echo $this->Form->input('ArrestDate', array('label' => 'Date Arrested')); ?>
-<?php echo $this->Form->input('Detained', array('label' => 'Detained', 'type' => 'checkbox')); ?>
-<?php echo $this->Form->input('BailType', array('label' => 'Type of Bail')); ?>
-<?php echo $this->Form->input('BailAmount', array('label' => 'Bail Amount')); ?>
-<?php echo $this->Form->input('FelCharged', array('label' => 'Number of Felonies Charged')); ?>
-<?php echo $this->Form->input('FelSentenced', array('label' => 'Number of Felonies Sentenced')); ?>
-<?php echo $this->Form->end('Next'); ?>
-
+                      <fieldset><legend>Defendant Information</legend>
+                        <?php echo $this->Form->create('CaseSession'); ?>
+                        <?php //add defendant name, number, case name ?>
+                        <?php echo $this->Form->input('ChargeDate', array('label' => 'Date Charged')); ?>
+                        <?php echo $this->Form->input('ArrestDate', array('label' => 'Date Arrested')); ?>
+                        <?php echo $this->Form->input('Detained', array('label' => 'Detained', 'type' => 'checkbox')); ?>
+                        <?php echo $this->Form->input('BailType', array('label' => 'Type of Bail')); ?>
+                        <?php echo $this->Form->input('BailAmount', array('label' => 'Bail Amount')); ?>
+                        <?php echo $this->Form->input('FelCharged', array('label' => 'Number of Felonies Charged')); ?>
+                        <?php echo $this->Form->input('FelSentenced', array('label' => 'Number of Felonies Sentenced')); ?>
+                      </fieldset>
+                        <?php echo $this->Form->end('Next'); ?>
 
 <!-- <?php // echo print_r($this->params); ?> -->
 

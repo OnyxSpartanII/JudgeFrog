@@ -24,14 +24,61 @@ class CaseEditsController extends AppController {
 		if ($this->request->is('post')) {
 
 			$data = $this->request->data;
-			debug($data);
-			if ($this->DataInProgress->updateAll(array("DataInProgress.CaseNam" => "'test'", 'DataInProgress.NumDef' => 1000), array('DataInProgress.CaseNum' => '2:07-cr-00785-JLL')) ) {
+
+			$caseName		= $data['DataInProgress']['CaseNam'];
+			$caseNum 		= $data['DataInProgress']['CaseNum'];
+			$numDef 		= $data['DataInProgress']['NumDef'];
+			$state 			= $data['DataInProgress']['State'];
+			$fedDistLoc 	= $data['DataInProgress']['FedDistrictLoc'];
+			$fedDistNum 	= $data['DataInProgress']['FedDistrictNum'];
+			$judgeName 		= $data['DataInProgress']['JudgeName'];
+			$judgeRace 		= $data['DataInProgress']['JudgeRace'];
+			$judgeGen 		= $data['DataInProgress']['JudgeGen'];
+			$judgeApptBy 	= $data['DataInProgress']['JudgeApptBy'];
+			$judgeTenure 	= $data['DataInProgress']['JudgeTenure'];
+			$caseSummary 	= $data['DataInProgress']['CaseSummary'];
+			$laborTraf 		= $data['DataInProgress']['LaborTraf'];
+			$adultTraf 		= $data['DataInProgress']['AdultSexTraf'];
+			$minorTraf 		= $data['DataInProgress']['MinorSexTraf'];
+			$numVic 		= $data['DataInProgress']['NumVic'];
+			$numVicMinor	= $data['DataInProgress']['NumVicMinor'];
+			$numVicForeign	= $data['DataInProgress']['NumVicForeign'];
+			$numVicFemale	= $data['DataInProgress']['NumVicFemale'];
+
+
+			//$caseName = 'DROP TABLE DataInProgress_backup';
+			/*
+			* 	Using variables here in $fields may allow SQL injections? However, when tested with the string
+			*	above, nothing happened. Instead the CaseNam was changed to the above string.
+			*	More testing for vulnerabilities?
+			*/
+			$fields = array(
+							'DataInProgress.CaseNum' 		=> "'$caseNum'", 
+							'DataInProgress.CaseNam' 		=> "'$caseName'", 
+							'DataInProgress.NumDef' 		=> "'$numDef'",
+							'DataInProgress.State' 			=> "'$state'",
+							'DataInProgress.FedDistrictLoc' => "'$fedDistLoc'",
+							'DataInProgress.FedDistrictNum' => "'$fedDistNum'",
+							'DataInProgress.JudgeName' 		=> "'$judgeName'",
+							'DataInProgress.JudgeRace' 		=> "'$judgeRace'",
+							'DataInProgress.JudgeGen' 		=> "'$judgeGen'",
+							'DataInProgress.JudgeApptBy' 	=> "'$judgeApptBy'",
+							'DataInProgress.JudgeTenure' 	=> "'$judgeTenure'",
+							'DataInProgress.CaseSummary' 	=> "'$caseSummary'",
+							'DataInProgress.LaborTraf' 		=> "'$laborTraf'",
+							'DataInProgress.AdultSexTraf' 	=> "'$adultTraf'",
+							'DataInProgress.MinorSexTraf' 	=> "'$minorTraf'",
+							'DataInProgress.NumVic' 		=> "'$numVic'",
+							'DataInProgress.NumVicMinor' 	=> "'$numVicMinor'",
+							'DataInProgress.NumVicForeign' 	=> "'$numVicForeign'",
+							'DataInProgress.NumVicFemale' 	=> "'$numVicFemale'"
+			);
+
+			if ($this->DataInProgress->updateAll($fields, array('DataInProgress.CaseNum' => $caseNumber)) ) {
 				print_r('Save successful!');
 			} else {
 				print_r('Something went wrong. Case information not saved.');
 			}
-			//debug($this->request->data);
-			//$this->saveEdits();
 		}
 		$this->render('edit');		
 	}
@@ -83,7 +130,7 @@ class CaseEditsController extends AppController {
 
 			$this->DataInProgress->clear();
 			$this->request->data['DataInProgress']['id'] = $caseId;
-			//debug($this->request->data);
+			
 			if ($this->DataInProgress->save($this->request->data)) {
 				print_r('Save successful!');
 			} else {

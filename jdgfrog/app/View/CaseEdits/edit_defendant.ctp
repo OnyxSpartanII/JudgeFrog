@@ -30,10 +30,19 @@
 <?php	echo $this->Form->input('DefArrestAge',	array('default' => $case['DataInProgress']['DefArrestAge'])); ?>
 <?php	echo $this->Form->input('Alias',		array('default' => $case['DataInProgress']['Alias'])); ?>
 
-<?php echo $this->Form->input('S1961to1968', 			array('default' => $case['DataInProgress']['S1961to1968'], 'label' => 'Statute 1961-1968', 'type' => 'checkbox')); ?>
-<?php echo $this->Form->input('Counts1961to1968', 		array('default' => $case['DataInProgress']['Counts1961to1968'], 'label' => 'Counts')); ?>
-<?php echo $this->Form->input('CountsNP1961to1968', 	array('default' => $case['DataInProgress']['CountsNP1961to1968'], 'label' => 'Counts Nolle Prossed')); ?>
-<?php echo $this->Form->input('PleaDismissed1961to1968',array('default' => $case['DataInProgress']['PleaDismissed1961to1968'], 'label' => 'Counts Dismissed')); ?>
+<?php echo $this->Form->input('S1961to1968', 			array(
+															'default' => $case['DataInProgress']['S1961to1968'], 
+															'label' => 'Statute 1961-1968', 
+															'type' => 'checkbox')); ?>
+<?php echo $this->Form->input('Counts1961to1968', 		array(
+															'default' => $case['DataInProgress']['Counts1961to1968'], 
+															'label' => 'Counts')); ?>
+<?php echo $this->Form->input('CountsNP1961to1968', 	array(
+															'default' => $case['DataInProgress']['CountsNP1961to1968'], 
+															'label' => 'Counts Nolle Prossed')); ?>
+<?php echo $this->Form->input('PleaDismissed1961to1968',array(
+															'default' => $case['DataInProgress']['PleaDismissed1961to1968'], 
+															'label' => 'Counts Dismissed')); ?>
 <?php echo $this->Form->input('PleaGuilty1961to1968', 	array('default' => $case['DataInProgress']['PleaGuilty1961to1968'], 'label' => 'Counts Pled Guilty')); ?>
 <?php echo $this->Form->input('TrialGuilty1961to1968', 	array('default' => $case['DataInProgress']['TrialGuilty1961to1968'], 'label' => 'Counts Found Guilty At Trial')); ?>
 <?php echo $this->Form->input('TrialNG1961to1968', 		array('default' => $case['DataInProgress']['TrialNG1961to1968'], 'label' => 'Counts Found Not Guilty At Trial')); ?>
@@ -74,7 +83,7 @@
 <?php echo $this->Form->input('Sent1425', 			array('default' => $case['DataInProgress']['Sent1425'], 'label' => 'Number of Months Sentenced Under Statute')); ?>
 <?php echo $this->Form->input('Prob1425', 			array('default' => $case['DataInProgress']['Prob1425'], 'label' => 'Number of Months Under Probation Under Statute')); ?>
 
-<?php echo $this->Form->input('S1512', 				array('default' => $case['DataInProgress']['S1512'], 'label' => 'Statute 1512', 		'type' => 'checkbox')); ?>
+<?php echo $this->Form->input('S1512', 				array('default' => $case['DataInProgress']['S1512'], 'label' => 'Statute 1512', 'type' => 'checkbox')); ?>
 <?php echo $this->Form->input('Counts1512', 		array('default' => $case['DataInProgress']['Counts1512'], 'label' => 'Counts')); ?>
 <?php echo $this->Form->input('CountsNP1512', 		array('default' => $case['DataInProgress']['CountsNP1512'], 'label' => 'Counts Nolle Prossed')); ?>
 <?php echo $this->Form->input('PleaDismissed1512', 	array('default' => $case['DataInProgress']['PleaDismissed1512'], 'label' => 'Counts Dismissed')); ?>
@@ -118,7 +127,7 @@
 <?php echo $this->Form->input('Sent1589', 			array('default' => $case['DataInProgress']['Sent1589'], 'label' => 'Number of Months Sentenced Under Statute')); ?>
 <?php echo $this->Form->input('Prob1589', 			array('default' => $case['DataInProgress']['Prob1589'], 'label' => 'Number of Months Under Probation Under Statute')); ?>
 
-<?php echo $this->Form->input('S1590', 				array('default' => $case['DataInProgress']['S1590'], 'label' => 'Statute 1590', 		'type' => 'checkbox')); ?>
+<?php echo $this->Form->input('S1590', 				array('default' => $case['DataInProgress']['S1590'], 'label' => 'Statute 1590', 'type' => 'checkbox')); ?>
 <?php echo $this->Form->input('Counts1590', 		array('default' => $case['DataInProgress']['Counts1590'], 'label' => 'Counts')); ?>
 <?php echo $this->Form->input('CountsNP1590', 		array('default' => $case['DataInProgress']['CountsNP1590'], 'label' => 'Counts Nolle Prossed')); ?>
 <?php echo $this->Form->input('PleaDismissed1590', 	array('default' => $case['DataInProgress']['PleaDismissed1590'], 'label' => 'Counts Dismissed')); ?>
@@ -129,7 +138,7 @@
 <?php echo $this->Form->input('Sent1590', 			array('default' => $case['DataInProgress']['Sent1590'], 'label' => 'Number of Months Sentenced Under Statute')); ?>
 <?php echo $this->Form->input('Prob1590', 			array('default' => $case['DataInProgress']['Prob1590'], 'label' => 'Number of Months Under Probation Under Statute')); ?>
 
-<?php echo $this->Form->input('S1591', 				array('default' => $case['DataInProgress']['S1591'], 'label' => 'Statute 1591', 		'type' => 'checkbox')); ?>
+<?php echo $this->Form->input('S1591', 				array('default' => $case['DataInProgress']['S1591'], 'label' => 'Statute 1591', 'type' => 'checkbox')); ?>
 <?php echo $this->Form->input('Counts1591', 		array('default' => $case['DataInProgress']['Counts1591'], 'label' => 'Counts')); ?>
 <?php echo $this->Form->input('CountsNP1591', 		array('default' => $case['DataInProgress']['CountsNP1591'], 'label' => 'Counts Nolle Prossed')); ?>
 <?php echo $this->Form->input('PleaDismissed1591', 	array('default' => $case['DataInProgress']['PleaDismissed1591'], 'label' => 'Counts Dismissed')); ?>
@@ -140,7 +149,7 @@
 <?php echo $this->Form->input('Sent1591', 			array('default' => $case['DataInProgress']['Sent1591'], 'label' => 'Number of Months Sentenced Under Statute')); ?>
 <?php echo $this->Form->input('Prob1591', 			array('default' => $case['DataInProgress']['Prob1591'], 'label' => 'Number of Months Under Probation Under Statute')); ?>
 
-<?php echo $this->Form->input('S1592', 				array('default' => $case['DataInProgress']['S1592'], 'label' => 'Statute 1592', 		'type' => 'checkbox')); ?>
+<?php echo $this->Form->input('S1592', 				array('default' => $case['DataInProgress']['S1592'], 'label' => 'Statute 1592', 'type' => 'checkbox')); ?>
 <?php echo $this->Form->input('Counts1592', 		array('default' => $case['DataInProgress']['Counts1592'], 'label' => 'Counts')); ?>
 <?php echo $this->Form->input('CountsNP1592', 		array('default' => $case['DataInProgress']['CountsNP1592'], 'label' => 'Counts Nolle Prossed')); ?>
 <?php echo $this->Form->input('PleaDismissed1592', 	array('default' => $case['DataInProgress']['PleaDismissed1592'], 'label' => 'Counts Dismissed')); ?>
@@ -151,7 +160,7 @@
 <?php echo $this->Form->input('Sent1592', 			array('default' => $case['DataInProgress']['Sent1592'], 'label' => 'Number of Months Sentenced Under Statute')); ?>
 <?php echo $this->Form->input('Prob1592', 			array('default' => $case['DataInProgress']['Prob1592'], 'label' => 'Number of Months Under Probation Under Statute')); ?>
 
-<?php echo $this->Form->input('S2252', 				array('default' => $case['DataInProgress']['S2252'], 'label' => 'Statute 2252', 		'type' => 'checkbox')); ?>
+<?php echo $this->Form->input('S2252', 				array('default' => $case['DataInProgress']['S2252'], 'label' => 'Statute 2252', 'type' => 'checkbox')); ?>
 <?php echo $this->Form->input('Counts2252', 		array('default' => $case['DataInProgress']['Counts2252'], 'label' => 'Counts')); ?>
 <?php echo $this->Form->input('CountsNP2252', 		array('default' => $case['DataInProgress']['CountsNP2252'], 'label' => 'Counts Nolle Prossed')); ?>
 <?php echo $this->Form->input('PleaDismissed2252', 	array('default' => $case['DataInProgress']['PleaDismissed2252'], 'label' => 'Counts Dismissed')); ?>
@@ -162,7 +171,7 @@
 <?php echo $this->Form->input('Sent2252', 			array('default' => $case['DataInProgress']['Sent2252'], 'label' => 'Number of Months Sentenced Under Statute')); ?>
 <?php echo $this->Form->input('Prob2252', 			array('default' => $case['DataInProgress']['Prob2252'], 'label' => 'Number of Months Under Probation Under Statute')); ?>
 
-<?php echo $this->Form->input('S2260', 				array('default' => $case['DataInProgress']['S2260'], 'label' => 'Statute 2260', 		'type' => 'checkbox')); ?>
+<?php echo $this->Form->input('S2260', 				array('default' => $case['DataInProgress']['S2260'], 'label' => 'Statute 2260', 'type' => 'checkbox')); ?>
 <?php echo $this->Form->input('Counts2260', 		array('default' => $case['DataInProgress']['Counts2260'], 'label' => 'Counts')); ?>
 <?php echo $this->Form->input('CountsNP2260', 		array('default' => $case['DataInProgress']['CountsNP2260'], 'label' => 'Counts Nolle Prossed')); ?>
 <?php echo $this->Form->input('PleaDismissed2260', 	array('default' => $case['DataInProgress']['PleaDismissed2260'], 'label' => 'Counts Dismissed')); ?>
@@ -184,7 +193,7 @@
 <?php echo $this->Form->input('Sent2421to2424', 		array('default' => $case['DataInProgress']['Sent2421to2424'], 'label' => 'Number of Months Sentenced Under Statute')); ?>
 <?php echo $this->Form->input('Prob2421to2424', 		array('default' => $case['DataInProgress']['Prob2421to2424'], 'label' => 'Number of Months Under Probation Under Statute')); ?>
 
-<?php echo $this->Form->input('S1324', 				array('default' => $case['DataInProgress']['S1324'],'label' => 'Statute 1324', 		'type' => 'checkbox')); ?>
+<?php echo $this->Form->input('S1324', 				array('default' => $case['DataInProgress']['S1324'],'label' => 'Statute 1324', 'type' => 'checkbox')); ?>
 <?php echo $this->Form->input('Counts1324', 		array('default' => $case['DataInProgress']['Counts1324'], 'label' => 'Counts')); ?>
 <?php echo $this->Form->input('CountsNP1324', 		array('default' => $case['DataInProgress']['CountsNP1324'], 'label' => 'Counts Nolle Prossed')); ?>
 <?php echo $this->Form->input('PleaDismissed1324', 	array('default' => $case['DataInProgress']['PleaDismissed1324'], 'label' => 'Counts Dismissed')); ?>
@@ -195,7 +204,7 @@
 <?php echo $this->Form->input('Sent1324', 			array('default' => $case['DataInProgress']['Sent1324'], 'label' => 'Number of Months Sentenced Under Statute')); ?>
 <?php echo $this->Form->input('Prob1324', 			array('default' => $case['DataInProgress']['Prob1324'], 'label' => 'Number of Months Under Probation Under Statute')); ?>
 
-<?php echo $this->Form->input('S1328', 				array('default' => $case['DataInProgress']['S1328'], 'label' => 'Statute 1328', 		'type' => 'checkbox')); ?>
+<?php echo $this->Form->input('S1328', 				array('default' => $case['DataInProgress']['S1328'], 'label' => 'Statute 1328', 'type' => 'checkbox')); ?>
 <?php echo $this->Form->input('Counts1328', 		array('default' => $case['DataInProgress']['Counts1328'], 'label' => 'Counts')); ?>
 <?php echo $this->Form->input('CountsNP1328', 		array('default' => $case['DataInProgress']['CountsNP1328'], 'label' => 'Counts Nolle Prossed')); ?>
 <?php echo $this->Form->input('PleaDismissed1328', 	array('default' => $case['DataInProgress']['PleaDismissed1328'], 'label' => 'Counts Dismissed')); ?>

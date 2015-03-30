@@ -46,13 +46,34 @@
 													'label'=> 'FedDistrictNum', 		
 													'default' => $case['0']['DataInProgress']['FedDistrictNum'], 		
 													'type' => 'text')); ?>
-<?php echo $this->Form->input('State', 	array(
-											'label' => 'State', 		
-											'default' => $case['0']['DataInProgress']['State'])); ?>
+<?php echo $this->Form->input('State', 			array(
+													'label' => 'State', 		
+													'default' => $case['0']['DataInProgress']['State'])); ?>
 <?php echo $this->Form->input('CaseSummary', 	array(
 													'label' => 'Case Summary', 		
 													'default' => $case['0']['DataInProgress']['CaseSummary'], 		
 													'type' => 'textarea')); ?>
+<?php echo $this->Form->input('LaborTraf', 		array(
+													'label' => 'Labor Trafficking',
+													'default' => $case['0']['DataInProgress']['LaborTraf'])); ?>
+<?php echo $this->Form->input('AdultSexTraf', 	array(
+													'label' => 'Adult Sex Trafficking',
+													'default' => $case['0']['DataInProgress']['AdultSexTraf'])); ?>
+<?php echo $this->Form->input('MinorSexTraf', 	array(
+													'label' => 'Minor Sex Trafficking',
+													'default' => $case['0']['DataInProgress']['MinorSexTraf'])); ?>
+<?php echo $this->Form->input('NumVic', 		array(
+													'label' => 'Total Number of Victims',
+													'default' => $case['0']['DataInProgress']['NumVic'])); ?>
+<?php echo $this->Form->input('NumVicMinor', 	array(
+													'label' => 'Number of Minor Victims',
+													'default' => $case['0']['DataInProgress']['NumVicMinor'])); ?>
+<?php echo $this->Form->input('NumVicForeign', 	array(
+													'label' => 'Number of Foreign Victims',
+													'default' => $case['0']['DataInProgress']['NumVicForeign'])); ?>
+<?php echo $this->Form->input('NumVicFemale', 	array(
+													'label' => 'Number of Female Victims',
+													'default' => $case['0']['DataInProgress']['NumVicFemale'])); ?>													
 
 Defendants:
 -----------------------------------------

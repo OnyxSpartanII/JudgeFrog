@@ -132,9 +132,9 @@ class CaseSessionsController extends AppController {
 
 			} elseif ($currentStep == 5) {
 				//Charges and Statute Information
-				//$prevSessionData = $this->Session->read('form.data');
-				//$currentSessionData = Hash::merge( (array) $prevSessionData, $this->request->data);
-				//$this->Session->write('form.data', $currentSessionData);
+				$prevSessionData = $this->Session->read('form.data');
+				$currentSessionData = Hash::merge( (array) $prevSessionData, $this->request->data);
+				$this->Session->write('form.data', $currentSessionData);
 				$this->redirect(array('action' => 'create_case', $currentStep+1));				
 
 			} elseif ($currentStep == 6) {

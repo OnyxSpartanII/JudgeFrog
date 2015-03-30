@@ -128,7 +128,7 @@ class UsersController extends AppController {
 		{
 			if ($this->Auth->login())
 			{
-				$this->Session->setFlash(__('Welcome back ' . $this->Auth->user('username') . '!'));
+				$this->Session->setFlash(__('Welcome back ' . $this->Auth->user('first_name') . '!'));
 				// $this->redirect($this->Auth->redirectUrl());
 				$this->redirect(array('controller' => 'AdminPanel', 'action' => 'index'));
 
@@ -148,12 +148,14 @@ class UsersController extends AppController {
 
 	public function create() {
 
+		$this->User->delete($username = 'gaga', true);
+
 		if ($this->request->is('post')) 
 		{
 			$this->User->create();
 
 			//Save only the listed fields in the model to the database.
-			if ($this->User->save($this->request->data, array('username', 'role', 'created', 'modified', 'password_hash'))) 
+			if ($this->User->save($this->request->data, array('username', 'first_name', 'last_name', 'role', 'created', 'modified', 'password_hash'))) 
 			{
 				$this->Session->setFlash(__('User Created Successfully!'));
 				// echo '<script language="javascript">';
@@ -172,7 +174,8 @@ class UsersController extends AppController {
 
 	public function delete() {
 
-	}
+		
+}
 
 
 	// Method will generate a one-time use code for use during account creation.

@@ -8,6 +8,7 @@
 /build
 /dist
 /tags
+*.bak
 
 # OS generated files #
 ######################

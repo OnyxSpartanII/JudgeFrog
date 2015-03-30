@@ -86,7 +86,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 								<?php if (AuthComponent::user('id')): ?>
 								<?php
 									$out = "Logout ";
-									echo $this->Html->link($out.AuthComponent::user('username'), '/logout'
+									echo $this->Html->link($out.AuthComponent::user('first_name'), '/logout'
 								); ?>
 								<?php endif; ?> 
 						 	</li>

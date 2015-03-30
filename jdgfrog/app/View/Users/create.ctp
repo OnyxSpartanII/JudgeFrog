@@ -16,7 +16,7 @@
                       <h4>ENTER USER INFORMATION</h4>
                     </div>
                       <!-- CREATE BUTTON-->
-                      <div title="Click here to add this user." style="margin-top: 19px;">
+                      <div title="Add new user" style="margin-top: 19px;">
                         <label for="submitForm" class="user_button">
                           <?php echo $this->Html->image('create_user.png', array('alt' => 'Create', 'style' => 'float:left; padding: 10px 8px 8px 0px;' )); ?>
                         </label>
@@ -46,9 +46,9 @@
                         <div style="padding-bottom:20px; margin-top:-340px; margin-left:50px; text-align:center;">     
                             <?php
                               echo "<br><br>";
-                              echo $this->Form->input('firstname', array('label' => 'First Name*', 'placeholder' => 'John', 'id' => 'personal_field'));
+                              echo $this->Form->input('first_name', array('label' => 'First Name*', 'placeholder' => 'John', 'id' => 'personal_field'));
                               echo "<br>";
-                              echo $this->Form->input('lastname', array('label' => 'Last Name*', 'placeholder' => 'Doe', 'id' => 'personal_field'));
+                              echo $this->Form->input('last_name', array('label' => 'Last Name*', 'placeholder' => 'Doe', 'id' => 'personal_field'));
                               echo "<br>";
                               echo $this->Form->input('role', array('label' => 'Privilege Level*', 'id' => 'personal_field', 'options' => array('admin' => 'Administrator (RA)', 'author' => 'Author (Scholar)')));
                               echo "<br>";
@@ -66,9 +66,10 @@
                           <h4>DELETE SELECTED USER</h4>
                         </div>
                           <!-- DELETE BUTTON-->
-                          <div title="Click here to delete the selected user.">
+                          <div title="Delete selected user.">
                             <label for="" class="user_button" >
-                              <?php echo $this->Html->image('delete_user.png', array('alt' => 'Create', 'style' => 'float:left; padding: 10px 8px 8px 0px;' )); ?>
+                              <?php echo $this->Html->image('delete_user.png', array('alt' => 'Delete', 'style' => 'float:left; padding: 10px 8px 8px 0px;' )); 
+                              ?>
                             </label>
                           </div>
                       </div>

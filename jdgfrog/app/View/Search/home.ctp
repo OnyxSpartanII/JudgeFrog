@@ -141,7 +141,10 @@
                               echo '<br><br>';
                               echo $this->Form->input('cd_TtlCharges', array('id' => 'totalCharges', 'label' => 'Total Charges'));
                               echo '<br><br>';
-                              echo $this->Form->input('cd_Statute', array('empty' => 'Statute', 'options' => array('1916to1968', '1028', '1351', '1425', '1426','1461to1465', '1512', '1542to1543', '1546','1581to1588', '1589', '1590', '1591', '1592','2251', '2252', '2260', '2421to2424', '1324','1328')));
+                              echo $this->Form->input('cd_Statute', array('empty' => 'Statute', 'options' => array('1961to1968', '1028', '1351',
+                                '1425', '1512', '1546', '1581to1588', '1589',
+                                '1590', '1591', '1592', '2252', '2260', '2421to2424',
+                                '1324', '1328')));
                               echo '<br><br>';
                               echo $this->Form->input('cd_Counts', array('id' => 'countsCharge', 'label' => 'Counts'));
                               echo '<br><br>';
@@ -448,7 +451,7 @@ $(function() {
             for (var j = 0; j < cases[i][20].length; j++) {
               content += '<tr class="toggle_def' + (!cases[i][20][j][32] ? ' all_results' : '') + '">' +
                           '<td>' + cases[i][20][j][1] + ' ' + cases[i][20][j][0] + '</td>' +
-                          '<td>' + (cases[i][20][j][3] ? 'Female' : 'Male') + '</td>' +
+                          '<td>' + (cases[i][20][j][3] == undefined ? 'N/A' : (cases[i][20][j][3] ? 'Female' : 'Male')) + '</td>' +
                           '<td>' + (cases[i][20][j][5] == '0000' ? 'Unknown' : cases[i][20][j][5]) + '</td>' +
                           '<td>' + (races[cases[i][20][j][4]] == undefined ? 'Unknown' : races[cases[i][20][j][4]])  + '</td>' +
                         '</tr>' +
@@ -548,7 +551,7 @@ $(function() {
                       '<thead>' +
                         '<tr>' +
                           '<th>Name</th>' +
-                          '<th>Size</th>' +
+                          '<th>Type</th>' +
                           '<th>Race</th>' +
                           '<th>Scope</th>' +
                         '</tr>' +

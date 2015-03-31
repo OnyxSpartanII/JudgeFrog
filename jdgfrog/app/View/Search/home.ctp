@@ -548,7 +548,7 @@ $(function() {
                       '<thead>' +
                         '<tr>' +
                           '<th>Name</th>' +
-                          '<th>Size</th>' +
+                          '<th>Type</th>' +
                           '<th>Race</th>' +
                           '<th>Scope</th>' +
                         '</tr>' +

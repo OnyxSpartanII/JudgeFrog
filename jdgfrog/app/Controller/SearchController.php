@@ -754,242 +754,242 @@ class SearchController extends AppController {
 
 		foreach ($datum as $d) {
 
-			$ocg_filter = false;
-			$def_filter = false;
-			$cd_filter = false;
-			$ad_filter = false;
-			$sd_filter = false;
+			$ocg_filter = 0;
+			$def_filter = 0;
+			$cd_filter = 0;
+			$ad_filter = 0;
+			$sd_filter = 0;
 
 			if ($display['defendant']) {
-				$def_filter = true;
+				if ($def_filter == 0) $def_filter = 1;
 				if (isset($conditions['DataInProgress.DefFirst']) && ($d['DataInProgress']['DefFirst'] != $conditions['DataInProgress.DefFirst'])) {
-					$def_filter = false;
+					$def_filter = -1;
 				}
 				if (isset($conditions['DataInProgress.DefLast']) && ($d['DataInProgress']['DefLast'] != $conditions['DataInProgress.DefLast'])) {
-					$def_filter = false;
+					$def_filter = -1;
 				}
 				if (isset($conditions['DataInProgress.DefRace']) && ($d['DataInProgress']['DefRace'] != $conditions['DataInProgress.DefRace'])) {
-					$def_filter = false;
+					$def_filter = -1;
 				}
 				if (isset($conditions['DataInProgress.DefBirthdate >=']) && ($d['DataInProgress']['DefBirthdate'] < $conditions['DataInProgress.DefBirthdate >='])) {
-					$def_filter = false;
+					$def_filter = -1;
 				}
 				if (isset($conditions['DataInProgress.DefBirthdate <=']) && ($d['DataInProgress']['DefBirthdate'] > $conditions['DataInProgress.DefBirthdate <='])) {
-					$def_filter = false;
+					$def_filter = -1;
 				}
 				if (isset($conditions['DataInProgress.DefGender']) && ($d['DataInProgress']['DefGender'] != $conditions['DataInProgress.DefGender'])) {
-					$def_filter = false;
+					$def_filter = -1;
 				}
 			}
 
 			if ($display['ocg']) {
-				$def_filter = true;
-				$ocg_filter = true;
+				if ($def_filter == 0) $def_filter = 1;
+				if ($ocg_filter == 0) $ocg_filter = 1;
 				if (isset($conditions['OCName']) && ($d['DataInProgress']['OCName1'] != $conditions['OCName'] && $d['DataInProgress']['OCName2'] != $conditions['OCName'])) {
-					$def_filter = false;
-					$ocg_filter = false;
+					$def_filter = -1;
+					$ocg_filter = -1;
 				}
 				if (isset($conditions['OCType']) && ($d['DataInProgress']['OCType1'] != $conditions['OCType'] && $d['DataInProgress']['OCType2'] != $conditions['OCType'])) {
-					$def_filter = false;
-					$ocg_filter = false;
+					$def_filter = -1;
+					$ocg_filter = -1;
 				}
 				if (isset($conditions['OCScope']) && ($d['DataInProgress']['OCScope1'] != $conditions['OCScope'] && $d['DataInProgress']['OCScope2'] != $conditions['OCScope'])) {
-					$def_filter = false;
-					$ocg_filter = false;
+					$def_filter = -1;
+					$ocg_filter = -1;
 				}
 				if (isset($conditions['OCRace']) && ($d['DataInProgress']['OCRace1'] != $conditions['OCRace'] && $d['DataInProgress']['OCRace2'] != $conditions['OCRace'])) {
-					$def_filter = false;
-					$ocg_filter = false;
+					$def_filter = -1;
+					$ocg_filter = -1;
 				}
 			}
 
 			if ($display['acd']) {
-				$def_filter = true;
-				$ad_filter = true;
+				if ($def_filter == 0) $def_filter = 1;
+				if ($ad_filter == 0) $ad_filter = 1;
 				if (isset($conditions['DataInProgress.ArrestDate >=']) && ($d['DataInProgress']['ArrestDate'] > $conditions['DataInProgress.ArrestDate >='])) {
-					$def_filter = false;
-					$ad_filter = false;
+					$def_filter = -1;
+					$ad_filter = -1;
 				}
 
 				if (isset($conditions['DataInProgress.ArrestDate <=']) && ($d['DataInProgress']['ArrestDate'] < $conditions['DataInProgress.ArrestDate <='])) {
-					$def_filter = false;
-					$ad_filter = false;
+					$def_filter = -1;
+					$ad_filter = -1;
 				}
 
 				if (isset($conditions['DataInProgress.BailType']) && ($d['DataInProgress']['BailType'] != $conditions['DataInProgress.BailType'])) {
-					$def_filter = false;
-					$ad_filter = false;
+					$def_filter = -1;
+					$ad_filter = -1;
 				}
 				
 				if (isset($conditions['DataInProgress.BailAmount >=']) && ($d['DataInProgress']['BailAmount'] < $conditions['DataInProgress.BailAmount >='])) {
-					$def_filter = false;
-					$ad_filter = false;
+					$def_filter = -1;
+					$ad_filter = -1;
 				}
 				
 				if (isset($conditions['DataInProgress.BailAmount <=']) && ($d['DataInProgress']['BailAmount'] > $conditions['DataInProgress.BailAmount <='])) {
-					$def_filter = false;
-					$ad_filter = false;
+					$def_filter = -1;
+					$ad_filter = -1;
 				}
 			}
 
 			if ($display['sentence']) {
-				$def_filter = true;
-				$sd_filter = true;
+				if ($def_filter == 0) $def_filter = 1;
+				if ($sd_filter == 0) $sd_filter = 1;
 				if (isset($conditions['DataInProgress.FelSentenced >=']) && ($d['DataInProgress']['FelSentenced'] < $conditions['DataInProgress.FelSentenced >='])) {
-					$def_filter = false;
-					$sd_filter = false;
+					$def_filter = -1;
+					$sd_filter = -1;
 				}
 
 				if (isset($conditions['DataInProgress.FelSentenced <=']) && ($d['DataInProgress']['FelSentenced'] > $conditions['DataInProgress.FelSentenced <='])) {
-					$sd_filter = false;
-					$def_filter = false;
+					$sd_filter = -1;
+					$def_filter = -1;
 				}
 
 				if (isset($conditions['DataInProgress.DateTerm >=']) && ($d['DataInProgress']['DateTerm'] < $conditions['DataInProgress.DateTerm >='])) {
-					$sd_filter = false;
-					$def_filter = false;
+					$sd_filter = -1;
+					$def_filter = -1;
 				}
 
 				if (isset($conditions['DataInProgress.DateTerm <=']) && ($d['DataInProgress']['DateTerm'] > $conditions['DataInProgress.DateTerm <='])) {
-					$sd_filter = false;
-					$def_filter = false;
+					$sd_filter = -1;
+					$def_filter = -1;
 				}
 
 				if (isset($conditions['DataInProgress.TotalSentence >=']) && ($d['DataInProgress']['TotalSentence'] < $conditions['DataInProgress.TotalSentence >='])) {
-					$sd_filter = false;
-					$def_filter = false;
+					$sd_filter = -1;
+					$def_filter = -1;
 				}
 
 				if (isset($conditions['DataInProgress.TotalSentence <=']) && ($d['DataInProgress']['TotalSentence'] > $conditions['DataInProgress.TotalSentence <='])) {
-					$sd_filter = false;
-					$def_filter = false;
+					$sd_filter = -1;
+					$def_filter = -1;
 				}
 
 				if (isset($conditions['DataInProgress.Restitution >=']) && ($d['DataInProgress']['Restitution'] < $conditions['DataInProgress.Restitution >='])) {
-					$sd_filter = false;
-					$def_filter = false;
+					$sd_filter = -1;
+					$def_filter = -1;
 				}
 
 				if (isset($conditions['DataInProgress.Restitution <=']) && ($d['DataInProgress']['Restitution'] > $conditions['DataInProgress.Restitution <='])) {
-					$sd_filter = false;
-					$def_filter = false;
+					$sd_filter = -1;
+					$def_filter = -1;
 				}
 
 				if (isset($conditions['DataInProgress.AssetForfeit >=']) && ($d['DataInProgress']['AssetForfeit'] < $conditions['DataInProgress.AssetForfeit >='])) {
-					$sd_filter = false;
-					$def_filter = false;
+					$sd_filter = -1;
+					$def_filter = -1;
 				}
 
 				if (isset($conditions['DataInProgress.AssetForfeit <=']) && ($d['DataInProgress']['AssetForfeit'] > $conditions['DataInProgress.AssetForfeit <='])) {
-					$sd_filter = false;
-					$def_filter = false;
+					$sd_filter = -1;
+					$def_filter = -1;
 				}
 
 				if (isset($conditions['DataInProgress.Appeal >=']) && ($d['DataInProgress']['Appeal'] < $conditions['DataInProgress.Appeal >='])) {
-					$sd_filter = false;
-					$def_filter = false;
+					$sd_filter = -1;
+					$def_filter = -1;
 				}
 
 				if (isset($conditions['DataInProgress.Appeal <=']) && ($d['DataInProgress']['Appeal'] > $conditions['DataInProgress.Appeal <='])) {
-					$sd_filter = false;
-					$def_filter = false;
+					$sd_filter = -1;
+					$def_filter = -1;
 				}
 
 				if (isset($conditions['DataInProgress.Probation >=']) && ($d['DataInProgress']['Probation'] < $conditions['DataInProgress.Probation >='])) {
-					$sd_filter = false;
-					$def_filter = false;
+					$sd_filter = -1;
+					$def_filter = -1;
 				}
 
 				if (isset($conditions['DataInProgress.Probation <=']) && ($d['DataInProgress']['Probation'] > $conditions['DataInProgress.Probation <='])) {
-					$sd_filter = false;
-					$def_filter = false;
+					$sd_filter = -1;
+					$def_filter = -1;
 				}				
 			}
 
 			$charges = array();
 			foreach ($statutes as $statute) {
 				if ($display['cd']) {
-					$def_filter = true;
-					$cd_filter = true;
-					if ($d['DataInProgress'][$statute] != 0) {
+					if ($def_filter == 0) $def_filter = 1;
+					if ($cd_filter == 0) $cd_filter = 1;
+					if ($d['DataInProgress']["S$statute"] != 0) {
 						if (isset($cc["Counts$statute >="]) && intval($d['DataInProgress']["Counts$statute"]) < $cc["Counts$statute >="]) {
-							$cd_filter = false;
-							$def_filter = false;
+							$cd_filter = -1;
+							$def_filter = -1;
 						}
 
 						if (isset($conditions["Counts$statute <="]) && intval($d['DataInProgress']["Counts$statute"]) > $cc["Counts$statute <="]) {
-							$cd_filter = false;
-							$def_filter = false;
+							$cd_filter = -1;
+							$def_filter = -1;
 						}
 
 						if (isset($conditions["CountsNP$statute >="]) && intval($d['DataInProgress']["CountsNP$statute"]) < $cc["Counts$statute >="]) {
-							$cd_filter = false;
-							$def_filter = false;
+							$cd_filter = -1;
+							$def_filter = -1;
 						}
 						
 						if (isset($conditions["CountsNP$statute <="]) && intval($d['DataInProgress']["CountsNP$statute"]) > $cc["Counts$statute <="]) {
-							$cd_filter = false;
-							$def_filter = false;
+							$cd_filter = -1;
+							$def_filter = -1;
 						}
 						
 						if (isset($conditions["PleaDismissed$statute <="]) && intval($d['DataInProgress']["PleaDismissed$statute"]) > $cc["PleaDismissed$statute <="]) {
-							$cd_filter = false;
-							$def_filter = false;
+							$cd_filter = -1;
+							$def_filter = -1;
 						}
 						
 						if (isset($conditions["PleaDismissed$statute >="]) && intval($d['DataInProgress']["PleaDismissed$statute"]) < $cc["PleaDismissed$statute >="]) {
-							$def_filter = false;
-							$cd_filter = false;
+							$def_filter = -1;
+							$cd_filter = -1;
 						}
 						
 						if (isset($conditions["PleaGuilty$statute <="]) && intval($d['DataInProgress']["PleaGuilty$statute"]) > $cc["PleaGuilty$statute <="]) {
-							$cd_filter = false;
-							$def_filter = false;
+							$cd_filter = -1;
+							$def_filter = -1;
 						}
 						
 						if (isset($conditions["PleaGuilty$statute >="]) && intval($d['DataInProgress']["PleaGuilty$statute"]) < $cc["PleaGuilty$statute >="]) {
-							$def_filter = false;
-							$cd_filter = false;
+							$def_filter = -1;
+							$cd_filter = -1;
 						}
 						
 						if (isset($conditions["TrialGuilty$statute <="]) && intval($d['DataInProgress']["TrialGuilty$statute"]) > $cc["TrialGuilty$statute <="]) {
-							$def_filter = false;
-							$cd_filter = false;
+							$def_filter = -1;
+							$cd_filter = -1;
 						}
 						
 						if (isset($conditions["TrialGuilty$statute >="]) && intval($d['DataInProgress']["TrialGuilty$statute"]) < $cc["TrialGuilty$statute >="]) {
-							$def_filter = false;
-							$cd_filter = false;
+							$def_filter = -1;
+							$cd_filter = -1;
 						}
 						
 						if (isset($conditions["TrialNG$statute <="]) && intval($d['DataInProgress']["TrialNG$statute"]) > $cc["TrialNG$statute <="]) {
-							$def_filter = false;
-							$cd_filter = false;
+							$def_filter = -1;
+							$cd_filter = -1;
 						}
 						
 						if (isset($conditions["TrialNG$statute >="]) && intval($d['DataInProgress']["TrialNG$statute"]) < $cc["TrialNG$statute >="]) {
-							$def_filter = false;
-							$cd_filter = false;
+							$def_filter = -1;
+							$cd_filter = -1;
 						}
 						
 						if (isset($conditions["Sent$statute <="]) && intval($d['DataInProgress']["Sent$statute"]) > $cc["Sent$statute <="]) {
-							$def_filter = false;
-							$cd_filter = false;
+							$def_filter = -1;
+							$cd_filter = -1;
 						}
 						
 						if (isset($conditions["Sent$statute >="]) && intval($d['DataInProgress']["Sent$statute"]) < $cc["Sent$statute >="]) {
-							$def_filter = false;
-							$cd_filter = false;
+							$def_filter = -1;
+							$cd_filter = -1;
 						}
 						
 						if (isset($conditions["Prob$statute <="]) && intval($d['DataInProgress']["Prob$statute"]) > $cc["Prob$statute <="]) {
-							$def_filter = false;
-							$cd_filter = false;
+							$def_filter = -1;
+							$cd_filter = -1;
 						}
 						
 						if (isset($conditions["Prob$statute >="]) && intval($d['DataInProgress']["Prob$statute"]) < $cc["Prob$statute >="]) {
-							$def_filter = false;
-							$cd_filter = false;
+							$def_filter = -1;
+							$cd_filter = -1;
 						}
 					}
 				}
@@ -1008,13 +1008,13 @@ class SearchController extends AppController {
 							$d['DataInProgress']["Fines$statute"],
 							$d['DataInProgress']["Sent$statute"],
 							$d['DataInProgress']["Prob$statute"],
-							$cd_filter
+							($cd_filter == 1 ? true : false)
 						)
 					);
 				}
 			}
 
-			if ($def_filter) {
+			if ($def_filter == 1) {
 				$display['defendant'] = true;
 			}
 
@@ -1057,7 +1057,7 @@ class SearchController extends AppController {
 								$d['DataInProgress']['Detained'],
 								$d['DataInProgress']['BailType'],		// 10
 								$d['DataInProgress']['BailAmount'],
-								$ad_filter,
+								($ad_filter == 1 ? true : false),
 								$d['DataInProgress']['FelCharged'],
 								$d['DataInProgress']['FelSentenced'],
 								$d['DataInProgress']['DateTerm'],		// 15
@@ -1077,9 +1077,9 @@ class SearchController extends AppController {
 								$d['DataInProgress']['OCType2'],
 								$d['DataInProgress']['OCRace2'],		// 30
 								$d['DataInProgress']['OCScope2'],
-								$def_filter,
-								$ocg_filter,
-								$sd_filter
+								($def_filter == 1 ? true : false),
+								($ocg_filter == 1 ? true : false),
+								($sd_filter == 1 ? true : false)
 							)
 						)
 					)
@@ -1100,7 +1100,7 @@ class SearchController extends AppController {
 						$d['DataInProgress']['Detained'],
 						$d['DataInProgress']['BailType'],
 						$d['DataInProgress']['BailAmount'],
-						$ad_filter,
+						($ad_filter == 1 ? true : false),
 						$d['DataInProgress']['FelCharged'],
 						$d['DataInProgress']['FelSentenced'],
 						$d['DataInProgress']['DateTerm'],
@@ -1120,9 +1120,9 @@ class SearchController extends AppController {
 						$d['DataInProgress']['OCType2'],
 						$d['DataInProgress']['OCRace2'],
 						$d['DataInProgress']['OCScope2'],
-						$def_filter,
-						$ocg_filter,
-						$sd_filter
+						($def_filter == 1 ? true : false),
+						($ocg_filter == 1 ? true : false),
+						($sd_filter == 1 ? true : false)
 					)
 				);
 			}

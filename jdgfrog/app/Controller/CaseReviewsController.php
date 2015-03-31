@@ -125,6 +125,11 @@ class CaseReviewsController extends AppController {
 
 		$this->autoRender = false;
 
+		$races = array('White','Black','Hispanic','Asian','Indian','Other','Unknown');
+		$bail_types = array('None','Surety','Non-Surety');
+		$ocg_types = array('Other','Mom & Pop','Street Gang','Cartel/Syndicate/Mafia','','Prison Gang');
+		$ocg_scopes = array('Other','Local Only','Trans-State','Trans-National');
+		$ocg_races = array('None','Black','White','Hispanic','Asian','Other');
 
 		$html = '<div class="case_info">' .
 	                '<table class="modal_table all_results">' .
@@ -134,6 +139,7 @@ class CaseReviewsController extends AppController {
 	                    '<th>Case Number</th>' .
 	                    '<th># of Defendents</th>' .
 	                    '<th>State</th>' .
+	                    '<th>Federal District</th>' .
 	                    '<th>Year</th>' .
 	                  '</tr>' .
 	                  '</thead>' .
@@ -143,6 +149,7 @@ class CaseReviewsController extends AppController {
 	                  	'<td>' . $case_info[$index][1] . '</td>' .
 	                  	'<td>' . $case_info[$index][6] . '</td>' .
 	                  	'<td>' . $case_info[$index][7] . '</td>' .
+	                  	'<td>' . $case_info[$index][9] . ($case_info[$index][8] !== null ? '-' . $case_info[$index][8] : '') .
 	                  	'<td>' . split("-", $case_info[$index][2])[0] . '</td>' .
 	                  '</tr>' .
 	                  '</tbody>' .
@@ -166,9 +173,9 @@ class CaseReviewsController extends AppController {
 	                foreach ($case_info[$index][20] as $def) {
 	                	$html = $html . '<tr class="toggle_def">' . 
 	                			'<td>' . $def[0] . ', ' . $def[1] . '</td>'.
-	                			'<td>' . $def[3] . '</td>'.
-	                			'<td>' . $def[4] . '</td>'.
-	                			'<td>' . $def[5] . '</td>'.
+	                			'<td>' . ($def[3] === null ? 'N/A' : ($def[3] ? 'Female' : 'Male')) . '</td>'.
+	                			'<td>' . ($def[5] === '0000' ? 'Unknown' : $def[5]) . '</td>'.
+	                			'<td>' . ($def[4] === null ? 'Unknown' : $races[$def[4]]) . '</td>'.
                 			'</tr>' .
 			                '<tr class="this_def_info">' .
 			                    '<td colspan="4">' .
@@ -184,10 +191,10 @@ class CaseReviewsController extends AppController {
 				                        '</thead>' .
 				                        '<tbody>' .
 				                        '<tr>' .
-				                        	'<td>' . $def[8] . '</td>' .
-				                        	'<td>' . $def[7] . '</td>' .
-				                        	'<td>' . $def[10] . '</td>' .
-				                        	'<td>' . $def[11] . '</td>' .
+				                        	'<td>' . ($def[8] === '0000-00-00' ? 'N/A' : $def[8]) . '</td>' .
+				                        	'<td>' . ($def[7] === '0000-00-00' ? 'N/A' : $def[7]) . '</td>' .
+				                        	'<td>' . ($def[10] === null ? 'N/A' : $bail_types[$def[10]]) . '</td>' .
+				                        	'<td>' . ($def[11] === null ? 'N/A' : '$' . $def[11]) . '</td>' .
 				                        '</tr>' .
 				                        '</tbody>' .
 			                    	'</table>' .
@@ -216,16 +223,16 @@ class CaseReviewsController extends AppController {
 			                        
                         foreach ($def[29] as $chrg) {
                         	$html = $html . '<tr>' .
-                        		'<td>' . $chrg[0] . '</td>' .
-                        		'<td>' . $chrg[1] . '</td>' .
-                        		'<td>' . $chrg[2] . '</td>' .
-                        		'<td>' . $chrg[3] . '</td>' .
-                        		'<td>' . $chrg[4] . '</td>' .
-                        		'<td>' . $chrg[5] . '</td>' .
-                        		'<td>' . $chrg[6] . '</td>' .
-                        		'<td>' . $chrg[7] . '</td>' .
-                        		'<td>' . $chrg[8] . '</td>' .
-                        		'<td>' . $chrg[9] . '</td>' .
+                        		'<td>' . ($chrg[0]  === null ? 'N/A' : $chrg[0]) . '</td>' .
+                        		'<td>' . ($chrg[1] === null ? 'N/A' : $chrg[1]) . '</td>' .
+                        		'<td>' . ($chrg[2] === null ? 'N/A' : $chrg[2]) . '</td>' .
+                        		'<td>' . ($chrg[3] === null ? 'N/A' : $chrg[3]) . '</td>' .
+                        		'<td>' . ($chrg[4] === null ? 'N/A' : $chrg[4]) . '</td>' .
+                        		'<td>' . ($chrg[5] === null ? 'N/A' : $chrg[5]) . '</td>' .
+                        		'<td>' . ($chrg[6] === null ? 'N/A' : $chrg[6]) . '</td>' .
+                        		'<td>' . ($chrg[7] === null ? 'N/A' : '$' . $chrg[7]) . '</td>' .
+                        		'<td>' . ($chrg[8] === null ? 'N/A' : $chrg[8]) . '</td>' .
+                        		'<td>' . ($chrg[9] === null ? 'N/A' : $chrg[9]) . '</td>' .
                         		'</tr>';
                         }
 
@@ -251,13 +258,13 @@ class CaseReviewsController extends AppController {
 									'</thead>' .
 									'<tbody>' .
 										'<tr>' .
-											'<td>' . $def[12] . '</td>' .
-											'<td>' . $def[13] . '</td>' .
-											'<td>' . $def[14] . '</td>' .
-											'<td>' . $def[16] . '</td>' .
-											'<td>' . $def[20] . '</td>' .
-											'<td>' . $def[17] . '</td>' .
-											'<td>' . $def[18] . '</td>' .
+											'<td>' . ($def[12] === null ? 'N/A' : $def[12]) . '</td>' .
+											'<td>' . ($def[13] === null ? 'N/A' : $def[13]) . '</td>' .
+											'<td>' . ($def[14] === '0000' ? 'N/A' : $def[14]) . '</td>' .
+											'<td>' . ($def[16] === null ? 'N/A' : $def[16]) . '</td>' .
+											'<td>' . ($def[20] === null ? 'N/A' : $def[20]) . '</td>' .
+											'<td>' . ($def[17] === null ? 'N/A' : '$' . $def[17]) . '</td>' .
+											'<td>' . ($def[18] === null ? 'N/A' : ($def[18] ? 'True' : 'False')) . '</td>' .
 										'</tr>' .
 									'</tbody>' .
 								'</table>' .
@@ -277,14 +284,16 @@ class CaseReviewsController extends AppController {
 									'</thead>' .
 									'<tbody>' .
 										'<tr>' .
-											'<td>' . $def[21] . '</td>' .
-											'<td>' . $def[22] . '</td>' .
-											'<td>' . $def[23] . '</td>' .
-											'<td>' . $def[24] . '</td>' . '</tr><tr>' .
-											'<td>' . $def[25] . '</td>' .
-											'<td>' . $def[26] . '</td>' .
-											'<td>' . $def[27] . '</td>' .
-											'<td>' . $def[28] . '</td>' .
+											'<td>' . ($def[21] === null ? 'None' : $def[21]) . '</td>' .
+											'<td>' . ($def[22] === null ? 'N/A' : $ocg_types[$def[22]]) . '</td>' .
+											'<td>' . ($def[23] === null ? 'N/A' : $ocg_races[$def[23]]) . '</td>' .
+											'<td>' . ($def[24] === null ? 'N/A' : $ocg_scopes[$def[24]]) . '</td>' . 
+										'</tr>' .
+										'<tr>' .
+											'<td>' . ($def[25] === null ? 'None' : $def[25]) . '</td>' .
+											'<td>' . ($def[26] === null ? 'N/A' : $ocg_types[$def[26]]) . '</td>' .
+											'<td>' . ($def[27] === null ? 'N/A' : $ocg_races[$def[27]]) . '</td>' .
+											'<td>' . ($def[28] === null ? 'N/A' : $ocg_scopes[$def[28]]) . '</td>' . 
 										'</tr>' .
 									'</tbody>' .
 								'</table>' .
@@ -305,10 +314,10 @@ class CaseReviewsController extends AppController {
 	                '</thead>' .
 	                '<tbody>' .
 	                '<tr>' .
-	                	'<td>' . $case_info[$index][16] . '</td>' .
-	                	'<td>' . $case_info[$index][17] . '</td>' .
-	                	'<td>' . $case_info[$index][18] . '</td>' .
-	                	'<td>' . $case_info[$index][19] . '</td>' .
+	                	'<td>' . ($case_info[$index][16] === null ? 'Unknown' : $case_info[$index][16]) . '</td>' .
+	                	'<td>' . ($case_info[$index][17] === null ? 'Unknown' : $case_info[$index][17]) . '</td>' .
+	                	'<td>' . ($case_info[$index][18] === null ? 'Unknown' : $case_info[$index][18]) . '</td>' .
+	                	'<td>' . ($case_info[$index][19] === null ? 'Unknown' : $case_info[$index][19]) . '</td>' .
 	                '</tr>' .
 	                '</tbody>' .
 	              '</table>' .
@@ -327,10 +336,10 @@ class CaseReviewsController extends AppController {
 	                '<tbody>' .
 	                '<tr>' .
 	                  	'<td>' . $case_info[$index][11] . '</td>' .
-	                  	'<td>' . $case_info[$index][12] . '</td>' .
-	                  	'<td>' . $case_info[$index][13] . '</td>' .
+	                  	'<td>' . ($case_info[$index][12] === null ? 'N/A' : $races[$case_info[$index][12]]) . '</td>' .
+	                  	'<td>' . ($case_info[$index][13] ? 'Female' : 'Male') . '</td>' .
 	                  	'<td>' . $case_info[$index][14] . '</td>' .
-	                  	'<td>' . $case_info[$index][15] . '</td>' .
+	                  	'<td>' . ($case_info[$index][15] ? 'Democrat' : 'Republican') . '</td>' .
 	                '</tr>' .
 	                '</tbody>' .
 	              '</table>' .

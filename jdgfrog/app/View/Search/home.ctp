@@ -448,7 +448,7 @@ $(function() {
             for (var j = 0; j < cases[i][20].length; j++) {
               content += '<tr class="toggle_def' + (!cases[i][20][j][32] ? ' all_results' : '') + '">' +
                           '<td>' + cases[i][20][j][1] + ' ' + cases[i][20][j][0] + '</td>' +
-                          '<td>' + (cases[i][20][j][3] ? 'Female' : 'Male') + '</td>' +
+                          '<td>' + (cases[i][20][j][3] == undefined ? 'N/A' : (cases[i][20][j][3] ? 'Female' : 'Male')) + '</td>' +
                           '<td>' + (cases[i][20][j][5] == '0000' ? 'Unknown' : cases[i][20][j][5]) + '</td>' +
                           '<td>' + (races[cases[i][20][j][4]] == undefined ? 'Unknown' : races[cases[i][20][j][4]])  + '</td>' +
                         '</tr>' +

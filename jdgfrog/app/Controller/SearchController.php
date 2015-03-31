@@ -352,7 +352,7 @@ class SearchController extends AppController {
 		if ($this->request->data['DataInProgress']['cd_Statute'] != '') {
 			$display['cd'] = true;
 			$s_name = $statutes[$this->request->data['DataInProgress']['cd_Statute']];
-			$conditions["DataInProgress.$s_name"] = true;
+			$conditions["DataInProgress.S$s_name"] = true;
 		}
 
 		/**

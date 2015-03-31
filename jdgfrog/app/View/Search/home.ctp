@@ -141,7 +141,10 @@
                               echo '<br><br>';
                               echo $this->Form->input('cd_TtlCharges', array('id' => 'totalCharges', 'label' => 'Total Charges'));
                               echo '<br><br>';
-                              echo $this->Form->input('cd_Statute', array('empty' => 'Statute', 'options' => array('1916to1968', '1028', '1351', '1425', '1426','1461to1465', '1512', '1542to1543', '1546','1581to1588', '1589', '1590', '1591', '1592','2251', '2252', '2260', '2421to2424', '1324','1328')));
+                              echo $this->Form->input('cd_Statute', array('empty' => 'Statute', 'options' => array('1961to1968', '1028', '1351',
+                                '1425', '1512', '1546', '1581to1588', '1589',
+                                '1590', '1591', '1592', '2252', '2260', '2421to2424',
+                                '1324', '1328')));
                               echo '<br><br>';
                               echo $this->Form->input('cd_Counts', array('id' => 'countsCharge', 'label' => 'Counts'));
                               echo '<br><br>';

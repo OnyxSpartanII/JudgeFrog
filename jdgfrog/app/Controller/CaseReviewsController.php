@@ -4,7 +4,7 @@
 class CaseReviewsController extends AppController {
 	public $name = 'CaseReviews';
 
-	public $uses = array('DataInProgress');
+	public $uses = array('DataInProgress', 'Datum');
 
 	public $case_info = array();
 
@@ -346,6 +346,17 @@ class CaseReviewsController extends AppController {
 	            '</div>';
 
 	    echo $html;
+	}
+
+	public function publishCase($index) {
+		$case_info = $this->Session->read('case_info');
+
+		$this->autoRender = false;
+
+		$data = $this->DataInProgress->find('all', array('conditions' => array('DataInProgress.CaseNum' => $case_info[$index][1])));
+		$this->DataInProgress->deleteAll(array('DataInProgress.CaseNum' => $case_info[$index][1]), false);
+		$this->Datum->clear();
+		$this->Datum->saveMany($data);
 	}
 
 }

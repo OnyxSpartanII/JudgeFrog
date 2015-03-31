@@ -11,13 +11,13 @@ class Datum extends AppModel {
  *
  * @var mixed False or table name
  */
-	public $useTable = 'Datum';
+	public $useTable = 'Data';
 
 /**
  * Primary key field
  *
  * @var string
  */
-	public $primaryKey = 'CaseDefId';
+	public $primaryKey = 'id';
 
 }

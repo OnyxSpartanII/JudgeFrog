@@ -81,6 +81,9 @@
 
 <script type="text/javascript">
 
+  var displaying = false;
+  var index = -1;
+
   <?php
     if (isset($p_cases)) {
       $jsarr = json_encode($p_cases);
@@ -90,34 +93,45 @@
     }
   ?>
     // TOGGLE SELECTED CASE
-    $('.selected_case').hide();
-       $('.toggle_case').click(function(){
+    $('.toggle_case').click(function(){
 
-          var index = $(this).attr('id');
-            $.ajax({                   
-                url: '/JudgeFrog/jdgfrog/CaseReviews/generateTable/' + index,
-                cache: false,
-                type: 'GET',
-                dataType: 'HTML',
-                success: function (html) {
-                    $('.selected_case').html(html);
-                    $('.this_def_info').hide();
-                    $(this).toggleClass('clicked', 'slow');
-                    $('.toggle_def').click(function(){
-                      $(this).nextUntil('.toggle_def').toggle('slow');
-                      $(this).toggleClass('clicked', 'slow');
-                    });
-                    $('.selected_case').toggle(50);
-                    $('#edit_case').attr('href', '/CaseEdits/edit/' + p_cases[index][0]);
-                }
-            });
-
-
-            
-      });
+    if (!displaying) {
+      displaying = true;
+      index = $(this).attr('id');
+        $.ajax({                   
+            url: '/JudgeFrog/jdgfrog/CaseReviews/generateTable/' + index,
+            cache: false,
+            type: 'GET',
+            dataType: 'HTML',
+            success: function (html) {
+                $('.selected_case').html(html);
+                $('.this_def_info').hide();
+                $(this).toggleClass('clicked', 'slow');
+                $('.toggle_def').click(function(){
+                  $(this).nextUntil('.toggle_def').toggle('slow');
+                  $(this).toggleClass('clicked', 'slow');
+                });
+                $('.selected_case').toggle(50);
+                $('#edit_case').attr('href', '/CaseEdits/edit/' + p_cases[index][0]);
+            }
+        });
+    } else {
+      $('.selected_case').hide();
+      displaying = false;
+      index = -1;
+    }
+    });
        // TOGGLE SELECTED DEFENDENT
 
-       $('#publish_button').click(function(){
-          alert('This case has been published!');
+      $('#publish_button').click(function(){
+        $.ajax({
+          url: '/JudgeFrog/jdgfrog/CaseReviews/publishCase/' + index,
+          cache: false,
+          type: 'GET',
+          dataType: 'HTML',
+          success: function () {
+            $(this).remove();
+          }
+        });
       });
 </script>

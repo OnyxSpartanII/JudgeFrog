@@ -380,6 +380,7 @@ $(function() {
                             '<th>Case Number</th>' +
                             '<th># Defendants</th>' +
                             '<th>State</th>' +
+                            '<th>Federal District</th>' +
                             '<th>Year</th>' +
                           '</tr>' +
                         '</thead>' +
@@ -389,6 +390,7 @@ $(function() {
                             '<td>' + cases[i][1] + '</td>' +
                             '<td>' + cases[i][6] + '</td>' +
                             '<td>' + cases[i][7] + '</td>' +
+                            '<td>' + cases[i][9] + (cases[i][8] == '' ? '' : '-' + cases[i][8]) + '</td>' +
                             '<td>' + cases[i][2].split('-')[0] + '</td>' +
                           '</tr>' +
                         '</tbody>' +

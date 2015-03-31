@@ -373,7 +373,6 @@ class SearchController extends AppController {
 				$display['sentence'] = true;
 				$conditions['DataInProgress.FelSentenced <='] = $max;
 			} else {
-				$display['sentence'] = true;
 				$conditions['DataInProgress.FelSentenced <'] = 999;
 			}
 		}
@@ -738,6 +737,34 @@ class SearchController extends AppController {
 			array_push($charge_conds, $conds);
 		}
 
+		if ($this->request->data['DataInProgress']['cd_Fines'] != '') {
+
+			$min = explode(';', $this->request->data['DataInProgress']['cd_Fines'])[0];
+			$max = explode(';', $this->request->data['DataInProgress']['cd_Fines'])[1];
+
+			$conds = array(
+				'OR' => array()
+			);
+			foreach ($statutes as $stat) {
+				$t_conds = array();
+
+				if (intval($min) != 0) {
+					array_push($t_conds, array("Fines$stat >=" => $min));
+					$cc["Fines$stat >="] = $min;
+					$display['cd'] = true;
+				}
+
+				if (intval($max) != 1000) {
+					array_push($t_conds, array("Fines$stat <=" => $max));
+					$cc["Fines$stat <="] = $max;
+					$display['cd'] = true;
+				}
+
+				array_push($conds['OR'], $t_conds);
+			}
+			array_push($charge_conds, $conds);
+		}
+
 		if ($display['cd']) array_push($conditions, $charge_conds);
 
 		$prev_search = $display;
@@ -835,6 +862,8 @@ class SearchController extends AppController {
 			if ($display['sentence']) {
 				if ($def_filter == 0) $def_filter = 1;
 				if ($sd_filter == 0) $sd_filter = 1;
+
+				echo 'here';
 				if (isset($conditions['DataInProgress.FelSentenced >=']) && ($d['DataInProgress']['FelSentenced'] < $conditions['DataInProgress.FelSentenced >='])) {
 					$def_filter = -1;
 					$sd_filter = -1;
@@ -988,6 +1017,16 @@ class SearchController extends AppController {
 						}
 						
 						if (isset($conditions["Prob$statute >="]) && intval($d['DataInProgress']["Prob$statute"]) < $cc["Prob$statute >="]) {
+							$def_filter = -1;
+							$cd_filter = -1;
+						}
+						
+						if (isset($conditions["Fines$statute <="]) && intval($d['DataInProgress']["Fines$statute"]) > $cc["Fines$statute <="]) {
+							$def_filter = -1;
+							$cd_filter = -1;
+						}
+						
+						if (isset($conditions["Fines$statute >="]) && intval($d['DataInProgress']["Fines$statute"]) < $cc["Fines$statute >="]) {
 							$def_filter = -1;
 							$cd_filter = -1;
 						}

@@ -161,7 +161,8 @@
                               echo $this->Form->input('cd_Sentence', array('id' => 'sentenceCharge', 'label' => 'Months Sentenced'));
                               echo '<br><br>';
                               echo $this->Form->input('cd_Probation', array('id' => 'probationCharge', 'label' => 'Months Probation'));
-                              echo '<br>';
+                              echo '<br><br>';
+                              echo $this->Form->input('cd_Fines', array('id' => 'finesCharge', 'label' => 'Fines'));
                             ?>
                           </div>
 
@@ -453,7 +454,7 @@ $(function() {
             for (var j = 0; j < cases[i][20].length; j++) {
               content += '<tr class="toggle_def' + (!cases[i][20][j][32] ? ' all_results' : '') + '">' +
                           '<td>' + cases[i][20][j][1] + ' ' + cases[i][20][j][0] + '</td>' +
-                          '<td>' + (cases[i][20][j][3] == undefined ? 'N/A' : (cases[i][20][j][3] ? 'Female' : 'Male')) + '</td>' +
+                          '<td>' + (cases[i][20][j][3] == null ? 'N/A' : (cases[i][20][j][3] ? 'Female' : 'Male')) + '</td>' +
                           '<td>' + (cases[i][20][j][5] == '0000' ? 'Unknown' : cases[i][20][j][5]) + '</td>' +
                           '<td>' + (races[cases[i][20][j][4]] == undefined ? 'Unknown' : races[cases[i][20][j][4]])  + '</td>' +
                         '</tr>' +
@@ -688,6 +689,8 @@ $(function() {
       echo 'var sent_max = 300;';
       echo 'var cdprob_min = 0;';
       echo 'var cdprob_max = 300;';
+      echo 'var cdfines_min = 0;';
+      echo 'var cdfines_max = 1000;';
       echo 'var ttlfel_min = 0;';
       echo 'var ttlfel_max = 10;';
       echo 'var dateterm_min = 2000;';
@@ -794,6 +797,11 @@ $(function() {
         if ($query['DataInProgress']['cd_Probation']) {
           echo 'var cdprob_min = ' . explode(';',$query['DataInProgress']['cd_Probation'])[0] . ';';
           echo 'var cdprob_max = ' . explode(';',$query['DataInProgress']['cd_Probation'])[1] . ';';
+        }
+
+        if ($query['DataInProgress']['cd_Fines']) {
+          echo 'var cdfines_min = ' . explode(';',$query['DataInProgress']['cd_Fines'])[0] . ';';
+          echo 'var cdfines_max = ' . explode(';',$query['DataInProgress']['cd_Fines'])[1] . ';';
         }
 
         if ($query['DataInProgress']['sd_TtlFelonies']) {
@@ -1069,6 +1077,19 @@ $(function() {
       max: 300,
       from: cdprob_min,
       to: cdprob_max,
+      type: 'integer',
+      step: 1,
+      prefix: "",
+      max_postfix: '+',
+      grid: true
+    } );
+    $( "#finesCharge" ).ionRangeSlider( {
+      hide_min_max: true,
+      keyboard: true,
+      min: 0,
+      max: 1000,
+      from: cdfines_min,
+      to: cdfines_max,
       type: 'integer',
       step: 1,
       prefix: "",

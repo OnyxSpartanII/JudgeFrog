@@ -174,16 +174,12 @@ class UsersController extends AppController {
 
 					$foo = $this->request->data('case');
 
-					$this->Session->setFlash(__($foo));
+					$newFoo = trim($foo);
 
-		                $this->User->delete($username = $foo, true);
+		            $this->User->delete($newFoo, true);
 
-					// $this->Session->setFlash(__('User Successfully Deleted!'));
+					$this->Session->setFlash(__('User Successfully Deleted!'));
 		        }
-
-			// $this->User->delete($id = $row['id'], true);
-				// $this->redirect(array('controller' => 'User', 'action' => 'create'));
-				// $this->Session->setFlash(__('User Successfully Deleted!')); 
 		    else {
 				$this->Session->setFlash(__('Oops something went wrong :( User not deleted!'));
 		    }

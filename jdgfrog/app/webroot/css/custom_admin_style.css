@@ -195,6 +195,9 @@ table.pending_case {width:100%;border:1px solid #999;}
 .progress strong{
   font-size: 15px;
 }
+.active_progress strong{
+    text-transform: uppercase;
+}
 .idle{
   color: #FFF;
   background-color: #999;

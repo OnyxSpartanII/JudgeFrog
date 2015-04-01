@@ -14,7 +14,7 @@
             <div class="progress">
               <div class="progress-bar progress-bar-warning" role="progressbar" style="width:10%">PROGRESS:</div>
               <div class="progress-bar progress-bar" role="progressbar" style="width:25%">Case Information</div>
-              <div class="progress-bar" role="progressbar" style="width:18%"><strong>Victim Information</strong></div>
+              <div class="progress-bar active_progress" role="progressbar" style="width:18%"><strong>Victim Information</strong></div>
               <div class="progress-bar idle" role="progressbar" style="width:35%">Defendant(s) Information</div>
               <div class="progress-bar idle" role="progressbar" style="width:12%">Submit</div>
             </div>

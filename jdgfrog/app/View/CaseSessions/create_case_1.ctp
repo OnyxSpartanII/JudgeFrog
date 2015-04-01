@@ -18,11 +18,11 @@
 					<div class="case_top_bar">
 						<h3 class="page_title">Case &amp; Judge Details</h3>
 						<div class="progress">
-							<div class="progress-bar progress-bar-warning" role="progressbar" style="width:10%"><strong>PROGRESS:</strong></div>
-							<div class="progress-bar progress-bar" role="progressbar" style="width:25%"><strong>Case Information</strong></div>
-							<div class="progress-bar idle" role="progressbar" style="width:10%">Victim Information</div>
-							<div class="progress-bar idle" role="progressbar" style="width:40%">Defendant(s) Information</div>
-							<div class="progress-bar idle" role="progressbar" style="width:15%">Submit</div>
+							<div class="progress-bar progress-bar-warning" role="progressbar" style="width:10%">PROGRESS:</div>
+							<div class="progress-bar progress-bar active_progress" role="progressbar" style="width:25%"><strong>Case Information</strong></div>
+							<div class="progress-bar idle" role="progressbar" style="width:18%">Victim Information</div>
+							<div class="progress-bar idle" role="progressbar" style="width:35%">Defendant(s) Information</div>
+							<div class="progress-bar idle" role="progressbar" style="width:12%">Submit</div>
 						</div>
 					</div>
 					<div class="col-md-12 contact-right">

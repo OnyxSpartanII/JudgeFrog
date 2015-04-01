@@ -75,35 +75,38 @@
                           </thead>
                           <tbody>
                           <tr>
-                            <td>USA v. Afolabi et al</td>
-                            <td>2:09-cr-00196-LA</td>
-                            <td>3</td>
-                            <td>WI</td>
-                            <td>2009-08-25</td>
+                          <?php
+                            echo '<td>' . $cases[i][0] . '</td>';
+                            echo '<td>' . $cases[i][1] . '</td>';
+                            echo '<td>' . $cases[i][6] . '</td>';
+                            echo '<td>' . $cases[i][7] . '</td>';
+                            echo '<td>' . split("-", $cases[i][2])[0] . '</td>';
+                          ?>
                           </tr>
                           </tbody>
                         </table>
                           <h4>Case Summary</h4>
                           <p class="case_summary">
-                            The defendants conspired to transport minors for prostitution, and they also recruited minors and other women to work in strip clubs and engage in commercial sex acts. They were then forced to give all their money to the defendants, and at times were beaten, raped, confined, humiliated, intimidated, and threatened. 
+                            <?php
+                              echo $cases[i][10];
+                            ?>
                           </p>
                       </div>
                       <table class="table_col">
                         <caption>Defendent Information</caption>
                         <thead>
                         <tr>
-                          <th>Name</th>
-                          <th>Gender</th>
-                          <th>Year of Birth</th>
-                          <th>White</th>
+                          <?php
+                          //   echo '<td>' . $cases[i][20][j][1] . ' ' . cases[i][20][j][0] . '</td>' +
+                          // '<td>' + (cases[i][20][j][3] ? 'Female' : 'Male') + '</td>' +
+                          // '<td>' + (cases[i][20][j][5] == '0000' ? 'Unknown' : cases[i][20][j][5]) + '</td>' +
+                          // '<td>' + (races[cases[i][20][j][4]] == undefined ? 'Unknown' : races[cases[i][20][j][4]])  + '</td>' +
+                          ?>
                         </tr>
                         </thead>
                         <tbody>
                         <tr class="toggle_def clicked">
-                          <td>Balderas-Orosco, Juan</td>
-                          <td>Male</td>
-                          <td>1973</td>
-                          <td>2</td>
+                          
                         </tr>
                           <tr class="this_def_info">
                             <td colspan="4">
@@ -182,10 +185,12 @@
                         </thead>
                         <tbody>
                         <tr>
-                          <td>32</td>
-                          <td>3</td>
-                          <td>5</td>
-                          <td>10</td>
+                          <?php
+                            echo '<td>' . ($cases[i][16] == null ? 'Unknown' : $cases[i][16]) . '</td>';
+                            echo '<td>' . ($cases[i][17] == null ? 'Unknown' : $cases[i][17]) . '</td>';
+                            echo '<td>' . ($cases[i][18] == null ? 'Unknown' : $cases[i][18]) . '</td>';
+                            echo '<td>' . ($cases[i][19] == null ? 'Unknown' : $cases[i][19]) . '</td>';
+                          ?>
                         </tr>
                         </tbody>
                       </table>

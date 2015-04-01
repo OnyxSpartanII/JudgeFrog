@@ -3,6 +3,26 @@
     $this->set('title', 'Create Case- Admin Panel | Human Trafficking Data');
     $this->set('active', 'create_case');
 ?>
+    <?php
+        echo $this->Html->css(array('datepicker'));
+        echo $this->Html->script(array('bootstrap-datepicker'));
+    ?>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+  <script>
+  $(function() {
+    $( "#termDate" ).datepicker();
+    // $( "#senDate" ).datepicker();
+    $('.datepicker').datepicker()
+  });
+  </script>
+</head>
+<body>
+ 
+
+
 <!--search start here-->
 <div class="contact">
     <div class="container">
@@ -45,8 +65,8 @@
                       <?php echo $this->Form->create('CaseSession'); ?>
 
                       <?php //add defendant name, number, case name ?>
-                      <?php echo $this->Form->input('DateTerm', array('label' => 'Termination Date of Case')); ?>
-                      <?php echo $this->Form->input('SentDate', array('label' => 'Date of Sentencing')); ?>
+                      <?php echo $this->Form->input('DateTerm', array('label' => 'Termination Date of Case', 'id' => 'termDate', 'type' => 'text')); ?>
+                      <?php echo $this->Form->input('SentDate', array('label' => 'Date of Sentencing', 'class' => 'datepicker date', 'type' => 'text', 'data-date' => '12-02-2012', 'data-date-format' => 'dd-mm-yyyy')); ?>
                       <?php echo $this->Form->input('TotalSentence', array('label' => 'Total Number of Months Sentenced')); ?>
                       <?php echo $this->Form->input('Restitution', array('label' => 'Amount Required to Pay For Restitution')); ?>
                       <?php echo $this->Form->input('AssetForfeit', array('label' => 'Assets Forfeited?', 'type' => 'checkbox')); ?>

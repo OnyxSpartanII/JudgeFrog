@@ -28,15 +28,9 @@
                 <div class="col-md-8 contact-right">
                   <!-- TOP DELETE SELECTED USER BAR -->
                     <div class="top_bar col-md-8">
-                      <div class="top_bar_left">
-                        <h4>VICTIM INFORMATION</h4>
+                      <div class="top_bar_dash">
+                        <h4>SUBMIT FOR REVIEW</h4>
                       </div>
-                        <!-- DELETE BUTTON-->
-                        <div title="Click here to save and quit." style="margin-top: 19px;">
-                          <label for="" class="user_button" >
-                            <?php echo $this->Html->image('save.png', array('alt' => 'Create', 'style' => 'float:left; padding: 10px 10px 10px 2px;' )); ?>
-                          </label>
-                        </div>
                     </div>
                     <div class="col-md-11 case_creation_form" style="margin:100px auto; float:none;">
                     

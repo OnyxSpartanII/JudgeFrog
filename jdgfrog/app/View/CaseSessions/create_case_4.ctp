@@ -1,13 +1,9 @@
 <?php
     $this->layout = 'admin_panel_layout';
-    $this->set('title', 'Create Case- Admin Panel | Human Trafficking Data');
+    $this->set('title', 'Create Case - Admin Panel | Human Trafficking Data');
     $this->set('active', 'create_case');
 ?>
-<?php
-    $this->layout = 'admin_panel_layout';
-    $this->set('title', 'Create Case- Admin Panel | Human Trafficking Data');
-    $this->set('active', 'create_case');
-?>
+
 <!--search start here-->
 <div class="contact">
     <div class="container">

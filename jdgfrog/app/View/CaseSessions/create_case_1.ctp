@@ -3,11 +3,26 @@
 		$this->set('title', 'Create Case- Admin Panel | Human Trafficking Data');
 		$this->set('active', 'create_case');
 ?>
+    <?php
+        echo $this->Html->css(array('adminPanelWindow'));
+        // echo $this->Html->script(array('bootstrap-datepicker'));
+    ?>
+    <script type="text/javascript">
+    var $progr = $(".progress");
+    
+	</script>
+
 <!--search start here-->
 <div class="contact">
 		<div class="container">
 				<div class="contact-main">
 					<h3 class="page_title">Single Case Creation</h3>
+		<div class="progress">
+		  <div class="progress-bar progress-bar" role="progressbar" style="width:15%"><strong>Case Information</strong></div>
+		  <div class="progress-bar progress-bar-warning idle" role="progressbar" style="width:10%">Victim Information</div>
+		  <div class="progress-bar progress-bar-danger idle" role="progressbar" style="width:70%">Defendant(s) Information</div>
+		  <div class="progress-bar progress-bar-success idle" role="progressbar" style="width:5%">Submit</div>
+		</div>
 							<div class="col-md-4 contact-right">
 								<!-- TOP CREATE A NEW USER BAR -->
 									<div class="top_bar col-md-4">
@@ -91,7 +106,3 @@
 					<p><strong>*Note: </strong>All fields are required</p>
 				</div>
 </div>
-
-<style type="text/css">
-
-</style>

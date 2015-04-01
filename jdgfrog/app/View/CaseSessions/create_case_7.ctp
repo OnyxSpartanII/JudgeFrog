@@ -29,7 +29,7 @@
                   <!-- TOP DELETE SELECTED USER BAR -->
                     <div class="top_bar col-md-8">
                       <div class="top_bar_left">
-                        <h4>VICTIM INFORMATION</h4>
+                        <h4>ORGANIZED CRIME GROUP INFORMATION</h4>
                       </div>
                         <!-- DELETE BUTTON-->
                         <div title="Click here to save and quit." style="margin-top: 19px;">

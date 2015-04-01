@@ -18,7 +18,11 @@
 <div class="contact">
     <div class="container">
         <div class="contact-main">
-          <h3 class="page_title">User Management</h3>
+            
+            <div class="case_top_bar">
+              <h3 class="" style="text-align:center; float:none">User Management</h3>
+            </div>
+
               <div class="col-md-4 contact-right  users form" style="margin-top: -50px;">
                <?php echo $this->Form->create('User');
                       echo $this->Form->hidden('createform', array('value' => 'create'));?>

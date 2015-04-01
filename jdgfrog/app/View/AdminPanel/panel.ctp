@@ -1,13 +1,13 @@
 <?php
 //Adds CSS file to view
-    echo $this->Html->css(array('adminPanelWindow'));
+    echo $this->Html->css(array('panel_demo'));
     ?>
 <?php $this->layout = 'admin_panel_layout';?>
 
 <body>
 
 <!-- multistep form -->
-<form id="msform">
+<div id="msform">
   <!-- progressbar -->
   <ul id="progressbar">
   <!--
@@ -225,7 +225,7 @@
     
     
   </fieldset>
-</form>
+</div>
 
 <!-- Adds the JQuery for the window motion -->
 <?php

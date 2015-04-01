@@ -175,83 +175,110 @@ table.pending_case {width:100%;border:1px solid #999;}
     margin-top: 8px;
 }
 
-
-
-.case_creation_form fieldset{
-    /*border-radius: 10px;*/
-    /*-webkit-border-radius: 10px;*/
-    /*-moz-border-radius: 10px;*/
-    margin: 25px auto;
-    border: 1px solid #4D1979;
-    padding: 20px;
-    background: #FFF4F4;
-    box-shadow: inset 0px 0px 15px #FFE5E5;
-    -moz-box-shadow: inset 0px 0px 15px #FFE5E5;
-    -webkit-box-shadow: inset 0px 0px 15px #FFE5E5;
+/*======================*/
+/*FORM FIELDSET STYLING*/
+/*====================*/
+.case_top_bar{
 }
-.case_creation_form fieldset legend{
-    color: #4D1979;
-    border-top: 1px solid #4D1979;
-    border-left: 1px solid #4D1979;
-    border-right: 1px solid #4D1979;
-    border-bottom: 1px solid #4D1979;
-    background: #DCDCDC;
-    padding: 0px 8px 3px 8px;
-    box-shadow: -0px -1px 2px #F1F1F1;
-    -moz-box-shadow:-0px -1px 2px #F1F1F1;
-    -webkit-box-shadow:-0px -1px 2px #F1F1F1;
-    font-weight: normal;
-    font-size: 20px;
+.case_top_bar h3{
+    padding-bottom: 10px;
+    text-align: left;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #CCC;
 }
-.case_creation_form textarea{
-    width:250px;
-    height:100px;
-}
-.case_creation_form input[type=text],
-.case_creation_form input[type=date],
-.case_creation_form input[type=datetime],
-.case_creation_form input[type=number],
-.case_creation_form input[type=search],
-.case_creation_form input[type=time],
-.case_creation_form input[type=url],
-.case_creation_form input[type=email],
-.case_creation_form select, 
-.case_creation_form textarea{
-    font-size: 20px;
-    border: 1px solid #4D1979;
-    outline: none;
-    color: #4D1979;
-    padding: 5px 8px 5px 8px;
-    margin-bottom: 10px;
-    width:50%;
-}
-
 
 .top_bar_dash h5{
     color: #FFF;
     padding-top: 7px;
     border-top: 1px solid #777;
 }
-.progress_bar{
-    text-align:left; 
-    padding-left:10px;
-
+.progress strong{
+  font-size: 15px;
 }
-    .progress_bar label{
-        display: block;
-        font-size: 20px;
-        padding-top: 25px;
-        /*border-left: 7px solid #4D1979;*/
-    }
-        .defendant_sub label{margin-left:15px; font-size: 17px;}
+.idle{
+  color: #FFF;
+  background-color: #999;
+  border-left: 1px solid #DCDCDC;
+}
 
-.case_creation_form label{
-    font-size: 18px;
-    font-weight: bold;
-    padding-top: 15px;
-    }
+
+/*custom font*/
+
+/*form styles*/
+#msform {
+    float: none;
+    min-width: 360px;
+    margin: 50px auto;
+    text-align: center;
+    position: relative;
+}
+#msform fieldset {
+    background: #FFF;
+    box-shadow: 0 0 15px 3px #CCC;
+    padding: 0px 20px 20px 20px;
+    width: 100%;
+    margin-bottom: 50px;
+}
+/*headings*/
+#msform h2{
+    box-shadow: 0 0 15px 4px #CCC;
+    text-transform: uppercase;
+    background-color: #4D1979;
+    text-shadow:0 1px 0 black;
+    letter-spacing: 1px;
+    text-align:center;
+    position:relative;
+    font-size:23px;
+    padding: 30px 0;
+    margin: auto;
+    color: #FFF;
+}
+#msform label {
+    font-size:15px;
+    color:#4D1979;
+    display:block;
+    padding:9px;
+}
+/*Hide all except first fieldset*/
+#msform fieldset:not(:first-of-type) {
+  display: none;
+}
+#msform input[type="button"]:not(:first-of-type) {
+    /*padding-bottom: 50px;*/
+    /*margin-top: 20px;*/
+    /*border-top: 10px solid #DCDCDC;*/
+}
+/*inputs*/
+/*#msform input, #msform textarea {
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: montserrat;
+  color: #2C3E50;
+  font-size: 13px;
+}*/
+/*buttons*/
+#msform .action-button {
+    width: 30%;
+    padding: 1em 0em;
+    outline: none;
+    background-color: #DCDCDC;
+    border: 1px solid #777;
+    color: #777;
+}
+#msform .action-button:hover {
+    background-color:#00BFFF; color: #FFF;
+    border: 1px solid #00BFFF;
+     transition: all 0.3s ease-in-out;
+     -webkit-transition: all 0.3s ease-in-out;
+     -moz-transition: all 0.3s ease-in-out;
+     -o-transition: all 0.3s ease-in-out;
+}
 .case_creation_form input[type="submit"] {
-    width: 20%;
+    width: 30%;
     padding: 1em 0em;
     outline: none;
     background-color: #4D1979;
@@ -266,11 +293,13 @@ table.pending_case {width:100%;border:1px solid #999;}
      -moz-transition: all 0.3s ease-in-out;
      -o-transition: all 0.3s ease-in-out;
 }
-.case_creation_form input[type="submit"]:active {
+.case_creation_form input[type="submit"]:active, #msform .action-button:active {
         margin-left: 10px;
 }
 
-
+.case_creation_bottom input[type="submit"]{
+    display: inline;
+}
 
 /*--media styles--*/
 @media(max-width:992px){

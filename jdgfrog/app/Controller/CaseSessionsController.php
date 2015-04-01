@@ -7,6 +7,7 @@ class CaseSessionsController extends AppController {
 	public $helpers = array('Html', 'Form', 'Session');
 	public $components = array('Session', 'Paginator');
 	public $name = 'CaseSessions';
+	public $uses = array('DataInProgress', 'CaseSession');
 
 	public function beforeFilter() {
 		//inspect user permissions here.
@@ -38,6 +39,7 @@ class CaseSessionsController extends AppController {
 		$steps = count($createViewFolder->find('create_case_.*\.ctp')) - 1;
 		$this->Session->write('form.params.steps', $steps);
 		$this->Session->write('form.params.stepProgress', 0);
+		$this->CaseSession->create();
 		$this->redirect(array('action' => 'create_case', 1));
 	}
 
@@ -89,80 +91,124 @@ class CaseSessionsController extends AppController {
 			if ($currentStep == 1) {
 
 				//Store case information. Extract case name, number of defendants.
-				$this->Session->write('form.params.caseName', $this->request->data['CaseSession']['CaseNam']);
+				$this->Session->write('form.params.caseNum', $this->request->data['CaseSession']['CaseNum']);
 				$this->Session->write('form.params.numDefs', $this->request->data['CaseSession']['NumDef']);
 				$this->Session->write('form.params.curDefNum', 1);
 
 				//Get the current session's ID based on what's currently in the database.
 				$newSessionId = $this->getSessionId();
 				$newRowId = $this->getRowId();
+				$newRowId = $newRowId + 1;
 				$currentUser = $this->Auth->user('id');
 				
 				$this->Session->write('form.data.CaseSession.author', $currentUser);
 				$this->Session->write('form.params.sessionId', $newSessionId);
 				$this->Session->write('form.data.CaseSession.session_id', $newSessionId);
+				$this->Session->write('form.params.id', $newRowId);
+
+				$this->request->data['CaseSession']['author'] = $currentUser;
+				$this->request->data['CaseSession']['session_id'] = $newSessionId;
 
 				$prevSessionData = $this->Session->read('form.data');
 				$currentSessionData = Hash::merge( (array) $prevSessionData, $this->request->data);
 				$this->Session->write('form.data', $currentSessionData);
-				$this->redirect(array('action' => 'create_case', $currentStep+1));	
+				if ($this->CaseSession->save($this->request->data)) {
+					$this->redirect(array('action' => 'create_case', $currentStep+1));						
+				}
+
 
 			} elseif ($currentStep == 2) {
 				//Extract victim and type of trafficking information.
 				$prevSessionData = $this->Session->read('form.data');
 				$currentSessionData = Hash::merge( (array) $prevSessionData, $this->request->data);
 				$this->Session->write('form.data', $currentSessionData);
-				$this->redirect(array('action' => 'create_case', $currentStep+1));					
+				$this->request->data['CaseSession']['id'] = $this->Session->read('form.params.id');
+				if ($this->CaseSession->save($this->request->data)) {
+					$this->redirect(array('action' => 'create_case', $currentStep+1));		
+				}
 
 			} elseif ($currentStep == 3) {
 				//Defendant Personal Information
 				$prevSessionData = $this->Session->read('form.data');
-				$currentSessionData = Hash::merge( (array) $prevSessionData, $this->request->data);
-				$this->Session->write('form.data', $currentSessionData);
+				//$currentSessionData = Hash::merge( (array) $prevSessionData, $this->request->data);
+				//$this->Session->write('form.data', $currentSessionData);
 				$this->Session->write('form.params.currentDefendantLast', $this->request->data['CaseSession']['DefLast']);
 				$this->Session->write('form.params.currentDefendantFirst', $this->request->data['CaseSession']['DefFirst']);
-				$this->redirect(array('action' => 'create_case', $currentStep+1));	
+				$this->CaseSession->set($this->Session->read('form.data'));
+				$this->request->data['CaseSession']['id'] = $this->Session->read('form.params.id');
+				if ($this->CaseSession->save($this->request->data)) {
+					$this->redirect(array('action' => 'create_case', $currentStep+1));	
+				}
+				//$this->redirect(array('action' => 'create_case', $currentStep+1));	
 
 			} elseif ($currentStep == 4) {
 				//Arrest and Bail Information
-				$prevSessionData = $this->Session->read('form.data');
-				$currentSessionData = Hash::merge( (array) $prevSessionData, $this->request->data);
-				$this->Session->write('form.data', $currentSessionData);
-				$this->redirect(array('action' => 'create_case', $currentStep+1));					
+				//$prevSessionData = $this->Session->read('form.data');
+				//$currentSessionData = Hash::merge( (array) $prevSessionData, $this->request->data);
+				//$this->Session->write('form.data', $currentSessionData);
+				//$this->redirect(array('action' => 'create_case', $currentStep+1));					
+				$this->request->data['CaseSession']['id'] = $this->Session->read('form.params.id');
+				if ($this->CaseSession->save($this->request->data)) {
+					$this->redirect(array('action' => 'create_case', $currentStep+1));	
+				}
 
 			} elseif ($currentStep == 5) {
 				//Charges and Statute Information
-				$prevSessionData = $this->Session->read('form.data');
-				$currentSessionData = Hash::merge( (array) $prevSessionData, $this->request->data);
-				$this->Session->write('form.data', $currentSessionData);
-				$this->redirect(array('action' => 'create_case', $currentStep+1));				
+				//$prevSessionData = $this->Session->read('form.data');
+				//$currentSessionData = Hash::merge( (array) $prevSessionData, $this->request->data);
+				//$this->Session->write('form.data', $currentSessionData);
+				//$this->redirect(array('action' => 'create_case', $currentStep+1));	
+				$this->request->data['CaseSession']['id'] = $this->Session->read('form.params.id');
+				if ($this->CaseSession->save($this->request->data)) {
+					$this->redirect(array('action' => 'create_case', $currentStep+1));	
+				}			
 
 			} elseif ($currentStep == 6) {
 				//Sentencing Information
-				$prevSessionData = $this->Session->read('form.data');
-				$currentSessionData = Hash::merge( (array) $prevSessionData, $this->request->data);
-				$this->Session->write('form.data', $currentSessionData);
-				$this->redirect(array('action' => 'create_case', $currentStep+1));					
+				//$prevSessionData = $this->Session->read('form.data');
+				//$currentSessionData = Hash::merge( (array) $prevSessionData, $this->request->data);
+				//$this->Session->write('form.data', $currentSessionData);
+				//$this->redirect(array('action' => 'create_case', $currentStep+1));	
+				$this->request->data['CaseSession']['id'] = $this->Session->read('form.params.id');
+				if ($this->CaseSession->save($this->request->data)) {
+					$this->redirect(array('action' => 'create_case', $currentStep+1));	
+				}				
 
 			} elseif ($currentStep == 7) {
 				//Organized Crime Group page
 			//	if ($this->validateFormData($this->request->data, $currentStep)) {
-					$prevSessionData = $this->Session->read('form.data');
-					$currentSessionData = Hash::merge( (array) $prevSessionData, $this->request->data);
-					$this->Session->write('form.data', $currentSessionData);
-					$this->redirect(array('action' => 'create_case', $currentStep+1));						
+					//$prevSessionData = $this->Session->read('form.data');
+					//$currentSessionData = Hash::merge( (array) $prevSessionData, $this->request->data);
+					//$this->Session->write('form.data', $currentSessionData);
+					//$this->redirect(array('action' => 'create_case', $currentStep+1));						
 				//}
+				$this->request->data['CaseSession']['id'] = $this->Session->read('form.params.id');
+				if ($this->CaseSession->save($this->request->data)) {
+					$this->redirect(array('action' => 'create_case', $currentStep+1));	
+				}
 
 			} elseif ($currentStep == 8) {
-				$this->CaseSession->set($this->Session->read('form.data'));
-				$this->CaseSession->save();
+
+				//$this->CaseSession->set($this->Session->read('form.data'));
+				//$this->CaseSession->save();
 
 				//Progress to next defendant if the number of defendants >  1 && currentDefendant < number of defendants.
 				if ($this->Session->read('form.params.curDefNum') < $this->Session->read('form.params.numDefs')) {
-					//$this->CaseSession->clear();				
+					
+					$this->CaseSession->clear();
 					$currentStep = 3;
 					$this->Session->write('form.params.curDefNum', $this->Session->read('form.params.curDefNum')+1);
-					$this->redirect(array('action' => 'create_case', $currentStep));
+					$this->Session->write('form.params.id', $this->Session->read('form.params.id')+1);
+
+					$this->CaseSession->set('session_id', $this->Session->read('form.params.sessionId'));
+					$this->CaseSession->set('id', $this->Session->read('form.params.id'));
+					$this->CaseSession->set('CaseNum', $this->Session->read('form.params.caseNum'));
+					if ($this->CaseSession->save()) {
+						$this->redirect(array('action' => 'create_case', $currentStep));
+					}
+
+				} else {
+					//move case to DataInProgress table-,
 				}
 
 			}
@@ -248,7 +294,7 @@ class CaseSessionsController extends AppController {
 
 	public function getRowId() {
 		$newRowId = $this->CaseSession->find('first', array('fields' => array('MAX(CaseSession.id) as id')));
-		$newRowId = $newRowId[0]['id'] + 1;
+		$newRowId = $newRowId[0]['id'];
 		return $newRowId;
 	}
 

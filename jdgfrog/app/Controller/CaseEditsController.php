@@ -13,8 +13,8 @@ class CaseEditsController extends AppController {
 		$this->Auth->allow('editDefendant', 'getCase', 'edit', 'saveEdits');
 	}
 
-	public function edit() {
-		$caseNumber = '2:07-cr-00785-JLL';
+	public function edit($caseNumber) {
+		//$caseNumber = '2:07-cr-00785-JLL';
 		$this->Session->write('form.data.test', 'test');
 		$case = $this->getCase($caseNumber);
 		// 30 defs: 3:10-cr-00260
@@ -48,9 +48,9 @@ class CaseEditsController extends AppController {
 
 			//$caseName = 'DROP TABLE DataInProgress_backup';
 			/*
-			* 	Using variables here in $fields may allow SQL injections? However, when tested with the string
-			*	above, nothing happened. Instead the CaseNam was changed to the above string.
-			*	More testing for vulnerabilities?
+			* 	Using variables here in $fields may allow SQL injections according to someone on Stackoverflow?
+			*	However, when tested nothing happened. Instead the CaseNam was changed to the above string, 
+			*	for example. More testing for vulnerabilities?
 			*/
 			$fields = array(
 							'DataInProgress.CaseNum' 		=> "'$caseNum'", 
@@ -130,7 +130,7 @@ class CaseEditsController extends AppController {
 
 			$this->DataInProgress->clear();
 			$this->request->data['DataInProgress']['id'] = $caseId;
-			
+
 			if ($this->DataInProgress->save($this->request->data)) {
 				print_r('Save successful!');
 			} else {

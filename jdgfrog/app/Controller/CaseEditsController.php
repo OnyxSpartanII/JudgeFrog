@@ -13,8 +13,11 @@ class CaseEditsController extends AppController {
 		$this->Auth->allow('editDefendant', 'getCase', 'edit', 'saveEdits');
 	}
 
-	public function edit() {
-		$caseNumber = '1:13-cr-00069-LO';
+	public function edit($num) {
+		$this->autoRender = false;
+
+		$caseNumber = $num;
+		//$caseNumber = '1:13-cr-00069-LO';
 		$case = $this->getCase($caseNumber);
 		// 30 defs: 3:10-cr-00260
 		// 4 defs: 2:07-cr-00785-JLL
@@ -23,7 +26,7 @@ class CaseEditsController extends AppController {
 		if ($this->request->is('post')) {
 
 			$data = $this->request->data;
-			debug($data);
+			//debug($data);
 			$caseName		= $data['DataInProgress']['CaseNam'];
 			$caseNum 		= $data['DataInProgress']['CaseNum'];
 			$numDef 		= $data['DataInProgress']['NumDef'];
@@ -44,8 +47,13 @@ class CaseEditsController extends AppController {
 			$numVicForeign	= $data['DataInProgress']['NumVicForeign'];
 			$numVicFemale	= $data['DataInProgress']['NumVicFemale'];
 
-			//$caseName = addslashes($caseName);
+			$caseName = addslashes($caseName);
+			$judgeName = addslashes($judgeName);
+			$caseSummary = addslashes($caseSummary);
 
+			//debug($caseSummary);
+			//debug($judgeName);
+			//debug($caseName);
 
 			//$caseName = 'DROP TABLE DataInProgress_backup';
 			/*
@@ -79,12 +87,16 @@ class CaseEditsController extends AppController {
 			);
 
 			if ($this->DataInProgress->updateAll($fields, array('DataInProgress.CaseNum' => $caseNumber)) ) {
-				print_r('Save successful!');
+				$this->redirect('/CaseReviews/review');
+				print_r('Something went right.');
+				
 			} else {
 				print_r('Something went wrong. Case information not saved.');
 			}
+		} else {
+			$this->render('edit');
 		}
-		$this->render('edit');		
+	
 	}
 
 	/*
@@ -136,6 +148,7 @@ class CaseEditsController extends AppController {
 			$this->request->data['DataInProgress']['id'] = $caseId;
 
 			if ($this->DataInProgress->save($this->request->data)) {
+				$this->redirect(array('action' => 'edit', $caseNumber));
 				print_r('Save successful!');
 			} else {
 				print_r('An error occurred. The defendant was not saved.');
@@ -161,3 +174,5 @@ class CaseEditsController extends AppController {
 		$this->render('edit');
 	}
 }
+
+?>

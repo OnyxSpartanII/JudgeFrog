@@ -230,7 +230,7 @@
               </div>
         </div>
         <div class="search_disclaim" style="margin-top:0px; padding-top:10px; border-top:1px solid #DCDCDC">
-          <p><strong>*Note: </strong>All fields are required</p>
+          <p><strong></strong></p>
         </div>
     </div>
 </div>

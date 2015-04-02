@@ -27,6 +27,7 @@ class SearchController extends AppController {
 						'1590', '1591', '1592', '2252', '2260', '2421to2424',
 						'1324', '1328'];
 
+		$statute_flag = false;
 
 		/**
 		 * Case type filter section
@@ -353,6 +354,7 @@ class SearchController extends AppController {
 			$display['cd'] = true;
 			$s_name = $statutes[$this->request->data['DataInProgress']['cd_Statute']];
 			$conditions["DataInProgress.S$s_name"] = true;
+			$statute_flag = true;
 		}
 
 		/**
@@ -798,10 +800,10 @@ class SearchController extends AppController {
 				if (isset($conditions['DataInProgress.DefRace']) && ($d['DataInProgress']['DefRace'] != $conditions['DataInProgress.DefRace'])) {
 					$def_filter = -1;
 				}
-				if (isset($conditions['DataInProgress.DefBirthdate >=']) && ($d['DataInProgress']['DefBirthdate'] < $conditions['DataInProgress.DefBirthdate >='])) {
+				if (isset($conditions['DataInProgress.DefBirthdate >=']) && ($d['DataInProgress']['DefBirthdate'] < split("-", $conditions['DataInProgress.DefBirthdate >='])[0])) {
 					$def_filter = -1;
 				}
-				if (isset($conditions['DataInProgress.DefBirthdate <=']) && ($d['DataInProgress']['DefBirthdate'] > $conditions['DataInProgress.DefBirthdate <='])) {
+				if (isset($conditions['DataInProgress.DefBirthdate <=']) && ($d['DataInProgress']['DefBirthdate'] > split("-", $conditions['DataInProgress.DefBirthdate <='])[0])) {
 					$def_filter = -1;
 				}
 				if (isset($conditions['DataInProgress.DefGender']) && ($d['DataInProgress']['DefGender'] != $conditions['DataInProgress.DefGender'])) {
@@ -863,7 +865,6 @@ class SearchController extends AppController {
 				if ($def_filter == 0) $def_filter = 1;
 				if ($sd_filter == 0) $sd_filter = 1;
 
-				echo 'here';
 				if (isset($conditions['DataInProgress.FelSentenced >=']) && ($d['DataInProgress']['FelSentenced'] < $conditions['DataInProgress.FelSentenced >='])) {
 					$def_filter = -1;
 					$sd_filter = -1;
@@ -941,6 +942,15 @@ class SearchController extends AppController {
 					if ($def_filter == 0) $def_filter = 1;
 					if ($cd_filter == 0) $cd_filter = 1;
 					if ($d['DataInProgress']["S$statute"] != 0) {
+
+						$def_filter = 1;
+						$cd_filter = 1;
+
+						if($statute_flag && !isset($conditions["DataInProgress.S$statute"])) {
+							$def_filter = -1;
+							$cd_filter = -1;
+						}
+
 						if (isset($cc["Counts$statute >="]) && intval($d['DataInProgress']["Counts$statute"]) < $cc["Counts$statute >="]) {
 							$cd_filter = -1;
 							$def_filter = -1;

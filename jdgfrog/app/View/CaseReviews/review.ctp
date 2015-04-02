@@ -99,7 +99,7 @@
       displaying = true;
       index = $(this).attr('id');
         $.ajax({                   
-            url: '/JudgeFrog/jdgfrog/CaseReviews/generateTable/' + index,
+            url: '/CaseReviews/generateTable/' + index,
             cache: false,
             type: 'GET',
             dataType: 'HTML',
@@ -125,7 +125,7 @@
 
       $('#publish_button').click(function(){
         $.ajax({
-          url: '/JudgeFrog/jdgfrog/CaseReviews/publishCase/' + index,
+          url: '/CaseReviews/publishCase/' + index,
           cache: false,
           type: 'GET',
           dataType: 'HTML',

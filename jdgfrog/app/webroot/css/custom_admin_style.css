@@ -251,6 +251,10 @@ table.pending_case {width:100%;border:1px solid #999;}
     /*margin-top: 20px;*/
     /*border-top: 10px solid #DCDCDC;*/
 }
+
+#form_style .fieldset_title{
+  display: none;
+}
 /*inputs*/
 /*#form_style input, #form_style textarea {
   padding: 15px;
@@ -296,7 +300,7 @@ table.pending_case {width:100%;border:1px solid #999;}
      -moz-transition: all 0.3s ease-in-out;
      -o-transition: all 0.3s ease-in-out;
 }
-.case_creation_form input[type="submit"]:active, #form_style .action-button:active {
+.case_creation_form input[type="submit"]:active{
         margin-left: 10px;
 }
 

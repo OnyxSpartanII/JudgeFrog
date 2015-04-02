@@ -36,17 +36,17 @@ $(document).ready(function(){
 		$("select#yAxisBox")[0].selectedIndex = 0;   
 	});
 	$("#pieChartRadio").click(function(){
-		//$("#pieChartCombo").show();     
-		$("#xAxisBox").show();
+		$("#pieChartCombo").show();     
+		$("#xAxisBox").hide();
 		$("#yAxisBox").hide();
 		$("#geoChartCombo").hide();
-		$("select#xAxisBox")[0].selectedIndex = 0; //sets the index back
+		$("select#pieChartCombo")[0].selectedIndex = 0; //sets the index back
 	});
 	$("#geoChartRadio").click(function(){
 		$("#geoChartCombo").show();
 		$("#xAxisBox").hide();
 		$("#yAxisBox").hide();
-		//$("#pieChartCombo").hide();  
+		$("#pieChartCombo").hide();  
 		$("select#geoChartCombo")[0].selectedIndex = 0; 
 		   
 	});

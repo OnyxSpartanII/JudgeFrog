@@ -3,50 +3,90 @@
     $this->set('title', 'Create Case- Admin Panel | Human Trafficking Data');
     $this->set('active', 'create_case');
 ?>
-<?php
-    echo $this->Html->css(array('datepicker'));
-    echo $this->Html->script(array('bootstrap-datepicker'));
-?>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<script>
-$(function() {
-  $( "#defBirth" ).datepicker();
-});
-</script>
 <!--search start here-->
 <div class="contact">
     <div class="container">
         <div class="contact-main">
-                  <div class="case_top_bar">
-                    <h3 class="page_title">Single Case Creation</h3>
-                      <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width:10%">PROGRESS:</div>
-                        <div class="progress-bar progress-bar-success " role="progressbar" style="width:25%">Case Information</div>
-                        <div class="progress-bar progress-bar-success " role="progressbar" style="width:18%">Victim Information</div>
-                        <div class="progress-bar progress-bar-success active_progress" role="progressbar" style="width:35%"><strong>Defendant(s) Information</strong></div>
-                        <div class="progress-bar progress-bar-success idle" role="progressbar" style="width:12%">Submit</div>
+          <h3 class="page_title">Single Case Creation</h3>
+              <div class="col-md-4 contact-right">
+                <!-- TOP CREATE A NEW USER BAR -->
+                  <div class="top_bar col-md-4">
+                    <div class="top_bar_dash">
+                      <h4>PROGRESS</h4>
+                    </div>
+                      <!-- PROGRESS-->
+                      <div title="Click here to add this user." style="margin-top: 19px;">
                       </div>
                   </div>
-              <div class="col-md-5 case_creation_form" id="form_style">
-                <h2 id="caseInfoFS_Title">Defendant Information</h2>
-                      <fieldset>
+                <!-- Create Interface -->
+                <div class="user_creation" style="padding-bottom:50px; margin-top:50px;">
+                  <div style="padding-top:0px;background-color:#FFF; border-bottom:1px solid rgba(75,75,75,.3);"></div>
+                  <div class="personal_details" style="background-color:#DCDCDC">
+                  </div>
+                </div>
+              </div> 
+                <div class="col-md-8 contact-right">
+                  <!-- TOP DELETE SELECTED USER BAR -->
+                    <div class="top_bar col-md-8">
+                      <div class="top_bar_left">
+                        <h4>DEFENDANT INFORMATION</h4>
+                      </div>
+                        <!-- DELETE BUTTON-->
+                        <div title="Click here to save and quit." style="margin-top: 19px;">
+                          <label for="" class="user_button" >
+                            <?php echo $this->Html->image('save.png', array('alt' => 'Create', 'style' => 'float:left; padding: 10px 10px 10px 2px;' )); ?>
+                          </label>
+                        </div>
+                    </div>
+                    <div class="col-md-11 case_creation_form" style="margin:100px auto; float:none;">
+                      
+                      <fieldset><legend>Defendant Information</legend>
               						<?php echo $this->Form->create('CaseSession'); ?>
-              						<?php 
-              						echo $this->Form->input('DefFirst', array('type' => 'text', 'placeholder' => 'Robert', 'label' => 'Defendant\'s First Name'));
-                          echo $this->Form->input('DefLast', array('type' => 'text', 'placeholder' => 'Smith', 'label' => 'Defendant\'s Last Name'));
-                          echo $this->Form->input('DefRace', array('label' => '', 'empty' => 'Race', 'options' => array('White', 'Black', 'Hispanic', 'Asian', 'Other')));
-                          echo $this->Form->input('DefGender', array('label' => '', 'options' => array('Male', 'Female'), 'empty' => 'Gender'));
-              						echo $this->Form->input('DefBirthdate', array('type' => 'text', 'placeholder' => '11/04/1986', 'label' => 'Defendant\'s Birthdate', 'data-date' => '12-02-2012', 'data-date-format' => 'dd-mm-yyyy', 'id' => 'defBirth'));
-              						echo $this->Form->input('Alias', array('label' => '', 'placeholder' => 'Enter defendant aliases separated by commas.'));
-                          ?>
+              						<?php echo $this->Form->input('DefLast', array('type' => 'text', 'placeholder' => 'Defendant Lastname', 'label' => '')); ?>
+              						<?php echo $this->Form->input('DefFirst', array('type' => 'text', 'placeholder' => 'Defendant Firstname', 'label' => '')); ?>
+                          <?php echo $this->Form->input('DefRace', array('label' => '', 'empty' => 'Race', 'options' => array('White', 'Black', 'Hispanic', 'Asian', 'Other'))); ?>
+                          <?php echo $this->Form->input('DefGender', array('label' => '', 'options' => array('Male', 'Female'), 'empty' => 'Gender')); ?>
+              						<?php echo $this->Form->input('DefBirthdate', array('type' => 'text', 'placeholder' => 'Defendant Birthdate', 'label' => '')); ?>
+              						<?php echo $this->Form->input('Alias', array('label' => '', 'placeholder' => 'Enter defendant aliases separated by commas.')); ?>
                       </fieldset>
-						          <?php echo $this->Form->end('Next'); ?>
-              </div>
-        </div>
-        <div class="search_disclaim" style="margin-top:0px; padding-top:10px; border-top:1px solid #DCDCDC">
-          <p><strong>*Note: </strong>All fields are required</p>
-        </div>
-    </div>
+						<?php echo $this->Form->end('Next'); ?>
+
+						
+<!-- <?php // echo print_r($this->params); ?> -->
+
 </div>
+                </div> 
+            </div>
+            </div>
+            <div class="search_disclaim" style="margin-top:0px; padding-top:10px; border-top:1px solid #DCDCDC">
+              <p><strong>*Note: </strong>All fields are required</p>
+            </div>
+</div>
+
+<style type="text/css">
+	.case_creation_form label{
+		font-size: 18px;
+		font-weight: bold;
+		padding-top: 15px;
+	}
+.case_creation_form input[type="submit"] {
+	width: 20%;
+	padding: 1em 0em;
+	outline: none;
+	background-color: #4D1979;
+	border: 1px solid #4D1979;
+	color: #fff;
+}
+.case_creation_form input[type="submit"]:hover {
+	background-color:#dcdcdc; color: #777;
+	border: 1px solid #777;
+	 transition: all 0.3s ease-in-out;
+	 -webkit-transition: all 0.3s ease-in-out;
+	 -moz-transition: all 0.3s ease-in-out;
+	 -o-transition: all 0.3s ease-in-out;
+}
+.case_creation_form input[type="submit"]:active {
+    margin-left: 10px;
+}
+
+</style>

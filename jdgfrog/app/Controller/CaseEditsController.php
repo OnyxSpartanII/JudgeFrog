@@ -13,8 +13,9 @@ class CaseEditsController extends AppController {
 		$this->Auth->allow('editDefendant', 'getCase', 'edit', 'saveEdits');
 	}
 
-	public function edit() {
-		$caseNumber = '1:13-cr-00069-LO';
+	public function edit($caseNumber) {
+		//$caseNumber = '2:07-cr-00785-JLL';
+		$this->Session->write('form.data.test', 'test');
 		$case = $this->getCase($caseNumber);
 		// 30 defs: 3:10-cr-00260
 		// 4 defs: 2:07-cr-00785-JLL
@@ -23,7 +24,7 @@ class CaseEditsController extends AppController {
 		if ($this->request->is('post')) {
 
 			$data = $this->request->data;
-			debug($data);
+
 			$caseName		= $data['DataInProgress']['CaseNam'];
 			$caseNum 		= $data['DataInProgress']['CaseNum'];
 			$numDef 		= $data['DataInProgress']['NumDef'];
@@ -44,17 +45,12 @@ class CaseEditsController extends AppController {
 			$numVicForeign	= $data['DataInProgress']['NumVicForeign'];
 			$numVicFemale	= $data['DataInProgress']['NumVicFemale'];
 
-			//$caseName = addslashes($caseName);
-
 
 			//$caseName = 'DROP TABLE DataInProgress_backup';
 			/*
 			* 	Using variables here in $fields may allow SQL injections according to someone on Stackoverflow?
 			*	However, when tested nothing happened. Instead the CaseNam was changed to the above string, 
 			*	for example. More testing for vulnerabilities?
-			*
-			*	CakePHP's updateAll() method does not perform any SQL escaping. The strings below cannot contain
-			*	an apostrophe (e.g., O'Connell, O'Grady, etc.) or else the update will fail.
 			*/
 			$fields = array(
 							'DataInProgress.CaseNum' 		=> "'$caseNum'", 

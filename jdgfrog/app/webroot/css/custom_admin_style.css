@@ -208,14 +208,14 @@ table.pending_case {width:100%;border:1px solid #999;}
 /*custom font*/
 
 /*form styles*/
-#msform {
+#form_style {
     float: none;
     min-width: 360px;
     margin: 50px auto;
     text-align: center;
     position: relative;
 }
-#msform fieldset {
+#form_style fieldset {
     background: #FFF;
     box-shadow: 0 0 15px 3px #CCC;
     padding: 0px 20px 20px 20px;
@@ -223,7 +223,7 @@ table.pending_case {width:100%;border:1px solid #999;}
     margin-bottom: 50px;
 }
 /*headings*/
-#msform h2{
+#form_style h2{
     box-shadow: 0 0 15px 4px #CCC;
     text-transform: uppercase;
     background-color: #4D1979;
@@ -236,23 +236,23 @@ table.pending_case {width:100%;border:1px solid #999;}
     margin: auto;
     color: #FFF;
 }
-#msform label {
+#form_style label {
     font-size:15px;
     color:#4D1979;
     display:block;
     padding:9px;
 }
 /*Hide all except first fieldset*/
-#msform fieldset:not(:first-of-type) {
+#form_style fieldset:not(:first-of-type) {
   display: none;
 }
-#msform input[type="button"]:not(:first-of-type) {
+#form_style input[type="button"]:not(:first-of-type) {
     /*padding-bottom: 50px;*/
     /*margin-top: 20px;*/
     /*border-top: 10px solid #DCDCDC;*/
 }
 /*inputs*/
-/*#msform input, #msform textarea {
+/*#form_style input, #form_style textarea {
   padding: 15px;
   border: 1px solid #ccc;
   border-radius: 3px;
@@ -264,7 +264,7 @@ table.pending_case {width:100%;border:1px solid #999;}
   font-size: 13px;
 }*/
 /*buttons*/
-#msform .action-button {
+#form_style .action-button {
     width: 30%;
     padding: 1em 0em;
     outline: none;
@@ -272,7 +272,7 @@ table.pending_case {width:100%;border:1px solid #999;}
     border: 1px solid #777;
     color: #777;
 }
-#msform .action-button:hover {
+#form_style .action-button:hover {
     background-color:#00BFFF; color: #FFF;
     border: 1px solid #00BFFF;
      transition: all 0.3s ease-in-out;
@@ -296,7 +296,7 @@ table.pending_case {width:100%;border:1px solid #999;}
      -moz-transition: all 0.3s ease-in-out;
      -o-transition: all 0.3s ease-in-out;
 }
-.case_creation_form input[type="submit"]:active, #msform .action-button:active {
+.case_creation_form input[type="submit"]:active, #form_style .action-button:active {
         margin-left: 10px;
 }
 

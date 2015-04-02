@@ -458,9 +458,9 @@ $(function() {
                           '<td>' + (cases[i][20][j][5] == '0000' ? 'Unknown' : cases[i][20][j][5]) + '</td>' +
                           '<td>' + (races[cases[i][20][j][4]] == undefined ? 'Unknown' : races[cases[i][20][j][4]])  + '</td>' +
                         '</tr>' +
-                        (display['acd'] ? '<tr class="this_def_info filtered">' : '<tr class="this_def_info all_results">') +
+                        '<tr class="this_def_info">' +
                           '<td colspan="4">' +
-                            '<table class="modal_table table_col">' +
+                            '<table class="modal_table table_col' + (!cases[i][20][j][12] ? ' all_results' : ' filtered') + '">' +
                               '<caption>Arrest Information</caption>' +
                               '<thead>' +
                                 '<tr>' +
@@ -481,9 +481,9 @@ $(function() {
                             '</table>' +
                           '</td>' +
                         '</tr>' +
-                        (display['cd'] ? '<tr class="this_def_info filtered">' : '<tr class="this_def_info all_results">') +
+                        '<tr class="this_def_info">' +
                           '<td colspan="4">' +
-                            '<table class="modal_table table_col">' +
+                            (display['cd'] ? '<table class="modal_table table_col filtered">' : '<table class="modal_table table_col all_results">') +
                               '<caption>Charge Information</caption>' +
                               '<thead>' +
                                 '<tr>' +
@@ -517,7 +517,7 @@ $(function() {
               }
 
               content += '</tbody></table></td></tr>' +
-                         (display['sentence'] ? '<tr class="this_def_info filtered">' : '<tr class="this_def_info all_results">') +
+                         '<tr class="this_def_info">' +
                           '<td colspan="4">' +
                             '<table class="modal_table table_col' + (!cases[i][20][j][34] ? ' all_results' : ' filtered') + '">'  +
                               '<caption>Sentence Information</caption>' +
@@ -547,9 +547,9 @@ $(function() {
                           '</td>' +
                         '</tr>' +
                 '</tr>' +
-                (display['ocg'] ? '<tr class="this_def_info filtered">' : '<tr class="this_def_info all_results">') +
+                '<tr class="this_def_info">' +
                   '<td colspan="4">' + 
-                    '<table class="modal_table table_col">' +
+                    (display['ocg'] ? '<table class="modal_table table_col filtered">' : '<table class="modal_table table_col all_results">') +
                       '<caption>Organized Crime Group Information</caption>' +
                       '<thead>' +
                         '<tr>' +
@@ -560,18 +560,18 @@ $(function() {
                         '</tr>' +
                       '</thead>' +
                       '<tbody>' +
-                        (cases[i][20][j][25] != undefined ? '<tr>' +
+                        '<tr>' +
                           '<td>' + (cases[i][20][j][24] == '' ? 'None' : cases[i][20][j][24]) + '</td>' + 
                           '<td>' + (ocg_types[cases[i][20][j][25]] == undefined ? '' : ocg_types[cases[i][20][j][25]]) + '</td>' + 
                           '<td>' + (ocg_races[cases[i][20][j][26]] == undefined ? '' : ocg_races[cases[i][20][j][26]]) + '</td>' + 
                           '<td>' + (ocg_scopes[cases[i][20][j][27]] == undefined ? '' : ocg_scopes[cases[i][20][j][27]]) + '</td>' +
-                        '</tr>' : '') +
-                        (cases[i][20][j][29] != undefined ? '<tr>' +
+                        '</tr>' +
+                        '<tr>' +
                           '<td>' + (cases[i][20][j][28] == '' ? 'None' : cases[i][20][j][28]) + '</td>' + 
                           '<td>' + (ocg_types[cases[i][20][j][29]] == undefined ? '' : ocg_types[cases[i][20][j][29]]) + '</td>' + 
                           '<td>' + (ocg_races[cases[i][20][j][30]] == undefined ? '' : ocg_races[cases[i][20][j][30]]) + '</td>' + 
                           '<td>' + (ocg_scopes[cases[i][20][j][31]] == undefined ? '' : ocg_scopes[cases[i][20][j][31]]) + '</td>' +
-                        '</tr>' : '') +
+                        '</tr>' +
                       '</tbody>' +
                     '</table>' +
                   '</td>' +
@@ -584,20 +584,13 @@ $(function() {
             $('#basic-modal-content').modal();
 
             $('.all_results').hide(); //Hide unfiltered "all" search results on page load.
-
-            var filtered = true;
-
+            
             //Funtion to filter the results
             $('#myonoffswitch').click(function(){
               if (this.checked === false ) {
-                filtered = false;
-                $( ".all_results" ).not('.this_def_info').show("slow");
-                $(".this_def_info").hide();
-
+                $( ".all_results" ).show("slow");
               } else if ( this.checked === true ) {
-                filtered = true;
                 $( ".all_results" ).hide("slow");
-                $(".this_def_info").hide();
               }
             });
             //End of Function to Filter Results
@@ -605,12 +598,8 @@ $(function() {
             //Funtion to toggle Defendant Information
             $('.this_def_info').hide();
             $('.toggle_def').click(function(){
-              if (!filtered) {
-                $(this).nextUntil('.toggle_def').toggle('slow');
-              } else {
-                $(this).nextUntil('.toggle_def').not('.all_results').toggle('slow');
-              }
-              $(this).toggleClass('clicked', 'slow');
+            $(this).nextUntil('.toggle_def').toggle('slow');
+            $(this).toggleClass('clicked', 'slow');
             });
             //End of funtion to toggle Defendant Information
 

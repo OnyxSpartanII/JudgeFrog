@@ -863,7 +863,7 @@ class SearchController extends AppController {
 				if ($def_filter == 0) $def_filter = 1;
 				if ($sd_filter == 0) $sd_filter = 1;
 
-				echo 'here';
+				//echo 'here';
 				if (isset($conditions['DataInProgress.FelSentenced >=']) && ($d['DataInProgress']['FelSentenced'] < $conditions['DataInProgress.FelSentenced >='])) {
 					$def_filter = -1;
 					$sd_filter = -1;

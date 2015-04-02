@@ -95,31 +95,33 @@
     // TOGGLE SELECTED CASE
     $('.toggle_case').click(function(){
 
-    if (!displaying) {
-      displaying = true;
-      index = $(this).attr('id');
-        $.ajax({                   
-            url: '/CaseReviews/generateTable/' + index,
-            cache: false,
-            type: 'GET',
-            dataType: 'HTML',
-            success: function (html) {
-                $('.selected_case').html(html);
-                $('.this_def_info').hide();
-                $(this).toggleClass('clicked', 'slow');
-                $('.toggle_def').click(function(){
-                  $(this).nextUntil('.toggle_def').toggle('slow');
+      if (!displaying) {
+        displaying = true;
+        index = $(this).attr('id');
+        console.log('Displaying ' + index);
+          $.ajax({                   
+              url: '/JudgeFrog/jdgfrog/CaseReviews/generateTable/' + index,
+              cache: false,
+              type: 'GET',
+              dataType: 'HTML',
+              success: function (html) {
+                  $('.selected_case').html(html);
+                  $('.this_def_info').hide();
                   $(this).toggleClass('clicked', 'slow');
-                });
-                $('.selected_case').toggle(50);
-                $('#edit_case').attr('href', '/CaseEdits/edit/' + p_cases[index][0]);
-            }
-        });
-    } else {
-      $('.selected_case').hide();
-      displaying = false;
-      index = -1;
-    }
+                  $('.toggle_def').click(function(){
+                    $(this).nextUntil('.toggle_def').toggle('slow');
+                    $(this).toggleClass('clicked', 'slow');
+                  });
+                  $('.selected_case').show(50);
+                  $('#edit_case').attr('href', '/CaseEdits/edit/' + p_cases[index][0]);
+              }
+          });
+      } else {
+        console.log('Hiding');
+        $('.selected_case').hide();
+        displaying = false;
+        index = -1;
+      }
     });
        // TOGGLE SELECTED DEFENDENT
 

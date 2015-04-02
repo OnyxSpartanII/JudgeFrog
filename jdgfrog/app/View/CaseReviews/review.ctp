@@ -100,7 +100,7 @@
         index = $(this).attr('id');
         console.log('Displaying ' + index);
           $.ajax({                   
-              url: '/JudgeFrog/jdgfrog/CaseReviews/generateTable/' + index,
+              url: '/CaseReviews/generateTable/' + index,
               cache: false,
               type: 'GET',
               dataType: 'HTML',

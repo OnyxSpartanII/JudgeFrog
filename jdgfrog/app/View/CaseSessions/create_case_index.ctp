@@ -63,7 +63,7 @@
                             <?php
                               echo $this->Form->create(null, array(
                                 'url' => array('controller' => 'download', 'action' => '') ));
-                              echo $this->Form->submit('Download', array('type'=>'image','src' => '/JudgeFrog/jdgfrog/img/download.png', 'style' => 'float:left; padding: 10px 10px 8px 0px;'));
+                              echo $this->Form->submit('Download', array('type'=>'image','src' => '/img/download.png', 'style' => 'float:left; padding: 10px 10px 8px 0px;'));
                               echo $this->Form->end(); 
                               ?>
                           </label>

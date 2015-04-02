@@ -40,7 +40,10 @@
     var $welcom = $("#flashMessage");
     var $notAutho = $("#authMessage");
     if ($welcom.is(':visible') == true) {
-		$('form').css('-webkit-animation','shake 0.8s ease-in-out');
+     $('form').css({"animation": "pulse 0.8s ease-in-out",	
+     					"-webkit-animation": "shake 0.8s ease-in-out",
+     						"-moz-animation": "pulse 0.8s ease-in-out",
+     							"-o-animation": "shake 0.8s ease-in-out"});
 		$('form label').css('color','#FE2232');
 	};
     setTimeout(function() {

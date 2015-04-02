@@ -4,13 +4,8 @@
 		$this->set('active', 'create_case');
 ?>
     <?php
-        echo $this->Html->css(array());
-        // echo $this->Html->script(array('fieldset_switcher'));
-    ?>
-    <?php
         echo $this->Html->script(array('fieldset_switcher'));
     ?>
-
 <!--search start here-->
 <div class="contact">
 		<div class="container">
@@ -18,8 +13,8 @@
 					<div class="case_top_bar">
 						<h3 class="page_title">Case &amp; Judge Details</h3>
 						<div class="progress">
-							<div class="progress-bar progress-bar-warning" role="progressbar" style="width:10%">PROGRESS:</div>
-							<div class="progress-bar progress-bar active_progress" role="progressbar" style="width:25%"><strong>Case Information</strong></div>
+							<div class="progress-bar" role="progressbar" style="width:10%">PROGRESS:</div>
+							<div class="progress-bar  progress-bar-success active_progress" role="progressbar" style="width:25%"><strong>Case Information</strong></div>
 							<div class="progress-bar idle" role="progressbar" style="width:18%">Victim Information</div>
 							<div class="progress-bar idle" role="progressbar" style="width:35%">Defendant(s) Information</div>
 							<div class="progress-bar idle" role="progressbar" style="width:12%">Submit</div>
@@ -38,8 +33,7 @@
 										</label>
 									</div>
 							</div> -->
-							<div class="col-md-5 case_creation_form" id="msform">
-							
+							<div class="col-md-5 case_creation_form" id="form_style">
 								<h2 id="caseInfoFS_Title">Case Details</h2>
 							<fieldset id="caseInfoFS">
 								<?php 
@@ -55,7 +49,6 @@
 								<!-- <input type="button" name="previous" class="backCaseInfo action-button" value="Back" /> -->
 								<input type="button" name="next" onclick="goToCaseSum()" class="action-button" value="Case Summary" />
 							</fieldset>
-								
 								<h2 id="caseSumFS_Title">District &amp; Summary Details</h2>
 							<fieldset id="caseSumFS">
 								<?php echo $this->Form->input('FedDistrictNum', array('label'=> '', 'placeholder' => 'Federal District #', 'type' => 'text')); ?>
@@ -63,7 +56,9 @@
 
 								<?php //echo $this->Form->input('FedDistrictNum', array('label'=> '', 'placeholder' => 'Federal District #', 'type' => 'text')); ?>
 
-								<?php echo $this->Form->input('State', array('label'=> '','options' => array('Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','Florida','Georgia','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virginia','Washington','West Virginia','Wisconsin','Wyoming'), 'empty' => 'State'));
+								<?php echo $this->Form->input('State', array(
+																'label'=> '','options' => array(
+																		'AL' => 'Alabama', 'AK' => 'Alaska', 'AZ' => 'Arizona', 'AR' => 'Arkansas', 'CA' => 'California', 'CO' => 'Colorado', 'CT' => 'Connecticut', 'DE' => 'Delaware', 'FL' => 'Florida', 'GA' => 'Georgia', 'HI' => 'Hawaii', 'ID' => 'Idaho', 'IL' => 'Illinois', 'IN' => 'Indiana', 'IA' => 'Iowa', 'KS' => 'Kansas', 'KY' => 'Kentucky', 'LA' => 'Louisiana', 'ME' => 'Maine', 'MD' => 'Maryland', 'MA' => 'Massachusetts', 'MI' => 'Michigan', 'MN' => 'Minnesota', 'MS' => 'Mississippi', 'MO' => 'Missouri', 'MT' => 'Montana', 'NE' => 'Nebraska', 'NV' => 'Nevada', 'NH' => 'New Hampshire', 'NJ' => 'New Jersey', 'NM' => 'New Mexico', 'NY' => 'New York', 'NC' => 'North Carolina', 'ND' => 'North Dakota', 'OH' => 'Ohio', 'OK' => 'Oklahoma', 'OR' => 'Oregon', 'PA' => 'Pennsylvania', 'RI' => 'Rhode Island','SC' => 'South Carolina','SD' => 'South Dakota','TN' => 'Tennessee','TX' => 'Texas', 'UT' => 'Utah', 'VT' => 'Vermont', 'VA' => 'Virginia', 'WA' => 'Washington', 'WV' => 'West Virginia', 'WI' => 'Wisconsin', 'WY' => 'Wyoming'), 'empty' => 'State'));
 								?>
 								<?php echo $this->Form->input('CaseSummary', array('placeholder' => 'Case Summary', 'label' => '')); ?>
 								
@@ -71,7 +66,6 @@
 								<input type="button" name="previous" onclick="goToCaseInfo()" class="action-button" value="Back" />
 								<!-- <input type="button" name="next" class="toNewJudge action-button" value="Insert Victim(s)" /> -->
 							</fieldset>
-
 							<fieldset><legend>Judge Information</legend>
 								<?php
 								echo $this->Form->input('JudgeName', array('label' => '','placeholder' => 'Judge Name', 'type' => 'text'));
@@ -95,28 +89,24 @@
 				</div>
 		</div>
 </div>
+<script type="text/javascript">
+var $progr = $(".progress");
+	// $progr.show('slow');
+	var caseInfoFS = $('#caseInfoFS');
+	var caseSum = $('#caseSumFS');
+		$('#caseSumFS_Title').hide();
 
+	function goToCaseSum() {    	
+		caseInfoFS.hide('slow');
+		$('#caseInfoFS_Title').hide('slow');
+		caseSum.fadeIn('slow');
+		$('#caseSumFS_Title').show('slow');
+	}
 
-    <script type="text/javascript">
-    var $progr = $(".progress");
-    	// $progr.show('slow');
-
-
-		var caseInfoFS = $('#caseInfoFS');
-		var caseSum = $('#caseSumFS');
-			$('#caseSumFS_Title').hide();
-
-		function goToCaseSum() {    	
-			caseInfoFS.hide('slow');
-			$('#caseInfoFS_Title').hide();
-			caseSum.fadeIn('slow');
-			$('#caseSumFS_Title').show();
-		}
-
-		function goToCaseInfo() {    	
-			caseSum.hide('slow');
-			$('#caseSumFS_Title').hide();
-			caseInfoFS.fadeIn('slow');
-			$('#caseInfoFS_Title').show('slow');
-		}
-	</script>
+	function goToCaseInfo() {    	
+		caseSum.hide('slow');
+		$('#caseSumFS_Title').hide('slow');
+		caseInfoFS.fadeIn('slow');
+		$('#caseInfoFS_Title').show('slow');
+	}
+</script>

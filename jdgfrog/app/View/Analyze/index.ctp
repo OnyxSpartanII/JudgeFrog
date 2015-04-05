@@ -65,7 +65,7 @@
 	                          <?php 
 	                          echo $this->Html->link(
 	                              $this->Html->image("clear.png", array("alt" => "Clear Fields")),
-	                              "/search", array('escape' => false)); ?>
+	                              "/Analyze", array('escape' => false)); ?>
 	                        </label>
 	                      </div>
 	                      <!-- ANALYZE BUTTON -->

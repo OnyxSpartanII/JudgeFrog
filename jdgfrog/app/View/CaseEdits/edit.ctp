@@ -1,92 +1,113 @@
 <?php
-
-	/*
-	*	Page: 
-	*/
-	$this->layout = 'admin_panel_layout';
-
+		$this->layout = 'admin_panel_layout';
+		$this->set('title', 'Edit Case - Admin Panel | Human Trafficking Data');
+		$this->set('active', 'edit');
 ?>
-<?php// debug($case); ?>
+<?php
+    echo $this->Html->script(array('fieldset_switcher'));
+?>
+<!--search start here-->
+<div class="contact">
+		<div class="container">
+			<div class="contact-main">	
+				<div class="case_top_bar">
+						<h3 class="page_title">Case &amp; Judge Details</h3>
+						<div class="progress">
+							<div class="progress-bar" role="progressbar" style="width:10%">PROGRESS:</div>
+							<div class="progress-bar  progress-bar-success active_progress" role="progressbar" style="width:30%"><strong>Case &amp; Victim(s) Information</strong></div>
+							<div class="progress-bar idle" role="progressbar" style="width:50%">Defendant(s) Information</div>
+							<div class="progress-bar idle" role="progressbar" style="width:10%">Submit</div>
+						</div>
+					</div>
+					<div class="col-md-5 case_creation_form" id="form_style">
+								<h2 id="caseInfoFS_Title">Case &amp; Judge Details</h2>
+							<fieldset id="caseInfoFS">
+							<?php 
+								echo $this->Form->create('DataInProgress');
+								echo $this->Form->input('CaseNam', array('label' => 'Case Name', 'default'  => $case['0']['DataInProgress']['CaseNam']));
+								echo $this->Form->input('CaseNum', array('type' => 'text', 'label' => 'Case Number', 'default' => $case['0']['DataInProgress']['CaseNum']));
+								echo $this->Form->input('NumDef', array('type' => 'text', 'label'=> 'Number of Defendants', 'default' => $case['0']['DataInProgress']['NumDef']));
+								echo "<hr style='border-top:3px solid #DDD'>";
+								echo $this->Form->input('JudgeName', array('label'=> 'Judge Name', 'default' => $case['0']['DataInProgress']['JudgeName']));
+								echo $this->Form->input('JudgeRace', array('label' => '', 'default' => $case['0']['DataInProgress']['JudgeRace'], 'empty' => 'Race', 'options' => array('White', 'Black', 'Hispanic', 'Asian', 'Other')));
+								echo $this->Form->input('JudgeGen', array('label' => '',  'default' => $case['0']['DataInProgress']['JudgeGen'], 'options' => array('Male', 'Female'), 'empty' => 'Gender'));
+								echo $this->Form->input('JudgeTenure', array('label' => '', 'default' => $case['0']['DataInProgress']['JudgeTenure'], 'options' => array('1960', '1961', '1962', '1963', '1964', '1965', '1966', '1967', '1968', '1969', '1970', '1971', '1972', '1973', '1974', '1975', '1976', '1977', '1978', '1979', '1980', '1981', '1982', '1983', '1984', '1985', '1986', '1987', '1988', '1989', '1990', '1991', '1992', '1993', '1994', '1995', '1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021'), 'empty' => 'Year Appointed | Tenure'));
+								echo $this->Form->input('JudgeApptBy', array('label' => '', 'options' => array('Republican', 'Democrat'), 'empty' => 'Appointed By', 'default' => $case['0']['DataInProgress']['JudgeApptBy']));
+								
+							?>
+								<hr style="border-top:1px solid #CCC;">
+								<input type="button" name="next" onclick="goToCaseSum()" class="action-button" value="Next - Summary"/>
+							</fieldset>	
 
-<?php 
-	echo $this->Form->create('DataInProgress');
-	echo $this->Form->input('CaseNam', 		array(
-												'label' => 'Case Name', 		
-												'default' => $case['0']['DataInProgress']['CaseNam']));
-	echo $this->Form->input('CaseNum', 		array(
-												'label' => 'Case Number', 		
-												'default' => $case['0']['DataInProgress']['CaseNum']));
-	echo $this->Form->input('NumDef', 		array(
-												'label'=> 'Number of Defendants', 		
-												'default' => $case['0']['DataInProgress']['NumDef']));
-	echo $this->Form->input('JudgeName', 	array(
-												'label'=> 'Judge Name', 		
-												'default' => $case['0']['DataInProgress']['JudgeName']));
-	echo $this->Form->input('JudgeRace', 	array(
-												'label' => 'Judge Race', 		
-												'default' => $case['0']['DataInProgress']['JudgeRace']));
-	echo $this->Form->input('JudgeGen', 	array(
-												'label' => 'Judge Gen',
-												'default' => $case['0']['DataInProgress']['JudgeGen'])); 
-	echo $this->Form->input('JudgeTenure', 	array(
-												'label' => 'Judge Tenure', 		
-												'default' => $case['0']['DataInProgress']['JudgeTenure']));
-	echo $this->Form->input('JudgeApptBy', 	array(
-												'label' => 'Judge Appointed By', 		
-												'default' => $case['0']['DataInProgress']['JudgeApptBy']));
-	echo $this->Form->input('FedDistrictLoc', array(
-												'label' => 'Federal District Location', 		
-												'default' => $case['0']['DataInProgress']['FedDistrictLoc']));
-	echo $this->Form->input('FedDistrictNum', array(
-												'label'=> 'FedDistrictNum', 		
-												'default' => $case['0']['DataInProgress']['FedDistrictNum'], 		
-												'type' => 'text'));
-	echo $this->Form->input('State', 			array(
-												'label' => 'State', 		
-												'default' => $case['0']['DataInProgress']['State']));
-	echo $this->Form->input('CaseSummary', 	array(
-												'label' => 'Case Summary', 		
-												'default' => $case['0']['DataInProgress']['CaseSummary'], 		
-												'type' => 'textarea'));
-	echo $this->Form->input('LaborTraf', 	array(
-												'label' => 'Labor Trafficking',
-												'default' => $case['0']['DataInProgress']['LaborTraf']));
-	echo $this->Form->input('AdultSexTraf', array(
-												'label' => 'Adult Sex Trafficking',
-												'default' => $case['0']['DataInProgress']['AdultSexTraf']));
-	echo $this->Form->input('MinorSexTraf', array(
-												'label' => 'Minor Sex Trafficking',
-												'default' => $case['0']['DataInProgress']['MinorSexTraf']));
-	echo $this->Form->input('NumVic', 		array(
-												'label' => 'Total Number of Victims',
-												'default' => $case['0']['DataInProgress']['NumVic']));
-	echo $this->Form->input('NumVicMinor', 	array(
-												'label' => 'Number of Minor Victims',
-												'default' => $case['0']['DataInProgress']['NumVicMinor']));
-	echo $this->Form->input('NumVicForeign', 	array(
-												'label' => 'Number of Foreign Victims',
-												'default' => $case['0']['DataInProgress']['NumVicForeign']));
-	echo $this->Form->input('NumVicFemale', 	array(
-													'label' => 'Number of Female Victims',
-													'default' => $case['0']['DataInProgress']['NumVicFemale'])); ?>											
+								<h2 id="caseSumFS_Title">Case Summary &amp; Victims Details</h2>
+							<fieldset id="caseSumFS">
+							<?php
+								echo $this->Form->input('FedDistrictLoc', array('label' => 'Federal District Location', 'default' => $case['0']['DataInProgress']['FedDistrictLoc']));
+								echo $this->Form->input('FedDistrictNum', array('label'=> 'Federal District Number','default' => $case['0']['DataInProgress']['FedDistrictNum'],'type' => 'text'));
+								echo $this->Form->input('State', array('label'=> '', 'options' => array(
+																		'AL' => 'Alabama', 'AK' => 'Alaska', 'AZ' => 'Arizona', 'AR' => 'Arkansas', 'CA' => 'California', 'CO' => 'Colorado', 'CT' => 'Connecticut', 'DE' => 'Delaware', 'FL' => 'Florida', 'GA' => 'Georgia', 'HI' => 'Hawaii', 'ID' => 'Idaho', 'IL' => 'Illinois', 'IN' => 'Indiana', 'IA' => 'Iowa', 'KS' => 'Kansas', 'KY' => 'Kentucky', 'LA' => 'Louisiana', 'ME' => 'Maine', 'MD' => 'Maryland', 'MA' => 'Massachusetts', 'MI' => 'Michigan', 'MN' => 'Minnesota', 'MS' => 'Mississippi', 'MO' => 'Missouri', 'MT' => 'Montana', 'NE' => 'Nebraska', 'NV' => 'Nevada', 'NH' => 'New Hampshire', 'NJ' => 'New Jersey', 'NM' => 'New Mexico', 'NY' => 'New York', 'NC' => 'North Carolina', 'ND' => 'North Dakota', 'OH' => 'Ohio', 'OK' => 'Oklahoma', 'OR' => 'Oregon', 'PA' => 'Pennsylvania', 'RI' => 'Rhode Island','SC' => 'South Carolina','SD' => 'South Dakota','TN' => 'Tennessee','TX' => 'Texas', 'UT' => 'Utah', 'VT' => 'Vermont', 'VA' => 'Virginia', 'WA' => 'Washington', 'WV' => 'West Virginia', 'WI' => 'Wisconsin', 'WY' => 'Wyoming'), 'empty' => 'State', 'default' => $case['0']['DataInProgress']['State']));
 
-Defendants:
------------------------------------------
+								echo $this->Form->input('CaseSummary', 	array('label' => 'Case Summary','default' => $case['0']['DataInProgress']['CaseSummary'], 'type' => 'textarea'));
+								echo $this->Form->input('LaborTraf', array('label' => 'Labor Trafficking','default' => $case['0']['DataInProgress']['LaborTraf']));
+								echo $this->Form->input('AdultSexTraf', array('label' => 'Adult Sex Trafficking','default' => $case['0']['DataInProgress']['AdultSexTraf']));
+								echo $this->Form->input('MinorSexTraf', array('label' => 'Minor Sex Trafficking','default' => $case['0']['DataInProgress']['MinorSexTraf']));
+								
+								echo $this->Form->input('NumVic', array('type' => 'text', 'label' => 'Total Number of Victims','default' => $case['0']['DataInProgress']['NumVic']));
+								
+								echo $this->Form->input('NumVicMinor', 	array('type' => 'text', 'label' => 'Number of Minor Victims','default' => $case['0']['DataInProgress']['NumVicMinor']));
+								
+								echo $this->Form->input('NumVicForeign', array('type' => 'text', 'label' => 'Number of Foreign Victims','default' => $case['0']['DataInProgress']['NumVicForeign']));
+								
+								echo $this->Form->input('NumVicFemale', array('type' => 'text', 'label' => 'Number of Female Victims', 'default' => $case['0']['DataInProgress']['NumVicFemale'])); 
+							?>	
+							<hr style="border-top:1px solid #CCC;">
+							<input type="button" name="previous" onclick="goToCaseInfo()" class="action-button" value="Back" />
+						</fieldset>										
 
-<?php $i = 0;
-	foreach ($case as $case) { 
-		 ?>
-		
-<?php 	echo 'Defendant '.++$i; ?>
-<?php	echo $case['DataInProgress']['DefLast'];
-		echo ', ';
-		echo $case['DataInProgress']['DefFirst']; ?>
-<?php 	echo $this->Html->link('Edit This Defendant', 
-							'/admin/cases/edit/defendant/'.$case['DataInProgress']['DefLast'].'|'.$case['DataInProgress']['DefFirst'].'|'.$case['DataInProgress']['CaseNum'], 
-							array(
-								'controller' => 'CaseEdits', 'action' => 'editDefendant')); ?>
-<?php 	//echo $this->Form->input(); ?>
+						<?php $i = 0;
+						foreach ($case as $case) { 
+						?>
 
-<?php } ?>
-<?php //echo $this->Form->submit('Submit', array('confirm' => 'Submit this case for review?')); ?>
-<?php echo $this->Form->end('Submit'); ?>
+						<?php 	echo 'Defendant '.++$i; ?>
+						<?php	echo $case['DataInProgress']['DefLast'];
+						echo ', ';
+						echo $case['DataInProgress']['DefFirst']; ?>
+						<?php 	echo $this->Html->link('Edit This Defendant', 
+										'/admin/cases/edit/defendant/'.$case['DataInProgress']['DefLast'].'|'.$case['DataInProgress']['DefFirst'].'|'.$case['DataInProgress']['CaseNum'], 
+										array(
+											'controller' => 'CaseEdits', 'action' => 'editDefendant')); ?>
+						<?php 	//echo $this->Form->input(); ?>
+
+						<?php } ?>
+						<?php //echo $this->Form->submit('Submit', array('confirm' => 'Submit this case for review?')); ?>
+						<?php echo $this->Form->end('Submit'); ?>
+
+
+
+				</div>
+				<div class="col-md-12 search_disclaim" style="margin-top:0px; padding-top:10px; border-top:1px solid #DCDCDC">
+					<p><strong>*Note: </strong>All fields are required</p>
+				</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	var caseInfoFS = $('#caseInfoFS');
+	var caseSum = $('#caseSumFS');
+		$('#caseSumFS_Title').hide();
+
+	function goToCaseSum() {    	
+		caseInfoFS.hide('slow');
+		$('#caseInfoFS_Title').hide('slow');
+		caseSum.fadeIn('slow');
+		$('#caseSumFS_Title').show('slow');
+	}
+
+	function goToCaseInfo() {    	
+		caseSum.hide('slow');
+		$('#caseSumFS_Title').hide('slow');
+		caseInfoFS.fadeIn('slow');
+		$('#caseInfoFS_Title').show('slow');
+	}
+</script>

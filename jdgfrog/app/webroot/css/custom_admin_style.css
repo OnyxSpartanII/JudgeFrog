@@ -238,8 +238,8 @@ table.pending_case {width:100%;border:1px solid #999;}
     color: #777;
 }
 #form_style .action-button:hover {
-    background-color:#00BFFF; color: #FFF;
-    border: 1px solid #00BFFF;
+    background-color:#5cb85c; color: #FFF;
+    border: 1px solid #5cb85c;
      transition: all 0.3s ease-in-out;
      -webkit-transition: all 0.3s ease-in-out;
      -moz-transition: all 0.3s ease-in-out;

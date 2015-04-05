@@ -3,7 +3,7 @@
     $this->set('active', 'search');
 ?>
 <!-- Analyze/index.ctp -->
-<?php echo $this->Html->script(array('GoogleChartFunctions'));?>
+<?php echo $this->Html->script(array('GoogleChartFunctions', 'html2canvas', 'Blob', 'canvas-toBlob', 'FileSaver'));?>
 <!--search start here-->
 <div class="contact">
     <div class="container">
@@ -16,7 +16,7 @@
                       <h4>ANALYZE BY</h4>
                     </div>
                       <!-- ANALYZE BUTTON-->
-                      <div class="analyze_button" title="Click here to display data using the selected chart/graph." style="float:right; padding: 10px 14px 10px 14px;">
+                      <div class="analyze_button" title="Analyze data" style="float:right; padding: 10px 14px 10px 14px;">
                         <label for="" id="applyButton">
                           <?php echo $this->Html->image('analyze.png', array('alt' => 'Submit', 'style' => '' )); ?>
                         </label>
@@ -68,18 +68,16 @@
 	                              "/Analyze", array('escape' => false)); ?>
 	                        </label>
 	                      </div>
-	                      <!-- ANALYZE BUTTON -->
-	                      <div class="ana_button" title="Take screenshot of analyzed result">
-	                        <label for="" id="applyButton">
+	                      <!-- SCREENSHOT BUTTON -->
+	                      <div class="ana_button" title="Screenshot analyzed result">
+	                        <label for="" id="screenButton">
 	                          <?php echo $this->Html->link(
-	                              $this->Html->image("photo.png", array("alt" => "screenshot")),
-	                              "#", array('escape' => false)); ?>
+	                          $this->Html->image("photo.png", array("alt" => "screenshot")), "#Screenshot", array('escape' => false)); ?>
 	                        </label>
 	                      </div>
 	                    </div>
                       </div>
-                      <div id="chart" class="col-md-9" style="width:100%;">
-                      </div>
+                      <div id="chart" class="col-md-9" style="width:100%;"></div>
               </div>
           </div>
         </div>
@@ -292,6 +290,25 @@ SCRIPTS
     e.preventDefault();
   });
 });
+
+// SCREENSHOT SCRIPT
+$("#screenButton").click(function() {
+  	if ($("#chart").text().length > 0) {
+			// alert('I was clicked!');
+		    html2canvas($("#chart"), {
+		        onrendered: function(canvas) {
+		            theCanvas = canvas;
+		            document.body.appendChild(canvas);
+		            canvas.toBlob(function(blob) {
+						saveAs(blob, "Analysis Results.png"); 
+					});
+		        }
+		    });
+ 	}
+    else {alert('No data available for download - Analyze a data first')}
+}); 
+// END OF SCREENSHOT SCRIPT
+
 </script>
 
 

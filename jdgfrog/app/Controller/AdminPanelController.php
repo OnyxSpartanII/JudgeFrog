@@ -30,7 +30,7 @@ class AdminPanelController extends AppController {
 	}
 
 	public function edit(){
-		$this->set('title', 'Edit - Admin Panel | Human Trafficking Data');
+		$this->set('title', 'Case Edition - Admin Panel | Human Trafficking Data');
 		$this->layout = 'admin_panel_layout';
 		$this->set('active', 'edit');
 

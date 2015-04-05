@@ -1,35 +1,44 @@
 <?php
-    echo $this->Html->css(array('modal_window_style'));
+    echo $this->Html->css(array('modal_window_style', 'dataTables.bootstrap'));
+    echo $this->Html->script(array('jquery-1.10.2', 'jquery.dataTables.min', 'dataTables.bootstrap'));
 ?>
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function() {
+    $('#review_table').DataTable( {
+        responsive: true
+    } );
+  });
+</script>
 <!--search start here-->
 <div class="contact">
     <div class="container">
         <div class="contact-main">
           <h3 class="page_title">Review Case</h3>
-              <div class="col-md-4 contact-right">
+              <div class="col-md-5 contact-right">
                 <!-- TOP CREATE A NEW USER BAR -->
-                  <div class="top_bar col-md-4">
+                  <div class="top_bar col-md-5">
                     <div class="top_bar_left">
                       <h4>PENDING CASE(S)</h4>
                     </div>
                       <!-- PENDING BUTTON-->
-                      <div title="Click here to edit the selected case." style="margin-top: 19px;">
+                      <div title="Edit Case" style="margin-top: 19px;">
                         <label for="" class="user_button">
                           <?php
                           echo $this->Html->link(
-                              $this->Html->image("review.png", array("alt" => "Edit Case", 'style' => 'float:left; padding: 10px 6px 8px 0px;')),
+                              $this->Html->image("edit_case.png", array("alt" => "Edit Case", 'style' => 'float:left; padding: 10px 6px 8px 0px;')),
 
                               "/AdminPanel/edit", array('escape' => false, 'id' => 'edit_case')); ?> 
                         </label>
                       </div>  
                   </div>
-                    <table class="pending_case all_results">
-                        <tbody>
-                          <tr>
+                    <table class="pending_case all_results table table-bordered" id="review_table">
+                          <thead>
+                              <tr>
                               <th>Case Name</th>
                               <th>Editor's Name</th>
-                          </tr>
-
+                              </tr>
+                          </thead>
+                          <tbody>
                           <?php
                             if (isset($p_cases)) {
                               $index = 0;
@@ -50,21 +59,14 @@
                   </div>
                 </div>
             </div> 
-                <div class="col-md-8 contact-right">
+                <div class="col-md-7 contact-right">
                   <!-- TOP PUBLISH SELECTED USER BAR -->
-                    <div class="top_bar col-md-8">
+                    <div class="top_bar col-md-7">
                       <div class="top_bar_dash">
-                        <h4>CASE REVIEW DASHBOARD</h4>
+                        <h4>CASE DETAILS</h4>
                       </div>
-                        <!-- PUBLISH BUTTON-->
-                        <div title="Click here to publish this case." style="padding: 0px 0px 0px 0px;" id="publish_button">
-                          <label for="" class="user_button">
-                            <?php echo $this->Html->image('send.png', array('alt' => 'Publish', 'style' => 'padding: 10px 8px 8px 0px;' )); ?>
-                          </label>
-                        </div>
                     </div>
                     <div id="selected_case" class="selected_case">
-                      
                     </div>
                 </div>
           </div>
@@ -72,12 +74,12 @@
   </div>
 </div>
             <div class="search_disclaim" style="margin-top:200px">
-              <p><strong>Note: </strong>Not every combination of analyzable objects will return meaningful results.</p>
+              <p><strong>Note: </strong>Click on any pending case to deplay its details.</p>
             </div>
 </div>
 
 <!-- TABLE SELECTION SCRIPT -->
-  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <!-- // <script src="https://code.jquery.com/jquery-1.10.2.js"></script> -->
 
 <script type="text/javascript">
 

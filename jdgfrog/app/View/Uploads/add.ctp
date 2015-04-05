@@ -1,3 +1,8 @@
+<?php
+    $this->layout = 'admin_panel_layout';
+    $this->set('title', 'Batch Upload - Admin Panel | Human Trafficking Data');
+    // $this->set('active', 'create_case');
+?>
 <!-- File: /app/View/Uploads/add.ctp -->
 
 <h1>Upload a CSV to Database</h1>

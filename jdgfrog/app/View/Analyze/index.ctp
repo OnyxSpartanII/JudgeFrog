@@ -1,3 +1,7 @@
+<?php
+    $this->set('title', 'Data Analysis | Human Trafficking Data');
+    $this->set('active', 'search');
+?>
 <!-- Analyze/index.ctp -->
 <?php echo $this->Html->script(array('GoogleChartFunctions'));?>
 <!--search start here-->
@@ -52,10 +56,27 @@
                 </div> 
               <div class="col-md-9 contact-left">
                     <!-- TOP STATUS AND SEARCH BAR -->
-                      <div class="top_bar col-md-9">
-                        <div class="top_bar_dash">
-                          <h4>ANALYSIS DASHBOARD</h4>
-                        </div>
+                      <div class="top_bar col-md-9">     
+	                    <div class="top_bar_dash">
+	                      <h4>ANALYSIS DASHBOARD</h4>
+	                      <!-- CLEAR FIELDS BUTTON -->
+	                      <div class="ana_button" title="Click here clear all the fields." style="float:left">
+	                        <label for="">
+	                          <?php 
+	                          echo $this->Html->link(
+	                              $this->Html->image("clear.png", array("alt" => "Clear Fields")),
+	                              "/search", array('escape' => false)); ?>
+	                        </label>
+	                      </div>
+	                      <!-- ANALYZE BUTTON -->
+	                      <div class="ana_button" title="Take screenshot of analyzed result">
+	                        <label for="" id="applyButton">
+	                          <?php echo $this->Html->link(
+	                              $this->Html->image("photo.png", array("alt" => "screenshot")),
+	                              "#", array('escape' => false)); ?>
+	                        </label>
+	                      </div>
+	                    </div>
                       </div>
                       <div id="chart" class="col-md-9" style="width:100%;">
                       </div>

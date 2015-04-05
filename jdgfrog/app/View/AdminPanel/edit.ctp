@@ -1,68 +1,119 @@
+<?php
+    echo $this->Html->css(array('dataTables.bootstrap', 'dataTables.responsive'));
+    echo $this->Html->script(array('jquery-1.10.2', 'jquery.dataTables.min', 'dataTables.responsive.min', 'dataTables.bootstrap', 'dataTables.fixedHeader.min'));
+?>
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function() {
+    var caseTable = $('#cases_table').DataTable({
+        responsive: true
+    });
+    new $.fn.dataTable.FixedHeader(caseTable);
+} );
+</script>
 <!--search start here-->
 <div class="contact">
     <div class="container">
         <div class="contact-main">
-          <h3 class="page_title">Edit Case</h3>
-              <div class="col-md-3 contact-right" style="padding-bottom:50px">
-                <!-- TOP CREATE A NEW USER BAR -->
-                  <div class="top_bar col-md-3">
-                    <div class="top_bar_left">
-                      <h4>SEARCH</h4>
-                    </div>
-                      <!-- PENDING BUTTON-->
-                      <div title="Click here to add review the selected case." style="margin-top: 19px;">
-                        <label for="" class="user_button">
-                          <?php echo $this->Html->image('search.png', array('alt' => 'Create', 'style' => 'float:left; padding: 10px 7px 8px 0px;' )); ?>
-                        </label>
-                      </div>
-                      <div style="margin-bottom:20px; margin-top:100px; text-align:center;">   
-                            <?php
-                              echo $this->Form->input('username', array('label' => 'Enter Case Name','placeholder' => 'USA v. John Doe', 'type' => 'text', 'id' => 'case_name', 'style' => 'background-color: #fff;'));
-                            ?>
-                        </div>
-                  </div>
-                <!-- Create Interface -->
-                <div class="user_creation" style="padding-bottom:50px; margin-top:50px;">
-                  <div class="login_details" style="background-color:#DCDCDC">
-                  </div>
-                </div>
-            </div> 
-                <div class="col-md-9 contact-right">
-                  <!-- TOP DELETE SELECTED USER BAR -->
-                    <div class="top_bar col-md-9">
-                      <div class="top_bar_dash">
-                        <h4>CASE UPDATE DASHBOARD</h4>
-                      </div>
-                        <!-- DELETE BUTTON-->
-                        <div title="Click here to delete the selected user." style="padding: 0px 0px 0px 0px;">
-                          <label for="" class="user_button">
-                            <?php echo $this->Html->image('send.png', array('alt' => 'Publish', 'style' => 'padding: 10px 7px 8px 0px;' )); ?>
+          <h3 class="page_title">Case Edition</h3>
+              
+                <div class="col-md-12 contact-right">
+                  <!-- TOP EDIT SELECTED CASE BAR --> 
+                     <!-- DELETE CASE BUTTON-->
+                      <div class="top_bar col-md-8">
+                        <div title="Delete selected case" style="float:left; margin-top:30px">
+                          <label for="submitForm" class="user_button">
+                          <?php echo $this->Html->image('delete_case.png', array('alt' => 'Delete Case')); ?>
                           </label>
                         </div>
-                    </div>
-                  <!-- Delete Interface -->
-                  <script type="text/javascript">
-                  
-                  </script>
+                        <div class="top_bar_dash">
+                          <h4>ALL DATABASE CASES</h4>
+                        </div>
+                          <!-- EDIT CASE BUTTON-->
+                          <div title="Edit selected case">
+                            <label for="deleteBtn" class="user_button" >
+                              <?php echo $this->Html->image('edit_case.png', array('alt' => 'Edit Case', 'style' => 'float:left; padding: 10px 8px 8px 0px;' )); 
+                              ?>
+                            </label>
+                          </div>
+                      </div>
+                        <?php
+                          $servername = "oyster.arvixe.com";
+                          $username = "jdgfrog_testDB";
+                          $password = "tcuCOSC1!";
+                          $dbname = "jdgfrog_testDB";
+                          // Create connection
+                          $conn = new mysqli($servername, $username, $password, $dbname);
+                          // Check connection
+                          if ($conn->connect_error) {
+                              die("Connection failed: " . $conn->connect_error);
+                          } 
+                          $show_cases = "SELECT DISTINCT CaseNam, CaseNum, JudgeName, State, author, NumDef, modified FROM DataInProgress";
+                          $result = $conn->query($show_cases);
+
+                          if ($result->num_rows > 0) {
+                              // output data of each row
+                                echo "<table class='table table-striped table-bordered' id='cases_table'>";
+                                echo"      <thead>";
+                                echo"        <tr>";
+                                echo"          <th class='mobile'></th>";
+                                echo"          <th class='always first_th'>Case Name</th>";
+                                echo"          <th class='desktop'>Case Number</th>";
+                                echo"          <th class='desktop'>Judge Name</th>";
+                                echo"          <th class='min-tablet'>State</th>";
+                                echo"          <th class='min-tablet'>Author's Name</th>";
+                                echo"          <th class='none'>Number of Defendant</th>";
+                                echo"          <th class='none'>Modified Date</th>";
+                                echo"        </tr>";
+                                echo"      <thead>";
+                                echo "<tbody>";
+                              while($row = $result->fetch_assoc()) {
+                                  // echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+                                echo "  <tr>";
+                                echo "      <td></td>";
+                                echo "      <td> " ."&nbsp;&nbsp;<input type='radio' name='case' checked value=' ".$row['CaseNam']." '>  &nbsp;&nbsp;" .$row['CaseNam']. "</td>";
+                                echo "      <td> ".$row['CaseNum']." </td>";
+                                echo "      <td> ".$row['JudgeName']." </td>";
+                                echo "      <td> ".$row['State']." </td>";
+                                echo "      <td> ".$row['author']." </td>";
+                                echo "      <td> ".$row['NumDef']." </td>";
+                                echo "      <td> ".$row['modified']." </td>";
+                                echo "  </tr>";
+                                }
+                                echo "</tbody>";
+                                echo "</table>";
+                              }
+                          else {
+                              echo "0 results";
+                          }
+                          $conn->close();
+                        ?>
                 </div> 
           </div>
         </div>
             <div class="search_disclaim" style="margin-top:200px">
-              <p><strong>Note: </strong>Not every combination of analyzable objects will return meaningful results.</p>
+              <p><strong>Note: </strong>You may search a case by any values of all attributes - Name, Number, Judge...</p>
             </div>
 </div>
-
-<!-- Auto Complete Script -->
-<script>
-    function split( val ) {
-      return val.split( /,\s*/ );
-    }
-    function extractLast( term ) {
-      return split( term ).pop();
-    }
-    $( "#case_name" ) //Case Name Field
-      .autocomplete({
-        source: "autoComplete" ,
-        minLength: 1
-      });
-  </script>
+<!-- TABLE AND TABLE SELECTION SCRIPT -->
+<style type="text/css">
+.table_container, .dataTables_length, .dataTables_filter{
+  margin-top: 10px;
+  text-align: left;
+}
+table{
+  width:100%;
+  border:1px solid #999;
+  border-collapse:collapse;
+}
+.case{padding: 0px 10px 0px 0px;}
+th{background-color:#999;color:#fff;
+    padding:15px 0px 15px 0px;
+    border-right:1px solid #666;
+    text-align: left;}
+td{text-align: left;
+    min-width: 20px;}
+.first_th{text-align: center;}
+#collapsible-panels .table h2, input {
+  width: 10%;
+}
+</style>

@@ -4,93 +4,122 @@
     $this->set('active', 'create_case');
 ?>
 <?php echo $this->Html->script(array('bootstrap.file-input'));?>
+<?php
+    echo $this->Html->css(array('dataTables.bootstrap', 'dataTables.responsive'));
+    echo $this->Html->script(array('jquery-1.10.2', 'jquery.dataTables.min', 'dataTables.responsive.min', 'dataTables.bootstrap', 'dataTables.fixedHeader.min'));
+?>
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function() {
+    var caseTable = $('#ongoing_table').DataTable({
+        responsive: true
+    });
+} );
+</script>
 <!--search start here-->
-
-
 <div class="contact">
     <div class="container">
         <div class="contact-main">
           <h3 class="page_title">Case Creation</h3>
-              <div class="col-md-5 contact-right">
+              <div class="col-md-4 contact-right">
                 <!-- TOP CREATE A NEW USER BAR -->
-                  <div class="top_bar col-md-5">
+                  <div class="top_bar col-md-4">
                     <div class="top_bar_left">
-                      <h4>SINGLE CASE</h4>
+                      <h4>INSTRUCTIONS</h4>
                     </div>
-                      <!-- CREATE BUTTON-->
-                      <div title="Click here to begin." style="margin-top: 19px;">
-                        <label for="" class="user_button">
-                          <?php
-                          echo $this->Html->link(
-                              $this->Html->image("create_case.png", array("alt" => "Create Case", 'style' => 'float:left; padding: 10px 7px 8px 0px;')),
-                              "/CaseSessions/createcaseSetup", array('escape' => false)); ?> 
-                        </label>
-                      </div>
+                    <!-- DOWNLOAD BUTTON-->
+                    <div title="Download the docket">
+                      <label for="" class="user_button" style="margin-top:0px">
+                        <?php
+                          echo $this->Form->create(null, array(
+                            'url' => array('controller' => 'download', 'action' => '') ));
+                          echo $this->Form->submit('Download', array('type'=>'image','src' => '/judgefrog/jdgfrog/img/download.png', 'style' => 'float:right; padding: 0px 10px 8px 0px;'));
+                          echo $this->Form->end(); 
+                          ?>
+                      </label>
+                    </div>
                   </div>
-                  	<label style="font-size:18px; padding:10px;">Click on a case bellow to continue editing.</label>
-                      <table class="pending_case">
-                        <tbody>
-                          <tr>
-                              <th>Case Name</th>
-                              <th>Created Date</th>
-                          </tr>
-                          <tr class="toggle_case">
-                              <td>USA v. Afolabi et al</td>
-                              <td>03/03/2015</td>
-                          </tr>
-                          <tr class="toggle_case">
-                              <td>USA v. Balderas-Orosco et al</td>
-                              <td>23/02/2015</td>
-                          </tr>
-                          <tr class="toggle_case">
-                              <td>USA v. Baltazar et al</td>
-                              <td>01/8/2015</td>
-                          </tr>
-                        </tbody>
-                    </table>
+                  <div class="" style="text-align:left; margin-bottom:50px">
+                    <h4>Create a Case</h4>
+                    <p>
+                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                    </p>
+                    <h4>Download Docket</h4>
+                    <p>
+                      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    </p>
+                  </div>
                 <!-- Create Interface -->
-              
               </div> 
-                <div class="col-md-7 contact-right">
-                  <!-- TOP DELETE SELECTED USER BAR -->
-                    <div class="top_bar col-md-7">
-                      <div class="top_bar_dash"  style="float:none; text-align:center">
-                        <h4>BATCH UPLOAD | DOWNLOAD</h4>
-                      </div>
-                        <!-- DOWNLOAD BUTTON-->
-                        <div title="Download the docket">
+                <div class="col-md-8 contact-right">
+                    <!-- TOP DELETE SELECTED USER BAR -->
+                      <div class="top_bar col-md-8">
+                        <div class="top_bar_dash"  style="float:none; text-align:center">
+                          <h4>ONGOING CASES</h4>
+                        </div>
+                        <!-- CREATE BUTTON-->
+                        <div title="Click here to begin." style="margin-top: 0px;">
                           <label for="" class="user_button">
                             <?php
-                              echo $this->Form->create(null, array(
-                                'url' => array('controller' => 'download', 'action' => '') ));
-                              echo $this->Form->submit('Download', array('type'=>'image','src' => '/img/download.png', 'style' => 'float:left; padding: 10px 10px 8px 0px;'));
-                              echo $this->Form->end(); 
-                              ?>
+                            echo $this->Html->link(
+                                $this->Html->image("create_case.png", array("alt" => "Create Case", 'style' => 'float:left; padding: 10px 7px 8px 0px;')),
+                                "/CaseSessions/createcaseSetup", array('escape' => false)); ?> 
                           </label>
                         </div>
-                        <div class="upload_section" style="margin-top:80px;">
-                          <h2>Upload</h2>
-                            <?php
-                            // echo $this->Form->create('Uploads', array('type' => 'file'));
-                            echo $this->Form->create('Uploads', array('type' => 'file',
-                                'url' => array('controller' => 'uploads', 'action' => '') ));
-                            echo $this->Form->input('', array('type' => 'file', 'title' => 'Choose a .CSV file', 'name' => 'data[Uploads][file]'));
-                            echo "<br><br>";
-                              echo $this->Form->submit('Submit');
-                              echo $this->Form->end(); 
-                            ?>
-                         </div>
-                        <div class="upload_section_receipt" style="float:right; margin-top:-190px">
-                          <h2 style="color:#444">Upload Receipt</h2>
-                            <!-- <p>File Uploaded!</p> -->
-                         </div>
                     </div>
+                    <div class="upload_section">
+                        <?php
+                            $servername = "oyster.arvixe.com";
+                            $username = "jdgfrog_testDB";
+                            $password = "tcuCOSC1!";
+                            $dbname = "jdgfrog_testDB";
+                            // Create connection
+                            $conn = new mysqli($servername, $username, $password, $dbname);
+                            // Check connection
+                            if ($conn->connect_error) {
+                                die("Connection failed: " . $conn->connect_error);
+                            } 
+                            $sql = "SELECT DISTINCT caseNam, caseNum, created FROM DataInProgress";
+                            $result = $conn->query($sql);
+
+                            if ($result->num_rows > 0) {
+                                // output data of each row
+                                  echo "<table class='table table-striped table-bordered' id='ongoing_table'>";
+                                  echo"      <thead>";
+                                  echo"        <tr>";
+                                  echo"          <th>Case Name</th>";
+                                  echo"          <th>Case Number</th>";
+                                  echo"          <th>Creation Date</th>";
+                                  echo"          <th class='special_th'>Actions</th>";
+                                  echo"        </tr>";
+                                  echo"      <thead>";
+                                  echo "<tbody>";
+                                while($row = $result->fetch_assoc()) {
+                                  echo "  <tr>";
+                                  echo "      <td> ".$row['caseNam']. "</td>";
+                                  echo "      <td> ".$row['caseNum']." </td>";
+                                  echo "      <td> ".$row['created']." </td>";
+                                  echo "      <td> ".$this->Html->link('Edit', '/CaseEdits/edit/:'
+                                    .$row['caseNum'].' '); "</td>";
+                                  echo "  </tr>";
+                                  }
+                                  echo "</tbody>";
+                                  echo "</table>";
+                                }
+                            else {
+                                echo "0 results";
+                            }
+
+                            $conn->close();
+                          ?>
+
+                     </div>
                 </div> 
             </div>
         </div>
-
 </div>
-
+<div class="search_disclaim" style="margin-top:50px">
+  <p><strong>Note: </strong>Ongoing cases may be completed at anythime.</p>
+</div>
 <script type="text/javascript">
   $('input[type=file]').bootstrapFileInput();
   $('.file-inputs').bootstrapFileInput();
@@ -108,6 +137,26 @@
   border-bottom: 1px solid #999;
   background-color: #00BFFF;
   }
+.table_container, .dataTables_length, .dataTables_filter{
+  margin-top: 10px;
+  text-align: left;
+}
+table{
+  width:100%;
+  border:1px solid #999;
+  border-collapse:collapse;
+}
+.case{padding: 0px 10px 0px 0px;}
+th{background-color:#999;color:#fff;
+    padding:15px 0px 15px 0px;
+    border-right:1px solid #666;
+    text-align: left;}
+td{text-align: left;
+    min-width: 20px;}
+.special_th{background-color: #4D1979}
+.table input {
+  width: 10%;
+}
 </style>
 <script type="text/javascript">
     var $welcom = $("#flashMessage");
@@ -115,6 +164,19 @@
         // $welcom.hide('slow', slideUp);
         $welcom.slideUp(800).delay(900).fadeOut(900);
     }, 4000);
+</script>
+<script type="text/javascript">
+    $('#myid').click( function() { 
+    var selectedVal = "";
+    var selected = $("input[type='radio'][name='case']:checked");
+    if (selected.length > 0) {
+        selectedVal = selected.val();
+        alert('The selected case number is' + selectedVal);
+    }
+    else{alert('Select a case');}
+
+ });
+
 </script>
 
 

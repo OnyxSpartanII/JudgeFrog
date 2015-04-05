@@ -3,16 +3,15 @@
 /*-------------*/
 .user_button{
     margin-top: -28px;
-    padding-left: 10px;
     background-color: #fff;
     float: right;
-    opacity: 1;
+    opacity: .7;
     filter: alpha(opacity=70); /* For IE8 and earlier */
 }
 .user_button:hover{
-    opacity: .8;
+    opacity: 1;
     cursor: pointer;
-    filter: alpha(opacity=80); /* For IE8 and earlier */
+    filter: alpha(opacity=100); /* For IE8 and earlier */
     -webkit-transition: all 0.3s ease-in;
     -moz-transition: all 0.3s ease-in;
     -o-transition: all 0.3s ease-in;
@@ -21,18 +20,18 @@
     margin-top: 8px;
 }
 .login_details h1 {
-background-color: #4D1979; color: #FFF;
-width: 50px;
-font-size: 50px;
-word-wrap: break-word;
-line-height: 1.3em;
+    background-color: #4D1979; color: #FFF;
+    width: 50px;
+    font-size: 50px;
+    word-wrap: break-word;
+    line-height: 1.3em;
 }
 .personal_details h1 {
-background-color: #999; color: #FFF;
-width: 50px;
-font-size: 50px;
-word-wrap: break-word;
-line-height: 1.3em;
+    background-color: #999; color: #FFF;
+    width: 50px;
+    font-size: 50px;
+    word-wrap: break-word;
+    line-height: 1.3em;
 }
 .login_details:hover, 
 .login_details input[type="text"]:hover, 
@@ -134,27 +133,6 @@ table.pending_case {width:100%;border:1px solid #999;}
   -moz-transition: fadeOutLeft 0.8s;
   animation: fadeOutLeft 0.8s;*/
 }
-.upload_section{
-    margin-left: -80px;
-    width: 400px;
-    border-right: 1px solid #DCDCDC;
-}
-.upload_section .btn-default {
-    padding: 10px;
-    min-width: 200px;
-    border-radius: none;
-    background-color:#DCDCDC; color: #777;
-    border: 1px solid #777;
-}
-.upload_section .btn-default:hover {
-    color: #FFF;
-    background-color: #4D1979;
-    border-color: #4D1979;
-    transition: all 0.3s ease-in-out;
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-}
 .upload_section input[type="submit"]{
     width: 100px;
     padding: 1em 0em;
@@ -179,12 +157,12 @@ table.pending_case {width:100%;border:1px solid #999;}
 /*FORM FIELDSET STYLING*/
 /*====================*/
 .case_top_bar{
+    margin: 0px 20px 15px 15px;
 }
 .case_top_bar h3{
-    padding-bottom: 10px;
+    padding-bottom: 5px;
     text-align: left;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #CCC;
+    border-bottom: 2px solid #CCC;
 }
 
 .top_bar_dash h5{
@@ -203,9 +181,6 @@ table.pending_case {width:100%;border:1px solid #999;}
   background-color: #999;
   border-left: 1px solid #DCDCDC;
 }
-
-
-/*custom font*/
 
 /*form styles*/
 #form_style {
@@ -251,23 +226,9 @@ table.pending_case {width:100%;border:1px solid #999;}
     /*margin-top: 20px;*/
     /*border-top: 10px solid #DCDCDC;*/
 }
-
 #form_style .fieldset_title{
   display: none;
 }
-/*inputs*/
-/*#form_style input, #form_style textarea {
-  padding: 15px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  margin-bottom: 10px;
-  width: 100%;
-  box-sizing: border-box;
-  font-family: montserrat;
-  color: #2C3E50;
-  font-size: 13px;
-}*/
-/*buttons*/
 #form_style .action-button {
     width: 30%;
     padding: 1em 0em;
@@ -314,16 +275,21 @@ table.pending_case {width:100%;border:1px solid #999;}
        margin-top: 50px; 
     }
 }
+@media(max-width:680px){
+    .top_bar_dash h4, .top_bar_left h4 {
+        margin-right: 80px;}
+}
 @media(max-width:550px){
     .top_bar_dash h4, .top_bar_left h4 {
-        text-align: left;
-        font-size: 15px;
+        margin-right: 60px;
+        font-size: 16px;
         margin-top: 3px;
     }
 }
 @media(max-width:400px){
     .top_bar_dash h4, .top_bar_left h4 {
-        font-size: 11px;
+        margin-right: 50px;
+        font-size: 13px;
         margin-top: 8px;
     }
 }

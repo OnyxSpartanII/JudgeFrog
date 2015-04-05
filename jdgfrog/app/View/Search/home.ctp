@@ -211,11 +211,9 @@
                         <label for="" id="applyButton">
                           <?php echo $this->Html->link(
                               $this->Html->image("analyze.png", array("alt" => "Anaylze")),
-                              "/analyze", array('escape' => false)); ?>
+                              "/Analyze", array('escape' => false)); ?>
                         </label>
                       </div>
-
-
                     </div>
                   </div>
                   <div id="table_div" class="col-md-9" colspan="5" style="width:100%"></div>
@@ -224,14 +222,11 @@
          </div>
      </div>
 </div>
-
 </div>
             <div class="search_disclaim" >
             <p><strong>Note: </strong>Not every combination of searcheable objects will return meaningful results.</p>
             </div>
 </div>
-
- 
         </div>
     </div>
 

@@ -332,9 +332,12 @@ span.search {
 	color: #777;
 }
 .about-main h2 {
-	text-align: center;
 	font-size: 2em;
 	color: #4D1979;
+	text-align: left;
+	padding-bottom: 5px;
+	margin: 0px 0px 2em 0px;
+	border-bottom: 2px solid #DCDCDC;
 }
 .about-left h3 {
 	font-size: 25px;
@@ -841,8 +844,10 @@ p.m_6 {
 .contact-main h3 {
 	font-size: 2em;
 	color: #4D1979;
-	text-align: center;
-	margin: 0px 0px 2em 0px;
+	text-align: left;
+	padding-bottom: 5px;
+	margin: 0px 15px 2em 15px;
+	border-bottom: 2px solid #DCDCDC;
 }
 .text input[type="submit"] {
 	width: 20%;

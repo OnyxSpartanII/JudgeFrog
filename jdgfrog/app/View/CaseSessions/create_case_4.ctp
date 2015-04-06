@@ -35,8 +35,8 @@ $(function() {
                       <fieldset>
                         <?php echo $this->Form->create('CaseSession'); ?>
                         <?php 
-                          echo $this->Form->input('ChargeDate', array('label' => 'Charge Date', 'placeholder' => '11/04/1986', 'id' => 'charge_Date', 'type' => 'text')); 
-                          echo $this->Form->input('ArrestDate', array('label' => 'Arrest Date', 'placeholder' => '01/24/2001', 'class' => 'date', 'type' => 'text', 'id' => 'arrest_Date', 'data-date' => '12-02-2012', 'data-date-format' => 'dd-mm-yyyy'));
+                          echo $this->Form->input('ChargeDate', array('label' => 'Charge Date', 'placeholder' => '11/04/1986', 'id' => 'charge_Date', 'type' => 'text', 'class' = 'date', 'data-date' => '2012-12-02', 'data-date-format' => 'yyyy-mm-dd')); 
+                          echo $this->Form->input('ArrestDate', array('label' => 'Arrest Date', 'placeholder' => '01/24/2001', 'class' => 'date', 'type' => 'text', 'id' => 'arrest_Date', 'data-date' => '2012-12-02', 'data-date-format' => 'yyyy-mm-dd'));
                           echo "<hr style = 'border-top:1px solid #DCDCDC'>";
                           echo $this->Form->input('Detained', array('label' => 'Detained', 'type' => 'checkbox'));
                           echo "<hr style = 'border-top:1px solid #DCDCDC'>";

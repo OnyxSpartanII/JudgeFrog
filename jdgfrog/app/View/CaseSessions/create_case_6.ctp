@@ -37,7 +37,7 @@
                       <?php echo $this->Form->create('CaseSession'); ?>
                       <?php 
                         echo $this->Form->input('DateTerm', array('label' => 'Case\'s Termination Date', 'id' => 'termDate', 'type' => 'text'));
-                        echo $this->Form->input('SentDate', array('label' => 'Sentencing Date', 'class' => 'datepicker date', 'type' => 'text', 'data-date' => '12-02-2012', 'data-date-format' => 'dd-mm-yyyy'));
+                        echo $this->Form->input('SentDate', array('label' => 'Sentencing Date', 'class' => 'datepicker date', 'type' => 'text', 'data-date' => '2012-12-02', 'data-date-format' => 'yyyy-mm-dd'));
                         echo $this->Form->input('TotalSentence', array('type' => 'text', 'label' => 'Total Number of Months Sentenced'));
                         echo $this->Form->input('Restitution', array('type' => 'text', 'label' => 'Amount Required to Pay For Restitution'));
                         echo "<hr style = 'border-top:1px solid #DCDCDC'>";

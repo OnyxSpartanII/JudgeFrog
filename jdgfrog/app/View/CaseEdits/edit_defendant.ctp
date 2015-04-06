@@ -358,7 +358,7 @@
                   </fieldset>
 					</div>
 				<div class="case_creation_form" id="form_style" style="max-width:50px;">
-					<?php echo $this->Form->submit('Submit', array('confirm' => 'Submit this case for review?')); ?>
+					<?php echo $this->Form->submit('Submit', array('/admin/cases/edit'.$case['DataInProgress']['CaseNum'])); ?>
 					<?php echo $this->Form->end(); ?>
 				</div>
 			</div>	

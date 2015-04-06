@@ -65,6 +65,11 @@
                       <div class="top_bar_dash">
                         <h4>CASE DETAILS</h4>
                       </div>
+                        <div title="Click here to publish this case." style="padding: 0px 0px 0px 0px;" id="publish_button">
+                          <label for="" class="user_button">
+                            <?php echo $this->Html->image('send.png', array('alt' => 'Publish', 'style' => 'padding: 10px 8px 8px 0px;' )); ?>
+                          </label>
+                        </div>                      
                     </div>
                     <div id="selected_case" class="selected_case">
                     </div>
@@ -102,7 +107,7 @@
         index = $(this).attr('id');
         console.log('Displaying ' + index);
           $.ajax({                   
-              url: '/CaseReviews/generateTable/' + index,
+              url: '/jdgfrog/CaseReviews/generateTable/' + index,
               cache: false,
               type: 'GET',
               dataType: 'HTML',
@@ -115,7 +120,7 @@
                     $(this).toggleClass('clicked', 'slow');
                   });
                   $('.selected_case').show(50);
-                  $('#edit_case').attr('href', '/CaseEdits/edit/' + p_cases[index][0]);
+                  $('#edit_case').attr('href', '/jdgfrog/admin/cases/edit/' + p_cases[index][0]);
               }
           });
       } else {
@@ -129,7 +134,7 @@
 
       $('#publish_button').click(function(){
         $.ajax({
-          url: '/CaseReviews/publishCase/' + index,
+          url: '/jdgfrog/CaseReviews/publishCase/' + index,
           cache: false,
           type: 'GET',
           dataType: 'HTML',

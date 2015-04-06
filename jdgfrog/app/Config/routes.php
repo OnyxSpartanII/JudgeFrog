@@ -30,6 +30,7 @@
 	Router::connect('/create', array('controller' => 'users', 'action' => 'create'));
 	Router::connect('/logout', array('controller' => 'users', 'action' => 'logout'));
 
+	Router::connect('/admin/cases/edit/index', array('controller' => 'CaseEdits', 'action' => 'index'));
 	Router::connect('/admin/cases/edit/:caseNum', array('controller' => 'CaseEdits', 'action' => 'edit'), array('pass' => array('caseNum')));
 	Router::connect('/admin/cases/edit/defendant/:defName', array('controller' => 'CaseEdits', 'action' => 'editDefendant'), array('pass' => array('defName')));
 	Router::connect('/admin/cases/create_case/:step', array('controller' => 'CaseSessions', 'action' => 'createCase'), array('pass' => array('step')) );

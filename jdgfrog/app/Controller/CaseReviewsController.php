@@ -356,6 +356,11 @@ class CaseReviewsController extends AppController {
 		$data = $this->DataInProgress->find('all', array('conditions' => array('DataInProgress.CaseNum' => $case_info[$index][1])));
 		$this->DataInProgress->deleteAll(array('DataInProgress.CaseNum' => $case_info[$index][1]), false);
 		$this->Datum->clear();
+
+		foreach ($data as &$d) {
+			$d['Datum'] = $d['DataInProgress'];
+			unset($d['DataInProgress']);
+		}		
 		$this->Datum->saveMany($data);
 	}
 

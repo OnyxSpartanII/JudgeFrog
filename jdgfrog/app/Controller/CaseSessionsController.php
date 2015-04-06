@@ -70,14 +70,8 @@ class CaseSessionsController extends AppController {
 		print_r($this->Session->read('form.params'));
 		print_r($this->Session->read('form.data'));
 		print_r($maxSessionId);
-		//debug($this->request->data, true, true);
-		
-		//$this->redirect(array('action' => 'createCase', $currentStep+1));
-		//print_r($currentStep+1);
 
 		if ($this->request->is('post')) {
-
-			//Refactor this code into validateFormData() later.
 
 			/*	CakePHP magic happens here. Data from each step is appended to 
 			* 	the form.data array. If the current defendant # is less than the
@@ -108,6 +102,7 @@ class CaseSessionsController extends AppController {
 
 				$this->request->data['CaseSession']['author'] = $currentUser;
 				$this->request->data['CaseSession']['session_id'] = $newSessionId;
+				$this->request->data['CaseSession']['id'] = $newRowId;
 
 				$prevSessionData = $this->Session->read('form.data');
 				$currentSessionData = Hash::merge( (array) $prevSessionData, $this->request->data);
@@ -115,7 +110,6 @@ class CaseSessionsController extends AppController {
 				if ($this->CaseSession->save($this->request->data)) {
 					$this->redirect(array('action' => 'create_case', $currentStep+1));						
 				}
-
 
 			} elseif ($currentStep == 2) {
 				//Extract victim and type of trafficking information.
@@ -129,12 +123,14 @@ class CaseSessionsController extends AppController {
 
 			} elseif ($currentStep == 3) {
 				//Defendant Personal Information
-				$prevSessionData = $this->Session->read('form.data');
+				//$prevSessionData = $this->Session->read('form.data');
 				//$currentSessionData = Hash::merge( (array) $prevSessionData, $this->request->data);
 				//$this->Session->write('form.data', $currentSessionData);
 				$this->Session->write('form.params.currentDefendantLast', $this->request->data['CaseSession']['DefLast']);
 				$this->Session->write('form.params.currentDefendantFirst', $this->request->data['CaseSession']['DefFirst']);
+
 				$this->CaseSession->set($this->Session->read('form.data'));
+
 				$this->request->data['CaseSession']['id'] = $this->Session->read('form.params.id');
 				if ($this->CaseSession->save($this->request->data)) {
 					$this->redirect(array('action' => 'create_case', $currentStep+1));	
@@ -184,6 +180,13 @@ class CaseSessionsController extends AppController {
 				//}
 				$this->request->data['CaseSession']['id'] = $this->Session->read('form.params.id');
 				if ($this->CaseSession->save($this->request->data)) {
+
+					if ($this->Session->read('form.params.curDefNum') < $this->Session->read('form.params.numDefs')) {
+						$this->set('caseComplete', false);
+					} else {
+						$this->set('caseComplete', true);
+					}
+				
 					$this->redirect(array('action' => 'create_case', $currentStep+1));	
 				}
 
@@ -208,42 +211,43 @@ class CaseSessionsController extends AppController {
 					}
 
 				} else {
-					//move case to DataInProgress table-,
+					//move case to DataInProgress table
+
+					$data = $this->CaseSession->find('all', array('conditions' => array('CaseSession.session_id' => $this->Session->read('form.params.sessionId'))));
+					//debug($data);
+					$index = 0;
+					$modifiedData = array();
+					debug($data);
+					//$this->CaseSession->deleteAll(array('CaseSession.session_id' => $this->Session->read('form.params.sessionId', false)));
+					foreach ($data as $d) {
+
+						unset($d['CaseSession']['session_id']);
+						unset($d['CaseSession']['current_step']);
+						unset($d['CaseSession']['complete']);
+						array_push($modifiedData, $d);
+					//	foreach ($d as $value) {
+					//		unset($value['session_id']);
+					//		debug($value);
+					//	}
+
+					}
+					//debug($d);
+
+					foreach ($modifiedData as &$d) {
+						$d['DataInProgress'] = $d['CaseSession'];
+						unset($d['CaseSession']);
+					}
+					debug($modifiedData);
+					$this->DataInProgress->clear();
+					$this->DataInProgress->saveMany($modifiedData, array('validate' => false));
+					//$this->redirect(array('controller' => 'CaseReviews', 'action' => 'review'));
 				}
 
 			}
 
-			//$this->CaseSession->set($this->request->data);
-			//print_r($this->request->data);
-			//debug($currentStep, true, true);
-			//$this->CaseSession->save();
-			/*if ($this->CaseSession->validates()) {
-				$prevSessionData = $this->Session->read('form.data');
-				$currentSessionData = Hash::merge( (array) $prevSessionData, $this->request->data);
-
-				if ($currentStep < $this->Session->read('form.params.steps')) {
-					$this->CaseSession->save();
-					$this->Session->write('form.data', $currentSessionData);
-					$this->Session->write('form.params.maxProgress', $currentStep);
-					$this->redirect(array('action' => 'create_case', $currentStep+1));
-				} else 	{
-					$this->CaseSession->set('CaseDefId', 3);
-					$this->CaseSession->set('complete', true);
-					$this->CaseSession->save();
-				}
-
-			} */
-
-
-
-			//$this->redirect(array('action' => ''));
-		} else {
-			//$this->request->data = $this->Session->read('form.data');
 		}
-				//print_r($currentStep);
-		$this->render('create_case_'.$currentStep);
 
-		//print_r($this->params);
+		$this->render('create_case_'.$currentStep);
 	}
 
 	/*
@@ -293,7 +297,7 @@ class CaseSessionsController extends AppController {
 	*/
 
 	public function getRowId() {
-		$newRowId = $this->CaseSession->find('first', array('fields' => array('MAX(CaseSession.id) as id')));
+		$newRowId = $this->DataInProgress->find('first', array('fields' => array('MAX(DataInProgress.id) as id')));
 		$newRowId = $newRowId[0]['id'];
 		return $newRowId;
 	}

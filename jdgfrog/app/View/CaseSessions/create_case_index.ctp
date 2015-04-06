@@ -6,7 +6,7 @@
 <?php echo $this->Html->script(array('bootstrap.file-input'));?>
 <?php
     echo $this->Html->css(array('dataTables.bootstrap', 'dataTables.responsive'));
-    echo $this->Html->script(array('jquery-1.10.2', 'jquery.dataTables.min', 'dataTables.responsive.min', 'dataTables.bootstrap', 'dataTables.fixedHeader.min'));
+    echo $this->Html->script(array('jquery-1.10.2.min', 'jquery.dataTables.min', 'dataTables.responsive.min', 'dataTables.bootstrap', 'dataTables.fixedHeader.min'));
 ?>
 <script type="text/javascript" charset="utf-8">
   $(document).ready(function() {
@@ -88,8 +88,8 @@
                                   echo"        <tr>";
                                   echo"          <th>Case Name</th>";
                                   echo"          <th>Case Number</th>";
-                                  echo"          <th>Creation Date</th>";
-                                  echo"          <th class='special_th'>Actions</th>";
+                                  echo"          <th class='desktop'>Creation Date</th>";
+                                  echo"          <th class='always special_th'>Actions</th>";
                                   echo"        </tr>";
                                   echo"      <thead>";
                                   echo "<tbody>";
@@ -98,8 +98,9 @@
                                   echo "      <td> ".$row['caseNam']. "</td>";
                                   echo "      <td> ".$row['caseNum']." </td>";
                                   echo "      <td> ".$row['created']." </td>";
-                                  echo "      <td> ".$this->Html->link('Edit', '/CaseEdits/edit/:'
-                                    .$row['caseNum'].' '); "</td>";
+                                  echo "      <td> ".$this->Html->link('Edit', '/admin/cases/edit/'.$row['caseNum']) . '&nbsp/&nbsp;'
+                                                    .$this->Html->link('Delete', '/delete_case/'.$row['caseNum'], array('onclick'=> 'return confirm("Are you sure you want to delete?")'));
+                                       "</td>";
                                   echo "  </tr>";
                                   }
                                   echo "</tbody>";
@@ -108,6 +109,9 @@
                             else {
                                 echo "0 results";
                             }
+
+                            // $delete_query = "DELETE FROM `case_sessions` WHERE `id` = 1";
+                            // $delete_result = $conn->query($delete_query);
 
                             $conn->close();
                           ?>

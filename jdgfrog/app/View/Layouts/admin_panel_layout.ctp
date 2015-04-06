@@ -78,7 +78,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 						<ul class="res">
 							<li><a class="<?php echo ($this->fetch('active') == 'index') ? 'active' : ''; ?>" <?php echo $this->Html->link('Home', '/AdminPanel/index'); ?></li>
 							<li><a class="<?php echo ($this->fetch('active') == 'create_case') ? 'active' : ''; ?>" <?php echo $this->Html->link('Create', '/CaseSessions/create_case_index'); ?></li>
-							<li><a class="<?php echo ($this->fetch('active') == '') ? 'active' : ''; ?>" <?php echo $this->Html->link('Batch Upload', '/uploads'); ?></li>
+							<li><a class="<?php echo ($this->fetch('active') == '') ? 'active' : ''; ?>" <?php echo $this->Html->link('Upload', '/uploads'); ?></li>
 							<li><a class="<?php echo ($this->fetch('active') == 'edit') ? 'active' : ''; ?>" <?php echo $this->Html->link('Edit', '/AdminPanel/edit'); ?></li>
 							<li><a class="<?php echo ($this->fetch('active') == 'review') ? 'active' : ''; ?>" <?php echo $this->Html->link('Review', '/CaseReviews/review'); ?></li>
 							<li><a class="<?php echo ($this->fetch('active') == 'create') ? 'active' : ''; ?>" <?php echo $this->Html->link('Manage Users', '/Users/create'); ?></li>

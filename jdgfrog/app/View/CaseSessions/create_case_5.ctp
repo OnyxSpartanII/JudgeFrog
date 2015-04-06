@@ -111,8 +111,8 @@
                         <input type="button" name="next" onclick="goto1546()" class="action-button" value="Statute 1546" />
                   </fieldset>
 
-                  <h2 id="1028_title" class="fieldset_title">Statute Information | 1546</h2>
-                  <fieldset id="">
+                  <h2 id="1546_title" class="fieldset_title">Statute Information | 1546</h2>
+                  <fieldset id="to1546">
                         <?php echo $this->Form->input('S1546', array('label' => 'Statute 1546', 'type' => 'checkbox')); ?>
                         <?php echo $this->Form->input('Counts1546', array('label' => 'Counts', 'type' => 'text')); ?>
                         <?php echo $this->Form->input('CountsNP1546', array('label' => 'Counts Nolle Prossed', 'type' => 'text')); ?>
@@ -126,7 +126,7 @@
                         <hr style="border-top:1px solid #CCC;">
                         <input type="button" name="previous" onclick="goto1512_()" class="action-button" value="Statute 1512" />
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <input type="button" name="next" onclick="goto1581()" class="action-button" value="Statute 1546" />
+                        <input type="button" name="next" onclick="goto1581()" class="action-button" value="Statute 1581" />
                   </fieldset>
 
                   <h2 id="1581_title" class="fieldset_title">Statute Information | 1581-1588</h2>
@@ -142,13 +142,13 @@
                         <?php echo $this->Form->input('Sent1581to1588', array('label' => 'Number of Months Sentenced Under Statute', 'type' => 'text')); ?>
                         <?php echo $this->Form->input('Prob1581to1588', array('label' => 'Number of Months Under Probation Under Statute', 'type' => 'text')); ?>
                         <hr style="border-top:1px solid #CCC;">
-                        <input type="button" name="previous" onclick="goto1512_()" class="action-button" value="Statute 1512" />
+                        <input type="button" name="previous" onclick="goto1546_()" class="action-button" value="Statute 1546" />
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <input type="button" name="next" onclick="goto1581()" class="action-button" value="Statute 1546" />
+                        <input type="button" name="next" onclick="goto1589()" class="action-button" value="Statute 1589" />
                   </fieldset>
 
-                  <h2 id="1028_title" class="fieldset_title">Statute Information | 1589</h2>
-                  <fieldset id="">
+                  <h2 id="1589_title" class="fieldset_title">Statute Information | 1589</h2>
+                  <fieldset id="to1589">
                         <?php echo $this->Form->input('S1589', array('label' => 'Statute 1589', 'type' => 'checkbox')); ?>
                         <?php echo $this->Form->input('Counts1589', array('label' => 'Counts', 'type' => 'text')); ?>
                         <?php echo $this->Form->input('CountsNP1589', array('label' => 'Counts Nolle Prossed', 'type' => 'text')); ?>
@@ -159,10 +159,14 @@
                         <?php echo $this->Form->input('Fines1589', array('label' => 'Fines Levied', 'type' => 'text', 'type' => 'text', 'type' => 'text')); ?>
                         <?php echo $this->Form->input('Sent1589', array('label' => 'Number of Months Sentenced Under Statute', 'type' => 'text', 'type' => 'text', 'type' => 'text')); ?>
                         <?php echo $this->Form->input('Prob1589', array('label' => 'Number of Months Under Probation Under Statute', 'type' => 'text', 'type' => 'text', 'type' => 'text')); ?>
+                          <hr style="border-top:1px solid #CCC;">
+                          <input type="button" name="previous" onclick="goto1581_()" class="action-button" value="Statute 1581" />
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <input type="button" name="next" onclick="goto1590()" class="action-button" value="Statute 1590" />
                   </fieldset>
 
-                  <h2 id="1028_title" class="fieldset_title">Statute Information | 1590</h2>
-                  <fieldset id="">
+                  <h2 id="1590_title" class="fieldset_title">Statute Information | 1590</h2>
+                  <fieldset id="to1590">
                         <?php echo $this->Form->input('S1590', array('label' => 'Statute 1590', 'type' => 'checkbox')); ?>
                         <?php echo $this->Form->input('Counts1590', array('label' => 'Counts', 'type' => 'text', 'type' => 'text')); ?>
                         <?php echo $this->Form->input('CountsNP1590', array('label' => 'Counts Nolle Prossed', 'type' => 'text', 'type' => 'text')); ?>
@@ -173,10 +177,14 @@
                         <?php echo $this->Form->input('Fines1590', array('label' => 'Fines Levied', 'type' => 'text', 'type' => 'text')); ?>
                         <?php echo $this->Form->input('Sent1590', array('label' => 'Number of Months Sentenced Under Statute', 'type' => 'text', 'type' => 'text')); ?>
                         <?php echo $this->Form->input('Prob1590', array('label' => 'Number of Months Under Probation Under Statute', 'type' => 'text', 'type' => 'text')); ?>
+                        <hr style="border-top:1px solid #CCC;">
+                        <input type="button" name="previous" onclick="goto1589_()" class="action-button" value="Statute 1589" />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="button" name="next" onclick="goto1591()" class="action-button" value="Statute 1591" />
                   </fieldset>
 
-                  <h2 id="1028_title" class="fieldset_title">Statute Information | 1591</h2>
-                  <fieldset id="">
+                  <h2 id="1591_title" class="fieldset_title">Statute Information | 1591</h2>
+                  <fieldset id="to1591">
                         <?php echo $this->Form->input('S1591', array('label' => 'Statute 1591', 'type' => 'checkbox')); ?>
                         <?php echo $this->Form->input('Counts1591', array('label' => 'Counts', 'type' => 'text', 'type' => 'text')); ?>
                         <?php echo $this->Form->input('CountsNP1591', array('label' => 'Counts Nolle Prossed', 'type' => 'text', 'type' => 'text')); ?>
@@ -187,10 +195,14 @@
                         <?php echo $this->Form->input('Fines1591', array('label' => 'Fines Levied', 'type' => 'text', 'type' => 'text')); ?>
                         <?php echo $this->Form->input('Sent1591', array('label' => 'Number of Months Sentenced Under Statute', 'type' => 'text', 'type' => 'text')); ?>
                         <?php echo $this->Form->input('Prob1591', array('label' => 'Number of Months Under Probation Under Statute', 'type' => 'text', 'type' => 'text')); ?>
+                        <hr style="border-top:1px solid #CCC;">
+                        <input type="button" name="previous" onclick="goto1590_()" class="action-button" value="Statute 1590" />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="button" name="next" onclick="goto1592()" class="action-button" value="Statute 1592" />
                   </fieldset>
 
-                  <h2 id="1028_title" class="fieldset_title">Statute Information | 1592</h2>
-                  <fieldset id="">
+                  <h2 id="1592_title" class="fieldset_title">Statute Information | 1592</h2>
+                  <fieldset id="to1592">
                         <?php echo $this->Form->input('S1592', array('label' => 'Statute 1592', 'type' => 'checkbox')); ?>
                         <?php echo $this->Form->input('Counts1592', array('label' => 'Counts', 'type' => 'text', 'type' => 'text')); ?>
                         <?php echo $this->Form->input('CountsNP1592', array('label' => 'Counts Nolle Prossed', 'type' => 'text', 'type' => 'text')); ?>
@@ -201,10 +213,14 @@
                         <?php echo $this->Form->input('Fines1592', array('label' => 'Fines Levied', 'type' => 'text', 'type' => 'text')); ?>
                         <?php echo $this->Form->input('Sent1592', array('label' => 'Number of Months Sentenced Under Statute', 'type' => 'text', 'type' => 'text')); ?>
                         <?php echo $this->Form->input('Prob1592', array('label' => 'Number of Months Under Probation Under Statute', 'type' => 'text', 'type' => 'text')); ?>
+                        <hr style="border-top:1px solid #CCC;">
+                        <input type="button" name="previous" onclick="goto1591_()" class="action-button" value="Statute 1591" />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="button" name="next" onclick="goto2252()" class="action-button" value="Statute 2252" />
                   </fieldset>
 
-                  <h2 id="1028_title" class="fieldset_title">Statute Information | 2252</h2>
-                  <fieldset id="">
+                  <h2 id="2252_title" class="fieldset_title">Statute Information | 2252</h2>
+                  <fieldset id="to2252">
                         <?php echo $this->Form->input('S2252', array('label' => 'Statute 2252', 'type' => 'checkbox')); ?>
                         <?php echo $this->Form->input('Counts2252', array('label' => 'Counts', 'type' => 'text')); ?>
                         <?php echo $this->Form->input('CountsNP2252', array('label' => 'Counts Nolle Prossed', 'type' => 'text')); ?>
@@ -215,10 +231,14 @@
                         <?php echo $this->Form->input('Fines2252', array('label' => 'Fines Levied', 'type' => 'text')); ?>
                         <?php echo $this->Form->input('Sent2252', array('label' => 'Number of Months Sentenced Under Statute', 'type' => 'text')); ?>
                         <?php echo $this->Form->input('Prob2252', array('label' => 'Number of Months Under Probation Under Statute', 'type' => 'text')); ?>
+                        <hr style="border-top:1px solid #CCC;">
+                        <input type="button" name="previous" onclick="goto1592_()" class="action-button" value="Statute 1592" />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="button" name="next" onclick="goto2260()" class="action-button" value="Statute 2260" />
                   </fieldset>
 
-                  <h2 id="1028_title" class="fieldset_title">Statute Information | 2260</h2>
-                  <fieldset id="">
+                  <h2 id="2260_title" class="fieldset_title">Statute Information | 2260</h2>
+                  <fieldset id="to2260">
                         <?php echo $this->Form->input('S2260', array('label' => 'Statute 2260', 'type' => 'checkbox')); ?>
                         <?php echo $this->Form->input('Counts2260', array('label' => 'Counts', 'type' => 'text')); ?>
                         <?php echo $this->Form->input('CountsNP2260', array('label' => 'Counts Nolle Prossed', 'type' => 'text')); ?>
@@ -229,10 +249,14 @@
                         <?php echo $this->Form->input('Fines2260', array('label' => 'Fines Levied', 'type' => 'text')); ?>
                         <?php echo $this->Form->input('Sent2260', array('label' => 'Number of Months Sentenced Under Statute', 'type' => 'text')); ?>
                         <?php echo $this->Form->input('Prob2260', array('label' => 'Number of Months Under Probation Under Statute', 'type' => 'text')); ?>
+                        <hr style="border-top:1px solid #CCC;">
+                        <input type="button" name="previous" onclick="goto2252_()" class="action-button" value="Statute 2252" />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="button" name="next" onclick="goto2421()" class="action-button" value="Statute 2421" />
                   </fieldset>
 
-                  <h2 id="1028_title" class="fieldset_title">Statute Information | 2421-2424</h2>
-                  <fieldset id="">
+                  <h2 id="2421_title" class="fieldset_title">Statute Information | 2421-2424</h2>
+                  <fieldset id="to2421">
                         <?php echo $this->Form->input('S2421to2424', array('label' => 'Statute 2421to2424', 'type' => 'checkbox')); ?>
                         <?php echo $this->Form->input('Counts2421to2424', array('label' => 'Counts', 'type' => 'text')); ?>
                         <?php echo $this->Form->input('CountsNP2421to2424', array('label' => 'Counts Nolle Prossed', 'type' => 'text')); ?>
@@ -243,10 +267,14 @@
                         <?php echo $this->Form->input('Fines2421to2424', array('label' => 'Fines Levied', 'type' => 'text')); ?>
                         <?php echo $this->Form->input('Sent2421to2424', array('label' => 'Number of Months Sentenced Under Statute', 'type' => 'text')); ?>
                         <?php echo $this->Form->input('Prob2421to2424', array('label' => 'Number of Months Under Probation Under Statute', 'type' => 'text')); ?>
+                        <hr style="border-top:1px solid #CCC;">
+                        <input type="button" name="previous" onclick="goto2260_()" class="action-button" value="Statute 2260" />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="button" name="next" onclick="goto1324()" class="action-button" value="Statute 1324" />
                   </fieldset>
 
-                  <h2 id="1028_title" class="fieldset_title">Statute Information | 1324</h2>
-                  <fieldset id="">
+                  <h2 id="1324_title" class="fieldset_title">Statute Information | 1324</h2>
+                  <fieldset id="to1324">
                         <?php echo $this->Form->input('S1324', array('label' => 'Statute 1324', 'type' => 'checkbox')); ?>
                         <?php echo $this->Form->input('Counts1324', array('label' => 'Counts', 'type' => 'text')); ?>
                         <?php echo $this->Form->input('CountsNP1324', array('label' => 'Counts Nolle Prossed', 'type' => 'text')); ?>
@@ -257,10 +285,14 @@
                         <?php echo $this->Form->input('Fines1324', array('label' => 'Fines Levied', 'type' => 'text')); ?>
                         <?php echo $this->Form->input('Sent1324', array('label' => 'Number of Months Sentenced Under Statute', 'type' => 'text')); ?>
                         <?php echo $this->Form->input('Prob1324', array('label' => 'Number of Months Under Probation Under Statute', 'type' => 'text')); ?>
+                        <hr style="border-top:1px solid #CCC;">
+                        <input type="button" name="previous" onclick="goto2421_()" class="action-button" value="Statute 2421" />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="button" name="next" onclick="goto1328()" class="action-button" value="Statute 1328" />
                   </fieldset>
 
-                  <h2 id="1028_title" class="fieldset_title">Statute Information | 1328</h2>
-                  <fieldset id="">
+                  <h2 id="1328_title" class="fieldset_title">Statute Information | 1328</h2>
+                  <fieldset id="to1328">
                         <?php echo $this->Form->input('S1328', array('label' => 'Statute 1328', 'type' => 'checkbox')); ?>
                         <?php echo $this->Form->input('Counts1328', array('label' => 'Counts', 'type' => 'text')); ?>
                         <?php echo $this->Form->input('CountsNP1328', array('label' => 'Counts Nolle Prossed', 'type' => 'text')); ?>
@@ -272,7 +304,7 @@
                         <?php echo $this->Form->input('Sent1328', array('label' => 'Number of Months Sentenced Under Statute', 'type' => 'text')); ?>
                         <?php echo $this->Form->input('Prob1328', array('label' => 'Number of Months Under Probation Under Statute', 'type' => 'text')); ?>
                         <hr style="border-top:1px solid #CCC;">
-                        <input type="button" name="previous" onclick="goToStat1324()" class="action-button" value="Statute 1324" />
+                        <input type="button" name="previous" onclick="goto1324_()" class="action-button" value="Statute 1324" />
                   </fieldset>
                   <?php echo $this->Form->end('Next'); ?>
               </div>
@@ -282,53 +314,4 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
-      //-----SHOW/HIDE FROM 1961-----//
-      function goto1028() {      
-            // Hide Current Fieldset //
-            $('#1961_title').hide('slow');
-            $('#to1961').hide('slow');
-
-            // Show New Fieldset //
-            $('#1028_title').show('slow');
-            $('#to1028').show('slow');
-      }
-      //-----SHOW/HIDE FROM 1028-----//
-      function goto1961() { //Previous Button From Statute 1028    
-            // Hide Current Fieldset //
-            $('#1028_title').hide('slow');
-            $('#to1028').hide('slow');
-
-            // Show New Fieldset //
-            $('#1961_title').show('slow');
-            $('#to1961').show('slow');
-      }
-      function goto1351() { //Next Button From Statute 1028
-            // Hide Current Fieldset //
-            $('#1028_title').hide('slow');
-            $('#to1028').hide('slow');
-
-            // Show New Fieldset //
-            $('#1351_title').show('slow');
-            $('#to1351').show('slow');
-      }
-      //-----SHOW/HIDE FROM 1351-----//
-      function goto1028_() { //Previous Button From Statute 1028   
-            // Hide Current Fieldset //
-            $('#1351_title').hide('slow');
-            $('#to1351').hide('slow');
-
-            // Show New Fieldset //
-            $('#1028_title').show('slow');
-            $('#to1028').show('slow');
-      }
-      function goto1425() { //Next Button From Statute 1028
-            // Hide Current Fieldset //
-            $('#1351_title').hide('slow');
-            $('#to1351').hide('slow');
-
-            // Show New Fieldset //
-            $('#1425_title').show('slow');
-            $('#to1425').show('slow');
-      }
-</script>
+<?php echo $this->Html->script(array('statutes_slider'));?>

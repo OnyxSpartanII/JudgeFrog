@@ -1,6 +1,6 @@
 <?php
     echo $this->Html->css(array('dataTables.bootstrap', 'dataTables.responsive'));
-    echo $this->Html->script(array('jquery-1.10.2', 'jquery.dataTables.min', 'dataTables.responsive.min', 'dataTables.bootstrap', 'dataTables.fixedHeader.min'));
+    echo $this->Html->script(array('jquery-1.10.2.min', 'jquery.dataTables.min', 'dataTables.responsive.min', 'dataTables.bootstrap', 'dataTables.fixedHeader.min'));
 ?>
 <script type="text/javascript" charset="utf-8">
   $(document).ready(function() {
@@ -14,27 +14,14 @@
 <div class="contact">
     <div class="container">
         <div class="contact-main">
-          <h3 class="page_title">Case Edition</h3>
+          <h3 class="page_title">Case Editing</h3>
               
                 <div class="col-md-12 contact-right">
                   <!-- TOP EDIT SELECTED CASE BAR --> 
-                     <!-- DELETE CASE BUTTON-->
                       <div class="top_bar col-md-8">
-                        <div title="Delete selected case" style="float:left; margin-top:30px">
-                          <label for="submitForm" class="user_button">
-                          <?php echo $this->Html->image('delete_case.png', array('alt' => 'Delete Case')); ?>
-                          </label>
-                        </div>
                         <div class="top_bar_dash">
                           <h4>ALL DATABASE CASES</h4>
                         </div>
-                          <!-- EDIT CASE BUTTON-->
-                          <div title="Edit selected case">
-                            <label for="deleteBtn" class="user_button" >
-                              <?php echo $this->Html->image('edit_case.png', array('alt' => 'Edit Case', 'style' => 'float:left; padding: 10px 8px 8px 0px;' )); 
-                              ?>
-                            </label>
-                          </div>
                       </div>
                         <?php
                           $servername = "oyster.arvixe.com";
@@ -55,25 +42,26 @@
                                 echo "<table class='table table-striped table-bordered' id='cases_table'>";
                                 echo"      <thead>";
                                 echo"        <tr>";
-                                echo"          <th class='mobile'></th>";
                                 echo"          <th class='always first_th'>Case Name</th>";
                                 echo"          <th class='desktop'>Case Number</th>";
                                 echo"          <th class='desktop'>Judge Name</th>";
                                 echo"          <th class='min-tablet'>State</th>";
-                                echo"          <th class='min-tablet'>Author's Name</th>";
+                                echo"          <th class='always special_th'>Actions</th>";
+                                echo"          <th class='none'>Author's Name</th>";
                                 echo"          <th class='none'>Number of Defendant</th>";
                                 echo"          <th class='none'>Modified Date</th>";
                                 echo"        </tr>";
                                 echo"      <thead>";
                                 echo "<tbody>";
                               while($row = $result->fetch_assoc()) {
-                                  // echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
                                 echo "  <tr>";
-                                echo "      <td></td>";
-                                echo "      <td> " ."&nbsp;&nbsp;<input type='radio' name='case' checked value=' ".$row['CaseNam']." '>  &nbsp;&nbsp;" .$row['CaseNam']. "</td>";
+                                echo "      <td> ".$row['CaseNam']. "</td>";
                                 echo "      <td> ".$row['CaseNum']." </td>";
                                 echo "      <td> ".$row['JudgeName']." </td>";
                                 echo "      <td> ".$row['State']." </td>";
+                                echo "      <td> ".$this->Html->link('Edit', '/admin/cases/edit/'.$row['CaseNum']) . '&nbsp/&nbsp;'
+                                                  .$this->Html->link('Delete', '/delete_case/'.$row['CaseNum'], array('onclick'=> 'return confirm("Are you sure you want to delete?")'));
+                                            "</td>";
                                 echo "      <td> ".$row['author']." </td>";
                                 echo "      <td> ".$row['NumDef']." </td>";
                                 echo "      <td> ".$row['modified']." </td>";
@@ -112,6 +100,7 @@ th{background-color:#999;color:#fff;
     text-align: left;}
 td{text-align: left;
     min-width: 20px;}
+.special_th{background-color: #4D1979}
 .first_th{text-align: center;}
 #collapsible-panels .table h2, input {
   width: 10%;

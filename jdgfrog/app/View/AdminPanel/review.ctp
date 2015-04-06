@@ -7,7 +7,7 @@
         <div class="contact-main">
           <h3 class="page_title">Review Case</h3>
               <div class="col-md-4 contact-right">
-                <!-- TOP CREATE A NEW USER BAR -->
+                <!-- TOP PENDING CASE BAR -->
                   <div class="top_bar col-md-4">
                     <div class="top_bar_left">
                       <h4>PENDING CASE(S)</h4>

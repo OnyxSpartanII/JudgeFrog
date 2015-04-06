@@ -27,10 +27,10 @@
                           echo $this->Form->input('AdultSexTraf', array('type' => 'checkbox', 'label' => 'Adult Sex Trafficking'));
                           echo $this->Form->input('MinorSexTraf', array('type' => 'checkbox', 'label' => 'Minor Sex Trafficking'));
                           echo "<hr style = 'border-top:1px solid #DCDCDC'>";
-                          echo $this->Form->input('NumVic', array('type' => 'number', 'placeholder' => '7', 'label' => 'Number of Victims'));
-                          echo $this->Form->input('NumVicMinor', array('type' => 'number', 'placeholder' => '4', 'label' => 'Number of Minor Victims'));
-                          echo $this->Form->input('NumVicForeign', array('type' => 'number', 'placeholder' => '1', 'label' => 'Number of Foreign Victims'));
-                          echo $this->Form->input('NumVicFemale', array('type' => 'number', 'placeholder' => '2', 'label' => 'Number of Female Victims')); 
+                          echo $this->Form->input('NumVic', array('type' => 'text', 'placeholder' => '7', 'label' => 'Number of Victims'));
+                          echo $this->Form->input('NumVicMinor', array('type' => 'text', 'placeholder' => '4', 'label' => 'Number of Minor Victims'));
+                          echo $this->Form->input('NumVicForeign', array('type' => 'text', 'placeholder' => '1', 'label' => 'Number of Foreign Victims'));
+                          echo $this->Form->input('NumVicFemale', array('type' => 'text', 'placeholder' => '2', 'label' => 'Number of Female Victims')); 
                           ?>
                       </fieldset>
                         <?php echo $this->Form->end('Next'); ?>

@@ -36,18 +36,15 @@
                       <fieldset>
                       <?php echo $this->Form->create('CaseSession'); ?>
                       <?php 
-                        echo $this->Form->input('DateTerm', array('label' => 'Case\'s Termination Date','required', 'id' => 'termDate', 'type' => 'text'));
-                        echo $this->Form->input('SentDate', array('label' => 'Sentencing Date','required', 'class' => 'datepicker date', 'type' => 'text', 'data-date' => '12-02-2012', 'data-date-format' => 'dd-mm-yyyy'));
-                        echo $this->Form->input('TotalSentence', array('type' => 'number', 'label' => 'Total Number of Months Sentenced'));
-                        echo $this->Form->input('Restitution', array('type' => 'number', 'label' => 'Amount Required to Pay For Restitution'));
-                        echo "<br>";echo "<br>";echo "<br>";echo "<br>";
-                        echo "<br>";echo "<br>";echo "<br>";echo "<br>";
-                        echo "<br>";echo "<br>";echo "<br>";
+                        echo $this->Form->input('DateTerm', array('label' => 'Case\'s Termination Date', 'id' => 'termDate', 'type' => 'text'));
+                        echo $this->Form->input('SentDate', array('label' => 'Sentencing Date', 'class' => 'datepicker date', 'type' => 'text', 'data-date' => '12-02-2012', 'data-date-format' => 'dd-mm-yyyy'));
+                        echo $this->Form->input('TotalSentence', array('type' => 'text', 'label' => 'Total Number of Months Sentenced'));
+                        echo $this->Form->input('Restitution', array('type' => 'text', 'label' => 'Amount Required to Pay For Restitution'));
                         echo "<hr style = 'border-top:1px solid #DCDCDC'>";
                         echo $this->Form->input('AssetForfeit', array('type' => 'text', 'label' => 'Assets Forfeited?', 'type' => 'checkbox'));
                         echo $this->Form->input('Appeal', array('type' => 'text', 'label' => 'Appeal Pending?', 'type' => 'checkbox'));
-                        echo $this->Form->input('SupRelease', array('type' => 'number', 'label' => 'Number of Months Under Supervised Release'));
-                        echo $this->Form->input('Probation', array('type' => 'number', 'label' => 'Total Number of Months Under Probation')); 
+                        echo $this->Form->input('SupRelease', array('type' => 'text', 'label' => 'Number of Months Under Supervised Release'));
+                        echo $this->Form->input('Probation', array('type' => 'text', 'label' => 'Total Number of Months Under Probation')); 
                       ?>
                     </fieldset>
                       <?php echo $this->Form->end('Next'); ?>

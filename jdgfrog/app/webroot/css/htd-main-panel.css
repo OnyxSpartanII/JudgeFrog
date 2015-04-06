@@ -211,7 +211,6 @@ span.b {
 #content{
 	text-align:center;
 	padding-top:0.5em;
-	padding-bottom: 4em;
 	position:relative;
 	margin-bottom: 200px;
 	position: relative;
@@ -874,9 +873,6 @@ textarea {
 	 -webkit-transition: all 0.3s ease-in-out;
 	 -moz-transition: all 0.3s ease-in-out;
 	 -o-transition: all 0.3s ease-in-out;
-}
-.text input[type="submit"]:active {
-    margin-top: 8px;
 }
  ul.imagesprit li a span{
 	    background:url(../images/ftr-icons.png)no-repeat;

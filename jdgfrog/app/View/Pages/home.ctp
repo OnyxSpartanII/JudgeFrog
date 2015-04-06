@@ -260,26 +260,6 @@
 		  	 	  	     </div>
 		  	 	  	   </div>
 		  	 	  	  </div>
-
-	  	 	  	<div class="col-md-12 job-left">
-	  	 				<h3>Helpful Information</h3>
-	  	 	  	    <div class="more_info" >
-	  	 	  	  			<div class="col-md-5 job-left help hvr-float-shadow" style="font-weight:normal; background-color:#4D1979; color:#fff; margin-right:10px; margin-bottom:10px;">
-	  	 	  	  				<h4 >Need Help? | Want to Report a Case?</h4>
-	  	 	  	  					<strong>The National Institute:</strong>
-	  	 	  	  			</div>
-	  	 	  	  			<div class="col-md-5 job-left more hvr-float-shadow" style="font-weight:normal; background-color:#999; color:#fff;">
-			  	 	  	  			<h4>More Facts About Human Trafficking</h4>
-			        			<!-- <iframe class="myIframe" width="100%" src="//www.youtube.com/embed/J4ztDU-yr74?showinfo=0&autohide=1&loop=1&playlist=J4ztDU-yr74" frameborder="0" allowfullscreen></iframe> -->
-	  	 	  	  			</div>
-	  	 	  	     </div>
-	  	 	  	 </div>
-	  	 	  </div>
-	  	 	  <div class="job-bottom">
-	  	 	  	    <div class="col-md-3 job-column">
-            			<!-- ADD SOME OTHER CONTENT HERE -->
-	   	 	  	    </div>
-	  	 	  	    <div class="clearfix"> </div>
 	  	 	  </div>
 	  	</div>
 	<!-- </div> -->

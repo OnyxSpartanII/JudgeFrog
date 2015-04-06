@@ -16,9 +16,6 @@
     -moz-transition: all 0.3s ease-in;
     -o-transition: all 0.3s ease-in;
 }
-.user_button:active {
-    margin-top: 8px;
-}
 .login_details h1 {
     background-color: #4D1979; color: #FFF;
     width: 50px;
@@ -86,9 +83,6 @@
     -moz-transition: all 0.3s ease-in;
     -o-transition: all 0.3s ease-in;
 }
-.publish_button:active{
-    margin-bottom: 5px;
-}
 .error-message{
     font-size: 15px;
     color: #FE2232;
@@ -148,9 +142,6 @@ table.pending_case {width:100%;border:1px solid #999;}
      -webkit-transition: all 0.3s ease-in-out;
      -moz-transition: all 0.3s ease-in-out;
      -o-transition: all 0.3s ease-in-out;
-}
-.upload_section input[type="submit"]:active{
-    margin-top: 8px;
 }
 
 /*======================*/
@@ -261,10 +252,6 @@ table.pending_case {width:100%;border:1px solid #999;}
      -moz-transition: all 0.3s ease-in-out;
      -o-transition: all 0.3s ease-in-out;
 }
-.case_creation_form input[type="submit"]:active{
-        margin-left: 10px;
-}
-
 .case_creation_bottom input[type="submit"]{
     display: inline;
 }

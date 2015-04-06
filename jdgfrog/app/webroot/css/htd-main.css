@@ -196,7 +196,6 @@ span.b {
 #content{
 	text-align:center;
 	padding-top:0.5em;
-	padding-bottom: 4em;
 	position:relative;
 	margin-bottom: 200px;
 	position: relative;
@@ -642,8 +641,6 @@ iframe{
 }
 .helpful_section{
 	padding-top: 50px;
-	padding-bottom: 100px;
-	border-bottom: 1px solid rgba(75,75,75,0.4);
 
 }
 
@@ -864,9 +861,6 @@ p.m_6 {
 	 -webkit-transition: all 0.3s ease-in-out;
 	 -moz-transition: all 0.3s ease-in-out;
 	 -o-transition: all 0.3s ease-in-out;
-}
-.text input[type="submit"]:active {
-    margin-top: 10px;
 }
  ul.imagesprit li a span{
 	    background:url(../images/ftr-icons.png)no-repeat;

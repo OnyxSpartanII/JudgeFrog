@@ -79,8 +79,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	 	        			<li><a class="<?php echo ($this->fetch('active') == 'home') ? 'active' : ''; ?>" <?php echo $this->Html->link('Home', '/home'); ?></a></li>
 	 	        			<li><a class="<?php echo ($this->fetch('active') == 'about') ? 'active' : ''; ?>" <?php echo $this->Html->link('About', '/about'); ?></a></li>
 	 	        			<li><a class="<?php echo ($this->fetch('active') == 'search') ? 'active' : ''; ?>" <?php echo $this->Html->link('Search The Database', '/search'); ?></a></li>
-	 	        			<li><a class="<?php echo ($this->fetch('active') == 'additionalResources') ? 'active' : ''; ?>" <?php echo $this->Html->link('Additional Resources', '/additionalResources'); ?></a></li>
-	 	        			<li><a class="<?php echo ($this->fetch('active') == 'contact') ? 'active' : ''; ?>" <?php echo $this->Html->link('Contact Us', '/contact'); ?></a></li>
+	 	        			<li><a class="<?php echo ($this->fetch('active') == 'contact') ? 'active' : ''; ?>" <?php echo $this->Html->link('Contact', '/contact'); ?></a></li>
 	 	        		</ul>
 	 	        		 <script>
 	                          $( "span.menu").click(function() {

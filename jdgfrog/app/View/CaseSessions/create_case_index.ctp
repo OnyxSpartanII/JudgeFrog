@@ -54,7 +54,7 @@
                     <!-- TOP DELETE SELECTED USER BAR -->
                       <div class="top_bar col-md-8">
                         <div class="top_bar_dash"  style="float:none; text-align:center">
-                          <h4>ONGOING CASES</h4>
+                          <h4>CASES PENDING COMPLETION</h4>
                         </div>
                         <!-- CREATE BUTTON-->
                         <div title="Click here to begin." style="margin-top: 0px;">
@@ -67,6 +67,7 @@
                         </div>
                     </div>
                     <div class="upload_section">
+
                         <?php
                             $servername = "oyster.arvixe.com";
                             $username = "jdgfrog_testDB";
@@ -78,7 +79,9 @@
                             if ($conn->connect_error) {
                                 die("Connection failed: " . $conn->connect_error);
                             } 
-                            $sql = "SELECT DISTINCT caseNam, caseNum, created FROM DataInProgress";
+                            
+                            $author = AuthComponent::user('id');
+                            $sql = "SELECT DISTINCT caseNam, caseNum, created FROM case_sessions WHERE author = $author ";
                             $result = $conn->query($sql);
 
                             if ($result->num_rows > 0) {
@@ -107,7 +110,7 @@
                                   echo "</table>";
                                 }
                             else {
-                                echo "0 results";
+                                echo "No Opened or Incomplete Cases.";
                             }
 
                             // $delete_query = "DELETE FROM `case_sessions` WHERE `id` = 1";
@@ -122,7 +125,7 @@
         </div>
 </div>
 <div class="search_disclaim" style="margin-top:50px">
-  <p><strong>Note: </strong>Ongoing cases may be completed at anythime.</p>
+  <p><strong>Note: </strong>Ongoing cases may be completed at anytime</p>
 </div>
 <script type="text/javascript">
   $('input[type=file]').bootstrapFileInput();

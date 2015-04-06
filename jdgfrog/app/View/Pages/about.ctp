@@ -26,7 +26,7 @@
                           <ul style="font-size:1.1em; width: 100%;">
                             <li><a href="#about-htd">ABOUT HUMAN TRAFFICKING DATA</a></li>
                             <li><a href="#meth">METHODOLOGY</a></li>
-                            <li><a href="#prin-inv">PRINCIPLE INVESTIGATORS</a></li>
+                            <li><a href="#prin-inv">PRINCIPLE INVESTIGATOR</a></li>
                             <li><a href="#ack">ACKNOWLEDGEMENTS</a></li>
                           </ul>
                               <div id="about-htd">

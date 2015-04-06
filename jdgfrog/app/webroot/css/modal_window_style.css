@@ -55,33 +55,6 @@
 	border-bottom: 1px solid rgba(75,75,75,0.4);
 	box-shadow: 0px 5px 50px 1px #444;
 }
-/*Download Case Details Button*/
-.modal_download{
-	float: left;
-	color: #fff;
-	padding: 10px;
-	margin-top: 2px;
-	background-color: #4D1979;
-	border: 1px solid #fff;
-	color: #fff;
-	text-decoration: none;
-	}
-	.modal_header a{
-		text-decoration: none;
-		color: #fff;
-	}
-	.modal_header a:hover{
-		color: #000;
-		border: 1px solid #fff;
-		background-color: #fff;
-
-	    -webkit-transition: all 0.3s ease-in-out;
-	    -moz-transition: all 0.3s ease-in-out;
-	    -o-transition: all 0.3s ease-in-out;
-	}
-	.modal_download:active {
-		margin-top: 8px;
-	}
 .case_info h4{
 	color: #777;
 	font-weight: bold;

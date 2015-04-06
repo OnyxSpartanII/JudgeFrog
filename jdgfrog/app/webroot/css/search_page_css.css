@@ -53,9 +53,6 @@
     -moz-transition: all 0.3s ease-in;
     -o-transition: all 0.3s ease-in;
 }
-.search_button:active {
-    margin-top: 8px;
-}
 .analyze_button{
     cursor: pointer;
     margin-top: -9px;
@@ -74,9 +71,6 @@
     -o-transition: all 0.3s ease-in;
 }
 .analyze_button label:hover{cursor: pointer;}
-.analyze_button:active {
-    margin-top: 8px;
-}
 /************ANALYZE PAGE SUBMIT BUTTON**************/
 .ana_button{
     margin-top: -29px;
@@ -95,9 +89,6 @@
     -webkit-transition: all 0.3s ease-in;
     -moz-transition: all 0.3s ease-in;
     -o-transition: all 0.3s ease-in;
-}
-.ana_button:active {
-    margin-top: 8px;
 }
 .center_panel{
     /*background-color: #4D1979;*/

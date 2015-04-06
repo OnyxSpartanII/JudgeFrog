@@ -40,6 +40,7 @@
                                 $index++;
                               }
                             }
+                            else {echo "No Pending Cases For Approval.";}
                           ?>
                         </tbody>
                     </table>

@@ -35,6 +35,7 @@
                               die("Connection failed: " . $conn->connect_error);
                           } 
                           $show_cases = "SELECT DISTINCT CaseNam, CaseNum, JudgeName, State, author, NumDef, modified FROM DataInProgress";
+
                           $result = $conn->query($show_cases);
 
                           if ($result->num_rows > 0) {

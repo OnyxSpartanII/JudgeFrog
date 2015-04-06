@@ -257,32 +257,6 @@ $(function() {
     e.preventDefault();
   });
 </script>
-<!-- added by Landon (above) -->
-
-  <!-- SCRIPT FOR THE POPUP FRAME OF SEARCH DETAILS -->
-<script type="text/javascript">
-  //PDF Download Function 
-    $(function(){ 
-        var specialElementHandlers = {
-            '#editor': function (element,renderer) {
-                return true;
-            }
-        };
-     $('.modal_download').click(function () {
-        var doc = new jsPDF();
-            doc.fromHTML($('.modal_content').html(), 15, 15, {
-                'width': 170,
-                'pagesplit': true,
-                'margin':2,
-                'elementHandlers': specialElementHandlers
-            });
-            doc.save('Search_results.pdf');
-      // alert("Download Successful!");
-        });  
-    });
-  //End of PDF Download Fucntion
-</script>
-
 <!-- Table Script to display searched values -->
 <script type="text/javascript">
 
@@ -357,7 +331,6 @@ $(function() {
           if (cases.length > 0) {
             content += '<div class="modal_header">' +
                   '<h2>Case Details</h2>' +
-                  '<a href="#" id="cmd" class="modal_download">Download</a>' + 
                     '<div class="onoffswitch">' +
                       '<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>' +
                       '<label class="onoffswitch-label" for="myonoffswitch">' +

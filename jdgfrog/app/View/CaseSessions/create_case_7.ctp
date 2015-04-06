@@ -23,9 +23,9 @@
                       <?php echo $this->Form->create('CaseSession'); ?>
                       <?php 
                       echo $this->Form->input('OCName1', array('type' => 'text', 'label' => 'Name', 'placeholder' => 'Francis Underwood'));
-                      echo $this->Form->input('OCType1', array('label' => 'Type', 'options' => array('Mom and Pop', 'Street Gang', 'Cartel/Syndicate/Mafia', 'Prison Gang', 'Other')));
-                      echo $this->Form->input('OCRace1', array('label' => 'Race', 'options' => array('White','Black','Hispanic','Asian','Other')));
-                      echo $this->Form->input('OCScope1', array('label' => 'Scope', 'options' => array('Local', 'Trans-State', 'Trans-National')));
+                      echo $this->Form->input('OCType1', array('label' => '', 'options' => array('Mom and Pop', 'Street Gang', 'Cartel/Syndicate/Mafia', 'Prison Gang', 'Other'),'empty'=>'Type'));
+                      echo $this->Form->input('OCRace1', array('label' => '', 'options' => array('White','Black','Hispanic','Asian','Other'),'empty'=>'Race'));
+                      echo $this->Form->input('OCScope1', array('label' => '', 'options' => array('Local', 'Trans-State', 'Trans-National'),'empty'=>'Scope'));
                       ?>
                       <hr style="border-top:1px solid #CCC;">
                       <input type="button" name="previous" onclick="goToOCG2()" class="action-button" value="Next - OCG 2" />
@@ -35,9 +35,9 @@
                       <fieldset id = "ocg_fieldset2">
                       <?php 
                       echo $this->Form->input('OCName2', array('type' => 'text', 'label' => 'Name', 'placeholder' => 'Francis Underwood'));
-                      echo $this->Form->input('OCType2', array('label' => 'Type', 'options' => array('Mom and Pop', 'Street Gang', 'Cartel/Syndicate/Mafia', 'Prison Gang', 'Other')));
-                      echo $this->Form->input('OCRace2', array('label' => 'Race', 'options' => array('White','Black','Hispanic','Asian','Other')));
-                      echo $this->Form->input('OCScope2', array('label' => 'Scope', 'options' => array('Local', 'Trans-State', 'Trans-National')));
+                      echo $this->Form->input('OCType2', array('label' => '', 'options' => array('Mom and Pop', 'Street Gang', 'Cartel/Syndicate/Mafia', 'Prison Gang', 'Other'),'empty'=>'Type'));
+                      echo $this->Form->input('OCRace2', array('label' => '', 'options' => array('White','Black','Hispanic','Asian','Other'),'empty'=>'Race'));
+                      echo $this->Form->input('OCScope2', array('label' => '', 'options' => array('Local', 'Trans-State', 'Trans-National'),'empty'=>'Scope'));
                       ?>
                       <hr style="border-top:1px solid #CCC;">
                       <input type="button" name="previous" onclick="goToOCG1()" class="action-button" value="Back - OCG 1" />

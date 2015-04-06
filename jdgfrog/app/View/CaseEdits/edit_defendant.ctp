@@ -219,8 +219,6 @@
 					<?php echo $this->Form->input('Fines1590', 			array('default' => $case['DataInProgress']['Fines1590'], 'label' => 'Fines Levied', 'type' => 'text')); ?>
 					<?php echo $this->Form->input('Sent1590', 			array('default' => $case['DataInProgress']['Sent1590'], 'label' => 'Number of Months Sentenced Under Statute', 'type' => 'text')); ?>
 					<?php echo $this->Form->input('Prob1590', 			array('default' => $case['DataInProgress']['Prob1590'], 'label' => 'Number of Months Under Probation Under Statute', 'type' => 'text')); ?>
-                        <?php echo $this->Form->input('Sent1590', array('label' => 'Number of Months Sentenced Under Statute', 'type' => 'text', 'type' => 'text')); ?>
-                        <?php echo $this->Form->input('Prob1590', array('label' => 'Number of Months Under Probation Under Statute', 'type' => 'text', 'type' => 'text')); ?>
                         <hr style="border-top:1px solid #CCC;">
                         <input type="button" name="previous" onclick="goto1589_()" class="action-button" value="Statute 1589" />
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

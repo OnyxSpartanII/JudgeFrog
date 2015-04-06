@@ -114,7 +114,7 @@
 
                   <h2 id="1425_title" class="fieldset_title">Statute Information | 1425</h2>
                   <fieldset id="to1425">
-					<?php echo $this->Form->input('S1425', 				array('default' => $case['DataInProgress']['S1425'], 'label' => 'Statute 1425', 'type' => 'checkbox', 'type' => 'text')); ?>
+					<?php echo $this->Form->input('S1425', 				array('default' => $case['DataInProgress']['S1425'], 'label' => 'Statute 1425', 'type' => 'checkbox')); ?>
 					<?php echo $this->Form->input('Counts1425', 		array('default' => $case['DataInProgress']['Counts1425'], 'label' => 'Counts', 'type' => 'text')); ?>
 					<?php echo $this->Form->input('CountsNP1425', 		array('default' => $case['DataInProgress']['CountsNP1425'], 'label' => 'Counts Nolle Prossed', 'type' => 'text')); ?>
 					<?php echo $this->Form->input('PleaDismissed1425', 	array('default' => $case['DataInProgress']['PleaDismissed1425'], 'label' => 'Counts Dismissed', 'type' => 'text')); ?>

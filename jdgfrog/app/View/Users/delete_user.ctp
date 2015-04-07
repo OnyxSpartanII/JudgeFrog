@@ -96,7 +96,8 @@
                                   echo "      <td> ".$row['first_name']." </td>";
                                   echo "      <td> ".$row['last_name']." </td>";
                                   echo "      <td> ".$row['role']." </td>";
-                                  echo "      <td> ".$this->Html->link('Delete', '/Users/delete_user/'.$row['username'], 'Are you sure?');
+                                  echo "      <td> ".$this->Html->link('Delete', '/users/delete', array(
+                                                                        'onclick'=> 'return confirm("Are you sure you want to delete?")'));
                                             "</td>";
                                   echo "  </tr>";
                                   }

@@ -66,36 +66,18 @@ class UsersController extends AppController {
 					
 				}
 		}
+	}
 
-
-		// -----------------------------------------------------------------------------------------------
-		if ($this->request->is('post')) {
-					$this->User->create();
-		    if ($this->request->data['delete_user_form']['deleteform']) {
-
-					$foo = $this->request->data('case');
-
-					$newFoo = trim($foo);
-
-		            $this->User->delete($newFoo, true);
-
-					$this->Session->setFlash(__('User Successfully Deleted!'));
-		        }
-		    else {
-				$this->Session->setFlash(__('Oops something went wrong :( User not deleted!'));
-		    }
+	public function delete_user($username = null){
+		$this->User->delete($username, true);
+		$this->Session->setFlash('User Successfully Deleted!');
+		$this->redirect(array('controller' => 'Users', 'action' => 'create'));
+		    // $row = $this->users->read(null, $username);
+		    // if($this->users->delete($username)) {
+		        // $this->Session->setFlash('User deleted');
+		        // $this->redirect(array('controller' => 'Users', 'action' => 'create'));
+		    // }
 		}
-		// -----------------------------------------------------------------------------------------------
-	}
-
-	public function edit() {
-
-	}
-
-	public function delete() {
-
-		
-}
 
 
 	// Method will generate a one-time use code for use during account creation.

@@ -10,7 +10,6 @@
     new $.fn.dataTable.FixedHeader(caseTable);
 } );
 </script>
-<!--search start here-->
 <div class="contact">
     <div class="container">
         <div class="contact-main">
@@ -56,7 +55,7 @@
                                 echo "<tbody>";
                               while($row = $result->fetch_assoc()) {
                                 echo "  <tr>";
-                                echo "      <td> ".$row['CaseNam']. "</td>";
+                                echo "      <td> &nbsp;".$row['CaseNam']. "</td>";
                                 echo "      <td> ".$row['CaseNum']." </td>";
                                 echo "      <td> ".$row['JudgeName']." </td>";
                                 echo "      <td> ".$row['State']." </td>";

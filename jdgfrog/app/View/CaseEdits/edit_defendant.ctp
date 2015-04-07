@@ -3,7 +3,6 @@
 		$this->set('title', 'Edit Case - Admin Panel | Human Trafficking Data');
 		$this->set('active', 'edit');
 ?>
-<?php echo $this->Html->script(array('fieldset_switcher'));?>
 <!--search start here-->
 <div class="contact">
 		<div class="container">

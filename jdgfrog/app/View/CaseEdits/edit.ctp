@@ -117,9 +117,6 @@
                          ?>	
 					</div>
 				</div>
-					
-					<div class="col-md-6 case_creation_form" style="margin: 20px auto">
-					</div>
 				<div class="col-md-12 search_disclaim case_creation_form" style="margin-top:0px; padding-top:10px; border-top:1px solid #DCDCDC">
 						<div style="max-width:60%;margin: 0 auto"><?php echo $this->Form->end('Submit'); ?></div>
 						<br>

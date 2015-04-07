@@ -53,6 +53,7 @@
 	Router::connect('/uploads', array('controller' => 'uploads', 'action' => 'add'));
 	Router::connect('/download', array('controller' => 'download', 'action' => 'download'));
 
+	Router::connect('/Users/delete_user/:username', array('controller' => 'Users', 'action' => 'delete_user', 'user'=>true), array('pass' => array('username')));
 /**
  * ...and connect the rest of 'Pages' controller's URLs.
  */

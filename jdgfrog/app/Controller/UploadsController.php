@@ -16,7 +16,8 @@ class UploadsController extends AppController {
 
 	public function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow('add','receipt');
+		//Commented the line bellow to exclude add and receipt page from being allowed w/ auth
+		// $this->Auth->allow('add','receipt');
 	}
 
 	public function add() {

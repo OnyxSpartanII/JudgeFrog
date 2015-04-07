@@ -24,8 +24,8 @@
                     <table class="pending_case all_results table table-bordered" id="review_table">
                           <thead>
                               <tr>
-                              <th>Case Name</th>
-                              <th>Editor's Name</th>
+                              <th>Case Number</th>
+                              <th>Editor's ID</th>
                               </tr>
                           </thead>
                           <tbody>

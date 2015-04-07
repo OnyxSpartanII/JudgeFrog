@@ -3,7 +3,6 @@
     $this->set('title', 'Create Case - Admin Panel | Human Trafficking Data');
     $this->set('active', 'create_case');
 ?>
-<?php echo $this->Html->script(array('bootstrap.file-input'));?>
 <?php
     echo $this->Html->css(array('dataTables.bootstrap', 'dataTables.responsive'));
     echo $this->Html->script(array('jquery-1.10.2.min', 'jquery.dataTables.min', 'dataTables.responsive.min', 'dataTables.bootstrap', 'dataTables.fixedHeader.min'));
@@ -171,19 +170,6 @@ td{text-align: left;
         // $welcom.hide('slow', slideUp);
         $welcom.slideUp(800).delay(900).fadeOut(900);
     }, 4000);
-</script>
-<script type="text/javascript">
-    $('#myid').click( function() { 
-    var selectedVal = "";
-    var selected = $("input[type='radio'][name='case']:checked");
-    if (selected.length > 0) {
-        selectedVal = selected.val();
-        alert('The selected case number is' + selectedVal);
-    }
-    else{alert('Select a case');}
-
- });
-
 </script>
 
 

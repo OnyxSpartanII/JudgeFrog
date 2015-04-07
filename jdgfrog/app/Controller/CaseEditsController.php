@@ -16,7 +16,7 @@ class CaseEditsController extends AppController {
 
 	public function index() {
 
-		$this->set('title', 'Edit - Admin Panel | Human Trafficking Data');
+		$this->set('title', 'Case Edit - Admin Panel | Human Trafficking Data');
 		$this->layout = 'admin_panel_layout';
 		$this->set('active', 'edit');
 		

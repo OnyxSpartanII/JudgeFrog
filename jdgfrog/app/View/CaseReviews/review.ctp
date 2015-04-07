@@ -18,8 +18,18 @@
                 <!-- TOP CREATE A NEW USER BAR -->
                   <div class="top_bar col-md-5">
                     <div class="top_bar_left">
-                      <h4>CASES PENDING APPROVAL</h4>
-                    </div> 
+                      <h4>CASES PENDING REVIEW</h4>
+                    </div>
+                      <!-- PENDING BUTTON-->
+                      <div title="Click here to edit the selected case." style="margin-top: 19px;">
+                        <label for="" class="user_button">
+                          <?php
+                          echo $this->Html->link(
+                              $this->Html->image("create_case.png", array("alt" => "Edit Case", 'style' => 'float:left; padding: 10px 6px 8px 0px;')),
+
+                              "/AdminPanel/edit", array('escape' => false, 'id' => 'edit_case')); ?> 
+                        </label>
+                      </div>   
                   </div>
                     <table class="pending_case all_results table table-bordered" id="review_table">
                           <thead>

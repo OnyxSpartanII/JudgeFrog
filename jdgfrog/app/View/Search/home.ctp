@@ -297,7 +297,7 @@ $(function() {
               if ($case[5] == '1') {
                 $type .= 'M';
               }
-              echo 'data.addRow(["' . $case[0] . '", "' . $case[1] . '", "' . explode('-', $case[2])[0] . '", "' . $type . '", {v: '. $case[6] .'}]);'; 
+              echo 'data.addRow(["' . $case[0] . '", "' . $case[1] . '", "' . explode('-', $case[2])[0] . '", "' . $type . '", {v: '. $case[6] .'}]);' . "\n"; 
             }
           }
         ?>
@@ -318,8 +318,8 @@ $(function() {
           pagingSymbols: {
             prev: 'Prev',
             next: 'Next'
-        },
-        pagingButtonsConfiguration: 'auto'
+          },
+          pagingButtonsConfiguration: 'auto'
         });
 
         google.visualization.events.addListener(table, 'select', function () {

@@ -99,7 +99,7 @@
         index = $(this).attr('id');
         console.log('Displaying ' + index);
           $.ajax({                   
-              url: '/jdgfrog/CaseReviews/generateTable/' + index,
+              url: '/CaseReviews/generateTable/' + index,
               cache: false,
               type: 'GET',
               dataType: 'HTML',
@@ -112,7 +112,7 @@
                     $(this).toggleClass('clicked', 'slow');
                   });
                   $('.selected_case').show(50);
-                  $('#edit_case').attr('href', '/jdgfrog/admin/cases/edit/' + p_cases[index][0]);
+                  $('#edit_case').attr('href', '/admin/cases/edit/' + p_cases[index][0]);
               }
           });
       } else {
@@ -126,7 +126,7 @@
 
       $('#publish_button').click(function(){
         $.ajax({
-          url: '/jdgfrog/CaseReviews/publishCase/' + index,
+          url: '/CaseReviews/publishCase/' + index,
           cache: false,
           type: 'GET',
           dataType: 'HTML',

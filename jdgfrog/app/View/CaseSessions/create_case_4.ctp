@@ -55,5 +55,4 @@ $(function() {
 					<p><strong>*Note: </strong>All fields are required</p>
 				</div>
 		</div>
->>>>>>> Stashed changes
 </div>

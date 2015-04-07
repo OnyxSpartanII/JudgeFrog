@@ -39,7 +39,7 @@ $(function() {
 													echo $this->Form->input('DefRace', array('label' => '', 'empty' => 'Race', 'options' => array('0' => 'White', '1' => 'Black', '2' => 'Hispanic', '3' => 'Asian', '4' => 'Other')));
 													echo $this->Form->input('DefGender', array('label' => '', 'options' => array('0' => 'Male', '1' => 'Female'), 'empty' => 'Gender'));
 													echo $this->Form->input('DefBirthdate', array('type' => 'text', 'placeholder' => '1986', 'label' => 'Defendant\'s Birth Year'));
-													echo $this->Form->input('DefArrestAge', array('type' => 'text', 'placeholder' => '1986', 'label' => 'Defendant\'s Age At Arrest', 'data-date' => '2012' 'data-date-format' => 'yyyy', 'id' => 'defArrAge'));
+													echo $this->Form->input('DefArrestAge', array('type' => 'text', 'placeholder' => '1986', 'label' => 'Defendant\'s Age At Arrest', 'data-date' => '2012', 'data-date-format' => 'yyyy', 'id' => 'defArrAge'));
 													echo $this->Form->input('Alias', array('label' => '', 'placeholder' => 'Enter defendant aliases separated by commas.'));
 													?>
 											</fieldset>

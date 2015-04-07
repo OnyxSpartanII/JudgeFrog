@@ -40,7 +40,7 @@ class CaseSessionsController extends AppController {
 		$this->Session->write('form.params.steps', $steps);
 		$this->Session->write('form.params.stepProgress', 0);
 		$this->CaseSession->create();
-		$this->redirect(array('action' => 'create_case', 1));
+		$this->redirect('/admin/cases/create_case/1');
 	}
 
 	/**
@@ -224,7 +224,7 @@ class CaseSessionsController extends AppController {
 					$index = 0;
 					$modifiedData = array();
 					//debug($data);
-					$this->CaseSession->deleteAll(array('CaseSession.session_id' => $this->Session->read('form.params.sessionId', false)));
+					//$this->CaseSession->deleteAll(array('CaseSession.session_id' => $this->Session->read('form.params.sessionId', false)));
 					foreach ($data as &$d) {
 						unset($d['CaseSession']['session_id']);
 						unset($d['CaseSession']['current_step']);
@@ -236,7 +236,7 @@ class CaseSessionsController extends AppController {
 
 					debug($data);
 					$this->DataInProgress->clear();
-					$this->DataInProgress->saveMany($modifiedData, array('validate' => false));
+					$this->DataInProgress->saveMany($data, array('validate' => false));
 					//$this->redirect(array('controller' => 'CaseReviews', 'action' => 'review'));
 				}
 

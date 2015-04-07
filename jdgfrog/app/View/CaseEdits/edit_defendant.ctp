@@ -355,9 +355,13 @@
                         <input type="button" name="previous" onclick="goto1324_()" class="action-button" value="Statute 1324" />
                   </fieldset>
 					</div>
-				<div class="case_creation_form" id="form_style" style="max-width:50px;">
+				<div class="col-md-12 search_disclaim case_creation_form" style="margin-top:0px; padding-top:10px; border-top:1px solid #DCDCDC">
+					<div style="max-width:60%;margin: 0 auto">
 					<?php echo $this->Form->submit('Submit', array('/admin/cases/edit'.$case['DataInProgress']['CaseNum'])); ?>
 					<?php echo $this->Form->end(); ?>
+						<br>
+					<p><strong>*Note: </strong>Not all fields are required</p>
+					</div>
 				</div>
 			</div>	
 		</div>

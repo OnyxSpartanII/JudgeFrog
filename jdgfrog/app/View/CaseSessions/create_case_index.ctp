@@ -102,7 +102,7 @@
                                   echo "      <td> ".$row['caseNum']." </td>";
                                   echo "      <td> ".$row['created']." </td>";
                                   echo "      <td> ".$this->Html->link('Edit', '/admin/cases/edit/'.$row['caseNum']) . '&nbsp/&nbsp;'
-                                                    .$this->Html->link('Delete', '/delete_case/'.$row['caseNum'], array('onclick'=> 'return confirm("Are you sure you want to delete?")'));
+                                                    .$this->Html->link('Delete', '/admin/delete_case/'.$row['caseNum'], array('onclick'=> 'return confirm("Are you sure you want to delete?")'));
                                        "</td>";
                                   echo "  </tr>";
                                   }
@@ -110,7 +110,7 @@
                                   echo "</table>";
                                 }
                             else {
-                                echo "No Opened or Incomplete Cases.";
+                                echo "You have no opened or incomplete cases.";
                             }
 
                             // $delete_query = "DELETE FROM `case_sessions` WHERE `id` = 1";

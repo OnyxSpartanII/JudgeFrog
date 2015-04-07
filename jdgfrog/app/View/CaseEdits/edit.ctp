@@ -4,8 +4,16 @@
 		$this->set('active', 'edit');
 ?>
 <?php
-    echo $this->Html->script(array('fieldset_switcher'));
+    echo $this->Html->css(array('dataTables.bootstrap', 'dataTables.responsive'));
+    echo $this->Html->script(array('jquery-1.10.2.min', 'jquery.dataTables.min', 'dataTables.responsive.min', 'dataTables.bootstrap', 'dataTables.fixedHeader.min'));
 ?>
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function() {
+    var caseTable = $('#cases_table').DataTable({
+        responsive: true
+    });
+} );
+</script>
 <!--search start here-->
 <div class="contact">
 		<div class="container">
@@ -19,7 +27,8 @@
 							<div class="progress-bar idle" role="progressbar" style="width:10%">Submit</div>
 						</div>
 					</div>
-					<div class="col-md-5 case_creation_form" id="form_style">
+				<div class="col-md-12">
+					<div class="col-md-5 case_creation_form" id="form_style" style="float:inherit">
 								<h2 id="caseInfoFS_Title">Case &amp; Judge Details</h2>
 							<fieldset id="caseInfoFS">
 							<?php 
@@ -62,36 +71,63 @@
 							?>	
 							<hr style="border-top:1px solid #CCC;">
 							<input type="button" name="previous" onclick="goToCaseInfo()" class="action-button" value="Back" />
-						</fieldset>										
-
-						<?php $i = 0;
-						foreach ($case as $case) { 
+						</fieldset>	
+					</div>									
+					<div class="col-md-7 case_creation_form" id="form_style" style="float:inherit">
+                      <div class="top_bar col-md-7">
+                        <div class="top_bar_dash">
+                          <h4>CASE DEFENDANT(S)</h4>
+                        </div>
+                      </div>
+						<?php 
+                                echo "<table class='table table-striped table-bordered' id='cases_table'>";
+                                echo"      <thead>";
+                                echo"        <tr>";
+                                echo"          <th class='desktop first_th'>Last Name</th>";
+                                echo"          <th class='desktop'>First Name</th>";
+                                echo"          <th class='always special_th'>Actions</th>";
+                                echo"        </tr>";
+                                echo"      <thead>";
+                                echo "<tbody>";
+                                
+                                $i = 0;
+								foreach ($case as $case) { 
 						?>
-
-						<?php 	echo 'Defendant '.++$i; ?>
-						<?php	echo $case['DataInProgress']['DefLast'];
-						echo ', ';
-						echo $case['DataInProgress']['DefFirst']; ?>
-						<?php 	echo $this->Html->link('Edit This Defendant', 
+						<?php 	
+								echo "  <tr>";
+								// echo "		<td> ".++$i ."</td>";
+								echo "		<td> ".$case['DataInProgress']['DefLast']."</td>";
+								echo "		<td> ".$case['DataInProgress']['DefFirst']."</td>";
+								echo "		<td> ".$this->Html->link('Edit', 
 										'/admin/cases/edit/defendant/'.$case['DataInProgress']['DefLast'].'|'.$case['DataInProgress']['DefFirst'].'|'.$case['DataInProgress']['CaseNum'], 
-										array(
-											'controller' => 'CaseEdits', 'action' => 'editDefendant')); ?>
+										array('controller' => 'CaseEdits', 'action' => 'editDefendant')).
+										 '&nbsp/&nbsp;'.$this->Html->link('Delete', '/admin/delete_def/'.$case['DataInProgress']['DefLast'].'|'.$case['DataInProgress']['DefFirst'].'|'.$case['DataInProgress']['CaseNum'], array('onclick'=> 'return confirm("Are you sure you want to delete?")')).
+								"</td>";
+						?>
 						<?php 	//echo $this->Form->input(); ?>
-
-						<?php } ?>
 						<?php //echo $this->Form->submit('Submit', array('confirm' => 'Submit this case for review?')); ?>
-						<?php echo $this->Form->end('Submit'); ?>
-
-
-
+						<?php 
+                                echo "  </tr>";
+                            }   //END OF LOOP
+                                echo "</tbody>";
+                                echo "</table>";
+                          if (count($case) == 0) {
+                              	echo "This case has 0 defendant";
+                          }
+                         ?>	
+					</div>
 				</div>
-				<div class="col-md-12 search_disclaim" style="margin-top:0px; padding-top:10px; border-top:1px solid #DCDCDC">
+					
+					<div class="col-md-6 case_creation_form" style="margin: 20px auto">
+					</div>
+				<div class="col-md-12 search_disclaim case_creation_form" style="margin-top:0px; padding-top:10px; border-top:1px solid #DCDCDC">
+						<div style="max-width:60%;margin: 0 auto"><?php echo $this->Form->end('Submit'); ?></div>
+						<br>
 					<p><strong>*Note: </strong>All fields are required</p>
 				</div>
 		</div>
 	</div>
 </div>
-
 <script type="text/javascript">
 	var caseInfoFS = $('#caseInfoFS');
 	var caseSum = $('#caseSumFS');
@@ -111,3 +147,27 @@
 		$('#caseInfoFS_Title').show('slow');
 	}
 </script>
+<!-- TABLE AND TABLE SELECTION SCRIPT -->
+<style type="text/css">
+.table_container, .dataTables_length, .dataTables_filter{
+  margin-top: 10px;
+  text-align: left;
+}
+table{
+  width:100%;
+  border:1px solid #999;
+  border-collapse:collapse;
+}
+.case{padding: 0px 10px 0px 0px;}
+th{background-color:#999;color:#fff;
+    padding:15px 0px 15px 0px;
+    border-right:1px solid #666;
+    text-align: left;}
+td{text-align: left;
+    min-width: 20px;}
+.special_th{background-color: #4D1979}
+.first_th{text-align: center;}
+#collapsible-panels .table h2, input {
+  width: 10%;
+}
+</style>

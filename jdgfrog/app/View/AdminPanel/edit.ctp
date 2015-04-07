@@ -61,7 +61,7 @@
                                 echo "      <td> ".$row['JudgeName']." </td>";
                                 echo "      <td> ".$row['State']." </td>";
                                 echo "      <td> ".$this->Html->link('Edit', '/admin/cases/edit/'.$row['CaseNum']) . '&nbsp/&nbsp;'
-                                                  .$this->Html->link('Delete', '/delete_case/'.$row['CaseNum'], array('onclick'=> 'return confirm("Are you sure you want to delete?")'));
+                                                  .$this->Html->link('Delete', '/admin/delete_case/'.$row['CaseNum'], array('onclick'=> 'return confirm("Are you sure you want to delete?")'));
                                             "</td>";
                                 echo "      <td> ".$row['author']." </td>";
                                 echo "      <td> ".$row['NumDef']." </td>";

@@ -61,74 +61,64 @@ class CaseSession extends AppModel {
 		),
 /** Session 1 **/
 		'CaseNam' => array(
-			'numeric' => array(
-				'rule' => array('required'),
-				'message' => 'Required',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
+			'alphaNumeric' => array(
+                'rule' => 'alphaNumeric',
+                'required' => true,
+                'message' => 'Required'
+            ),
 		),
 		'CaseNum' => array(
-			'numeric' => array(
-				'rule' => array('required'),
-				'message' => 'Required',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
+			'alphaNumeric' => array(
+                'rule' => 'alphaNumeric',
+                'required' => true,
+                'message' => 'Required'
+            ),
 		),
 		'NumDef' => array(
 			'numeric' => array(
 				'rule' => array('numeric','required'),
-				'message' => 'Required. Please Enter A Number In Number Format',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				'message' => 'Required. Please Enter A Number In Number Format'
 			),
 		),
 /** Session 2 **/
 		'NumVic' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
+			// 'numeric' => array(
+				'rule' => 'numeric',
 				'message' => 'Please Enter A Number In Number Format',
-				'allowEmpty' => true,
+				'allowEmpty' => true
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
+			// ),
 		),
 		'NumVicMinor' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
+			// 'numeric' => array(
+				'rule' => 'numeric',
 				'message' => 'Please Enter A Number In Number Format',
-				'allowEmpty' => true,
+				'allowEmpty' => true
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
+			// ),
 		),
 		'NumVicForeign' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
+			// 'numeric' => array(
+				'rule' => 'numeric',
 				'message' => 'Please Enter A Number In Number Format',
-				'allowEmpty' => true,
+				'allowEmpty' => true
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
+			// ),
 		),
 		'NumVicFemale' => array(
 			'numeric' => array(
-				'rule' => array('numeric'),
+				'rule' => 'numeric',
 				'message' => 'Please Enter A Number In Number Format',
-				'allowEmpty' => true,
+				'allowEmpty' => true
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule

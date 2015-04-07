@@ -10,7 +10,7 @@ class UploadsController extends AppController {
 	/**
 	 * This controller does not use a model
 	 */
-	public $uses = array('DataInProgress');
+	public $uses = array('Datum');
 
 	public $helpers = array('Html', 'Form');
 
@@ -133,12 +133,12 @@ class UploadsController extends AppController {
 					}
 				}
 
-				if ($this->DataInProgress->saveAll($total, array('validate' => 'first'))) {
+				if ($this->Datum->saveAll($total, array('validate' => 'first'))) {
 					array_push($receipt, '<div class="receipt success">Successfully inserted new information into database.');
 					array_push($receipt, 'Added ' + sizeof($total) + ' new rows.');
 				} else {
 					array_push($receipt, '<div class="receipt not_success">Failed to insert new information into database.');
-					$invalid = $this->DataInProgress->invalidFields();
+					$invalid = $this->Datum->invalidFields();
 					$err_rows = array_keys($invalid);
 					foreach ($err_rows as $row) {
 						array_push($receipt, '<div class="receipt-row not_success">Error in row ' . ($row+5));

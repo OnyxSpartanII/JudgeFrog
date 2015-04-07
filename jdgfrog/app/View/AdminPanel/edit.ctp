@@ -71,7 +71,7 @@
                                 echo "</table>";
                               }
                           else {
-                              echo "0 results";
+                              echo "No Case Available to Display";
                           }
                           $conn->close();
                         ?>

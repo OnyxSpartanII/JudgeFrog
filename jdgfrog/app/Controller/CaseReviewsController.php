@@ -360,7 +360,10 @@ class CaseReviewsController extends AppController {
 		foreach ($data as &$d) {
 			$d['Datum'] = $d['DataInProgress'];
 			unset($d['DataInProgress']);
+
+			$this->Session->setFlash('Case Successfully Published!');
 		}		
+
 		$this->Datum->saveMany($data);
 	}
 

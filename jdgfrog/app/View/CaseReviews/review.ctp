@@ -18,7 +18,7 @@
                 <!-- TOP CREATE A NEW USER BAR -->
                   <div class="top_bar col-md-5">
                     <div class="top_bar_left">
-                      <h4>PENDING CASE(S)</h4>
+                      <h4>CASES PENDING APPROVAL</h4>
                     </div> 
                   </div>
                     <table class="pending_case all_results table table-bordered" id="review_table">
@@ -40,7 +40,6 @@
                                 $index++;
                               }
                             }
-                            else {echo "No Pending Cases For Approval.";}
                           ?>
                         </tbody>
                     </table>
@@ -71,18 +70,14 @@
   </div>
 </div>
             <div class="search_disclaim" style="margin-top:200px">
-              <p><strong>Note: </strong>Click on any pending case to deplay its details.</p>
+              <p><strong>Note: </strong>Click on any pending case to display its details.</p>
             </div>
 </div>
 
 <!-- TABLE SELECTION SCRIPT -->
-  <!-- // <script src="https://code.jquery.com/jquery-1.10.2.js"></script> -->
-
 <script type="text/javascript">
-
   var displaying = false;
   var index = -1;
-
   <?php
     if (isset($p_cases)) {
       $jsarr = json_encode($p_cases);
@@ -123,7 +118,6 @@
       }
     });
        // TOGGLE SELECTED DEFENDENT
-
       $('#publish_button').click(function(){
         $.ajax({
           url: '/CaseReviews/publishCase/' + index,
@@ -132,7 +126,29 @@
           dataType: 'HTML',
           success: function () {
             $(this).remove();
+            location.reload();
           }
         });
       });
+</script>
+<!-- SUCCESS BANNER -->
+<style type="text/css">
+  #flashMessage{
+  padding: 40px;
+  font-size: 30px;
+  color: #FFF;
+  -webkit-animation: fadeInDown 1.3s ease-in-out;
+  -moz-transition: fadeInDown 1.3s ease-in-out;
+  animation: fadeInDown 1.3s ease-in-out;
+  border-bottom: 1px solid #999;
+  background-color: #5cb85c;
+  }
+.special_th{background-color: #4D1979}
+</style>
+<script type="text/javascript">
+    var $welcom = $("#flashMessage");
+    setTimeout(function() {
+        // $welcom.hide('slow', slideUp);
+        $welcom.slideUp(800).delay(900).fadeOut(900);
+    }, 4000);
 </script>

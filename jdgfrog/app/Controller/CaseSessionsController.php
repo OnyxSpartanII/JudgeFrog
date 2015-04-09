@@ -310,4 +310,11 @@ class CaseSessionsController extends AppController {
 
 	}
 
+	public function delete_session($CaseNum) {
+		$this->CaseSession->deleteAll(array('CaseSession.caseNum' => $CaseNum), false);
+		$this->Session->setFlash('Case Successfully Deleted!');
+		$this->redirect(array('controller' => 'CaseSessions', 'action' => 'create_case_index'));
+
+	}
+
 }

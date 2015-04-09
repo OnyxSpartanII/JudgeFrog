@@ -60,7 +60,7 @@
                                 echo "      <td> ".$row['JudgeName']." </td>";
                                 echo "      <td> ".$row['State']." </td>";
                                 echo "      <td> ".$this->Html->link('Edit', '/admin/cases/edit/'.$row['CaseNum']) . '&nbsp/&nbsp;'
-                                                  .$this->Html->link('Delete', '/admin/delete_case/'.$row['CaseNum'], array('onclick'=> 'return confirm("Are you sure you want to delete?")'));
+                                                  .$this->Html->link('Delete', '/CaseEdits/delete_case/'.$row['CaseNum'], array('confirm'=>'Are you sure you want to delete this case?'));
                                             "</td>";
                                 echo "      <td> ".$row['author']." </td>";
                                 echo "      <td> ".$row['NumDef']." </td>";
@@ -106,3 +106,10 @@ td{text-align: left;
   width: 10%;
 }
 </style>
+<script type="text/javascript">
+    var $welcom = $("#flashMessage");
+    setTimeout(function() {
+        $welcom.slideUp(800).delay(900).fadeOut(900);
+    }, 4000);
+</script>
+

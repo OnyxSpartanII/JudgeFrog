@@ -31,7 +31,7 @@
 												<?php
 													echo $this->Form->create(null, array(
 														'url' => array('controller' => 'download', 'action' => '') ));
-													echo $this->Form->submit('Download', array('type'=>'image','src' => '/judgefrog/jdgfrog/img/download.png', 'style' => 'float:right; padding: 0px 10px 8px 0px;'));
+													echo $this->Form->submit('Download', array('type'=>'image','src' => '/img/download.png', 'style' => 'float:right; padding: 0px 10px 8px 0px;'));
 													echo $this->Form->end(); 
 													?>
 											</label>
@@ -80,7 +80,7 @@
 														} 
 														
 														$author = AuthComponent::user('id');
-														$sql = "SELECT DISTINCT caseNam, caseNum, created FROM case_sessions WHERE author = $author ";
+														$sql = "SELECT DISTINCT CaseNam, CaseNum, created FROM case_sessions WHERE author = $author ";
 														$result = $conn->query($sql);
 
 														if ($result->num_rows > 0) {
@@ -100,9 +100,9 @@
 																	echo "      <td> ".$row['caseNam']. "</td>";
 																	echo "      <td> ".$row['caseNum']." </td>";
 																	echo "      <td> ".$row['created']." </td>";
-																	echo "      <td> ".$this->Html->link('Edit', '/admin/cases/edit/'.$row['caseNum']) . '&nbsp/&nbsp;'
-																										.$this->Html->link('Delete', '/admin/delete_case/'.$row['caseNum'], array('onclick'=> 'return confirm("Are you sure you want to delete?")'));
-																			 "</td>";
+																	echo "      <td> ".$this->Html->link('Edit', '/admin/cases/edit/'.$row['CaseNum']) . '&nbsp/&nbsp;'
+                                                    									.$this->Html->link('Delete', '/CaseSessions/delete_session/'.$row['CaseNum'], array('confirm'=>'Are you sure you want to delete this case?'));
+                                      									 "</td>";
 																	echo "  </tr>";
 																	}
 																	echo "</tbody>";
@@ -131,48 +131,32 @@
 	$('.file-inputs').bootstrapFileInput();
 </script>
 
-<!-- WELCOME BANNER -->
+<!-- SUCCESS BANNER -->
 <style type="text/css">
-	#flashMessage{
-	padding: 30px;
-	font-size: 25px;
-	color: #FFF;
-	-webkit-animation: fadeInDown 1.3s ease-in-out;
-	-moz-transition: fadeInDown 1.3s ease-in-out;
-	animation: fadeInDown 1.3s ease-in-out;
-	border-bottom: 1px solid #999;
-	background-color: #00BFFF;
-	}
 .table_container, .dataTables_length, .dataTables_filter{
-	margin-top: 10px;
-	text-align: left;
+  margin-top: 10px;
+  text-align: left;
 }
 table{
-	width:100%;
-	border:1px solid #999;
-	border-collapse:collapse;
+  width:100%;
+  border:1px solid #999;
+  border-collapse:collapse;
 }
 .case{padding: 0px 10px 0px 0px;}
 th{background-color:#999;color:#fff;
-		padding:15px 0px 15px 0px;
-		border-right:1px solid #666;
-		text-align: left;}
+    padding:15px 0px 15px 0px;
+    border-right:1px solid #666;
+    text-align: left;}
 td{text-align: left;
-		min-width: 20px;}
-.special_th{background-color: #4D1979}
+    min-width: 20px;}
 .table input {
-	width: 10%;
+  width: 10%;
 }
 </style>
 <script type="text/javascript">
-		var $welcom = $("#flashMessage");
-		setTimeout(function() {
-				// $welcom.hide('slow', slideUp);
-				$welcom.slideUp(800).delay(900).fadeOut(900);
-		}, 4000);
+    var $welcom = $("#flashMessage");
+    setTimeout(function() {
+        $welcom.slideUp(800).delay(900).fadeOut(900);
+    }, 4000);
 </script>
-
-
-
-
 

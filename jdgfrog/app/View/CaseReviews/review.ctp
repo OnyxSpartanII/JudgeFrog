@@ -36,6 +36,7 @@
                               <tr>
                               <th>Case Number</th>
                               <th>Editor's ID</th>
+                              <th class="always special_th">Actions</th>
                               </tr>
                           </thead>
                           <tbody>
@@ -46,6 +47,11 @@
                                 echo '<tr id='.$index.' class="toggle_case">' .
                                 '<td>' . $pc[0] . '</td>' .
                                 '<td>' . $pc[1] . '</td>' .
+                                '<td>' . $this->Html->link('Edit', '/admin/cases/edit/'.$pc[0])
+                                       . '&nbsp/&nbsp;'
+                                       . $this->Html->link('Delete', '/CaseReviews/delete_case/'.$pc[0], 
+                                          array('confirm'=>'Are you sure you want to delete this case?'));
+                                '</td>' .
                                 '</tr>';
                                 $index++;
                               }
@@ -129,36 +135,27 @@
     });
        // TOGGLE SELECTED DEFENDENT
       $('#publish_button').click(function(){
-        $.ajax({
-          url: '/CaseReviews/publishCase/' + index,
-          cache: false,
-          type: 'GET',
-          dataType: 'HTML',
-          success: function () {
-            $(this).remove();
-            location.reload();
+        var confirmDelete = confirm("Are you sure you want to publish this case?");
+        if (confirmDelete==true)
+          {
+              $.ajax({
+                url: '/CaseReviews/publishCase/' + index,
+                cache: false,
+                type: 'GET',
+                dataType: 'HTML',
+                success: function () {
+                  $(this).remove();
+                  location.reload();
+                }
+              });
           }
-        });
+        else{}
       });
 </script>
 <!-- SUCCESS BANNER -->
-<style type="text/css">
-  #flashMessage{
-  padding: 40px;
-  font-size: 30px;
-  color: #FFF;
-  -webkit-animation: fadeInDown 1.3s ease-in-out;
-  -moz-transition: fadeInDown 1.3s ease-in-out;
-  animation: fadeInDown 1.3s ease-in-out;
-  border-bottom: 1px solid #999;
-  background-color: #5cb85c;
-  }
-.special_th{background-color: #4D1979}
-</style>
 <script type="text/javascript">
     var $welcom = $("#flashMessage");
     setTimeout(function() {
-        // $welcom.hide('slow', slideUp);
         $welcom.slideUp(800).delay(900).fadeOut(900);
     }, 4000);
 </script>

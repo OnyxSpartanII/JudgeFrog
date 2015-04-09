@@ -529,6 +529,13 @@ class CaseEditsController extends AppController {
 		}
 
 		echo json_encode($vals);
+	}
+
+	public function delete_case($CaseNum) {
+		$this->Datum->deleteAll(array('Datum.CaseNum' => $CaseNum), false);
+		$this->Session->setFlash('Case Successfully Deleted!');
+		$this->redirect(array('controller' => 'AdminPanel', 'action' => 'edit'));
+
 	}	
 
 }

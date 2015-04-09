@@ -367,6 +367,13 @@ class CaseReviewsController extends AppController {
 		$this->Datum->saveMany($data);
 	}
 
+	public function delete_case($CaseNum) {
+		$this->DataInProgress->deleteAll(array('DataInProgress.CaseNum' => $CaseNum), false);
+		$this->Session->setFlash('Case Successfully Deleted!');
+		$this->redirect(array('controller' => 'CaseReviews', 'action' => 'review'));
+
+	}
+
 }
 
 ?>

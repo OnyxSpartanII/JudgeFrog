@@ -6,7 +6,7 @@ class CaseEditsController extends AppController {
 	public $helpers = array('Html', 'Session');
 	public $components = array('Session', 'Paginator');
 	public $name = 'CaseEdits';
-	public $uses = array('DataInProgress');
+	public $uses = array('DataInProgress', 'Datum');
 
 	public function beforeFilter() {
 		parent::beforeFilter();
@@ -602,7 +602,37 @@ class CaseEditsController extends AppController {
 		}
 
 		echo json_encode($vals);
+	}
+
+	public function delete_case($CaseNum) {
+		$this->Datum->deleteAll(array('Datum.CaseNum' => $CaseNum), false);
+		$this->Session->setFlash('Case Successfully Deleted!');
+		$this->redirect(array('controller' => 'AdminPanel', 'action' => 'edit'));
+
 	}	
+	public function delete_def($defArray) {
+		$string = explode("|", $defArray);
+		if (count($string) == 3) {
+			$defLast = $string[0];
+			$defFirst = $string[1];
+			$caseNumber = $string[2];
+			$case = $this->DataInProgress->find('first', array(
+														'conditions' => array(
+																			'DataInProgress.CaseNum' => $caseNumber, 
+																			'DataInProgress.DefFirst' => $defFirst, 
+																			'DataInProgress.DefLast' => $defLast
+																			),
+														)
+												);
+			$this->DataInProgress->deleteAll(array('DataInProgress.DefFirst' => $defFirst, 'DataInProgress.DefLast' => $defLast), false);
+			$this->Session->setFlash('Defendant Successfully Deleted!');
+			$this->redirect(array('controller' => '/admin/cases', 'action' => 'edit/'.$caseNumber));
+		} else {
+			//Redirect to error page?
+			$this->Session->setFlash('Invalid arguments. Missing defendant name or case number.');
+		}
+
+	}
 
 }
 

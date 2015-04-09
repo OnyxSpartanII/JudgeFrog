@@ -62,14 +62,14 @@ class CaseSession extends AppModel {
 /** Session 1 **/
 		'CaseNam' => array(
 			'alphaNumeric' => array(
-                'rule' => 'alphaNumeric',
+                'rule' => '/[a-zA-Z0-9 ,.\-]+/',
                 'required' => true,
                 'message' => 'Required'
             ),
 		),
 		'CaseNum' => array(
 			'alphaNumeric' => array(
-                'rule' => 'alphaNumeric',
+                'rule' => '/[a-zA-Z0-9:\-,.]+/',
                 'required' => true,
                 'message' => 'Required'
             ),

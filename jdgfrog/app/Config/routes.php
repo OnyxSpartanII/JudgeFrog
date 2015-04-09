@@ -55,7 +55,11 @@
 	Router::connect('/uploads', array('controller' => 'uploads', 'action' => 'add'));
 	Router::connect('/download', array('controller' => 'download', 'action' => 'download'));
 
-	Router::connect('/Users/delete_user/:username', array('controller' => 'Users', 'action' => 'delete_user', 'user'=>true), array('pass' => array('username')));
+
+	Router::connect('/Users/delete_user/:username', array('controller' => 'Users', 'action' => 'delete_user'), array('pass' => array('username')));
+	Router::connect('/CaseSessions/delete_session/:caseNum', array('controller' => 'CaseSessions', 'action' => 'delete_session'), array('pass' => array('caseNum')));
+	Router::connect('/CaseEdits/delete_case/:caseNum', array('controller' => 'CaseEdits', 'action' => 'delete_case'), array('pass' => array('caseNum')));
+	Router::connect('/CaseReviews/delete_case/:caseNum', array('controller' => 'CaseReviews', 'action' => 'delete_case'), array('pass' => array('caseNum')));
 /**
  * ...and connect the rest of 'Pages' controller's URLs.
  */

@@ -52,8 +52,8 @@ table.pending_case {width:100%;border:1px solid #999;}
     text-align: left;
     padding: 5px;
 }
-
-.pending_case .toggle_case:hover{background-color: #4D1979; color: #FFF; 
+.pending_case .toggle_case:hover{
+  background-color: #DCDCDC; color: #FFF; 
   cursor: pointer;
    transition: all 0.3s ease-in-out;
    -webkit-transition: all 0.3s ease-in-out;
@@ -67,7 +67,7 @@ table.pending_case {width:100%;border:1px solid #999;}
 }
 .pending_case .toggle_case:hover td, 
 .pending_case .toggle_case.clicked td{
-  color: #FFF;
+  color: #000;
 }
 .selected_case{
   -webkit-animation: fadeIn 0.5s; 
@@ -78,6 +78,17 @@ table.pending_case {width:100%;border:1px solid #999;}
   -moz-transition: fadeOutLeft 0.8s;
   animation: fadeOutLeft 0.8s;*/
 }
+  #flashMessage{
+  padding: 40px;
+  font-size: 30px;
+  color: #FFF;
+  -webkit-animation: fadeInDown 1.3s ease-in-out;
+  -moz-transition: fadeInDown 1.3s ease-in-out;
+  animation: fadeInDown 1.3s ease-in-out;
+  border-bottom: 1px solid #999;
+  background-color: #5cb85c;
+  }
+.special_th{background-color: #4D1979}
 .upload_section input[type="submit"]{
     width: 100px;
     padding: 1em 0em;

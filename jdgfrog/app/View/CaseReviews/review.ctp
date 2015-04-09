@@ -1,6 +1,6 @@
 <?php
     echo $this->Html->css(array('modal_window_style', 'dataTables.bootstrap'));
-    echo $this->Html->script(array('jquery-1.10.2', 'jquery.dataTables.min', 'dataTables.bootstrap'));
+    echo $this->Html->script(array('jquery-1.10.2.min', 'jquery.dataTables.min', 'dataTables.bootstrap'));
 ?>
 <script type="text/javascript" charset="utf-8">
   $(document).ready(function() {
@@ -19,23 +19,14 @@
                   <div class="top_bar col-md-5">
                     <div class="top_bar_left">
                       <h4>CASES PENDING REVIEW</h4>
-                    </div>
-                      <!-- PENDING BUTTON-->
-                      <div title="Click here to edit the selected case." style="margin-top: 19px;">
-                        <label for="" class="user_button">
-                          <?php
-                          echo $this->Html->link(
-                              $this->Html->image("create_case.png", array("alt" => "Edit Case", 'style' => 'float:left; padding: 10px 6px 8px 0px;')),
-
-                              "/AdminPanel/edit", array('escape' => false, 'id' => 'edit_case')); ?> 
-                        </label>
-                      </div>   
+                    </div> 
                   </div>
-                    <table class="pending_case all_results table table-bordered" id="review_table">
+                    <table class="pending_case table table-bordered" id="review_table">
                           <thead>
                               <tr>
                               <th>Case Number</th>
                               <th>Editor's ID</th>
+                              <th style="background-color: #4D1979">Actions</th>
                               </tr>
                           </thead>
                           <tbody>
@@ -46,6 +37,11 @@
                                 echo '<tr id='.$index.' class="toggle_case">' .
                                 '<td>' . $pc[0] . '</td>' .
                                 '<td>' . $pc[1] . '</td>' .
+                                '<td>' . $this->Html->link('Edit', '/admin/cases/edit/'.$pc[0])
+                                       . '&nbsp/&nbsp;'
+                                       . $this->Html->link('Delete', '/CaseReviews/delete_case/'.$pc[0], 
+                                          array('confirm'=>'Are you sure you want to delete this case?'));
+                                '</td>' .
                                 '</tr>';
                                 $index++;
                               }
@@ -129,36 +125,27 @@
     });
        // TOGGLE SELECTED DEFENDENT
       $('#publish_button').click(function(){
-        $.ajax({
-          url: '/CaseReviews/publishCase/' + index,
-          cache: false,
-          type: 'GET',
-          dataType: 'HTML',
-          success: function () {
-            $(this).remove();
-            location.reload();
+        var confirmDelete = confirm("Are you sure you want to publish this case?");
+        if (confirmDelete==true)
+          {
+              $.ajax({
+                url: '/CaseReviews/publishCase/' + index,
+                cache: false,
+                type: 'GET',
+                dataType: 'HTML',
+                success: function () {
+                  $(this).remove();
+                  location.reload();
+                }
+              });
           }
-        });
+        else{}
       });
 </script>
 <!-- SUCCESS BANNER -->
-<style type="text/css">
-  #flashMessage{
-  padding: 40px;
-  font-size: 30px;
-  color: #FFF;
-  -webkit-animation: fadeInDown 1.3s ease-in-out;
-  -moz-transition: fadeInDown 1.3s ease-in-out;
-  animation: fadeInDown 1.3s ease-in-out;
-  border-bottom: 1px solid #999;
-  background-color: #5cb85c;
-  }
-.special_th{background-color: #4D1979}
-</style>
 <script type="text/javascript">
     var $welcom = $("#flashMessage");
     setTimeout(function() {
-        // $welcom.hide('slow', slideUp);
         $welcom.slideUp(800).delay(900).fadeOut(900);
     }, 4000);
 </script>

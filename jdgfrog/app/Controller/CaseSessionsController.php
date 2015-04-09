@@ -110,6 +110,8 @@ class CaseSessionsController extends AppController {
 				if ($this->CaseSession->save($this->request->data)) {
 					$currentStep++;
 					$this->redirect('/admin/cases/create_case/'.$currentStep);
+				} else {
+					debug($this->CaseSession->validationErrors);
 				}
 
 			} elseif ($currentStep == 2) {
@@ -118,9 +120,11 @@ class CaseSessionsController extends AppController {
 				$currentSessionData = Hash::merge( (array) $prevSessionData, $this->request->data);
 				$this->Session->write('form.data', $currentSessionData);
 				$this->request->data['CaseSession']['id'] = $this->Session->read('form.params.id');
-				if ($this->CaseSession->save($this->request->data)) {
+				if ($this->CaseSession->save($this->request->data, true, array('AdultSexTraf', 'MinorSexTraf', 'LaborTraf', 'NumVic', 'NumVicMinor', 'NumVicFemale', 'NumVicForeign'))) {
 					$currentStep++;
 					$this->redirect('/admin/cases/create_case/'.$currentStep);	
+				} else {
+					debug($this->CaseSession->validationErrors);
 				}
 
 			} elseif ($currentStep == 3) {
@@ -134,9 +138,11 @@ class CaseSessionsController extends AppController {
 				$this->CaseSession->set($this->Session->read('form.data'));
 
 				$this->request->data['CaseSession']['id'] = $this->Session->read('form.params.id');
-				if ($this->CaseSession->save($this->request->data)) {
+				if ($this->CaseSession->save($this->request->data, true, array('DefFirst','DefLast','DefRace','DefGender','DefArrestAge','DefBirthdate','Alias'))) {
 					$currentStep++;
 					$this->redirect('/admin/cases/create_case/'.$currentStep);	
+				} else {
+					debug($this->CaseSession->validationErrors);
 				}
 
 			} elseif ($currentStep == 4) {
@@ -146,9 +152,11 @@ class CaseSessionsController extends AppController {
 				//$this->Session->write('form.data', $currentSessionData);
 				//$this->redirect(array('action' => 'create_case', $currentStep+1));					
 				$this->request->data['CaseSession']['id'] = $this->Session->read('form.params.id');
-				if ($this->CaseSession->save($this->request->data)) {
+				if ($this->CaseSession->save($this->request->data, true, array('ChargeDate','ArrestDate','Detained','BailType','BailAmount','FelCharged','FelSentenced'))) {
 					$currentStep++;
 					$this->redirect('/admin/cases/create_case/'.$currentStep);
+				} else {
+					debug($this->CaseSession->validationErrors);
 				}
 
 			} elseif ($currentStep == 5) {
@@ -158,10 +166,28 @@ class CaseSessionsController extends AppController {
 				//$this->Session->write('form.data', $currentSessionData);
 				//$this->redirect(array('action' => 'create_case', $currentStep+1));	
 				$this->request->data['CaseSession']['id'] = $this->Session->read('form.params.id');
-				if ($this->CaseSession->save($this->request->data)) {
+
+				$statutes = ['1961to1968', '1028', '1351',
+								'1425', '1512', '1546', '1581to1588', '1589',
+								'1590', '1591', '1592', '2252', '2260', '2421to2424',
+								'1324', '1328'];
+				$fields = ['Counts', 'CountsNP', 'PleaDismissed', 'PleaGuilty',
+							'TrialGuilty', 'TrialNG', 'Fines', 'Sent', 'Prob'];
+
+				$fieldList = array();
+
+				foreach ($statutes as $statute) {
+					foreach ($fields as $field) {
+						array_push($fieldList, "$field" . "$statute");
+					}	
+				}
+
+				if ($this->CaseSession->save($this->request->data, true, $fieldList)) {
 					$currentStep++;
 					$this->redirect('/admin/cases/create_case/'.$currentStep);
-				}			
+				} else {
+					debug($this->CaseSession->validationErrors);
+				}		
 
 			} elseif ($currentStep == 6) {
 				//Sentencing Information
@@ -170,9 +196,11 @@ class CaseSessionsController extends AppController {
 				//$this->Session->write('form.data', $currentSessionData);
 				//$this->redirect(array('action' => 'create_case', $currentStep+1));	
 				$this->request->data['CaseSession']['id'] = $this->Session->read('form.params.id');
-				if ($this->CaseSession->save($this->request->data)) {
+				if ($this->CaseSession->save($this->request->data, true, array('DateTerm','SentDate','TotalSentence','Restitution','AssetForfeit','Appeal','SupRelease','Probation'))) {
 					$currentStep++;
 					$this->redirect('/admin/cases/create_case/'.$currentStep);
+				} else {
+					debug($this->CaseSession->validationErrors);
 				}				
 
 			} elseif ($currentStep == 7) {
@@ -184,7 +212,7 @@ class CaseSessionsController extends AppController {
 					//$this->redirect(array('action' => 'create_case', $currentStep+1));						
 				//}
 				$this->request->data['CaseSession']['id'] = $this->Session->read('form.params.id');
-				if ($this->CaseSession->save($this->request->data)) {
+				if ($this->CaseSession->save($this->request->data, true, array('OCName1','OCType1','OCRace1','OCScope1','OCName2','OCType2','OCRace2','OCScope2'))) {
 
 					if ($this->Session->read('form.params.curDefNum') < $this->Session->read('form.params.numDefs')) {
 						$this->set('caseComplete', false);
@@ -193,6 +221,8 @@ class CaseSessionsController extends AppController {
 					}
 					$currentStep++;
 					$this->redirect('/admin/cases/create_case/'.$currentStep);
+				} else {
+					debug($this->CaseSession->validationErrors);
 				}
 
 			} elseif ($currentStep == 8) {
@@ -213,6 +243,8 @@ class CaseSessionsController extends AppController {
 					$this->CaseSession->set('CaseNum', $this->Session->read('form.params.caseNum'));
 					if ($this->CaseSession->save()) {
 						$this->redirect('/admin/cases/create_case/'.$currentStep);
+					} else {
+					debug($this->CaseSession->validationErrors);
 					}
 
 				} else {
@@ -302,6 +334,13 @@ class CaseSessionsController extends AppController {
 	}
 
 	public function validateFormData() {
+
+	}
+
+	public function delete_session($CaseNum) {
+		$this->CaseSession->deleteAll(array('CaseSession.caseNum' => $CaseNum), false);
+		$this->Session->setFlash('Case Successfully Deleted!');
+		$this->redirect(array('controller' => 'CaseSessions', 'action' => 'create_case_index'));
 
 	}
 

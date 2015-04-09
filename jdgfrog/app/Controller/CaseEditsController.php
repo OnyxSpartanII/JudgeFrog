@@ -355,13 +355,14 @@ class CaseEditsController extends AppController {
 		$caseNumber = $num;
 		//$caseNumber = '1:13-cr-00069-LO';
 		$case = $this->getCase($caseNumber);
-		debug($case);
+		//debug($case);
 		if ($case) {
 			$this->set('case', $case);	
 		} else {
 			$this->set('caseNotFoundError', true);
 			print_r('Case not found.');
 		}
+
 		// 30 defs: 3:10-cr-00260
 		// 4 defs: 2:07-cr-00785-JLL
 		
@@ -443,23 +444,10 @@ class CaseEditsController extends AppController {
 	}
 
 	/*
-	*	Method name: getCase
-	*		This method retrieves the case with the passed case number. It appends the case into one array with each defendant
-	*		as an entry into the array. Case[Defendant], where sizeof(Defendant) is the number of defendants in that case.
-	*		The method then returns the case.
-	*
-	*/
-	public function getCase($caseNumber) {
-
-		$case = $this->DataInProgress->find('all', array('conditions' => array('DataInProgress.CaseNum' => $caseNumber)));
-		return $case;
-	}
-
-	/*
-	*	Method name: defendant
-	*		This method takes a defendant name, DOB, and case # passed to it and renders
+	*	Method name: editDefendant
+	*		This method takes a defendant name and case # passed to it and renders
 	*		a view with the defendant's details. The updated info is then saved to the DataInProgress
-	*		table with the review flag set. 
+	*		table with the review flag set.
 	*
 	*/
 	public function editDefendant($defArray) {
@@ -491,13 +479,34 @@ class CaseEditsController extends AppController {
 			$this->request->data['DataInProgress']['id'] = $caseId;
 
 			if ($this->DataInProgress->save($this->request->data)) {
-				$this->redirect(array('action' => 'edit', $caseNumber));
+				$this->redirect('/admin/cases/edit/'.$caseNumber);
 				print_r('Save successful!');
 			} else {
 				print_r('An error occurred. Changes to defendant were not saved.');
 			}
 		}
 
+	}
+
+	/*
+	*
+	*	Method name: addCase
+	*
+	*	This method allows a new case to be created. The method uses a modified version of the
+	*	edit.ctp view (called add_case.ctp), but otherwise functions similarly. It also will use
+	*	the same edit_defendant.ctp and add_defendant.ctp views as edit().
+	*/
+
+	public function addCase() {
+
+		if ($this->request->is('post')) {
+			if ($this->DataInProgress->save($this->request->data)) {
+				debug($this->request->data);
+				$this->redirect('/admin/cases/edit/'.$this->request->data['DataInProgress']['CaseNum']);
+			}
+		}
+
+		$this->render('add_case');
 	}
 
 	/*
@@ -551,11 +560,13 @@ class CaseEditsController extends AppController {
 			$id = $this->getRowId();
 			$id = $id + 1;
 			$this->request->data['DataInProgress']['id'] = $id;
-			debug($this->request->data);
+			//debug($this->request->data);
 
 			if ($this->DataInProgress->save($this->request->data)) {
 				$this->redirect('/admin/cases/edit/'.$caseNumber);
 				print_r('Defendant added to case!');
+				//$this->deleteEmptyCases();
+
 			} else {
 				print_r('An error occurred while adding defendant to case.');
 			}
@@ -566,10 +577,39 @@ class CaseEditsController extends AppController {
 
 	}
 
+	/*
+	*	Method name: getCase
+	*		This method retrieves the case with the passed case number. It appends the case into one array with each defendant
+	*		as an entry into the array. Case[Defendant], where sizeof(Defendant) is the number of defendants in that case.
+	*		The method then returns the case.
+	*
+	*/
+	public function getCase($caseNumber) {
+
+		$case = $this->DataInProgress->find('all', array('conditions' => array('DataInProgress.CaseNum' => $caseNumber)));
+		return $case;
+	}
+
+	/*
+	*	Method name: getRowId()
+	*		This method retrieves the current max ID in all database tables.
+	*/
+
 	public function getRowId() {
 		$newRowId = $this->DataInProgress->find('first', array('fields' => array('MAX(DataInProgress.id) as id')));
 		$newRowId = $newRowId[0]['id'];
 		return $newRowId;
+	}
+
+	/*
+	*	Method name: deleteEmptyCases()
+	*		This method deletes all rows without a defendant name from the DataInProgress table.
+	*		This is intended to be called after the creation of a new case in the transition to
+	*		the edit case page.
+	*/
+
+	public function deleteEmptyCases() {
+		$this->DataInProgress->deleteAll(array('DefFirst' => '', 'DefLast' => ''));
 	}
 
 	public function autoComplete() {

@@ -1,146 +1,115 @@
 <?php
-
-	/*
-	*	Page: 
-	*/
-	$this->layout = 'admin_panel_layout';
-
+    echo $this->Html->css(array('dataTables.bootstrap', 'dataTables.responsive'));
+    echo $this->Html->script(array('jquery-1.10.2.min', 'jquery.dataTables.min', 'dataTables.responsive.min', 'dataTables.bootstrap', 'dataTables.fixedHeader.min'));
 ?>
-
-<!--search start here-->
-<div class="contact">
-		<div class="container">
-				<div class="contact-main">
-					<h3 class="page_title">Edit Case</h3>
-							<div class="col-md-3 contact-right" style="padding-bottom:50px">
-								<!-- TOP CREATE A NEW USER BAR -->
-									<div class="top_bar col-md-3">
-										<div class="top_bar_left">
-											<h4>SEARCH</h4>
-										</div>
-											<!-- PENDING BUTTON-->
-											<div title="Click here to search for the case." style="margin-top: 19px;">
-												<label for="" class="user_button">
-													<?php echo $this->Html->image('search.png', array('alt' => 'Create', 'style' => 'float:left; padding: 10px 7px 8px 0px;' )); ?>
-												</label>
-											</div>
-											<div style="margin-bottom:20px; margin-top:100px; text-align:center;">   
-														<?php
-															echo $this->Form->input('Search', array('label' => 'Enter Case Name','placeholder' => 'USA v. John Doe', 'type' => 'text', 'id' => 'case_name', 'style' => 'background-color: #fff;'));
-															
-														?>
-												</div>
-									</div>
-								<!-- Create Interface -->
-								<div class="user_creation" style="padding-bottom:50px; margin-top:50px;">
-									<div class="login_details" style="background-color:#DCDCDC">
-									</div>
-								</div>
-						</div> 
-								<div class="col-md-9 contact-right">
-									<!-- TOP DELETE SELECTED USER BAR -->
-										<div class="top_bar col-md-9">
-											<div class="top_bar_dash">
-												<h4>CASE UPDATE DASHBOARD</h4>
-											</div>
-									<!-- PENDING BUTTON-->
-										<div title="Click here to edit the selected case." style="margin-top: 19px;">
-											<label for="" class="user_button">
-											<?php
-											echo $this->Html->link(
-												$this->Html->image("review.png", array("alt" => "Edit Case", 'style' => 'float:left; padding: 10px 6px 8px 0px;')),
-										
-												"/AdminPanel/edit", array('escape' => false, 'id' => 'edit_case')); ?> 
-											</label>
-										</div>  
-										</div>
-									<!-- Search Results -->
-									<script type="text/javascript">
-									
-									</script>
-
-
-								</div> 
-					</div>
-				</div>
-						<div class="search_disclaim" style="margin-top:200px">
-							<p><strong>Note: </strong>Not every combination of analyzable objects will return meaningful results.</p>
-						</div>
-</div>
-
-<!-- Auto Complete Script -->
-<script>
-		function split( val ) {
-			return val.split( /,\s*/ );
-		}
-		function extractLast( term ) {
-			return split( term ).pop();
-		}
-		$( "#case_name" ) //Case Name Field
-			.autocomplete({
-				source: "autoComplete" ,
-				minLength: 1
-			});
-	</script>
-
-<!-- CASE SELECTION SCRIPT -->
-  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-
-<script type="text/javascript">
-
-  var displaying = false;
-  var index = -1;
-
-  <?php
-	if (isset($p_cases)) {
-	  $jsarr = json_encode($p_cases);
-	  echo 'var p_cases = ' . $jsarr . ';';
-	} else {
-	  echo 'var p_cases = [];';
-	}
-  ?>
-	// TOGGLE SELECTED CASE
-	$('.toggle_case').click(function(){
-
-	  if (!displaying) {
-		displaying = true;
-		index = $(this).attr('id');
-		console.log('Displaying ' + index);
-		  $.ajax({                   
-			  url: '/jdgfrog/CaseReviews/generateTable/' + index,
-			  cache: false,
-			  type: 'GET',
-			  dataType: 'HTML',
-			  success: function (html) {
-				  $('.selected_case').html(html);
-				  $('.this_def_info').hide();
-				  $(this).toggleClass('clicked', 'slow');
-				  $('.toggle_def').click(function(){
-					$(this).nextUntil('.toggle_def').toggle('slow');
-					$(this).toggleClass('clicked', 'slow');
-				  });
-				  $('.selected_case').show(50);
-				  $('#edit_case').attr('href', '/admin/cases/edit/' + p_cases[index][0]);
-			  }
-		  });
-	  } else {
-		console.log('Hiding');
-		$('.selected_case').hide();
-		displaying = false;
-		index = -1;
-	  }
-	});
-	   // TOGGLE SELECTED DEFENDENT
-
-	  $('#publish_button').click(function(){
-		$.ajax({
-		  url: '/jdgfrog/CaseReviews/publishCase/' + index,
-		  cache: false,
-		  type: 'GET',
-		  dataType: 'HTML',
-		  success: function () {
-			$(this).remove();
-		  }
-		});
-	  });
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function() {
+    var caseTable = $('#cases_table').DataTable({
+        responsive: true
+    });
+} );
 </script>
+<div class="contact">
+    <div class="container">
+        <div class="contact-main">
+          <h3 class="page_title">Case Editing</h3>
+              
+                <div class="col-md-12 contact-right">
+                  <!-- TOP EDIT SELECTED CASE BAR --> 
+                      <div class="top_bar col-md-8">
+                        <div class="top_bar_dash">
+                          <h4>ALL DATABASE CASES</h4>
+                          <?php echo $this->Html->link('Add Case', '/admin/cases/create'); ?>
+                        </div>
+                      </div>
+                        <?php
+                          $servername = "oyster.arvixe.com";
+                          $username = "jdgfrog_testDB";
+                          $password = "tcuCOSC1!";
+                          $dbname = "jdgfrog_testDB";
+                          // Create connection
+                          $conn = new mysqli($servername, $username, $password, $dbname);
+                          // Check connection
+                          if ($conn->connect_error) {
+                              die("Connection failed: " . $conn->connect_error);
+                          } 
+                          $show_cases = "SELECT DISTINCT CaseNam, CaseNum, JudgeName, State, author, NumDef, modified FROM DataInProgress";
+
+                          $result = $conn->query($show_cases);
+
+                          if ($result->num_rows > 0) {
+                              // output data of each row
+                                echo "<table class='table table-striped table-bordered' id='cases_table'>";
+                                echo"      <thead>";
+                                echo"        <tr>";
+                                echo"          <th class='always first_th'>Case Name</th>";
+                                echo"          <th class='desktop'>Case Number</th>";
+                                echo"          <th class='desktop'>Judge Name</th>";
+                                echo"          <th class='min-tablet'>State</th>";
+                                echo"          <th class='always special_th'>Actions</th>";
+                                echo"          <th class='none'>Author's Name</th>";
+                                echo"          <th class='none'>Number of Defendant</th>";
+                                echo"          <th class='none'>Modified Date</th>";
+                                echo"        </tr>";
+                                echo"      <thead>";
+                                echo "<tbody>";
+                              while($row = $result->fetch_assoc()) {
+                                echo "  <tr>";
+                                echo "      <td> &nbsp;".$row['CaseNam']. "</td>";
+                                echo "      <td> ".$row['CaseNum']." </td>";
+                                echo "      <td> ".$row['JudgeName']." </td>";
+                                echo "      <td> ".$row['State']." </td>";
+                                echo "      <td> ".$this->Html->link('Edit', '/admin/cases/edit/'.$row['CaseNum']) . '&nbsp/&nbsp;'
+                                                  .$this->Html->link('Delete', '/CaseEdits/delete_case/'.$row['CaseNum'], array('confirm'=>'Are you sure you want to delete this case?'));
+                                            "</td>";
+                                echo "      <td> ".$row['author']." </td>";
+                                echo "      <td> ".$row['NumDef']." </td>";
+                                echo "      <td> ".$row['modified']." </td>";
+                                echo "  </tr>";
+                                }
+                                echo "</tbody>";
+                                echo "</table>";
+                              }
+                          else {
+                              echo "No Case Available to Display";
+                          }
+                          $conn->close();
+                        ?>
+                </div> 
+          </div>
+        </div>
+            <div class="search_disclaim" style="margin-top:200px">
+              <p><strong>Note: </strong>You may search a case by any values of all attributes - Name, Number, Judge...</p>
+            </div>
+</div>
+<!-- TABLE AND TABLE SELECTION SCRIPT -->
+<style type="text/css">
+.table_container, .dataTables_length, .dataTables_filter{
+  margin-top: 10px;
+  text-align: left;
+}
+table{
+  width:100%;
+  border:1px solid #999;
+  border-collapse:collapse;
+}
+.case{padding: 0px 10px 0px 0px;}
+th{background-color:#999;color:#fff;
+    padding:15px 0px 15px 0px;
+    border-right:1px solid #666;
+    text-align: left;}
+td{text-align: left;
+    min-width: 20px;}
+.special_th{background-color: #4D1979}
+.first_th{text-align: center;}
+#collapsible-panels .table h2, input {
+  width: 10%;
+}
+</style>
+<script type="text/javascript">
+    var $welcom = $("#flashMessage");
+    setTimeout(function() {
+        $welcom.slideUp(800).delay(900).fadeOut(900);
+    }, 4000);
+</script>
+

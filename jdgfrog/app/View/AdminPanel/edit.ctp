@@ -32,7 +32,7 @@
                           if ($conn->connect_error) {
                               die("Connection failed: " . $conn->connect_error);
                           } 
-                          $show_cases = "SELECT DISTINCT CaseNam, CaseNum, JudgeName, State, author, NumDef, modified FROM Data";
+                          $show_cases = "SELECT DISTINCT CaseNam, CaseNum, JudgeName, State, author, NumDef, modified FROM DataInProgress";
 
                           $result = $conn->query($show_cases);
 

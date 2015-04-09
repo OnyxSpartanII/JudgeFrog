@@ -4,14 +4,14 @@
 		$this->set('active', 'edit');
 ?>
 <?php
-    echo $this->Html->css(array('dataTables.bootstrap', 'dataTables.responsive'));
-    echo $this->Html->script(array('jquery-1.10.2.min', 'jquery.dataTables.min', 'dataTables.responsive.min', 'dataTables.bootstrap', 'dataTables.fixedHeader.min'));
+	echo $this->Html->css(array('dataTables.bootstrap', 'dataTables.responsive'));
+	echo $this->Html->script(array('jquery-1.10.2.min', 'jquery.dataTables.min', 'dataTables.responsive.min', 'dataTables.bootstrap', 'dataTables.fixedHeader.min'));
 ?>
 <script type="text/javascript" charset="utf-8">
   $(document).ready(function() {
-    var caseTable = $('#cases_table').DataTable({
-        responsive: true
-    });
+	var caseTable = $('#cases_table').DataTable({
+		responsive: true
+	});
 } );
 </script>
 <!--search start here-->
@@ -74,24 +74,24 @@
 						</fieldset>	
 					</div>									
 					<div class="col-md-7 case_creation_form" id="form_style" style="float:inherit">
-                      <div class="top_bar col-md-7">
-                        <div class="top_bar_dash">
-                          <h4>CASE DEFENDANT(S)</h4>
-                        </div>
-                        <?php echo $this->Html->link('Add Defendant', '/admin/cases/edit/add_defendant/'.$case['0']['DataInProgress']['CaseNum']); ?>
-                      </div>
+					  <div class="top_bar col-md-7">
+						<div class="top_bar_dash">
+						  <h4>CASE DEFENDANT(S)</h4>
+						</div>
+						<?php echo $this->Html->link('Add Defendant', '/admin/cases/edit/add_defendant/'.$case['0']['DataInProgress']['CaseNum']); ?>
+					  </div>
 						<?php 
-                                echo "<table class='table table-striped table-bordered' id='cases_table'>";
-                                echo"      <thead>";
-                                echo"        <tr>";
-                                echo"          <th class='desktop first_th'>Last Name</th>";
-                                echo"          <th class='desktop'>First Name</th>";
-                                echo"          <th class='always special_th'>Actions</th>";
-                                echo"        </tr>";
-                                echo"      <thead>";
-                                echo "<tbody>";
-                                
-                                $i = 0;
+								echo "<table class='table table-striped table-bordered' id='cases_table'>";
+								echo"      <thead>";
+								echo"        <tr>";
+								echo"          <th class='desktop first_th'>Last Name</th>";
+								echo"          <th class='desktop'>First Name</th>";
+								echo"          <th class='always special_th'>Actions</th>";
+								echo"        </tr>";
+								echo"      <thead>";
+								echo "<tbody>";
+								
+								$i = 0;
 								foreach ($case as $case) { 
 						?>
 						<?php 	
@@ -108,14 +108,14 @@
 						<?php 	//echo $this->Form->input(); ?>
 						<?php //echo $this->Form->submit('Submit', array('confirm' => 'Submit this case for review?')); ?>
 						<?php 
-                                echo "  </tr>";
-                            }   //END OF LOOP
-                                echo "</tbody>";
-                                echo "</table>";
-                          if (count($case) == 0) {
-                              	echo "This case has 0 defendant";
-                          }
-                         ?>	
+								echo "  </tr>";
+							}   //END OF LOOP
+								echo "</tbody>";
+								echo "</table>";
+						  if (count($case) == 0) {
+								echo "This case has 0 defendant";
+						  }
+						 ?>	
 					</div>
 				</div>
 				<div class="col-md-12 search_disclaim case_creation_form" style="margin-top:0px; padding-top:10px; border-top:1px solid #DCDCDC">
@@ -158,11 +158,11 @@ table{
 }
 .case{padding: 0px 10px 0px 0px;}
 th{background-color:#999;color:#fff;
-    padding:15px 0px 15px 0px;
-    border-right:1px solid #666;
-    text-align: left;}
+	padding:15px 0px 15px 0px;
+	border-right:1px solid #666;
+	text-align: left;}
 td{text-align: left;
-    min-width: 20px;}
+	min-width: 20px;}
 .special_th{background-color: #4D1979}
 .first_th{text-align: center;}
 #collapsible-panels .table h2, input {
@@ -171,8 +171,8 @@ td{text-align: left;
 </style>
 <!-- SUCCESS BANNER -->
 <script type="text/javascript">
-    var $welcom = $("#flashMessage");
-    setTimeout(function() {
-        $welcom.slideUp(800).delay(900).fadeOut(900);
-    }, 4000);
+	var $welcom = $("#flashMessage");
+	setTimeout(function() {
+		$welcom.slideUp(800).delay(900).fadeOut(900);
+	}, 4000);
 </script>

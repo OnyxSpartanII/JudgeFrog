@@ -44,6 +44,19 @@
 							<?php 	echo $this->Form->input('DefRace', array('default' => $case['DataInProgress']['DefRace'], 'label' => '', 'empty' => 'Race', 'options' => array('White', 'Black', 'Hispanic', 'Asian', 'Other'))); ?>	
 							<?php	echo $this->Form->input('DefArrestAge',	array('label' => 'Defendant Age', 'type' => 'text', 'default' => $case['DataInProgress']['DefArrestAge'])); ?>
 							<?php	echo $this->Form->input('Alias', array('default' => $case['DataInProgress']['Alias'])); ?>
+							<?php 
+									echo $this->Form->input('ChargeDate', array('default' => $case['DataInProgress']['ChargeDate'], 'label' => 'Charge Date', 'placeholder' => '11/04/1986', 'id' => 'charge_Date', 'type' => 'text', 'class' => 'date', 'data-date' 	=> '2012-12-02', 'data-date-format' => 'yyyy-mm-dd')); 
+									echo $this->Form->input('ArrestDate', array('default' => $case['DataInProgress']['ArrestDate'], 'label' => 'Arrest Date', 'placeholder' => '01/24/2001', 'class' => 'date', 'type' => 'text', 'id' => 'arrest_Date', 'data-date' 	=> '2012-12-02', 'data-date-format' => 'yyyy-mm-dd'));
+									echo "<hr style = 'border-top:1px solid #DCDCDC'>";
+									echo $this->Form->input('Detained', array('default' => $case['DataInProgress']['Detained'], 'label' => 'Detained', 'type' => 'checkbox'));
+									echo "<hr style = 'border-top:1px solid #DCDCDC'>";
+									echo $this->Form->input('BailType', array('default' => $case['DataInProgress']['BailType'], 'label' => 'Bail Type', 'options' => array('None', 'Surety', 'Non-Surety')));
+									echo "<br>";
+									echo $this->Form->input('BailAmount', array('default' => $case['DataInProgress']['BailAmount'], 'type' => 'text', 'label' => 'Bail Amount'));
+									echo "<hr style = 'border-top:1px solid #DCDCDC'>";
+									echo $this->Form->input('FelCharged', array('default' => $case['DataInProgress']['FelCharged'], 'type' => 'text', 'label' => 'Number of Felonies Charged'));
+									echo $this->Form->input('FelSentenced', array('default' => $case['DataInProgress']['FelSentenced'], 'type' => 'text', 'label' => 'Number of Felonies Sentenced')); 
+							?>							
 						</fieldset>	
 				</div>
 				<div class="col-md-6 case_creation_form" id="form_style" style="float:inherit">
@@ -356,7 +369,7 @@
 					</div>
 				<div class="col-md-12 search_disclaim case_creation_form" style="margin-top:0px; padding-top:10px; border-top:1px solid #DCDCDC">
 					<div style="max-width:60%;margin: 0 auto">
-					<?php echo $this->Form->submit('Submit', array('/admin/cases/edit'.$case['DataInProgress']['CaseNum'])); ?>
+					<?php echo $this->Form->submit('Submit'); ?>
 					<?php echo $this->Form->end(); ?>
 						<br>
 					<p><strong>*Note: </strong>Not all fields are required</p>

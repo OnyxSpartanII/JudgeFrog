@@ -42,6 +42,19 @@
 							<?php 	echo $this->Form->input('DefRace', array( 'label' => '', 'empty' => 'Race', 'options' => array('White', 'Black', 'Hispanic', 'Asian', 'Other'))); ?>	
 							<?php	echo $this->Form->input('DefArrestAge',	array('label' => 'Defendant Age', 'type' => 'text')); ?>
 							<?php	echo $this->Form->input('Alias', array('placeholder' => 'Enter aliases separated by commas.')); ?>
+							<?php 
+									echo $this->Form->input('ChargeDate', array('label' => 'Charge Date', 'placeholder' => '11/04/1986', 'id' => 'charge_Date', 'type' => 'text', 'class' => 'date', 'data-date' 	=> '2012-12-02', 'data-date-format' => 'yyyy-mm-dd')); 
+									echo $this->Form->input('ArrestDate', array('label' => 'Arrest Date', 'placeholder' => '01/24/2001', 'class' => 'date', 'type' => 'text', 'id' => 'arrest_Date', 'data-date' 	=> '2012-12-02', 'data-date-format' => 'yyyy-mm-dd'));
+									echo "<hr style = 'border-top:1px solid #DCDCDC'>";
+									echo $this->Form->input('Detained', array('label' => 'Detained', 'type' => 'checkbox'));
+									echo "<hr style = 'border-top:1px solid #DCDCDC'>";
+									echo $this->Form->input('BailType', array('label' => 'Bail Type', 'options' => array('None', 'Surety', 'Non-Surety')));
+									echo "<br>";
+									echo $this->Form->input('BailAmount', array('type' => 'text', 'label' => 'Bail Amount'));
+									echo "<hr style = 'border-top:1px solid #DCDCDC'>";
+									echo $this->Form->input('FelCharged', array('type' => 'text', 'label' => 'Number of Felonies Charged'));
+									echo $this->Form->input('FelSentenced', array('type' => 'text', 'label' => 'Number of Felonies Sentenced')); 
+							?>								
 						</fieldset>	
 				</div>
 				<div class="col-md-6 case_creation_form" id="form_style" style="float:inherit">

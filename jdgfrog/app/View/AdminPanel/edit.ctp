@@ -7,7 +7,6 @@
     var caseTable = $('#cases_table').DataTable({
         responsive: true
     });
-    new $.fn.dataTable.FixedHeader(caseTable);
 } );
 </script>
 <div class="contact">
@@ -33,7 +32,7 @@
                           if ($conn->connect_error) {
                               die("Connection failed: " . $conn->connect_error);
                           } 
-                          $show_cases = "SELECT DISTINCT CaseNam, CaseNum, JudgeName, State, author, NumDef, modified FROM DataInProgress";
+                          $show_cases = "SELECT DISTINCT CaseNam, CaseNum, JudgeName, State, author, NumDef, modified FROM Data";
 
                           $result = $conn->query($show_cases);
 

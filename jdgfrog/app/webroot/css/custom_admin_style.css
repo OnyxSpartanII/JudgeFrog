@@ -52,9 +52,8 @@ table.pending_case {width:100%;border:1px solid #999;}
     text-align: left;
     padding: 5px;
 }
-
-.pending_case .toggle_case:hover, .pending_case .toggle_case a:hover{
-  background-color: #4D1979; color: #FFF; 
+.pending_case .toggle_case:hover{
+  background-color: #DCDCDC; color: #FFF; 
   cursor: pointer;
    transition: all 0.3s ease-in-out;
    -webkit-transition: all 0.3s ease-in-out;
@@ -67,9 +66,8 @@ table.pending_case {width:100%;border:1px solid #999;}
   border-left: 5px solid #4D1979;
 }
 .pending_case .toggle_case:hover td, 
-.pending_case .toggle_case.clicked td, 
-.pending_case .toggle_case a:hover{
-  color: #FFF;
+.pending_case .toggle_case.clicked td{
+  color: #000;
 }
 .selected_case{
   -webkit-animation: fadeIn 0.5s; 

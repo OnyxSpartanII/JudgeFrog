@@ -101,7 +101,7 @@
 								echo "		<td> ".$this->Html->link('Edit', 
 										'/admin/cases/edit/defendant/'.$case['DataInProgress']['DefLast'].'|'.$case['DataInProgress']['DefFirst'].'|'.$case['DataInProgress']['CaseNum'], 
 										array('controller' => 'CaseEdits', 'action' => 'editDefendant')).
-										 '&nbsp/&nbsp;'.$this->Html->link('Delete', '/admin/delete_def/'.$case['DataInProgress']['DefLast'].'|'.$case['DataInProgress']['DefFirst'].'|'.$case['DataInProgress']['CaseNum'], array('onclick'=> 'return confirm("Are you sure you want to delete?")')).
+										 '&nbsp/&nbsp;'.$this->Html->link('Delete', '/CaseEdits/delete_def/'.$case['DataInProgress']['DefLast'].'|'.$case['DataInProgress']['DefFirst'].'|'.$case['DataInProgress']['CaseNum'], array('controller' => 'CaseEdits', 'action' => 'editDefendant', 'onclick'=> 'return confirm("Are you sure you want to delete?")')).
 								"</td>";
 						?>
 						<?php 	//echo $this->Form->input(); ?>
@@ -168,3 +168,10 @@ td{text-align: left;
   width: 10%;
 }
 </style>
+<!-- SUCCESS BANNER -->
+<script type="text/javascript">
+    var $welcom = $("#flashMessage");
+    setTimeout(function() {
+        $welcom.slideUp(800).delay(900).fadeOut(900);
+    }, 4000);
+</script>

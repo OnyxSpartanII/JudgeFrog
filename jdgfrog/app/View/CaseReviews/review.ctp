@@ -1,6 +1,6 @@
 <?php
     echo $this->Html->css(array('modal_window_style', 'dataTables.bootstrap'));
-    echo $this->Html->script(array('jquery-1.10.2', 'jquery.dataTables.min', 'dataTables.bootstrap'));
+    echo $this->Html->script(array('jquery-1.10.2.min', 'jquery.dataTables.min', 'dataTables.bootstrap'));
 ?>
 <script type="text/javascript" charset="utf-8">
   $(document).ready(function() {
@@ -19,24 +19,14 @@
                   <div class="top_bar col-md-5">
                     <div class="top_bar_left">
                       <h4>CASES PENDING REVIEW</h4>
-                    </div>
-                      <!-- PENDING BUTTON-->
-                      <div title="Click here to edit the selected case." style="margin-top: 19px;">
-                        <label for="" class="user_button">
-                          <?php
-                          echo $this->Html->link(
-                              $this->Html->image("create_case.png", array("alt" => "Edit Case", 'style' => 'float:left; padding: 10px 6px 8px 0px;')),
-
-                              "/AdminPanel/edit", array('escape' => false, 'id' => 'edit_case')); ?> 
-                        </label>
-                      </div>   
+                    </div> 
                   </div>
-                    <table class="pending_case all_results table table-bordered" id="review_table">
+                    <table class="pending_case table table-bordered" id="review_table">
                           <thead>
                               <tr>
                               <th>Case Number</th>
                               <th>Editor's ID</th>
-                              <th class="always special_th">Actions</th>
+                              <th style="background-color: #4D1979">Actions</th>
                               </tr>
                           </thead>
                           <tbody>

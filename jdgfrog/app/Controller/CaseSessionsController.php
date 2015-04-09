@@ -138,7 +138,6 @@ class CaseSessionsController extends AppController {
 					$currentStep++;
 					$this->redirect('/admin/cases/create_case/'.$currentStep);	
 				}
-				//$this->redirect(array('action' => 'create_case', $currentStep+1));	
 
 			} elseif ($currentStep == 4) {
 				//Arrest and Bail Information
@@ -220,10 +219,8 @@ class CaseSessionsController extends AppController {
 					//move case to DataInProgress table
 
 					$data = $this->CaseSession->find('all', array('conditions' => array('CaseSession.session_id' => $this->Session->read('form.params.sessionId'))));
-					//debug($data);
 					$index = 0;
 					$modifiedData = array();
-					//debug($data);
 					//$this->CaseSession->deleteAll(array('CaseSession.session_id' => $this->Session->read('form.params.sessionId', false)));
 					foreach ($data as &$d) {
 						unset($d['CaseSession']['session_id']);
@@ -233,11 +230,9 @@ class CaseSessionsController extends AppController {
 						unset($d['CaseSession']);
 					}
 
-
 					debug($data);
 					$this->DataInProgress->clear();
 					$this->DataInProgress->saveMany($data, array('validate' => false));
-					//$this->redirect(array('controller' => 'CaseReviews', 'action' => 'review'));
 				}
 
 			}
@@ -289,7 +284,7 @@ class CaseSessionsController extends AppController {
 	/*
 	*	Method: getRowId
 	*	-------------------
-	*	This method retrieves the max 'id' in the CaseSessions table and adds 1. This new ID is 
+	*	This method retrieves the max 'id' in the CaseSessions table. This new ID is 
 	*	to be the ID of a new row in the CaseSessions table.
 	*/
 

@@ -355,6 +355,7 @@ class CaseEditsController extends AppController {
 		$caseNumber = $num;
 		//$caseNumber = '1:13-cr-00069-LO';
 		$case = $this->getCase($caseNumber);
+		debug($case);
 		if ($case) {
 			$this->set('case', $case);	
 		} else {
@@ -493,10 +494,82 @@ class CaseEditsController extends AppController {
 				$this->redirect(array('action' => 'edit', $caseNumber));
 				print_r('Save successful!');
 			} else {
-				print_r('An error occurred. The defendant was not saved.');
+				print_r('An error occurred. Changes to defendant were not saved.');
 			}
 		}
 
+	}
+
+	/*
+	*
+	*	Method name: addDefendant
+	*
+	*	This method allows a defendant to be added to an existing case.
+	*	The case information (name, number, judge, etc.) is taken from
+	*	the case number passed to the function. The new defendant
+	*	information is collected from a POST, has the necessary case
+	*	data added to the request, and the new defendant is then saved
+	*	to the DataInProgress table. The method then redirects to the 
+	*	case edit page for the given case.
+	*/
+
+	public function addDefendant($caseNumber) {
+		//debug($caseNumber);
+		$case = $this->DataInProgress->find('first', array(
+													'conditions' => array(
+																		'DataInProgress.CaseNum' => $caseNumber)
+													)
+											);
+		//debug($case);
+
+		$this->set('case', $case);
+		if ($this->request->is('post')) {
+
+			$this->DataInProgress->clear();
+
+			//Pull the case information from the case and place it into the request.
+			$this->request->data['DataInProgress']['CaseNam'] 			= $case['DataInProgress']['CaseNam'];
+			$this->request->data['DataInProgress']['CaseNum'] 			= $case['DataInProgress']['CaseNum'];
+			$this->request->data['DataInProgress']['NumDef'] 			= $case['DataInProgress']['NumDef'] + 1;	//Increment the number of defendants.
+			$this->request->data['DataInProgress']['JudgeName'] 		= $case['DataInProgress']['JudgeName'];
+			$this->request->data['DataInProgress']['JudgeRace'] 		= $case['DataInProgress']['JudgeRace'];
+			$this->request->data['DataInProgress']['JudgeGen'] 			= $case['DataInProgress']['JudgeGen'];
+			$this->request->data['DataInProgress']['JudgeTenure'] 		= $case['DataInProgress']['JudgeTenure'];
+			$this->request->data['DataInProgress']['JudgeApptBy'] 		= $case['DataInProgress']['JudgeApptBy'];
+			$this->request->data['DataInProgress']['FedDistrictNum'] 	= $case['DataInProgress']['FedDistrictNum'];
+			$this->request->data['DataInProgress']['FedDistrictLoc']	= $case['DataInProgress']['FedDistrictLoc'];
+			$this->request->data['DataInProgress']['State'] 			= $case['DataInProgress']['State'];
+			$this->request->data['DataInProgress']['CaseSummary']		= $case['DataInProgress']['CaseSummary'];
+			$this->request->data['DataInProgress']['LaborTraf']			= $case['DataInProgress']['LaborTraf'];
+			$this->request->data['DataInProgress']['AdultSexTraf']		= $case['DataInProgress']['AdultSexTraf'];
+			$this->request->data['DataInProgress']['MinorSexTraf']		= $case['DataInProgress']['MinorSexTraf'];
+			$this->request->data['DataInProgress']['NumVic']			= $case['DataInProgress']['NumVic'];
+			$this->request->data['DataInProgress']['NumVicMinor']		= $case['DataInProgress']['NumVicMinor'];
+			$this->request->data['DataInProgress']['NumVicForeign']		= $case['DataInProgress']['NumVicForeign'];
+			$this->request->data['DataInProgress']['NumVicFemale']		= $case['DataInProgress']['NumVicFemale'];
+
+			$id = $this->getRowId();
+			$id = $id + 1;
+			$this->request->data['DataInProgress']['id'] = $id;
+			debug($this->request->data);
+
+			if ($this->DataInProgress->save($this->request->data)) {
+				$this->redirect('/admin/cases/edit/'.$caseNumber);
+				print_r('Defendant added to case!');
+			} else {
+				print_r('An error occurred while adding defendant to case.');
+			}
+
+		}
+
+		$this->render('add_defendant');
+
+	}
+
+	public function getRowId() {
+		$newRowId = $this->DataInProgress->find('first', array('fields' => array('MAX(DataInProgress.id) as id')));
+		$newRowId = $newRowId[0]['id'];
+		return $newRowId;
 	}
 
 	public function autoComplete() {

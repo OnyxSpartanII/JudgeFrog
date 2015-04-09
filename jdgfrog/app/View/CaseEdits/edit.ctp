@@ -78,6 +78,7 @@
                         <div class="top_bar_dash">
                           <h4>CASE DEFENDANT(S)</h4>
                         </div>
+                        <?php echo $this->Html->link('Add Defendant', '/admin/cases/edit/add_defendant/'.$case['0']['DataInProgress']['CaseNum']); ?>
                       </div>
 						<?php 
                                 echo "<table class='table table-striped table-bordered' id='cases_table'>";

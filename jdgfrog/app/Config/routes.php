@@ -35,9 +35,12 @@
 	Router::connect('/admin/cases/edit/defendant/:defName', array('controller' => 'CaseEdits', 'action' => 'editDefendant'), array('pass' => array('defName')));
 	Router::connect('/admin/cases/edit/add_defendant/:caseNum', array('controller' => 'CaseEdits', 'action' => 'addDefendant'), array('pass' => array('caseNum')));
 	Router::connect('/admin/cases/create', array('controller' => 'CaseEdits', 'action' => 'addCase'));
+	Router::connect('/admin/cases/review', array('controller' => 'CaseReviews', 'action' => 'review'));
+	Router::connect('/admin/cases/edit/migrate/:caseNum', array('controller' => 'CaseEdits', 'action' => 'migrateFromDataToDataInProgress'), array('pass' => array('caseNum')));
+
+	//Old routes
 	Router::connect('/admin/cases/create_case/:step', array('controller' => 'CaseSessions', 'action' => 'createCase'), array('pass' => array('step')) );
 	Router::connect('/admin/cases/create_case_index', array('controller' => 'CaseSessions', 'action' => 'create_case_index'));
-	Router::connect('/admin/cases/review', array('controller' => 'CaseReviews', 'action' => 'review'));
 	Router::connect('/CaseSessions/create_case/:step', array('controller' => 'CaseSessions', 'action' => 'createCase'), array('pass' => array('step')) );
 
 	Router::connect('/index', array('controller' => 'AdminPanel', 'action' => 'index'));

@@ -110,6 +110,8 @@
 									}
 									echo "</tbody>";
 									echo "</table>";
+							} else {
+								echo "No cases in table: Data";
 							}
 						?>
 				</div> 

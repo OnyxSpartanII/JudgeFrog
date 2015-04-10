@@ -32,18 +32,16 @@ class CaseEditsController extends AppController {
 												'group' => 'Datum.CaseNam'
 												)
 										);
-
-		debug($dataCases);
+		
 		$this->set('dataCases', $dataCases);
 	}
 
 	public function edit($num) {
-		$this->autoRender = false;
 
+		$this->autoRender = false;
 		$caseNumber = $num;
 		//$caseNumber = '1:13-cr-00069-LO';
 		$case = $this->getCase($caseNumber);
-		//debug($case);
 		if ($case) {
 			$this->set('case', $case);	
 		} else {
@@ -54,7 +52,6 @@ class CaseEditsController extends AppController {
 		// 30 defs: 3:10-cr-00260
 		// 4 defs: 2:07-cr-00785-JLL
 		
-
 		if ($this->request->is('post')) {
 
 			$data = $this->request->data;
@@ -82,10 +79,6 @@ class CaseEditsController extends AppController {
 			$caseName = addslashes($caseName);
 			$judgeName = addslashes($judgeName);
 			$caseSummary = addslashes($caseSummary);
-
-			//debug($caseSummary);
-			//debug($judgeName);
-			//debug($caseName);
 
 			//$caseName = 'DROP TABLE DataInProgress_backup';
 			/*

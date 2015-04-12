@@ -25,7 +25,6 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 <!--[if lt IE 9]>
 <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
-
 <!--web-fonts-->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 	<?php
@@ -43,10 +42,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
             fit: true   // 100% fit in a container
         });
     });
-
 </script>
-<!-- Scripts for collaspable panels. -->
-  
 	<title> 
 		<?php 
 			if (isset($title)) 
@@ -76,12 +72,11 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	 	        	<span class="menu"> <?php echo $this->Html->image('icon.png', array('alt' => 'Menu List')); ?></span>
 					<div class="header-navg">
 						<ul class="res">
-							<li><a class="<?php echo ($this->fetch('active') == 'index') ? 'active' : ''; ?>" <?php echo $this->Html->link('Home', '/AdminPanel/index'); ?></li>
-							<li><a class="<?php //echo ($this->fetch('active') == 'create_case') ? 'active' : ''; ?>" <?php //echo $this->Html->link('Create', '/admin/cases/edit/index'); ?></li>
-							<li><a class="<?php echo ($this->fetch('active') == '') ? 'active' : ''; ?>" <?php echo $this->Html->link('Upload', '/uploads'); ?></li>
+							<li><a class="<?php echo ($this->fetch('active') == 'index') ? 'active' : ''; ?>" <?php echo $this->Html->link('Home', '/admin/index'); ?></li>
+							<li><a class="<?php echo ($this->fetch('active') == '') ? 'active' : ''; ?>" <?php echo $this->Html->link('Upload', '/admin/uploads'); ?></li>
 							<li><a class="<?php echo ($this->fetch('active') == 'edit') ? 'active' : ''; ?>" <?php echo $this->Html->link('Create & Edit', '/admin/cases/edit/index'); ?></li>
 							<li><a class="<?php echo ($this->fetch('active') == 'review') ? 'active' : ''; ?>" <?php echo $this->Html->link('Review', '/admin/cases/review'); ?></li>
-							<li><a class="<?php echo ($this->fetch('active') == 'create') ? 'active' : ''; ?>" <?php echo $this->Html->link('Manage Users', '/Users/create'); ?></li>
+							<li><a class="<?php echo ($this->fetch('active') == 'create') ? 'active' : ''; ?>" <?php echo $this->Html->link('Manage Users', '/admin/manageusers'); ?></li>
 							<div class="menu_separator"><li style="font-size:18px; font-weight:400; opacity:0.8; color:#444;">|</li></div>
 							<li>
 								<?php if (AuthComponent::user('id')): ?>
@@ -104,15 +99,17 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 				</div>
 			</div>
 		</div>
-
 		<div id="content">
-
 			<?php echo $this->Session->flash(); ?>
-
 			<?php echo $this->fetch('content'); ?>
-		
 		</div>
-	</body>
+		<div class="mobile-message" style="margin:20px">
+			<br>
+			<h4 style="border-bottom:2px solid #DCDCDC; color:#4D1979">Unsupported Device</h4>
+			<br>
+			<h6>OOPS WE DO NOT SUPPORT DEVICES WITH A SCREEN THIS SMALL!</h6>
+			<p style="font-size:8px">PLEASE USE A DEVICE WITH A SCREEN WIDTH OF AT LEAST 425PX...</p>
+		</div>
 <!-- FOOTER SECTION -->
 <div class="footer-h">
 	  <div class="container">
@@ -145,19 +142,22 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
             	</div>
 </div>
 <script type="text/javascript">
-	
     //Change Text on Hover
     $('.full').hover(function(){
     	// $(this).animate(1000);
-
-    	$(this).text("Human Trafficking Data | Admin Panel");
+    	$(this).text("Human Trafficking Data | AP");
 	}, function() {
     	$(this).text("HTD | Admin Panel");
 });
-
-
+$( document ).ready(function() {      
+    var isMobile = window.matchMedia("only screen and (max-width: 424px)");
+    $('.mobile-message').hide();
+    if (isMobile.matches) {
+    	$('#content').hide();
+    	$('.mobile-message').show();
+    }
+});
 </script>
-
 </body>
 </html>
 

@@ -211,7 +211,7 @@
                         <label for="" id="applyButton">
                           <?php echo $this->Html->link(
                               $this->Html->image("analyze.png", array("alt" => "Anaylze")),
-                              "/Analyze", array('escape' => false)); ?>
+                              "/analyze", array('escape' => false)); ?>
                         </label>
                       </div>
                     </div>

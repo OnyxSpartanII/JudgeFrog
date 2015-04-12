@@ -15,7 +15,7 @@
               <div style="min-height:100px;">
                 <?php
                 echo $this->Form->create('Uploads', array('type' => 'file'));
-                echo $this->Form->input('file', array('label'=>'', 'type' => 'file', 'data-filename-placement'=>'inside', 'title'=>'Search for cvs a file to upload', 'accept'=>'.csv'));
+                echo $this->Form->input('file', array('label'=>'', 'type' => 'file', 'data-filename-placement'=>'inside', 'title'=>'Search for a csv file to upload', 'accept'=>'.csv'));
                 ?>
               </div>
               <div style="margin-top:0px; padding-top:10px; border-top:1px solid #DCDCDC">

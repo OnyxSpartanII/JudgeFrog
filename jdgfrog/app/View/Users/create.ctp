@@ -5,7 +5,7 @@
 ?>
 <?php
     echo $this->Html->css(array('dataTables.bootstrap', 'dataTables.responsive'));
-    echo $this->Html->script(array('jquery-1.10.2', 'jquery.dataTables.min', 'dataTables.responsive.min', 'dataTables.bootstrap'));
+    echo $this->Html->script(array('jquery-1.10.2.min', 'jquery.dataTables.min', 'dataTables.responsive.min', 'dataTables.bootstrap'));
 ?>
 <script type="text/javascript" charset="utf-8">
   $(document).ready(function() {
@@ -96,7 +96,7 @@
                                   echo "      <td> ".$row['first_name']." </td>";
                                   echo "      <td> ".$row['last_name']." </td>";
                                   echo "      <td> ".$row['role']." </td>";
-                                  echo "      <td> ".$this->Html->link('Delete', '/Users/delete_user/'.$row['username'], 'Are you sure?');
+                                  echo "      <td> ".$this->Html->link('Delete', '/admin/delete_user/'.$row['username'], 'Are you sure?');
                                             "</td>";
                                   echo "  </tr>";
                                   }

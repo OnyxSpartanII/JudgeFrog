@@ -11,17 +11,11 @@
 					<h3 class="page_title">Defendant &amp; Statutes Details | 
 						<span style="color:#888; font-size:23px;"><?php echo $case['DataInProgress']['CaseNam']; ?></span>
 					</h3>
-					<div class="progress">
-						<div class="progress-bar" role="progressbar" style="width:10%">PROGRESS:</div>
-						<div class="progress-bar  progress-bar-success" role="progressbar" style="width:30%">Case &amp; Victim(s) Information</div>
-						<div class="progress-bar  progress-bar-success active_progress" role="progressbar" style="width:50%"><strong>Defendant Information</strong></div>
-						<div class="progress-bar idle" role="progressbar" style="width:10%">Submit</div>
-					</div>
 				</div>
 					<?php 	
 						// echo 'Case Number: '.$case['DataInProgress']['CaseNum'];
 						// echo ' | ';
-						// echo 'Case Name: '.$case['DataInProgress']['CaseNam']; 
+						echo 'Case Name: '.$case['DataInProgress']['CaseNam']; 
 					?>
 				<div class="col-md-12">
 				<div class="col-md-6 case_creation_form" id="form_style" style="float:inherit">

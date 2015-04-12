@@ -5,7 +5,7 @@
 ?>
 <?php
 	echo $this->Html->css(array('dataTables.bootstrap', 'dataTables.responsive'));
-	echo $this->Html->script(array('jquery-1.10.2.min', 'jquery.dataTables.min', 'dataTables.responsive.min', 'dataTables.bootstrap', 'dataTables.fixedHeader.min'));
+	echo $this->Html->script(array('jquery-1.10.2.min', 'jquery.dataTables.min', 'dataTables.responsive.min', 'dataTables.bootstrap'));
 ?>
 <script type="text/javascript" charset="utf-8">
   $(document).ready(function() {
@@ -76,9 +76,17 @@
 					<div class="col-md-7 case_creation_form" id="form_style" style="float:inherit">
 					  <div class="top_bar col-md-7">
 						<div class="top_bar_dash">
-						  <h4>CASE DEFENDANT(S)</h4>
+						  <h4>CASE DEFENDANTS</h4>
 						</div>
-						<?php echo $this->Html->link('Add Defendant', '/admin/cases/edit/add_defendant/'.$case['0']['DataInProgress']['CaseNum']); ?>
+						<!-- ADD BUTTON-->
+						<div title="Add a new case" style="margin-top: -5px;">
+							<label for="" class="user_button" title="Add a new defendant">
+								<?php
+								echo $this->Html->link(
+										$this->Html->image("add_def.png", array("alt" => "Create Case", 'style' => 'float:left; padding: 10px 7px 8px 0px;')),
+										'/admin/cases/edit/add_defendant/'.$case['0']['DataInProgress']['CaseNum'], array('escape' => false)); ?> 
+							</label>
+						</div>
 					  </div>
 						<?php 
 								echo "<table class='table table-striped table-bordered' id='cases_table'>";

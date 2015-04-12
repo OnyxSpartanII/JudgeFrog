@@ -122,7 +122,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	  	    	<div class="col-md-3 footer-right">
             		<label>
             			<h4>Authorized Users:</h4>
-            		Authorized users can access the academic/advanced user panel by clicking <?php echo $this->Html->link('here', '/AdminPanel'); ?>
+            		Authorized users can access the academic/advanced user panel by clicking <?php echo $this->Html->link('here', '/admin/index'); ?>
             		</label>
 	  	    	</div>
 	  	    <div class="clearfix"> </div>

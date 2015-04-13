@@ -29,7 +29,7 @@
 								echo $this->Form->create('DataInProgress');
 								echo $this->Form->input('CaseNam', array('label' => 'Case Name', 'default'  => $case['0']['DataInProgress']['CaseNam']));
 								echo $this->Form->input('CaseNum', array('type' => 'text', 'label' => 'Case Number', 'default' => $case['0']['DataInProgress']['CaseNum']));
-								echo $this->Form->input('NumDef', array('type' => 'text', 'label'=> 'Number of Defendants', 'default' => $case['0']['DataInProgress']['NumDef']));
+								echo $this->Form->input('NumDef', array('type' => 'text', 'label'=> 'Number of Defendants', 'default' => $case['0']['DataInProgress']['NumDef'], 'readonly' => 'readonly'));
 								echo "<hr style='border-top:3px solid #DDD'>";
 								echo $this->Form->input('JudgeName', array('label'=> 'Judge Name', 'default' => $case['0']['DataInProgress']['JudgeName']));
 								echo $this->Form->input('JudgeRace', array('label' => '', 'default' => $case['0']['DataInProgress']['JudgeRace'], 'empty' => 'Race', 'options' => array('White', 'Black', 'Hispanic', 'Asian', 'Other')));

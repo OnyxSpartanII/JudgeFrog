@@ -32,8 +32,21 @@ class CaseEditsController extends AppController {
 												'group' => 'Datum.CaseNam'
 												)
 										);
+		$dipCases = $this->DataInProgress->find('all', array(
+												'fields' => array(
+																'DataInProgress.CaseNum', 
+																'DataInProgress.CaseNam', 
+																'DataInProgress.JudgeName', 
+																'DataInProgress.State', 
+																'DataInProgress.author', 
+																'DataInProgress.NumDef', 
+																'DataInProgress.modified'),
+												'group' => 'DataInProgress.CaseNam'
+												)
+										);
 		
 		$this->set('dataCases', $dataCases);
+		$this->set('dipCases', $dipCases);
 	}
 
 	public function edit($num) {
@@ -220,7 +233,7 @@ class CaseEditsController extends AppController {
 			//Pull the case information from the case and place it into the request.
 			$this->request->data['DataInProgress']['CaseNam'] 			= $case['DataInProgress']['CaseNam'];
 			$this->request->data['DataInProgress']['CaseNum'] 			= $case['DataInProgress']['CaseNum'];
-			$this->request->data['DataInProgress']['NumDef'] 			= $case['DataInProgress']['NumDef'] + 1;	//Increment the number of defendants.
+			$this->request->data['DataInProgress']['NumDef'] 			= $case['DataInProgress']['NumDef'];	//Increment the number of defendants.
 			$this->request->data['DataInProgress']['JudgeName'] 		= $case['DataInProgress']['JudgeName'];
 			$this->request->data['DataInProgress']['JudgeRace'] 		= $case['DataInProgress']['JudgeRace'];
 			$this->request->data['DataInProgress']['JudgeGen'] 			= $case['DataInProgress']['JudgeGen'];
@@ -241,9 +254,17 @@ class CaseEditsController extends AppController {
 			$id = $this->getRowId();
 			$id = $id + 1;
 			$this->request->data['DataInProgress']['id'] = $id;
+
+			$temp = $this->request->data['DataInProgress']['NumDef'];
+			$temp = $temp + 1;
+			$this->request->data['DataInProgress']['NumDef'] = $temp;
+
+			$tempArr = array('DataInProgress.NumDef' => "'$temp'");
 			//debug($this->request->data);
 
 			if ($this->DataInProgress->save($this->request->data)) {
+				//update number of defendants
+				$this->DataInProgress->updateAll($tempArr, array('DataInProgress.CaseNum' => $case['DataInProgress']['CaseNum']));
 				$this->redirect('/admin/cases/edit/'.$caseNumber);
 				print_r('Defendant added to case!');
 				//$this->deleteEmptyCases();
@@ -375,6 +396,12 @@ class CaseEditsController extends AppController {
 																			),
 														)
 												);
+			$temp = $case['DataInProgress']['NumDef'];
+			$temp = $temp - 1;
+			$tempArr = array('DataInProgress.NumDef' => "'$temp'");	
+
+			//Decrement number of defendants when a defendant is deleted.		
+			$this->DataInProgress->updateAll($tempArr, array('DataInProgress.CaseNum' => $case['DataInProgress']['CaseNum']));
 			$this->DataInProgress->deleteAll(array('DataInProgress.DefFirst' => $defFirst, 'DataInProgress.DefLast' => $defLast), false);
 			$this->Session->setFlash('Defendant Successfully Deleted!');
 			$this->redirect(array('controller' => '/admin/cases', 'action' => 'edit/'.$caseNumber));

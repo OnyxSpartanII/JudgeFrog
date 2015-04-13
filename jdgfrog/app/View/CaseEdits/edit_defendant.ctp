@@ -15,7 +15,7 @@
 					<?php 	
 						// echo 'Case Number: '.$case['DataInProgress']['CaseNum'];
 						// echo ' | ';
-						echo 'Case Name: '.$case['DataInProgress']['CaseNam']; 
+						// echo 'Case Name: '.$case['DataInProgress']['CaseNam']; 
 					?>
 				<div class="col-md-12">
 				<div class="col-md-6 case_creation_form" id="form_style" style="float:inherit">

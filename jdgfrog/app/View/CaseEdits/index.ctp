@@ -22,7 +22,7 @@
 					<!-- TOP CREATE A NEW USER BAR -->
 						<div class="top_bar col-md-3">
 							<div class="top_bar_left">
-								<h4>INSTRUCTIONS</h4>
+								<h4 style="font-size:16px">INSTRUCTIONS</h4>
 							</div>
 							<!-- DOWNLOAD BUTTON-->
 							<div title="Download the docket">
@@ -116,7 +116,7 @@
 									echo "      <td> ".$row['JudgeName']." </td>";
 									echo "      <td> ".$row['State']." </td>";
 									echo "      <td> ".$this->Html->link('Edit', '/admin/cases/edit/'.$row['CaseNum']) . '&nbsp/&nbsp;'
-																		.$this->Html->link('Delete', '/CaseEdits/delete_case/'.$row['CaseNum'], array('confirm'=>'Are you sure you want to delete this case?'));
+																		.$this->Html->link('Delete', '/CaseEdits/delete_incomplete_case/'.$row['CaseNum'], array('confirm'=>'Are you sure you want to delete this case?'));
 															"</td>";
 									echo "      <td> ".$row['author']." </td>";
 									echo "      <td> ".$row['NumDef']." </td>";

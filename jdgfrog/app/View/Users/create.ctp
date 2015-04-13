@@ -21,7 +21,7 @@
             <div class="case_top_bar">
               <h3 class="" style="text-align:left; float:none">Users Management</h3>
             </div>
-              <div class="col-md-4 contact-right  users form" style="margin-top: -50px;">
+              <div class="col-md-5 contact-right  users form" style="margin-top: -50px;">
                <?php echo $this->Form->create('User');
                       echo $this->Form->hidden('createform', array('value' => 'create'));?>
                 <!-- Create Interface -->
@@ -52,7 +52,7 @@
                   <!-- <div class="submit" style=""><input  type="submit" value="Submit" id="submitForm"/></div></form>  -->
                 </div>
             </div> 
-                <div class="col-md-8 contact-right">
+                <div class="col-md-7 contact-right">
                   <?php 
                       echo $this->Form->create("delete_user_form"); 
                       echo $this->Form->hidden('deleteform', array('value' => 'delete'));

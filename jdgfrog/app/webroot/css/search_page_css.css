@@ -31,7 +31,7 @@
     margin: 0 auto;
 }
 .search_button{
-    margin-top: -9px;
+    margin-top: -3px;
     padding-left: 10px;
     background-color: #fff;
     cursor: pointer;
@@ -120,13 +120,13 @@
     padding: 15px 0px;
     margin:0;
     font-size: 100% ;
-    background: url('/jdgfrog/img/open.png') no-repeat right center;
+    background: url('../img/open.png') no-repeat right center;
     letter-spacing: .1em;
     border-bottom: 1px solid rgba(75,75,75, 0.4);
 }
 
 #collapsible-panels h2.active {
-    background: url('/jdgfrog/img/close.png') no-repeat right center;
+    background: url('../img/close.png') no-repeat right center;
     text-decoration: underline;
     color: #4D1979;
 }
@@ -268,6 +268,68 @@ tr.google-visualization-table-tr-odd:hover{
     background-color: #4D1979;
 }
 
+select{
+   -webkit-appearance: button;
+   -webkit-border-radius: 2px;
+   -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+   -webkit-padding-end: 20px;
+   -webkit-padding-start: 2px;
+   -webkit-user-select: none;
+   background-image: url('../img/drop.png'), -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+   background-position: 95% center;
+   background-repeat: no-repeat;
+   border: 1px solid #AAA;
+   color: #555;
+   font-size: inherit;
+   overflow: hidden;
+   padding: 12px 10px;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+   cursor: pointer;
+   width: 100%;
+ }
+
+.dataTables_length select {
+    width: 100%;
+    background-image: url('../img/drop.png'), -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+    background-position: 95% center;
+    padding: 0px 30px;
+    border: none;
+    border: 1px solid #AAA;
+    cursor: pointer;
+}
+
+.dataTables_filter [type=search]:hover,
+.dataTables_filter [type=search]:focus {
+    border-left: 7px solid #4D1979;
+    -webkit-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+} 
+
+  .checkbox {
+    display: inline-block;
+    cursor: pointer;
+    margin-top: 10px;
+    line-height:15px;
+    padding-top: 5px;
+    border-top: 3px solid #DDD;
+    border-bottom: 3px solid #DDD;
+  }
+  input[type=checkbox] {
+    font-size: 18px; 
+    display:none; 
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    vertical-align:middle;
+    background-color: #0088cc;
+    color: #f3f3f3;
+    text-align: left;
+    border-radius: 3px;
+  }
 
 
 /*ANALYZE PAGE STYLE*/

@@ -74,11 +74,9 @@
           </div>
       </div> 
   </div>
-</div>
             <div class="search_disclaim" style="margin-top:200px">
               <p><strong>Note: </strong>Click on any pending case to display its details.</p>
             </div>
-</div>
 
 <!-- TABLE SELECTION SCRIPT -->
 <script type="text/javascript">

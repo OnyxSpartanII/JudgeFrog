@@ -354,8 +354,12 @@ class CaseEditsController extends AppController {
 	public function delete_case($CaseNum) {
 		$this->Datum->deleteAll(array('Datum.CaseNum' => $CaseNum), false);
 		$this->Session->setFlash('Case Successfully Deleted!');
-		$this->redirect(array('controller' => 'AdminPanel', 'action' => 'edit'));
-
+		$this->redirect(array('controller' => 'CaseEdits', 'action' => 'index'));
+	}	
+	public function delete_incomplete_case($CaseNum) {
+		$this->DataInProgress->deleteAll(array('DataInProgress.CaseNum' => $CaseNum), false);
+		$this->Session->setFlash('Case Successfully Deleted!');
+		$this->redirect(array('controller' => 'CaseEdits', 'action' => 'index'));
 	}	
 	public function delete_def($defArray) {
 		$string = explode("|", $defArray);
@@ -374,10 +378,7 @@ class CaseEditsController extends AppController {
 			$this->DataInProgress->deleteAll(array('DataInProgress.DefFirst' => $defFirst, 'DataInProgress.DefLast' => $defLast), false);
 			$this->Session->setFlash('Defendant Successfully Deleted!');
 			$this->redirect(array('controller' => '/admin/cases', 'action' => 'edit/'.$caseNumber));
-		} else {
-			//Redirect to error page?
-			$this->Session->setFlash('Invalid arguments. Missing defendant name or case number.');
-		}
+		} else {}
 
 	}
 

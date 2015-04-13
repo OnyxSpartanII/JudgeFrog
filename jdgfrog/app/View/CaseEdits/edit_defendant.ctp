@@ -39,23 +39,39 @@
 																	'default' => $case['DataInProgress']['DefFirst'],
 																	'label' => 'Defendant First Name')); ?>
 							<?php	// customize for male/female with if statement
-									echo $this->Form->input('DefGender', array( 'label' => '', 'empty' => 'Gender', 'options' => array('0' => 'Male', '1' => 'Female'), 'default' => $case['DataInProgress']['DefGender'])); ?>
-							<?php	echo $this->Form->input('DefBirthdate',	array('label' => 'Defendant Birthdate', 'type' => 'text', 'default' => $case['DataInProgress']['DefBirthdate'])); ?>
-							<?php 	echo $this->Form->input('DefRace', array('default' => $case['DataInProgress']['DefRace'], 'label' => '', 'empty' => 'Race', 'options' => array('White', 'Black', 'Hispanic', 'Asian', 'Other'))); ?>	
-							<?php	echo $this->Form->input('DefArrestAge',	array('label' => 'Defendant Age', 'type' => 'text', 'default' => $case['DataInProgress']['DefArrestAge'])); ?>
-							<?php	echo $this->Form->input('Alias', array('default' => $case['DataInProgress']['Alias'])); ?>
+									echo $this->Form->input('DefGender', 		array( 'label' => '', 'empty' => 'Gender', 'options' => array('0' => 'Male', '1' => 'Female'), 'default' => $case['DataInProgress']['DefGender'])); ?>
+							<?php	echo $this->Form->input('DefBirthdate',		array('label' => 'Defendant Birthdate', 'type' => 'text', 'default' => $case['DataInProgress']['DefBirthdate'])); ?>
+							<?php 	echo $this->Form->input('DefRace', 			array('default' => $case['DataInProgress']['DefRace'], 'label' => '', 'empty' => 'Race', 'options' => array('White', 'Black', 'Hispanic', 'Asian', 'Other'))); ?>	
+							<?php	echo $this->Form->input('DefArrestAge',		array('label' => 'Defendant Age', 'type' => 'text', 'default' => $case['DataInProgress']['DefArrestAge'])); ?>
+							<?php	echo $this->Form->input('Alias', 			array('default' => $case['DataInProgress']['Alias'])); ?>
 							<?php 
-									echo $this->Form->input('ChargeDate', array('default' => $case['DataInProgress']['ChargeDate'], 'label' => 'Charge Date', 'placeholder' => '11/04/1986', 'id' => 'charge_Date', 'type' => 'text', 'class' => 'date', 'data-date' 	=> '2012-12-02', 'data-date-format' => 'yyyy-mm-dd')); 
-									echo $this->Form->input('ArrestDate', array('default' => $case['DataInProgress']['ArrestDate'], 'label' => 'Arrest Date', 'placeholder' => '01/24/2001', 'class' => 'date', 'type' => 'text', 'id' => 'arrest_Date', 'data-date' 	=> '2012-12-02', 'data-date-format' => 'yyyy-mm-dd'));
+									echo $this->Form->input('ChargeDate', 		array('default' => $case['DataInProgress']['ChargeDate'], 'label' => 'Charge Date', 'placeholder' => '11/04/1986', 'id' => 'charge_Date', 'type' => 'text', 'class' => 'date', 'data-date' 	=> '2012-12-02', 'data-date-format' => 'yyyy-mm-dd')); 
+									echo $this->Form->input('ArrestDate', 		array('default' => $case['DataInProgress']['ArrestDate'], 'label' => 'Arrest Date', 'placeholder' => '01/24/2001', 'class' => 'date', 'type' => 'text', 'id' => 'arrest_Date', 'data-date' 	=> '2012-12-02', 'data-date-format' => 'yyyy-mm-dd'));
 									echo "<hr style = 'border-top:1px solid #DCDCDC'>";
-									echo $this->Form->input('Detained', array('default' => $case['DataInProgress']['Detained'], 'label' => 'Detained', 'type' => 'checkbox'));
+									echo $this->Form->input('Detained', 		array('default' => $case['DataInProgress']['Detained'], 'label' => 'Detained', 'type' => 'checkbox'));
 									echo "<hr style = 'border-top:1px solid #DCDCDC'>";
-									echo $this->Form->input('BailType', array('default' => $case['DataInProgress']['BailType'], 'label' => 'Bail Type', 'options' => array('None', 'Surety', 'Non-Surety')));
+									echo $this->Form->input('BailType', 		array('default' => $case['DataInProgress']['BailType'], 'label' => 'Bail Type', 'options' => array('None', 'Surety', 'Non-Surety')));
 									echo "<br>";
-									echo $this->Form->input('BailAmount', array('default' => $case['DataInProgress']['BailAmount'], 'type' => 'text', 'label' => 'Bail Amount'));
+									echo $this->Form->input('BailAmount', 		array('default' => $case['DataInProgress']['BailAmount'], 'type' => 'text', 'label' => 'Bail Amount'));
 									echo "<hr style = 'border-top:1px solid #DCDCDC'>";
-									echo $this->Form->input('FelCharged', array('default' => $case['DataInProgress']['FelCharged'], 'type' => 'text', 'label' => 'Number of Felonies Charged'));
-									echo $this->Form->input('FelSentenced', array('default' => $case['DataInProgress']['FelSentenced'], 'type' => 'text', 'label' => 'Number of Felonies Sentenced')); 
+									echo $this->Form->input('FelCharged', 		array('default' => $case['DataInProgress']['FelCharged'], 'type' => 'text', 'label' => 'Number of Felonies Charged'));
+									echo $this->Form->input('FelSentenced', 	array('default' => $case['DataInProgress']['FelSentenced'], 'type' => 'text', 'label' => 'Number of Felonies Sentenced'));
+
+									echo $this->Form->input('DateTerminated', 	array('default' => $case['DataInProgress']['DateTerminated'], 'type' => 'text', 'label' => 'Date of Case Termination', 'data-date-format' => 'yyyy-mm-dd'));
+									echo $this->Form->input('SentDate', 		array('default' => $case['DataInProgress']['SentDate'], 'type' => 'text', 'label' => 'Date of Sentencing', 'data-date-format' => 'yyyy-mm-dd'));
+									echo $this->Form->input('TotalSent', 		array('default' => $case['DataInProgress']['TotalSent'], 'type' => 'text', 'label' => 'Total Number of Months Sentenced'));
+									echo $this->Form->input('Restitution', 		array('default' => $case['DataInProgress']['Restitution'], 'type' => 'text', 'label' => 'Total Restitution To Be Paid'));
+									echo $this->Form->input('AssetForfeit', 	array('default' => $case['DataInProgress']['AssetForfeit'], 'label' => 'Asset Forfeiture'));
+									echo $this->Form->input('SupRelease', 		array('default' => $case['DataInProgress']['SupRelease'], 'type' => 'text', 'label' => 'Total Number of Months Supervised Release'));
+									echo $this->Form->input('Probation', 		array('default' => $case['DataInProgress']['Probation'], 'type' => 'text', 'label' => 'Total Number of Months On Probation'));
+									echo $this->Form->input('OCName1', 			array('default' => $case['DataInProgress']['OCName1'], 'type' => 'text', 'label' => 'Name', 'placeholder' => 'Francis Underwood'));
+									echo $this->Form->input('OCType1', 			array('default' => $case['DataInProgress']['OCType1'], 'label' => '', 'options' => array('Mom and Pop', 'Street Gang', 'Cartel/Syndicate/Mafia', 'Prison Gang', 'Other'),'empty'=>'Type'));'default' => $case['DataInProgress'][''], 
+									echo $this->Form->input('OCRace1', 			array('default' => $case['DataInProgress']['OCRace1'], 'label' => '', 'options' => array('White','Black','Hispanic','Asian','Other'),'empty'=>'Race'));
+									echo $this->Form->input('OCScope1', 		array('default' => $case['DataInProgress']['OCScope1'], 'label' => '', 'options' => array('Local', 'Trans-State', 'Trans-National'),'empty'=>'Scope'));
+									echo $this->Form->input('OCName2', 			array('default' => $case['DataInProgress']['OCName2'], 'type' => 'text', 'label' => 'Name', 'placeholder' => 'Francis Underwood'));
+									echo $this->Form->input('OCType2',			array('default' => $case['DataInProgress']['OCType2'], 'label' => '', 'options' => array('Mom and Pop', 'Street Gang', 'Cartel/Syndicate/Mafia', 'Prison Gang', 'Other'),'empty'=>'Type'));'default' => $case['DataInProgress'][''], 
+									echo $this->Form->input('OCRace2', 			array('default' => $case['DataInProgress']['OCRace2'], 'label' => '', 'options' => array('White','Black','Hispanic','Asian','Other'),'empty'=>'Race'));
+									echo $this->Form->input('OCScope2',			array('default' => $case['DataInProgress']['OCScope2'], 'label' => '', 'options' => array('Local', 'Trans-State', 'Trans-National'),'empty'=>'Scope')); 
 							?>							
 						</fieldset>	
 				</div>
@@ -88,7 +104,7 @@
 
                   <h2 id="1028_title" class="fieldset_title">Statute Information | 1028</h2>
                   <fieldset id="to1028">
-					<?php echo $this->Form->input('S1028', 			array('default' => $case['DataInProgress']['S1028'], 'label' => 'Statute 1028', 'type' => 'checkbox')); ?>
+					<?php echo $this->Form->input('S1028', 				array('default' => $case['DataInProgress']['S1028'], 'label' => 'Statute 1028', 'type' => 'checkbox')); ?>
 					<?php echo $this->Form->input('Counts1028', 		array('default' => $case['DataInProgress']['Counts1028'], 'label' => 'Counts', 'type' => 'text')); ?>
 					<?php echo $this->Form->input('CountsNP1028', 		array('default' => $case['DataInProgress']['CountsNP1028'], 'label' => 'Counts Nolle Prossed', 'type' => 'text')); ?>
 					<?php echo $this->Form->input('PleaDismissed1028', 	array('default' => $case['DataInProgress']['PleaDismissed1028'], 'label' => 'Counts Dismissed', 'type' => 'text')); ?>

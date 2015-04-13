@@ -51,21 +51,20 @@
 									echo $this->Form->input('FelCharged', 		array('default' => $case['DataInProgress']['FelCharged'], 'type' => 'text', 'label' => 'Number of Felonies Charged'));
 									echo $this->Form->input('FelSentenced', 	array('default' => $case['DataInProgress']['FelSentenced'], 'type' => 'text', 'label' => 'Number of Felonies Sentenced'));
 
-									echo $this->Form->input('DateTerminated', 	array('default' => $case['DataInProgress']['DateTerminated'], 'type' => 'text', 'label' => 'Date of Case Termination', 'data-date-format' => 'yyyy-mm-dd'));
-									echo $this->Form->input('SentDate', 		array('default' => $case['DataInProgress']['SentDate'], 'type' => 'text', 'label' => 'Date of Sentencing', 'data-date-format' => 'yyyy-mm-dd'));
+									echo $this->Form->input('DateTerminated', 	array('default' => $case['DataInProgress']['DateTerminated'], 'type' => 'text', 'label' => 'Date of Case Termination', 'data-date-format' => 'yyyy-mm-dd', 'placeholder' => 'yyyy-mm-dd'));
+									echo $this->Form->input('SentDate', 		array('default' => $case['DataInProgress']['SentDate'], 'type' => 'text', 'label' => 'Date of Sentencing', 'data-date-format' => 'yyyy-mm-dd', 'placeholder' => 'yyyy-mm-dd'));
 									echo $this->Form->input('TotalSent', 		array('default' => $case['DataInProgress']['TotalSent'], 'type' => 'text', 'label' => 'Total Number of Months Sentenced'));
 									echo $this->Form->input('Restitution', 		array('default' => $case['DataInProgress']['Restitution'], 'type' => 'text', 'label' => 'Total Restitution To Be Paid'));
 									echo $this->Form->input('AssetForfeit', 	array('default' => $case['DataInProgress']['AssetForfeit'], 'label' => 'Asset Forfeiture'));
-									echo $this->Form->input('SupRelease', 		array('default' => $case['DataInProgress']['SupRelease'], 'type' => 'text', 'label' => 'Total Number of Months Supervised Release'));
 									echo $this->Form->input('Probation', 		array('default' => $case['DataInProgress']['Probation'], 'type' => 'text', 'label' => 'Total Number of Months On Probation'));
 									echo $this->Form->input('OCName1', 			array('default' => $case['DataInProgress']['OCName1'], 'type' => 'text', 'label' => 'Name', 'placeholder' => 'Francis Underwood'));
-									echo $this->Form->input('OCType1', 			array('default' => $case['DataInProgress']['OCType1'], 'label' => '', 'options' => array('Mom and Pop', 'Street Gang', 'Cartel/Syndicate/Mafia', 'Prison Gang', 'Other'),'empty'=>'Type'));'default' => $case['DataInProgress'][''], 
+									echo $this->Form->input('OCType1', 			array('default' => $case['DataInProgress']['OCType1'], 'label' => '', 'options' => array('Mom and Pop', 'Street Gang', 'Cartel/Syndicate/Mafia', 'Prison Gang', 'Other'),'empty'=>'Type', 'default' => $case['DataInProgress']['OCType1']));
 									echo $this->Form->input('OCRace1', 			array('default' => $case['DataInProgress']['OCRace1'], 'label' => '', 'options' => array('White','Black','Hispanic','Asian','Other'),'empty'=>'Race'));
 									echo $this->Form->input('OCScope1', 		array('default' => $case['DataInProgress']['OCScope1'], 'label' => '', 'options' => array('Local', 'Trans-State', 'Trans-National'),'empty'=>'Scope'));
 									echo $this->Form->input('OCName2', 			array('default' => $case['DataInProgress']['OCName2'], 'type' => 'text', 'label' => 'Name', 'placeholder' => 'Francis Underwood'));
-									echo $this->Form->input('OCType2',			array('default' => $case['DataInProgress']['OCType2'], 'label' => '', 'options' => array('Mom and Pop', 'Street Gang', 'Cartel/Syndicate/Mafia', 'Prison Gang', 'Other'),'empty'=>'Type'));'default' => $case['DataInProgress'][''], 
+									echo $this->Form->input('OCType2',			array('default' => $case['DataInProgress']['OCType2'], 'label' => '', 'options' => array('Mom and Pop', 'Street Gang', 'Cartel/Syndicate/Mafia', 'Prison Gang', 'Other'),'empty'=>'Type', 'default' => $case['DataInProgress']['OCType2']));
 									echo $this->Form->input('OCRace2', 			array('default' => $case['DataInProgress']['OCRace2'], 'label' => '', 'options' => array('White','Black','Hispanic','Asian','Other'),'empty'=>'Race'));
-									echo $this->Form->input('OCScope2',			array('default' => $case['DataInProgress']['OCScope2'], 'label' => '', 'options' => array('Local', 'Trans-State', 'Trans-National'),'empty'=>'Scope')); 
+									echo $this->Form->input('OCScope2',			array('default' => $case['DataInProgress']['OCScope2'], 'label' => '', 'options' => array('Local', 'Trans-State', 'Trans-National'),'empty'=>'Scope'));
 							?>							
 						</fieldset>	
 				</div>

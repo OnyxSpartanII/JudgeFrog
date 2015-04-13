@@ -37,8 +37,8 @@
 							<?php	echo $this->Form->input('DefArrestAge',	array('label' => 'Defendant Age', 'type' => 'text')); ?>
 							<?php	echo $this->Form->input('Alias', array('placeholder' => 'Enter aliases separated by commas.')); ?>
 							<?php 
-									echo $this->Form->input('ChargeDate', array('label' => 'Charge Date', 'placeholder' => '11/04/1986', 'id' => 'charge_Date', 'type' => 'text', 'class' => 'date', 'data-date' 	=> '2012-12-02', 'data-date-format' => 'yyyy-mm-dd')); 
-									echo $this->Form->input('ArrestDate', array('label' => 'Arrest Date', 'placeholder' => '01/24/2001', 'class' => 'date', 'type' => 'text', 'id' => 'arrest_Date', 'data-date' 	=> '2012-12-02', 'data-date-format' => 'yyyy-mm-dd'));
+									echo $this->Form->input('ChargeDate', array('label' => 'Charge Date', 'placeholder' => 'yyyy-mm-dd', 'id' => 'charge_Date', 'type' => 'text', 'class' => 'date', 'data-date' 	=> '2012-12-02', 'data-date-format' => 'yyyy-mm-dd')); 
+									echo $this->Form->input('ArrestDate', array('label' => 'Arrest Date', 'placeholder' => 'yyyy-mm-dd', 'class' => 'date', 'type' => 'text', 'id' => 'arrest_Date', 'data-date' 	=> '2012-12-02', 'data-date-format' => 'yyyy-mm-dd'));
 									echo "<hr style = 'border-top:1px solid #DCDCDC'>";
 									echo $this->Form->input('Detained', array('label' => 'Detained', 'type' => 'checkbox'));
 									echo "<hr style = 'border-top:1px solid #DCDCDC'>";
@@ -48,19 +48,18 @@
 									echo "<hr style = 'border-top:1px solid #DCDCDC'>";
 									echo $this->Form->input('FelCharged', array('type' => 'text', 'label' => 'Number of Felonies Charged'));
 									echo $this->Form->input('FelSentenced', array('type' => 'text', 'label' => 'Number of Felonies Sentenced')); 
-									echo $this->Form->input('DateTerminated', array('type' => 'text', 'label' => 'Date of Case Termination', 'data-date-format' => 'yyyy-mm-dd'));
-									echo $this->Form->input('SentDate', array('type' => 'text', 'label' => 'Date of Sentencing', 'data-date-format' => 'yyyy-mm-dd'));
+									echo $this->Form->input('DateTerminated', array('type' => 'text', 'label' => 'Date of Case Termination', 'data-date-format' => 'yyyy-mm-dd', 'placeholder' => 'yyyy-mm-dd'));
+									echo $this->Form->input('SentDate', array('type' => 'text', 'label' => 'Date of Sentencing', 'data-date-format' => 'yyyy-mm-dd', 'placeholder' => 'yyyy-mm-dd'));
 									echo $this->Form->input('TotalSent', array('type' => 'text', 'label' => 'Total Number of Months Sentenced'));
 									echo $this->Form->input('Restitution', array('type' => 'text', 'label' => 'Total Restitution To Be Paid'));
 									echo $this->Form->input('AssetForfeit', array('label' => 'Asset Forfeiture'));
-									echo $this->Form->input('SupRelease', array('type' => 'text', 'label' => 'Total Number of Months Supervised Release'));
 									echo $this->Form->input('Probation', array('type' => 'text', 'label' => 'Total Number of Months On Probation'));
 
-									echo $this->Form->input('OCName1', array('type' => 'text', 'label' => 'Name', 'placeholder' => 'Francis Underwood'));
+									echo $this->Form->input('OCName1', array('type' => 'text', 'label' => 'Name of Organized Crime Group 1', 'placeholder' => 'Francis Underwood'));
 									echo $this->Form->input('OCType1', array('label' => '', 'options' => array('Mom and Pop', 'Street Gang', 'Cartel/Syndicate/Mafia', 'Prison Gang', 'Other'),'empty'=>'Type'));
 									echo $this->Form->input('OCRace1', array('label' => '', 'options' => array('White','Black','Hispanic','Asian','Other'),'empty'=>'Race'));
 									echo $this->Form->input('OCScope1', array('label' => '', 'options' => array('Local', 'Trans-State', 'Trans-National'),'empty'=>'Scope'));
-									echo $this->Form->input('OCName2', array('type' => 'text', 'label' => 'Name', 'placeholder' => 'Francis Underwood'));
+									echo $this->Form->input('OCName2', array('type' => 'text', 'label' => 'Name of Organized Crime Group 2', 'placeholder' => 'Francis Underwood'));
 									echo $this->Form->input('OCType2', array('label' => '', 'options' => array('Mom and Pop', 'Street Gang', 'Cartel/Syndicate/Mafia', 'Prison Gang', 'Other'),'empty'=>'Type'));
 									echo $this->Form->input('OCRace2', array('label' => '', 'options' => array('White','Black','Hispanic','Asian','Other'),'empty'=>'Race'));
 									echo $this->Form->input('OCScope2', array('label' => '', 'options' => array('Local', 'Trans-State', 'Trans-National'),'empty'=>'Scope'));
@@ -87,11 +86,11 @@
 						<?php echo $this->Form->input('Prob1961to1968', 		array( 'label' => 'Number of Months Under Probation Under Statute', 'type' => 'text')); ?>
 						<hr style="border-top:1px solid #CCC;">
 						<input type="button" name="next" onclick="goto1028()" class="action-button" value="Statute 1028" />
-				</fieldset>
+				  </fieldset>
 
 
-				<h2 id="1028_title" class="fieldset_title">Statute Information | 1028</h2>
-				<fieldset id="to1028">
+				  <h2 id="1028_title" class="fieldset_title">Statute Information | 1028</h2>
+				  <fieldset id="to1028">
 					<?php echo $this->Form->input('S1028', 			array( 'label' => 'Statute 1028', 'type' => 'checkbox')); ?>
 					<?php echo $this->Form->input('Counts1028', 		array( 'label' => 'Counts', 'type' => 'text')); ?>
 					<?php echo $this->Form->input('CountsNP1028', 		array( 'label' => 'Counts Nolle Prossed', 'type' => 'text')); ?>
@@ -106,11 +105,11 @@
 					<input type="button" name="previous" onclick="goto1961()" class="action-button" value="Statute 1961-1968" />
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<input type="button" name="next" onclick="goto1351()" class="action-button" value="Statute 1351" />
-				</fieldset>
+				  </fieldset>
 
 
-				<h2 id="1351_title" class="fieldset_title">Statute Information | 1351</h2>
-				<fieldset id="to1351">
+				  <h2 id="1351_title" class="fieldset_title">Statute Information | 1351</h2>
+				  <fieldset id="to1351">
 					<?php echo $this->Form->input('S1351', 				array( 'label' => 'Statute 1351', 'type' => 'checkbox')); ?>
 					<?php echo $this->Form->input('Counts1351', 		array( 'label' => 'Counts', 'type' => 'text')); ?>
 					<?php echo $this->Form->input('CountsNP1351', 		array( 'label' => 'Counts Nolle Prossed', 'type' => 'text')); ?>
@@ -125,11 +124,11 @@
 						<input type="button" name="previous" onclick="goto1028_()" class="action-button" value="Statute 1028" />
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="button" name="next" onclick="goto1425()" class="action-button" value="Statute 1425" />
-				</fieldset>
+				  </fieldset>
 
 
-				<h2 id="1425_title" class="fieldset_title">Statute Information | 1425</h2>
-				<fieldset id="to1425">
+				  <h2 id="1425_title" class="fieldset_title">Statute Information | 1425</h2>
+				  <fieldset id="to1425">
 					<?php echo $this->Form->input('S1425', 				array( 'label' => 'Statute 1425', 'type' => 'checkbox')); ?>
 					<?php echo $this->Form->input('Counts1425', 		array( 'label' => 'Counts', 'type' => 'text')); ?>
 					<?php echo $this->Form->input('CountsNP1425', 		array( 'label' => 'Counts Nolle Prossed', 'type' => 'text')); ?>
@@ -144,11 +143,11 @@
 						<input type="button" name="previous" onclick="goto1351_()" class="action-button" value="Statute 1351" />
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="button" name="next" onclick="goto1512()" class="action-button" value="Statute 1512" />
-				</fieldset>
+				  </fieldset>
 
 
-				<h2 id="1512_title" class="fieldset_title">Statute Information | 1512</h2>
-				<fieldset id="to1512">
+				  <h2 id="1512_title" class="fieldset_title">Statute Information | 1512</h2>
+				  <fieldset id="to1512">
 					<?php echo $this->Form->input('S1512', 				array( 'label' => 'Statute 1512', 'type' => 'checkbox')); ?>
 					<?php echo $this->Form->input('Counts1512', 		array( 'label' => 'Counts', 'type' => 'text')); ?>
 					<?php echo $this->Form->input('CountsNP1512', 		array( 'label' => 'Counts Nolle Prossed', 'type' => 'text')); ?>
@@ -163,11 +162,11 @@
 						<input type="button" name="previous" onclick="goto1425_()" class="action-button" value="Statute 1425" />
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="button" name="next" onclick="goto1546()" class="action-button" value="Statute 1546" />
-				</fieldset>
+				  </fieldset>
 
 
-				<h2 id="1546_title" class="fieldset_title">Statute Information | 1546</h2>
-				<fieldset id="to1546">
+				  <h2 id="1546_title" class="fieldset_title">Statute Information | 1546</h2>
+				  <fieldset id="to1546">
 					<?php echo $this->Form->input('S1546', 				array( 'label' => 'Statute 1546', 'type' => 'checkbox')); ?>
 					<?php echo $this->Form->input('Counts1546', 		array( 'label' => 'Counts', 'type' => 'text')); ?>
 					<?php echo $this->Form->input('CountsNP1546', 		array( 'label' => 'Counts Nolle Prossed', 'type' => 'text')); ?>
@@ -182,11 +181,11 @@
 						<input type="button" name="previous" onclick="goto1512_()" class="action-button" value="Statute 1512" />
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="button" name="next" onclick="goto1581()" class="action-button" value="Statute 1581" />
-				</fieldset>
+				  </fieldset>
 
 
-				<h2 id="1581_title" class="fieldset_title">Statute Information | 1581-1588</h2>
-				<fieldset id="to1581">
+				  <h2 id="1581_title" class="fieldset_title">Statute Information | 1581-1588</h2>
+				  <fieldset id="to1581">
 					<?php echo $this->Form->input('S1581to1588', 			array( 'label' => 'Statute 1581to1588', 'type' => 'checkbox')); ?>
 					<?php echo $this->Form->input('Counts1581to1588', 		array( 'label' => 'Counts', 'type' => 'text')); ?>
 					<?php echo $this->Form->input('CountsNP1581to1588', 	array( 'label' => 'Counts Nolle Prossed', 'type' => 'text')); ?>
@@ -201,11 +200,11 @@
 						<input type="button" name="previous" onclick="goto1546_()" class="action-button" value="Statute 1546" />
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="button" name="next" onclick="goto1589()" class="action-button" value="Statute 1589" />
-				</fieldset>
+				  </fieldset>
 
 
-				<h2 id="1589_title" class="fieldset_title">Statute Information | 1589</h2>
-				<fieldset id="to1589">
+				  <h2 id="1589_title" class="fieldset_title">Statute Information | 1589</h2>
+				  <fieldset id="to1589">
 					<?php echo $this->Form->input('S1589', 				array( 'label' => 'Statute 1589', 'type' => 'checkbox')); ?>
 					<?php echo $this->Form->input('Counts1589', 		array( 'label' => 'Counts', 'type' => 'text')); ?>
 					<?php echo $this->Form->input('CountsNP1589', 		array( 'label' => 'Counts Nolle Prossed', 'type' => 'text')); ?>
@@ -220,11 +219,11 @@
 						  <input type="button" name="previous" onclick="goto1581_()" class="action-button" value="Statute 1581" />
 						  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						  <input type="button" name="next" onclick="goto1590()" class="action-button" value="Statute 1590" />
-				</fieldset>
+				  </fieldset>
 
 
-				<h2 id="1590_title" class="fieldset_title">Statute Information | 1590</h2>
-				<fieldset id="to1590">
+				  <h2 id="1590_title" class="fieldset_title">Statute Information | 1590</h2>
+				  <fieldset id="to1590">
 					<?php echo $this->Form->input('S1590', 				array( 'label' => 'Statute 1590', 'type' => 'checkbox')); ?>
 					<?php echo $this->Form->input('Counts1590', 		array( 'label' => 'Counts', 'type' => 'text')); ?>
 					<?php echo $this->Form->input('CountsNP1590', 		array( 'label' => 'Counts Nolle Prossed', 'type' => 'text')); ?>
@@ -239,11 +238,11 @@
 						<input type="button" name="previous" onclick="goto1589_()" class="action-button" value="Statute 1589" />
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="button" name="next" onclick="goto1591()" class="action-button" value="Statute 1591" />
-				</fieldset>
+				  </fieldset>
 
 
-				<h2 id="1591_title" class="fieldset_title">Statute Information | 1591</h2>
-				<fieldset id="to1591">
+				  <h2 id="1591_title" class="fieldset_title">Statute Information | 1591</h2>
+				  <fieldset id="to1591">
 					<?php echo $this->Form->input('S1591', 				array( 'label' => 'Statute 1591', 'type' => 'checkbox')); ?>
 					<?php echo $this->Form->input('Counts1591', 		array( 'label' => 'Counts', 'type' => 'text')); ?>
 					<?php echo $this->Form->input('CountsNP1591', 		array( 'label' => 'Counts Nolle Prossed', 'type' => 'text')); ?>
@@ -258,11 +257,11 @@
 						<input type="button" name="previous" onclick="goto1590_()" class="action-button" value="Statute 1590" />
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="button" name="next" onclick="goto1592()" class="action-button" value="Statute 1592" />
-				</fieldset>
+				  </fieldset>
 
 
-				<h2 id="1592_title" class="fieldset_title">Statute Information | 1592</h2>
-				<fieldset id="to1592">
+				  <h2 id="1592_title" class="fieldset_title">Statute Information | 1592</h2>
+				  <fieldset id="to1592">
 					<?php echo $this->Form->input('S1592', 				array( 'label' => 'Statute 1592', 'type' => 'checkbox')); ?>
 					<?php echo $this->Form->input('Counts1592', 		array( 'label' => 'Counts', 'type' => 'text')); ?>
 					<?php echo $this->Form->input('CountsNP1592', 		array( 'label' => 'Counts Nolle Prossed', 'type' => 'text')); ?>
@@ -277,11 +276,11 @@
 						<input type="button" name="previous" onclick="goto1591_()" class="action-button" value="Statute 1591" />
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="button" name="next" onclick="goto2252()" class="action-button" value="Statute 2252" />
-				</fieldset>
+				  </fieldset>
 
 
-				<h2 id="2252_title" class="fieldset_title">Statute Information | 2252</h2>
-				<fieldset id="to2252">
+				  <h2 id="2252_title" class="fieldset_title">Statute Information | 2252</h2>
+				  <fieldset id="to2252">
 					<?php echo $this->Form->input('S2252', 				array( 'label' => 'Statute 2252', 'type' => 'checkbox')); ?>
 					<?php echo $this->Form->input('Counts2252', 		array( 'label' => 'Counts', 'type' => 'text')); ?>
 					<?php echo $this->Form->input('CountsNP2252', 		array( 'label' => 'Counts Nolle Prossed', 'type' => 'text')); ?>
@@ -296,11 +295,11 @@
 						<input type="button" name="previous" onclick="goto1592_()" class="action-button" value="Statute 1592" />
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="button" name="next" onclick="goto2260()" class="action-button" value="Statute 2260" />
-				</fieldset>
+				  </fieldset>
 
 
-				<h2 id="2260_title" class="fieldset_title">Statute Information | 2260</h2>
-				<fieldset id="to2260">
+				  <h2 id="2260_title" class="fieldset_title">Statute Information | 2260</h2>
+				  <fieldset id="to2260">
 					<?php echo $this->Form->input('S2260', 				array( 'label' => 'Statute 2260', 'type' => 'checkbox')); ?>
 					<?php echo $this->Form->input('Counts2260', 		array( 'label' => 'Counts', 'type' => 'text')); ?>
 					<?php echo $this->Form->input('CountsNP2260', 		array( 'label' => 'Counts Nolle Prossed', 'type' => 'text')); ?>
@@ -315,11 +314,11 @@
 						<input type="button" name="previous" onclick="goto2252_()" class="action-button" value="Statute 2252" />
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="button" name="next" onclick="goto2421()" class="action-button" value="Statute 2421" />
-				</fieldset>
+				  </fieldset>
 
 
-				<h2 id="2421_title" class="fieldset_title">Statute Information | 2421-2424</h2>
-				<fieldset id="to2421">
+				  <h2 id="2421_title" class="fieldset_title">Statute Information | 2421-2424</h2>
+				  <fieldset id="to2421">
 					<?php echo $this->Form->input('S2421to2424', 			array( 'label' => 'Statute 2421to2424', 'type' => 'checkbox')); ?>
 					<?php echo $this->Form->input('Counts2421to2424', 		array( 'label' => 'Counts', 'type' => 'text')); ?>
 					<?php echo $this->Form->input('CountsNP2421to2424', 	array( 'label' => 'Counts Nolle Prossed', 'type' => 'text')); ?>
@@ -334,11 +333,11 @@
 						<input type="button" name="previous" onclick="goto2260_()" class="action-button" value="Statute 2260" />
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="button" name="next" onclick="goto1324()" class="action-button" value="Statute 1324" />
-				</fieldset>
+				  </fieldset>
 
 
-				<h2 id="1324_title" class="fieldset_title">Statute Information | 1324</h2>
-				<fieldset id="to1324">
+				  <h2 id="1324_title" class="fieldset_title">Statute Information | 1324</h2>
+				  <fieldset id="to1324">
 					<?php echo $this->Form->input('S1324', 				array('label' => 'Statute 1324', 'type' => 'checkbox')); ?>
 					<?php echo $this->Form->input('Counts1324', 		array( 'label' => 'Counts', 'type' => 'text')); ?>
 					<?php echo $this->Form->input('CountsNP1324', 		array( 'label' => 'Counts Nolle Prossed', 'type' => 'text')); ?>
@@ -352,11 +351,11 @@
 						<input type="button" name="previous" onclick="goto2421_()" class="action-button" value="Statute 2421" />
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="button" name="next" onclick="goto1328()" class="action-button" value="Statute 1328" />
-				</fieldset>
+				  </fieldset>
 
 
-				<h2 id="1328_title" class="fieldset_title">Statute Information | 1328</h2>
-				<fieldset id="to1328">
+				  <h2 id="1328_title" class="fieldset_title">Statute Information | 1328</h2>
+				  <fieldset id="to1328">
 					<?php echo $this->Form->input('S1328', 				array( 'label' => 'Statute 1328', 'type' => 'checkbox')); ?>
 					<?php echo $this->Form->input('Counts1328', 		array( 'label' => 'Counts', 'type' => 'text')); ?>
 					<?php echo $this->Form->input('CountsNP1328', 		array( 'label' => 'Counts Nolle Prossed', 'type' => 'text')); ?>
@@ -369,7 +368,7 @@
 					<?php echo $this->Form->input('Prob1328', 			array( 'label' => 'Number of Months Under Probation Under Statute', 'type' => 'text')); ?>
 						<hr style="border-top:1px solid #CCC;">
 						<input type="button" name="previous" onclick="goto1324_()" class="action-button" value="Statute 1324" />
-				</fieldset>
+				  </fieldset>
 					</div>
 				<div class="col-md-12 search_disclaim case_creation_form" style="margin-top:0px; padding-top:10px; border-top:1px solid #DCDCDC">
 					<div style="max-width:60%;margin: 0 auto">

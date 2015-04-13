@@ -4,14 +4,14 @@
 		$this->set('active', 'edit');
 ?>
 <?php
-    echo $this->Html->css(array('dataTables.bootstrap', 'dataTables.responsive'));
-    echo $this->Html->script(array('jquery-1.10.2.min', 'jquery.dataTables.min', 'dataTables.responsive.min', 'dataTables.bootstrap', 'dataTables.fixedHeader.min'));
+	echo $this->Html->css(array('dataTables.bootstrap', 'dataTables.responsive'));
+	echo $this->Html->script(array('jquery-1.10.2.min', 'jquery.dataTables.min', 'dataTables.responsive.min', 'dataTables.bootstrap'));
 ?>
 <script type="text/javascript" charset="utf-8">
   $(document).ready(function() {
-    var caseTable = $('#cases_table').DataTable({
-        responsive: true
-    });
+	var caseTable = $('#cases_table').DataTable({
+		responsive: true
+	});
 } );
 </script>
 <!--search start here-->
@@ -19,13 +19,7 @@
 		<div class="container">
 			<div class="contact-main">	
 				<div class="case_top_bar">
-						<h3 class="page_title">Case &amp; Judge Details</h3>
-						<div class="progress">
-							<div class="progress-bar" role="progressbar" style="width:10%">PROGRESS:</div>
-							<div class="progress-bar  progress-bar-success active_progress" role="progressbar" style="width:30%"><strong>Case &amp; Victim(s) Information</strong></div>
-							<div class="progress-bar idle" role="progressbar" style="width:50%">Defendant(s) Information</div>
-							<div class="progress-bar idle" role="progressbar" style="width:10%">Submit</div>
-						</div>
+						<h3 class="page_title">Case Reviewing</h3>
 					</div>
 				<div class="col-md-12">
 					<div class="col-md-5 case_creation_form" id="form_style" style="float:inherit">
@@ -74,23 +68,32 @@
 						</fieldset>	
 					</div>									
 					<div class="col-md-7 case_creation_form" id="form_style" style="float:inherit">
-                      <div class="top_bar col-md-7">
-                        <div class="top_bar_dash">
-                          <h4>CASE DEFENDANT(S)</h4>
-                        </div>
-                      </div>
+					  <div class="top_bar col-md-7">
+						<div class="top_bar_dash">
+						  <h4>CASE DEFENDANTS</h4>
+						</div>
+						<!-- ADD BUTTON-->
+						<div title="Add a new case" style="margin-top: -5px;">
+							<label for="" class="user_button" title="Add a new defendant">
+								<?php
+								echo $this->Html->link(
+										$this->Html->image("add_def.png", array("alt" => "Create Case", 'style' => 'float:left; padding: 10px 7px 8px 0px;')),
+										'/admin/cases/edit/add_defendant/'.$case['0']['DataInProgress']['CaseNum'], array('escape' => false)); ?> 
+							</label>
+						</div>
+					  </div>
 						<?php 
-                                echo "<table class='table table-striped table-bordered' id='cases_table'>";
-                                echo"      <thead>";
-                                echo"        <tr>";
-                                echo"          <th class='desktop first_th'>Last Name</th>";
-                                echo"          <th class='desktop'>First Name</th>";
-                                echo"          <th class='always special_th'>Actions</th>";
-                                echo"        </tr>";
-                                echo"      <thead>";
-                                echo "<tbody>";
-                                
-                                $i = 0;
+								echo "<table class='table table-striped table-bordered' id='cases_table'>";
+								echo"      <thead>";
+								echo"        <tr>";
+								echo"          <th class='desktop first_th'>Last Name</th>";
+								echo"          <th class='desktop'>First Name</th>";
+								echo"          <th class='always special_th'>Actions</th>";
+								echo"        </tr>";
+								echo"      <thead>";
+								echo "<tbody>";
+								
+								$i = 0;
 								foreach ($case as $case) { 
 						?>
 						<?php 	
@@ -101,20 +104,20 @@
 								echo "		<td> ".$this->Html->link('Edit', 
 										'/admin/cases/edit/defendant/'.$case['DataInProgress']['DefLast'].'|'.$case['DataInProgress']['DefFirst'].'|'.$case['DataInProgress']['CaseNum'], 
 										array('controller' => 'CaseEdits', 'action' => 'editDefendant')).
-										 '&nbsp/&nbsp;'.$this->Html->link('Delete', '/admin/delete_def/'.$case['DataInProgress']['DefLast'].'|'.$case['DataInProgress']['DefFirst'].'|'.$case['DataInProgress']['CaseNum'], array('onclick'=> 'return confirm("Are you sure you want to delete?")')).
+										 '&nbsp/&nbsp;'.$this->Html->link('Delete', '/CaseEdits/delete_def/'.$case['DataInProgress']['DefLast'].'|'.$case['DataInProgress']['DefFirst'].'|'.$case['DataInProgress']['CaseNum'], array('controller' => 'CaseEdits', 'action' => 'editDefendant', 'onclick'=> 'return confirm("Are you sure you want to delete this defendant?")')).
 								"</td>";
 						?>
 						<?php 	//echo $this->Form->input(); ?>
 						<?php //echo $this->Form->submit('Submit', array('confirm' => 'Submit this case for review?')); ?>
 						<?php 
-                                echo "  </tr>";
-                            }   //END OF LOOP
-                                echo "</tbody>";
-                                echo "</table>";
-                          if (count($case) == 0) {
-                              	echo "This case has 0 defendant";
-                          }
-                         ?>	
+								echo "  </tr>";
+							}   //END OF LOOP
+								echo "</tbody>";
+								echo "</table>";
+						  if (count($case) == 0) {
+								echo "This case has 0 defendant";
+						  }
+						 ?>	
 					</div>
 				</div>
 				<div class="col-md-12 search_disclaim case_creation_form" style="margin-top:0px; padding-top:10px; border-top:1px solid #DCDCDC">
@@ -157,14 +160,21 @@ table{
 }
 .case{padding: 0px 10px 0px 0px;}
 th{background-color:#999;color:#fff;
-    padding:15px 0px 15px 0px;
-    border-right:1px solid #666;
-    text-align: left;}
+	padding:15px 0px 15px 0px;
+	border-right:1px solid #666;
+	text-align: left;}
 td{text-align: left;
-    min-width: 20px;}
+	min-width: 20px;}
 .special_th{background-color: #4D1979}
 .first_th{text-align: center;}
 #collapsible-panels .table h2, input {
   width: 10%;
 }
 </style>
+<!-- SUCCESS BANNER -->
+<script type="text/javascript">
+	var $welcom = $("#flashMessage");
+	setTimeout(function() {
+		$welcom.slideUp(800).delay(900).fadeOut(900);
+	}, 4000);
+</script>

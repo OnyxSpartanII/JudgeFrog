@@ -6,7 +6,7 @@ class CaseEditsController extends AppController {
 	public $helpers = array('Html', 'Session');
 	public $components = array('Session', 'Paginator');
 	public $name = 'CaseEdits';
-	public $uses = array('DataInProgress');
+	public $uses = array('DataInProgress', 'Datum');
 
 	public function beforeFilter() {
 		parent::beforeFilter();
@@ -20,338 +20,25 @@ class CaseEditsController extends AppController {
 		$this->layout = 'admin_panel_layout';
 		$this->set('active', 'edit');
 		
-		$c_s = $this->DataInProgress->find('all');
+		$dataCases = $this->Datum->find('all', array(
+												'fields' => array(
+																'Datum.CaseNum', 
+																'Datum.CaseNam', 
+																'Datum.JudgeName', 
+																'Datum.State', 
+																'Datum.author', 
+																'Datum.NumDef', 
+																'Datum.modified'),
+												'group' => 'Datum.CaseNam'
+												)
+										);
 		
-		$statutes = ['1961to1968', '1028', '1351',
-						'1425', '1512', '1546', '1581to1588', '1589',
-						'1590', '1591', '1592', '2252', '2260', '2421to2424',
-						'1324', '1328'];
-
-		$prev_name = "";
-
-		$case_info = array();
-		$p_cases = array();
-
-		foreach ($c_s as $d) {
-			$charges = array();
-			foreach ($statutes as $statute) {
-				if ($d['DataInProgress']["S$statute"] != null) {
-					array_push($charges, array(
-							$statute,
-							$d['DataInProgress']["Counts$statute"],
-							$d['DataInProgress']["CountsNP$statute"],
-							$d['DataInProgress']["PleaDismissed$statute"],
-							$d['DataInProgress']["PleaGuilty$statute"],
-							$d['DataInProgress']["TrialGuilty$statute"],
-							$d['DataInProgress']["TrialNG$statute"],
-							$d['DataInProgress']["Fines$statute"],
-							$d['DataInProgress']["Sent$statute"],
-							$d['DataInProgress']["Prob$statute"],
-						)
-					);
-				}
-			}
-
-			if (strcmp($prev_name, $d['DataInProgress']['CaseNam']) != 0) {
-
-				array_push($p_cases, array($d['DataInProgress']['CaseNum'], $d['DataInProgress']['author']));
-
-				array_push($case_info, array(
-					$d['DataInProgress']['CaseNam'],			// 0
-					$d['DataInProgress']['CaseNum'],
-					$d['DataInProgress']['ChargeDate'],
-					$d['DataInProgress']['LaborTraf'],
-					$d['DataInProgress']['AdultSexTraf'],
-					$d['DataInProgress']['MinorSexTraf'],		// 5
-					$d['DataInProgress']['NumDef'],
-					$d['DataInProgress']['State'],
-					$d['DataInProgress']['FedDistrictLoc'],
-					$d['DataInProgress']['FedDistrictNum'],
-					$d['DataInProgress']['CaseSummary'],		// 10
-					$d['DataInProgress']['JudgeName'],
-					$d['DataInProgress']['JudgeRace'],
-					$d['DataInProgress']['JudgeGen'],
-					$d['DataInProgress']['JudgeTenure'],
-					$d['DataInProgress']['JudgeApptBy'],		// 15
-					$d['DataInProgress']['NumVic'],
-					$d['DataInProgress']['NumVicMinor'],
-					$d['DataInProgress']['NumVicForeign'],
-					$d['DataInProgress']['NumVicFemale'],
-					array()										//20
-				));
-				$prev_name = $d['DataInProgress']['CaseNam'];
-			}
-
-			array_push($case_info[sizeof($case_info)-1][20], array(
-				$d['DataInProgress']['DefLast'],		// 0
-				$d['DataInProgress']['DefFirst'],
-				$d['DataInProgress']['Alias'],
-				$d['DataInProgress']['DefGender'],
-				$d['DataInProgress']['DefRace'],
-				$d['DataInProgress']['DefBirthdate'],	// 5
-				$d['DataInProgress']['DefArrestAge'],
-				$d['DataInProgress']['ChargeDate'],
-				$d['DataInProgress']['ArrestDate'],
-				$d['DataInProgress']['Detained'],
-				$d['DataInProgress']['BailType'],		// 10
-				$d['DataInProgress']['BailAmount'],
-				$d['DataInProgress']['FelCharged'],
-				$d['DataInProgress']['FelSentenced'],
-				$d['DataInProgress']['DateTerm'],
-				$d['DataInProgress']['SentDate'],		//15
-				$d['DataInProgress']['TotalSentence'],
-				$d['DataInProgress']['Restitution'],
-				$d['DataInProgress']['AssetForfeit'],
-				$d['DataInProgress']['SupRelease'],
-				$d['DataInProgress']['Probation'],		//20
-				$d['DataInProgress']['OCName1'],
-				$d['DataInProgress']['OCType1'],
-				$d['DataInProgress']['OCRace1'],
-				$d['DataInProgress']['OCScope1'],
-				$d['DataInProgress']['OCName2'],		//25
-				$d['DataInProgress']['OCType2'],
-				$d['DataInProgress']['OCRace2'],
-				$d['DataInProgress']['OCScope2'],
-				$charges
-			));
-		}
-
-		$this->Session->write('case_info', $case_info);
-		$this->set('p_cases', $p_cases);
-	}
-
-	public function generateTable($index) {
-
-		$case_info = $this->Session->read('case_info');
-
-		$this->autoRender = false;
-
-		$races = array('White','Black','Hispanic','Asian','Indian','Other','Unknown');
-		$bail_types = array('None','Surety','Non-Surety');
-		$ocg_types = array('Other','Mom & Pop','Street Gang','Cartel/Syndicate/Mafia','','Prison Gang');
-		$ocg_scopes = array('Other','Local Only','Trans-State','Trans-National');
-		$ocg_races = array('None','Black','White','Hispanic','Asian','Other');
-
-		$html = '<div class="case_info">' .
-					'<table class="modal_table all_results">' .
-					  '<thead>' .
-					  '<tr>' .
-						'<th>Case Name</th>' .
-						'<th>Case Number</th>' .
-						'<th># of Defendents</th>' .
-						'<th>State</th>' .
-						'<th>Federal District</th>' .
-						'<th>Year</th>' .
-					  '</tr>' .
-					  '</thead>' .
-					  '<tbody>' .
-					  '<tr>' .
-						'<td>' . $case_info[$index][0] . '</td>' .
-						'<td>' . $case_info[$index][1] . '</td>' .
-						'<td>' . $case_info[$index][6] . '</td>' .
-						'<td>' . $case_info[$index][7] . '</td>' .
-						'<td>' . $case_info[$index][9] . ($case_info[$index][8] !== null ? '-' . $case_info[$index][8] : '') .
-						'<td>' . split("-", $case_info[$index][2])[0] . '</td>' .
-					  '</tr>' .
-					  '</tbody>' .
-					'</table>' .
-					  '<h4>Case Summary</h4>' .
-					  '<p class="case_summary">' .
-						$case_info[$index][10] .
-					  '</p>' .
-				  '</div>' .
-				  '<table class="table_col">' .
-					'<caption>Defendent Information</caption>' .
-					'<thead>' .
-					'<tr>' .
-					  '<td>Name</td>' .
-					  '<td>Gender</td>' .
-					  '<td>Year of Birth</td>' .
-					  '<td>Race</td>' .
-					'</tr>' .
-					'</thead>' .
-					'<tbody>';
-					foreach ($case_info[$index][20] as $def) {
-						$html = $html . '<tr class="toggle_def">' . 
-								'<td>' . $def[0] . ', ' . $def[1] . '</td>'.
-								'<td>' . ($def[3] === null ? 'N/A' : ($def[3] ? 'Female' : 'Male')) . '</td>'.
-								'<td>' . ($def[5] === '0000' ? 'Unknown' : $def[5]) . '</td>'.
-								'<td>' . ($def[4] === null ? 'Unknown' : $races[$def[4]]) . '</td>'.
-							'</tr>' .
-							'<tr class="this_def_info">' .
-								'<td colspan="4">' .
-									'<table class="modal_table table_col">' .
-										'<caption>Arrest Information</caption>' .
-										'<thead>' .
-										'<tr>' .
-										  '<th>Arrest Date</th>' .
-										  '<th>Charge Date</th>' .
-										  '<th>Bail Type</th>' .
-										  '<th>Bail Amount</th>' .
-										'</tr>' .
-										'</thead>' .
-										'<tbody>' .
-										'<tr>' .
-											'<td>' . ($def[8] === '0000-00-00' ? 'N/A' : $def[8]) . '</td>' .
-											'<td>' . ($def[7] === '0000-00-00' ? 'N/A' : $def[7]) . '</td>' .
-											'<td>' . ($def[10] === null ? 'N/A' : $bail_types[$def[10]]) . '</td>' .
-											'<td>' . ($def[11] === null ? 'N/A' : '$' . $def[11]) . '</td>' .
-										'</tr>' .
-										'</tbody>' .
-									'</table>' .
-								'</td>' .
-							'</tr>' .
-
-							'<tr class="this_def_info">' .
-								'<td colspan="4">' .
-								  '<table class="modal_table table_col">' .
-									'<caption>Charge Information</caption>' .
-									'<thead>' .
-									'<tr>' .
-										'<th>Statute</th>' .
-										'<th>Counts</th>' .
-										'<th>Counts Nolle Prossed</th>' .
-										'<th>Plea Guilty</th>' .
-										'<th>Plea Dismissed</th>' .
-										'<th>Trial Guilty</th>' .
-										'<th>Trial Not Guilty</th>' .
-										'<th>Fines</th>' .
-										'<th>Months Sentenced</th>' .
-										'<th>Months Probation</th>' .
-									'</tr>' .
-									'</thead>' .
-									'<tbody>';
-									
-						foreach ($def[29] as $chrg) {
-							$html = $html . '<tr>' .
-								'<td>' . ($chrg[0]  === null ? 'N/A' : $chrg[0]) . '</td>' .
-								'<td>' . ($chrg[1] === null ? 'N/A' : $chrg[1]) . '</td>' .
-								'<td>' . ($chrg[2] === null ? 'N/A' : $chrg[2]) . '</td>' .
-								'<td>' . ($chrg[3] === null ? 'N/A' : $chrg[3]) . '</td>' .
-								'<td>' . ($chrg[4] === null ? 'N/A' : $chrg[4]) . '</td>' .
-								'<td>' . ($chrg[5] === null ? 'N/A' : $chrg[5]) . '</td>' .
-								'<td>' . ($chrg[6] === null ? 'N/A' : $chrg[6]) . '</td>' .
-								'<td>' . ($chrg[7] === null ? 'N/A' : '$' . $chrg[7]) . '</td>' .
-								'<td>' . ($chrg[8] === null ? 'N/A' : $chrg[8]) . '</td>' .
-								'<td>' . ($chrg[9] === null ? 'N/A' : $chrg[9]) . '</td>' .
-								'</tr>';
-						}
-
-						$html = $html .
-								'</tbody>' .
-							  '</table>' .
-							'</td>' .
-						  '</tr>' . 
-						  '<tr class="this_def_info">' .
-							'<td colspan="4">' .
-								'<table class="modal_table table_col">' .
-									'<caption>Sentence Information</caption>' .
-									'<thead>' .
-										'<tr>' .
-											'<th>Total Charges</th>' .
-											'<th>Total Sentences</th>' .
-											'<th>Year Terminated</th>' .
-											'<th>Months Sentenced</th>' .
-											'<th>Months Probation</th>' .
-											'<th>Restitution</th>' .
-											'<th>Asset Forfeiture?</th>' .
-										'</tr>' .
-									'</thead>' .
-									'<tbody>' .
-										'<tr>' .
-											'<td>' . ($def[12] === null ? 'N/A' : $def[12]) . '</td>' .
-											'<td>' . ($def[13] === null ? 'N/A' : $def[13]) . '</td>' .
-											'<td>' . ($def[14] === '0000' ? 'N/A' : $def[14]) . '</td>' .
-											'<td>' . ($def[16] === null ? 'N/A' : $def[16]) . '</td>' .
-											'<td>' . ($def[20] === null ? 'N/A' : $def[20]) . '</td>' .
-											'<td>' . ($def[17] === null ? 'N/A' : '$' . $def[17]) . '</td>' .
-											'<td>' . ($def[18] === null ? 'N/A' : ($def[18] ? 'True' : 'False')) . '</td>' .
-										'</tr>' .
-									'</tbody>' .
-								'</table>' .
-							'</td>' .
-						'</tr>' .
-						'<tr class="this_def_info">' .
-							'<td colspan="4">' .
-								'<table class="modal_table table_col">' .
-									'<caption>Organized Crime Group Information</caption>' .
-									'<thead>' .
-										'<tr>' .
-											'<th>Name</th>' .
-											'<th>Size</th>' .
-											'<th>Race</th>' .
-											'<th>Scope</th>' .
-										'</tr>' .
-									'</thead>' .
-									'<tbody>' .
-										'<tr>' .
-											'<td>' . ($def[21] === null ? 'None' : $def[21]) . '</td>' .
-											'<td>' . ($def[22] === null ? 'N/A' : $ocg_types[$def[22]]) . '</td>' .
-											'<td>' . ($def[23] === null ? 'N/A' : $ocg_races[$def[23]]) . '</td>' .
-											'<td>' . ($def[24] === null ? 'N/A' : $ocg_scopes[$def[24]]) . '</td>' . 
-										'</tr>' .
-										'<tr>' .
-											'<td>' . ($def[25] === null ? 'None' : $def[25]) . '</td>' .
-											'<td>' . ($def[26] === null ? 'N/A' : $ocg_types[$def[26]]) . '</td>' .
-											'<td>' . ($def[27] === null ? 'N/A' : $ocg_races[$def[27]]) . '</td>' .
-											'<td>' . ($def[28] === null ? 'N/A' : $ocg_scopes[$def[28]]) . '</td>' . 
-										'</tr>' .
-									'</tbody>' .
-								'</table>' .
-							'</td>' .
-						'</tr>';
-					}
-					'</tbody>' .
-				  '</table>' .
-				  '<table class="modal_table table_col">' .
-					'<caption>Victims Information</caption>' .
-					'<thead>' .
-					'<tr>' .
-					  '<th>Total # Victims</th>' .
-					  '<th>Total # of Minors</th>' .
-					  '<th>Total # of Foreigners</th>' .
-					  '<th>Total # of Females</th>' .
-					'</tr>' .
-					'</thead>' .
-					'<tbody>' .
-					'<tr>' .
-						'<td>' . ($case_info[$index][16] === null ? 'Unknown' : $case_info[$index][16]) . '</td>' .
-						'<td>' . ($case_info[$index][17] === null ? 'Unknown' : $case_info[$index][17]) . '</td>' .
-						'<td>' . ($case_info[$index][18] === null ? 'Unknown' : $case_info[$index][18]) . '</td>' .
-						'<td>' . ($case_info[$index][19] === null ? 'Unknown' : $case_info[$index][19]) . '</td>' .
-					'</tr>' .
-					'</tbody>' .
-				  '</table>' .
-
-				  '<table class="modal_table all_results">' .
-					'<caption>Judge Information</caption>' .
-					'<thead>' .
-					'<tr>' .
-					  '<th>Name</th>' .
-					  '<th>Race</th>' .
-					  '<th>Gender</th>' .
-					  '<th>Tenure</th>' .
-					  '<th>Appointed By</th>' .
-					'</tr>' .
-					'</thead>' .
-					'<tbody>' .
-					'<tr>' .
-						'<td>' . $case_info[$index][11] . '</td>' .
-						'<td>' . ($case_info[$index][12] === null ? 'N/A' : $races[$case_info[$index][12]]) . '</td>' .
-						'<td>' . ($case_info[$index][13] ? 'Female' : 'Male') . '</td>' .
-						'<td>' . $case_info[$index][14] . '</td>' .
-						'<td>' . ($case_info[$index][15] ? 'Democrat' : 'Republican') . '</td>' .
-					'</tr>' .
-					'</tbody>' .
-				  '</table>' .
-				'</div>';
-
-		echo $html;
+		$this->set('dataCases', $dataCases);
 	}
 
 	public function edit($num) {
-		$this->autoRender = false;
 
+		$this->autoRender = false;
 		$caseNumber = $num;
 		//$caseNumber = '1:13-cr-00069-LO';
 		$case = $this->getCase($caseNumber);
@@ -361,10 +48,10 @@ class CaseEditsController extends AppController {
 			$this->set('caseNotFoundError', true);
 			print_r('Case not found.');
 		}
+
 		// 30 defs: 3:10-cr-00260
 		// 4 defs: 2:07-cr-00785-JLL
 		
-
 		if ($this->request->is('post')) {
 
 			$data = $this->request->data;
@@ -392,10 +79,6 @@ class CaseEditsController extends AppController {
 			$caseName = addslashes($caseName);
 			$judgeName = addslashes($judgeName);
 			$caseSummary = addslashes($caseSummary);
-
-			//debug($caseSummary);
-			//debug($judgeName);
-			//debug($caseName);
 
 			//$caseName = 'DROP TABLE DataInProgress_backup';
 			/*
@@ -442,23 +125,10 @@ class CaseEditsController extends AppController {
 	}
 
 	/*
-	*	Method name: getCase
-	*		This method retrieves the case with the passed case number. It appends the case into one array with each defendant
-	*		as an entry into the array. Case[Defendant], where sizeof(Defendant) is the number of defendants in that case.
-	*		The method then returns the case.
-	*
-	*/
-	public function getCase($caseNumber) {
-
-		$case = $this->DataInProgress->find('all', array('conditions' => array('DataInProgress.CaseNum' => $caseNumber)));
-		return $case;
-	}
-
-	/*
-	*	Method name: defendant
-	*		This method takes a defendant name, DOB, and case # passed to it and renders
+	*	Method name: editDefendant
+	*		This method takes a defendant name and case # passed to it and renders
 	*		a view with the defendant's details. The updated info is then saved to the DataInProgress
-	*		table with the review flag set. 
+	*		table with the review flag set.
 	*
 	*/
 	public function editDefendant($defArray) {
@@ -490,13 +160,163 @@ class CaseEditsController extends AppController {
 			$this->request->data['DataInProgress']['id'] = $caseId;
 
 			if ($this->DataInProgress->save($this->request->data)) {
-				$this->redirect(array('action' => 'edit', $caseNumber));
+				$this->redirect('/admin/cases/edit/'.$caseNumber);
 				print_r('Save successful!');
 			} else {
-				print_r('An error occurred. The defendant was not saved.');
+				print_r('An error occurred. Changes to defendant were not saved.');
 			}
 		}
 
+	}
+
+	/*
+	*
+	*	Method name: addCase
+	*
+	*	This method allows a new case to be created. The method uses a modified version of the
+	*	edit.ctp view (called add_case.ctp), but otherwise functions similarly. It also will use
+	*	the same edit_defendant.ctp and add_defendant.ctp views as edit().
+	*/
+
+	public function addCase() {
+
+		if ($this->request->is('post')) {
+			if ($this->DataInProgress->save($this->request->data)) {
+				debug($this->request->data);
+				$this->redirect('/admin/cases/edit/'.$this->request->data['DataInProgress']['CaseNum']);
+			}
+		}
+
+		$this->render('add_case');
+	}
+
+	/*
+	*
+	*	Method name: addDefendant
+	*
+	*	This method allows a defendant to be added to an existing case.
+	*	The case information (name, number, judge, etc.) is taken from
+	*	the case number passed to the function. The new defendant
+	*	information is collected from a POST, has the necessary case
+	*	data added to the request, and the new defendant is then saved
+	*	to the DataInProgress table. The method then redirects to the 
+	*	case edit page for the given case.
+	*/
+
+	public function addDefendant($caseNumber) {
+		//debug($caseNumber);
+		$case = $this->DataInProgress->find('first', array(
+													'conditions' => array(
+																		'DataInProgress.CaseNum' => $caseNumber)
+													)
+											);
+		//debug($case);
+
+		$this->set('case', $case);
+		if ($this->request->is('post')) {
+
+			$this->DataInProgress->clear();
+
+			//Pull the case information from the case and place it into the request.
+			$this->request->data['DataInProgress']['CaseNam'] 			= $case['DataInProgress']['CaseNam'];
+			$this->request->data['DataInProgress']['CaseNum'] 			= $case['DataInProgress']['CaseNum'];
+			$this->request->data['DataInProgress']['NumDef'] 			= $case['DataInProgress']['NumDef'] + 1;	//Increment the number of defendants.
+			$this->request->data['DataInProgress']['JudgeName'] 		= $case['DataInProgress']['JudgeName'];
+			$this->request->data['DataInProgress']['JudgeRace'] 		= $case['DataInProgress']['JudgeRace'];
+			$this->request->data['DataInProgress']['JudgeGen'] 			= $case['DataInProgress']['JudgeGen'];
+			$this->request->data['DataInProgress']['JudgeTenure'] 		= $case['DataInProgress']['JudgeTenure'];
+			$this->request->data['DataInProgress']['JudgeApptBy'] 		= $case['DataInProgress']['JudgeApptBy'];
+			$this->request->data['DataInProgress']['FedDistrictNum'] 	= $case['DataInProgress']['FedDistrictNum'];
+			$this->request->data['DataInProgress']['FedDistrictLoc']	= $case['DataInProgress']['FedDistrictLoc'];
+			$this->request->data['DataInProgress']['State'] 			= $case['DataInProgress']['State'];
+			$this->request->data['DataInProgress']['CaseSummary']		= $case['DataInProgress']['CaseSummary'];
+			$this->request->data['DataInProgress']['LaborTraf']			= $case['DataInProgress']['LaborTraf'];
+			$this->request->data['DataInProgress']['AdultSexTraf']		= $case['DataInProgress']['AdultSexTraf'];
+			$this->request->data['DataInProgress']['MinorSexTraf']		= $case['DataInProgress']['MinorSexTraf'];
+			$this->request->data['DataInProgress']['NumVic']			= $case['DataInProgress']['NumVic'];
+			$this->request->data['DataInProgress']['NumVicMinor']		= $case['DataInProgress']['NumVicMinor'];
+			$this->request->data['DataInProgress']['NumVicForeign']		= $case['DataInProgress']['NumVicForeign'];
+			$this->request->data['DataInProgress']['NumVicFemale']		= $case['DataInProgress']['NumVicFemale'];
+
+			$id = $this->getRowId();
+			$id = $id + 1;
+			$this->request->data['DataInProgress']['id'] = $id;
+			//debug($this->request->data);
+
+			if ($this->DataInProgress->save($this->request->data)) {
+				$this->redirect('/admin/cases/edit/'.$caseNumber);
+				print_r('Defendant added to case!');
+				//$this->deleteEmptyCases();
+
+			} else {
+				print_r('An error occurred while adding defendant to case.');
+			}
+
+		}
+
+		$this->render('add_defendant');
+
+	}
+
+	/*
+	*	Method namme: migrateFromDataToDataInProgress
+	*		This method moves an entire case from the Data table tot he
+	*		DataInProgress table. This method is normally called when a
+	*		case from Data (the "live" table, so to speak;  all public 
+	*		searches are performed on the Data table) is selected to be
+	* 		edited from the edit function in the admin control panel.
+	* 		This method is necessary due to the edit functions only working on
+	*		cases found in the DataInProgress table.
+	*/
+
+	public function migrateFromDataToDataInProgress($caseNumber) {
+
+		$data = $this->Datum->find('all', array('conditions' => array('Datum.CaseNum' => $caseNumber)));
+		$this->Datum->deleteAll(array('Datum.CaseNum' => $caseNumber, false));
+		$this->DataInProgress->clear();
+
+		foreach ($data as &$d) {
+			$d['DataInProgress'] = $d['Datum'];
+			unset($d['Datum']);
+		}		
+
+		$this->DataInProgress->saveMany($data);
+		$this->redirect('/admin/cases/edit/'.$caseNumber);
+	}
+
+	/*
+	*	Method name: getCase
+	*		This method retrieves the case with the passed case number. It appends the case into one array with each defendant
+	*		as an entry into the array. Case[Defendant], where sizeof(Defendant) is the number of defendants in that case.
+	*		The method then returns the case.
+	*
+	*/
+	public function getCase($caseNumber) {
+
+		$case = $this->DataInProgress->find('all', array('conditions' => array('DataInProgress.CaseNum' => $caseNumber)));
+		return $case;
+	}
+
+	/*
+	*	Method name: getRowId()
+	*		This method retrieves the current max ID in all database tables.
+	*/
+
+	public function getRowId() {
+		$newRowId = $this->DataInProgress->find('first', array('fields' => array('MAX(DataInProgress.id) as id')));
+		$newRowId = $newRowId[0]['id'];
+		return $newRowId;
+	}
+
+	/*
+	*	Method name: deleteEmptyCases()
+	*		This method deletes all rows without a defendant name from the DataInProgress table.
+	*		This is intended to be called after the creation of a new case in the transition to
+	*		the edit case page.
+	*/
+
+	public function deleteEmptyCases() {
+		$this->DataInProgress->deleteAll(array('DefFirst' => '', 'DefLast' => ''));
 	}
 
 	public function autoComplete() {
@@ -534,9 +354,33 @@ class CaseEditsController extends AppController {
 	public function delete_case($CaseNum) {
 		$this->Datum->deleteAll(array('Datum.CaseNum' => $CaseNum), false);
 		$this->Session->setFlash('Case Successfully Deleted!');
-		$this->redirect(array('controller' => 'AdminPanel', 'action' => 'edit'));
-
+		$this->redirect(array('controller' => 'CaseEdits', 'action' => 'index'));
 	}	
+	public function delete_incomplete_case($CaseNum) {
+		$this->DataInProgress->deleteAll(array('DataInProgress.CaseNum' => $CaseNum), false);
+		$this->Session->setFlash('Case Successfully Deleted!');
+		$this->redirect(array('controller' => 'CaseEdits', 'action' => 'index'));
+	}	
+	public function delete_def($defArray) {
+		$string = explode("|", $defArray);
+		if (count($string) == 3) {
+			$defLast = $string[0];
+			$defFirst = $string[1];
+			$caseNumber = $string[2];
+			$case = $this->DataInProgress->find('first', array(
+														'conditions' => array(
+																			'DataInProgress.CaseNum' => $caseNumber, 
+																			'DataInProgress.DefFirst' => $defFirst, 
+																			'DataInProgress.DefLast' => $defLast
+																			),
+														)
+												);
+			$this->DataInProgress->deleteAll(array('DataInProgress.DefFirst' => $defFirst, 'DataInProgress.DefLast' => $defLast), false);
+			$this->Session->setFlash('Defendant Successfully Deleted!');
+			$this->redirect(array('controller' => '/admin/cases', 'action' => 'edit/'.$caseNumber));
+		} else {}
+
+	}
 
 }
 

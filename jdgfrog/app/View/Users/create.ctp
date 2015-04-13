@@ -5,7 +5,7 @@
 ?>
 <?php
     echo $this->Html->css(array('dataTables.bootstrap', 'dataTables.responsive'));
-    echo $this->Html->script(array('jquery-1.10.2', 'jquery.dataTables.min', 'dataTables.responsive.min', 'dataTables.bootstrap'));
+    echo $this->Html->script(array('jquery-1.10.2.min', 'jquery.dataTables.min', 'dataTables.responsive.min', 'dataTables.bootstrap'));
 ?>
 <script type="text/javascript" charset="utf-8">
   $(document).ready(function() {
@@ -21,7 +21,7 @@
             <div class="case_top_bar">
               <h3 class="" style="text-align:left; float:none">Users Management</h3>
             </div>
-              <div class="col-md-4 contact-right  users form" style="margin-top: -50px;">
+              <div class="col-md-5 contact-right  users form" style="margin-top: -50px;">
                <?php echo $this->Form->create('User');
                       echo $this->Form->hidden('createform', array('value' => 'create'));?>
                 <!-- Create Interface -->
@@ -52,7 +52,7 @@
                   <!-- <div class="submit" style=""><input  type="submit" value="Submit" id="submitForm"/></div></form>  -->
                 </div>
             </div> 
-                <div class="col-md-8 contact-right">
+                <div class="col-md-7 contact-right">
                   <?php 
                       echo $this->Form->create("delete_user_form"); 
                       echo $this->Form->hidden('deleteform', array('value' => 'delete'));
@@ -96,7 +96,7 @@
                                   echo "      <td> ".$row['first_name']." </td>";
                                   echo "      <td> ".$row['last_name']." </td>";
                                   echo "      <td> ".$row['role']." </td>";
-                                  echo "      <td> ".$this->Html->link('Delete', '/Users/delete_user/'.$row['username'], 'Are you sure?');
+                                  echo "      <td> ".$this->Html->link('Delete', '/admin/delete_user/'.$row['username'], 'Are you sure?');
                                             "</td>";
                                   echo "  </tr>";
                                   }

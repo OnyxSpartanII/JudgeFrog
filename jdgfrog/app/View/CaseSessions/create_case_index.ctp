@@ -97,8 +97,8 @@
 																	echo "<tbody>";
 																while($row = $result->fetch_assoc()) {
 																	echo "  <tr>";
-																	echo "      <td> ".$row['caseNam']. "</td>";
-																	echo "      <td> ".$row['caseNum']." </td>";
+																	echo "      <td> ".$row['CaseNam']. "</td>";
+																	echo "      <td> ".$row['CaseNum']." </td>";
 																	echo "      <td> ".$row['created']." </td>";
 																	echo "      <td> ".$this->Html->link('Edit', '/admin/cases/edit/'.$row['CaseNum']) . '&nbsp/&nbsp;'
                                                     									.$this->Html->link('Delete', '/CaseSessions/delete_session/'.$row['CaseNum'], array('confirm'=>'Are you sure you want to delete this case?'));

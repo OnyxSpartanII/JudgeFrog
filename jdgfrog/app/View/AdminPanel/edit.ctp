@@ -7,7 +7,6 @@
     var caseTable = $('#cases_table').DataTable({
         responsive: true
     });
-    new $.fn.dataTable.FixedHeader(caseTable);
 } );
 </script>
 <div class="contact">

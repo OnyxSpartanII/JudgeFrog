@@ -117,20 +117,6 @@ label.checkbox {
 	font-weight: 400;
 	display: inline-block;
 }
-select {
-	width: 20%;
-	padding: 10px;
-	border: none;
-	border-radius:3px;
-	outline: none;
-	margin-left: 14em;
-	font-size: 15px;
-	font-weight: 300;
-	color: #C7C7C7;
-	font-style: italic;
-	cursor: pointer;
-}
-
 .intro{
 	 background-color:#F5F5F5;
 	 position:relative;

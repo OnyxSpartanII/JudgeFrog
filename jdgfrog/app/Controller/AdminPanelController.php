@@ -60,12 +60,6 @@ class AdminPanelController extends AppController {
 		$this->set('title', 'Manage Users - Admin Panel | Human Trafficking Data');
 		$this->set('active', 'manageusers');
 	}
-	
-	public function panel() {
-		$this->layout = 'admin_panel_layout';
-		$this->set('title', 'Admin Panel | Human Trafficking Data');
-		$this->set('active', 'panel');
-	}
 
 	public function autoComplete() {
 		$this->autoRender = false;

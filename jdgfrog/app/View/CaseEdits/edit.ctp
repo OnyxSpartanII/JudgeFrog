@@ -5,7 +5,7 @@
 ?>
 <?php
 	echo $this->Html->css(array('dataTables.bootstrap', 'dataTables.responsive'));
-	echo $this->Html->script(array('jquery-1.10.2.min', 'jquery.dataTables.min', 'dataTables.responsive.min', 'dataTables.bootstrap', 'dataTables.fixedHeader.min'));
+	echo $this->Html->script(array('jquery-1.10.2.min', 'jquery.dataTables.min', 'dataTables.responsive.min', 'dataTables.bootstrap'));
 ?>
 <script type="text/javascript" charset="utf-8">
   $(document).ready(function() {
@@ -19,13 +19,7 @@
 		<div class="container">
 			<div class="contact-main">	
 				<div class="case_top_bar">
-						<h3 class="page_title">Case &amp; Judge Details</h3>
-						<div class="progress">
-							<div class="progress-bar" role="progressbar" style="width:10%">PROGRESS:</div>
-							<div class="progress-bar  progress-bar-success active_progress" role="progressbar" style="width:30%"><strong>Case &amp; Victim(s) Information</strong></div>
-							<div class="progress-bar idle" role="progressbar" style="width:50%">Defendant(s) Information</div>
-							<div class="progress-bar idle" role="progressbar" style="width:10%">Submit</div>
-						</div>
+						<h3 class="page_title">Case Reviewing</h3>
 					</div>
 				<div class="col-md-12">
 					<div class="col-md-5 case_creation_form" id="form_style" style="float:inherit">
@@ -76,9 +70,17 @@
 					<div class="col-md-7 case_creation_form" id="form_style" style="float:inherit">
 					  <div class="top_bar col-md-7">
 						<div class="top_bar_dash">
-						  <h4>CASE DEFENDANT(S)</h4>
+						  <h4>CASE DEFENDANTS</h4>
 						</div>
-						<?php echo $this->Html->link('Add Defendant', '/admin/cases/edit/add_defendant/'.$case['0']['DataInProgress']['CaseNum']); ?>
+						<!-- ADD BUTTON-->
+						<div title="Add a new case" style="margin-top: -5px;">
+							<label for="" class="user_button" title="Add a new defendant">
+								<?php
+								echo $this->Html->link(
+										$this->Html->image("add_def.png", array("alt" => "Create Case", 'style' => 'float:left; padding: 10px 7px 8px 0px;')),
+										'/admin/cases/edit/add_defendant/'.$case['0']['DataInProgress']['CaseNum'], array('escape' => false)); ?> 
+							</label>
+						</div>
 					  </div>
 						<?php 
 								echo "<table class='table table-striped table-bordered' id='cases_table'>";
@@ -102,7 +104,7 @@
 								echo "		<td> ".$this->Html->link('Edit', 
 										'/admin/cases/edit/defendant/'.$case['DataInProgress']['DefLast'].'|'.$case['DataInProgress']['DefFirst'].'|'.$case['DataInProgress']['CaseNum'], 
 										array('controller' => 'CaseEdits', 'action' => 'editDefendant')).
-										 '&nbsp/&nbsp;'.$this->Html->link('Delete', '/CaseEdits/delete_def/'.$case['DataInProgress']['DefLast'].'|'.$case['DataInProgress']['DefFirst'].'|'.$case['DataInProgress']['CaseNum'], array('controller' => 'CaseEdits', 'action' => 'editDefendant', 'onclick'=> 'return confirm("Are you sure you want to delete?")')).
+										 '&nbsp/&nbsp;'.$this->Html->link('Delete', '/CaseEdits/delete_def/'.$case['DataInProgress']['DefLast'].'|'.$case['DataInProgress']['DefFirst'].'|'.$case['DataInProgress']['CaseNum'], array('controller' => 'CaseEdits', 'action' => 'editDefendant', 'onclick'=> 'return confirm("Are you sure you want to delete this defendant?")')).
 								"</td>";
 						?>
 						<?php 	//echo $this->Form->input(); ?>

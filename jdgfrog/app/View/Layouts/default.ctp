@@ -122,7 +122,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	  	    	<div class="col-md-3 footer-right">
             		<label>
             			<h4>Authorized Users:</h4>
-            		Authorized users can access the academic/advanced user panel by clicking <?php echo $this->Html->link('here', '/AdminPanel'); ?>
+            		Authorized users can access the academic/advanced user panel by clicking <?php echo $this->Html->link('here', '/admin/index'); ?>
             		</label>
 	  	    	</div>
 	  	    <div class="clearfix"> </div>
@@ -135,12 +135,11 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
             	</div>
 </div>
 <script type="text/javascript">
-	
     //Change Text on Hover
     $('.full').hover(function(){
     	// $(this).animate(1000);
 
-    	$(this).text("Human Trafficking Data");
+    	$(this).text("HumanTraffickingData");
 	}, function() {
     	$(this).text("HTD");
 });
@@ -151,7 +150,5 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 </body>
 </html>
 
-
-<!-- Original Author: W3layouts - http://w3layouts.com
-License: Modified Under The Creative Commons Attribution 3.0 license. 
-Modifications Done by: The Judge Frog Team - http://brazos.cs.tcu.edu/1415cj -->
+<!-- Modifications Done by: The Judge Frog Team - http://brazos.cs.tcu.edu/1415JudgeFrog
+License: W3layouts - http://w3layouts.com Modified Under The Creative Commons Attribution 3.0 license.  -->

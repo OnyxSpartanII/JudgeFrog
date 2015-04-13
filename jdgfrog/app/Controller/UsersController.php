@@ -4,7 +4,7 @@ class UsersController extends AppController {
 
 	public function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow('login', 'logout', 'create');
+		$this->Auth->allow('login', 'logout');
 	}
 
 	/**
@@ -30,7 +30,6 @@ class UsersController extends AppController {
 			if ($this->Auth->login())
 			{
 				$this->Session->setFlash(__('Welcome back ' . $this->Auth->user('first_name') . '!'));
-				// $this->redirect($this->Auth->redirectUrl());
 				$this->redirect(array('controller' => 'AdminPanel', 'action' => 'index'));
 
 			}
@@ -72,11 +71,6 @@ class UsersController extends AppController {
 		$this->User->delete($username, true);
 		$this->Session->setFlash('User Successfully Deleted!');
 		$this->redirect(array('controller' => 'Users', 'action' => 'create'));
-		    // $row = $this->users->read(null, $username);
-		    // if($this->users->delete($username)) {
-		        // $this->Session->setFlash('User deleted');
-		        // $this->redirect(array('controller' => 'Users', 'action' => 'create'));
-		    // }
 		}
 
 

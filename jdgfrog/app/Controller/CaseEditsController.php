@@ -192,11 +192,17 @@ class CaseEditsController extends AppController {
 	*/
 
 	public function addCase() {
-
+		
+		$userFN = $this->Auth->user('first_name');
+		$userLN = $this->Auth->user('last_name');
+		$insertUser = $this->request->data['DataInProgress']['author'] = $userFN . ' ' . $userLN;
+				
 		if ($this->request->is('post')) {
+			$this->DataInProgress->save($insertUser); 
 			if ($this->DataInProgress->save($this->request->data)) {
-				debug($this->request->data);
 				$this->redirect('/admin/cases/edit/'.$this->request->data['DataInProgress']['CaseNum']);
+				debug($this->request->data);
+				$this->Session->setFlash('Case Created!');
 			}
 		}
 

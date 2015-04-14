@@ -29,7 +29,6 @@
 								echo $this->Form->create('DataInProgress');
 								echo $this->Form->input('CaseNam', array('label' => 'Case Name'));
 								echo $this->Form->input('CaseNum', array('type' => 'text', 'label' => 'Case Number'));
-								echo $this->Form->input('NumDef', array('type' => 'text', 'label'=> 'Number of Defendants'));
 								echo "<hr style='border-top:3px solid #DDD'>";
 								echo $this->Form->input('JudgeName', array('label'=> 'Judge Name'));
 								echo $this->Form->input('JudgeRace', array('label' => '', 'empty' => 'Race', 'options' => array('White', 'Black', 'Hispanic', 'Asian', 'Other')));

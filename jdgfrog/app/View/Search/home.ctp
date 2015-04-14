@@ -190,7 +190,7 @@
                       ?>
                    </div> <!-- END OF COLLAPSIBLE PANEL -->
 
-               </form>
+               <!-- </form> -->
           </div>
           <div class="col-md-9 contact-left">
                 <!-- TOP STATUS AND SEARCH BAR -->
@@ -222,13 +222,9 @@
          </div>
      </div>
 </div>
-</div>
             <div class="search_disclaim" >
             <p><strong>Note: </strong>Not every combination of searchable objects will return meaningful results.</p>
             </div>
-</div>
-        </div>
-    </div>
 
 <div id="basic-modal-content" class="col-md-15">
 </div>

@@ -42,7 +42,7 @@
                               echo $this->Form->input('last_name', array('label' => 'Last Name*', 'placeholder' => 'Doe', 'id' => 'personal_field'));
                               echo "<br>";
                               echo "<hr style='border-top:1px solid #CCC;''>";
-                              echo $this->Form->input('role', array('label' => 'Privilege Level*', 'id' => 'personal_field', 'options' => array('admin' => 'Administrator (RA)', 'author' => 'Author (Scholar)')));
+                              echo $this->Form->input('role', array('label' => 'Privilege Level*', 'id' => 'personal_field', 'options' => array('admin' => 'Administrator', 'ra' => 'Research Assisstant')));
                               echo "<br>";
                             ?>
                           <hr style="border-top:1px solid #CCC;">

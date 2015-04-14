@@ -68,7 +68,7 @@ class CaseEditsController extends AppController {
 		if ($this->request->is('post')) {
 
 			$data = $this->request->data;
-			//debug($data);
+
 			$caseName		= $data['DataInProgress']['CaseNam'];
 			$caseNum 		= $data['DataInProgress']['CaseNum'];
 			$numDef 		= $data['DataInProgress']['NumDef'];
@@ -88,10 +88,16 @@ class CaseEditsController extends AppController {
 			$numVicMinor	= $data['DataInProgress']['NumVicMinor'];
 			$numVicForeign	= $data['DataInProgress']['NumVicForeign'];
 			$numVicFemale	= $data['DataInProgress']['NumVicFemale'];
+			$submit			= $data['DataInProgress']['SubmittedForReview'];
+			
+			$userFN = $this->Auth->user('first_name');
+			$userLN = $this->Auth->user('last_name');
+			$insertUser = $this->request->data['DataInProgress']['author'] = $userFN . ' ' . $userLN;		
 
 			$caseName = addslashes($caseName);
 			$judgeName = addslashes($judgeName);
 			$caseSummary = addslashes($caseSummary);
+			$author = addslashes($insertUser);
 
 			//$caseName = 'DROP TABLE DataInProgress_backup';
 			/*
@@ -103,6 +109,7 @@ class CaseEditsController extends AppController {
 			*	an apostrophe (e.g., O'Connell, O'Grady, etc.) or else the update will fail.
 			*/
 			$fields = array(
+							'DataInProgress.author' 		=> "'$author'",
 							'DataInProgress.CaseNum' 		=> "'$caseNum'", 
 							'DataInProgress.CaseNam' 		=> "'$caseName'", 
 							'DataInProgress.NumDef' 		=> "'$numDef'",
@@ -121,7 +128,8 @@ class CaseEditsController extends AppController {
 							'DataInProgress.NumVic' 		=> "'$numVic'",
 							'DataInProgress.NumVicMinor' 	=> "'$numVicMinor'",
 							'DataInProgress.NumVicForeign' 	=> "'$numVicForeign'",
-							'DataInProgress.NumVicFemale' 	=> "'$numVicFemale'"
+							'DataInProgress.NumVicFemale' 	=> "'$numVicFemale'",
+							'DataInProgress.SubmittedForReview' => "'$submit'"
 			);
 
 			if ($this->DataInProgress->updateAll($fields, array('DataInProgress.CaseNum' => $caseNumber)) ) {
@@ -271,6 +279,7 @@ class CaseEditsController extends AppController {
 			if ($this->DataInProgress->save($this->request->data)) {
 				//update number of defendants
 				$this->DataInProgress->updateAll($tempArr, array('DataInProgress.CaseNum' => $case['DataInProgress']['CaseNum']));
+				$this->deleteEmptyCases($case['DataInProgress']['CaseNum']);
 				$this->redirect('/admin/cases/edit/'.$caseNumber);
 				print_r('Defendant added to case!');
 				//$this->deleteEmptyCases();
@@ -339,11 +348,15 @@ class CaseEditsController extends AppController {
 	*	Method name: deleteEmptyCases()
 	*		This method deletes all rows without a defendant name from the DataInProgress table.
 	*		This is intended to be called after the creation of a new case in the transition to
-	*		the edit case page.
+	*		the edit case page. The method requires a caseNum to delete the extra null case row
+	*		but leave other cases which have been started but have no defendants yet.
+	*
+	*		This is due to the way I had to store cases which have been started but have not had
+	*		any defendants entered yet.
 	*/
 
-	public function deleteEmptyCases() {
-		$this->DataInProgress->deleteAll(array('DefFirst' => '', 'DefLast' => ''));
+	public function deleteEmptyCases($caseNum) {
+		$this->DataInProgress->deleteAll(array('DefFirst' => '', 'DefLast' => '', 'CaseNum' => $caseNum));
 	}
 
 	public function autoComplete() {
@@ -378,17 +391,18 @@ class CaseEditsController extends AppController {
 		echo json_encode($vals);
 	}
 
-	public function delete_case($CaseNum) {
-		$this->Datum->deleteAll(array('Datum.CaseNum' => $CaseNum), false);
+	public function delete_case($caseNum) {
+		$this->Datum->deleteAll(array('Datum.CaseNum' => $caseNum), false);
 		$this->Session->setFlash('Case Successfully Deleted!');
 		$this->redirect(array('controller' => 'CaseEdits', 'action' => 'index'));
 	}	
-	public function delete_incomplete_case($CaseNum) {
-		$this->DataInProgress->deleteAll(array('DataInProgress.CaseNum' => $CaseNum), false);
+	public function delete_incomplete_case($caseNum) {
+		$this->DataInProgress->deleteAll(array('DataInProgress.CaseNum' => $caseNum), false);
 		$this->Session->setFlash('Case Successfully Deleted!');
 		$this->redirect(array('controller' => 'CaseEdits', 'action' => 'index'));
 	}	
 	public function delete_def($defArray) {
+		$this->autoRender = false();
 		$string = explode("|", $defArray);
 		if (count($string) == 3) {
 			$defLast = $string[0];

@@ -76,23 +76,7 @@
 					</div> -->
 					<div class="pending">
 						<?php
-							$servername = "oyster.arvixe.com";
-							$username = "jdgfrog_testDB";
-							$password = "tcuCOSC1!";
-							$dbname = "jdgfrog_testDB";
-							// Create connection
-							$conn = new mysqli($servername, $username, $password, $dbname);
-							// Check connection
-							if ($conn->connect_error) {
-									die("Connection failed: " . $conn->connect_error);
-							} 
-							// $author = AuthComponent::user('id');
-							// $show_cases = "SELECT DISTINCT CaseNam, CaseNum, JudgeName, State, author, NumDef, modified FROM DataInProgress WHERE author = $author";
-							$show_cases = "SELECT DISTINCT CaseNam, CaseNum, JudgeName, State, author, NumDef, modified FROM DataInProgress";
-
-							$result = $conn->query($show_cases);
-
-							if ($result->num_rows > 0) {
+							if (isset($dipCases) && ($dipCases != null)) {
 								// output data of each row
 								echo "<table class='table table-striped table-bordered' id='cases_table'>";
 								echo"      <thead>";
@@ -109,18 +93,18 @@
 								echo"      <thead>";
 								echo "<tbody>";
 								
-								while($row = $result->fetch_assoc()) {
+								foreach($dipCases as $d) {
 									echo "  <tr>";
-									echo "      <td> &nbsp;".$row['CaseNam']. "</td>";
-									echo "      <td> ".$row['CaseNum']." </td>";
-									echo "      <td> ".$row['JudgeName']." </td>";
-									echo "      <td> ".$row['State']." </td>";
-									echo "      <td> ".$this->Html->link('Edit', '/admin/cases/edit/'.$row['CaseNum']) . '&nbsp/&nbsp;'
-																		.$this->Html->link('Delete', '/CaseEdits/delete_incomplete_case/'.$row['CaseNum'], array('confirm'=>'Are you sure you want to delete this case?'));
+									echo "      <td> &nbsp;".$d['DataInProgress']['CaseNam']. "</td>";
+									echo "      <td> ".$d['DataInProgress']['CaseNum']." </td>";
+									echo "      <td> ".$d['DataInProgress']['JudgeName']." </td>";
+									echo "      <td> ".$d['DataInProgress']['State']." </td>";
+									echo "      <td> ".$this->Html->link('Edit', '/admin/cases/edit/'.$d['DataInProgress']['CaseNum']) . '&nbsp/&nbsp;'
+																		.$this->Html->link('Delete', '/CaseEdits/delete_incomplete_case/'.$d['DataInProgress']['CaseNum'], array('confirm'=>'Are you sure you want to delete this case?'));
 															"</td>";
-									echo "      <td> ".$row['author']." </td>";
-									echo "      <td> ".$row['NumDef']." </td>";
-									echo "      <td> ".$row['modified']." </td>";
+									echo "      <td> ".$d['DataInProgress']['author']." </td>";
+									echo "      <td> ".$d['DataInProgress']['NumDef']." </td>";
+									echo "      <td> ".$d['DataInProgress']['modified']." </td>";
 									echo "  </tr>";
 									}
 									echo "</tbody>";
@@ -129,7 +113,6 @@
 							else {
 									echo "No Case Available to Display";
 							}
-							$conn->close();
 						?>
 					</div>
 					<div class="complete">

@@ -92,11 +92,10 @@
 								echo"        </tr>";
 								echo"      <thead>";
 								echo "<tbody>";
-								
 								$i = 0;
 								foreach ($case as $case) { 
 						?>
-						<?php 	
+						<?php 	if ($case['DataInProgress']['DefFirst'] != null && $case['DataInProgress']['DefLast'] != null) {
 								echo "  <tr>";
 								// echo "		<td> ".++$i ."</td>";
 								echo "		<td> ".$case['DataInProgress']['DefLast']."</td>";
@@ -106,6 +105,7 @@
 										array('controller' => 'CaseEdits', 'action' => 'editDefendant')).
 										 '&nbsp/&nbsp;'.$this->Html->link('Delete', '/CaseEdits/delete_def/'.$case['DataInProgress']['DefLast'].'|'.$case['DataInProgress']['DefFirst'].'|'.$case['DataInProgress']['CaseNum'], array('controller' => 'CaseEdits', 'action' => 'editDefendant', 'onclick'=> 'return confirm("Are you sure you want to delete this defendant?")')).
 								"</td>";
+								}
 						?>
 						<?php 	//echo $this->Form->input(); ?>
 						<?php //echo $this->Form->submit('Submit', array('confirm' => 'Submit this case for review?')); ?>
@@ -121,6 +121,7 @@
 					</div>
 				</div>
 				<div class="col-md-12 search_disclaim case_creation_form" style="margin-top:0px; padding-top:10px; border-top:1px solid #DCDCDC">
+						<?php echo $this->Form->input('SubmittedForReview', array('label' => 'Submit Case For Review?')); ?>
 						<div style="max-width:60%;margin: 0 auto"><?php echo $this->Form->end('Submit'); ?></div>
 						<br>
 					<p><strong>*Note: </strong>All fields are required</p>

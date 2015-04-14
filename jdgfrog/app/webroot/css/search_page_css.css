@@ -308,30 +308,6 @@ select{
     transition: all .4s ease-in-out;
 } 
 
-  .checkbox {
-    display: inline-block;
-    cursor: pointer;
-    margin-top: 10px;
-    line-height:15px;
-    padding-top: 5px;
-    border-top: 3px solid #DDD;
-    border-bottom: 3px solid #DDD;
-  }
-  input[type=checkbox] {
-    font-size: 18px; 
-    display:none; 
-    content: "";
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    vertical-align:middle;
-    background-color: #0088cc;
-    color: #f3f3f3;
-    text-align: left;
-    border-radius: 3px;
-  }
-
-
 /*ANALYZE PAGE STYLE*/
 .graph_selection{
     /*margin-left: 600px;*/

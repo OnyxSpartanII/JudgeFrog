@@ -781,6 +781,8 @@ class SearchController extends AppController {
 		}
 		$datum = $this->Datum->find('all', array('conditions' => array('Datum.CaseNum' => $cn)));
 
+		// debug($datum);
+
 		$cases = array();
 		$case_name = '';
 
@@ -1182,6 +1184,7 @@ class SearchController extends AppController {
 
 		$this->set('display', $display);
 		$this->set('cases', $cases);
+		$this->Session->write('case_info',$cases);
 		$this->set('prev_search', $prev_search);
 		$this->set('query', $this->request->data);
 	}

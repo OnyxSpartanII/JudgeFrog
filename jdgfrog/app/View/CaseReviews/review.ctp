@@ -25,7 +25,7 @@
                           <thead>
                               <tr>
                               <th>Case Number</th>
-                              <th>Editor's ID</th>
+                              <th>Author Name</th>
                               <th style="background-color: #4D1979">Actions</th>
                               </tr>
                           </thead>

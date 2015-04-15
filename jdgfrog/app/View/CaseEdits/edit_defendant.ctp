@@ -21,27 +21,32 @@
 				<div class="col-md-6 case_creation_form" id="form_style" style="float:inherit">
 						<h2 id="caseInfoFS_Title"><?php echo $case['DataInProgress']['DefLast'];?>'s Details</h2>
 						<fieldset id="caseInfoFS">
-							<?php echo $this->Form->create('DataInProgress'); ?>
-
-
-							<?php	echo $this->Form->input('DefLast', 		
+							<?php 
+									echo $this->Form->create('DataInProgress');
+								  	echo $this->Form->input('DefLast', 		
 															array(
 																'default' => $case['DataInProgress']['DefLast'], 
-																'label' => 'Defendant Last Name')); ?>
-							<?php	echo $this->Form->input('DefFirst', 		
+																'label' => 'Defendant Last Name'));
+									echo $this->Form->input('DefFirst', 		
 																array(
 																	'default' => $case['DataInProgress']['DefFirst'],
-																	'label' => 'Defendant First Name')); ?>
-							<?php	// customize for male/female with if statement
-									echo $this->Form->input('DefGender', 		array( 'label' => '', 'empty' => 'Gender', 'options' => array('0' => 'Male', '1' => 'Female'), 'default' => $case['DataInProgress']['DefGender'])); ?>
-							<?php	echo $this->Form->input('DefBirthdate',		array('label' => 'Defendant Birthdate', 'type' => 'text', 'default' => $case['DataInProgress']['DefBirthdate'])); ?>
-							<?php 	echo $this->Form->input('DefRace', 			array('default' => $case['DataInProgress']['DefRace'], 'label' => '', 'empty' => 'Race', 'options' => array('White', 'Black', 'Hispanic', 'Asian', 'Other'))); ?>	
-							<?php	echo $this->Form->input('DefArrestAge',		array('label' => 'Defendant Age', 'type' => 'text', 'default' => $case['DataInProgress']['DefArrestAge'])); ?>
-							<?php	echo $this->Form->input('Alias', 			array('default' => $case['DataInProgress']['Alias'])); ?>
-							<?php 
+																	'label' => 'Defendant First Name'));
+									// customize for male/female with if statement
+									echo $this->Form->input('DefGender', 		array( 'label' => '', 'empty' => 'Gender', 'options' => array('0' => 'Male', '1' => 'Female'), 'default' => $case['DataInProgress']['DefGender']));
+									echo $this->Form->input('DefBirthdate',		array('label' => 'Defendant Birthdate', 'type' => 'text', 'default' => $case['DataInProgress']['DefBirthdate']));
+									echo $this->Form->input('DefRace', 			array('default' => $case['DataInProgress']['DefRace'], 'label' => '', 'empty' => 'Race', 'options' => array('White', 'Black', 'Hispanic', 'Asian', 'Other')));
+									echo $this->Form->input('DefArrestAge',		array('label' => 'Defendant Age', 'type' => 'text', 'default' => $case['DataInProgress']['DefArrestAge']));
+									echo $this->Form->input('Alias', 			array('default' => $case['DataInProgress']['Alias'])); 
 									echo $this->Form->input('ChargeDate', 		array('default' => $case['DataInProgress']['ChargeDate'], 'label' => 'Charge Date', 'placeholder' => '11/04/1986', 'id' => 'charge_Date', 'type' => 'text', 'class' => 'date', 'data-date' 	=> '2012-12-02', 'data-date-format' => 'yyyy-mm-dd')); 
 									echo $this->Form->input('ArrestDate', 		array('default' => $case['DataInProgress']['ArrestDate'], 'label' => 'Arrest Date', 'placeholder' => '01/24/2001', 'class' => 'date', 'type' => 'text', 'id' => 'arrest_Date', 'data-date' 	=> '2012-12-02', 'data-date-format' => 'yyyy-mm-dd'));
-									echo "<hr style = 'border-top:1px solid #DCDCDC'>";
+								?>
+								<hr style="border-top:1px solid #CCC;">
+								<input type="button" name="next" onclick="goToCaseSum()" class="action-button" value="Next - Charges"/>
+						</fieldset>
+								
+						<h2 id="caseSumFS_Title">Charges &amp; Sentencing Details</h2>
+						<fieldset id="caseSumFS">
+								<?php 
 									echo $this->Form->input('Detained', 		array('default' => $case['DataInProgress']['Detained'], 'label' => 'Detained', 'type' => 'checkbox'));
 									echo "<hr style = 'border-top:1px solid #DCDCDC'>";
 									echo $this->Form->input('BailType', 		array('default' => $case['DataInProgress']['BailType'], 'label' => 'Bail Type', 'options' => array('None', 'Surety', 'Non-Surety')));
@@ -57,15 +62,32 @@
 									echo $this->Form->input('Restitution', 		array('default' => $case['DataInProgress']['Restitution'], 'type' => 'text', 'label' => 'Total Restitution To Be Paid'));
 									echo $this->Form->input('AssetForfeit', 	array('default' => $case['DataInProgress']['AssetForfeit'], 'label' => 'Asset Forfeiture'));
 									echo $this->Form->input('Probation', 		array('default' => $case['DataInProgress']['Probation'], 'type' => 'text', 'label' => 'Total Number of Months On Probation'));
-									echo $this->Form->input('OCName1', 			array('default' => $case['DataInProgress']['OCName1'], 'type' => 'text', 'label' => 'Name', 'placeholder' => 'Francis Underwood'));
+								?>
+								<hr style="border-top:1px solid #CCC;">
+								<input type="button" name="previous" onclick="goToCaseInfo()" class="action-button" value="Back - Defentdant"/>
+								&nbsp;&nbsp;
+								<input type="button" name="next" onclick="goToOCG()" class="action-button" value="Next - OCG"/>
+						</fieldset>
+
+						<h2 id="OCGFS_Title">Organized Crime Groups</h2>
+						<fieldset id="OCGFS">
+							
+								<?php
+									echo $this->Form->input('OCName1', 			array('default' => $case['DataInProgress']['OCName1'], 'type' => 'text', 'label' => 'Name of Organized Crime Group 1', 'placeholder' => 'House of Cards'));
 									echo $this->Form->input('OCType1', 			array('default' => $case['DataInProgress']['OCType1'], 'label' => '', 'options' => array('Mom and Pop', 'Street Gang', 'Cartel/Syndicate/Mafia', 'Prison Gang', 'Other'),'empty'=>'Type', 'default' => $case['DataInProgress']['OCType1']));
 									echo $this->Form->input('OCRace1', 			array('default' => $case['DataInProgress']['OCRace1'], 'label' => '', 'options' => array('White','Black','Hispanic','Asian','Other'),'empty'=>'Race'));
 									echo $this->Form->input('OCScope1', 		array('default' => $case['DataInProgress']['OCScope1'], 'label' => '', 'options' => array('Local', 'Trans-State', 'Trans-National'),'empty'=>'Scope'));
-									echo $this->Form->input('OCName2', 			array('default' => $case['DataInProgress']['OCName2'], 'type' => 'text', 'label' => 'Name', 'placeholder' => 'Francis Underwood'));
+									
+									echo "<br>";
+									echo "<hr style='border-top:1px solid #CCC;'>";
+
+									echo $this->Form->input('OCName2', 			array('default' => $case['DataInProgress']['OCName2'], 'type' => 'text', 'label' => 'Name of Organized Crime Group 2', 'placeholder' => 'Sultan of Liberty'));
 									echo $this->Form->input('OCType2',			array('default' => $case['DataInProgress']['OCType2'], 'label' => '', 'options' => array('Mom and Pop', 'Street Gang', 'Cartel/Syndicate/Mafia', 'Prison Gang', 'Other'),'empty'=>'Type', 'default' => $case['DataInProgress']['OCType2']));
 									echo $this->Form->input('OCRace2', 			array('default' => $case['DataInProgress']['OCRace2'], 'label' => '', 'options' => array('White','Black','Hispanic','Asian','Other'),'empty'=>'Race'));
 									echo $this->Form->input('OCScope2',			array('default' => $case['DataInProgress']['OCScope2'], 'label' => '', 'options' => array('Local', 'Trans-State', 'Trans-National'),'empty'=>'Scope'));
-							?>							
+								?>							
+								<hr style="border-top:1px solid #CCC;">
+								<input type="button" name="previous" onclick="goToCaseSum_()" class="action-button" value="Back - Charges"/>
 						</fieldset>	
 				</div>
 				<div class="col-md-6 case_creation_form" id="form_style" style="float:inherit">
@@ -389,3 +411,37 @@
 	</div>
 </div>
 <?php echo $this->Html->script(array('statutes_slider'));?>
+<script type="text/javascript">
+	var caseInfoFS = $('#caseInfoFS');
+	var caseSum = $('#caseSumFS');
+	var OCG_FS = $('#OCGFS');
+		$('#caseSumFS_Title').hide();
+		$('#OCGFS_Title').hide();
+
+	function goToCaseSum() {    	
+		caseInfoFS.hide('slow');
+		$('#caseInfoFS_Title').hide('slow');
+		caseSum.fadeIn('slow');
+		$('#caseSumFS_Title').show('slow');
+	}
+
+	function goToCaseInfo() {    	
+		caseSum.hide('slow');
+		$('#caseSumFS_Title').hide('slow');
+		caseInfoFS.fadeIn('slow');
+		$('#caseInfoFS_Title').show('slow');
+	}
+
+	function goToOCG() {    	
+		caseSum.hide('slow');
+		$('#caseSumFS_Title').hide('slow');
+		OCG_FS.fadeIn('slow');
+		$('#OCGFS_Title').show('slow');
+	}
+	function goToCaseSum_() {    	
+		OCG_FS.hide('slow');
+		$('#OCGFS_Title').hide('slow');
+		caseSum.fadeIn('slow');
+		$('#caseSumFS_Title').show('slow');
+	}
+</script>

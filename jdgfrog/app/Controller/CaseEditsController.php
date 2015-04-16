@@ -322,6 +322,19 @@ class CaseEditsController extends AppController {
 				$this->request->data['DataInProgress']['MinorSexTraf'] = '0';
 			}
 
+			if (true === $this->request->data['DataInProgress']['LaborTraf']) {
+				$this->request->data['DataInProgress']['LaborTraf'] = '1';
+				print_r('help');
+			}
+
+			if (true === $this->request->data['DataInProgress']['AdultSexTraf']) {
+				$this->request->data['DataInProgress']['AdultSexTraf'] = '1';
+			}
+
+			if (true === $this->request->data['DataInProgress']['MinorSexTraf']) {
+				$this->request->data['DataInProgress']['MinorSexTraf'] = '1';
+			}
+
 			$this->DataInProgress->set($this->request->data);
 			if ($this->DataInProgress->validates()) {
 				print_r('validation successful');
@@ -329,6 +342,7 @@ class CaseEditsController extends AppController {
 				$errors = $this->DataInProgress->validationErrors;
 				debug($errors);
 			}
+			debug($this->request->data);
 
 			if ($this->DataInProgress->save($this->request->data)) {
 				//update number of defendants
@@ -339,7 +353,7 @@ class CaseEditsController extends AppController {
 				//$this->deleteEmptyCases();
 
 			} else {
-				print_r('An error occurred while adding defendant to case. \n Defendant not added.');
+				print_r('An error occurred while adding defendant to case. Defendant not added.');
 			}
 
 		}

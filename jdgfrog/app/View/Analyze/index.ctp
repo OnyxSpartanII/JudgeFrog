@@ -43,9 +43,9 @@
                         <?php
                         echo $this->Form->create(array('inputDefaults' => array('label' => false, 'div' => false)));?>
                         <?php
-                        echo $this->Form->input('yAxisBox', array('empty' => 'Y Axis', 'id' => 'yAxisBox', 'options' => array('Total Cases', 'Total Defendants', 'Avg Defendants Per Case', 'Total Months Sentenced', 'Avg Months Sentenced', 'Victims', 'Total Charge', 'Total Sentenced')));?>
+                        echo $this->Form->input('yAxisBox', array('empty' => 'Dependent', 'id' => 'yAxisBox', 'options' => array('Total Cases', 'Total Defendants', 'Avg Defendants Per Case', 'Total Months Sentenced', 'Avg Months Sentenced', 'Victims', 'Total Charge', 'Total Sentenced')));?>
                         <?php
-                        echo $this->Form->input('xAxisBox', array('empty' => 'X Axis', 'id' => 'xAxisBox', 'options' => array('Year', 'Defendant By Gender', 'Defendant By Race', 'Judge By Gender', 'Judge By Race', 'Judge By Party', 'Crime Type', 'Statute', 'Federal District','State', 'Statute Charged','Statute Sentenced','Organized Crime Groups')));?>
+                        echo $this->Form->input('xAxisBox', array('empty' => 'Independent', 'id' => 'xAxisBox', 'options' => array('Year', 'Defendant By Gender', 'Defendant By Race', 'Judge By Gender', 'Judge By Race', 'Judge By Party', 'Crime Type', 'Statute', 'Federal District','State', 'Statute Charged','Statute Sentenced','Organized Crime Groups')));?>
                         <?php
                         echo $this->Form->input('geoChartCombo', array('empty' => 'GeoChart', 'id' => 'geoChartCombo', 'options' => array('Case By State','Federal District')));?>
                       <?php
@@ -173,7 +173,7 @@ SCRIPTS
 	        	var x_i = $('#xAxisBox :selected').index();
 
 				$.ajax({                   
-					url: '/JudgeFrog/jdgfrog/Analyze/generateGraph/line/' + y_i + '/' + x_i,
+					url: '/Analyze/generateGraph/line/' + y_i + '/' + x_i,
 					cache: false,
 					type: 'GET',
 					success: function (d) {
@@ -190,7 +190,7 @@ SCRIPTS
 	        	var x_i = $('#xAxisBox :selected').index();
 
 				$.ajax({                   
-					url: '/JudgeFrog/jdgfrog/Analyze/generateGraph/bar/' + y_i + '/' + x_i,
+					url: '/Analyze/generateGraph/bar/' + y_i + '/' + x_i,
 					cache: false,
 					type: 'GET',
 					success: function (d) {
@@ -205,7 +205,7 @@ SCRIPTS
 	        	var x_i = $('#xAxisBox :selected').index();
 
 				$.ajax({                   
-					url: '/JudgeFrog/jdgfrog/Analyze/generateGraph/hst/' + y_i + '/' + x_i,
+					url: '/Analyze/generateGraph/hst/' + y_i + '/' + x_i,
 					cache: false,
 					type: 'GET',
 					success: function (d) {
@@ -220,7 +220,7 @@ SCRIPTS
 	        	var x_i = $('#xAxisBox :selected').index();
 
 				$.ajax({                   
-					url: '/JudgeFrog/jdgfrog/Analyze/generateGraph/pie/' + y_i + '/' + x_i,
+					url: '/Analyze/generateGraph/pie/' + y_i + '/' + x_i,
 					cache: false,
 					type: 'GET',
 					success: function (d) {
@@ -235,7 +235,7 @@ SCRIPTS
 	        	var x_i = $('#xAxisBox :selected').index();
 
 				$.ajax({                   
-					url: '/JudgeFrog/jdgfrog/Analyze/generateGraph/geo/' + y_i + '/' + x_i,
+					url: '/Analyze/generateGraph/geo/' + y_i + '/' + x_i,
 					cache: false,
 					type: 'GET',
 					success: function (d) {

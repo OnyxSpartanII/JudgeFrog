@@ -121,7 +121,7 @@
 					</div>
 				</div>
 				<div class="col-md-12 search_disclaim case_creation_form" style="margin-top:0px; padding-top:10px; border-top:1px solid #DCDCDC">
-						<?php echo $this->Form->input('SubmittedForReview', array('label' => 'Submit Case For Review?')); ?>
+						<?php echo $this->Form->input('SubmittedForReview', array('label' => 'Submit Case For Review?', 'type' => 'checkbox')); ?>
 						<div style="max-width:60%;margin: 0 auto"><?php echo $this->Form->end('Submit'); ?></div>
 						<br>
 					<p><strong>*Note: </strong>All fields are required</p>

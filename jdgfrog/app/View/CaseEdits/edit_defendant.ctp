@@ -64,7 +64,7 @@
 									echo $this->Form->input('Probation', 		array('default' => $case['DataInProgress']['Probation'], 'type' => 'text', 'label' => 'Total Number of Months On Probation'));
 								?>
 								<hr style="border-top:1px solid #CCC;">
-								<input type="button" name="previous" onclick="goToCaseInfo()" class="action-button" value="Back - Defentdant"/>
+								<input type="button" name="previous" onclick="goToCaseInfo()" class="action-button" value="Back - Defendant"/>
 								&nbsp;&nbsp;
 								<input type="button" name="next" onclick="goToOCG()" class="action-button" value="Next - OCG"/>
 						</fieldset>

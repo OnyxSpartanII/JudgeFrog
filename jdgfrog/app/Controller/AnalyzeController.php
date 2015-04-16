@@ -52,6 +52,7 @@ class AnalyzeController extends AppController {
 
 			case 'pie':
 				$options = array('title' => $xAxisOptions[$xIndex-1], 'hAxis' => array('title' => ''), 'vAxis' => array('title' => ''));
+				$yIndex = 1;
 				break;
 
 			case 'geo':

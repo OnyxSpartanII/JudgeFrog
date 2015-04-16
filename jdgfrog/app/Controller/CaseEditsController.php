@@ -21,16 +21,16 @@ class CaseEditsController extends AppController {
 		$this->set('active', 'edit');
 		
 		$dataCases = $this->Datum->find('all', array(
-												'fields' => array(
-																'Datum.CaseNum', 
-																'Datum.CaseNam', 
-																'Datum.JudgeName', 
-																'Datum.State', 
-																'Datum.author', 
-																'Datum.NumDef', 
-																'Datum.modified'),
-												'group' => 'Datum.CaseNam'
-												)
+											'fields' => array(
+															'Datum.CaseNum', 
+															'Datum.CaseNam', 
+															'Datum.JudgeName', 
+															'Datum.State', 
+															'Datum.author', 
+															'Datum.NumDef', 
+															'Datum.modified'),
+											'group' => 'Datum.CaseNum'
+											)
 										);
 		$dipCases = $this->DataInProgress->find('all', array(
 												'fields' => array(
@@ -41,7 +41,7 @@ class CaseEditsController extends AppController {
 																'DataInProgress.author', 
 																'DataInProgress.NumDef', 
 																'DataInProgress.modified'),
-												'group' => 'DataInProgress.CaseNam'
+												'group' => 'DataInProgress.CaseNum'
 												)
 										);
 		
@@ -98,6 +98,8 @@ class CaseEditsController extends AppController {
 			$judgeName = addslashes($judgeName);
 			$caseSummary = addslashes($caseSummary);
 			$author = addslashes($insertUser);
+		
+			//debug($this->request->data);
 
 			//$caseName = 'DROP TABLE DataInProgress_backup';
 			/*
@@ -131,6 +133,14 @@ class CaseEditsController extends AppController {
 							'DataInProgress.NumVicFemale' 	=> "'$numVicFemale'",
 							'DataInProgress.SubmittedForReview' => "'$submit'"
 			);
+
+			$this->DataInProgress->set($this->request->data);
+			if ($this->DataInProgress->validates()) {
+				print_r('validation successful');
+			} else {
+				$errors = $this->DataInProgress->validationErrors;
+				debug($errors);
+			}
 
 			if ($this->DataInProgress->updateAll($fields, array('DataInProgress.CaseNum' => $caseNumber)) ) {
 				$this->redirect('/CaseReviews/review');
@@ -169,6 +179,13 @@ class CaseEditsController extends AppController {
 														)
 												);
 			$caseId = $case['DataInProgress']['id'];
+
+			//Check for "null" value from YEAR type in database table.
+			//It's only 0000 if it's null.
+			if ('0000' == $case['DataInProgress']['DefBirthdate']) {
+				$case['DataInProgress']['DefBirthdate'] = '';
+			}
+
 			$this->set('case', $case);
 		} else {
 			//Redirect to error page?
@@ -179,6 +196,10 @@ class CaseEditsController extends AppController {
 
 			$this->DataInProgress->clear();
 			$this->request->data['DataInProgress']['id'] = $caseId;
+
+			if ('0000' == $this->request->data['DataInProgress']['DefBirthdate']) {
+				$this->request->data['DataInProgress']['DefBirthdate'] = '';
+			}
 
 			if ($this->DataInProgress->save($this->request->data)) {
 				$this->redirect('/admin/cases/edit/'.$caseNumber);
@@ -206,7 +227,19 @@ class CaseEditsController extends AppController {
 		$insertUser = $this->request->data['DataInProgress']['author'] = $userFN . ' ' . $userLN;
 				
 		if ($this->request->is('post')) {
-			$this->DataInProgress->save($insertUser); 
+
+			$this->DataInProgress->set($this->request->data);
+			if ($this->DataInProgress->validates()) {
+				print_r('validation successful');
+			} else {
+				$errors = $this->DataInProgress->validationErrors;
+				debug($errors);
+			}			
+
+			if ('' === $this->request->data['DataInProgress']['JudgeTenure']) {
+				$this->request->data['DataInProgress']['JudgeTenure'] = null;
+			}
+
 			if ($this->DataInProgress->save($this->request->data)) {
 				$this->redirect('/admin/cases/edit/'.$this->request->data['DataInProgress']['CaseNum']);
 				debug($this->request->data);
@@ -274,7 +307,28 @@ class CaseEditsController extends AppController {
 			$this->request->data['DataInProgress']['NumDef'] = $temp;
 
 			$tempArr = array('DataInProgress.NumDef' => "'$temp'");
-			//debug($this->request->data);
+			$this->DataInProgress->clear();
+
+			if (false === $this->request->data['DataInProgress']['LaborTraf']) {
+				$this->request->data['DataInProgress']['LaborTraf'] = '0';
+				print_r('help');
+			}
+
+			if (false === $this->request->data['DataInProgress']['AdultSexTraf']) {
+				$this->request->data['DataInProgress']['AdultSexTraf'] = '0';
+			}
+
+			if (false === $this->request->data['DataInProgress']['MinorSexTraf']) {
+				$this->request->data['DataInProgress']['MinorSexTraf'] = '0';
+			}
+
+			$this->DataInProgress->set($this->request->data);
+			if ($this->DataInProgress->validates()) {
+				print_r('validation successful');
+			} else {
+				$errors = $this->DataInProgress->validationErrors;
+				debug($errors);
+			}
 
 			if ($this->DataInProgress->save($this->request->data)) {
 				//update number of defendants
@@ -285,7 +339,7 @@ class CaseEditsController extends AppController {
 				//$this->deleteEmptyCases();
 
 			} else {
-				print_r('An error occurred while adding defendant to case.');
+				print_r('An error occurred while adding defendant to case. \n Defendant not added.');
 			}
 
 		}

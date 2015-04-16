@@ -194,6 +194,10 @@ class CaseEditsController extends AppController {
 				$this->request->data['DataInProgress']['DefBirthdate'] = '';
 			}
 
+			$userFN = $this->Auth->user('first_name');
+			$userLN = $this->Auth->user('last_name');
+			$insertUser = $this->request->data['DataInProgress']['author'] = $userFN . ' ' . $userLN;			
+
 			if ($this->DataInProgress->save($this->request->data)) {
 				$this->redirect('/admin/cases/edit/'.$caseNumber);
 				print_r('Save successful!');
@@ -291,6 +295,10 @@ class CaseEditsController extends AppController {
 			$temp = $this->request->data['DataInProgress']['NumDef'];
 			$temp = $temp + 1;
 			$this->request->data['DataInProgress']['NumDef'] = $temp;
+
+			$userFN = $this->Auth->user('first_name');
+			$userLN = $this->Auth->user('last_name');
+			$insertUser = $this->request->data['DataInProgress']['author'] = $userFN . ' ' . $userLN;			
 
 			$tempArr = array('DataInProgress.NumDef' => "'$temp'");
 			$this->DataInProgress->clear();

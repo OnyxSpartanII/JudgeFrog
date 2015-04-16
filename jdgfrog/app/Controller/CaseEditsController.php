@@ -134,20 +134,13 @@ class CaseEditsController extends AppController {
 							'DataInProgress.SubmittedForReview' => "'$submit'"
 			);
 
-			$this->DataInProgress->set($this->request->data);
-			if ($this->DataInProgress->validates()) {
-				print_r('validation successful');
-			} else {
-				$errors = $this->DataInProgress->validationErrors;
-				debug($errors);
-			}
-
 			if ($this->DataInProgress->updateAll($fields, array('DataInProgress.CaseNum' => $caseNumber)) ) {
 				$this->redirect('/CaseReviews/review');
 				print_r('Something went right.');
 				
 			} else {
 				print_r('Something went wrong. Case information not saved.');
+				debug($this->DataInProgress->validationErrors);
 			}
 		} else {
 			$this->render('edit');
@@ -206,6 +199,7 @@ class CaseEditsController extends AppController {
 				print_r('Save successful!');
 			} else {
 				print_r('An error occurred. Changes to defendant were not saved.');
+				debug($this->DataInProgress->validationErrors);
 			}
 		}
 
@@ -228,22 +222,14 @@ class CaseEditsController extends AppController {
 				
 		if ($this->request->is('post')) {
 
-			$this->DataInProgress->set($this->request->data);
-			if ($this->DataInProgress->validates()) {
-				print_r('validation successful');
-			} else {
-				$errors = $this->DataInProgress->validationErrors;
-				debug($errors);
-			}			
-
-			if ('' === $this->request->data['DataInProgress']['JudgeTenure']) {
-				$this->request->data['DataInProgress']['JudgeTenure'] = null;
-			}
-
 			if ($this->DataInProgress->save($this->request->data)) {
 				$this->redirect('/admin/cases/edit/'.$this->request->data['DataInProgress']['CaseNum']);
 				debug($this->request->data);
 				$this->Session->setFlash('Case Created!');
+			} else {
+				print_r('Error occurred while adding case.');
+				$errors = $this->DataInProgress->validationErrors;
+				debug($errors);
 			}
 		}
 
@@ -335,15 +321,6 @@ class CaseEditsController extends AppController {
 				$this->request->data['DataInProgress']['MinorSexTraf'] = '1';
 			}
 
-			$this->DataInProgress->set($this->request->data);
-			if ($this->DataInProgress->validates()) {
-				print_r('validation successful');
-			} else {
-				$errors = $this->DataInProgress->validationErrors;
-				debug($errors);
-			}
-			debug($this->request->data);
-
 			if ($this->DataInProgress->save($this->request->data)) {
 				//update number of defendants
 				$this->DataInProgress->updateAll($tempArr, array('DataInProgress.CaseNum' => $case['DataInProgress']['CaseNum']));
@@ -354,6 +331,8 @@ class CaseEditsController extends AppController {
 
 			} else {
 				print_r('An error occurred while adding defendant to case. Defendant not added.');
+				$errors = $this->DataInProgress->validationErrors;
+				debug($errors);
 			}
 
 		}

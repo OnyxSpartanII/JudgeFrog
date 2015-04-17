@@ -178,7 +178,7 @@ SCRIPTS
 	        	var x_i = $('#xAxisBox :selected').index();
 
 				$.ajax({                   
-					url: '/JudgeFrog/jdgfrog/Analyze/generateGraph/line/' + y_i + '/' + x_i,
+					url: '//Analyze/generateGraph/line/' + y_i + '/' + x_i,
 					cache: false,
 					type: 'GET',
 					success: function (d) {
@@ -195,7 +195,7 @@ SCRIPTS
 	        	var x_i = $('#xAxisBox :selected').index();
 
 				$.ajax({                   
-					url: '/JudgeFrog/jdgfrog/Analyze/generateGraph/bar/' + y_i + '/' + x_i,
+					url: '/Analyze/generateGraph/bar/' + y_i + '/' + x_i,
 					cache: false,
 					type: 'GET',
 					success: function (d) {
@@ -210,7 +210,7 @@ SCRIPTS
 	        	var x_i = $('#xAxisBox :selected').index();
 
 				$.ajax({                   
-					url: '/JudgeFrog/jdgfrog/Analyze/generateGraph/hst/' + y_i + '/' + x_i,
+					url: '/Analyze/generateGraph/hst/' + y_i + '/' + x_i,
 					cache: false,
 					type: 'GET',
 					success: function (d) {
@@ -225,7 +225,7 @@ SCRIPTS
 	        	var x_i = $('#xAxisBox :selected').index();
 
 				$.ajax({                   
-					url: '/JudgeFrog/jdgfrog/Analyze/generateGraph/pie/' + y_i + '/' + x_i,
+					url: '/Analyze/generateGraph/pie/' + y_i + '/' + x_i,
 					cache: false,
 					type: 'GET',
 					success: function (d) {
@@ -240,7 +240,7 @@ SCRIPTS
 	        	var x_i = $('#xAxisBox :selected').index();
 
 				$.ajax({                   
-					url: '/JudgeFrog/jdgfrog/Analyze/generateGraph/geo/' + y_i + '/' + x_i,
+					url: '/Analyze/generateGraph/geo/' + y_i + '/' + x_i,
 					cache: false,
 					type: 'GET',
 					success: function (d) {

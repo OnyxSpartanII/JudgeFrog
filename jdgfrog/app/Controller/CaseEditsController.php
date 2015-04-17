@@ -446,18 +446,20 @@ class CaseEditsController extends AppController {
 		echo json_encode($vals);
 	}
 
-	public function delete_case($caseNum) {
+	public function delete_case($num) {
+		$caseNum = urldecode($num);
 		$this->Datum->deleteAll(array('Datum.CaseNum' => $caseNum), false);
 		$this->Session->setFlash('Case Successfully Deleted!');
-		$this->redirect(array('controller' => 'CaseEdits', 'action' => 'index'));
+		$this->redirect('/admin/cases/edit/index');
 	}	
-	public function delete_incomplete_case($caseNum) {
+	public function delete_incomplete_case($num) {
+		$caseNum = urldecode($num);
 		$this->DataInProgress->deleteAll(array('DataInProgress.CaseNum' => $caseNum), false);
 		$this->Session->setFlash('Case Successfully Deleted!');
-		$this->redirect(array('controller' => 'CaseEdits', 'action' => 'index'));
+		$this->redirect('/admin/cases/edit/index');
 	}	
 	public function delete_def($defArray) {
-		$this->autoRender = false();
+		$this->autoRender = false;
 		$string = explode("|", $defArray);
 		if (count($string) == 3) {
 			$defLast = $string[0];

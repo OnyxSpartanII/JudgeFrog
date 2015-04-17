@@ -78,7 +78,7 @@
 								<?php
 								echo $this->Html->link(
 										$this->Html->image("add_def.png", array("alt" => "Create Case", 'style' => 'float:left; padding: 10px 7px 8px 0px;')),
-										'/admin/cases/edit/add_defendant/'.$case['0']['DataInProgress']['CaseNum'], array('escape' => false)); ?> 
+										'/admin/cases/edit/add_defendant/'.urlencode($case['0']['DataInProgress']['CaseNum']), array('escape' => false)); ?> 
 							</label>
 						</div>
 					  </div>
@@ -100,10 +100,10 @@
 								// echo "		<td> ".++$i ."</td>";
 								echo "		<td> ".$case['DataInProgress']['DefLast']."</td>";
 								echo "		<td> ".$case['DataInProgress']['DefFirst']."</td>";
-								echo "		<td> ".$this->Html->link('Edit', 
-										'/admin/cases/edit/defendant/'.$case['DataInProgress']['DefLast'].'|'.$case['DataInProgress']['DefFirst'].'|'.$case['DataInProgress']['CaseNum'], 
+								echo "		<td> ".$this->Html->link('Edit',
+										'/admin/cases/edit/defendant/'.urlencode($case['DataInProgress']['DefLast'].'|'.$case['DataInProgress']['DefFirst'].'|'.$case['DataInProgress']['CaseNum']), 
 										array('controller' => 'CaseEdits', 'action' => 'editDefendant')).
-										 '&nbsp/&nbsp;'.$this->Html->link('Delete', '/CaseEdits/delete_def/'.$case['DataInProgress']['DefLast'].'|'.$case['DataInProgress']['DefFirst'].'|'.$case['DataInProgress']['CaseNum'], array('controller' => 'CaseEdits', 'action' => 'editDefendant', 'onclick'=> 'return confirm("Are you sure you want to delete this defendant?")')).
+										 '&nbsp/&nbsp;'.$this->Html->link('Delete', '/admin/cases/delete_def/'.urlencode($case['DataInProgress']['DefLast'].'|'.$case['DataInProgress']['DefFirst'].'|'.$case['DataInProgress']['CaseNum']), array('controller' => 'CaseEdits', 'action' => 'editDefendant', 'onclick'=> 'return confirm("Are you sure you want to delete this defendant?")')).
 								"</td>";
 								}
 						?>
@@ -115,7 +115,7 @@
 								echo "</tbody>";
 								echo "</table>";
 						  if (count($case) == 0) {
-								echo "This case has 0 defendant";
+								echo "This case has 0 defendants.";
 						  }
 						 ?>	
 					</div>

@@ -52,7 +52,7 @@ class CaseEditsController extends AppController {
 	public function edit($num) {
 
 		$this->autoRender = false;
-		$caseNumber = $num;
+		$caseNumber = urldecode($num);
 		//$caseNumber = '1:13-cr-00069-LO';
 		$case = $this->getCase($caseNumber);
 		if ($case) {
@@ -360,8 +360,9 @@ class CaseEditsController extends AppController {
 	*		cases found in the DataInProgress table.
 	*/
 
-	public function migrateFromDataToDataInProgress($caseNumber) {
+	public function migrateFromDataToDataInProgress($num) {
 
+		$caseNumber = urldecode($num);
 		$data = $this->Datum->find('all', array('conditions' => array('Datum.CaseNum' => $caseNumber)));
 		$this->Datum->deleteAll(array('Datum.CaseNum' => $caseNumber, false));
 		$this->DataInProgress->clear();

@@ -56,9 +56,9 @@
 									echo $this->Form->input('FelCharged', 		array('default' => $case['DataInProgress']['FelCharged'], 'type' => 'text', 'label' => 'Number of Felonies Charged'));
 									echo $this->Form->input('FelSentenced', 	array('default' => $case['DataInProgress']['FelSentenced'], 'type' => 'text', 'label' => 'Number of Felonies Sentenced'));
 
-									echo $this->Form->input('DateTerminated', 	array('default' => $case['DataInProgress']['DateTerminated'], 'type' => 'text', 'label' => 'Date of Case Termination', 'data-date-format' => 'yyyy-mm-dd', 'placeholder' => 'yyyy-mm-dd'));
+									echo $this->Form->input('DateTerm', 	array('default' => $case['DataInProgress']['DateTerm'], 'type' => 'text', 'label' => 'Date of Case Termination', 'data-date-format' => 'yyyy-mm-dd', 'placeholder' => 'yyyy-mm-dd'));
 									echo $this->Form->input('SentDate', 		array('default' => $case['DataInProgress']['SentDate'], 'type' => 'text', 'label' => 'Date of Sentencing', 'data-date-format' => 'yyyy-mm-dd', 'placeholder' => 'yyyy-mm-dd'));
-									echo $this->Form->input('TotalSent', 		array('default' => $case['DataInProgress']['TotalSent'], 'type' => 'text', 'label' => 'Total Number of Months Sentenced'));
+									echo $this->Form->input('TotalSentence', 		array('default' => $case['DataInProgress']['TotalSentence'], 'type' => 'text', 'label' => 'Total Number of Months Sentenced'));
 									echo $this->Form->input('Restitution', 		array('default' => $case['DataInProgress']['Restitution'], 'type' => 'text', 'label' => 'Total Restitution To Be Paid'));
 									echo $this->Form->input('AssetForfeit', 	array('default' => $case['DataInProgress']['AssetForfeit'], 'label' => 'Asset Forfeiture'));
 									echo $this->Form->input('Probation', 		array('default' => $case['DataInProgress']['Probation'], 'type' => 'text', 'label' => 'Total Number of Months On Probation'));

@@ -32,7 +32,7 @@
                               <form action="">
                                 <input type="radio" name="graphRadio" id="barGraphRadio">Bar Graph<br>
                                 <input type="radio" name="graphRadio" id="lineGraphRadio">Line Graph<br>
-                                <input type="radio" name="graphRadio" id="histogramRadio">Histogram<br>
+                                <!-- <input type="radio" name="graphRadio" id="histogramRadio">Histogram<br> -->
                                 <input type="radio" name="graphRadio" id="pieChartRadio">Pie Chart<br>
                                 <input type="radio" name="graphRadio" id="geoChartRadio">Geo Chart <br>
                               </form>
@@ -43,11 +43,11 @@
                         <?php
                         echo $this->Form->create(array('inputDefaults' => array('label' => false, 'div' => false)));?>
                         <?php
-                        echo $this->Form->input('yAxisBox', array('empty' => 'Dependent', 'id' => 'yAxisBox', 'options' => array('Total Cases', 'Total Defendants', 'Avg Defendants Per Case', 'Total Months Sentenced', 'Avg Months Sentenced', 'Victims', 'Total Charge', 'Total Sentenced')));?>
+                        echo $this->Form->input('yAxisBox', array('empty' => 'Dependent', 'id' => 'yAxisBox', 'options' => array('Total Cases', 'Total Defendants', 'Avg Defendants Per Case', 'Total Months Sentenced')));?>
                         <?php
-                        echo $this->Form->input('xAxisBox', array('empty' => 'Independent', 'id' => 'xAxisBox', 'options' => array('Year', 'Defendant By Gender', 'Defendant By Race', 'Judge By Gender', 'Judge By Race', 'Judge By Party', 'Crime Type', 'Statute', 'Federal District','State', 'Statute Charged','Statute Sentenced','Organized Crime Groups')));?>
+                        echo $this->Form->input('xAxisBox', array('empty' => 'Independent', 'id' => 'xAxisBox', 'options' => array('Year', 'Defendant By Gender', 'Defendant By Race', 'Judge By Gender', 'Judge By Race', 'Judge By Party', 'Crime Type', 'Statute', 'Federal District','State')));?>
                         <?php
-                        echo $this->Form->input('geoChartCombo', array('empty' => 'GeoChart', 'id' => 'geoChartCombo', 'options' => array('Case By State','Federal District')));?>
+                        echo $this->Form->input('geoChartCombo', array('empty' => 'GeoChart', 'id' => 'geoChartCombo', 'options' => array('Case By State')));?>
                       <?php
                          echo $this->Form->end(array('id' => 'submit_form'));?>
                       </div>
@@ -69,12 +69,12 @@
 	                        </label>
 	                      </div>
 	                      <!-- SCREENSHOT BUTTON -->
-	                      <div class="ana_button" title="Screenshot analyzed result">
+	                      <!--<div class="ana_button" title="Screenshot analyzed result">
 	                        <label for="" id="screenButton">
 	                          <?php echo $this->Html->link(
 	                          $this->Html->image("photo.png", array("alt" => "screenshot")), "#Screenshot", array('escape' => false)); ?>
 	                        </label>
-	                      </div>
+	                      </div>-->
 	                    </div>
                       </div>
                       <div id="chart" class="col-md-9" style="width:100%; height: 500px;"></div>
@@ -160,7 +160,12 @@ SCRIPTS
 	      }
 	  function geoChart(x) {
 	        var data = google.visualization.arrayToDataTable(x[0]);
-	        var options = x[1];
+	        var options = {
+	          region: 'US',
+	          displayMode: 'markers',
+	          colorAxis: {colors: ['green', 'blue']},
+	          resolution: 'provinces'
+	        };
 
 	        var chart = new google.visualization.GeoChart(document.getElementById('chart'));
 	        chart.draw(data, options);
@@ -173,7 +178,7 @@ SCRIPTS
 	        	var x_i = $('#xAxisBox :selected').index();
 
 				$.ajax({                   
-					url: '/Analyze/generateGraph/line/' + y_i + '/' + x_i,
+					url: '//Analyze/generateGraph/line/' + y_i + '/' + x_i,
 					cache: false,
 					type: 'GET',
 					success: function (d) {

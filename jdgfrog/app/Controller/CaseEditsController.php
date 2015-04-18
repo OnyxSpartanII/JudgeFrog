@@ -59,7 +59,9 @@ class CaseEditsController extends AppController {
 			$this->set('case', $case);	
 		} else {
 			$this->set('caseNotFoundError', true);
-			print_r('Case not found.');
+			// print_r('Case not found.');
+			$this->Session->setFlash('Case deleted because there were no defendants...');
+			$this->redirect('/admin/cases/edit/index');
 		}
 
 		// 30 defs: 3:10-cr-00260
@@ -135,7 +137,7 @@ class CaseEditsController extends AppController {
 			);
 
 			if ($this->DataInProgress->updateAll($fields, array('DataInProgress.CaseNum' => $caseNumber)) ) {
-				$this->redirect('/CaseReviews/review');
+				$this->redirect('/admin/cases/edit/index');
 				print_r('Something went right.');
 				
 			} else {
@@ -392,7 +394,7 @@ class CaseEditsController extends AppController {
 				$d['DataInProgress']['LaborTraf'] = '0';
 			}
 			if ($d['DataInProgress']['LaborTraf'] === true) {
-				$d['DataInProgress']['LaborTraf'] = '1';
+				$d['Da09*taInProgress']['LaborTraf'] = '1';
 			}
 			if ($d['DataInProgress']['AdultSexTraf'] === false) {
 				$d['DataInProgress']['AdultSexTraf'] ='0';
@@ -500,12 +502,14 @@ class CaseEditsController extends AppController {
 	}
 
 	public function delete_case($num) {
+		$this->autoRender = false;
 		$caseNum = urldecode($num);
 		$this->Datum->deleteAll(array('Datum.CaseNum' => $caseNum), false);
 		$this->Session->setFlash('Case Successfully Deleted!');
 		$this->redirect('/admin/cases/edit/index');
 	}	
 	public function delete_incomplete_case($num) {
+		$this->autoRender = false;
 		$caseNum = urldecode($num);
 		$this->DataInProgress->deleteAll(array('DataInProgress.CaseNum' => $caseNum), false);
 		$this->Session->setFlash('Case Successfully Deleted!');

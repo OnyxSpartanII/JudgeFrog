@@ -33,7 +33,7 @@
 																	'label' => 'Defendant First Name'));
 									// customize for male/female with if statement
 									echo $this->Form->input('DefGender', 		array( 'label' => '', 'empty' => 'Gender', 'options' => array('0' => 'Male', '1' => 'Female'), 'default' => $case['DataInProgress']['DefGender']));
-									echo $this->Form->input('DefBirthdate',		array('label' => 'Defendant Birthdate', 'type' => 'text', 'default' => $case['DataInProgress']['DefBirthdate']));
+									echo $this->Form->input('DefBirthdate',		array('label' => 'Defendant Birthdate', 'type' => 'text', 'default' => $case['DataInProgress']['DefBirthdate'], 'placeholder' => 'yyyy'));
 									echo $this->Form->input('DefRace', 			array('default' => $case['DataInProgress']['DefRace'], 'label' => '', 'empty' => 'Race', 'options' => array('White', 'Black', 'Hispanic', 'Asian', 'Other')));
 									echo $this->Form->input('DefArrestAge',		array('label' => 'Defendant Age', 'type' => 'text', 'default' => $case['DataInProgress']['DefArrestAge']));
 									echo $this->Form->input('Alias', 			array('default' => $case['DataInProgress']['Alias'])); 

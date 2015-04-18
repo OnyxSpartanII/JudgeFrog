@@ -40,10 +40,12 @@ class AnalyzeController extends AppController {
 		switch ($type) {
 			case 'line':
 				$options = array('title' => $xAxisOptions[$xIndex-1], 'curveType' => 'straight', 'legend' => array('position' => 'bottom'), 'hAxis' => array('title'=>''), 'vAxis' => array('title'=>''));
+				echo json_encode($this->barLinePie($cases, $options, $yIndex, $xIndex));
 				break;
 
 			case 'bar':
 				$options = array('title' => $xAxisOptions[$xIndex-1], 'hAxis' => array('title' => ''), 'vAxis' => array('title' => ''));
+				echo json_encode($this->barLinePie($cases, $options, $yIndex, $xIndex));
 				break;
 			
 			case 'hst':
@@ -52,11 +54,13 @@ class AnalyzeController extends AppController {
 
 			case 'pie':
 				$options = array('title' => $xAxisOptions[$xIndex-1], 'hAxis' => array('title' => ''), 'vAxis' => array('title' => ''));
-				$yIndex = 1;
+				echo json_encode($this->barLinePie($cases, $options, $yIndex, $xIndex));
+				$yIndex = 2;
 				break;
 
 			case 'geo':
-				$options = array('title' => $xAxisOptions[$xIndex-1], 'hAxis' => array('title' => ''), 'vAxis' => array('title' => ''));
+				$options = array('title' => "GeoChart", 'hAxis' => array('title' => ''), 'vAxis' => array('title' => ''));
+				echo json_encode($this->geo($cases,$options));
 				break;
 			
 			default:
@@ -64,6 +68,11 @@ class AnalyzeController extends AppController {
 				break;
 		}
 
+	}
+
+	public function barLinePie($cs, $opts, $yIndex, $xIndex) {
+		$options = $opts;
+		$cases = $cs;
 		$data = array();
 		$keys = array();
 		$key_index = -1;
@@ -495,7 +504,36 @@ class AnalyzeController extends AppController {
 		// $options['vAxis']['title'] = $yAxisOptions[$yIndex-1];
 
 		
-		echo json_encode(array($data, $options));
+		return array($data, $options);
+	}
+
+	public function histogram($cs, $opts, $var) {
+
+	}
+
+	public function geo($cs, $opts) {
+		$cases = $cs;
+		$options = $opts;
+		$data = array(array('State','Total Cases'));
+
+		$states = array('AL','AK','AZ','AR','CA','CO','CT','DE',
+						'FL','GA','HI','ID','IL','IN','IA','KS','KY',
+						'LA','ME','MD','MA','MI','MN','MS','MO','MT',
+						'NE','NV','NH','NJ','NM','NY','NC','ND','OH',
+						'OK','OR','PA','RI','SC','SD','TN','TX','UT',
+						'VT','VA','WA','WV','WI','WY');
+
+		foreach ($states as $state) {
+			array_push($data, array($state, 0));
+		}
+
+		foreach ($cases as $case) {
+			$ind = array_search($case[7], $states) + 1;
+			$data[$ind][1]++;
+		}
+
+		return array($data,$options);
+
 	}
 
 	/**

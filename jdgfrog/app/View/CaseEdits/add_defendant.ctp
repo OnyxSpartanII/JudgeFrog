@@ -32,7 +32,7 @@
 																	'label' => 'Defendant First Name'));
 									// customize for male/female with if statement
 									echo $this->Form->input('DefGender', array( 'label' => '', 'empty' => 'Gender', 'options' => array('0' => 'Male', '1' => 'Female')));
-									echo $this->Form->input('DefBirthdate',	array('label' => 'Defendant Birthdate', 'type' => 'text'));
+									echo $this->Form->input('DefBirthdate',	array('label' => 'Defendant Birthdate', 'type' => 'text', 'placeholder' => 'yyyy'));
 									echo $this->Form->input('DefRace', array( 'label' => '', 'empty' => 'Race', 'options' => array('White', 'Black', 'Hispanic', 'Asian', 'Other')));
 									echo $this->Form->input('DefArrestAge',	array('label' => 'Defendant Age', 'type' => 'text'));
 									echo $this->Form->input('Alias', array('placeholder' => 'Enter aliases separated by commas.'));

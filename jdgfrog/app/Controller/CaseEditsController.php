@@ -364,16 +364,68 @@ class CaseEditsController extends AppController {
 
 		$caseNumber = urldecode($num);
 		$data = $this->Datum->find('all', array('conditions' => array('Datum.CaseNum' => $caseNumber)));
-		$this->Datum->deleteAll(array('Datum.CaseNum' => $caseNumber, false));
 		$this->DataInProgress->clear();
 
 		foreach ($data as &$d) {
 			$d['DataInProgress'] = $d['Datum'];
 			unset($d['Datum']);
+
+			if ($d['DataInProgress']['JudgeGen'] === false) {
+				$d['DataInProgress']['JudgeGen'] = '0';
+			}
+			if ($d['DataInProgress']['JudgeGen'] === true) {
+				$d['DataInProgress']['JudgeGen'] = '1';
+			}
+			if ($d['DataInProgress']['JudgeApptBy'] === false) {
+				$d['DataInProgress']['JudgeApptBy'] = '0';
+			}
+			if ($d['DataInProgress']['JudgeApptBy'] === true) {
+				$d['DataInProgress']['JudgeApptBy'] = '1';
+			}
+			if ($d['DataInProgress']['Detained'] === false) {
+				$d['DataInProgress']['Detained'] = '0';
+			}
+			if ($d['DataInProgress']['Detained'] === true) {
+				$d['DataInProgress']['Detained'] = '1';
+			}
+			if ($d['DataInProgress']['LaborTraf'] === false) {
+				$d['DataInProgress']['LaborTraf'] = '0';
+			}
+			if ($d['DataInProgress']['LaborTraf'] === true) {
+				$d['DataInProgress']['LaborTraf'] = '1';
+			}
+			if ($d['DataInProgress']['AdultSexTraf'] === false) {
+				$d['DataInProgress']['AdultSexTraf'] ='0';
+			}
+			if ($d['DataInProgress']['AdultSexTraf'] === true) {
+				$d['DataInProgress']['AdultSexTraf'] = '1';
+			}
+			if ($d['DataInProgress']['MinorSexTraf'] === false) {
+				$d['DataInProgress']['MinorSexTraf'] = '0';
+			}
+			if ($d['DataInProgress']['MinorSexTraf'] === true) {
+				$d['DataInProgress']['MinorSexTraf'] = '1';
+			}
+			if ($d['DataInProgress']['AssetForfeit'] === false) {
+				$d['DataInProgress']['AssetForfeit'] = '0';
+			}
+			if ($d['DataInProgress']['AssetForfeit'] === true) {
+				$d['DataInProgress']['AssetForfeit'] = '1';
+			}
+			if ($d['DataInProgress']['SubmittedForReview'] === null) {
+				$d['DataInProgress']['SubmittedForReview'] = '0';
+			}
 		}		
 
-		$this->DataInProgress->saveMany($data);
-		$this->redirect('/admin/cases/edit/'.$caseNumber);
+		if ($this->DataInProgress->saveMany($data)) {
+			$this->Datum->deleteAll(array('Datum.CaseNum' => $caseNumber, false));
+			$this->redirect('/admin/cases/edit/'.$caseNumber);
+		} else {
+			print_r('an error occurred while migrating.');
+			debug($this->DataInProgress->validationErrors);
+			debug($data);
+		}
+		
 	}
 
 	/*

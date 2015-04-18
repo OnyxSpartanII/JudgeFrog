@@ -39,7 +39,7 @@
 	Router::connect('/admin/uploads', array('controller' => 'uploads', 'action' => 'add'));
 	Router::connect('/admin/cases/edit/migrate/:caseNum', array('controller' => 'CaseEdits', 'action' => 'migrateFromDataToDataInProgress'), array('pass' => array('caseNum')));
 	Router::connect('/admin/cases/delete_def/:num', array('controller' => 'CaseEdits', 'action' => 'delete_def'), array('pass' => array('num')));
-	Router::connect('/admin/cases/delete_incomplete/:num', array('controller' => 'CaseEdits', 'action' => 'delete_incomplete_case'), array('pass' => array('num')));
+	Router::connect('/admin/cases/delete_incomplete_case/:num', array('controller' => 'CaseEdits', 'action' => 'delete_incomplete_case'), array('pass' => array('num')));
 	Router::connect('/admin/cases/delete_case/:num', array('controller' => 'CaseEdits', 'action' => 'delete_case'), array('pass' => array('num')));
 
 	//Old routes

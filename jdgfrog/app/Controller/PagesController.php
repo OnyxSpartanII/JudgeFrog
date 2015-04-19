@@ -39,7 +39,7 @@ class PagesController extends AppController {
 
 	public function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow('home', 'about', 'additionalResources', 'contact','analyze');
+		$this->Auth->allow('home', 'about', 'contact','description');
 	}
 
 /**
@@ -95,19 +95,14 @@ class PagesController extends AppController {
 		$this->set('active', 'about');
 	}
 
-	public function additionalResources() {
-		$this->set('title', 'Additional Resources | Human Trafficking Data');
-		$this->set('active', 'additionalResources');
-	}
-
 	public function contact() {
 		$this->set('title', 'Contact | Human Trafficking Data');
 		$this->set('active', 'contact');
 	}
 	
-	public function analyze() {
-		$this->set('title', 'analyze | Human Trafficking Data');
-		$this->set('active', 'search');
+	public function description() {
+		$this->set('title', 'Description | Human Trafficking Data');
+		$this->set('active', 'description');
 	}
 
 }

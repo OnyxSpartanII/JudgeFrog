@@ -51,6 +51,11 @@ public function beforeValidate($options = []) {
  * @var array [array of validation criterion]
  */
 	public $validate = array(
+		'DefFirst' => array(
+			'rule' => 'alphaNumeric',
+			'required' => true,
+			'message' => 'This field is required.'
+		),
 		'NumDef' => array(
 			'rule' => 'numeric',
 			'message' => 'Incorrect value for Number of Defendants'
@@ -98,8 +103,8 @@ public function beforeValidate($options = []) {
 			'allowEmpty' => true
 		),
 		'DefBirthdate' => array(
-			'rule' => '/\d{4}/',
-			'message' => 'Incorrect value for Defendant Birthdate',
+			'rule' => array('date', 'y'),
+			'message' => 'Please enter a year for defendant\'s DOB',
 			'allowEmpty' => true
 		),
 		'DefArrestAge' => array(
@@ -108,12 +113,12 @@ public function beforeValidate($options = []) {
 			'allowEmpty' => true
 		),
 		'ChargeDate' => array(
-			'rule' => array('minLength', 1),
+			'rule' => array('date', 'ymd'),
 			'message' => 'Incorrect value for Charge Date',
 			'allowEmpty' => true,
 		),
 		'ArrestDate' => array(
-			'rule' => array('minLength', 1),
+			'rule' => array('date', 'ymd'),
 			'message' => 'Incorrect value for Arrest Date',
 			'allowEmpty' => true
 		),
@@ -158,12 +163,12 @@ public function beforeValidate($options = []) {
 			'allowEmpty' => true
 		),
 		'DateTerm' => array(
-			'rule' => array('minLength', 1),
+			'rule' => array('date', 'ymd'),
 			'message' => 'Incorrect value for Date Terminated',
 			'allowEmpty' => true,
 		),
 		'SentDate' => array(
-			'rule' => array('minLength', 1),
+			'rule' => array('date', 'ymd'),
 			'message' => 'Incorrect value for Sentence Date',
 			'allowEmpty' => true,
 		),

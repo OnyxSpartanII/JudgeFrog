@@ -143,8 +143,9 @@
 									echo "      <td> ".$d['Datum']['CaseNum']." </td>";
 									echo "      <td> ".$d['Datum']['JudgeName']." </td>";
 									echo "      <td> ".$d['Datum']['State']." </td>";
-									echo "      <td> ".$this->Html->link('Edit', '/admin/cases/edit/migrate/'.urlencode($d['Datum']['CaseNum']));
+									echo "      <td> "
 													if ($admin === true) {
+														echo $this->Html->link('Edit', '/admin/cases/edit/migrate/'.urlencode($d['Datum']['CaseNum']));
 														echo '&nbsp/&nbsp;';
 														echo $this->Html->link('Delete', '/admin/cases/delete_case/'.urlencode($d['Datum']['CaseNum']), array('confirm'=>'Are you sure you want to delete this case?'));
 													}

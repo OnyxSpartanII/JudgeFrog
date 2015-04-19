@@ -13,9 +13,6 @@ class UsersController extends AppController {
 	public function beforeRender() {
 		parent::beforeRender();
 
-		if ($this->Auth->user('role') != 'admin') {
-			$this->redirect('/admin/index');
-		}		
 	}
 
 	public function login() {

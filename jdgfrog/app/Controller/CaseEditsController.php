@@ -10,7 +10,7 @@ class CaseEditsController extends AppController {
 
 	public function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow('editDefendant', 'getCase', 'edit', 'saveEdits');
+		//$this->Auth->allow();
 	}
 
 
@@ -44,6 +44,12 @@ class CaseEditsController extends AppController {
 												'group' => 'DataInProgress.CaseNum'
 												)
 										);
+		
+		if($this->Auth->user('role') === 'admin') {
+			$this->set('admin', true);
+		} else {
+			$this->set('admin', false);
+		}
 		
 		$this->set('dataCases', $dataCases);
 		$this->set('dipCases', $dipCases);
@@ -256,15 +262,14 @@ class CaseEditsController extends AppController {
 	*/
 
 	public function addDefendant($caseNumber) {
-		//debug($caseNumber);
+
 		$case = $this->DataInProgress->find('first', array(
 													'conditions' => array(
 																		'DataInProgress.CaseNum' => $caseNumber)
 													)
 											);
-		//debug($case);
-
 		$this->set('case', $case);
+
 		if ($this->request->is('post')) {
 
 			$this->DataInProgress->clear();
@@ -272,7 +277,7 @@ class CaseEditsController extends AppController {
 			//Pull the case information from the case and place it into the request.
 			$this->request->data['DataInProgress']['CaseNam'] 			= $case['DataInProgress']['CaseNam'];
 			$this->request->data['DataInProgress']['CaseNum'] 			= $case['DataInProgress']['CaseNum'];
-			$this->request->data['DataInProgress']['NumDef'] 			= $case['DataInProgress']['NumDef'];	//Increment the number of defendants.
+			$this->request->data['DataInProgress']['NumDef'] 			= $case['DataInProgress']['NumDef'];
 			$this->request->data['DataInProgress']['JudgeName'] 		= $case['DataInProgress']['JudgeName'];
 			$this->request->data['DataInProgress']['JudgeRace'] 		= $case['DataInProgress']['JudgeRace'];
 			$this->request->data['DataInProgress']['JudgeGen'] 			= $case['DataInProgress']['JudgeGen'];
@@ -289,15 +294,24 @@ class CaseEditsController extends AppController {
 			$this->request->data['DataInProgress']['NumVicMinor']		= $case['DataInProgress']['NumVicMinor'];
 			$this->request->data['DataInProgress']['NumVicForeign']		= $case['DataInProgress']['NumVicForeign'];
 			$this->request->data['DataInProgress']['NumVicFemale']		= $case['DataInProgress']['NumVicFemale'];
-
+			
+			/********************
+			* Obtain the next globally available id
+			*********************/
 			$id = $this->getRowId();
 			$id = $id + 1;
 			$this->request->data['DataInProgress']['id'] = $id;
 
+			/********************
+			*	Increment the number of defendants.
+			*********************/
 			$temp = $this->request->data['DataInProgress']['NumDef'];
 			$temp = $temp + 1;
 			$this->request->data['DataInProgress']['NumDef'] = $temp;
 
+			/********************
+			*	Set the current user as the most recent editor.
+			*********************/
 			$userFN = $this->Auth->user('first_name');
 			$userLN = $this->Auth->user('last_name');
 			$insertUser = $this->request->data['DataInProgress']['author'] = $userFN . ' ' . $userLN;			
@@ -305,6 +319,10 @@ class CaseEditsController extends AppController {
 			$tempArr = array('DataInProgress.NumDef' => "'$temp'");
 			$this->DataInProgress->clear();
 
+			/********************
+			*	Filter booleans returned from the database. In CakePHP, they come
+			*	out as 'true' or 'false' instead of 0 or 1. We need them as 0 or 1.
+			*********************/
 			if (false === $this->request->data['DataInProgress']['LaborTraf']) {
 				$this->request->data['DataInProgress']['LaborTraf'] = '0';
 				print_r('help');
@@ -331,13 +349,17 @@ class CaseEditsController extends AppController {
 				$this->request->data['DataInProgress']['MinorSexTraf'] = '1';
 			}
 
+			/********************
+			*	Attempt to save the data in the POST request.
+			*	If it succeeds, update the number of defendants
+			*	for all rows in the case.
+			*********************/
 			if ($this->DataInProgress->save($this->request->data)) {
 				//update number of defendants
 				$this->DataInProgress->updateAll($tempArr, array('DataInProgress.CaseNum' => $case['DataInProgress']['CaseNum']));
 				$this->deleteEmptyCases($case['DataInProgress']['CaseNum']);
 				$this->redirect('/admin/cases/edit/'.$caseNumber);
 				print_r('Defendant added to case!');
-				//$this->deleteEmptyCases();
 
 			} else {
 				print_r('An error occurred while adding defendant to case. Defendant not added.');

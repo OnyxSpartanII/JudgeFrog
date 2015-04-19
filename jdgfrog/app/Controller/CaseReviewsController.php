@@ -10,7 +10,11 @@ class CaseReviewsController extends AppController {
 
 	public function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow('review');
+		$this->Auth->allow();
+
+		if ($this->Auth->user('role') != 'admin') {
+			$this->redirect('/admin/index');
+		}
 	}
 
 	public function review() {

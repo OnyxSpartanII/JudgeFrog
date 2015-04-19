@@ -416,7 +416,7 @@ class CaseEditsController extends AppController {
 				$d['DataInProgress']['LaborTraf'] = '0';
 			}
 			if ($d['DataInProgress']['LaborTraf'] === true) {
-				$d['Da09*taInProgress']['LaborTraf'] = '1';
+				$d['DataInProgress']['LaborTraf'] = '1';
 			}
 			if ($d['DataInProgress']['AdultSexTraf'] === false) {
 				$d['DataInProgress']['AdultSexTraf'] ='0';

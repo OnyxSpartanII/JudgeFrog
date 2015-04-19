@@ -12,8 +12,9 @@ class AdminPanelController extends AppController {
 	public function beforeFilter() {
 		//inspect user permissions here.
 		parent::beforeFilter();
-		// $this->Auth->allow('createCase', 'createCaseSetup', 'saveSession', 'saveStep', 'index', 'create_case');
-		// $this->Auth->allow('index', 'create_case', 'edit', 'review', 'manageusers');
+		//if ($this->action = 'edit' && $this->Auth->user('role') === 'admin') {
+
+		//}
 
 	}
 
@@ -46,7 +47,7 @@ class AdminPanelController extends AppController {
 		$data = $this->Paginator->paginate('CaseSession');
 		//debug($data);
 		$this->set('data', $data);
-		$this->render('edit');	
+		$this->render('edit');
 	}
 
 	public function review(){

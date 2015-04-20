@@ -95,7 +95,7 @@
 								$i = 0;
 								foreach ($case as $case) { 
 						?>
-						<?php 	if ($case['DataInProgress']['DefFirst'] != null && $case['DataInProgress']['DefLast'] != null) {
+						<?php 	if ($case['DataInProgress']['DefFirst'] != null) {
 								echo "  <tr>";
 								// echo "		<td> ".++$i ."</td>";
 								echo "		<td> ".$case['DataInProgress']['DefLast']."</td>";

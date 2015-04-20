@@ -12,8 +12,7 @@ class UsersController extends AppController {
 	 */
 	public function beforeRender() {
 		parent::beforeRender();
-		$params = $this->Session->read('form.params');
-		$this->set('params', $params);
+
 	}
 
 	public function login() {
@@ -25,45 +24,45 @@ class UsersController extends AppController {
 			$this->redirect(array('action' => 'index'));
 		}*/
 
-		if ($this->request->is('post')) 
-		{
-			if ($this->Auth->login())
-			{
-				$this->Session->setFlash(__('Welcome back ' . $this->Auth->user('first_name') . '!'));
-				$this->redirect(array('controller' => 'AdminPanel', 'action' => 'index'));
+		if ($this->request->is('post')) {
 
-			}
-			else 
-			{
+			if ($this->Auth->login()) {
+
+				$this->Session->setFlash(__('Welcome back ' . $this->Auth->user('first_name') . '!'));
+				$this->redirect($this->Auth->redirectUrl());
+			} else {
 				$this->Session->setFlash(__('Invalid username or password'));
 			}
 		}
 	}
 
-
 	public function logout() {
 		$this->redirect($this->Auth->logout());
 	}
 
-
 	public function create() {
 
 		if ($this->request->is('post')) {
-				{
-					$this->User->create();
+			$this->User->create();
 
-					//Save only the listed fields in the model to the database.
-					if ($this->User->save($this->request->data, array('username', 'first_name', 'last_name', 'role', 'created', 'modified', 'password_hash'))) 
-					{
-						$this->Session->setFlash(__('User Successfully Created!'));
-
-						return $this->redirect(array('controller' => 'users', 'action' => 'create'));
-					}
-					
-						$this->Session->setFlash(__('Sorry the user could not be created!'));
-						// $this->Session->setFlash(__(print_r($this->request->data)));
-					
-				}
+			//Save only the listed fields in the model to the database.
+			if ($this->User->save($this->request->data, array(
+														'username', 
+														'first_name', 
+														'last_name', 
+														'role', 
+														'created', 
+														'modified', 
+														'password_hash'
+														)
+								)
+				) {
+				$this->Session->setFlash(__('User Successfully Created!'));
+				return $this->redirect(array('controller' => 'users', 'action' => 'create'));
+			} else {
+				$this->Session->setFlash(__('Sorry the user could not be created!'));
+				// $this->Session->setFlash(__(print_r($this->request->data)));
+			}
 		}
 	}
 
@@ -71,7 +70,7 @@ class UsersController extends AppController {
 		$this->User->delete($username, true);
 		$this->Session->setFlash('User Successfully Deleted!');
 		$this->redirect(array('controller' => 'Users', 'action' => 'create'));
-		}
+	}
 
 
 	// Method will generate a one-time use code for use during account creation.

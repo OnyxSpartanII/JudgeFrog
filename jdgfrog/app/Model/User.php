@@ -57,7 +57,7 @@ class User extends AppModel {
 	//Rework this part. Need to allow for setting of privileges by root user. Maybe auth using a one-time code?
 	'role' => array(
 				'required' => array(
-					'rule' => array('inList', array('admin', 'power_user')),
+					'rule' => array('inList', array('admin', 'ra')),
 					'message' => 'User privilege level must be set.'
 					)
 

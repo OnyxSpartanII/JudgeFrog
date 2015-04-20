@@ -99,8 +99,11 @@
 									echo "      <td> ".$d['DataInProgress']['CaseNum']." </td>";
 									echo "      <td> ".$d['DataInProgress']['JudgeName']." </td>";
 									echo "      <td> ".$d['DataInProgress']['State']." </td>";
-									echo "      <td> ".$this->Html->link('Edit', '/admin/cases/edit/'.urlencode($d['DataInProgress']['CaseNum'])) . '&nbsp/&nbsp;'
-																		.$this->Html->link('Delete', '/admin/cases/delete_incomplete_case/'.urlencode($d['DataInProgress']['CaseNum']), array('confirm'=>'Are you sure you want to delete this case?'));
+									echo "      <td> ".$this->Html->link('Edit', '/admin/cases/edit/'.urlencode($d['DataInProgress']['CaseNum']));
+														if ($admin === true) {
+															echo '&nbsp/&nbsp;';
+															echo $this->Html->link('Delete', '/admin/cases/delete_incomplete_case/'.urlencode($d['DataInProgress']['CaseNum']), array('confirm'=>'Are you sure you want to delete this case?'));
+														}
 															"</td>";
 									echo "      <td> ".$d['DataInProgress']['author']." </td>";
 									echo "      <td> ".$d['DataInProgress']['NumDef']." </td>";
@@ -140,8 +143,12 @@
 									echo "      <td> ".$d['Datum']['CaseNum']." </td>";
 									echo "      <td> ".$d['Datum']['JudgeName']." </td>";
 									echo "      <td> ".$d['Datum']['State']." </td>";
-									echo "      <td> ".$this->Html->link('Edit', '/admin/cases/edit/migrate/'.urlencode($d['Datum']['CaseNum'])) . '&nbsp/&nbsp;'
-																		.$this->Html->link('Delete', '/admin/cases/delete_case/'.urlencode($d['Datum']['CaseNum']), array('confirm'=>'Are you sure you want to delete this case?'));
+									echo "      <td> ";
+													if ($admin === true) {
+														echo $this->Html->link('Edit', '/admin/cases/edit/migrate/'.urlencode($d['Datum']['CaseNum']));
+														echo '&nbsp/&nbsp;';
+														echo $this->Html->link('Delete', '/admin/cases/delete_case/'.urlencode($d['Datum']['CaseNum']), array('confirm'=>'Are you sure you want to delete this case?'));
+													}
 															"</td>";
 									echo "      <td> ".$d['Datum']['author']." </td>";
 									echo "      <td> ".$d['Datum']['NumDef']." </td>";

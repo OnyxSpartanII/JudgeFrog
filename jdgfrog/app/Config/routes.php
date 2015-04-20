@@ -29,6 +29,7 @@
 	Router::connect('/login', array('controller' => 'users', 'action' => 'login'));
 	Router::connect('/logout', array('controller' => 'users', 'action' => 'logout'));
 
+	Router::connect('/admin/index', array('controller' => 'AdminPanel', 'action' => 'index'));
 	Router::connect('/admin/cases/edit/index', array('controller' => 'CaseEdits', 'action' => 'index'));
 	Router::connect('/admin/cases/edit/:caseNum', array('controller' => 'CaseEdits', 'action' => 'edit'), array('pass' => array('caseNum')));
 	Router::connect('/admin/cases/edit/defendant/:defName', array('controller' => 'CaseEdits', 'action' => 'editDefendant'), array('pass' => array('defName')));
@@ -39,22 +40,15 @@
 	Router::connect('/admin/uploads', array('controller' => 'uploads', 'action' => 'add'));
 	Router::connect('/admin/cases/edit/migrate/:caseNum', array('controller' => 'CaseEdits', 'action' => 'migrateFromDataToDataInProgress'), array('pass' => array('caseNum')));
 	Router::connect('/admin/cases/delete_def/:num', array('controller' => 'CaseEdits', 'action' => 'delete_def'), array('pass' => array('num')));
-	Router::connect('/admin/cases/delete_incomplete/:num', array('controller' => 'CaseEdits', 'action' => 'delete_incomplete_case'), array('pass' => array('num')));
+	Router::connect('/admin/cases/delete_incomplete_case/:num', array('controller' => 'CaseEdits', 'action' => 'delete_incomplete_case'), array('pass' => array('num')));
 	Router::connect('/admin/cases/delete_case/:num', array('controller' => 'CaseEdits', 'action' => 'delete_case'), array('pass' => array('num')));
-
-	//Old routes
-	Router::connect('/admin/cases/create_case/:step', array('controller' => 'CaseSessions', 'action' => 'createCase'), array('pass' => array('step')) );
-	Router::connect('/admin/cases/create_case_index', array('controller' => 'CaseSessions', 'action' => 'create_case_index'));
-	Router::connect('/CaseSessions/create_case/:step', array('controller' => 'CaseSessions', 'action' => 'createCase'), array('pass' => array('step')) );
-
-	Router::connect('/admin/index', array('controller' => 'AdminPanel', 'action' => 'index'));
 
 	Router::connect('/home', array('controller' => 'pages', 'action' => 'home'));
 	Router::connect('/about', array('controller' => 'pages', 'action' => 'about'));
 	Router::connect('/search', array('controller' => 'search', 'action' => 'home'));
 	Router::connect('/analyze', array('controller' => 'analyze', 'action' => 'index'));
+	Router::connect('/description', array('controller' => 'pages', 'action' => 'description'));
 	Router::connect('/contact', array('controller' => 'pages', 'action' => 'contact'));
-
 
 	Router::connect('/download', array('controller' => 'download', 'action' => 'download'));
 

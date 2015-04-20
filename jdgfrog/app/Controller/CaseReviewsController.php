@@ -10,7 +10,12 @@ class CaseReviewsController extends AppController {
 
 	public function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow('review');
+		$this->Auth->allow();
+
+		if ($this->Auth->user('role') != 'admin') {
+			$this->Session->setFlash('Oops... Access Restricted!');
+			$this->redirect('/admin/index');
+		}
 	}
 
 	public function review() {
@@ -358,17 +363,18 @@ class CaseReviewsController extends AppController {
 		$this->autoRender = false;
 
 		$data = $this->DataInProgress->find('all', array('conditions' => array('DataInProgress.CaseNum' => $case_info[$index][1])));
-		$this->DataInProgress->deleteAll(array('DataInProgress.CaseNum' => $case_info[$index][1]), false);
 		$this->Datum->clear();
 
 		foreach ($data as &$d) {
 			$d['Datum'] = $d['DataInProgress'];
 			unset($d['DataInProgress']);
-
-			$this->Session->setFlash('Case Successfully Published!');
 		}		
 
-		$this->Datum->saveMany($data);
+		if ($this->Datum->saveMany($data)) {
+			$this->DataInProgress->deleteAll(array('DataInProgress.CaseNum' => $case_info[$index][1]), false);			
+			$this->Session->setFlash('Case Successfully Published!');
+
+		}
 	}
 
 	public function delete_case($CaseNum) {

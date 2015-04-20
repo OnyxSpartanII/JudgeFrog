@@ -231,17 +231,30 @@ class CaseEditsController extends AppController {
 		$userFN = $this->Auth->user('first_name');
 		$userLN = $this->Auth->user('last_name');
 		$insertUser = $this->request->data['DataInProgress']['author'] = $userFN . ' ' . $userLN;
+		$fields = array();
 				
 		if ($this->request->is('post')) {
 
-			if ($this->DataInProgress->save($this->request->data)) {
-				$this->redirect('/admin/cases/edit/'.$this->request->data['DataInProgress']['CaseNum']);
-				debug($this->request->data);
-				$this->Session->setFlash('Case Created!');
+			$this->DataInProgress->set($this->request->data);
+			$fields =  ['CaseNam', 'CaseNum', 'JudgeName', 'JudgeGen', 'JudgeRace', 'JudgeTenure', 'JudgeApptBy',
+						'FedDistrictLoc', 'FedDistrictNum', 'State', 'CaseSummary', 'LaborTraf', 'AdultSexTraf', 
+						'MinorSexTraf', 'NumVic', 'NumVicMinor', 'NumVicForeign', 'NumVicMinor', 'NumVicFemale'];
+
+			if ($this->DataInProgress->validates(array('fieldList' => $fields))) {
+
+				if ($this->DataInProgress->save($this->request->data, array('validate' => false))) {
+					$this->redirect('/admin/cases/edit/'.$this->request->data['DataInProgress']['CaseNum']);
+					debug($this->request->data);
+					$this->Session->setFlash('Case Created!');
+				} else {
+					print_r('Error occurred while adding case.');
+					$errors = $this->DataInProgress->validationErrors;
+					debug($errors);
+				}
 			} else {
 				print_r('Error occurred while adding case.');
 				$errors = $this->DataInProgress->validationErrors;
-				debug($errors);
+				debug($errors);				
 			}
 		}
 

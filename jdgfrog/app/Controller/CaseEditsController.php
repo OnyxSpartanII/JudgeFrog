@@ -75,81 +75,94 @@ class CaseEditsController extends AppController {
 		
 		if ($this->request->is('post')) {
 
-			$data = $this->request->data;
 
-			$caseName		= $data['DataInProgress']['CaseNam'];
-			$caseNum 		= $data['DataInProgress']['CaseNum'];
-			$numDef 		= $data['DataInProgress']['NumDef'];
-			$state 			= $data['DataInProgress']['State'];
-			$fedDistLoc 	= $data['DataInProgress']['FedDistrictLoc'];
-			$fedDistNum 	= $data['DataInProgress']['FedDistrictNum'];
-			$judgeName 		= $data['DataInProgress']['JudgeName'];
-			$judgeRace 		= $data['DataInProgress']['JudgeRace'];
-			$judgeGen 		= $data['DataInProgress']['JudgeGen'];
-			$judgeApptBy 	= $data['DataInProgress']['JudgeApptBy'];
-			$judgeTenure 	= $data['DataInProgress']['JudgeTenure'];
-			$caseSummary 	= $data['DataInProgress']['CaseSummary'];
-			$laborTraf 		= $data['DataInProgress']['LaborTraf'];
-			$adultTraf 		= $data['DataInProgress']['AdultSexTraf'];
-			$minorTraf 		= $data['DataInProgress']['MinorSexTraf'];
-			$numVic 		= $data['DataInProgress']['NumVic'];
-			$numVicMinor	= $data['DataInProgress']['NumVicMinor'];
-			$numVicForeign	= $data['DataInProgress']['NumVicForeign'];
-			$numVicFemale	= $data['DataInProgress']['NumVicFemale'];
-			$submit			= $data['DataInProgress']['SubmittedForReview'];
+			$this->DataInProgress->set($this->request->data);
+			$valFields =  ['CaseNam', 'CaseNum', 'JudgeName', 'JudgeGen', 'JudgeRace', 'JudgeTenure', 'JudgeApptBy',
+						'FedDistrictLoc', 'FedDistrictNum', 'State', 'CaseSummary', 'LaborTraf', 'AdultSexTraf', 
+						'MinorSexTraf', 'NumVic', 'NumVicMinor', 'NumVicForeign', 'NumVicMinor', 'NumVicFemale'];
+
+			if ($this->DataInProgress->validates(array('fieldList' => $valFields))) {
+
+				$data = $this->request->data;
+	
+				$caseName		= $data['DataInProgress']['CaseNam'];
+				$caseNum 		= $data['DataInProgress']['CaseNum'];
+				$numDef 		= $data['DataInProgress']['NumDef'];
+				$state 			= $data['DataInProgress']['State'];
+				$fedDistLoc 	= $data['DataInProgress']['FedDistrictLoc'];
+				$fedDistNum 	= $data['DataInProgress']['FedDistrictNum'];
+				$judgeName 		= $data['DataInProgress']['JudgeName'];
+				$judgeRace 		= $data['DataInProgress']['JudgeRace'];
+				$judgeGen 		= $data['DataInProgress']['JudgeGen'];
+				$judgeApptBy 	= $data['DataInProgress']['JudgeApptBy'];
+				$judgeTenure 	= $data['DataInProgress']['JudgeTenure'];
+				$caseSummary 	= $data['DataInProgress']['CaseSummary'];
+				$laborTraf 		= $data['DataInProgress']['LaborTraf'];
+				$adultTraf 		= $data['DataInProgress']['AdultSexTraf'];
+				$minorTraf 		= $data['DataInProgress']['MinorSexTraf'];
+				$numVic 		= $data['DataInProgress']['NumVic'];
+				$numVicMinor	= $data['DataInProgress']['NumVicMinor'];
+				$numVicForeign	= $data['DataInProgress']['NumVicForeign'];
+				$numVicFemale	= $data['DataInProgress']['NumVicFemale'];
+				$submit			= $data['DataInProgress']['SubmittedForReview'];
+				
+				$userFN = $this->Auth->user('first_name');
+				$userLN = $this->Auth->user('last_name');
+				$insertUser = $this->request->data['DataInProgress']['author'] = $userFN . ' ' . $userLN;		
+	
+				$caseName = addslashes($caseName);
+				$judgeName = addslashes($judgeName);
+				$caseSummary = addslashes($caseSummary);
+				$author = addslashes($insertUser);
 			
-			$userFN = $this->Auth->user('first_name');
-			$userLN = $this->Auth->user('last_name');
-			$insertUser = $this->request->data['DataInProgress']['author'] = $userFN . ' ' . $userLN;		
-
-			$caseName = addslashes($caseName);
-			$judgeName = addslashes($judgeName);
-			$caseSummary = addslashes($caseSummary);
-			$author = addslashes($insertUser);
-		
-			//debug($this->request->data);
-
-			//$caseName = 'DROP TABLE DataInProgress_backup';
-			/*
-			* 	Using variables here in $fields may allow SQL injections according to someone on Stackoverflow?
-			*	However, when tested nothing happened. Instead the CaseNam was changed to the above string, 
-			*	for example. More testing for vulnerabilities?
-			*
-			*	CakePHP's updateAll() method does not perform any SQL escaping. The strings below cannot contain
-			*	an apostrophe (e.g., O'Connell, O'Grady, etc.) or else the update will fail.
-			*/
-			$fields = array(
-							'DataInProgress.author' 		=> "'$author'",
-							'DataInProgress.CaseNum' 		=> "'$caseNum'", 
-							'DataInProgress.CaseNam' 		=> "'$caseName'", 
-							'DataInProgress.NumDef' 		=> "'$numDef'",
-							'DataInProgress.State' 			=> "'$state'",
-							'DataInProgress.FedDistrictLoc' => "'$fedDistLoc'",
-							'DataInProgress.FedDistrictNum' => "'$fedDistNum'",
-							'DataInProgress.JudgeName' 		=> "'$judgeName'",
-							'DataInProgress.JudgeRace' 		=> "'$judgeRace'",
-							'DataInProgress.JudgeGen' 		=> "'$judgeGen'",
-							'DataInProgress.JudgeApptBy' 	=> "'$judgeApptBy'",
-							'DataInProgress.JudgeTenure' 	=> "'$judgeTenure'",
-							'DataInProgress.CaseSummary' 	=> "'$caseSummary'",
-							'DataInProgress.LaborTraf' 		=> "'$laborTraf'",
-							'DataInProgress.AdultSexTraf' 	=> "'$adultTraf'",
-							'DataInProgress.MinorSexTraf' 	=> "'$minorTraf'",
-							'DataInProgress.NumVic' 		=> "'$numVic'",
-							'DataInProgress.NumVicMinor' 	=> "'$numVicMinor'",
-							'DataInProgress.NumVicForeign' 	=> "'$numVicForeign'",
-							'DataInProgress.NumVicFemale' 	=> "'$numVicFemale'",
-							'DataInProgress.SubmittedForReview' => "'$submit'"
-			);
-
-			if ($this->DataInProgress->updateAll($fields, array('DataInProgress.CaseNum' => $caseNumber)) ) {
-				$this->redirect('/admin/cases/edit/index');
-				print_r('Something went right.');
+				//$caseName = 'DROP TABLE DataInProgress_backup';
+				/*
+				* 	Using variables here in $fields may allow SQL injections according to someone on Stackoverflow?
+				*	However, when tested nothing happened. Instead the CaseNam was changed to the above string, 
+				*	for example. More testing for vulnerabilities?
+				*
+				*	CakePHP's updateAll() method does not perform any SQL escaping. The strings below cannot contain
+				*	an apostrophe (e.g., O'Connell, O'Grady, etc.) or else the update will fail.
+				*/
+				$fields = array(
+								'DataInProgress.author' 		=> "'$author'",
+								'DataInProgress.CaseNum' 		=> "'$caseNum'", 
+								'DataInProgress.CaseNam' 		=> "'$caseName'", 
+								'DataInProgress.NumDef' 		=> "'$numDef'",
+								'DataInProgress.State' 			=> "'$state'",
+								'DataInProgress.FedDistrictLoc' => "'$fedDistLoc'",
+								'DataInProgress.FedDistrictNum' => "'$fedDistNum'",
+								'DataInProgress.JudgeName' 		=> "'$judgeName'",
+								'DataInProgress.JudgeRace' 		=> "'$judgeRace'",
+								'DataInProgress.JudgeGen' 		=> "'$judgeGen'",
+								'DataInProgress.JudgeApptBy' 	=> "'$judgeApptBy'",
+								'DataInProgress.JudgeTenure' 	=> "'$judgeTenure'",
+								'DataInProgress.CaseSummary' 	=> "'$caseSummary'",
+								'DataInProgress.LaborTraf' 		=> "'$laborTraf'",
+								'DataInProgress.AdultSexTraf' 	=> "'$adultTraf'",
+								'DataInProgress.MinorSexTraf' 	=> "'$minorTraf'",
+								'DataInProgress.NumVic' 		=> "'$numVic'",
+								'DataInProgress.NumVicMinor' 	=> "'$numVicMinor'",
+								'DataInProgress.NumVicForeign' 	=> "'$numVicForeign'",
+								'DataInProgress.NumVicFemale' 	=> "'$numVicFemale'",
+								'DataInProgress.SubmittedForReview' => "'$submit'"
+				);
+	
+				if ($this->DataInProgress->updateAll($fields, array('DataInProgress.CaseNum' => $caseNumber)) ) {
+					$this->redirect('/admin/cases/edit/index');
+					print_r('Something went right.');
+					
+				} else {
+					print_r('Something went wrong. Case information not saved.');
+					debug($this->DataInProgress->validationErrors);
+				}
 				
 			} else {
-				print_r('Something went wrong. Case information not saved.');
-				debug($this->DataInProgress->validationErrors);
+				print_r('Error occurred while adding case.');
+				$errors = $this->DataInProgress->validationErrors;
+				debug($errors);						
 			}
+
 		} else {
 			$this->render('edit');
 		}

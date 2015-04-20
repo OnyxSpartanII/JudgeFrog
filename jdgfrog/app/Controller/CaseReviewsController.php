@@ -13,6 +13,7 @@ class CaseReviewsController extends AppController {
 		$this->Auth->allow();
 
 		if ($this->Auth->user('role') != 'admin') {
+			$this->Session->setFlash('Oops... Access Restricted!');
 			$this->redirect('/admin/index');
 		}
 	}

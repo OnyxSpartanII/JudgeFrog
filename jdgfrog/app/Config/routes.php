@@ -47,6 +47,7 @@
 	Router::connect('/about', array('controller' => 'pages', 'action' => 'about'));
 	Router::connect('/search', array('controller' => 'search', 'action' => 'home'));
 	Router::connect('/analyze', array('controller' => 'analyze', 'action' => 'index'));
+	Router::connect('/description', array('controller' => 'pages', 'action' => 'description'));
 	Router::connect('/contact', array('controller' => 'pages', 'action' => 'contact'));
 
 	Router::connect('/download', array('controller' => 'download', 'action' => 'download'));

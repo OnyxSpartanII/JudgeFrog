@@ -124,7 +124,7 @@
        // TOGGLE SELECTED DEFENDENT
       $('#publish_button').click(function(){
         var confirmDelete = confirm("Are you sure you want to publish this case?");
-        if (confirmDelete==true)
+        if (confirmDelete && displaying)
           {
               $.ajax({
                 url: '/CaseReviews/publishCase/' + index,

@@ -123,8 +123,10 @@
     });
        // TOGGLE SELECTED DEFENDENT
       $('#publish_button').click(function(){
-        var confirmDelete = confirm("Are you sure you want to publish this case?");
-        if (confirmDelete && displaying)
+        
+        if (displaying) {
+          var confirmDelete = confirm("Are you sure you want to publish this case?");
+          if (confirmDelete)
           {
               $.ajax({
                 url: '/CaseReviews/publishCase/' + index,
@@ -137,7 +139,9 @@
                 }
               });
           }
-        else{}
+        } else {
+          alert('Please select a case to publish!');
+        }
       });
 </script>
 <!-- SUCCESS BANNER -->

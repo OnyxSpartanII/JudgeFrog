@@ -3,7 +3,7 @@
     $this->set('active', 'search');
 ?>
 <!-- Analyze/index.ctp -->
-<?php echo $this->Html->script(array('GoogleChartFunctions', 'html2canvas', 'Blob', 'canvas-toBlob', 'FileSaver'));?>
+<?php echo $this->Html->script(array('html2canvas', 'Blob', 'canvas-toBlob', 'FileSaver'));?>
 <!--search start here-->
 <div class="contact">
     <div class="container">
@@ -32,7 +32,7 @@
                               <form action="">
                                 <input type="radio" name="graphRadio" id="barGraphRadio">Bar Graph<br>
                                 <input type="radio" name="graphRadio" id="lineGraphRadio">Line Graph<br>
-                                <!-- <input type="radio" name="graphRadio" id="histogramRadio">Histogram<br> -->
+                                <input type="radio" name="graphRadio" id="histogramRadio">Histogram<br>
                                 <input type="radio" name="graphRadio" id="pieChartRadio">Pie Chart<br>
                                 <input type="radio" name="graphRadio" id="geoChartRadio">Geo Chart <br>
                               </form>
@@ -46,6 +46,9 @@
                         echo $this->Form->input('yAxisBox', array('empty' => 'Dependent', 'id' => 'yAxisBox', 'options' => array('Total Cases', 'Total Defendants', 'Avg Defendants Per Case', 'Total Months Sentenced')));?>
                         <?php
                         echo $this->Form->input('xAxisBox', array('empty' => 'Independent', 'id' => 'xAxisBox', 'options' => array('Year', 'Defendant By Gender', 'Defendant By Race', 'Judge By Gender', 'Judge By Race', 'Judge By Party', 'Crime Type', 'Statute', 'Federal District','State')));?>
+                        <?php
+                        	echo $this->Form->input('hstBox', array('empty' => 'Independent', 'id' => 'hstBox', 'options' => array('Defendants per Case', 'Victims per Case', 'Months Sentenced per Defendant', 'Charges per Defendant')));
+                        ?>
                         <?php
                         echo $this->Form->input('geoChartCombo', array('empty' => 'GeoChart', 'id' => 'geoChartCombo', 'options' => array('Case By State')));?>
                       <?php
@@ -93,33 +96,35 @@ SCRIPTS
 
 <script>
 	$('.graph_selection').children().children().prop('checked',false);
-	$('#yAxisBox').show();
-	$('#xAxisBox').show();
-	$('#geoChartCombo').hide();
 
 	$('#barGraphRadio').click(function() {
 		$('#yAxisBox').show();
 		$('#xAxisBox').show();
+		$('#hstBox').hide();
 		$('#geoChartCombo').hide();
 	});
 	$('#lineGraphRadio').click(function() {
 		$('#yAxisBox').show();
 		$('#xAxisBox').show();
+		$('#hstBox').hide();
 		$('#geoChartCombo').hide();
 	});
 	$('#histogramRadio').click(function() {
-		$('#yAxisBox').show();
-		$('#xAxisBox').show();
+		$('#yAxisBox').hide();
+		$('#xAxisBox').hide();
+		$('#hstBox').show();
 		$('#geoChartCombo').hide();
 	});
 	$('#pieChartRadio').click(function() {
 		$('#yAxisBox').hide();
 		$('#xAxisBox').show();
+		$('#hstBox').hide();
 		$('#geoChartCombo').hide();
 	});
 	$('#geoChartRadio').click(function() {
 		$('#yAxisBox').hide();
 		$('#xAxisBox').hide();
+		$('#hstBox').hide();
 		$('#geoChartCombo').show();
 	});
 </script>

@@ -544,7 +544,7 @@ class AnalyzeController extends AppController {
 	}
 
 	public function histogram($cs, $opts, $var) {
-
+		
 	}
 
 	public function geo($cs, $opts) {

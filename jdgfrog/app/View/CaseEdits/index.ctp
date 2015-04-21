@@ -114,7 +114,7 @@
 									echo "</table>";
 								}
 							else {
-									echo "You have no incomplete case(s)...";
+									echo "No Case Available to Display";
 							}
 						?>
 					</div>
@@ -158,7 +158,7 @@
 									echo "</tbody>";
 									echo "</table>";
 							} else {
-								echo "No cases available...";
+								echo "No cases in table: Data";
 							}
 						?>
 					</div>

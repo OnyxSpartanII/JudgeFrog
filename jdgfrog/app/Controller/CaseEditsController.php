@@ -19,6 +19,10 @@ class CaseEditsController extends AppController {
 		$this->set('title', 'Case Edit - Admin Panel | Human Trafficking Data');
 		$this->layout = 'admin_panel_layout';
 		$this->set('active', 'edit');
+
+		$userFN = $this->Auth->user('first_name');
+		$userLN = $this->Auth->user('last_name');
+		$userFullName = $userFN . ' ' . $userLN;
 		
 		$dataCases = $this->Datum->find('all', array(
 											'fields' => array(
@@ -38,10 +42,11 @@ class CaseEditsController extends AppController {
 																'DataInProgress.CaseNam', 
 																'DataInProgress.JudgeName', 
 																'DataInProgress.State', 
-																'DataInProgress.author', 
+																'DataInProgress.author',
 																'DataInProgress.NumDef', 
 																'DataInProgress.modified'),
-												'group' => 'DataInProgress.CaseNum'
+												'group' => 'DataInProgress.CaseNum',
+												'conditions' => array('DataInProgress.author' => $userFullName)
 												)
 										);
 		

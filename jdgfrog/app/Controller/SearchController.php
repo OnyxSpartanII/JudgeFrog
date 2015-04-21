@@ -783,7 +783,7 @@ class SearchController extends AppController {
 		}
 		$datum = $this->Datum->find('all', array('conditions' => array('Datum.CaseNum' => $cn), 'order' => array('Datum.CaseNum DESC')));
 
-		debug($datum);
+		// debug($datum);
 
 		$cases = array();
 		$case_name = '';

@@ -1,11 +1,14 @@
 <?php
-    echo $this->Html->css(array('modal_window_style', 'dataTables.bootstrap'));
-    echo $this->Html->script(array('jquery-1.10.2.min', 'jquery.dataTables.min', 'dataTables.bootstrap'));
+    echo $this->Html->css(array('modal_window_style', 'dataTables.bootstrap', 'dataTables.responsive'));
+    echo $this->Html->script(array('jquery-1.10.2.min', 'jquery.dataTables.min', 'dataTables.responsive.min', 'dataTables.bootstrap'));
 ?>
 <script type="text/javascript" charset="utf-8">
   $(document).ready(function() {
     $('#review_table').DataTable( {
-        responsive: true
+        responsive: true,
+        "bPaginate": false,
+        "bFilter": false,
+        "bInfo": false
     } );
   });
 </script>
@@ -14,9 +17,9 @@
     <div class="container">
         <div class="contact-main">
           <h3 class="page_title">Review Case</h3>
-              <div class="col-md-5 contact-right">
+              <div class="col-md-3 contact-right">
                 <!-- TOP CREATE A NEW USER BAR -->
-                  <div class="top_bar col-md-5">
+                  <div class="top_bar col-md-3">
                     <div class="top_bar_left">
                       <h4>CASES PENDING REVIEW</h4>
                     </div> 
@@ -24,8 +27,8 @@
                     <table class="pending_case table table-bordered" id="review_table">
                           <thead>
                               <tr>
-                              <th>Case Number</th>
-                              <th>Author Name</th>
+                              <th>Case #</th>
+                              <th class="none">Author Name</th>
                               <th style="background-color: #4D1979">Actions</th>
                               </tr>
                           </thead>
@@ -55,9 +58,9 @@
                   </div>
                 </div>
             </div> 
-                <div class="col-md-7 contact-right">
+                <div class="col-md-9 contact-right">
                   <!-- TOP PUBLISH SELECTED USER BAR -->
-                    <div class="top_bar col-md-7">
+                    <div class="top_bar col-md-9">
                       <div class="top_bar_dash">
                         <h4>CASE DETAILS</h4>
                       </div>                   

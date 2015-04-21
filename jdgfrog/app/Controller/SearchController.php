@@ -773,15 +773,17 @@ class SearchController extends AppController {
 
 		$prev_search = $display;
 
-		$case_nums = $this->Datum->find('all', array('conditions' => $conditions, 'fields' => array('Datum.CaseNum')));
+		$case_nums = $this->Datum->find('all', array('conditions' => $conditions, 'fields' => array('DISTINCT Datum.CaseNum')));
+
+		// debug($case_nums);
 
 		$cn = array();
 		foreach ($case_nums as $case_num) {
 			array_push($cn, $case_num['Datum']['CaseNum']);
 		}
-		$datum = $this->Datum->find('all', array('conditions' => array('Datum.CaseNum' => $cn)));
+		$datum = $this->Datum->find('all', array('conditions' => array('Datum.CaseNum' => $cn), 'order' => array('Datum.CaseNum DESC')));
 
-		// debug($datum);
+		debug($datum);
 
 		$cases = array();
 		$case_name = '';

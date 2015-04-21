@@ -54,8 +54,39 @@ class AnalyzeController extends AppController {
 
 			case 'pie':
 				$options = array('title' => $xAxisOptions[$xIndex-1], 'hAxis' => array('title' => ''), 'vAxis' => array('title' => ''));
+				switch ($xIndex) {
+					case 1:
+						$yIndex = 1;
+						break;
+					case 2:
+						$yIndex = 2;
+						break;
+					case 3:
+						$yIndex = 2;
+						break;
+					case 4:
+						$yIndex = 1;
+						break;
+					case 5:
+						$yIndex = 1;
+						break;
+					case 6:
+						$yIndex = 1;
+						break;
+					case 7:
+						$yIndex = 1;
+						break;
+					case 8:
+						$yIndex = 2;
+						break;
+					case 9:
+						$yIndex = 1;
+						break;
+					case 10:
+						$yIndex = 1;
+						break;
+				}
 				echo json_encode($this->barLinePie($cases, $options, $yIndex, $xIndex));
-				$yIndex = 2;
 				break;
 
 			case 'geo':
@@ -71,6 +102,11 @@ class AnalyzeController extends AppController {
 	}
 
 	public function barLinePie($cs, $opts, $yIndex, $xIndex) {
+		$s_arr = array('1961to1968', '1028', '1351',
+						'1425', '1512', '1546', '1581to1588', '1589',
+						'1590', '1591', '1592', '2252', '2260', '2421to2424',
+						'1324', '1328');
+
 		$options = $opts;
 		$cases = $cs;
 		$data = array();
@@ -530,6 +566,12 @@ class AnalyzeController extends AppController {
 		foreach ($cases as $case) {
 			$ind = array_search($case[7], $states) + 1;
 			$data[$ind][1]++;
+		}
+
+		for ($i=50; $i > 0; $i--) { 
+			if ($data[$i][1] == 0) {
+				array_splice($data, $i, 1);
+			}
 		}
 
 		return array($data,$options);

@@ -13,6 +13,7 @@ class DownloadController extends AppController {
 		    $allData = $this->Datum->find('all', array(
 		    		'fields' => array(
 		    			'Datum.CaseDefId',
+		    			'Datum.id',
 		    			'Datum.DefLast',
 		    			'Datum.DefFirst',
 		    			'Datum.Alias',
@@ -241,6 +242,7 @@ class DownloadController extends AppController {
 		    		),
 		    		'order' => array(
 		    			'Datum.CaseDefId',
+		    			'Datum.id',
 		    			'Datum.DefLast',
 		    			'Datum.DefFirst',
 		    			'Datum.Alias',
@@ -472,6 +474,7 @@ class DownloadController extends AppController {
     		
     		$ara = array(
     							'CaseDefId' => 'CaseDefId',
+    							'Id' => 'Id',
 			   					'DefLast' => 'DefLast',
 								'DefFirst' => 'DefFirst' ,
 								'Alias' => 'Alias',

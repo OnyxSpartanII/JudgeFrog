@@ -57,7 +57,7 @@ class UploadsController extends AppController {
 								'1590', '1591', '1592', '2252', '2260', '2421to2424',
 								'1324', '1328'];
 
-						if ($row >= 4) {
+						if ($row >= 1) {
 							// Every row after row #4 contains data which needs to be input to database
 							$index = 2;
 

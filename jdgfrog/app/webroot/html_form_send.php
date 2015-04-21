@@ -3,7 +3,7 @@
 if(isset($_POST['email'])) {
  
 
-    $email_to = "l.westrom@tcu.edu"; //TODO: Add Vanessa's email 
+    $email_to = "vanessa.bouche@tcu.edu"; //Vanessa Bouché's email 
  
     $email_subject = "Human Trafficking Data: Contact Message"; //Subject of message
  

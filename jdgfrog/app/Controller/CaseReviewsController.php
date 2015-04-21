@@ -141,6 +141,7 @@ class CaseReviewsController extends AppController {
 		$ocg_races = array('None','Black','White','Hispanic','Asian','Other');
 
 		$html = '<div class="case_info">' .
+					'<br>'.
 	                '<table class="modal_table all_results">' .
 	                  '<thead>' .
 	                  '<tr>' .

@@ -420,6 +420,8 @@ class CaseEditsController extends AppController {
 			$d['DataInProgress'] = $d['Datum'];
 			unset($d['Datum']);
 
+			//filters to compensate for CakePHP pulling booleans out as
+			//true or false instead of 0 or 1.
 			if ($d['DataInProgress']['JudgeGen'] === false) {
 				$d['DataInProgress']['JudgeGen'] = '0';
 			}
@@ -464,6 +466,36 @@ class CaseEditsController extends AppController {
 			}
 			if ($d['DataInProgress']['SubmittedForReview'] === null) {
 				$d['DataInProgress']['SubmittedForReview'] = '0';
+			}
+
+			//filters to compensate for years coming out as 0000 when 
+			//they're null.
+			if ($d['DataInProgress']['DefBirthdate'] === '0000') {
+				$d['DataInProgress']['DefBirthdate'] = '';
+			}
+			if ($d['DataInProgress']['ArrestDate'] === '0000-00-00') {
+				$d['DataInProgress']['ArrestDate'] = '';
+			}
+			if ($d['DataInProgress']['ChargeDate'] === '0000-00-00') {
+				$d['DataInProgress']['ChargeDate'] = '';
+			}
+			if ($d['DataInProgress']['DateTerm'] === '0000-00-00') {
+				$d['DataInProgress']['DateTerm'] = '';
+			}
+			if ($d['DataInProgress']['SentDate'] === '0000-00-00') {
+				$d['DataInProgress']['SentDate'] = '';
+			}
+			if ($d['DataInProgress']['OCType1'] === '0' || $d['DataInProgress']['OCType1'] === null) {
+				$d['DataInProgress']['OCType1'] = '';
+			}
+			if ($d['DataInProgress']['OCType2'] === '0' || $d['DataInProgress']['OCType2'] === null) {
+				$d['DataInProgress']['OCType2'] = '';
+			}
+			if ($d['DataInProgress']['OCScope1'] === '0' || $d['DataInProgress']['OCScope1'] === null) {
+				$d['DataInProgress']['OCScope1'] = '';
+			}
+			if ($d['DataInProgress']['OCScope2'] === '0' || $d['DataInProgress']['OCScope2'] === null) {
+				$d['DataInProgress']['OCScope2'] = '';
 			}
 		}		
 

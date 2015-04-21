@@ -51,10 +51,12 @@ public function beforeValidate($options = []) {
  * @var array [array of validation criterion]
  */
 	public $validate = array(
-		'DefFirst' => array(
-			'rule' => 'alphaNumeric',
+
+		'DefLast' => array(
+			'rule' => '/^[a-z0-9\-\.\', ]+$/i',
 			'required' => true,
-			'message' => 'This field is required.'
+			'message' => 'This field is required. Name can contain letters, numbers, spaces, dashes, commas, periods.',
+			'allowEmpty' => false
 		),
 		'NumDef' => array(
 			'rule' => 'numeric',
@@ -105,7 +107,8 @@ public function beforeValidate($options = []) {
 		'DefBirthdate' => array(
 			'rule' => array('date', 'y'),
 			'message' => 'Please enter a year for defendant\'s DOB',
-			'allowEmpty' => true
+			'allowEmpty' => true,
+			'required' => false
 		),
 		'DefArrestAge' => array(
 			'rule' => array('numeric'),
@@ -219,7 +222,7 @@ public function beforeValidate($options = []) {
 			'allowEmpty' => true
 		),
 		'OCType1' => array(
-			'rule' => array('inList', array(1,2,3,4,5,6)),
+			'rule' => array('inList', array(1,2,3,4,5)),
 			'message' => 'Incorrect value for OCGType1',
 			'allowEmpty' => true
 		),
@@ -234,7 +237,7 @@ public function beforeValidate($options = []) {
 			'allowEmpty' => true
 		),
 		'OCType2' => array(
-			'rule' => array('inList', array(1,2,3,4,5,6)),
+			'rule' => array('inList', array(1,2,3,4,5)),
 			'message' => 'Incorrect value for OCGType2',
 			'allowEmpty' => true
 		),
@@ -244,7 +247,7 @@ public function beforeValidate($options = []) {
 			'allowEmpty' => true
 		),
 		'OCScope2' => array(
-			'rule' => array('inList', array(0,1,2)),
+			'rule' => array('inList', array(1,2,3)),
 			'message' => 'Incorrect value for OCGScope2',
 			'allowEmpty' => true
 		)

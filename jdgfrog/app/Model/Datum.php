@@ -238,7 +238,7 @@ public function beforeValidate($options = []) {
 			'allowEmpty' => true
 		),
 		'OCScope2' => array(
-			'rule' => array('inList', array(0,1,2)),
+			'rule' => array('inList', array(1,2,3)),
 			'message' => 'Incorrect value for OCGScope2',
 			'allowEmpty' => true
 		)

@@ -55,7 +55,7 @@
 									echo "<hr style = 'border-top:1px solid #DCDCDC'>";
 									echo $this->Form->input('FelCharged', array('type' => 'text', 'label' => 'Number of Felonies Charged'));
 									echo $this->Form->input('FelSentenced', array('type' => 'text', 'label' => 'Number of Felonies Sentenced')); 
-									echo $this->Form->input('DateTerminated', array('type' => 'text', 'label' => 'Date of Case Termination', 'data-date-format' => 'yyyy-mm-dd', 'placeholder' => 'yyyy-mm-dd'));
+									echo $this->Form->input('DateTerm', array('type' => 'text', 'label' => 'Date of Case Termination', 'data-date-format' => 'yyyy-mm-dd', 'placeholder' => 'yyyy-mm-dd'));
 									echo $this->Form->input('SentDate', array('type' => 'text', 'label' => 'Date of Sentencing', 'data-date-format' => 'yyyy-mm-dd', 'placeholder' => 'yyyy-mm-dd'));
 									echo $this->Form->input('TotalSent', array('type' => 'text', 'label' => 'Total Number of Months Sentenced'));
 									echo $this->Form->input('Restitution', array('type' => 'text', 'label' => 'Total Restitution To Be Paid'));

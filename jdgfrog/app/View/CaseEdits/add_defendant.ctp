@@ -72,16 +72,16 @@
 						<fieldset id="OCGFS">
 							<?php
 									echo $this->Form->input('OCName1', array('type' => 'text', 'label' => 'Name of Organized Crime Group 1', 'placeholder' => 'House of Cards'));
-									echo $this->Form->input('OCType1', array('label' => '', 'options' => array('Mom and Pop', 'Street Gang', 'Cartel/Syndicate/Mafia', 'Prison Gang', 'Other'),'empty'=>'Type'));
-									echo $this->Form->input('OCRace1', array('label' => '', 'options' => array('White','Black','Hispanic','Asian','Other'),'empty'=>'Race'));
-									echo $this->Form->input('OCScope1', array('label' => '', 'options' => array('Local', 'Trans-State', 'Trans-National'),'empty'=>'Scope'));
+									echo $this->Form->input('OCType1', array('label' => '', 'options' => array('1' => 'Mom and Pop', '2' => 'Street Gang', '3' => 'Cartel/Syndicate/Mafia', '4' => 'Prison Gang', '5' => 'Other'),'empty'=>'Type'));
+									echo $this->Form->input('OCRace1', array('label' => '', 'options' => array('0' => 'None', '1' => 'White', '2' => 'Black', '3' => 'Hispanic', '4' => 'Asian', '5' => 'Other'),'empty'=>'Race'));
+									echo $this->Form->input('OCScope1', array('label' => '', 'options' => array('1' => 'Local', '2' => 'Trans-State', '3' => 'Trans-National'),'empty'=>'Scope'));
 
 									echo "<hr style='border-top:1px solid #CCC;'>";
 
 									echo $this->Form->input('OCName2', array('type' => 'text', 'label' => 'Name of Organized Crime Group 2', 'placeholder' => 'Sultan of Liberty'));
-									echo $this->Form->input('OCType2', array('label' => '', 'options' => array('Mom and Pop', 'Street Gang', 'Cartel/Syndicate/Mafia', 'Prison Gang', 'Other'),'empty'=>'Type'));
-									echo $this->Form->input('OCRace2', array('label' => '', 'options' => array('White','Black','Hispanic','Asian','Other'),'empty'=>'Race'));
-									echo $this->Form->input('OCScope2', array('label' => '', 'options' => array('Local', 'Trans-State', 'Trans-National'),'empty'=>'Scope'));
+									echo $this->Form->input('OCType2', array('label' => '', 'options' => array('1' => 'Mom and Pop', '2' => 'Street Gang', '3' => 'Cartel/Syndicate/Mafia', '4' => 'Prison Gang', '5' => 'Other'),'empty'=>'Type'));
+									echo $this->Form->input('OCRace2', array('label' => '', 'options' => array('0' => 'None', '1' => 'White', '2' => 'Black', '3' => 'Hispanic', '4' => 'Asian', '5' => 'Other'),'empty'=>'Race'));
+									echo $this->Form->input('OCScope2', array('label' => '', 'options' => array('1' => 'Local', '2' => 'Trans-State', '3' => 'Trans-National'),'empty'=>'Scope'));
 							?>								
 								<hr style="border-top:1px solid #CCC;">
 								<input type="button" name="previous" onclick="goToCaseSum_()" class="action-button" value="Back - Charges"/>

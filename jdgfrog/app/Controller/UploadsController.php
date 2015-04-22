@@ -20,6 +20,11 @@ class UploadsController extends AppController {
 		// $this->Auth->allow('add','receipt');
 	}
 
+	public function isAuthorized($user) {
+
+		return parent::isAuthorized($user);
+	}
+
 	public function add() {
 
 		// if form is submitted via HTTP/1.1 POST

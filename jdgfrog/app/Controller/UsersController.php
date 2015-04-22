@@ -15,6 +15,15 @@ class UsersController extends AppController {
 
 	}
 
+	public function isAuthorized($user) {
+		
+		if ($this->action === 'login' || $this->action === 'logout') {
+			return true;
+		}
+		
+		return parent::isAuthorized($user);
+	}
+
 	public function login() {
 		//$this->layout = false;
 		$this->set('title', 'Login | Human Trafficking Data');

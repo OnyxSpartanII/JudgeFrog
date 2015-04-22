@@ -10,12 +10,13 @@ class AdminPanelController extends AppController {
 	public $uses = array('DataInProgress', 'CaseSession');
 
 	public function beforeFilter() {
-		//inspect user permissions here.
 		parent::beforeFilter();
-		//if ($this->action = 'edit' && $this->Auth->user('role') === 'admin') {
+	}
 
-		//}
-
+	public function isAuthorized($user) {
+		if ($this->action === 'index') {
+			return true;
+		}
 	}
 
 	public function index(){

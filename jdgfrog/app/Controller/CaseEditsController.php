@@ -13,6 +13,29 @@ class CaseEditsController extends AppController {
 		//$this->Auth->allow();
 	}
 
+	/*
+	*	This method performs authorization checks on methods in this controller.
+	*	If the method accessed is not below, isAuthorized () will check the method
+	*	isAuthorized() in AppController, where admin permissions are allowed.
+	*/
+
+	public function isAuthorized($user) {
+
+		if ($this->action === 'index') {
+			return true;
+		}
+		if ($this->action === 'editDefendant' || $this->action === 'edit') {
+			return true;
+		}
+		if ($this->action === 'addCase' || $this->action === 'addDefendant') {
+			return true;
+		}
+		if ($this->action === 'delete_incomplete_case' || $this->action === 'delete_def') {
+			return true;
+		}
+
+		return parent::isAuthorized($user);
+	}
 
 	public function index() {
 

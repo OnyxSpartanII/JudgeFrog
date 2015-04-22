@@ -39,7 +39,8 @@ class AppController extends Controller {
 				'logoutRedirect' => array('controller' => 'pages', 'action' => 'home'),
 				'authenticate' => array('Form' => array('passwordHasher' => 'Blowfish')),
 				'authError' => 'You must be logged in to view this page.',
-				'loginError' => 'Invalid username or password entered.'
+				'loginError' => 'Invalid username or password entered.',
+				'authorize' => array('Controller')
 				)
 		);
 
@@ -51,6 +52,9 @@ class AppController extends Controller {
 
 	public function isAuthorized($user) {
 		//TODO: check priv levels here
-		return true;
+		if (isset($user['role']) && $user['role'] === 'admin') {
+			return true;
+		}
+		return false;
 	}
 }

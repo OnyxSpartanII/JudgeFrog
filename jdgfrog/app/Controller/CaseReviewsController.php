@@ -10,12 +10,16 @@ class CaseReviewsController extends AppController {
 
 	public function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow();
+	}
+
+	public function isAuthorized($user) {
 
 		if ($this->Auth->user('role') != 'admin') {
 			$this->Session->setFlash('Oops... Access Restricted!');
 			$this->redirect('/admin/index');
 		}
+
+		return parent::isAuthorized($user);
 	}
 
 	public function review() {

@@ -705,7 +705,7 @@ class DownloadController extends AppController {
 
 			if (count($allData) > 0) {
 		    // prepare the file and name it docket.csv
-		    $fp = fopen('tmpDLDOCKET.csv', 'w+');
+		    $fp = fopen('docketDownload.csv', 'w+');
 
 		    fputcsv($fp, $ara); //adds the column labels 
 			    // Save data
@@ -718,7 +718,7 @@ class DownloadController extends AppController {
 			    fclose($fp); //close the file
 			}
 
-			$file = 'tmpDLDOCKET.csv';
+			$file = 'docketDownload.csv';
 
 		/**** Download File ****/	
 			if(!$file){ // file does not exist

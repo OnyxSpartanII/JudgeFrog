@@ -500,7 +500,7 @@ $(function() {
                                 '<tr>' +
                                   '<td>' + (cases[i][20][j][13] == null ? 'N/A' : cases[i][20][j][13]) + '</td>' +
                                   '<td>' + (cases[i][20][j][14] == null ? 'N/A' : cases[i][20][j][14]) + '</td>' +
-                                  '<td>' + (cases[i][20][j][15] == '0000' ? 'N/A' : cases[i][20][j][15]) + '</td>' +
+                                  '<td>' + (cases[i][20][j][15] == '0000' || cases[i][20][j][15] == null ? 'N/A' : cases[i][20][j][15]) + '</td>' +
                                   '<td>' + (cases[i][20][j][17] == null ? 'N/A' : cases[i][20][j][17]) + '</td>' +
                                   '<td>' + (cases[i][20][j][22] == null ? 'N/A' : cases[i][20][j][22]) + '</td>' +
                                   '<td>' + (cases[i][20][j][18] == null ? 'N/A' : '$' + cases[i][20][j][18]) + '</td>' +

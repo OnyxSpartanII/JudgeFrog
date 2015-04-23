@@ -47,7 +47,7 @@
                         <?php
                         echo $this->Form->input('xAxisBox', array('empty' => 'Independent', 'id' => 'xAxisBox', 'options' => array('Year', 'Defendant By Gender', 'Defendant By Race', 'Judge By Gender', 'Judge By Race', 'Judge By Party', 'Crime Type', 'Statute', 'Federal District','State')));?>
                         <?php
-                        	echo $this->Form->input('hstBox', array('empty' => 'Independent', 'id' => 'hstBox', 'options' => array('Defendants per Case', 'Victims per Case', 'Months Sentenced per Defendant', 'Charges per Defendant')));
+                        	echo $this->Form->input('hstBox', array('empty' => 'Independent', 'id' => 'hstBox', 'options' => array('Defendants per Case', 'Total Victims per Case', 'Minor Victims per Case', 'Female Victims per Case', 'Foreign Victims per Case', 'Months Sentenced per Defendant', 'Charges per Defendant', 'Sentences per Defendant')));
                         ?>
                         <?php
                         echo $this->Form->input('geoChartCombo', array('empty' => 'GeoChart', 'id' => 'geoChartCombo', 'options' => array('Case By State')));?>
@@ -183,7 +183,7 @@ SCRIPTS
 	        	var x_i = $('#xAxisBox :selected').index();
 
 				$.ajax({                   
-					url: '/JudgeFrog/jdgfrog/Analyze/generateGraph/line/' + y_i + '/' + x_i,
+					url: '/Analyze/generateGraph/line/' + y_i + '/' + x_i,
 					cache: false,
 					type: 'GET',
 					success: function (d) {
@@ -211,8 +211,8 @@ SCRIPTS
 				});
 	        }
 	          else if($('#histogramRadio').is(':checked')){
-	          	var y_i = $('#yAxisBox :selected').index();
-	        	var x_i = $('#xAxisBox :selected').index();
+	          	var y_i = $('#hstBox :selected').index();
+	        	var x_i = 0;
 
 				$.ajax({                   
 					url: '/Analyze/generateGraph/hst/' + y_i + '/' + x_i,
@@ -230,7 +230,7 @@ SCRIPTS
 	        	var x_i = $('#xAxisBox :selected').index();
 
 				$.ajax({                   
-					url: '/JudgeFrog/jdgfrog/Analyze/generateGraph/pie/' + y_i + '/' + x_i,
+					url: '/Analyze/generateGraph/pie/' + y_i + '/' + x_i,
 					cache: false,
 					type: 'GET',
 					success: function (d) {
@@ -245,7 +245,7 @@ SCRIPTS
 	        	var x_i = $('#xAxisBox :selected').index();
 
 				$.ajax({                   
-					url: '/JudgeFrog/jdgfrog/Analyze/generateGraph/geo/' + y_i + '/' + x_i,
+					url: '/Analyze/generateGraph/geo/' + y_i + '/' + x_i,
 					cache: false,
 					type: 'GET',
 					success: function (d) {

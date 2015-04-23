@@ -26,9 +26,10 @@ class AnalyzeController extends AppController {
 
 		$cases = $this->Session->read('case_info');
 
-		$yAxisOptions = array('Total Cases', 'Total Defendants', 'Avg Defendants Per Case', 'Total Months Sentenced', 'Avg Months Sentenced', 'Victims', 'Total Charge', 'Total Sentenced');
-		$xAxisOptions = array('Year', 'Defendant By Gender', 'Defendant By Race', 'Judge By Gender', 'Judge By Race', 'Judge By Party', 'Crime Type', 'Statute', 'Federal District', 'State', 'Statute Charged', 'Statute Sentenced', 'Organized Crime Groups');
+		$yAxisOptions = array('Total Cases', 'Total Defendants', 'Avg Defendants Per Case', 'Total Months Sentenced', 'Avg Months Sentenced');
+		$xAxisOptions = array('Year', 'Defendant By Gender', 'Defendant By Race', 'Judge By Gender', 'Judge By Race', 'Judge By Party', 'Crime Type', 'Statute', 'Federal District', 'State');
 		$geoChartOptions = array('Case By State','Federal District');
+		$hstOptions = array('Defendants per Case', 'Total Victims per Case', 'Minor Victims per Case', 'Female Victims per Case', 'Foreign Victims per Case', 'Months Sentenced per Defendant', 'Charges per Defendant', 'Sentences per Defendant');
 
 		$s_arr = array('1961to1968', '1028', '1351',
 						'1425', '1512', '1546', '1581to1588', '1589',
@@ -49,7 +50,8 @@ class AnalyzeController extends AppController {
 				break;
 			
 			case 'hst':
-				$options = array('title' => $xAxisOptions[$xIndex-1], 'hAxis' => array('title' => ''), 'vAxis' => array('title' => ''));
+				$options = array('title' => $hstOptions[$yIndex-1], 'hAxis' => array('title' => ''), 'vAxis' => array('title' => ''));
+				echo json_encode($this->hst($cases, $options, $yIndex));
 				break;
 
 			case 'pie':
@@ -543,8 +545,70 @@ class AnalyzeController extends AppController {
 		return array($data, $options);
 	}
 
-	public function histogram($cs, $opts, $var) {
-		
+	public function hst($cs, $opts, $var) {
+		$cases = $cs;
+		$options = $opts;
+
+		$data = array();
+
+		switch($var) {
+			case 1:
+				array_push($data, array('Case Number','Number of Defendants'));
+				foreach ($cases as $case) {
+					array_push($data, array($case[1], $case[6]));
+				}
+				break;
+			case 2:
+				array_push($data, array('Case Number', 'Victims'));
+				foreach ($cases as $case) {
+					array_push($data, array($case[1], ($case[16] == null ? '0' : $case[16])));
+				}
+				break;
+			case 3:
+				array_push($data, array('Case Number', 'Minor Victims'));
+				foreach ($cases as $case) {
+					array_push($data, array($case[1], ($case[17] == null ? '0' : $case[17])));
+				}
+				break;
+			case 4:
+				array_push($data, array('Case Number', 'Female Victims'));
+				foreach ($cases as $case) {
+					array_push($data, array($case[1], ($case[19] == null ? '0' : $case[19])));
+				}
+				break;
+			case 5:
+				array_push($data, array('Case Number', 'Foreign Victims'));
+				foreach ($cases as $case) {
+					array_push($data, array($case[1], ($case[18] == null ? '0' : $case[18])));
+				}
+				break;
+			case 6:
+				array_push($data, array('Defendant Name', 'Months Sentenced'));
+				foreach ($cases as $case) {
+					foreach ($case[20] as $def) {
+						array_push($data, array($def[0], $def[17]));
+					}
+				}
+				break;
+			case 7:
+			array_push($data, array('Defendant Name', 'Felonies Charged'));
+				foreach ($cases as $case) {
+					foreach ($case[20] as $def) {
+						array_push($data, array($def[0], $def[13]));
+					}
+				}
+				break;
+			case 8:
+			array_push($data, array('Defendant Name', 'Felonies Sentenced'));
+				foreach ($cases as $case) {
+					foreach ($case[20] as $def) {
+						array_push($data, array($def[0], $def[14]));
+					}
+				}
+				break;
+		}
+
+		return array($data, $options);
 	}
 
 	public function geo($cs, $opts) {

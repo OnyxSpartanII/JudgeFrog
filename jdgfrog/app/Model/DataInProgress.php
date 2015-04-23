@@ -222,7 +222,7 @@ public function beforeValidate($options = []) {
 			'allowEmpty' => true
 		),
 		'OCType1' => array(
-			'rule' => array('inList', array(1,2,3,4,5)),
+			'rule' => array('inList', array(1,2,3,4,5,6)),
 			'message' => 'Incorrect value for OCGType1',
 			'allowEmpty' => true
 		),
@@ -237,7 +237,7 @@ public function beforeValidate($options = []) {
 			'allowEmpty' => true
 		),
 		'OCType2' => array(
-			'rule' => array('inList', array(1,2,3,4,5)),
+			'rule' => array('inList', array(1,2,3,4,5,6)),
 			'message' => 'Incorrect value for OCGType2',
 			'allowEmpty' => true
 		),

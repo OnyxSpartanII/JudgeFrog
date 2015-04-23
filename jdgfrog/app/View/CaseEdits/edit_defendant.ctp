@@ -74,7 +74,7 @@
 							
 								<?php
 									echo $this->Form->input('OCName1', 			array('default' => $case['DataInProgress']['OCName1'], 'type' => 'text', 'label' => 'Name of Organized Crime Group 1', 'placeholder' => 'House of Cards'));
-									echo $this->Form->input('OCType1', 			array('default' => $case['DataInProgress']['OCType1'], 'label' => '', 'options' => array('1' => 'Mom and Pop', '2' => 'Street Gang', '3' => 'Cartel/Syndicate/Mafia', '4' => 'Prison Gang', '5' => 'Other'),'empty'=>'Type', 'default' => $case['DataInProgress']['OCType1']));
+									echo $this->Form->input('OCType1', 			array('default' => $case['DataInProgress']['OCType1'], 'label' => '', 'options' => array('1' => 'Mom and Pop', '2' => 'Street Gang', '3' => 'Cartel/Syndicate/Mafia', '5' => 'Prison Gang', '6' => 'Other'),'empty'=>'Type', 'default' => $case['DataInProgress']['OCType1']));
 									echo $this->Form->input('OCRace1', 			array('default' => $case['DataInProgress']['OCRace1'], 'label' => '', 'options' => array('0' => 'None', '1' => 'White','2' => 'Black','3' => 'Hispanic','4' => 'Asian','5' => 'Other'),'empty'=>'Race'));
 									echo $this->Form->input('OCScope1', 		array('default' => $case['DataInProgress']['OCScope1'], 'label' => '', 'options' => array('1' => 'Local', '2' => 'Trans-State', '3' => 'Trans-National'),'empty'=>'Scope'));
 									
@@ -82,7 +82,7 @@
 									echo "<hr style='border-top:1px solid #CCC;'>";
 
 									echo $this->Form->input('OCName2', 			array('default' => $case['DataInProgress']['OCName2'], 'type' => 'text', 'label' => 'Name of Organized Crime Group 2', 'placeholder' => 'Sultan of Liberty'));
-									echo $this->Form->input('OCType2',			array('default' => $case['DataInProgress']['OCType2'], 'label' => '', 'options' => array('1' => 'Mom and Pop', '2' => 'Street Gang', '3' => 'Cartel/Syndicate/Mafia', '4' => 'Prison Gang', '5' => 'Other'),'empty'=>'Type', 'default' => $case['DataInProgress']['OCType2']));
+									echo $this->Form->input('OCType2',			array('default' => $case['DataInProgress']['OCType2'], 'label' => '', 'options' => array('1' => 'Mom and Pop', '2' => 'Street Gang', '3' => 'Cartel/Syndicate/Mafia', '5' => 'Prison Gang', '6' => 'Other'),'empty'=>'Type', 'default' => $case['DataInProgress']['OCType2']));
 									echo $this->Form->input('OCRace2', 			array('default' => $case['DataInProgress']['OCRace2'], 'label' => '', 'options' => array('0' => 'None', '1' => 'White', '2' => 'Black', '3' => 'Hispanic', '4' => 'Asian', '5' => 'Other'),'empty'=>'Race'));
 									echo $this->Form->input('OCScope2',			array('default' => $case['DataInProgress']['OCScope2'], 'label' => '', 'options' => array('1' => 'Local', '2' => 'Trans-State', '3' => 'Trans-National'),'empty'=>'Scope'));
 								?>							

@@ -51,7 +51,7 @@ class AppController extends Controller {
 	}
 
 	public function isAuthorized($user) {
-		//TODO: check priv levels here
+
 		if (isset($user['role']) && $user['role'] === 'admin') {
 			return true;
 		}

@@ -51,7 +51,18 @@ public function beforeValidate($options = []) {
  * @var array [array of validation criterion]
  */
 	public $validate = array(
-
+		'CaseNam' => array(
+			'rule' => '/^[a-z0-9\-\.\', ]+$/i',
+			'message' => 'Incorrect value for Case Name',
+			'required' => true,
+			'allowEmpty' => false
+		),
+		'CaseNum' => array(
+			'rule' => '/^[a-z0-9\-\.\', ]+$/i',
+			'message' => 'Incorrect value for Case Number',
+			'required' => true,
+			'allowEmpty' => false
+		),
 		'DefLast' => array(
 			'rule' => '/^[a-z0-9\-\.\', ]+$/i',
 			'required' => true,
@@ -119,7 +130,7 @@ public function beforeValidate($options = []) {
 			'rule' => array('date', 'ymd'),
 			'required' => true,
 			'message' => 'Incorrect value for Charge Date',
-			'allowEmpty' => true,
+			'allowEmpty' => false
 		),
 		'ArrestDate' => array(
 			'rule' => array('date', 'ymd'),

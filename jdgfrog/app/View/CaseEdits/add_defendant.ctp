@@ -57,7 +57,7 @@
 									echo $this->Form->input('FelSentenced', array('type' => 'text', 'label' => 'Number of Felonies Sentenced')); 
 									echo $this->Form->input('DateTerm', array('type' => 'text', 'label' => 'Date of Case Termination', 'data-date-format' => 'yyyy-mm-dd', 'placeholder' => 'yyyy-mm-dd'));
 									echo $this->Form->input('SentDate', array('type' => 'text', 'label' => 'Date of Sentencing', 'data-date-format' => 'yyyy-mm-dd', 'placeholder' => 'yyyy-mm-dd'));
-									echo $this->Form->input('TotalSent', array('type' => 'text', 'label' => 'Total Number of Months Sentenced'));
+									echo $this->Form->input('TotalSentence', array('type' => 'text', 'label' => 'Total Number of Months Sentenced'));
 									echo $this->Form->input('Restitution', array('type' => 'text', 'label' => 'Total Restitution To Be Paid'));
 									echo $this->Form->input('AssetForfeit', array('label' => 'Asset Forfeiture'));
 									echo $this->Form->input('Probation', array('type' => 'text', 'label' => 'Total Number of Months On Probation'));

@@ -372,8 +372,13 @@ class CaseReviewsController extends AppController {
 
 		foreach ($data as &$d) {
 			$d['Datum'] = $d['DataInProgress'];
+			$d['Datum']['Detained'] = ($d['Datum']['Detained'] ? 1:0);
+			$d['Datum']['AssetForfeit'] = ($d['Datum']['AssetForfeit'] ? 1:0);
+			$d['Datum']['AdultSexTraf'] = ($d['Datum']['AdultSexTraf'] ? 1:0);
+			$d['Datum']['MinorSexTraf'] = ($d['Datum']['MinorSexTraf'] ? 1:0);
+			$d['Datum']['LaborTraf'] = ($d['Datum']['LaborTraf'] ? 1:0);
 			unset($d['DataInProgress']);
-		}		
+		}
 
 		if ($this->Datum->saveMany($data)) {
 			$this->DataInProgress->deleteAll(array('DataInProgress.CaseNum' => $case_info[$index][1]), false);			

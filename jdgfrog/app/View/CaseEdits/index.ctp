@@ -100,10 +100,8 @@
 									echo "      <td> ".$d['DataInProgress']['JudgeName']." </td>";
 									echo "      <td> ".$d['DataInProgress']['State']." </td>";
 									echo "      <td> ".$this->Html->link('Edit', '/admin/cases/edit/'.urlencode($d['DataInProgress']['CaseNum']));
-														if ($admin === true) {
-															echo '&nbsp/&nbsp;';
-															echo $this->Html->link('Delete', '/admin/cases/delete_incomplete_case/'.urlencode($d['DataInProgress']['CaseNum']), array('confirm'=>'Are you sure you want to delete this case?'));
-														}
+									echo '&nbsp/&nbsp;';
+									echo $this->Html->link('Delete', '/admin/cases/delete_incomplete_case/'.urlencode($d['DataInProgress']['CaseNum']), array('confirm'=>'Are you sure you want to delete this case?'));
 															"</td>";
 									echo "      <td> ".$d['DataInProgress']['author']." </td>";
 									echo "      <td> ".$d['DataInProgress']['NumDef']." </td>";

@@ -216,6 +216,7 @@ class CaseEditsController extends AppController {
 														)
 												);
 			$caseId = $case['DataInProgress']['id'];
+			$caseName = $case['DataInProgress']['CaseNam'];
 
 			//Check for "null" value from YEAR type in database table.
 			//It's only 0000 if it's null.
@@ -240,6 +241,8 @@ class CaseEditsController extends AppController {
 
 			$userFN = $this->Auth->user('first_name');
 			$userLN = $this->Auth->user('last_name');
+			$this->request->data['DataInProgress']['CaseNum'] = $caseNumber;
+			$this->request->data['DataInProgress']['CaseNam'] = $caseName;
 			$insertUser = $this->request->data['DataInProgress']['author'] = $userFN . ' ' . $userLN;			
 
 			if ($this->DataInProgress->save($this->request->data)) {
@@ -524,7 +527,7 @@ class CaseEditsController extends AppController {
 
 		if ($this->DataInProgress->saveMany($data)) {
 			$this->Datum->deleteAll(array('Datum.CaseNum' => $caseNumber, false));
-			$this->redirect('/admin/cases/edit/'.$caseNumber);
+			$this->redirect(urlencode('/admin/cases/edit/'.$caseNumber));
 		} else {
 			print_r('an error occurred while migrating.');
 			debug($this->DataInProgress->validationErrors);

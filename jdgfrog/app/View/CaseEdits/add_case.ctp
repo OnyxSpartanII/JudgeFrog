@@ -27,8 +27,8 @@
 							<fieldset>
 							<?php 
 								echo $this->Form->create('DataInProgress');
-								echo $this->Form->input('CaseNam', array('label' => 'Case Name'));
-								echo $this->Form->input('CaseNum', array('type' => 'text', 'label' => 'Case Number'));
+								echo $this->Form->input('CaseNam', array('label' => 'Case Name', 'placeholder' => 'USA v. Davis'));
+								echo $this->Form->input('CaseNum', array('type' => 'text', 'label' => 'Case Number', 'placeholder' => '23-c3-2015'));
 								echo "<hr style='border-top:3px solid #DDD'>";
 								echo $this->Form->input('JudgeName', array('label'=> 'Judge Name'));
 								echo $this->Form->input('JudgeRace', array('label' => '', 'empty' => 'Race', 'options' => array('0' => 'White', '1' => 'Black', '2' => 'Hispanic', '3' => 'Asian', '4' => 'Other')));

@@ -58,7 +58,7 @@ public function beforeValidate($options = []) {
 			'allowEmpty' => false
 		),
 		'CaseNum' => array(
-			'rule' => '/^[a-z0-9\-\.\', ]+$/i',
+			'rule' => '/^[a-z0-9\-\.\', :]+$/i',
 			'message' => 'Incorrect value for Case Number',
 			'required' => true,
 			'allowEmpty' => false

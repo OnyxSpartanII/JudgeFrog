@@ -527,7 +527,7 @@ class CaseEditsController extends AppController {
 
 		if ($this->DataInProgress->saveMany($data)) {
 			$this->Datum->deleteAll(array('Datum.CaseNum' => $caseNumber, false));
-			$this->redirect(urlencode('/admin/cases/edit/'.$caseNumber));
+			$this->redirect('/admin/cases/edit/'.urlencode($caseNumber));
 		} else {
 			print_r('an error occurred while migrating.');
 			debug($this->DataInProgress->validationErrors);

@@ -10,14 +10,14 @@ class DownloadController extends AppController {
 	public function download() {
 		if ($this->request->is('post')) {
 				// echo 'Account created!';
-		    $allData = $this->Datum->find('all', array(
-		    		'fields' => array(
-		    			'Datum.CaseDefId',
-		    			'Datum.id',
-		    			'Datum.DefLast',
-		    			'Datum.DefFirst',
-		    			'Datum.Alias',
-		    			'Datum.CaseNam',
+			$allData = $this->Datum->find('all', array(
+					'fields' => array(
+						'Datum.CaseDefId',
+						'Datum.id',
+						'Datum.DefLast',
+						'Datum.DefFirst',
+						'Datum.Alias',
+						'Datum.CaseNam',
 						'Datum.CaseNum',
 						'Datum.NumDef',
 						'Datum.State',
@@ -239,14 +239,14 @@ class DownloadController extends AppController {
 						'Datum.OCType2',
 						'Datum.OCRace2',
 						'Datum.OCScope2'
-		    		),
-		    		'order' => array(
-		    			'Datum.CaseDefId',
-		    			'Datum.id',
-		    			'Datum.DefLast',
-		    			'Datum.DefFirst',
-		    			'Datum.Alias',
-		    			'Datum.CaseNam',
+					),
+					'order' => array(
+						'Datum.CaseDefId',
+						'Datum.id',
+						'Datum.DefLast',
+						'Datum.DefFirst',
+						'Datum.Alias',
+						'Datum.CaseNam',
 						'Datum.CaseNum',
 						'Datum.NumDef',
 						'Datum.State',
@@ -468,14 +468,14 @@ class DownloadController extends AppController {
 						'Datum.OCType2',
 						'Datum.OCRace2',
 						'Datum.OCScope2'
-		    		)
-		    	)
-		    ); //Grab all data from DB
-    		
-    		$ara = array(
-    							'CaseDefId' => 'CaseDefId',
-    							'Id' => 'Id',
-			   					'DefLast' => 'DefLast',
+					)
+				)
+			); //Grab all data from DB
+
+			$ara = array(
+								'CaseDefId' => 'CaseDefId',
+								'Id' => 'Id',
+								'DefLast' => 'DefLast',
 								'DefFirst' => 'DefFirst' ,
 								'Alias' => 'Alias',
 								'CaseNam' => 'CaseNam' ,
@@ -704,33 +704,71 @@ class DownloadController extends AppController {
 			);
 
 			if (count($allData) > 0) {
-		    // prepare the file and name it docket.csv
-		    $fp = fopen('docketDownload.csv', 'w+');
+			// prepare the file and name it docket.csv
+			$fp = fopen('docketDownload.csv', 'w+');
 
-		    fputcsv($fp, $ara); //adds the column labels 
-			    // Save data
-			    foreach ($allData as $row) {
-			    	// foreach($row['Datum'] as $val) {
-			    	// 	echo $val . ', ';
-			    	// }
-			        fputcsv($fp, $row['Datum']);
-			    }
-			    fclose($fp); //close the file
+			fputcsv($fp, $ara); //adds the column labels 
+				// Save data
+
+				$statutes = ['1961to1968', '1028', '1351',
+						'1425', '1512', '1546', '1581to1588', '1589',
+						'1590', '1591', '1592', '2252', '2260', '2421to2424',
+						'1324', '1328'];		
+
+				foreach ($allData as $row) {
+
+					//Filters to compensate for CakePHP pulling 
+					//booleans with 0 value out as "false."
+					if ($row['Datum']['JudgeGen'] === false) {
+						$row['Datum']['JudgeGen'] = '0';
+					}
+					if ($row['Datum']['DefGender'] === false) {
+						$row['Datum']['DefGender'] = '0';
+					}
+					if ($row['Datum']['JudgeApptBy'] === false) {
+						$row['Datum']['JudgeApptBy'] = '0';
+					}
+					if ($row['Datum']['Detained'] === false) {
+						$row['Datum']['Detained'] = '0';
+					}
+					if ($row['Datum']['LaborTraf'] === false) {
+						$row['Datum']['LaborTraf'] = '0';
+					}
+					if ($row['Datum']['AdultSexTraf'] === false) {
+						$row['Datum']['AdultSexTraf'] ='0';
+					}
+					if ($row['Datum']['MinorSexTraf'] === false) {
+						$row['Datum']['MinorSexTraf'] = '0';
+					}
+					if ($row['Datum']['AssetForfeit'] === false) {
+						$row['Datum']['AssetForfeit'] = '0';
+					}
+					foreach ($statutes as $statute) {
+						if ($row['Datum']["S$statute"] === false) {
+							$row['Datum']["S$statute"] = '0';
+						}
+					}
+					// foreach($row['Datum'] as $val) {
+					// 	echo $val . ', ';
+					// }
+					fputcsv($fp, $row['Datum']);
+				}
+				fclose($fp); //close the file
 			}
 
 			$file = 'docketDownload.csv';
 
 		/**** Download File ****/	
 			if(!$file){ // file does not exist
-			    die('file not found');
+				die('file not found');
 			} else {
-			    header("Cache-Control: public");
-			    header("Content-Description: File Transfer");
-			    header("Content-Disposition: attachment; filename=$file");
-			    header("Content-Type: application/zip");
-			    header("Content-Transfer-Encoding: binary");
-			    // read the file from disk
-			    readfile($file);
+				header("Cache-Control: public");
+				header("Content-Description: File Transfer");
+				header("Content-Disposition: attachment; filename=$file");
+				header("Content-Type: application/zip");
+				header("Content-Transfer-Encoding: binary");
+				// read the file from disk
+				readfile($file);
 			}
 			exit(); //kills (die) the execution and will not add html
 		}

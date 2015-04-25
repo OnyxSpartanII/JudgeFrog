@@ -275,6 +275,9 @@ class CaseEditsController extends AppController {
 		if ($this->request->is('post')) {
 
 			$this->DataInProgress->set($this->request->data);
+
+			//Only validate case-specific fields. Leave the defendant-specific fields later for adding in
+			//defendants.
 			$fields =  ['CaseNam', 'CaseNum', 'JudgeName', 'JudgeGen', 'JudgeRace', 'JudgeTenure', 'JudgeApptBy',
 						'FedDistrictLoc', 'FedDistrictNum', 'State', 'CaseSummary', 'LaborTraf', 'AdultSexTraf', 
 						'MinorSexTraf', 'NumVic', 'NumVicMinor', 'NumVicForeign', 'NumVicMinor', 'NumVicFemale'];
@@ -374,10 +377,11 @@ class CaseEditsController extends AppController {
 			/********************
 			*	Filter booleans returned from the database. In CakePHP, they come
 			*	out as 'true' or 'false' instead of 0 or 1. We need them as 0 or 1.
+			*	Here, we only need bools that are case-specific instead of
+			*	defendant specific, so the type of crimes (labor, etc.),
 			*********************/
 			if (false === $this->request->data['DataInProgress']['LaborTraf']) {
 				$this->request->data['DataInProgress']['LaborTraf'] = '0';
-				print_r('help');
 			}
 
 			if (false === $this->request->data['DataInProgress']['AdultSexTraf']) {
@@ -390,7 +394,6 @@ class CaseEditsController extends AppController {
 
 			if (true === $this->request->data['DataInProgress']['LaborTraf']) {
 				$this->request->data['DataInProgress']['LaborTraf'] = '1';
-				print_r('help');
 			}
 
 			if (true === $this->request->data['DataInProgress']['AdultSexTraf']) {
@@ -442,9 +445,24 @@ class CaseEditsController extends AppController {
 		$data = $this->Datum->find('all', array('conditions' => array('Datum.CaseNum' => $caseNumber)));
 		$this->DataInProgress->clear();
 
+		$statutes = ['1961to1968', '1028', '1351',
+				'1425', '1512', '1546', '1581to1588', '1589',
+				'1590', '1591', '1592', '2252', '2260', '2421to2424',
+				'1324', '1328'];	
+
+
 		foreach ($data as &$d) {
 			$d['DataInProgress'] = $d['Datum'];
 			unset($d['Datum']);
+
+			foreach ($statutes as $statute) {
+				if ($d['DataInProgress']["S$statute"] === false) {
+					$d['DataInProgress']["S$statute"] = '0';
+				}
+				if ($d['DataInProgress']["S$statute"] === true) {
+					$d['DataInProgress']["S$statute"] = '1';
+				}
+			}			
 
 			//filters to compensate for CakePHP pulling booleans out as
 			//true or false instead of 0 or 1.
@@ -453,6 +471,12 @@ class CaseEditsController extends AppController {
 			}
 			if ($d['DataInProgress']['JudgeGen'] === true) {
 				$d['DataInProgress']['JudgeGen'] = '1';
+			}
+			if ($d['DataInProgress']['DefGender'] === false) {
+				$d['DataInProgress']['DefGender'] = '0';
+			}
+			if ($d['DataInProgress']['DefGender'] === true) {
+				$d['DataInProgress']['DefGender'] = '1';
 			}
 			if ($d['DataInProgress']['JudgeApptBy'] === false) {
 				$d['DataInProgress']['JudgeApptBy'] = '0';

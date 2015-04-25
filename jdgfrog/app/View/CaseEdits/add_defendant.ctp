@@ -73,14 +73,14 @@
 							<?php
 									echo $this->Form->input('OCName1', array('type' => 'text', 'label' => 'Name of Organized Crime Group 1'));
 									echo $this->Form->input('OCType1', array('label' => '', 'options' => array('1' => 'Mom and Pop', '2' => 'Street Gang', '3' => 'Cartel/Syndicate/Mafia', '5' => 'Prison Gang', '6' => 'Other'),'empty'=>'Type'));
-									echo $this->Form->input('OCRace1', array('label' => '', 'options' => array('0' => 'None', '1' => 'White', '2' => 'Black', '3' => 'Hispanic', '4' => 'Asian', '5' => 'Other'),'empty'=>'Race'));
+									echo $this->Form->input('OCRace1', array('label' => '', 'options' => array('0' => 'None', '1' => 'Black', '2' => 'White', '3' => 'Hispanic', '4' => 'Asian', '5' => 'Other'),'empty'=>'Race'));
 									echo $this->Form->input('OCScope1', array('label' => '', 'options' => array('1' => 'Local', '2' => 'Trans-State', '3' => 'Trans-National'),'empty'=>'Scope'));
 
 									echo "<hr style='border-top:1px solid #CCC;'>";
 
 									echo $this->Form->input('OCName2', array('type' => 'text', 'label' => 'Name of Organized Crime Group 2'));
 									echo $this->Form->input('OCType2', array('label' => '', 'options' => array('1' => 'Mom and Pop', '2' => 'Street Gang', '3' => 'Cartel/Syndicate/Mafia', '5' => 'Prison Gang', '6' => 'Other'),'empty'=>'Type'));
-									echo $this->Form->input('OCRace2', array('label' => '', 'options' => array('0' => 'None', '1' => 'White', '2' => 'Black', '3' => 'Hispanic', '4' => 'Asian', '5' => 'Other'),'empty'=>'Race'));
+									echo $this->Form->input('OCRace2', array('label' => '', 'options' => array('0' => 'None', '1' => 'Black', '2' => 'White', '3' => 'Hispanic', '4' => 'Asian', '5' => 'Other'),'empty'=>'Race'));
 									echo $this->Form->input('OCScope2', array('label' => '', 'options' => array('1' => 'Local', '2' => 'Trans-State', '3' => 'Trans-National'),'empty'=>'Scope'));
 							?>								
 								<hr style="border-top:1px solid #CCC;">

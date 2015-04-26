@@ -5,6 +5,7 @@ class UsersController extends AppController {
 	public function beforeFilter() {
 		parent::beforeFilter();
 		$this->Auth->allow('login', 'logout');
+		$uses = array('users');
 	}
 
 	/**
@@ -63,9 +64,22 @@ class UsersController extends AppController {
 				return $this->redirect(array('controller' => 'users', 'action' => 'create'));
 			} else {
 				$this->Session->setFlash(__('Sorry the user could not be created!'));
-				// $this->Session->setFlash(__(print_r($this->request->data)));
 			}
 		}
+
+
+		// Fetch current users from users table and throw them on the table
+		$allUsers = $this->User->find('all', array(
+											'fields' => array(
+															'User.username', 
+															'User.first_name', 
+															'User.last_name', 
+															'User.role'),
+											'group' => 'User.username'
+											)
+										);
+		$this->set('showUsers', $allUsers);
+
 	}
 
 	public function delete_user($username = null){

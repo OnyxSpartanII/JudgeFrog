@@ -14,7 +14,6 @@
 		} );
 } );
 </script>
-<!--search start here-->
 <div class="contact">
 		<div class="container">
 				<div class="contact-main">
@@ -49,7 +48,6 @@
 								<input  type="submit" value="Submit" id="submitForm"/>
 							</fieldset>  
 						</div>
-						<!-- <div class="submit" style=""><input  type="submit" value="Submit" id="submitForm"/></div></form>  -->
 					</div>
 					</div> 
 						<div class="col-md-7 contact-right">
@@ -63,51 +61,36 @@
 											<h4>ALL USERS | DASHBOARD</h4>
 										</div>
 									</div>
-											<?php
-												$servername = "oyster.arvixe.com";
-												$username = "jdgfrog_testDB";
-												$password = "tcuCOSC1!";
-												$dbname = "jdgfrog_testDB";
-												// Create connection
-												$conn = new mysqli($servername, $username, $password, $dbname);
-												// Check connection
-												if ($conn->connect_error) {
-														die("Connection failed: " . $conn->connect_error);
-												} 
-												$sql = "SELECT id, username, first_name, last_name, role FROM users";
-												$result = $conn->query($sql);
-												if ($result->num_rows > 0) {
-														// output data of each row
-															echo "<table class='table table-striped table-bordered' id='users_table'>";
-															echo"      <thead>";
-															echo"        <tr>";
-															echo"          <th>Username</th>";
-															echo"          <th>First Name</th>";
-															echo"          <th>Last Name</th>";
-															echo"          <th class='desktop'>Privilege Level</th>";
-															echo"          <th class='special_th always'>Actions</th>";
-															echo"        </tr>";
-															echo"      <thead>";
-															echo "<tbody>";
-														while($row = $result->fetch_assoc()) {
-																// echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
-															echo "  <tr>";
-															echo "      <td> &nbsp;&nbsp;".$row['username']." </td>";
-															echo "      <td> ".$row['first_name']." </td>";
-															echo "      <td> ".$row['last_name']." </td>";
-															echo "      <td> ".$row['role']." </td>";
-															echo "      <td> ".$this->Html->link('Delete', '/admin/delete_user/'.$row['username'], 'Are you sure?');
-																				"</td>";
-															echo "  </tr>";
-															}
-															echo "</tbody>";
-															echo "</table>";
-														}
-												else {
-														echo "0 results";
+									<?php
+										if (isset($showUsers) && count($showUsers) > 0) {
+												echo"<table class='table table-striped table-bordered' id='users_table'>";
+												echo"      <thead>";
+												echo"        <tr>";
+												echo"          <th>Username</th>";
+												echo"          <th>First Name</th>";
+												echo"          <th>Last Name</th>";
+												echo"          <th class='desktop'>Privilege Level</th>";
+												echo"          <th class='special_th always'>Actions</th>";
+												echo"        </tr>";
+												echo"      <thead>";
+												echo "<tbody>";
+
+											foreach ($showUsers as $the) {
+												echo "  <tr>";
+												echo "      <td> &nbsp;".$the['User']['username']. "</td>";
+												echo "      <td> ".$the['User']['first_name']." </td>";
+												echo "      <td> ".$the['User']['last_name']." </td>";
+												echo "      <td> ".$the['User']['role']." </td>";
+												echo "      <td> ".$this->Html->link('Delete', '/admin/delete_user/'.urlencode($the['User']['username']), array('confirm'=>'Are you sure you want to delete this user?'));
+															"</td>";
+												echo "  </tr>";
 												}
-												$conn->close();
-											?>
+												echo "</tbody>";
+												echo "</table>";
+										} else {
+											echo "No cases in table: Data";
+										}
+									?>
 							<div class="submit" style="display:block; display:none"><input  type="submit" value="Submit" id="deleteBtn"/></div>
 							<?php 
 									echo $this->Form->end();

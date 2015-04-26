@@ -25,14 +25,7 @@ class UsersController extends AppController {
 	}
 
 	public function login() {
-		//$this->layout = false;
 		$this->set('title', 'Login | Human Trafficking Data');
-
-		/*if ($this->Session->check('Auth.User')) 
-		{
-			$this->redirect(array('action' => 'index'));
-		}*/
-
 		if ($this->request->is('post')) {
 
 			if ($this->Auth->login()) {

@@ -63,9 +63,15 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
  <div class="header-b">
 	 	  <div class="container">
 	 	       <div class="header-main">
-	 	        	<div class="logo">
+	 	        	<div class="logo" id="full-logo">
 	 	        			<?php 
 	 	        				echo $this->Html->link('HTD | Admin Panel', '/AdminPanel',
+	 	        				array('class' => 'full', 'onmouseover' => 'bringTheFunc(this)'));
+	 	        			?>
+	 	        	</div> 
+	 	        	<div class="logo" id="compact-logo">
+	 	        			<?php 
+	 	        				echo $this->Html->link('HTD', '/AdminPanel',
 	 	        				array('class' => 'full', 'onmouseover' => 'bringTheFunc(this)'));
 	 	        			?>
 	 	        	</div> 
@@ -142,13 +148,6 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
             	</div>
 </div>
 <script type="text/javascript">
-    //Change Text on Hover
-    $('.full').hover(function(){
-    	// $(this).animate(1000);
-    	$(this).text("HumanTraffickingData");
-	}, function() {
-    	$(this).text("HTD | Admin Panel");
-});
     //Set Screen Size Error Message if < 424px
 $( document ).ready(function() {      
     var isMobile = window.matchMedia("only screen and (max-width: 424px)");
@@ -157,6 +156,16 @@ $( document ).ready(function() {
     	$('.mobile-message').show();
     }
 });
+    //Shrink Logo
+$('#compact-logo').hide();
+$( document ).ready(function() {      
+    var isSmall = window.matchMedia("only screen and (max-width: 1000px)");
+	     //Change Text on Hover
+    if (isSmall.matches) {
+			$('#full-logo').hide();
+			$('#compact-logo').show();
+		}
+	});
 </script>
 </body>
 </html>

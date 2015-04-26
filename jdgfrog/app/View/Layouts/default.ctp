@@ -30,8 +30,8 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 	<?php
 		echo $this->Html->meta('icon');
-		echo $this->Html->css(array('htd-main', 'bootstrap', 'jquery-ui', 'search_page_css', 'default','ion.rangeSlider.skinFlat','ion.rangeSlider', 'modal_window_style', 'animation'));
-		echo $this->Html->script(array('jquery-1.10.2', 'slider', 'superfish', 'jquery-ui', 'modernizr.custom', 'classie','moment','ion.rangeSlider','ion.rangeSlider.min','sliderMod', 'jquery.simplemodal', 'hover-effect', 'move-top.js', 'easing.js', 'easyResponsiveTabs', 'uisearch'));
+		echo $this->Html->css(array('htd-main', 'bootstrap', 'bootstrap-submenu', 'jquery-ui', 'search_page_css', 'default','ion.rangeSlider.skinFlat','ion.rangeSlider', 'modal_window_style', 'animation'));
+		echo $this->Html->script(array('jquery-1.10.2', 'bootstrap', 'bootstrap-submenu', 'slider', 'superfish', 'jquery-ui', 'modernizr.custom', 'classie','moment','ion.rangeSlider','ion.rangeSlider.min','sliderMod', 'jquery.simplemodal', 'hover-effect', 'move-top.js', 'easing.js', 'easyResponsiveTabs', 'uisearch'));
 	?>
 <!-- Google charts Script -->
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -67,19 +67,38 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
  <div class="header-b">
 	 	  <div class="container">
 	 	       <div class="header-main">
-	 	        	<div class="logo">
-	        			<?php 
-	        				echo $this->Html->link('HTD', '/home',
-	        				array('class' => 'full', 'onmouseover' => 'bringTheFunc(this)'));
-	        			?>
+	 	        	<div class="logo" id="full-logo">
+	 	        			<?php 
+	 	        				echo $this->Html->link('HumanTraffickingData', '/home',
+	 	        				array('class' => 'full', 'onmouseover' => 'bringTheFunc(this)'));
+	 	        			?>
+	 	        	</div> 
+	 	        	<div class="logo" id="compact-logo">
+	 	        			<?php 
+	 	        				echo $this->Html->link('HTD', '/home',
+	 	        				array('class' => 'full', 'onmouseover' => 'bringTheFunc(this)'));
+	 	        			?>
 	 	        	</div> 
 	 	        	<span class="menu"> <?php echo $this->Html->image('icon.png', array('alt' => 'Menu List')); ?></span>
 	 	        	<div class="header-navg">
 	 	        		<ul class="res">
 	 	        			<li><a class="<?php echo ($this->fetch('active') == 'home') ? 'active' : ''; ?>" <?php echo $this->Html->link('Home', '/home'); ?></a></li>
-	 	        			<li><a class="<?php echo ($this->fetch('active') == 'about') ? 'active' : ''; ?>" <?php echo $this->Html->link('About', '/about'); ?></a></li>
+	 	        			
+							    <!-- <ul class="nav navbar-nav"> -->
+							      <li class="dropdown">
+							        <a tabindex="0" data-toggle="dropdown" class="<?php echo ($this->fetch('active') == 'about-description') ? 'active' : ''; ?>">About &amp; Description<span class="caret"></span></a>
+							        <!-- role="menu": fix moved by arrows (Bootstrap dropdown) -->
+							        <ul class="dropdown-menu" role="menu">
+							          <li><a tabindex="0" class="<?php echo ($this->fetch('active') == '') ? 'active' : ''; ?>" 
+							          	<?php echo $this->Html->link('About HTD', '/about'); ?></a>
+							          </li>
+							          <li><a tabindex="0" class="<?php echo ($this->fetch('active') == '') ? 'active' : ''; ?>" 
+							          	<?php echo $this->Html->link('Description & Definition', '/description'); ?></a>
+							          </li>
+							        </ul>
+							      </li>
+
 	 	        			<li><a class="<?php echo ($this->fetch('active') == 'search') ? 'active' : ''; ?>" <?php echo $this->Html->link('Search The Database', '/search'); ?></a></li>
-	 	        			<li><a class="<?php echo ($this->fetch('active') == 'description') ? 'active' : ''; ?>" <?php echo $this->Html->link('Description', '/description'); ?></a></li>
 	 	        			<li><a class="<?php echo ($this->fetch('active') == 'contact') ? 'active' : ''; ?>" <?php echo $this->Html->link('Contact', '/contact'); ?></a></li>
 	 	        		</ul>
 	 	        		 <script>
@@ -94,6 +113,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	 	       </div>
 	 	 </div>
 	</div>
+
 <!-- </div> -->
 	<div id="content">
 
@@ -136,20 +156,26 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
             	</div>
 </div>
 <script type="text/javascript">
-    //Change Text on Hover
-    $('.full').hover(function(){
-    	// $(this).animate(1000);
-
-    	$(this).text("HumanTraffickingData");
-	}, function() {
-    	$(this).text("HTD");
+    //Set Screen Size Error Message if < 424px
+$( document ).ready(function() {      
+    var isMobile = window.matchMedia("only screen and (max-width: 424px)");
+    if (isMobile.matches) {
+    	$('#content').hide();
+    	$('.mobile-message').show();
+    }
 });
-
-
+    //Shrink Logo
+$('#compact-logo').hide();
+$( document ).ready(function() {      
+    var isSmall = window.matchMedia("only screen and (max-width: 1000px)");
+	     //Change Text on Hover
+    if (isSmall.matches) {
+			$('#full-logo').hide();
+			$('#compact-logo').show();
+		}
+	});
 </script>
-
 </body>
 </html>
-
 <!-- Modifications Done by: The Judge Frog Team - http://brazos.cs.tcu.edu/1415JudgeFrog
 License: W3layouts - http://w3layouts.com Modified Under The Creative Commons Attribution 3.0 license.  -->

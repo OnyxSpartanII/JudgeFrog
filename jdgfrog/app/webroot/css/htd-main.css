@@ -67,6 +67,7 @@ span.menu{
 	 font-size:18px;
 	 font-weight:400;
 	 opacity: 0.6;
+	 cursor: pointer;
 }
 .header-navg ul li a:hover{
 	 color:#4D1979;
@@ -565,7 +566,6 @@ ul.tab_list li {
 	margin: 0px 20px;
 	font-weight: 400;
 	text-align: left;
-    border-top: .1em #444 dotted;
 }
 iframe{
 	max-height: 400px;
@@ -799,7 +799,7 @@ p.m_6 {
 	font-size: 15px;
 	font-weight: 400;
 	outline: none;
-	border: 1px solid #444;
+  	border: 1px solid #999;
 }
 .text input[type="text"]:hover, textarea:hover {
     border-left: 7px solid #4D1979;
@@ -951,6 +951,12 @@ iframe{
 	border-left: 1px solid #444;
 }
 }
+@media(min-width:991px){
+.stat-container{
+	border-left: 1px solid #DCDCDC; 
+	padding-left: 0px;
+}
+}
 @media(max-width:991px){
 .footer-right {
 	border-left: 0px solid #444;
@@ -962,7 +968,10 @@ iframe {
 .more_info {
 	margin-left: 0%;
 }
-
+.stat-container{
+	padding-top: 80px;
+	padding-left: 40px;
+}
 }
 @media(max-width:940px){
 	iframe {
@@ -981,6 +990,15 @@ span.menu{
 ul.res{
 	 display:none;
 	 padding:0px;
+}
+
+.dropdown-menu li a{
+  margin-top: 5px;
+  background-color: #FFF;
+  display:block;
+}
+.dropdown-menu li a:hover {
+  background-color: #DCDCDC;
 }
 .header-navg{
 	 float:none;
@@ -1024,6 +1042,7 @@ ul.res li a:hover,ul.res li a.active{
 }
 .logo {
 	text-align: left;
+	float: center;
 }
 .logo h2{
 	color: #666;
@@ -1086,7 +1105,6 @@ iframe{
 }
  
 }
-
 @media(max-width:640px){
 .header-bottom h1 {
 	font-size: 2.5em;

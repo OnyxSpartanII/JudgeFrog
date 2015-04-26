@@ -48,13 +48,12 @@
                               <div id="prin-inv">
                                   <div class="facts">
                                     <p>
-                                    <?php echo $this->Html->image('van.jpg', array('alt' => 'Vanessa Bouche', 'style' => 'float:left; padding-right:10px;' )); ?>
                                       Dr. Vanessa Bouch&eacute; is Assistant Professor of Political Science at Texas Christian University.  Dr. Bouch&eacute; is currently the co-PI on three federally-funded grants on human trafficking, two from the National Institute of Justice and one from the United States Agency on International Development.  Her research has been published in the Journal of Politics, Journal of Public Policy, Politics &amp; Gender, among others, and focuses on questions about identity and politics, human trafficking, and public policymaking. As a scholar-activist, Dr. Bouch&eacute; is also engaged in community efforts to combat human trafficking at the local, state, federal, and international levels, which has taken her across the country and the globe to consult and collaborate with various government agencies, international organizations, and NGOs.  Dr. Bouch&eacute; received her Ph.D. from The Ohio State University, a Masters in Public Affairs from the University of Texas, LBJ School of Public Affairs, and a B.A. from Columbia University.</p> 
                                   </div>
                               </div>
                               <div id="ack">
                                   <div class="facts">
-                                    <p>This website was developed under a grant from the National Institute of Justice (NIJ), United States Department of Justice. Special thanks goes out to Global Centurion for assisting with case searches, as well several research assistants at TCU for their very thorough culling and coding of case records. We are also indebted to Dr. Donnell Payne and her senior design team in TCU&#39;s Department of Computer Science for their technical expertise and guidance in crafting the exceptional functionalities of this database.</p>  
+                                    <p>This website was developed under a grant from the National Institute of Justice (NIJ), United States Department of Justice. Special thanks goes out to Global Centurion for assisting with case searches, as well several research assistants at TCU for their very thorough culling and coding of case records. We are also indebted to several Senior Design students in the  TCU Computer Science Department for their technical expertise and guidance in crafting the database and the exceptional functionalities of this web application.</p>  
                                   </div>
                               </div>
                           </div>

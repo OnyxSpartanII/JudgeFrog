@@ -92,17 +92,17 @@ class PagesController extends AppController {
 
 	public function about(){
 		$this->set('title', 'About | Human Trafficking Data');
-		$this->set('active', 'about');
+		$this->set('active', 'about-description');
+	}
+	
+	public function description() {
+		$this->set('title', 'Description | Human Trafficking Data');
+		$this->set('active', 'about-description');
 	}
 
 	public function contact() {
 		$this->set('title', 'Contact | Human Trafficking Data');
 		$this->set('active', 'contact');
-	}
-	
-	public function description() {
-		$this->set('title', 'Description | Human Trafficking Data');
-		$this->set('active', 'description');
 	}
 
 }

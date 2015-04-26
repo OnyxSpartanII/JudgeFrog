@@ -40,10 +40,12 @@
     var $welcom = $("#flashMessage");
     var $notAutho = $("#authMessage");
     if ($welcom.is(':visible') == true) {
-     $('form').css({"animation": "pulse 0.8s ease-in-out",	
+     $('form').css({
+          "animation": "pulse 0.8s ease-in-out",	
      					"-webkit-animation": "shake 0.8s ease-in-out",
-     						"-moz-animation": "pulse 0.8s ease-in-out",
-     							"-o-animation": "shake 0.8s ease-in-out"});
+     						"-moz-animation": "shake 0.8s ease-in-out",
+     							"-o-animation": "shake 0.8s ease-in-out"
+                });
 		$('form label').css('color','#FE2232');
 	};
     setTimeout(function() {
@@ -51,7 +53,9 @@
     }, 5000);
 
     if ($notAutho.is(':visible') == true) {
-		$('form').css('-webkit-animation','shake 0.8s ease-in-out');
+    $('form').css('-webkit-animation','shake 0.8s ease-in-out');
+    $('form').css('animation','shake 0.8s ease-in-out');
+    $('form').css('-moz-animation','shake 0.8s ease-in-out');
 	};
     setTimeout(function() {
         $notAutho.slideUp(800).delay(200).fadeOut(400);

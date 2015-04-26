@@ -10,8 +10,6 @@
 		}
 		}, 15);
 	</script>	
-
-
   		<?php echo $this->Html->css(array('home_slider_main', 'home_slider_misc', 'hover', 'jquery-ui'));?>
   		<?php echo $this->Html->script(array('jquery-1.9.0.min', 'jquery.fractionslider', 'home_slider_config', 'jquery-ui'));?>
 	
@@ -23,16 +21,13 @@
 			$( "#accordion2" ).accordion();
 		});
 	</script>
-
 		<!--Home starts here-->
-			<div class="jobs-main top-slider">
+		<div class="jobs-main top-slider">
 	  	 	<h3>Welcome</h3>
 		  	 	<div class="slider-wrapper">
-		  	 	
 				<div class="responisve-container">
 					<div class="slider">
 						<div class="fs_loader"></div>
-
 						<!-- Slider Number 1 -->
 						<div class="slide"> 
 							<p 		class="claim"			
@@ -43,15 +38,13 @@
 							<p 		class="claim"			
 									 data-in="fade" data-out="fade" data-position="150,160" data-step="3" data-out="left" style="font-size:1.2em; color:4D1979">an open source platform for human trafficking cases in the U.S.</p>
 						</div>
-
 						<!-- Slider Number 2 -->
 						<div class="slide"> 
 							<p 		class="claim"			
-									 data-in="fade" data-position="20,350" data-step="1" data-out="fade" style="font-size:2em; color:#fe2232">600,000 to 800,000</p>
+									 data-in="fade" data-position="20,350" data-step="1" data-out="fade" style="font-size:2em; color:#fe2232">500,000 to 800,000</p>
 							<p 		class="claim"			
-									 data-in="fade" data-position="130,170" data-step="2" data-out="fade" style="font-size:1em;">is the approximate amount of trafficked people around the world<span><p style="font-size:1.5em; color:red; font-weight:bold;" data-step="3" data-position="120,700" data-in="fade" data-out="fade" data-delay="1500">Every year</p></span></p>
+									 data-in="fade" data-position="130,170" data-step="2" data-out="fade" style="font-size:1em;">is the approximate amount of trafficked people around the world<span><p style="font-size:1.5em; color:red; font-weight:bold;" data-step="3" data-position="120,720" data-in="fade" data-out="fade" data-delay="1500">Every year</p></span></p>
 						</div>
-
 						<!-- Slider Number 3 -->
 						<div class="slide"> 
 							<p 		class="claim"			
@@ -60,12 +53,10 @@
 									 data-in="fade" data-position="160, 130" data-step="2" data-out="fade" data-delay="3000" style="font-size:1.2em;">understanding the complexity of human trafficking cases in the United States.
 							</p>
 						</div>
-
-
 						<!-- Slide Number 4 -->
 						<div class="slide"> 
 							<p 		class="claim"			
-									 data-in="top" data-position="90,30" data-step="1" data-out="fade">SEARCH OVER 1000 CASES</p>	
+									 data-in="top" data-position="90,30" data-step="1" data-out="fade">SEARCH OVER 1000 DEFENDANTS</p>	
 
 	                        <?php echo $this->Html->image('search_by.png', 
 	                        	array('alt' => '', 
@@ -76,76 +67,97 @@
 	                        		'data-out' => 'fade',
 	                        		'style' => 'width:auto; height:auto')); ?>
 	                    </div>
-
-						<div class="slide"> 
-															
+						<div class="slide"> 							
 							<p 		class="claim" 	
 									data-position="0,300" data-in="left" data-step="1" data-delay="200">Manipulate the Data Using...</p>
-
 	                        <?php echo $this->Html->image('analysis.png', 
 	                        	array('alt' => '', 
 	                        		'data-step' => '1',
-	                        		'data-position' => '60,30',
+	                        		'data-position' => '60,-40',
 	                        		'data-in' => 'bottomRight',
 	                        		'data-delay' => '200',
 	                        		'data-out' => 'left',
 	                        		'style' => 'width:auto; height:auto;')); ?>
-															
 							<p 		class="claim" 	
-									data-position="240,510" data-in="left" data-step="2" data-delay="200">Plots</p>
-	                        <?php echo $this->Html->image('search_by.png', 
-	                        	array('alt' => '', 
-	                        		'data-step' => '2',
-	                        		'data-position' => '40,0',
-	                        		'data-in' => 'bottomRight',
-	                        		'data-delay' => '200',
-	                        		'data-out' => 'left',
-	                        		'style' => 'width:auto; height:auto')); ?>
-															
+									data-position="160,500" data-in="left" data-step="2" data-delay="200">Histogram</p>
 							<p 		class="claim" 	
-									data-position="280,510" data-in="left" data-step="3" data-delay="200">Histograms</p>
-	                        <?php echo $this->Html->image('search_by.png', 
-	                        	array('alt' => '', 
-	                        		'data-step' => '3',
-	                        		'data-position' => '40,0',
-	                        		'data-in' => 'bottomRight',
-	                        		'data-delay' => '200',
-	                        		'data-out' => 'left',
-	                        		'style' => 'width:auto; height:auto')); ?>
-															
+									data-position="200,500" data-in="left" data-step="3" data-delay="200">Line Chart</p>
 							<p 		class="claim" 	
-									data-position="320,510" data-in="left" data-step="4" data-delay="200">Map</p>
-	                        <?php echo $this->Html->image('search_by.png', 
-	                        	array('alt' => '', 
-	                        		'data-step' => '4',
-	                        		'data-position' => '40,0',
-	                        		'data-in' => 'bottomRight',
-	                        		'data-delay' => '200',
-	                        		'data-out' => 'left',
-	                        		'style' => 'width:auto; height:auto')); ?>
+									data-position="240,500" data-in="left" data-step="4" data-delay="200">Geo Chart</p>						
+							<p 		class="claim" 	
+									data-position="280,500" data-in="left" data-step="5" data-delay="200">Pie Chart</p>
+							<p 		class="claim" 	
+									data-position="320,500" data-in="left" data-step="6" data-delay="200">Bar Chart</p>							
 	                    </div>
-	
+						<!-- Slider Number 5a -->
 						<div class="slide"> 
-							<p 		class="claim"		
-									data-position="90,30" data-in="left" data-step="3" data-special="cycle" data-delay="100" data-out="top">DOWNLOAD SPECIFIC CASES</p>
-
-
-	                        <?php echo $this->Html->image('case_down.png', 
+							<p 		class="claim" 	
+									data-position="200,700" data-in="left" data-out="right" data-step="1" data-delay="50">Histogram</p>
+	                        <?php echo $this->Html->image('histogram.png', 
 	                        	array('alt' => '', 
-	                        		'data-step' => '3',
-	                        		'data-position' => '20,630',
-	                        		'data-in' => 'left',
-	                        		'data-delay' => '650',
+	                        		'data-step' => '1',
+	                        		'data-position' => '10,40',
+	                        		'data-in' => 'bottomRight',
+	                        		'data-delay' => '50',
+	                        		'data-out' => 'left',
+	                        		'style' => 'width:auto; height:auto')); ?>
+						</div>
+						<!-- Slider Number 5b -->
+						<div class="slide"> 
+							<p 		class="claim" 	
+									data-position="200,700" data-in="topRight" data-out="top" data-step="1" data-delay="200">Line Chart</p>
+	                        <?php echo $this->Html->image('line.png', 
+	                        	array('alt' => '', 
+	                        		'data-step' => '1',
+	                        		'data-position' => '-40,40',
+	                        		'data-in' => 'top',
+	                        		'data-delay' => '200',
 	                        		'data-out' => 'bottom',
 	                        		'style' => 'width:auto; height:auto')); ?>
-	                        </div>
-			 
-
 						</div>
+						<!-- Slider Number 5c -->
+						<div class="slide"> 
+							<p 		class="claim" 	
+									data-position="200,700" data-in="bottom" data-out="left" data-step="1" data-delay="200">Geo Charts</p>
+	                        <?php echo $this->Html->image('geo.png', 
+	                        	array('alt' => '', 
+	                        		'data-step' => '1',
+	                        		'data-position' => '10,40',
+	                        		'data-in' => 'right',
+	                        		'data-delay' => '200',
+	                        		'data-out' => 'bottom',
+	                        		'style' => 'width:auto; height:auto')); ?>	
+						</div>
+						<!-- Slider Number 5c -->
+						<div class="slide"> 
+							<p 		class="claim" 	
+									data-position="200,700" data-in="bottomRight" data-out="fade" data-step="1" data-delay="200">Pie Charts</p>
+	                        <?php echo $this->Html->image('pie.png', 
+	                        	array('alt' => '', 
+	                        		'data-step' => '1',
+	                        		'data-position' => '-40,80',
+	                        		'data-in' => 'toLeft',
+	                        		'data-delay' => '200',
+	                        		'data-out' => 'fade',
+	                        		'style' => 'width:auto; height:auto')); ?>
+						</div>
+						<!-- Slider Number 5d -->
+						<div class="slide"> 
+							<p 		class="claim" 	
+									data-position="200,700" data-in="fade" data-out="top" data-step="1" data-delay="200">Bar Charts</p>
+	                        <?php echo $this->Html->image('bar.png', 
+	                        	array('alt' => '', 
+	                        		'data-step' => '1',
+	                        		'data-position' => '10,40',
+	                        		'data-in' => 'fade',
+	                        		'data-delay' => '200',
+	                        		'data-out' => 'left',
+	                        		'style' => 'width:auto; height:auto')); ?>
+						</div>
+					</div>
 				</div>
 			</div>
-	  	 </div>
-
+	  	</div>
 <div class="jobs">
 	<!-- <div class="container"> -->
 	  	<div class="jobs-main">
@@ -153,115 +165,86 @@
 	  	 	  	    <div class="col-md-15 job-left">
 	  	 				<h3>User Guide</h3>
 	  	 			</div>
-	  	 	  	     <div class="col-md-15 helpful_section">
-					  <div class="container">
-		  	 	  	    <div class="col-md-6 job-left">
-		  	 	  	  	    <h3>Performing a search</h3>
-	  	 	  	  	    		<div id="accordion">
-								  <h3>Section 1</h3>
-								  <div>
-								    <p>
-								    Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
-								    ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
-								    amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
-								    odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
-								    </p>
-								  </div>
-								  <h3>Section 2</h3>
-								  <div>
-								    <p>
-								    Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet
-								    purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor
-								    velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In
-								    suscipit faucibus urna.
-								    </p>
-								  </div>
-								  <h3>Section 3</h3>
-								  <div>
-								    <p>
-								    Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis.
-								    Phasellus pellentesque purus in massa. Aenean in pede. Phasellus ac libero
-								    ac tellus pellentesque semper. Sed ac felis. Sed commodo, magna quis
-								    lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui.
-								    </p>
-								    <ul>
-								      <li>List item one</li>
-								      <li>List item two</li>
-								      <li>List item three</li>
-								    </ul>
-								  </div>
-								  <h3>Watch The Tutorial Video</h3>
-								  <div>
-								    <p>
-								    Cras dictum. Pellentesque habitant morbi tristique senectus et netus
-								    et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in
-								    faucibus orci luctus et ultrices posuere cubilia Curae; Aenean lacinia
-								    mauris vel est.
-								    </p>
-								    <p>
-								    Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus.
-								    Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
-								    inceptos himenaeos.
-								    </p>
-								  </div>
-		  	 	  	  	    	</div>
-		  	 	  	     </div>
-		  	 	  	    <div class="col-md-6 job-left">
-		  	 	  	  	    <h3>Performing an analysis</h3>
-	  	 	  	  	    		<div id="accordion2">
-								  <h3>Section 1</h3>
-								  <div>
-								    <p>
-								    Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
-								    ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
-								    amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
-								    odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
-								    </p>
-								  </div>
-								  <h3>Section 2</h3>
-								  <div>
-								    <p>
-								    Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet
-								    purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor
-								    velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In
-								    suscipit faucibus urna.
-								    </p>
-								  </div>
-								  <h3>Section 3</h3>
-								  <div>
-								    <p>
-								    Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis.
-								    Phasellus pellentesque purus in massa. Aenean in pede. Phasellus ac libero
-								    ac tellus pellentesque semper. Sed ac felis. Sed commodo, magna quis
-								    lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui.
-								    </p>
-								    <ul>
-								      <li>List item one</li>
-								      <li>List item two</li>
-								      <li>List item three</li>
-								    </ul>
-								  </div>
-								  <h3>Watch The Tutorial Video</h3>
-								  <div>
-								    <p>
-								    Cras dictum. Pellentesque habitant morbi tristique senectus et netus
-								    et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in
-								    faucibus orci luctus et ultrices posuere cubilia Curae; Aenean lacinia
-								    mauris vel est.
-								    </p>
-								    <p>
-								    Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus.
-								    Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
-								    inceptos himenaeos.
-								    </p>
-								  </div>
-		  	 	  	  	    	</div>
-		  	 	  	  	    	
-		  	 	  	     </div>
-		  	 	  	   </div>
-		  	 	  	  </div>
+					<div class="col-md-15 helpful_section">
+						<div class="container">
+							<div class="col-md-6 job-left">
+							    <h3>Performing a search</h3>
+						    		<div id="accordion">
+										<h3>1- Select a search parameter</h3>
+											<div>
+												<p>
+													<?php echo $this->Html->image('search1.png', array('style' => 'float:left'))?>	
+													To perform a global search, click on the magnifier glass.
+													<br><br>
+													<?php echo $this->Html->image('search1b.png', array('style' => 'float:left'))?>	
+													However, you may also search by a case parameter - i.e <strong>Case, Defendant, Type of Trafficking, Victims, Judge...</strong>. To do so, click on any of the parameters to view their criteria.
+												</p>
+											</div>
+										<h3>2- Select/Enter a specific criteria</h3>
+											<div>
+												<p>
+													<?php echo $this->Html->image('search2.png', array('style' => 'float:left'))?>	
+													After you have expanded a parameter, you select the criteria by which you would like to search by.
+												</p>
+											</div>
+										<h3>3- Search Result(s)</h3>
+											<div>
+												<p>
+													After selecting your search criteria &amp; hiting the search button, results will be printed out in a table.
+													<br><br>
+													<?php echo $this->Html->image('search3.png', array('style' => 'float:left'))?>	
+												</p>
+											</div>
+										<h3>Watch a Tutorial Video</h3>
+											<div>
+												<p>
+ 													<iframe width="400" height="300" src="https://www.youtube.com/embed/J4ztDU-yr74?rel=0&hd=1" frameborder="0" allowfullscreen></iframe>
+												</p>
+											</div>
+							    	</div>
+							</div>
+							<div class="col-md-6 job-left">
+								    <h3>Performing an analysis</h3>
+						    		<div id="accordion2">
+										<h3>1- Choose a graph</h3>
+											<div>
+												<p>
+													<!-- <?php echo $this->Html->image('graph1a.png', array('style' => 'float:left'))?>	 -->
+													To perform any type of data analysis, your <strong>MUST</strong> perform a search.
+													<br><br>
+													<?php echo $this->Html->image('graph1.png', array('style' => 'float:left'))?>	
+													To do data analysis, you need to choose the type of graph you want to be displayed as well variables for the graph. <strong>It must be done in a sequence</strong>
+												</p>
+											</div>
+										<h3>2- Select graph variable(s)</h3>
+											<div>
+												<p>
+													<?php echo $this->Html->image('graph2.png', array('style' => 'float:left'))?>	
+													After choosing a graph, you have to select variable you would like to be graphed.
+												</p>
+											</div>
+										<h3>3- Analyze Result(s)</h3>
+											<div>
+												<p>
+													After selecting both a graph and variables, you may graph the perform the analysis by hitting the analyze button.
+													<br><br>
+													<?php echo $this->Html->image('graph3.png', array('style' => 'float:left'))?>	
+												</p>
+											</div>
+										<h3>Watch a Tutorial Video</h3>
+											<div>
+												<p>
+ 													<iframe width="400" height="300" src="https://www.youtube.com/embed/J4ztDU-yr74?rel=0&hd=1" frameborder="0" allowfullscreen></iframe>
+												</p>
+											</div>
+							    	</div>
+								    	
+							 </div>
+						</div>
+					</div>
 	  	 	  </div>
 	  	</div>
-	<!-- </div> -->
 </div>
-
+<style type="text/css">
+	#accordion h3, #accordion2 h3{text-align: left;}
+</style>

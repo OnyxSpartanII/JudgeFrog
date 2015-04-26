@@ -177,7 +177,7 @@
 													To perform a global search, click on the magnifier glass.
 													<br><br>
 													<?php echo $this->Html->image('search1b.png', array('style' => 'float:left'))?>	
-													However, you may also search by a case parameter - i.e <strong>Case, Defendant, Type of Trafficking, Victims, Judge...</strong>. To do so, click on any of the parameters to view their criteria.
+													However, you may also search by a case parameter - i.e <strong>Case, Defendant, Type of Trafficking, Victims, Judge...</strong>. To do so, click on any of the parameters to view the criteria.
 												</p>
 											</div>
 										<h3>2- Select/Enter a specific criteria</h3>
@@ -190,7 +190,7 @@
 										<h3>3- Search Result(s)</h3>
 											<div>
 												<p>
-													After selecting your search criteria &amp; hiting the search button, results will be printed out in a table.
+													After selecting your search criteria and clicking the search button, results will be printed out in a table.
 													<br><br>
 													<?php echo $this->Html->image('search3.png', array('style' => 'float:left'))?>	
 												</p>
@@ -210,23 +210,23 @@
 											<div>
 												<p>
 													<!-- <?php echo $this->Html->image('graph1a.png', array('style' => 'float:left'))?>	 -->
-													To perform any type of data analysis, your <strong>MUST</strong> perform a search.
+													To perform any type of data analysis, you <strong>MUST</strong> perform a search.
 													<br><br>
 													<?php echo $this->Html->image('graph1.png', array('style' => 'float:left'))?>	
-													To do data analysis, you need to choose the type of graph you want to be displayed as well variables for the graph. <strong>It must be done in a sequence</strong>
+													To do data analysis, you need to choose the type of graph you want to be displayed as well the variable(s) for the graph. <strong>It must be done in a sequence</strong>
 												</p>
 											</div>
 										<h3>2- Select graph variable(s)</h3>
 											<div>
 												<p>
 													<?php echo $this->Html->image('graph2.png', array('style' => 'float:left'))?>	
-													After choosing a graph, you have to select variable you would like to be graphed.
+													After choosing a graph, you have to select the variable(s) you would like graphed.
 												</p>
 											</div>
 										<h3>3- Analyze Result(s)</h3>
 											<div>
 												<p>
-													After selecting both a graph and variables, you may graph the perform the analysis by hitting the analyze button.
+													After selecting both a graph and variables, you may graph and perform the analysis by hitting the analyze button.
 													<br><br>
 													<?php echo $this->Html->image('graph3.png', array('style' => 'float:left'))?>	
 												</p>

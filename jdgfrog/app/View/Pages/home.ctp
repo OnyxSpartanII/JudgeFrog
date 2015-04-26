@@ -213,7 +213,7 @@
 													To perform any type of data analysis, you <strong>MUST</strong> perform a search.
 													<br><br>
 													<?php echo $this->Html->image('graph1.png', array('style' => 'float:left'))?>	
-													To do data analysis, you need to choose the type of graph you want to be displayed as well the variable(s) for the graph. <strong>It must be done in a sequence</strong>
+													To do data analysis, you need to choose the type of graph you want displayed as well the variable(s) for the graph. <strong>It must be done in a sequence</strong>
 												</p>
 											</div>
 										<h3>2- Select graph variable(s)</h3>
@@ -226,7 +226,7 @@
 										<h3>3- Analyze Result(s)</h3>
 											<div>
 												<p>
-													After selecting both a graph and variables, you may graph and perform the analysis by hitting the analyze button.
+													After selecting both a graph and the variable(s), you may graph and perform the analysis by clicking the analyze button.
 													<br><br>
 													<?php echo $this->Html->image('graph3.png', array('style' => 'float:left'))?>	
 												</p>

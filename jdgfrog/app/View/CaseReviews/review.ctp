@@ -132,7 +132,7 @@
           if (confirmDelete)
           {
               $.ajax({
-                url: '/CaseReviews/publishCase/' + index,
+                url: '/JudgeFrog/jdgfrog/CaseReviews/publishCase/' + index,
                 cache: false,
                 type: 'GET',
                 dataType: 'HTML',

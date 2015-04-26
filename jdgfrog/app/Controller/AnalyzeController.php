@@ -18,6 +18,7 @@ class AnalyzeController extends AppController {
 
 	public function index() {
 		$cases = $this->Session->read('case_info');
+		$query = $this->Session->read('query');
 	}
 
 	public function generateGraph($type, $yIndex, $xIndex) {
@@ -25,6 +26,7 @@ class AnalyzeController extends AppController {
 		$this->autoRender = false;
 
 		$cases = $this->Session->read('case_info');
+		$query = $this->Session->read('query');
 
 		$yAxisOptions = array('Total Cases', 'Total Defendants', 'Avg Defendants Per Case', 'Total Months Sentenced', 'Avg Months Sentenced');
 		$xAxisOptions = array('Year', 'Defendant By Gender', 'Defendant By Race', 'Judge By Gender', 'Judge By Race', 'Judge By Party', 'Crime Type', 'Statute', 'Federal District', 'State');

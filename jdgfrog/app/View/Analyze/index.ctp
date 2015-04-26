@@ -41,20 +41,24 @@
                     <h2><a href="#">2. Customize</a></h2>
                       <div>
                         <?php
-                        echo $this->Form->create(array('inputDefaults' => array('label' => false, 'div' => false)));?>
-                        <?php
-                        echo $this->Form->input('yAxisBox', array('empty' => 'Dependent', 'id' => 'yAxisBox', 'options' => array('Total Cases', 'Total Defendants', 'Avg Defendants Per Case', 'Total Months Sentenced')));?>
-                        <?php
-                        echo $this->Form->input('xAxisBox', array('empty' => 'Independent', 'id' => 'xAxisBox', 'options' => array('Year', 'Defendant By Gender', 'Defendant By Race', 'Judge By Gender', 'Judge By Race', 'Judge By Party', 'Crime Type', 'Statute', 'Federal District','State')));?>
-                        <?php
-                        	echo $this->Form->input('hstBox', array('empty' => 'Independent', 'id' => 'hstBox', 'options' => array('Defendants per Case', 'Total Victims per Case', 'Minor Victims per Case', 'Female Victims per Case', 'Foreign Victims per Case', 'Months Sentenced per Defendant', 'Charges per Defendant', 'Sentences per Defendant')));
-                        ?>
-                        <?php
-                        echo $this->Form->input('geoChartCombo', array('empty' => 'GeoChart', 'id' => 'geoChartCombo', 'options' => array('Case By State')));?>
-                      <?php
-                         echo $this->Form->end(array('id' => 'submit_form'));?>
+                        echo $this->Form->create(array('inputDefaults' => array('label' => false, 'div' => false)));
+                        echo $this->Form->input('yAxisBox', array('empty' => 'Dependent', 'style' => 'margin-bottom:10px', 'id' => 'yAxisBox', 'options' => array('Total Cases', 'Total Defendants', 'Avg Defendants Per Case', 'Total Months Sentenced')));
+                        echo $this->Form->input('xAxisBox', array('empty' => 'Independent', 'style' => 'margin-bottom:10px','id' => 'xAxisBox', 'options' => array('Year', 'Defendant By Gender', 'Defendant By Race', 'Judge By Gender', 'Judge By Race', 'Judge By Party', 'Crime Type', 'Statute', 'Federal District','State')));
+                        echo $this->Form->input('hstBox', array('empty' => 'Independent', 'style' => 'margin-bottom:10px','id' => 'hstBox', 'options' => array('Defendants per Case', 'Total Victims per Case', 'Minor Victims per Case', 'Female Victims per Case', 'Foreign Victims per Case', 'Months Sentenced per Defendant', 'Charges per Defendant', 'Sentences per Defendant')));
+                        echo $this->Form->input('geoChartCombo', array('empty' => 'GeoChart', 'style' => 'margin-bottom:10px','id' => 'geoChartCombo', 'options' => array('Case By State')));
+                        echo $this->Form->end(array('id' => 'submit_form'));?>
                       </div>
                     
+                    <h2><a href="#">3. Search Parameters</a></h2>
+                      <div style="text-align:left;">
+                      	<?php
+                      		$data = $this->Session->read('query');
+                      		foreach ($data as $key => $value) {
+                      			echo $value . "\n<br/>";
+                      		}
+                      	?>
+                      </div>
+
                     </div><!-- END OF COLLAPSIBLE PANEL -->
                 </div> 
               <div class="col-md-9 contact-left">
@@ -96,6 +100,10 @@ SCRIPTS
 
 <script>
 	$('.graph_selection').children().children().prop('checked',false);
+	$('#yAxisBox').hide();
+	$('#xAxisBox').hide();
+	$('#hstBox').hide();
+	$('#geoChartCombo').hide();
 
 	$('#barGraphRadio').click(function() {
 		$('#yAxisBox').show();

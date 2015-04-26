@@ -140,7 +140,7 @@ class CaseReviewsController extends AppController {
 
 		$races = array('White','Black','Hispanic','Asian','Indian','Other','Unknown');
 		$bail_types = array('None','Surety','Non-Surety');
-		$ocg_types = array('Other','Mom & Pop','Street Gang','Cartel/Syndicate/Mafia','','Prison Gang');
+		$ocg_types = array('','Mom & Pop','Street Gang','Cartel/Syndicate/Mafia','','Prison Gang','Other');
 		$ocg_scopes = array('Other','Local Only','Trans-State','Trans-National');
 		$ocg_races = array('None','Black','White','Hispanic','Asian','Other');
 
@@ -163,7 +163,7 @@ class CaseReviewsController extends AppController {
 	                  	'<td>' . $case_info[$index][1] . '</td>' .
 	                  	'<td>' . $case_info[$index][6] . '</td>' .
 	                  	'<td>' . $case_info[$index][7] . '</td>' .
-	                  	'<td>' . $case_info[$index][9] . ($case_info[$index][8] !== null ? '-' . $case_info[$index][8] : '') .
+	                  	'<td>' . $case_info[$index][9] . ($case_info[$index][8] !== null ? ' ' . $case_info[$index][8] : '') .
 	                  	'<td>' . split("-", $case_info[$index][2])[0] . '</td>' .
 	                  '</tr>' .
 	                  '</tbody>' .

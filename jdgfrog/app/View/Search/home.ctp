@@ -301,7 +301,7 @@ $(function() {
         var judge_races = ['White', 'Black', 'Hispanic', 'Asian', 'Indian'];
         var races = ['White','Black','Hispanic','Asian','Other','Other'];
         var bail_types = ['None','Surety','Non-Surety'];
-        var ocg_types = ['Other','Mom & Pop','Street Gang','Cartel/Syndicate/Mafia','','Prison Gang'];
+        var ocg_types = ['','Mom & Pop','Street Gang','Cartel/Syndicate/Mafia','','Prison Gang','Other'];
         var ocg_races = ['None','Black','White','Hispanic','Asian','Other'];
         var ocg_scopes = ['Other','Local Only','Trans-State','Trans-National'];
 

@@ -19,7 +19,7 @@
 		<div class="container">
 			<div class="contact-main">	
 				<div class="case_top_bar">
-						<h3 class="page_title">Case Reviewing</h3>
+						<h3 class="page_title">Edit Case</h3>
 					</div>
 				<div class="col-md-12">
 					<div class="col-md-5 case_creation_form" id="form_style" style="float:inherit">

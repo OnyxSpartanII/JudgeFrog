@@ -66,9 +66,7 @@ class UsersController extends AppController {
 				$this->Session->setFlash(__('Sorry the user could not be created!'));
 			}
 		}
-
-
-		// Fetch current users from users table and throw them on the table
+		// Fetch current users from users table
 		$allUsers = $this->User->find('all', array(
 											'fields' => array(
 															'User.username', 

@@ -1384,6 +1384,7 @@ class SearchController extends AppController {
 		$this->set('prev_search', $prev_search);
 		$this->set('query', $query);
 		$this->Session->write('query', $query);
+		$this->set('param', $this->request->data);
 	}
 
 	public function home() {

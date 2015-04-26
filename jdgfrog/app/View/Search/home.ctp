@@ -677,131 +677,131 @@ $(function() {
       echo 'var ttlprob_min = 0;';
       echo 'var ttlprob_max = 300;';
 
-      if (isset($query)) {
-        if ($query['Datum']['case_NumDef']) {
-          echo 'var numdef_min = ' . explode(';',$query['Datum']['case_NumDef'])[0] . ';';
-          echo 'var numdef_max = ' . explode(';',$query['Datum']['case_NumDef'])[1] . ';';
+      if (isset($param)) {
+        if ($param['Datum']['case_NumDef']) {
+          echo 'var numdef_min = ' . explode(';',$param['Datum']['case_NumDef'])[0] . ';';
+          echo 'var numdef_max = ' . explode(';',$param['Datum']['case_NumDef'])[1] . ';';
         }
 
-        if ($query['Datum']['defendant_YOB']) {
-          echo 'var defyob_min = ' . explode(';',$query['Datum']['defendant_YOB'])[0] . ';';
-          echo 'var defyob_max = ' . explode(';',$query['Datum']['defendant_YOB'])[1] . ';';
+        if ($param['Datum']['defendant_YOB']) {
+          echo 'var defyob_min = ' . explode(';',$param['Datum']['defendant_YOB'])[0] . ';';
+          echo 'var defyob_max = ' . explode(';',$param['Datum']['defendant_YOB'])[1] . ';';
         }
 
-        if ($query['Datum']['judge_YearApp']) {
-          echo 'var jyapp_min = ' . explode(';',$query['Datum']['judge_YearApp'])[0] . ';';
-          echo 'var jyapp_max = ' . explode(';',$query['Datum']['judge_YearApp'])[1] . ';';
+        if ($param['Datum']['judge_YearApp']) {
+          echo 'var jyapp_min = ' . explode(';',$param['Datum']['judge_YearApp'])[0] . ';';
+          echo 'var jyapp_max = ' . explode(';',$param['Datum']['judge_YearApp'])[1] . ';';
         }
 
-        if ($query['Datum']['victims_Total']) {
-          echo 'var victtl_min = ' . explode(';',$query['Datum']['victims_Total'])[0] . ';';
-          echo 'var victtl_max = ' . explode(';',$query['Datum']['victims_Total'])[1] . ';';
+        if ($param['Datum']['victims_Total']) {
+          echo 'var victtl_min = ' . explode(';',$param['Datum']['victims_Total'])[0] . ';';
+          echo 'var victtl_max = ' . explode(';',$param['Datum']['victims_Total'])[1] . ';';
         }
 
-        if ($query['Datum']['victims_Minor']) {
-          echo 'var vicmin_min = ' . explode(';',$query['Datum']['victims_Minor'])[0] . ';';
-          echo 'var vicmin_max = ' . explode(';',$query['Datum']['victims_Minor'])[1] . ';';
+        if ($param['Datum']['victims_Minor']) {
+          echo 'var vicmin_min = ' . explode(';',$param['Datum']['victims_Minor'])[0] . ';';
+          echo 'var vicmin_max = ' . explode(';',$param['Datum']['victims_Minor'])[1] . ';';
         }
 
-        if ($query['Datum']['victims_Foreign']) {
-          echo 'var vicfgn_min = ' . explode(';',$query['Datum']['victims_Foreign'])[0] . ';';
-          echo 'var vicfgn_max = ' . explode(';',$query['Datum']['victims_Foreign'])[1] . ';';
+        if ($param['Datum']['victims_Foreign']) {
+          echo 'var vicfgn_min = ' . explode(';',$param['Datum']['victims_Foreign'])[0] . ';';
+          echo 'var vicfgn_max = ' . explode(';',$param['Datum']['victims_Foreign'])[1] . ';';
         }
 
-        if ($query['Datum']['victims_Female']) {
-          echo 'var vicfem_min = ' . explode(';',$query['Datum']['victims_Female'])[0] . ';';
-          echo 'var vicfem_max = ' . explode(';',$query['Datum']['victims_Female'])[1] . ';';
+        if ($param['Datum']['victims_Female']) {
+          echo 'var vicfem_min = ' . explode(';',$param['Datum']['victims_Female'])[0] . ';';
+          echo 'var vicfem_max = ' . explode(';',$param['Datum']['victims_Female'])[1] . ';';
         }
 
-        if ($query['Datum']['ad_DateArrest']) {
-          echo 'var arrdate_min = ' . explode(';',$query['Datum']['ad_DateArrest'])[0] . ';';
-          echo 'var arrdate_max = ' . explode(';',$query['Datum']['ad_DateArrest'])[1] . ';';
+        if ($param['Datum']['ad_DateArrest']) {
+          echo 'var arrdate_min = ' . explode(';',$param['Datum']['ad_DateArrest'])[0] . ';';
+          echo 'var arrdate_max = ' . explode(';',$param['Datum']['ad_DateArrest'])[1] . ';';
         }
 
-        if ($query['Datum']['ad_BailAmount']) {
-          echo 'var bailamt_min = ' . explode(';',$query['Datum']['ad_BailAmount'])[0] . ';';
-          echo 'var bailamt_max = ' . explode(';',$query['Datum']['ad_BailAmount'])[1] . ';';
+        if ($param['Datum']['ad_BailAmount']) {
+          echo 'var bailamt_min = ' . explode(';',$param['Datum']['ad_BailAmount'])[0] . ';';
+          echo 'var bailamt_max = ' . explode(';',$param['Datum']['ad_BailAmount'])[1] . ';';
         }
 
-        if ($query['Datum']['cd_Date']) {
-          echo 'var cddate_min = ' . explode(';',$query['Datum']['cd_Date'])[0] . ';';
-          echo 'var cddate_max = ' . explode(';',$query['Datum']['cd_Date'])[1] . ';';
+        if ($param['Datum']['cd_Date']) {
+          echo 'var cddate_min = ' . explode(';',$param['Datum']['cd_Date'])[0] . ';';
+          echo 'var cddate_max = ' . explode(';',$param['Datum']['cd_Date'])[1] . ';';
         }
 
-        if ($query['Datum']['cd_TtlCharges']) {
-          echo 'var ttlchrg_min = ' . explode(';',$query['Datum']['cd_TtlCharges'])[0] . ';';
-          echo 'var ttlchrg_max = ' . explode(';',$query['Datum']['cd_TtlCharges'])[1] . ';';
+        if ($param['Datum']['cd_TtlCharges']) {
+          echo 'var ttlchrg_min = ' . explode(';',$param['Datum']['cd_TtlCharges'])[0] . ';';
+          echo 'var ttlchrg_max = ' . explode(';',$param['Datum']['cd_TtlCharges'])[1] . ';';
         }
 
-        if ($query['Datum']['cd_Counts']) {
-          echo 'var counts_min = ' . explode(';',$query['Datum']['cd_Counts'])[0] . ';';
-          echo 'var counts_max = ' . explode(';',$query['Datum']['cd_Counts'])[1] . ';';
+        if ($param['Datum']['cd_Counts']) {
+          echo 'var counts_min = ' . explode(';',$param['Datum']['cd_Counts'])[0] . ';';
+          echo 'var counts_max = ' . explode(';',$param['Datum']['cd_Counts'])[1] . ';';
         }
 
-        if ($query['Datum']['cd_CountsNP']) {
-          echo 'var countsnp_min = ' . explode(';',$query['Datum']['cd_CountsNP'])[0] . ';';
-          echo 'var countsnp_max = ' . explode(';',$query['Datum']['cd_CountsNP'])[1] . ';';
+        if ($param['Datum']['cd_CountsNP']) {
+          echo 'var countsnp_min = ' . explode(';',$param['Datum']['cd_CountsNP'])[0] . ';';
+          echo 'var countsnp_max = ' . explode(';',$param['Datum']['cd_CountsNP'])[1] . ';';
         }
 
-        if ($query['Datum']['cd_PleaDismiss']) {
-          echo 'var pleadis_min = ' . explode(';',$query['Datum']['cd_PleaDismiss'])[0] . ';';
-          echo 'var pleadis_max = ' . explode(';',$query['Datum']['cd_PleaDismiss'])[1] . ';';
+        if ($param['Datum']['cd_PleaDismiss']) {
+          echo 'var pleadis_min = ' . explode(';',$param['Datum']['cd_PleaDismiss'])[0] . ';';
+          echo 'var pleadis_max = ' . explode(';',$param['Datum']['cd_PleaDismiss'])[1] . ';';
         }
 
-        if ($query['Datum']['cd_PleaGuilty']) {
-          echo 'var pleag_min = ' . explode(';',$query['Datum']['cd_PleaGuilty'])[0] . ';';
-          echo 'var pleag_max = ' . explode(';',$query['Datum']['cd_PleaGuilty'])[1] . ';';
+        if ($param['Datum']['cd_PleaGuilty']) {
+          echo 'var pleag_min = ' . explode(';',$param['Datum']['cd_PleaGuilty'])[0] . ';';
+          echo 'var pleag_max = ' . explode(';',$param['Datum']['cd_PleaGuilty'])[1] . ';';
         }
 
-        if ($query['Datum']['cd_TrialGuilty']) {
-          echo 'var trialg_min = ' . explode(';',$query['Datum']['cd_TrialGuilty'])[0] . ';';
-          echo 'var trialg_max = ' . explode(';',$query['Datum']['cd_TrialGuilty'])[1] . ';';
+        if ($param['Datum']['cd_TrialGuilty']) {
+          echo 'var trialg_min = ' . explode(';',$param['Datum']['cd_TrialGuilty'])[0] . ';';
+          echo 'var trialg_max = ' . explode(';',$param['Datum']['cd_TrialGuilty'])[1] . ';';
         }
 
-        if ($query['Datum']['cd_TrialNotGuilty']) {
-          echo 'var trialng_min = ' . explode(';',$query['Datum']['cd_TrialNotGuilty'])[0] . ';';
-          echo 'var trialng_max = ' . explode(';',$query['Datum']['cd_TrialNotGuilty'])[1] . ';';
+        if ($param['Datum']['cd_TrialNotGuilty']) {
+          echo 'var trialng_min = ' . explode(';',$param['Datum']['cd_TrialNotGuilty'])[0] . ';';
+          echo 'var trialng_max = ' . explode(';',$param['Datum']['cd_TrialNotGuilty'])[1] . ';';
         } else {
         }
 
-        if ($query['Datum']['cd_Sentence']) {
-          echo 'var sent_min = ' . explode(';',$query['Datum']['cd_Sentence'])[0] . ';';
-          echo 'var sent_max = ' . explode(';',$query['Datum']['cd_Sentence'])[1] . ';';
+        if ($param['Datum']['cd_Sentence']) {
+          echo 'var sent_min = ' . explode(';',$param['Datum']['cd_Sentence'])[0] . ';';
+          echo 'var sent_max = ' . explode(';',$param['Datum']['cd_Sentence'])[1] . ';';
         }
 
-        if ($query['Datum']['cd_Probation']) {
-          echo 'var cdprob_min = ' . explode(';',$query['Datum']['cd_Probation'])[0] . ';';
-          echo 'var cdprob_max = ' . explode(';',$query['Datum']['cd_Probation'])[1] . ';';
+        if ($param['Datum']['cd_Probation']) {
+          echo 'var cdprob_min = ' . explode(';',$param['Datum']['cd_Probation'])[0] . ';';
+          echo 'var cdprob_max = ' . explode(';',$param['Datum']['cd_Probation'])[1] . ';';
         }
 
-        if ($query['Datum']['cd_Fines']) {
-          echo 'var cdfines_min = ' . explode(';',$query['Datum']['cd_Fines'])[0] . ';';
-          echo 'var cdfines_max = ' . explode(';',$query['Datum']['cd_Fines'])[1] . ';';
+        if ($param['Datum']['cd_Fines']) {
+          echo 'var cdfines_min = ' . explode(';',$param['Datum']['cd_Fines'])[0] . ';';
+          echo 'var cdfines_max = ' . explode(';',$param['Datum']['cd_Fines'])[1] . ';';
         }
 
-        if ($query['Datum']['sd_TtlFelonies']) {
-          echo 'var ttlfel_min = ' . explode(';',$query['Datum']['sd_TtlFelonies'])[0] . ';';
-          echo 'var ttlfel_max = ' . explode(';',$query['Datum']['sd_TtlFelonies'])[1] . ';';
+        if ($param['Datum']['sd_TtlFelonies']) {
+          echo 'var ttlfel_min = ' . explode(';',$param['Datum']['sd_TtlFelonies'])[0] . ';';
+          echo 'var ttlfel_max = ' . explode(';',$param['Datum']['sd_TtlFelonies'])[1] . ';';
         }
 
-        if ($query['Datum']['sd_DateTerminated']) {
-          echo 'var dateterm_min = ' . explode(';',$query['Datum']['sd_DateTerminated'])[0] . ';';
-          echo 'var dateterm_max = ' . explode(';',$query['Datum']['sd_DateTerminated'])[1] . ';';
+        if ($param['Datum']['sd_DateTerminated']) {
+          echo 'var dateterm_min = ' . explode(';',$param['Datum']['sd_DateTerminated'])[0] . ';';
+          echo 'var dateterm_max = ' . explode(';',$param['Datum']['sd_DateTerminated'])[1] . ';';
         }
 
-        if ($query['Datum']['sd_TtlMonths']) {
-          echo 'var ttlm_min = ' . explode(';',$query['Datum']['sd_TtlMonths'])[0] . ';';
-          echo 'var ttlm_max = ' . explode(';',$query['Datum']['sd_TtlMonths'])[1] . ';';
+        if ($param['Datum']['sd_TtlMonths']) {
+          echo 'var ttlm_min = ' . explode(';',$param['Datum']['sd_TtlMonths'])[0] . ';';
+          echo 'var ttlm_max = ' . explode(';',$param['Datum']['sd_TtlMonths'])[1] . ';';
         }
 
-        if ($query['Datum']['sd_Restitution']) {
-          echo 'var rest_min = ' . explode(';',$query['Datum']['sd_Restitution'])[0] . ';';
-          echo 'var rest_max = ' . explode(';',$query['Datum']['sd_Restitution'])[1] . ';';
+        if ($param['Datum']['sd_Restitution']) {
+          echo 'var rest_min = ' . explode(';',$param['Datum']['sd_Restitution'])[0] . ';';
+          echo 'var rest_max = ' . explode(';',$param['Datum']['sd_Restitution'])[1] . ';';
         }
 
-        if ($query['Datum']['sd_MonthsProb']) {
-          echo 'var ttlprob_min = ' . explode(';',$query['Datum']['sd_MonthsProb'])[0] . ';';
-          echo 'var ttlprob_max = ' . explode(';',$query['Datum']['sd_MonthsProb'])[1] . ';';
+        if ($param['Datum']['sd_MonthsProb']) {
+          echo 'var ttlprob_min = ' . explode(';',$param['Datum']['sd_MonthsProb'])[0] . ';';
+          echo 'var ttlprob_max = ' . explode(';',$param['Datum']['sd_MonthsProb'])[1] . ';';
         }
       }
     ?>

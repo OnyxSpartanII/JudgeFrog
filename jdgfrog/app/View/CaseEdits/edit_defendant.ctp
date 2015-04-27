@@ -1,6 +1,6 @@
 <?php
 		$this->layout = 'admin_panel_layout';
-		$this->set('title', 'Edit Case - Admin Panel | Human Trafficking Data');
+		$this->set('title', 'Edit Defendant - Admin Panel | Human Trafficking Data');
 		$this->set('active', 'edit');
 ?>
 <!--search start here-->
@@ -12,11 +12,6 @@
 						<span style="color:#888; font-size:23px;"><?php echo $case['DataInProgress']['CaseNam']; ?></span>
 					</h3>
 				</div>
-					<?php 	
-						// echo 'Case Number: '.$case['DataInProgress']['CaseNum'];
-						// echo ' | ';
-						// echo 'Case Name: '.$case['DataInProgress']['CaseNam']; 
-					?>
 				<div class="col-md-12">
 				<div class="col-md-6 case_creation_form" id="form_style" style="float:inherit">
 						<h2 id="caseInfoFS_Title"><?php echo $case['DataInProgress']['DefLast'];?>'s Details</h2>
@@ -26,7 +21,7 @@
 								  	echo $this->Form->input('DefLast', 		
 															array(
 																'default' => $case['DataInProgress']['DefLast'], 
-																'label' => 'Defendant Last Name'));
+																'label' => 'Defendant Last Name*'));
 									echo $this->Form->input('DefFirst', 		
 																array(
 																	'default' => $case['DataInProgress']['DefFirst'],
@@ -37,7 +32,7 @@
 									echo $this->Form->input('DefRace', 			array('default' => $case['DataInProgress']['DefRace'], 'label' => '', 'empty' => 'Race', 'options' => array('White', 'Black', 'Hispanic', 'Asian', 'Other')));
 									echo $this->Form->input('DefArrestAge',		array('label' => 'Defendant Age', 'type' => 'text', 'default' => $case['DataInProgress']['DefArrestAge']));
 									echo $this->Form->input('Alias', 			array('default' => $case['DataInProgress']['Alias'])); 
-									echo $this->Form->input('ChargeDate', 		array('default' => $case['DataInProgress']['ChargeDate'], 'label' => 'Charge Date', 'placeholder' => '11/04/1986', 'id' => 'charge_Date', 'type' => 'text', 'class' => 'date', 'data-date' 	=> '2012-12-02', 'data-date-format' => 'yyyy-mm-dd')); 
+									echo $this->Form->input('ChargeDate', 		array('default' => $case['DataInProgress']['ChargeDate'], 'label' => 'Charge Date*', 'placeholder' => '11/04/1986', 'id' => 'charge_Date', 'type' => 'text', 'class' => 'date', 'data-date' 	=> '2012-12-02', 'data-date-format' => 'yyyy-mm-dd')); 
 									echo $this->Form->input('ArrestDate', 		array('default' => $case['DataInProgress']['ArrestDate'], 'label' => 'Arrest Date', 'placeholder' => '01/24/2001', 'class' => 'date', 'type' => 'text', 'id' => 'arrest_Date', 'data-date' 	=> '2012-12-02', 'data-date-format' => 'yyyy-mm-dd'));
 								?>
 								<hr style="border-top:1px solid #CCC;">
@@ -403,7 +398,7 @@
 					<?php echo $this->Form->submit('Submit'); ?>
 					<?php echo $this->Form->end(); ?>
 						<br>
-					<p><strong>*Note: </strong>Not all fields are required</p>
+					<p><strong>*Note: </strong>Required Fields</p>
 					</div>
 				</div>
 			</div>	

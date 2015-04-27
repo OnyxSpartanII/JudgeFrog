@@ -27,8 +27,8 @@
 							<fieldset id="caseInfoFS">
 							<?php 
 								echo $this->Form->create('DataInProgress');
-								echo $this->Form->input('CaseNam', array('label' => 'Case Name', 'default'  => $case['0']['DataInProgress']['CaseNam']));
-								echo $this->Form->input('CaseNum', array('type' => 'text', 'label' => 'Case Number', 'default' => $case['0']['DataInProgress']['CaseNum']));
+								echo $this->Form->input('CaseNam', array('label' => 'Case Name*', 'default'  => $case['0']['DataInProgress']['CaseNam']));
+								echo $this->Form->input('CaseNum', array('type' => 'text', 'label' => 'Case Number*', 'default' => $case['0']['DataInProgress']['CaseNum']));
 								echo $this->Form->input('NumDef', array('type' => 'text', 'label'=> 'Number of Defendants', 'default' => $case['0']['DataInProgress']['NumDef'], 'readonly' => 'readonly'));
 								echo "<hr style='border-top:3px solid #DDD'>";
 								echo $this->Form->input('JudgeName', array('label'=> 'Judge Name', 'default' => $case['0']['DataInProgress']['JudgeName']));
@@ -124,7 +124,7 @@
 						<?php echo $this->Form->input('SubmittedForReview', array('label' => 'Submit Case For Review?', 'type' => 'checkbox', 'style' => 'margin-top: -5px;')); ?>
 						<div style="max-width:60%;margin: 0 auto"><?php echo $this->Form->end('Submit'); ?></div>
 						<br>
-					<p><strong>*Note: </strong>All fields are required</p>
+					<p><strong>*Note: </strong>Required Fields</p>
 				</div>
 		</div>
 	</div>

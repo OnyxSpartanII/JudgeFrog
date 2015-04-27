@@ -43,7 +43,7 @@
 							<p 		class="claim"			
 									 data-in="fade" data-position="20,350" data-step="1" data-out="fade" style="font-size:2em; color:#fe2232">500,000 to 800,000</p>
 							<p 		class="claim"			
-									 data-in="fade" data-position="130,170" data-step="2" data-out="fade" style="font-size:1em;">is the approximate amount of trafficked people around the world<span><p style="font-size:1.5em; color:red; font-weight:bold;" data-step="3" data-position="120,720" data-in="fade" data-out="fade" data-delay="1500">Every year</p></span></p>
+									 data-in="fade" data-position="130,190" data-step="2" data-out="fade" style="font-size:1em;">is the approximate amount of trafficked people around the world<span><p style="font-size:1.5em; color:red; font-weight:bold;" data-step="3" data-position="150,400" data-in="fade" data-out="fade" data-delay="1500">Every year</p></span></p>
 						</div>
 						<!-- Slider Number 3 -->
 						<div class="slide"> 
@@ -69,7 +69,7 @@
 	                    </div>
 						<div class="slide"> 							
 							<p 		class="claim" 	
-									data-position="0,300" data-in="left" data-step="1" data-delay="200">Manipulate the Data Using...</p>
+									data-position="0,300" data-in="left" data-step="1" data-delay="200">Analyze the Data Using...</p>
 	                        <?php echo $this->Html->image('analysis.png', 
 	                        	array('alt' => '', 
 	                        		'data-step' => '1',
@@ -195,12 +195,6 @@
 													<?php echo $this->Html->image('search3.png', array('style' => 'float:left'))?>	
 												</p>
 											</div>
-										<h3>Watch a Tutorial Video</h3>
-											<div>
-												<p>
- 													<iframe width="400" height="300" src="https://www.youtube.com/embed/J4ztDU-yr74?rel=0&hd=1" frameborder="0" allowfullscreen></iframe>
-												</p>
-											</div>
 							    	</div>
 							</div>
 							<div class="col-md-6 job-left">
@@ -231,14 +225,7 @@
 													<?php echo $this->Html->image('graph3.png', array('style' => 'float:left'))?>	
 												</p>
 											</div>
-										<h3>Watch a Tutorial Video</h3>
-											<div>
-												<p>
- 													<iframe width="400" height="300" src="https://www.youtube.com/embed/J4ztDU-yr74?rel=0&hd=1" frameborder="0" allowfullscreen></iframe>
-												</p>
-											</div>
 							    	</div>
-								    	
 							 </div>
 						</div>
 					</div>

@@ -1,6 +1,6 @@
 <?php
 		$this->layout = 'admin_panel_layout';
-		$this->set('title', 'Edit Case - Admin Panel | Human Trafficking Data');
+		$this->set('title', 'Add Defendant - Admin Panel | Human Trafficking Data');
 		$this->set('active', 'edit');
 ?>
 <!--search start here-->
@@ -12,11 +12,6 @@
 						<span style="color:#888; font-size:23px;"><?php echo $case['DataInProgress']['CaseNam']; ?></span>
 					</h3>
 				</div>
-					<?php 	
-						// echo 'Case Number: '.$case['DataInProgress']['CaseNum'];
-						// echo ' | ';
-						// echo 'Case Name: '.$case['DataInProgress']['CaseNam']; 
-					?>
 				<div class="col-md-12">
 				<div class="col-md-6 case_creation_form" id="form_style" style="float:inherit">
 						<h2 id="caseInfoFS_Title"><?php echo $case['DataInProgress']['CaseNam'];?>'s Details</h2>
@@ -26,7 +21,7 @@
 
 							<?php	echo $this->Form->input('DefLast', 		
 															array( 
-																'label' => 'Defendant Last Name'));
+																'label' => 'Defendant Last Name*'));
 									echo $this->Form->input('DefFirst', 		
 																array(
 																	'label' => 'Defendant First Name'));
@@ -37,7 +32,7 @@
 									echo $this->Form->input('DefArrestAge',	array('label' => 'Defendant Age', 'type' => 'text'));
 									echo $this->Form->input('Alias', array('placeholder' => 'Enter aliases separated by commas.'));
 								
-									echo $this->Form->input('ChargeDate', array('label' => 'Charge Date', 'placeholder' => 'yyyy-mm-dd', 'id' => 'charge_Date', 'type' => 'text', 'class' => 'date', 'data-date' 	=> '2012-12-02', 'data-date-format' => 'yyyy-mm-dd')); 
+									echo $this->Form->input('ChargeDate', array('label' => 'Charge Date*', 'placeholder' => 'yyyy-mm-dd', 'id' => 'charge_Date', 'type' => 'text', 'class' => 'date', 'data-date' 	=> '2012-12-02', 'data-date-format' => 'yyyy-mm-dd')); 
 									echo $this->Form->input('ArrestDate', array('label' => 'Arrest Date', 'placeholder' => 'yyyy-mm-dd', 'class' => 'date', 'type' => 'text', 'id' => 'arrest_Date', 'data-date' 	=> '2012-12-02', 'data-date-format' => 'yyyy-mm-dd'));
 							?>
 								<hr style="border-top:1px solid #CCC;">
@@ -396,7 +391,7 @@
 					<?php echo $this->Form->submit('Submit'); ?>
 					<?php echo $this->Form->end(); ?>
 						<br>
-					<p><strong>*Note: </strong>Not all fields are required</p>
+					<p><strong>*Note: </strong>Required Fields</p>
 					</div>
 				</div>
 			</div>	

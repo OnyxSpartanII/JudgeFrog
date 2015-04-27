@@ -44,9 +44,9 @@
                   <!-- Slider Number 2 -->
                   <div class="slide"> 
                     <p    class="claim"     
-                         data-in="fade" data-position="20,350" data-step="1" data-out="fade" style="font-size:2em; color:#fe2232">600,000 to 800,000</p>
+                         data-in="fade" data-position="0,350" data-step="1" data-out="fade" style="font-size:2em; color:#fe2232">600,000 to 800,000</p>
                     <p    class="claim"     
-                         data-in="fade" data-position="130,170" data-step="2" data-out="fade" style="font-size:1em;">is the approximate amount of trafficked people around the world<span><p style="font-size:1.5em; color:red; font-weight:bold;" data-step="3" data-position="120,700" data-in="fade" data-out="fade" data-delay="1500">Every year</p></span></p>
+                         data-in="fade" data-position="130,190" data-step="2" data-out="fade" style="font-size:1em;">is the approximate amount of trafficked people around the world<span><p style="font-size:1.5em; color:red; font-weight:bold;" data-step="3" data-position="150,400" data-in="fade" data-out="fade" data-delay="1500">Every year</p></span></p>
                   </div>
 
                   <!-- Slider Number 3 -->
@@ -73,54 +73,33 @@
             </div>
             <div class="container">
                   <div class="col-md-13 job-left">
-                        <div id="accordion">
-                          <h3>Section 1</h3>
-                          <div>
-                            <p>
-                            Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
-                            ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
-                            amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
-                            odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
-                            </p>
-                          </div>
-                          <h3>Section 2</h3>
-                          <div>
-                            <p>
-                            Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet
-                            purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor
-                            velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In
-                            suscipit faucibus urna.
-                            </p>
-                          </div>
-                          <h3>Section 3</h3>
-                          <div>
-                            <p>
-                            Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis.
-                            Phasellus pellentesque purus in massa. Aenean in pede. Phasellus ac libero
-                            ac tellus pellentesque semper. Sed ac felis. Sed commodo, magna quis
-                            lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui.
-                            </p>
-                            <ul>
-                              <li>List item one</li>
-                              <li>List item two</li>
-                              <li>List item three</li>
-                            </ul>
-                          </div>
-                          <h3>Watch The Tutorial Video</h3>
-                          <div>
-                            <p>
-                            Cras dictum. Pellentesque habitant morbi tristique senectus et netus
-                            et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in
-                            faucibus orci luctus et ultrices posuere cubilia Curae; Aenean lacinia
-                            mauris vel est.
-                            </p>
-                            <p>
-                            Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus.
-                            Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
-                            inceptos himenaeos.
-                            </p>
-                          </div>
+                    <div id="accordion">
+                      <h3>1- Select a search parameter</h3>
+                        <div>
+                          <p>
+                            <?php echo $this->Html->image('search1.png', array('style' => 'float:left'))?>  
+                            To perform a global search, click on the magnifier glass.
+                            <br><br>
+                            <?php echo $this->Html->image('search1b.png', array('style' => 'float:left'))?> 
+                            However, you may also search by a case parameter - i.e <strong>Case, Defendant, Type of Trafficking, Victims, Judge...</strong>. To do so, click on any of the parameters to view the criteria.
+                          </p>
                         </div>
+                      <h3>2- Select/Enter a specific criteria</h3>
+                        <div>
+                          <p>
+                            <?php echo $this->Html->image('search2.png', array('style' => 'float:left'))?>  
+                            After you have expanded a parameter, you select the criteria by which you would like to search by.
+                          </p>
+                        </div>
+                      <h3>3- Search Result(s)</h3>
+                        <div>
+                          <p>
+                            After selecting your search criteria and clicking the search button, results will be printed out in a table.
+                            <br><br>
+                            <?php echo $this->Html->image('search3.png', array('style' => 'float:left'))?>  
+                          </p>
+                        </div>
+                      </div>
                    </div>
               </div>
           </div>

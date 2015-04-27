@@ -568,6 +568,10 @@ ul.tab_list li {
 	height: 100%;
 	overflow: hidden;
 }
+.job-left #accordion h3{
+	text-align: left;
+	font-size: 20px;
+}
 .job-left h3{
 	padding-top: 50px;
 }
@@ -580,7 +584,6 @@ ul.tab_list li {
 	margin: 0px 20px;
 	font-weight: 400;
 	text-align: left;
-    border-top: .1em #444 dotted;
 }
 iframe{
 	max-height: 400px;

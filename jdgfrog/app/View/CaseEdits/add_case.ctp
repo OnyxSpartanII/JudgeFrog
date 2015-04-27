@@ -1,6 +1,6 @@
 <?php
 		$this->layout = 'admin_panel_layout';
-		$this->set('title', 'Edit Case - Admin Panel | Human Trafficking Data');
+		$this->set('title', 'Case Creation - Admin Panel | Human Trafficking Data');
 		$this->set('active', 'edit');
 ?>
 <?php
@@ -19,7 +19,7 @@
 		<div class="container">
 			<div class="contact-main">	
 				<div class="case_top_bar">
-					<h3 class="page_title">Case &amp; Judge Details</h3>
+					<h3 class="page_title">Case Creation | <span style="color:#888; font-size:23px;">Case &amp; Judge Details</span></h3>
 				</div>
 				<div class="col-md-12">
 					<div class="col-md-6 case_creation_form" id="form_style" style="float:inherit">
@@ -27,8 +27,8 @@
 							<fieldset>
 							<?php 
 								echo $this->Form->create('DataInProgress');
-								echo $this->Form->input('CaseNam', array('label' => 'Case Name', 'placeholder' => 'USA v. Davis'));
-								echo $this->Form->input('CaseNum', array('type' => 'text', 'label' => 'Case Number', 'placeholder' => '23-c3-2015'));
+								echo $this->Form->input('CaseNam', array('label' => 'Case Name*', 'placeholder' => 'USA v. Davis'));
+								echo $this->Form->input('CaseNum', array('type' => 'text', 'label' => 'Case Number*', 'placeholder' => '23-c3-2015'));
 								echo "<hr style='border-top:3px solid #DDD'>";
 								echo $this->Form->input('JudgeName', array('label'=> 'Judge Name'));
 								echo $this->Form->input('JudgeRace', array('label' => '', 'empty' => 'Race', 'options' => array('0' => 'White', '1' => 'Black', '2' => 'Hispanic', '3' => 'Asian', '4' => 'Other')));
@@ -67,7 +67,7 @@
 						<div style="max-width:70%;margin: 0 auto">
 							<?php echo $this->Form->end('Submit'); ?></div>
 						<br>
-					<p><strong>*Note: </strong>All fields are required</p>
+					<p><strong>*Note: </strong>Required Fields</p>
 				</div>
 			</div>
 		</div>

@@ -24,7 +24,6 @@
                      <div id="horizontalTab" style="display: block; width: 100%; margin: 0px; border:none">
                           <ul style="font-size:1.1em; width: 100%;">
                             <li><a href="#about-htd">ABOUT HUMAN TRAFFICKING DATA</a></li>
-                            <li><a href="#meth">METHODOLOGY</a></li>
                             <li><a href="#prin-inv">PRINCIPLE INVESTIGATOR</a></li>
                             <li><a href="#ack">ACKNOWLEDGEMENTS</a></li>
                           </ul>
@@ -36,15 +35,6 @@
                                     </p>     
                                   </div>
                               </div>
-                              <div id="meth">
-                                  <div class="facts">
-                                    <p>The cases in this database by no means represent the entire universe of all federal human trafficking cases in the United States; however, we are confident that it does represent a very large proportion of them.  Our goal was to develop a case search methodology that was broad enough to capture human trafficking cases that might otherwise go unnoticed, but specific enough so as not to yield large numbers of irrelevant cases.</p>
-                                    <p>We started with the premise that many cases of human trafficking are going unidentified as such by scholars, practitioners, and other stakeholders because they are being prosecuted as some other type of organized criminal activity.  Thus, establishing the most accurate and comprehensive understanding of human trafficking in the United States is going to require an examination of those cases prosecuted not only for human trafficking, but also for other types of related organized criminal activity.</p>
-                                    <p>The cases in this database were identified using three different legal search engines:  Bloomberg Law, WestLaw, and LexisNexis.  Detailed search protocols for each search engine were written, tested, and finalized.  Search terms, in various combinations, included, but were not limited to: human trafficking, labor trafficking, forced labor, servitude, slave, prostitute, brothel, gang, organized crime, mafia, cartel, conspiracy, racketeering, RICO, visa fraud, document fraud, document tampering.  Case searches were limited to post-TVPA cases, 2000 to 2013.</p>
-                                    <p>We triangulated the results of the cases that turned up from searching Bloomberg Law, WestLaw, and LexisNexis using media searches of human trafficking cases in several other news search engines, including Access World News, Google News, and LexisNexis.  Every state was searched systematically using the following terms and/or combinations of terms:  human trafficking, sex trafficking, labor trafficking, arrest, convict, and investigate.</p>
-                                    <p>Cases that turned up in the searches were then reviewed to determine whether they were human trafficking cases.  For all cases that were determined to be human trafficking, dockets and indictments were obtained via PACER and the cases were coded according to the criteria that are now searchable on this database.</p>  
-                                  </div>
-                              </div>
                               <div id="prin-inv">
                                   <div class="facts">
                                     <p>
@@ -53,7 +43,7 @@
                               </div>
                               <div id="ack">
                                   <div class="facts">
-                                    <p>This website was developed under a grant from the National Institute of Justice (NIJ), United States Department of Justice. Special thanks goes out to Global Centurion for assisting with case searches, as well several research assistants at TCU for their very thorough culling and coding of case records. We are also indebted to several Senior Design students in the  TCU Computer Science Department for their technical expertise and guidance in crafting the database and the exceptional functionalities of this web application.</p>  
+                                    <p>This website was developed under a grant from the National Institute of Justice (NIJ), United States Department of Justice. Special thanks goes out to Global Centurion for assisting with case searches, as well several research assistants at TCU for their very thorough culling and coding of case records. We are also indebted to a Senior Design team in the  TCU Computer Science Department for their technical expertise and guidance in crafting the database and the exceptional functionalities of this web application.</p>  
                                   </div>
                               </div>
                           </div>

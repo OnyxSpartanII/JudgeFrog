@@ -93,7 +93,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 							          	<?php echo $this->Html->link('About HTD', '/about'); ?></a>
 							          </li>
 							          <li><a tabindex="0" class="<?php echo ($this->fetch('active') == '') ? 'active' : ''; ?>" 
-							          	<?php echo $this->Html->link('Description & Definition', '/description'); ?></a>
+							          	<?php echo $this->Html->link('Methodology & Definitions', '/description'); ?></a>
 							          </li>
 							        </ul>
 							      </li>
@@ -156,14 +156,6 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
             	</div>
 </div>
 <script type="text/javascript">
-    //Set Screen Size Error Message if < 424px
-$( document ).ready(function() {      
-    var isMobile = window.matchMedia("only screen and (max-width: 424px)");
-    if (isMobile.matches) {
-    	$('#content').hide();
-    	$('.mobile-message').show();
-    }
-});
     //Shrink Logo
 $('#compact-logo').hide();
 $( document ).ready(function() {      

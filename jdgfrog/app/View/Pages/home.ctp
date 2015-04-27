@@ -195,6 +195,16 @@
 													<?php echo $this->Html->image('search3.png', array('style' => 'float:left'))?>	
 												</p>
 											</div>
+										<h3>3- Viewing a Case</h3>
+											<div>
+												<p>
+													- Select the desired case to view from the results table. </br>
+													- A modal window will display and show the results of that case from the search criteria searched. </br>
+													- To see all case data, untoggle the filtered button from the top right. 
+													</br></br>
+													<?php echo $this->Html->image('search4.png', array('style' => 'float:left'))?>	
+												</p>
+											</div>
 							    	</div>
 							</div>
 							<div class="col-md-6 job-left">

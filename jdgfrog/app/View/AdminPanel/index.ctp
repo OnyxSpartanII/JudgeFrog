@@ -92,12 +92,11 @@
                             </p>
                           </div>
                         </div>
-                      <h3>3- Submit Case For Review | <?php echo $this->Html->image('admin3a.png', array('style' => 'float:center'))?></h3>
+                      <h3>3- Submit Case For Review | <?php echo $this->Html->image('admin3.png', array('style' => 'float:center'))?></h3>
                       <div>
-                          <div style="max-width:500px; margin: 0 auto">
+                          <div style="margin: 0 auto">
                             <p>
-                              At the button of the page of the case, select the  “Submit Case for Review?” checkbox and click on submit to finalize that case and allow an administrator to review the case.
-                              <?php echo $this->Html->image('admin3.png', array('style' => 'float:center'))?>  
+                              At the button of the page of the case, select the  “Submit Case for Review?” checkbox and click on submit to finalize that case and allow an administrator to review the case. 
                             </p>
                           </div>
                         </div>

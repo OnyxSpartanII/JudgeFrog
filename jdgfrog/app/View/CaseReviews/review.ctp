@@ -5,10 +5,7 @@
 <script type="text/javascript" charset="utf-8">
   $(document).ready(function() {
     $('#review_table').DataTable( {
-        responsive: true,
-        "bPaginate": false,
-        "bFilter": false,
-        "bInfo": false
+        responsive: true
     } );
   });
 </script>
@@ -17,19 +14,41 @@
     <div class="container">
         <div class="contact-main">
           <h3 class="page_title">Review Case</h3>
-              <div class="col-md-3 contact-right">
+              <div class="col-md-4 contact-right" style="text-align:left; margin-bottom:50px">
                 <!-- TOP CREATE A NEW USER BAR -->
-                  <div class="top_bar col-md-3">
+                  <div class="top_bar col-md-4">
+                    <div class="top_bar_left">
+                      <h4>FREQUENTLY ASKED QUESTIONS</h4>
+                    </div> 
+                  </div>
+                    <h4>Where does a published case go?</h4>
+                    <label>A case that is published goes to the live database and becomes searchable.</label>
+                    <h4>Can I delete a published case?</h4>
+                    <label>Yes you may delete a case you published by going back to the <i><b>"Create&amp;Edit"</b></i> page. You can search and delete the case from the all cases table.</label>
+                    <h4>How soon after publishing a case can a user search for it?</h4>
+                    <label>Immediately. A published case is instantaneously added to the live database and can be searched and analyzed.</label>
+              </div>
+              <div class="col-md-8 contact-right">
+                <!-- TOP CREATE A NEW USER BAR -->
+                  <div class="top_bar col-md-8">
                     <div class="top_bar_left">
                       <h4>CASES PENDING REVIEW</h4>
                     </div> 
+                      <!-- PUBLISH BUTTON-->
+                      <div title="Click here to publish this case." style="padding: 20px 0px 0px 0px;" id="publish_button">
+                        <label for="" class="user_button">
+                          <?php echo $this->Html->image('send.png', array('alt' => 'Publish', 'style' => 'padding: 10px 8px 8px 0px;' )); ?>
+                        </label>
+                      </div>  
                   </div>
                     <table class="pending_case table table-bordered" id="review_table">
                           <thead>
                               <tr>
-                              <th>Case #</th>
-                              <th class="none">Author Name</th>
-                              <th style="background-color: #4D1979">Actions</th>
+                              <th class="always">Case Name</th>
+                              <th>Case Number</th>
+                              <th>Number of Defendant</th>
+                              <th class="">Author Name</th>
+                              <th class="always" style="background-color: #4D1979">Actions</th>
                               </tr>
                           </thead>
                           <tbody>
@@ -40,6 +59,8 @@
                                 echo '<tr id='.$index.' class="toggle_case">' .
                                 '<td>' . $pc[0] . '</td>' .
                                 '<td>' . $pc[1] . '</td>' .
+                                '<td>' . $pc[2] . '</td>' .
+                                '<td>' . $pc[3] . '</td>' .
                                 '<td>' . $this->Html->link('Edit', '/admin/cases/edit/'.$pc[0])
                                        . '&nbsp/&nbsp;'
                                        . $this->Html->link('Delete', '/CaseReviews/delete_case/'.$pc[0], 
@@ -58,18 +79,12 @@
                   </div>
                 </div>
             </div> 
-                <div class="col-md-9 contact-right">
+                <div class="col-md-12 contact-right">
                   <!-- TOP PUBLISH SELECTED USER BAR -->
-                    <div class="top_bar col-md-9">
+                    <div class="top_bar col-md-12">
                       <div class="top_bar_dash">
                         <h4>CASE DETAILS</h4>
-                      </div>                   
-                      <!-- PUBLISH BUTTON-->
-                      <div title="Click here to publish this case." style="padding: 0px 0px 0px 0px;" id="publish_button">
-                        <label for="" class="user_button">
-                          <?php echo $this->Html->image('send.png', array('alt' => 'Publish', 'style' => 'padding: 10px 8px 8px 0px;' )); ?>
-                        </label>
-                      </div>
+                      </div>                 
                     </div>
                     <div id="selected_case" class="selected_case">
                     </div>

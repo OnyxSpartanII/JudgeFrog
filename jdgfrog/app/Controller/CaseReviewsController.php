@@ -65,7 +65,7 @@ class CaseReviewsController extends AppController {
 	
 				if (strcmp($prev_name, $d['DataInProgress']['CaseNam']) != 0) {
 	
-					array_push($p_cases, array($d['DataInProgress']['CaseNum'], $d['DataInProgress']['author']));
+					array_push($p_cases, array($d['DataInProgress']['CaseNam'], $d['DataInProgress']['CaseNum'], $d['DataInProgress']['NumDef'], $d['DataInProgress']['author']));
 	
 					array_push($case_info, array(
 						$d['DataInProgress']['CaseNam'],			// 0

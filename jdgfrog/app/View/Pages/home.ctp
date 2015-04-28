@@ -43,7 +43,7 @@
 							<p 		class="claim"			
 									 data-in="fade" data-position="20,350" data-step="1" data-out="fade" style="font-size:2em; color:#fe2232">500,000 to 800,000</p>
 							<p 		class="claim"			
-									 data-in="fade" data-position="130,190" data-step="2" data-out="fade" style="font-size:1em;">is the approximate amount of trafficked people around the world<span><p style="font-size:1.5em; color:red; font-weight:bold;" data-step="3" data-position="150,400" data-in="fade" data-out="fade" data-delay="1500">Every year</p></span></p>
+									 data-in="fade" data-position="130,200" data-step="2" data-out="fade" style="font-size:1em;">is the approximate amount of trafficked people around the world<span><p style="font-size:1.5em; color:red; font-weight:bold;" data-step="3" data-position="150,400" data-in="fade" data-out="fade" data-delay="1500">Every year</p></span></p>
 						</div>
 						<!-- Slider Number 3 -->
 						<div class="slide"> 
@@ -195,7 +195,7 @@
 													<?php echo $this->Html->image('search3.png', array('style' => 'float:left'))?>	
 												</p>
 											</div>
-										<h3>3- Viewing a Case</h3>
+										<h3>4- Viewing a Case</h3>
 											<div>
 												<p>
 													- Select the desired case to view from the results table. </br>
@@ -233,6 +233,14 @@
 													After selecting both a graph and the variable(s), you may graph and perform the analysis by clicking the analyze button.
 													<br><br>
 													<?php echo $this->Html->image('graph3.png', array('style' => 'float:left'))?>	
+												</p>
+											</div>
+										<h3>4- View Search Parameters</h3>
+											<div>
+												<p>
+													You may also view all the parameters you searched by. Expand the "Search Parameters" tabs to view.
+													<br><br>
+													<?php echo $this->Html->image('graph4.png', array('style' => 'float:left'))?>	
 												</p>
 											</div>
 							    	</div>

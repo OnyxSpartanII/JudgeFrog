@@ -88,7 +88,7 @@
 												echo "</tbody>";
 												echo "</table>";
 										} else {
-											echo "No cases in table: Data";
+											echo "No user available to be displayed.";
 										}
 									?>
 							<div class="submit" style="display:block; display:none"><input  type="submit" value="Submit" id="deleteBtn"/></div>

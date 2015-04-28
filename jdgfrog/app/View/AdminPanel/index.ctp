@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <!--Slider Starts Here-->
       <div class="jobs-main top-slider">
-        <h3>What's New</h3>
+        <h3>What's On</h3>
           <div class="slider-wrapper">
             <div class="responisve-container">
               <div class="slider">
@@ -33,12 +33,10 @@
                   <!-- Slider Number 1 -->
                   <div class="slide"> 
                     <p    class="claim"     
-                         data-in="top" data-position="20,450" data-step="1" data-out="fade" style="font-size:2em;">on</p>
+                        data-in="top" 
+                                    data-position="70,0" data-step="1" data-out="fade" style="font-size:3.2em;">HUMAN TRAFFICKING DATA | Admin Panel?</p>
                     <p    class="claim"     
-                        data-in="fade" 
-                                    data-position="70,0" data-step="2" data-out="fade" style="font-size:3.2em;">HUMAN TRAFFICKING DATA | Admin Panel?</p>
-                    <p    class="claim"     
-                         data-in="fade" data-out="fade" data-position="150,160" data-step="3" data-out="left" style="font-size:1.2em; color:4D1979">an open source platform for human trafficking cases in the U.S.</p>
+                         data-in="fade" data-out="fade" data-position="150,160" data-step="2" data-out="left" style="font-size:1.2em; color:4D1979">an open source platform for human trafficking cases in the U.S.</p>
                   </div>
 
                   <!-- Slider Number 2 -->
@@ -46,7 +44,7 @@
                     <p    class="claim"     
                          data-in="fade" data-position="0,350" data-step="1" data-out="fade" style="font-size:2em; color:#fe2232">600,000 to 800,000</p>
                     <p    class="claim"     
-                         data-in="fade" data-position="130,190" data-step="2" data-out="fade" style="font-size:1em;">is the approximate amount of trafficked people around the world<span><p style="font-size:1.5em; color:red; font-weight:bold;" data-step="3" data-position="150,400" data-in="fade" data-out="fade" data-delay="1500">Every year</p></span></p>
+                         data-in="fade" data-position="130,200" data-step="2" data-out="fade" style="font-size:1em;">is the approximate amount of trafficked people around the world<span><p style="font-size:1.5em; color:red; font-weight:bold;" data-step="3" data-position="150,400" data-in="fade" data-out="fade" data-delay="1500">Every year</p></span></p>
                   </div>
 
                   <!-- Slider Number 3 -->
@@ -74,30 +72,34 @@
             <div class="container">
                   <div class="col-md-13 job-left">
                     <div id="accordion">
-                      <h3>1- Select a search parameter</h3>
-                        <div>
-                          <p>
-                            <?php echo $this->Html->image('search1.png', array('style' => 'float:left'))?>  
-                            To perform a global search, click on the magnifier glass.
-                            <br><br>
-                            <?php echo $this->Html->image('search1b.png', array('style' => 'float:left'))?> 
-                            However, you may also search by a case parameter - i.e <strong>Case, Defendant, Type of Trafficking, Victims, Judge...</strong>. To do so, click on any of the parameters to view the criteria.
-                          </p>
+                      <h3>1- Create A Case <?php echo $this->Html->image('admin1.png', array('style' => 'float:center'))?></h3>
+                      <div>
+                          <div style="margin: 0 auto">
+                            <p>
+                              i. Select the button displayed to proceed to add a new case
+                              <br><br>
+                              ii. Complete the case fields as necessary (Case name and case number are required) 
+                            </p>
+                          </div>
                         </div>
-                      <h3>2- Select/Enter a specific criteria</h3>
-                        <div>
-                          <p>
-                            <?php echo $this->Html->image('search2.png', array('style' => 'float:left'))?>  
-                            After you have expanded a parameter, you select the criteria by which you would like to search by.
-                          </p>
+                      <h3>2- Add A Defendant To A Case <?php echo $this->Html->image('admin2.png', array('style' => 'float:center'))?></h3>
+                      <div>
+                          <div style="margin: 0 auto">
+                            <p>
+                              i. Add a new defendant by selecting the button shown
+                              <br><br>
+                              ii. Complete the defendant fields as necessary (defendant last name and charge date fields are required)
+                            </p>
+                          </div>
                         </div>
-                      <h3>3- Search Result(s)</h3>
-                        <div>
-                          <p>
-                            After selecting your search criteria and clicking the search button, results will be printed out in a table.
-                            <br><br>
-                            <?php echo $this->Html->image('search3.png', array('style' => 'float:left'))?>  
-                          </p>
+                      <h3>3- Submit Case For Review | <?php echo $this->Html->image('admin3a.png', array('style' => 'float:center'))?></h3>
+                      <div>
+                          <div style="max-width:500px; margin: 0 auto">
+                            <p>
+                              At the button of the page of the case, select the  “Submit Case for Review?” checkbox and click on submit to finalize that case and allow an administrator to review the case.
+                              <?php echo $this->Html->image('admin3.png', array('style' => 'float:center'))?>  
+                            </p>
+                          </div>
                         </div>
                       </div>
                    </div>

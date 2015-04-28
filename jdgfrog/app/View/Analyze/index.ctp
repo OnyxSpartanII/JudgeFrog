@@ -270,7 +270,7 @@ SCRIPTS
 	google.load("visualization", "1", {packages:["corechart"]});
 </script>
 
-<!-- Script to allow search bars collapsible - added by Landon -->
+<!-- Script to allow search bars collapsible -->
 <script type="text/javascript">
   $(document).ready(function(){
 
@@ -307,7 +307,6 @@ $("#screenButton").click(function() {
 </script>
 
 
-<!-- added by Landon (above) -->
     <script>
       new UISearch( document.getElementById( 'sb-search' ) );
     </script>

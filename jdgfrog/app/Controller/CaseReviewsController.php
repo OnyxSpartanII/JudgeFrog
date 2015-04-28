@@ -172,7 +172,6 @@ class CaseReviewsController extends AppController {
 	                  '<p class="case_summary">' .
 	                  	$case_info[$index][10] .
 	                  '</p>' .
-	              '</div>' .
 	              '<table class="table_col">' .
 	                '<caption>Defendent Information</caption>' .
 	                '<thead>' .
@@ -314,7 +313,7 @@ class CaseReviewsController extends AppController {
 							'</td>' .
 						'</tr>';
 		            }
-	                '</tbody>' .
+	              $html = $html . '</tbody>' .
 	              '</table>' .
 	              '<table class="modal_table table_col">' .
 	                '<caption>Victims Information</caption>' .

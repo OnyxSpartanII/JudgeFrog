@@ -68,9 +68,9 @@ class DATABASE_CONFIG {
 		'datasource' => 'Database/Mysql',
 		'persistent' => false ,
 		'host' => 'oyster.arvixe.com',
-		'login' => 'jdgfrog_testDB',
+		'login' => 'jdgfrog_app',
 		'password' => 'tcuCOSC1!',
-		'database'=> 'jdgfrog_testDB',
+		'database'=> 'jdgfrog_db',
 		'prefix' => '',
 		//'encoding' => 'utf8',
 	);
@@ -79,9 +79,9 @@ class DATABASE_CONFIG {
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
 		'host' => 'oyster.arvixe.com',
-		'login' => 'jdgfrog_testDB',
+		'login' => 'jdgfrog_db',
 		'password' => 'tcuCOSC1!',
-		'database' => 'jdgfrog_testDB',
+		'database' => 'jdgfrog_db',
 		'prefix' => '',
 		//'encoding' => 'utf8',
 	);

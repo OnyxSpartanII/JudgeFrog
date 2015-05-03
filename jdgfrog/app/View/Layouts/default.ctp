@@ -156,7 +156,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
             	</div>
 </div>
 <script type="text/javascript">
-    //Shrink Logo
+    //This is function main purpose is to shrink the logo on width < 1000px
 $('#compact-logo').hide();
 $( document ).ready(function() {      
     var isSmall = window.matchMedia("only screen and (max-width: 1000px)");

@@ -8,6 +8,7 @@
        </div>
 </div>
 <?php
+    //Modified version of jquery-ui. jquery min is a necessary call for the tabs to function.
     echo $this->Html->css(array('jquery-ui-new'));
     echo $this->Html->script(array('jquery-1.10.2.min', 'jquery-ui-new'));
 ?>

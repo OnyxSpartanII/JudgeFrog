@@ -699,8 +699,7 @@ class DownloadController extends AppController {
 								'OCName2' => 'OCName2',
 								'OCType2' => 'OCType2',
 								'OCRace2' => 'OCRace2',
-								'OCScope2' => 'OCScope2',
-								'SubmittedForReview' => 'SubmittedForReview'
+								'OCScope2' => 'OCScope2'
 			);
 
 			if (count($allData) > 0) {
@@ -719,32 +718,32 @@ class DownloadController extends AppController {
 
 					//Filters to compensate for CakePHP pulling 
 					//booleans with 0 value out as "false."
-					if ($row['Datum']['JudgeGen'] === false) {
+					if (isset($row['Datum']['JudgeGen']) && $row['Datum']['JudgeGen'] == false) {
 						$row['Datum']['JudgeGen'] = '0';
 					}
-					if ($row['Datum']['DefGender'] === false) {
+					if (isset($row['Datum']['DefGender']) && $row['Datum']['DefGender'] == false) {
 						$row['Datum']['DefGender'] = '0';
 					}
-					if ($row['Datum']['JudgeApptBy'] === false) {
+					if (isset($row['Datum']['JudgeApptBy']) && $row['Datum']['JudgeApptBy'] == false) {
 						$row['Datum']['JudgeApptBy'] = '0';
 					}
-					if ($row['Datum']['Detained'] === false) {
+					if (isset($row['Datum']['Detained']) && $row['Datum']['Detained'] == false) {
 						$row['Datum']['Detained'] = '0';
 					}
-					if ($row['Datum']['LaborTraf'] === false) {
+					if (isset($row['Datum']['LaborTraf']) && $row['Datum']['LaborTraf'] == false) {
 						$row['Datum']['LaborTraf'] = '0';
 					}
-					if ($row['Datum']['AdultSexTraf'] === false) {
+					if (isset($row['Datum']['AdultSexTraf']) && $row['Datum']['AdultSexTraf'] == false) {
 						$row['Datum']['AdultSexTraf'] ='0';
 					}
-					if ($row['Datum']['MinorSexTraf'] === false) {
+					if (isset($row['Datum']['MinorSexTraf']) && $row['Datum']['MinorSexTraf'] == false) {
 						$row['Datum']['MinorSexTraf'] = '0';
 					}
-					if ($row['Datum']['AssetForfeit'] === false) {
+					if (isset($row['Datum']['AssetForfeit']) && $row['Datum']['AssetForfeit'] == false) {
 						$row['Datum']['AssetForfeit'] = '0';
 					}
 					foreach ($statutes as $statute) {
-						if ($row['Datum']["S$statute"] === false) {
+						if (isset($row['Datum']["S$statute"]) && $row['Datum']["S$statute"] == false) {
 							$row['Datum']["S$statute"] = '0';
 						}
 					}

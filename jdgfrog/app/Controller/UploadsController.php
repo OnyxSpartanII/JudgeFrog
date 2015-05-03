@@ -78,22 +78,22 @@ class UploadsController extends AppController {
 								'FedDistrictNum' => $data[$index++],
 								'JudgeName' => $data[$index++],
 								'JudgeRace' => $data[$index++],
-								'JudgeGen' => $data[$index++],
+								'JudgeGen' => ($data[$index++] == '' ? null : $data[$index-1]),
 								'JudgeTenure' => $data[$index++],
 								'JudgeApptBy' => $data[$index++],
 								'CaseSummary' => $data[$index++],
-								'DefGender' => $data[$index++],
+								'DefGender' => ($data[$index++] == '' ? null : $data[$index-1]),
 								'DefRace' => $data[$index++],
 								'DefBirthdate' => (strrpos($data[$index], "/") ? explode("/",$data[$index++])[2] : $data[$index++]),
 								'DefArrestAge' => $data[$index++],
 								'ChargeDate' => ($data[$index++] != 0 ? date('Y-m-d h:i:s', strtotime($data[$index-1])) : 0),
 								'ArrestDate' => ($data[$index++] != 0 ? date('Y-m-d h:i:s', strtotime($data[$index-1])) : 0),
-								'Detained' => $data[$index++],
+								'Detained' => ($data[$index++] == '' ? null : $data[$index-1]),
 								'BailType' => $data[$index++],
 								'BailAmount' => $data[$index++],
-								'LaborTraf' => $data[$index++],
-								'AdultSexTraf' => $data[$index++],
-								'MinorSexTraf' => $data[$index++],
+								'LaborTraf' => ($data[$index++] == '' ? null : $data[$index-1]),
+								'AdultSexTraf' => ($data[$index++] == '' ? null : $data[$index-1]),
+								'MinorSexTraf' => ($data[$index++] == '' ? null : $data[$index-1]),
 								'FelCharged' => $data[$index++],
 								'FelSentenced' => $data[$index++]
 
@@ -116,8 +116,8 @@ class UploadsController extends AppController {
 							$info['SentDate'] = ($data[$index++] != 0 ? date('Y-m-d h:i:s', strtotime($data[$index-1])) : 0);
 							$info['TotalSentence'] = $data[$index++];
 							$info['Restitution'] = $data[$index++];
-							$info['AssetForfeit'] = $data[$index++];
-							$info['SupRelease'] = $data[$index++];
+							$info['AssetForfeit'] = ($data[$index++] == '' ? null : $data[$index-1]);
+							$info['SupRelease'] = ($data[$index++] == '' ? null : $data[$index-1]);
 							$info['Probation'] = $data[$index++];
 							$info['NumVic'] = $data[$index++];
 							$info['NumVicMinor'] = $data[$index++];

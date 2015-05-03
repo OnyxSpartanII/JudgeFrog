@@ -80,6 +80,8 @@ class UsersController extends AppController {
 
 	}
 
+	// This function purpose is to delete the selected user parsed from the user management
+	// view page by username. After the user deletion is complete, a success message is flashed.
 	public function delete_user($username = null){
 		$this->User->delete($username, true);
 		$this->Session->setFlash('User Successfully Deleted!');

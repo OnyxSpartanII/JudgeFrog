@@ -631,6 +631,8 @@ class CaseEditsController extends AppController {
 		echo json_encode($vals);
 	}
 
+	// This function purpose is to delete a case present in the Data table parsed from the Case Creation
+	// view page by the case number. After the user deletion is complete, a success message is flashed.
 	public function delete_case($num) {
 		$this->autoRender = false;
 		$caseNum = urldecode($num);
@@ -638,6 +640,8 @@ class CaseEditsController extends AppController {
 		$this->Session->setFlash('Case Successfully Deleted!');
 		$this->redirect('/admin/cases/edit/index');
 	}	
+	// This function purpose is to delete a case present in the DataInProgress table parsed from the Case Creation
+	// view page by the case number. After the user deletion is complete, a success message is flashed.
 	public function delete_incomplete_case($num) {
 		$this->autoRender = false;
 		$caseNum = urldecode($num);
@@ -645,6 +649,8 @@ class CaseEditsController extends AppController {
 		$this->Session->setFlash('Case Successfully Deleted!');
 		$this->redirect('/admin/cases/edit/index');
 	}	
+	// This function purpose is to delete a defentant parsed from the Case Edit
+	// view page by the defenant last name, first name and case number. After the user deletion is complete, a success message is flashed.
 	public function delete_def($defArray) {
 		$this->autoRender = false;
 		$string = explode("|", $defArray);

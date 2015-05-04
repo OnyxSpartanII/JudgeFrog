@@ -1,5 +1,14 @@
 <?php
 
+/**
+* This searchController dictates all of the actions that can be completed on the search page.
+*
+* Functions:
+* update - updates all of the variables needed for the view and refreshes the page with the necessary variables
+* home - sets up variables for first-time run
+* autoComplete - autocomplete used on various form fields
+*/
+
 class SearchController extends AppController {
 	
 	public $uses = array('Datum');
@@ -16,6 +25,12 @@ class SearchController extends AppController {
 		$this->Auth->allow('home','update', 'autoComplete');
 	}
 
+	/**
+	* Performed when a search is requested from the view
+	*
+	* Loops through all of the cases and tries to find cases which match the criteria the performs a filtering mechanism to display the appropriate values
+	*
+	*/
 	public function update() {
 		$this->set('title', 'Database Search | Human Trafficking Data');
 		$this->set('active', 'search');
@@ -1387,6 +1402,9 @@ class SearchController extends AppController {
 		$this->set('param', $this->request->data);
 	}
 
+	/**
+	* Sets up controller for first use
+	*/
 	public function home() {
 		$this->set('title', 'Database Search | Human Trafficking Data');
 		$this->set('active', 'search');
@@ -1396,6 +1414,9 @@ class SearchController extends AppController {
 		}
 	}
 
+	/**
+	* Autocomplete...
+	*/
 	public function autoComplete() {
 		$this->autoRender = false;
 

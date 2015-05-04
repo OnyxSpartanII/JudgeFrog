@@ -1,6 +1,16 @@
 <!-- CaseReviewsController.php -->
 <?php
 
+/**
+* This controller controls all of the functionality that goes on during the Case Reviews view.
+*
+* Functions:
+* review - setup of variables
+* generateTable - dynamically generate HTML for table
+* publishCase - publish case to Data
+* deleteCase - delete Case
+*/
+
 class CaseReviewsController extends AppController {
 	public $name = 'CaseReviews';
 
@@ -22,6 +32,11 @@ class CaseReviewsController extends AppController {
 		return parent::isAuthorized($user);
 	}
 
+	/**
+	*
+	* Sets up initial variables for use in the view
+	*
+	*/
 	public function review() {
 
     	$this->layout = 'admin_panel_layout';
@@ -132,6 +147,11 @@ class CaseReviewsController extends AppController {
 		$this->set('p_cases', $p_cases);
 	}
 
+	/**
+	* Dynamically generates html to display a detailed list of all case information
+	*
+	* $index = index of case clicked in DataTable 
+	*/
 	public function generateTable($index) {
 
 		$case_info = $this->Session->read('case_info');
@@ -361,6 +381,11 @@ class CaseReviewsController extends AppController {
 	    echo $html;
 	}
 
+	/**
+	* Publishes the case to Data table
+	*
+	* $index = index of case clicked in DataTable
+	*/
 	public function publishCase($index) {
 		$case_info = $this->Session->read('case_info');
 
@@ -386,6 +411,9 @@ class CaseReviewsController extends AppController {
 		}
 	}
 
+	/**
+	* Deletes all instances of cases with caseNum = $CaseNum
+	*/
 	public function delete_case($CaseNum) {
 		$this->DataInProgress->deleteAll(array('DataInProgress.CaseNum' => $CaseNum), false);
 		$this->Session->setFlash('Case Successfully Deleted!');

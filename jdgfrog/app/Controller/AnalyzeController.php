@@ -1,5 +1,11 @@
 <?php
 
+/**
+* AnalyzeController is for use for the analyze page. It uses several session variables provided from SearchController
+*
+* The types of graphs allowed currently are: bar, line, pie, histogram, and geo chart.
+*/
+
 class AnalyzeController extends AppController {
 	
 	public $uses = array('Datum');
@@ -21,6 +27,13 @@ class AnalyzeController extends AppController {
 		$query = $this->Session->read('query');
 	}
 
+	/**
+	* generateGraph generates a graph based on the type and selection made by the used and prints out an object containing a table of the data which is returned to the AJAX call which called this
+	* 
+	* $type is a string of which type
+	* $yIndex is the dependent selection
+	* $xIndex is the independent selection
+	*/
 	public function generateGraph($type, $yIndex, $xIndex) {
 
 		$this->autoRender = false;
@@ -105,6 +118,12 @@ class AnalyzeController extends AppController {
 
 	}
 
+	/**
+	* Used to generate bar, line, or pie charts.
+	*
+	* $cs = case info
+	* $opts = array of options
+	*/
 	public function barLinePie($cs, $opts, $yIndex, $xIndex) {
 		$s_arr = array('1961to1968', '1028', '1351',
 						'1425', '1512', '1546', '1581to1588', '1589',
@@ -547,6 +566,13 @@ class AnalyzeController extends AppController {
 		return array($data, $options);
 	}
 
+	/**
+	* Used to generate historgrams
+	*
+	* $cs = case info
+	* $opts = array of options
+	* $var = variable selected to generate historgram
+	*/
 	public function hst($cs, $opts, $var) {
 		$cases = $cs;
 		$options = $opts;
@@ -613,6 +639,12 @@ class AnalyzeController extends AppController {
 		return array($data, $options);
 	}
 
+	/**
+	* Used to generate a geocharts
+	* 
+	* $cs = case info
+	* $opts = array of options
+	*/
 	public function geo($cs, $opts) {
 		$cases = $cs;
 		$options = $opts;

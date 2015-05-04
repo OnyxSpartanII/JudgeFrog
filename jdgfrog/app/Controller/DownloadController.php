@@ -1,4 +1,7 @@
 <?php
+
+/* Downloads all data within Data table into CSV */
+
 class DownloadController extends AppController {
 	public $name = 'Download';
 	public $uses = array('Datum');

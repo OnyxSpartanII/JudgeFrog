@@ -1,0 +1,29 @@
+/*STYLE OF THE COLLAPSE NAV BAR*/
+
+
+
+.nav_title{
+	width: 400px;
+	color: #fff;
+	background-color: #333;
+	margin: 20px 0px;
+	font-size: 18px;
+	height: 80px;
+}
+
+.nav_title p{
+	width: 400px;
+	color: #fff;
+	font-size: 22px;
+	text-align: left;
+	margin: auto 10px;
+}
+
+
+.nav_bar{
+
+	/*float: left;*/
+	/*margin: 200px 0px;*/
+	margin-bottom: 200px;
+	width: 400px
+}
